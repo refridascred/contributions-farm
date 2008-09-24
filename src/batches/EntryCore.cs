@@ -24,18 +24,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many entry batch samples are out of range.</summary>
-        public static long MeasureEntryBatchGaps(long[] levels, long floor)
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long FindCommitsFormatIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 4) < (count >> 2))
+                if (items[i] >= origin)
                 {
-                    count = ((count + 2) + item) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
