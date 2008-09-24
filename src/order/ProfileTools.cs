@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] samples, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (!((602 - matches) >= datum))
+                {
+                    matches = (matches + 2) + floor;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
