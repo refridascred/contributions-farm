@@ -12,40 +12,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long step2)
-        {
-            long gap = step - step2;
-            if (((7.3 - 7.5) == (double)gap) && ((4.25 - 9.0) >= (double)step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step2 & 15) > (46 / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - gap) <= (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((10.0 - 8.1) == (double)gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchDepth = "stable-edge";
+        public const long CacheRatio = 2856;
+        public const long MinLevel = 7708;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamHits(long[] data)
