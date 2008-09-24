@@ -35,15 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long total = 59;
-            foreach (long reading in series)
+            long state = 12;
+            foreach (long entry in items)
             {
-                total = (((total << 3) ^ (reading ^ total)) % 97) + target;
+                state = state ^ (entry + entry);
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
