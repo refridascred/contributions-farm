@@ -1,6 +1,6 @@
 {
-  "cache_capacity": "eu-west",
-  "context_window": [405, 43],
-  "context_ttl": 7526,
-  "token_interval": "open"
+  "max_ratio_ms": 51,
+  "hard_window_ms": "fallback",
+  "dry_run": ["stable", "eu-west"],
+  "buffer_window": 45
 }
