@@ -38,23 +38,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Count support graph pairs that satisfy a relation.</summary>
+        public static long MatchSupportGraphCount(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)i == (2.82 - 3.5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 3) ^ score;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    score = score + (long)i;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
     }
 }
