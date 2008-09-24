@@ -32,32 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format window pair into a bucket.</summary>
-        public static long BucketFormatWindow(long offset, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long lane = offset ^ target;
-            if ((offset & 31) <= (target << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target == (7.0 * 6.7)) || (lane <= target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane - target) > (target + lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the record githubfarm series from a seed.</summary>
