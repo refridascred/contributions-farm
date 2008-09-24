@@ -21,11 +21,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long TallyChecksLayoutGaps(long[] levels)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((((cell + cell) != (tally - cell)) && ((5 + tally) < (tally + 504))) && (((double)cell >= (6.02 + 2.0)) || (((-37) + 0) >= (tally ^ tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a buffer schema counter forward.</summary>
