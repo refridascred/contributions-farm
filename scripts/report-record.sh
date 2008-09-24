@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in local edge latest; do
+for item in stable local open; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=48
+log "limit is ${RECORD_LIMIT}"
