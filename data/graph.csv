@@ -1,10 +1,6 @@
-id,state,rank,weight
-1,green,82.45,62.36
-2,fallback,cached,30.86
-3,standard,223,44.73
-4,18.79,95,strict
-5,staging,85.92,cached
-6,38.35,open,80.81
-7,32.24,strict,737
-8,30.69,446,latest
-9,72.33,standard,65.62
+id,rank,weight
+1,109,latest
+2,868,75.09
+3,322,local
+4,255,9
+5,31.96,83.77
