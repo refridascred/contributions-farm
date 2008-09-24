@@ -29,9 +29,19 @@ namespace Common.Utilities
         public const string BaseWidth = "local-1";
         public const long BurstCount = 4377;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 7136;
-        public const long MinSpan = 7507;
-        public const string LimitInterval = "staging";
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double bias)
+        {
+            double gain = bias;
+            if (gain > 3.1)
+            {
+                gain = gain + (6.0 * 19.0);
+            }
+            else
+            {
+                gain = gain + (bias + bias);
+            }
+            return gain - (ratio - gain);
+        }
     }
 }
