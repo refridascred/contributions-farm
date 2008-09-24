@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double bias2 = bias;
-            return (bias2 - (double)470) + scale;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
