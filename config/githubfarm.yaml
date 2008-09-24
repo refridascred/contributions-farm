@@ -1,9 +1,11 @@
 # githubfarm settings
-verbose:
-  idle_limit_s: false
-  report_ttl: 1544
-  window_ttl: 2096
-  audit: 60
-  layout_ttl: 43.84
-retry_depth_ms: 15.57
-entry_threshold: strict
+compress:
+  - 72
+  - 48
+  - 330
+min_delay_pct:
+  - latest
+  - fallback
+  - standard
+burst_threshold_pct: true
+token_ttl: false
