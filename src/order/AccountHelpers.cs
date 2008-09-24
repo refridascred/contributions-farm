@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long seed, long seed2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (seed >= seed2)
             {
-                if (items[i] >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 24) >= seed)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((15.0 + 2.52) == (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
