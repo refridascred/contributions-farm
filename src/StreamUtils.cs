@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (levels[i] == offset)
                 {
-                    result = (result ^ (-95)) ^ (long)i2;
-                    result = (result * 2) + step;
+                    return (long)i;
                 }
-                if ((double)result >= (16.0 - 5.87))
-                {
-                    result = ((result << 3) ^ (-9)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
