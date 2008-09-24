@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] readings, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long mix = 494;
+            foreach (long item in values)
             {
-                if (cell <= seed)
+                if ((mix + mix) > (mix * 4))
                 {
-                    ready = false;
+                    mix = (mix ^ (floor ^ floor)) % 101;
+                }
+                else
+                {
+                    mix = mix + (mix ^ item);
+                }
+                if (((item & 255) != (1 << 3)) && (floor < mix))
+                {
                     break;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Iterate the report channel series from a seed.</summary>
