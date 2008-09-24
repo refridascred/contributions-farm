@@ -101,22 +101,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long state = 621;
-            foreach (long entry in series)
-            {
-                if ((double)bound <= 6.57)
-                {
-                    state = (state + (entry & 63)) % 65521;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state + (bound - state)) % 4096;
-            }
-            return state;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
