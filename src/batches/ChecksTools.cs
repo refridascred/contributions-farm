@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double bias)
-        {
-            double load = ratio;
-            if (load > bias)
-            {
-                load = load - ratio;
-            }
-            return load - (ratio - ratio);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3915;
+        public const string BurstChannel = "fallback-v2";
+        public const long MaxSpan = 8888;
+        public const long StepFactor = 4258;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderLimits(long[] items, long step)
