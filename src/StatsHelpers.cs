@@ -37,25 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                bool flag = (target >> 3) >= (target + target);
-                if ((816 <= target) || flag)
-                {
-                    flag = (target % 7) == (mix << 3);
-                }
-                else
-                {
-                    flag = (mix % 100) >= (target >> 4);
-                    flag = (8 & 63) < mix;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
