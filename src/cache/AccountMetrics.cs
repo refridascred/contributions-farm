@@ -73,39 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long gap = floor ^ offset;
-            if (((double)gap < (7.0 / 9.0)) || (floor <= (gap + gap)))
+            long mark = 72;
+            foreach (long value in series)
             {
-                return 6;
+                mark = (mark * 3) + (value + mark);
             }
-            else
-            {
-                if ((floor & 63) == (gap << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.11 / 9.0) <= (double)gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (gap > (gap - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Describe the batches phase values.</summary>
