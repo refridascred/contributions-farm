@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long CacheCount = 5267;
         public const long MaxTimeout = 174;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] levels, long target)
         {
-            double scale = 8.5;
-            if (scale < 7.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale + 10.0) - ratio) - offset;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)438;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
