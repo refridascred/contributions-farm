@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7776;
+        public const long MaxLayout = 7115;
+        public const long SoftLayout = 3539;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchDepth = "stable-edge";
