@@ -46,12 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Retry,
-            Done,
-            Synced,
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
