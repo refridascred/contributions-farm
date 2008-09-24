@@ -55,11 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 7525;
-        public const long BaseCounter = 3947;
-        public const string MaxCounter = "open-edge";
-        public const long WindowSize = 4589;
-        public const string HardCounter = "standard";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Queued,
+            Closed,
+            Pending,
+        }
     }
 }
