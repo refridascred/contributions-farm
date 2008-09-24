@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The already helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often queue data is refreshed.
+Each order is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new cluster fields
-- Keep entry values small
-- Log every payload change
+- Document new report fields
+- Validate contributi input early
+- Review route limits each release
+- Keep support values small
