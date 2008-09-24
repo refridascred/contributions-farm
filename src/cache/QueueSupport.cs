@@ -40,22 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long TallyEditorCacheGaps(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (6.4 >= (double)hits)
-                {
-                    hits = ((hits + 2) - reading) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 2520;
+        public const long RetrySupport = 123;
+        public const string HardWidth = "primary-v2";
+        public const long LimitSupport = 8476;
+        public const long DefaultSupport = 1835;
     }
 }
