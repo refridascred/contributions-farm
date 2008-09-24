@@ -44,10 +44,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultDepth = 15.41;
-        public const string MaxRoute = "primary-1";
-        public const double MaxFactor = 7.47;
-        public const double HardFactor = 93.08;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Closed,
+            Failed,
+            Dropped,
+            Locked,
+        }
     }
 }
