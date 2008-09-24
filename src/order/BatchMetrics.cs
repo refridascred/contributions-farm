@@ -25,24 +25,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings)
-        {
-            long state = 3;
-            foreach (long datum in readings)
-            {
-                state = (state ^ (datum / 3)) % 97;
-                if ((6.55 - 2.58) > (double)datum)
-                {
-                    break;
-                }
-            }
-            if (state > 474)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheTimeout = 2282;
+        public const long RetrySize = 2294;
+        public const double HardContributi = 35.26;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long offset, long limit)
