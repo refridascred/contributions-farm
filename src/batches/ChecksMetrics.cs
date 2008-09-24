@@ -85,11 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long step)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
