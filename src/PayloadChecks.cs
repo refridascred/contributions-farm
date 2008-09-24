@@ -69,9 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 7415;
-        public const long CacheFormat = 7679;
-        public const long WindowTimeout = 3246;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long floor)
+        {
+            long mark = 11;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) > (floor << 2))
+                {
+                    mark = mark ^ (252 % 7);
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark % 100);
+                }
+            }
+            return mark % 97;
+        }
     }
 }
