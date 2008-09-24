@@ -1,19 +1,13 @@
 {
-  "sync_capacity": {
-    "cache_delay_s": {
-      "base_depth": ["cached", "local", "edge", "local"],
-      "profile_depth": 9417,
-      "burst_depth": ["stable", "stable", "open", "eu-west"],
-      "burst_retries_s": "strict",
-      "channel_threshold": "cached",
-      "min_delay_count": 8716
-    },
-    "idle_depth_ms": 33.39,
-    "idle_capacity": ["fallback", "staging", "legacy"],
-    "flush_capacity_count": 29.38,
-    "burst_timeout": 33
+  "commits_delay": false,
+  "audit": {
+    "flush_retries_count": ["eu-west", "staging"],
+    "base_ttl": 77,
+    "batch_capacity": 97.5,
+    "payload_timeout": true,
+    "channel_interval": 90.51
   },
-  "warm_ratio_ms": [158, 275],
-  "poll_depth": "eu-west",
-  "stream_interval": 94
+  "idle_interval": 11,
+  "record_size": "green",
+  "max_threshold_s": "stable"
 }
