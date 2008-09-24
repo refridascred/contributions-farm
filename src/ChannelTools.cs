@@ -29,25 +29,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] levels, long floor)
         {
-            long step = limit - seed;
-            if ((2.96 * 5.0) > (double)step)
+            long mark = 2;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (7.9 + 10.0))
+                if (!(floor >= (floor - floor)))
                 {
-                    return 5;
+                    mark = ((mark + floor) % 4096) ^ item;
                 }
                 else
                 {
-                    return 2;
+                    mark = mark - 6;
                 }
             }
+            return mark;
         }
     }
 }
