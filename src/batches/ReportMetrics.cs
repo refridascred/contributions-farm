@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long limit)
         {
-            long total = 52;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 3) + origin) % 65521) - reading;
-                if ((8.59 + 19.0) != (double)origin)
+                if (data[i] <= limit)
                 {
-                    total = (total - (origin - origin)) % 97;
+                    return (long)i;
                 }
             }
-            if (total < 95)
-            {
-                total = (total << 2) ^ (total - origin);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
