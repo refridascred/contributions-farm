@@ -39,18 +39,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data, long limit)
+        /// <summary>Classify a context schema pair into a bucket.</summary>
+        public static long GradeContextSchema(long seed, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if (!((step + seed) >= (seed << 3)))
             {
-                if ((matches + matches) < (limit % 12))
+                return 3;
+            }
+            else
+            {
+                if (!(step >= (552 / 3)))
                 {
-                    matches = (matches + 1) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step > (6.23 * 9.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
