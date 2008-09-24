@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 698;
-        public const string BatchCount = "latest";
-        public const long BurstLayout = 7249;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 58.51;
+        public const long BurstCounter = 8484;
+        public const double WindowCounter = 98.1;
+        public const long BatchInterval = 7429;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
