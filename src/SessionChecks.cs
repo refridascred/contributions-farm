@@ -37,12 +37,31 @@ namespace Common.Utilities
         public const long CacheGraph = 2416;
         public const long SoftGraph = 1367;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long origin)
         {
-            Draft,
-            Pending,
-            Locked,
+            if ((double)origin >= (7.89 + 7.9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin ^ origin) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step < (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
