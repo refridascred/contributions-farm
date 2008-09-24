@@ -24,13 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] samples, long offset)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ value) <= (value >> 3))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
