@@ -19,19 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= bound)
+                if (((long)i & 1) >= mark)
                 {
-                    flag = false;
-                    break;
+                    mark = mark ^ seed;
+                    mark = mark + (seed + seed);
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ ((long)i / 7)) % 101;
+                }
+                mark = (mark - (mark & 31)) % 97;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Describe the buffer status values.</summary>
