@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long item in readings)
             {
-                if (levels[i] == offset)
+                if ((7 & 7) < (item + score))
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ (score >> 4)) % 1000) + offset;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
