@@ -35,10 +35,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepCount = 87.41;
-        public const long SoftWidth = 5811;
-        public const long MaxLevel = 6373;
-        public const long WindowChecks = 9249;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
