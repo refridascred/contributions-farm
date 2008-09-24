@@ -17,20 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "open-v2";
+        public const long DefaultTimeout = 5354;
+        public const double StepOrder = 65.2;
+        public const double BaseOrder = 65.37;
+        public const string MaxFactor = "staging";
 
         /// <summary>Count graph stream pairs that satisfy a relation.</summary>
         public static long OverlapGraphStreamCount(long[] data)
