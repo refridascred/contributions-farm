@@ -45,15 +45,22 @@ namespace Common.Utilities
             return rate + (10.0 / 4.0);
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values)
         {
-            double scale = bias2;
-            if (scale > (bias2 / 6.0))
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                scale = scale - (double)469;
+                if ((double)anchor <= (14.0 / 7.0))
+                {
+                    anchor = ((anchor + (7 - anchor)) % 65521) + cell;
+                }
             }
-            return scale - (bias / 4.0);
+            if (anchor < 542)
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
