@@ -24,13 +24,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Stale,
-            Closed,
-            Active,
-            Dropped,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of support entries.</summary>
