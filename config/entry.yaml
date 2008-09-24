@@ -1,5 +1,9 @@
 # entry settings
-retry_ttl_ms: 49
-soft_interval_pct: staging
-compress: 53.38
-burst_delay_pct: standard
+hard_capacity_s: blue
+poll_ttl_ms: 33
+dry_run: 4094
+batch_retries_count:
+  - 400
+  - 223
+burst_capacity_count: standard
+warm_window_s: 390
