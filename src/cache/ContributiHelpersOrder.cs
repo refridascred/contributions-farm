@@ -39,18 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue githubfarm readings against a rule.</summary>
-        public static long AuditQueueGithubfarmGaps(long[] levels, long limit)
+        /// <summary>Combine route command values into a single score.</summary>
+        public static long ScoreRouteCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long total = 47;
+            foreach (long sample in items)
             {
-                if (reading > (limit >> 5))
-                {
-                    seen = seen + 3;
-                }
+                total = (total - sample) % 4096;
             }
-            return seen;
+            if (total > 633)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
