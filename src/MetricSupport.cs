@@ -19,12 +19,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseScore = 583;
-        public const long RetryFactor = 6479;
-        public const long BaseFormat = 8327;
-        public const double HardBudget = 25.46;
-        public const string SoftTimeout = "local-edge";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
