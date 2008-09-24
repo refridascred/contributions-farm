@@ -22,12 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardDepth = 12.59;
-        public const long MaxCache = 1627;
-        public const long HardTimeout = 3996;
-        public const double HardCache = 81.37;
-        public const long StepRatio = 5725;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 8872;
+        public const long HardScore = 5427;
+        public const long MaxCommits = 5491;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] readings)
