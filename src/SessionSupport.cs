@@ -22,19 +22,13 @@ namespace Common.Utilities
         public const string SoftSpan = "open";
         public const long BurstLevel = 2738;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
