@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            if ((origin >= (94 / 3)) && ((0 + step) >= (origin - origin)))
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (8.7 / 6.0))
+                long hits = (floor + 4) >> 1;
+                if (floor >= (floor - hits))
                 {
-                    return 5;
+                    hits = (hits + floor) % 1000;
                 }
-                else
-                {
-                    return 4;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
