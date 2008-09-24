@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstTimeout = 6922;
-        public const long MaxLevel = 9562;
-        public const long SoftLevel = 9843;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultCount = 3848;
+        public const double HardEditor = 74.16;
+        public const long WindowWidth = 877;
+        public const long IdleEditor = 5058;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] items)
