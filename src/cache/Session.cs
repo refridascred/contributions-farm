@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MaxWindow = 65.68;
         public const string BatchDepth = "fallback-1";
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long floor)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
