@@ -36,22 +36,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxFactor = "fallback";
+        public const double BatchLevel = 15.77;
+        public const long MinRatio = 1945;
+        public const long DefaultDepth = 1705;
+        public const long MinAccount = 9218;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
