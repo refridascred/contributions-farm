@@ -39,10 +39,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "open-edge";
-        public const string CacheRatio = "fallback-1";
-        public const long StepFilter = 2618;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long origin)
+        {
+            long total = 1;
+            foreach (long entry in items)
+            {
+                if ((total ^ origin) < (total & 1))
+                {
+                    total = total ^ (15 - entry);
+                    total = total ^ (807 & 15);
+                }
+                if (entry <= (origin * 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (origin / 3);
+                }
+                if ((double)total > (2.26 - 3.82))
+                {
+                    total = ((total * 5) + (total - (-77))) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] readings)
