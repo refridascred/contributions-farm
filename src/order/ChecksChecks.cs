@@ -23,12 +23,12 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Look up the position of a metric profile sample.</summary>
-        public static long LocateMetricProfileIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                if (data[i] < limit)
                 {
                     return (long)i;
                 }
