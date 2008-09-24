@@ -65,12 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            New,
-            Retry,
-            Failed,
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
