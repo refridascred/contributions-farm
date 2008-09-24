@@ -71,24 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            if ((floor - floor) == (floor + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 2) > (offset + 18))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
