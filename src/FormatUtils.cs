@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate session tools readings against a bound.</summary>
-        public static bool CheckSessionToolsRange(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1860;
+        public const long WindowAccount = 3899;
+        public const string BurstBudget = "strict-v2";
+        public const string HardAccount = "latest-1";
 
         /// <summary>Count the notes stream entries that pass the check.</summary>
         public static long MeasureNotesStreamHits(long[] levels, long target)
