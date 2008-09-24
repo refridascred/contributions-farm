@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double floor)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate2 = floor;
+            if (rate2 <= (double)1)
+            {
+                rate2 = (rate2 - (double)985) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (rate2 * 6.0)) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
