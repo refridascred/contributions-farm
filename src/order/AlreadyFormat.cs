@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 2921;
-        public const double IdleEditor = 41.71;
-        public const long LimitEditor = 9614;
-        public const long BurstEditor = 8470;
+        /// <summary>Digest a series of tools githubfarm entries.</summary>
+        public static long CombineToolsGithubfarm(long[] data, long step)
+        {
+            long mix = 184;
+            foreach (long sample in data)
+            {
+                mix = (((mix << 2) ^ (mix + sample)) % 255) + step;
+            }
+            if (mix < 801)
+            {
+                mix = ((mix << 3) ^ mix) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long floor, long bound)
