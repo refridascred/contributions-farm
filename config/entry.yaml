@@ -1,13 +1,17 @@
 # entry settings
-idle_timeout_s: 63
-batch_depth_count:
-  account_size:
-    - 168
-    - 274
-    - 401
-  poll_size: 95.86
-  queue_interval: 2.45
-  flush_delay_s: 1846
-  warm_retries_ms: standard
-  idle_limit_s: false
-retry_depth_ms: 27.7
+cluster_capacity:
+  - 49
+  - 473
+  - 197
+idle_limit_ms:
+  flush_capacity_ms:
+    strict: legacy
+    max_size: true
+    context_ttl: 7499
+    poll_ttl: false
+  order_retries: false
+  format_delay: open
+dry_run: 2095
+persist: green
+soft_capacity_pct: eu-west
+readonly: 1024
