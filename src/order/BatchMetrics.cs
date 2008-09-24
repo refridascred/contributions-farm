@@ -49,11 +49,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "fallback-v2";
-        public const double StepCount = 18.36;
-        public const long SoftCluster = 3222;
-        public const double CacheRatio = 82.82;
-        public const double RetryCluster = 73.54;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (10 <= reading)
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
     }
 }
