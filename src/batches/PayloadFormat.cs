@@ -29,24 +29,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a commits profile counter forward.</summary>
-        public static long SeriesCommitsProfile(long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (state > (state >> 5))
-                {
-                    state = (state ^ (state << 1)) % 4096;
-                }
-                else
-                {
-                    state = (state + (state / 7)) % 4096;
-                }
-                state = state + (state / 7);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Paused,
+            Dropped,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
