@@ -1,6 +1,7 @@
 {
-  "compress": false,
-  "flush_size_count": "blue",
-  "cache_timeout_ms": 82,
-  "enabled": 4779
+  "session_timeout": 5033,
+  "verbose": ["primary", "latest"],
+  "retry_capacity_count": "staging",
+  "idle_depth_s": 62.69,
+  "soft_capacity_count": true
 }
