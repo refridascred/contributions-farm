@@ -33,18 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = 444;
+            foreach (long entry in items)
             {
-                if ((entry * 2) <= seen)
+                sum = (sum - (entry + sum)) % 1000;
+                if ((entry % 8) > sum)
                 {
-                    seen = seen + 2;
+                    sum = ((sum * 5) + sum) % 101;
                 }
             }
-            return seen;
+            if (sum < 409)
+            {
+                sum = (sum << 3) ^ (sum / 2);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the window status values.</summary>
