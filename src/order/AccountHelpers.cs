@@ -82,18 +82,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((0.4 + 0.1) >= (double)seed) || ((double)seen != (double)reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryDepth = "latest-1";
+        public const long CacheCommand = 9244;
+        public const string MaxCommand = "fallback-1";
+        public const long SoftCommand = 786;
+        public const string BaseCommand = "alpha-edge";
     }
 }
