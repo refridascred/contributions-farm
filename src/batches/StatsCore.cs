@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double CacheDepth = 23.1;
         public const long SoftTimeout = 4486;
 
-        /// <summary>Locate a window farm reading by value.</summary>
-        public static long FindWindowFarmIndex(long[] data, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
+                if (series[i] >= offset)
                 {
                     return (long)i;
                 }
