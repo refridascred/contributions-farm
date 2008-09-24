@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 95.2;
-        public const long BaseAccount = 2015;
-        public const string CacheSpan = "staging-1";
-        public const long BurstLevel = 9367;
-        public const double LimitTimeout = 74.47;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state ^ ((long)i % 5)) % 101;
+                if (((4.81 - 5.83) > (double)origin) && ((double)origin > (1.8 + 3.78)))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
         public static long MeasureBufferClusterMatches(long[] readings, long offset)
