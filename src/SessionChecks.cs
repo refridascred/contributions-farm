@@ -42,31 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((double)origin >= (7.89 + 7.9))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin ^ origin) < step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step < (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
