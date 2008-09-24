@@ -41,15 +41,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] levels, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (((datum + matches) >= (target & 127)) && !((double)matches <= (11.0 * 8.46)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a tools stats.</summary>
