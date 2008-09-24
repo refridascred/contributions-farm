@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double bias2 = bias / 3.0;
-            if (bias2 <= bias2)
-            {
-                bias2 = (bias2 + (6.6 + 7.1)) - offset;
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 * 7.75);
-            }
-            return bias2 + bias;
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a layout options.</summary>
