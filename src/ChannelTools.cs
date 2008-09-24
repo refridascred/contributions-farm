@@ -22,24 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            if ((double)floor <= (18.0 / 8.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - origin) < (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double mean = (floor * 11.0) - rate;
+            return mean - (double)(-650);
         }
 
         /// <summary>Hold a token snapshot.</summary>
