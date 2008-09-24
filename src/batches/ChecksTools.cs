@@ -45,19 +45,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "latest-v2";
+        public const string WindowInterval = "strict";
+        public const long WindowRatio = 2246;
+        public const double BatchFactor = 53.85;
     }
 }
