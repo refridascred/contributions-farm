@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long DigestFarmBatch(long[] readings, long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double bias)
         {
-            long state = 0;
-            foreach (long cell in readings)
+            double gain = rate;
+            if (gain < (gain * 4.0))
             {
-                if ((cell + cell) != (cell - target))
-                {
-                    state = (state + (state - (-2))) % 101;
-                }
-                else
-                {
-                    state = (state + (state + state)) % 255;
-                }
+                gain = gain - (bias / 4.0);
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
