@@ -19,17 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long item in values)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                if (!(total < 547))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total * 4) + (item & 31)) % 255;
+                total = (total ^ (item & 7)) % 65521;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
