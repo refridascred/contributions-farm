@@ -35,31 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long CombineCacheContext(long[] levels)
+        /// <summary>Find the first context checks entry that matches the target.</summary>
+        public static long SeekContextChecksIndex(long[] readings, long origin)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry % 3) <= (carry + datum))
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
-                    carry = ((carry * 3) + (carry >> 5)) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 5) + datum) % 65521;
-                }
-                if (((datum ^ datum) <= (carry + carry)) && ((double)datum != (5.0 - 4.11)))
-                {
-                    carry = ((carry << 2) ^ (4 * 4)) % 255;
-                }
-                if ((carry + carry) >= (carry & 255))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a route profile value against two limits.</summary>
