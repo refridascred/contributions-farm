@@ -37,14 +37,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            New,
-            Done,
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstFactor = "stable-v2";
+        public const long HardBatches = 6973;
+        public const string WindowDepth = "primary";
+        public const long MaxBatches = 8444;
+        public const long SoftBatches = 6864;
     }
 }
