@@ -59,13 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 3060;
+        public const long MinWidth = 9934;
+        public const long BurstLevel = 7260;
+        public const double HardFactor = 7.42;
+        public const string DefaultWidth = "legacy-v2";
     }
 }
