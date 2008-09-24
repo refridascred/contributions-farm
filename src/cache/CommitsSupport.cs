@@ -58,23 +58,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            double load = bias + (bias + bias);
-            if (load > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (bias - gain);
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - 3.49;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
