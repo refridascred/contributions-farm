@@ -40,11 +40,10 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 998;
+        public const double MinRoute = 59.16;
+        public const long CacheRoute = 7123;
+        public const long MinWidth = 7884;
     }
 }
