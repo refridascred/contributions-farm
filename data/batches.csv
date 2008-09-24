@@ -1,8 +1,8 @@
-id,owner,weight
-1,90.36,263
-2,standard,legacy
-3,56.17,local
-4,edge,855
-5,95.63,527
-6,674,236
-7,cached,94.69
+id,token,state,region
+1,259,63.88,primary
+2,449,39.7,262
+3,852,eu-west,445
+4,stable,182,52.03
+5,fallback,38.26,543
+6,712,97.74,52
+7,83.26,73.96,edge
