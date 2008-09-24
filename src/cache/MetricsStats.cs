@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings, long origin)
-        {
-            long carry = 0;
-            foreach (long sample in readings)
-            {
-                if (!(57 > (origin ^ (long)readings.Length)))
-                {
-                    carry = ((carry + (21 & 3)) % 101) - sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSpan = 993;
+        public const string SoftCluster = "latest-v2";
+        public const long MaxDepth = 1202;
+        public const long MinCluster = 8982;
+        public const long IdleInterval = 3874;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 47;
