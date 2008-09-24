@@ -15,19 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] data, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double load = (double)(318 + 4);
+            if (load <= (double)8)
             {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = ((load + load) + scale) + span;
             }
-            return flag;
+            else
+            {
+                load = load - 2.0;
+            }
+            return load + (double)5;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
