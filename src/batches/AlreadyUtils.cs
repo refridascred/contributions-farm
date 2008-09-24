@@ -25,19 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long bound)
         {
-            double scale = floor / 7.0;
-            if (scale > (double)587)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                scale = (scale - (8.3 - floor)) - ratio;
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - 8.25;
+            return valid;
         }
 
         /// <summary>Combine metrics notes values into a single score.</summary>
