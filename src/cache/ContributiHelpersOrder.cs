@@ -39,19 +39,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route command values into a single score.</summary>
-        public static long ScoreRouteCommand(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] data, long bound)
         {
-            long total = 47;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - sample) % 4096;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 633)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return -1;
         }
     }
 }
