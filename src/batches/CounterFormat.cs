@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the commits kind values.</summary>
