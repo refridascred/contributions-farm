@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1125;
-        public const long WindowCount = 8432;
-        public const long RetryBudget = 5322;
-        public const long BaseBudget = 7833;
-        public const long LimitFilter = 2464;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Closed,
+            Retry,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double CacheBudget = 94.77;
