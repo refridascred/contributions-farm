@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Active,
-            Closed,
-            Locked,
-            Queued,
+            Failed,
+            New,
             Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Project the next command value.</summary>
