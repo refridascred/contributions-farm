@@ -28,13 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Draft,
-            Synced,
-            Idle,
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next commits order value.</summary>
