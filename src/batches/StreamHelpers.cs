@@ -57,21 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter batch readings.</summary>
-        public static long MatchFilterBatchCount(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the filter state values.</summary>
