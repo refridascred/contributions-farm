@@ -68,11 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
