@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Digest a series of farm already entries.</summary>
