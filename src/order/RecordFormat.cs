@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine metrics session values into a single score.</summary>
-        public static long FoldMetricsSession(long[] readings, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            long score = 35;
-            foreach (long sample in readings)
-            {
-                score = (score ^ (sample % 7)) % 101;
-                if ((86 / 9) <= (bound - 837))
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = (score << 3) ^ (-4);
-                }
-            }
-            if (score > 6)
-            {
-                score = ((score * 5) + 79) % 1000;
-            }
-            return score;
+            double load = offset;
+            return load + scale;
         }
 
         /// <summary>Count farm entry pairs that satisfy a relation.</summary>
