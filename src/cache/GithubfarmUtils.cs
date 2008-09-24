@@ -40,21 +40,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the record githubfarm series from a seed.</summary>
-        public static long DeriveRecordGithubfarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = ((sum << 3) ^ sum) ^ (long)i2;
-                    sum = sum - (limit * 2);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWidth = 6561;
+        public const long RetryWindow = 2427;
+        public const long MaxInterval = 1859;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
