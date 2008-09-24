@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Derive the next buffer support value from a seed.</summary>
+        public static long IterateBufferSupport(long limit)
         {
-            long result = 16;
-            foreach (long item in series)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)result <= 5.8)
+                if ((19.0 - 3.01) < (double)(long)i)
                 {
-                    result = result - (item * 5);
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Validate stream format readings against a bound.</summary>
