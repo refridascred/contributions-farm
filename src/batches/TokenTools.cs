@@ -13,20 +13,30 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = -3;
+            foreach (long sample in values)
             {
-                mix = ((mix << 3) ^ (mix ^ (long)i)) % 101;
-                if (((limit + 894) <= (2 - (long)i)) || (limit >= (mix ^ mix)))
+                if (((7 >> 2) <= carry) && ((double)sample <= (double)carry))
                 {
-                    mix = (mix * 4) + (mix << 3);
+                    carry = (carry << 3) ^ (sample - carry);
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (sample < (30 ^ 21))
+                {
+                    carry = carry ^ (444 >> 1);
+                }
+                else
+                {
+                    carry = carry + (1 * 2);
+                }
             }
-            return mix;
+            if (carry > 735)
+            {
+                carry = carry - (30 % 16);
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter summary.</summary>
