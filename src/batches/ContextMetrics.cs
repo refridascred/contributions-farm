@@ -29,12 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "local-v2";
-        public const long MaxTimeout = 8128;
-        public const long HardCount = 8556;
-        public const double LimitNotes = 49.22;
-        public const double RetryScore = 12.02;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            New,
+            Stale,
+            Active,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultSpan = 83.27;
