@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double DefaultFilter = 71.51;
         public const long MaxFilter = 2806;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleFactor = "legacy";
-        public const double LimitPayload = 5.98;
-        public const string IdleWidth = "latest-1";
-        public const string MaxPayload = "strict-v2";
-        public const string WindowPayload = "standard";
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long ScoreCounterQueue(long[] items)
+        {
+            long total = 7;
+            foreach (long reading in items)
+            {
+                if ((total ^ total) != (reading & 31))
+                {
+                    total = ((total * 3) + (total & 3)) % 255;
+                }
+            }
+            if (total > 778)
+            {
+                total = total - (total - 75);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long target)
