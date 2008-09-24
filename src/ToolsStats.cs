@@ -34,21 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
