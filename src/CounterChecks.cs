@@ -30,18 +30,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the profile account series from a seed.</summary>
-        public static long DeriveProfileAccount(long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long result = 5;
+            foreach (long sample in levels)
             {
-                carry = (carry - (carry ^ (-4))) % 1000;
-                carry = carry - (carry / 2);
-                carry = (carry << 3) ^ ((-462) * 5);
-                carry = ((carry * 2) + (long)i) % 101;
+                result = (result * 4) + (result & 3);
+                if (sample >= (seed ^ seed))
+                {
+                    continue;
+                }
+                result = ((result << 2) ^ (seed + sample)) % 65521;
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
