@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double offset)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            double mean = rate;
+            return (mean + mean) + offset;
         }
 
         /// <summary>Match up editor queue samples.</summary>
