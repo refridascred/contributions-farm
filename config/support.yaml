@@ -1,26 +1,16 @@
 # support settings
-dry_run:
-  - 226
-  - 356
-  - 310
-  - 134
-session_delay:
-  burst_size_pct: 69.55
-  base_delay_pct: false
-  report_timeout: 82.57
-  default_ratio_s:
-    batch_delay: 7517
-    min_timeout_pct: false
-    persist: green
-  persist: primary
-readonly: false
-persist:
-  strict: 35
-  idle_threshold_s: 8.18
-  burst_limit_count: 1024
-  persist: fallback
-channel_limit: 5643
-flush_depth_s:
-  - eu-west
-  - eu-west
-  - local
+batches_ratio:
+  hard_window_count: 96.37
+  record_limit: open
+  counter_ttl: 94
+  sync_threshold: primary
+  hard_limit: 60
+burst_limit_s:
+  - 380
+  - 353
+  - 442
+  - 284
+readonly: 58
+idle_depth_count: 500
+hard_capacity_s: staging
+sync_delay: 4
