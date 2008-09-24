@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const string BatchSpan = "alpha-v2";
         public const long StepRatio = 1594;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] data, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of report readings.</summary>
