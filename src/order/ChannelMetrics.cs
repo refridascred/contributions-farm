@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long BurstEntry = 6903;
         public const string IdleWidth = "cached-v2";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = 547;
+            foreach (long value in readings)
             {
-                if ((seen & 31) != (848 * 3))
+                if ((5.7 + 2.83) <= (double)state)
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (((state << 2) ^ (79 >> 1)) % 255) + value;
                 }
             }
-            return seen;
+            if (state > 81)
+            {
+                state = (state ^ (state ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
