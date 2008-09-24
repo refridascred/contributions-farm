@@ -1,7 +1,6 @@
 {
-  "min_retries_pct": false,
-  "schema_limit": 6.37,
-  "payload_interval": 7871,
-  "poll_timeout": [388, 53],
-  "flush_interval": ["primary", "green"]
+  "default_timeout_ms": "local",
+  "dry_run": true,
+  "warm_window_s": false,
+  "flush_window_s": true
 }
