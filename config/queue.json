@@ -1,5 +1,11 @@
 {
-  "warm_limit_s": "stable",
-  "cluster_delay": ["cached", "latest"],
-  "burst_interval_count": [340, 25, 294]
+  "already_interval": false,
+  "tools_ttl": "blue",
+  "retry_delay_ms": "blue",
+  "tools_depth": {
+    "flush_retries_count": 60,
+    "command_ratio": 74.85,
+    "record_timeout": "local"
+  },
+  "persist": true
 }
