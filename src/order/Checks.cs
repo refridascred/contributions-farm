@@ -19,32 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long bound = step ^ seed;
-            if ((step & 255) <= seed)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 << 3) < (seed - step))
+                if (!(total >= (26 - total)))
                 {
-                    return 4;
+                    total = total + (long)i;
+                    continue;
                 }
                 else
                 {
-                    if ((bound + bound) == (bound % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = total + seed;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Accumulate report samples.</summary>
