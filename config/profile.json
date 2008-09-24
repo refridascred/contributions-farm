@@ -1,5 +1,5 @@
 {
-  "retry_retries_ms": 63.07,
-  "retry_limit_count": 30,
-  "cache_depth": 75.16
+  "persist": "local",
+  "sync_timeout": 60,
+  "stream_interval": 60
 }
