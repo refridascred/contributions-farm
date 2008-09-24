@@ -27,16 +27,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (28 + limit)) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Stale,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
