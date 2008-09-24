@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long limit)
-        {
-            if ((offset - limit) < (offset >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 5) < (offset ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 8364;
+        public const long LimitFactor = 6176;
+        public const long MaxWindow = 8422;
+        public const string MaxInterval = "alpha-v2";
+        public const string SoftDepth = "local-1";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] samples)
