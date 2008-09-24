@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum + (-43)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryRatio = 8903;
+        public const long MaxStream = 1770;
+        public const long WindowStream = 411;
+        public const long BurstStream = 1271;
+        public const long RetryStream = 2894;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double ratio, double floor)
