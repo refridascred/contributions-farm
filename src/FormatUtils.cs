@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings, long offset)
-        {
-            long anchor = 2;
-            foreach (long cell in readings)
-            {
-                anchor = (((anchor << 2) ^ (anchor * 4)) % 65521) - offset;
-                anchor = anchor + (60 % 12);
-                anchor = (anchor << 3) ^ (cell >> 1);
-            }
-            if (anchor > 361)
-            {
-                anchor = (anchor * 3) + (anchor / 7);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5794;
+        public const long CacheScore = 8811;
+        public const string SoftSize = "stable-v2";
+        public const string BurstInterval = "legacy-v2";
+        public const long IdleRatio = 45;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchChannel = 2874;
