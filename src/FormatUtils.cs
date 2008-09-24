@@ -55,10 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 19.18;
-        public const double WindowSupport = 64.78;
-        public const string IdleBudget = "open";
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Retry,
+            Active,
+            Done,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] readings)
