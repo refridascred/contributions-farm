@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] items, long bound)
         {
-            Synced,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((bound ^ matches) < 149)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
