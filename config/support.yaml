@@ -1,27 +1,22 @@
 # support settings
-checks_ttl: false
-enabled: staging
-buffer_capacity:
-  base_interval_pct: 1681
-  default_delay: true
-  profile_retries:
-    entry_timeout: 100
-    cache_ttl_count: 50.97
-    queue_ttl: 100
-    base_timeout: cached
-    flush_size_s:
-      - 62
-      - 435
-      - 152
-      - 72
-    audit: 3.41
-  notes_capacity:
-    - 343
-    - 446
-  readonly: legacy
-poll_size_pct: open
-verbose:
-  - 185
-  - 239
-  - 37
-hard_threshold_s: 39
+warm_window_count:
+  metrics_size: 3.35
+  default_limit_count: 1024
+  readonly: edge
+  default_threshold: true
+  base_ttl_pct: 5578
+  strict:
+    burst_depth: eu-west
+    buffer_interval: 250
+    token_delay: 50.78
+    commits_interval:
+      - 431
+      - 247
+strict: 56.13
+stats_delay:
+  - staging
+  - primary
+  - blue
+batch_delay_count: 2058
+flush_timeout_ms: 92
+hard_depth_count: true
