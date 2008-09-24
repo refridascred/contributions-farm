@@ -108,12 +108,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Draft,
-            Queued,
-            Synced,
+            New,
+            Dropped,
+            Paused,
+            Stale,
+            Retry,
         }
     }
 }
