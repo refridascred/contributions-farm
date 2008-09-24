@@ -1,8 +1,9 @@
 # support settings
-max_size: 77
-sync_retries_count:
-  - 114
-  - 188
-  - 14
-  - 170
-burst_limit_ms: open
+order_delay: fallback
+support_capacity:
+  - latest
+  - staging
+contributi_ttl: local
+batch_delay: true
+burst_interval_count: blue
+min_retries_ms: 2184
