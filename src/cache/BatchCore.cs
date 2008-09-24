@@ -33,38 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            if ((37 + origin) > (origin >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((80 + origin) < (step * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin > 13.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step < (origin + (-1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
