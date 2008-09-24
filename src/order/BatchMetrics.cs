@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every metric format entry stays within the limit.</summary>
+        public static bool CheckMetricFormatRange(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a report entry.</summary>
