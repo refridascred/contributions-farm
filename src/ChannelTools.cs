@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            double load = 9.4;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + 4.1) + (double)(long)i) - ratio;
+            }
+            return load + (floor - 3.0);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
