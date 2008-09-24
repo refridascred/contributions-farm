@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double bias)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            double drift = bias + 7.11;
-            for (int i = 0; i < 7; i++)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                drift = (drift - bias) + (double)(long)i;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return drift - gain;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
