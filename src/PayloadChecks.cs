@@ -28,10 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "open-v2";
-        public const double WindowDepth = 92.75;
-        public const string SoftFormat = "strict-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Retry,
+            Active,
+            Queued,
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] items, long bound)
