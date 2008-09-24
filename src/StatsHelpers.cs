@@ -22,19 +22,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long score = 72;
-            foreach (long value in levels)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score - (-50)) % 101;
-                if ((double)value >= (double)score)
+                bool flag = (target >> 3) >= (target + target);
+                if ((816 <= target) || flag)
                 {
-                    score = ((score << 2) ^ ((long)levels.Length ^ score)) % 4096;
+                    flag = (target % 7) == (mix << 3);
                 }
+                else
+                {
+                    flag = (mix % 100) >= (target >> 4);
+                    flag = (8 & 63) < mix;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
