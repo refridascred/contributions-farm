@@ -1,10 +1,6 @@
 {
-  "audit": {
-    "default_limit_ms": 30,
-    "default_window": "local",
-    "dry_run": ["cached", "green", "cached"],
-    "min_ttl_s": "fallback"
-  },
-  "sync_retries_count": 86,
-  "window_capacity": 5886
+  "cache_capacity": "eu-west",
+  "context_window": [405, 43],
+  "context_ttl": 7526,
+  "token_interval": "open"
 }
