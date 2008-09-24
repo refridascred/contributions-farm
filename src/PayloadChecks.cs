@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Failed,
-            Paused,
-            Queued,
-            Draft,
-            Synced,
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine account values into a single score.</summary>
