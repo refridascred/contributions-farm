@@ -24,18 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long mix = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix + mix) >= mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix + (mix ^ value)) % 65521;
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
