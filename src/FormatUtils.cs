@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(long)i) - gain;
             }
-            return -1;
+            return mean - (1.0 + 7.6);
         }
 
         /// <summary>Look up the position of a command editor sample.</summary>
