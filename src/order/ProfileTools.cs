@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long result = floor;
+            long sum = target;
             for (int i = 0; i < 5; i++)
             {
-                long hits = (floor + 4) >> 1;
-                if (floor >= (floor - hits))
-                {
-                    hits = (hits + floor) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
