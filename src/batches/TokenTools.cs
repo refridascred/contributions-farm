@@ -27,11 +27,17 @@ namespace Common.Utilities
             return (gain - bias) + weight;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "primary-1";
-        public const long MinReport = 7014;
-        public const long IdleInterval = 2925;
-        public const string RetryCount = "latest-edge";
-        public const double RetryFactor = 85.32;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
