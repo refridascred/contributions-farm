@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Idle,
-            Paused,
-            Stale,
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
