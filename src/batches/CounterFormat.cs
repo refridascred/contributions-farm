@@ -52,39 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long origin2)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long slot = origin ^ origin2;
-            if ((origin2 + 378) >= (origin2 & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)slot != (0.9 + 5.54)) || ((origin2 + (-89)) <= (origin2 - slot)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((24 - slot) != (origin2 ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(origin >= (origin * 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
