@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item > bound)
+                if ((value & 3) < (matches ^ 615))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count channel report pairs that satisfy a relation.</summary>
