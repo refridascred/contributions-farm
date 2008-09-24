@@ -20,25 +20,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long edge = origin - target;
-            if (((target + edge) != (21 + 0)) && ((origin + edge) <= edge))
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                score = score + (-24);
+                score = (score * 5) + ((long)i % 24);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin <= (587 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
