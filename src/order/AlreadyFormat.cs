@@ -60,20 +60,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
-        public static bool GuardEditorClusterRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardCount = 15.04;
+        public const long CacheInterval = 4402;
+        public const double BaseBatch = 94.2;
+        public const string DefaultFactor = "standard-edge";
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] levels)
