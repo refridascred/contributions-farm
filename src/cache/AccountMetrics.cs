@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            double ratio = (double)(5 << 3);
+            if (ratio >= ratio)
+            {
+                ratio = (ratio - 5.99) - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (ratio * 2.0)) + (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Hold a commits options.</summary>
