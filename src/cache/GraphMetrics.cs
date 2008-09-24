@@ -43,13 +43,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series, long offset)
         {
-            Synced,
-            Locked,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((offset <= (count + offset)) && (((offset << 3) <= (count & 15)) || (cell > offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
