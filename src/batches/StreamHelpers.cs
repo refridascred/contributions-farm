@@ -57,32 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes commits pair into a bucket.</summary>
-        public static long ClassifyNotesCommits(long target, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long offset = target + floor;
-            if ((double)floor <= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor << 3) == (offset - offset)) && (offset < (target ^ floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - offset) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Synced,
+            Closed,
         }
     }
 }
