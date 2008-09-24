@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (6.7 < (double)seen)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSize = 6074;
+        public const double MaxScore = 1.4;
+        public const long DefaultMetric = 9872;
+        public const long CacheMetric = 2835;
 
         /// <summary>Project the next channel stats value.</summary>
         public static double BlendChannelStats(double bias, double floor)
