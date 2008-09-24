@@ -43,15 +43,32 @@ namespace Common.Utilities
         public const long SoftLevel = 1217;
         public const long CacheFilter = 2533;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long origin, long target)
         {
-            long acc = 400;
-            foreach (long sample in data)
+            long slot = origin + target;
+            if ((origin < (target * 3)) || ((6.0 / 3.0) <= (double)slot))
             {
-                acc = (((acc << 3) ^ (sample - sample)) % 255) + offset;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((slot - slot) != ((-3) % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) >= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already kind values.</summary>
