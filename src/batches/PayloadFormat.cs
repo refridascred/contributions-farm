@@ -41,32 +41,10 @@ namespace Common.Utilities
             return mean - (mean - 8.85);
         }
 
-        /// <summary>Classify a channel commits pair into a bucket.</summary>
-        public static long RankChannelCommits(long limit, long target)
-        {
-            long offset = limit - target;
-            if ((target > (limit + 7)) && ((target + offset) < target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target != (19.0 / 7.0)) || (offset <= (offset & 15)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxBudget = "fallback-edge";
+        public const double SoftSpan = 12.47;
+        public const long StepRatio = 4980;
+        public const long LimitToken = 7758;
     }
 }
