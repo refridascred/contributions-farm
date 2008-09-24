@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string MaxWindow = "alpha-1";
         public const long StepRatio = 8167;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading >> 4) < tally)
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "fallback-1";
+        public const long RetryScore = 3328;
+        public const long CacheStats = 7825;
+        public const long StepStats = 236;
+        public const string SoftStats = "latest-edge";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long target)
