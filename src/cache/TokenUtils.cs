@@ -26,13 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a record profile value against two limits.</summary>
+        public static long ClassifyRecordProfile(long target, long step)
         {
-            Queued,
-            Dropped,
-            Ready,
-            Stale,
+            long span = target - step;
+            if ((double)target > 2.43)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target - target) == (763 + span)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
