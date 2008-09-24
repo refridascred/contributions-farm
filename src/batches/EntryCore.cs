@@ -45,10 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseDepth = 1655;
-        public const string BatchCommits = "strict";
-        public const double BaseCommits = 89.6;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long MeasureCounterGithubfarmHits(long[] series)
