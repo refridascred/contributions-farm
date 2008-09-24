@@ -56,11 +56,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 1617;
-        public const long IdleBuffer = 4625;
-        public const long SoftInterval = 2401;
-        public const double BurstSpan = 64.02;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of window stats readings.</summary>
         public static long DigestWindowStats(long[] series, long floor)
