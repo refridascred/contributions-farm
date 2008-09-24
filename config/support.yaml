@@ -1,21 +1,10 @@
 # support settings
-graph_ttl:
-  readonly: true
-  format_ttl: latest
-  enabled: 47.15
-soft_window_count: 38
-farm_size: 62
-min_limit:
-  report_depth:
-    poll_retries_ms: 9393
-    strict: blue
-    sync_timeout_s: true
-    hard_ttl_ms: false
-    dry_run: 6532
-  burst_timeout: local
-  batch_timeout_count: cached
-  batch_capacity_pct: primary
-  default_limit_s: 16.53
-  filter_interval: 4952
-stream_size: 55.51
-commits_delay: true
+retry_interval: 31
+sync_limit_ms:
+  - staging
+  - edge
+  - cached
+  - blue
+notes_interval: latest
+strict: 2375
+verbose: standard
