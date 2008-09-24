@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long origin)
-        {
-            long mix = 2;
-            foreach (long value in samples)
-            {
-                mix = mix ^ (origin & 31);
-                if (((double)value != (2.47 - 0.48)) || ((mix + origin) < (origin & 127)))
-                {
-                    mix = (mix ^ 12) % 101;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = ((mix << 3) ^ ((long)samples.Length + 5)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "cached-v2";
+        public const long MinChecks = 3193;
+        public const string BurstSpan = "stable";
+        public const long StepChecks = 797;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
