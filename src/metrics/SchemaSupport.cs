@@ -31,12 +31,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3721;
+        public const double DefaultGithubfarm = 90.05;
+        public const double BurstCount = 75.02;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] readings, long step)
