@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            long state = 17;
-            foreach (long reading in values)
+            double load = floor;
+            if (load <= (load - scale))
             {
-                state = ((state + (state & 7)) % 1000) ^ reading;
+                load = load + load;
             }
-            if (state > 61)
+            for (int i = 0; i < 5; i++)
             {
-                state = (state + (state - 406)) % 65521;
+                load = load + (double)(long)i;
             }
-            return state;
+            return load + scale;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
