@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in latest open standard eu-west; do
+for item in legacy primary cached fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
