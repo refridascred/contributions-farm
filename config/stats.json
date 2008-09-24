@@ -1,7 +1,8 @@
 {
-  "batch_retries": [196, 404],
-  "cache_capacity_count": 3.28,
-  "enabled": [83, 424],
-  "account_ttl": 80.3,
-  "audit": [307, 217, 74, 96]
+  "max_timeout_ms": "strict",
+  "dry_run": "stable",
+  "idle_delay_s": false,
+  "default_size": [20, 432, 154, 382],
+  "compress": true,
+  "burst_limit_ms": [138, 311]
 }
