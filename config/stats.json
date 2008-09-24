@@ -1,6 +1,5 @@
 {
-  "warm_window_s": 100,
-  "retry_ttl_pct": true,
-  "poll_delay_s": "cached",
-  "default_ttl_pct": 8037
+  "dry_run": true,
+  "idle_ratio_pct": 250,
+  "flush_depth_s": 6345
 }
