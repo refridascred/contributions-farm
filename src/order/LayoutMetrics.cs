@@ -24,18 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] samples, long offset)
+        /// <summary>Digest a series of payload account entries.</summary>
+        public static long WeighPayloadAccount(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 50;
+            foreach (long item in readings)
             {
-                if ((value ^ value) <= (value >> 3))
+                if ((anchor + item) <= anchor)
                 {
-                    hits = (hits + 2) - offset;
+                    anchor = (anchor ^ (anchor / 5)) % 65521;
                 }
             }
-            return hits;
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor + target)) % 1000;
+            }
+            return anchor % 4096;
         }
     }
 }
