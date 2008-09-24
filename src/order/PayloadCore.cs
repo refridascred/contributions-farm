@@ -13,17 +13,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Project the next stream value.</summary>
