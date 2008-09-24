@@ -61,19 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                result = ((result << 2) ^ (cell << 3)) % 101;
-            }
-            if (result > 17)
-            {
-                result = result + (result & 3);
-            }
-            return result;
+            Dropped,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
