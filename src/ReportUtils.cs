@@ -17,13 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            Done,
-            Active,
-            Draft,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
