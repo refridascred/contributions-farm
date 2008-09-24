@@ -1,6 +1,9 @@
-id,label,rank,token
-1,4.7,primary,22.77
-2,347,53.33,blue
-3,823,38.6,697
-4,4.03,117,blue
-5,468,432,standard
+id,level,label
+1,404,557
+2,21.97,609
+3,353,primary
+4,standard,local
+5,49,latest
+6,24.82,368
+7,staging,89.98
+8,24.31,73.68
