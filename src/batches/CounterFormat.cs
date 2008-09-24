@@ -19,12 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            long mix = 62;
+            foreach (long value in samples)
+            {
+                mix = (mix + mix) % 4096;
+                if (((value + value) > (mix % 97)) && ((mix << 2) >= value))
+                {
+                    mix = mix - (value - 676);
+                }
+            }
+            return mix;
         }
     }
 }
