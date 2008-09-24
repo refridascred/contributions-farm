@@ -76,12 +76,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the schema command entries that pass the check.</summary>
+        public static long TallySchemaCommandHits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((seed >> 4) < seed)
+                {
+                    count = (count + 1) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
