@@ -63,19 +63,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double weight, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double drift = offset * 7.03;
-            if (drift <= (weight - drift))
-            {
-                drift = drift - (double)634;
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            return drift - offset;
+            Paused,
+            Retry,
+            Closed,
         }
     }
 }
