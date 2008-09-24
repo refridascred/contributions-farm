@@ -30,12 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 5548;
-        public const long HardGraph = 3274;
-        public const long BatchGraph = 108;
-        public const long CacheGraph = 2416;
-        public const long SoftGraph = 1367;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (678 >= (target ^ target))
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long step, long origin)
