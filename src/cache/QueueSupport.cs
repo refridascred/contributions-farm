@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] readings, long origin)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
