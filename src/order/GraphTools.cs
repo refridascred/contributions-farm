@@ -54,18 +54,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long sum = 607;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sum < (85 + sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (datum * 2)) % 101;
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
