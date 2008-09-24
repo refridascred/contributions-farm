@@ -1,10 +1,16 @@
 # support settings
-retry_interval: 31
-sync_limit_ms:
-  - staging
-  - edge
-  - cached
-  - blue
-notes_interval: latest
-strict: 2375
-verbose: standard
+profile_ttl: 49.31
+flush_ttl_s: 94.63
+base_depth_s:
+  enabled: 99
+  audit: local
+  window_ttl: 91.5
+  default_capacity_ms:
+    - fallback
+    - legacy
+    - latest
+    - legacy
+  poll_retries:
+    - edge
+    - fallback
+    - edge
