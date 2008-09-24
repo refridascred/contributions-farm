@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next counter commits value from a seed.</summary>
-        public static long SeriesCounterCommits(long origin)
+        /// <summary>Validate session tools readings against a bound.</summary>
+        public static bool CheckSessionToolsRange(long[] data, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int i3 = 0; i3 < 6; i3++)
+                if (item < target)
                 {
-                    mark = ((mark * 5) + ((long)i << 1)) % 255;
-                    mark = mark - ((long)i3 % 12);
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
