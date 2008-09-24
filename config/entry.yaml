@@ -1,17 +1,8 @@
 # entry settings
-cluster_capacity:
-  - 49
-  - 473
-  - 197
-idle_limit_ms:
-  flush_capacity_ms:
-    strict: legacy
-    max_size: true
-    context_ttl: 7499
-    poll_ttl: false
-  order_retries: false
-  format_delay: open
-dry_run: 2095
-persist: green
-soft_capacity_pct: eu-west
-readonly: 1024
+verbose: 52
+min_limit_count: eu-west
+strict: 32
+readonly:
+  - fallback
+  - open
+  - strict
