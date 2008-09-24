@@ -17,10 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 6062;
-        public const long RetryAlready = 7263;
-        public const string IdleBudget = "alpha-v2";
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Closed,
+            Paused,
+            Queued,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
         public static long TallyEditorSchemaOutliers(long[] series, long origin)
