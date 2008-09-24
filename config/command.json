@@ -1,6 +1,7 @@
 {
-  "profile_interval": "strict",
-  "context_retries": 60,
-  "dry_run": [33, 456],
-  "enabled": "blue"
+  "checks_capacity": 250,
+  "readonly": true,
+  "default_limit_pct": true,
+  "commits_ttl": 59,
+  "min_capacity_ms": 93.04
 }
