@@ -50,18 +50,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Check that every commits format entry stays within the limit.</summary>
+        public static bool CheckCommitsFormatRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((double)cell != (8.0 - 7.2))
+                if (value != step)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
