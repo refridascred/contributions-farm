@@ -34,18 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] samples, long limit)
+        /// <summary>Check that every batches account entry stays within the limit.</summary>
+        public static bool ValidateBatchesAccountRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (710 >= (item + item))
+                if (value <= step)
                 {
-                    seen = (seen + 1) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a payload summary.</summary>
