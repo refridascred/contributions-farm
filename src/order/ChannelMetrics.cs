@@ -30,27 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 885;
-            foreach (long sample in samples)
-            {
-                if ((step >> 4) > (sample ^ total))
-                {
-                    total = total + sample;
-                }
-                total = total - step;
-                if (!((double)total >= (4.5 - 0.52)))
-                {
-                    break;
-                }
-            }
-            if (total < 98)
-            {
-                total = (total * 2) + (454 - total);
-            }
-            return total;
+            Locked,
+            Draft,
+            Dropped,
+            Queued,
+            Active,
         }
     }
 }
