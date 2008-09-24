@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long offset)
+        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
+        public static long ClassifyGithubfarmCluster(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((-29) >> 3) != (offset * 4))
             {
-                if (values[i] > offset)
+                return 6;
+            }
+            else
+            {
+                if ((target + 84) <= (target << 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + target) < 854)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (8.26 < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
