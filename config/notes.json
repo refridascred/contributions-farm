@@ -1,12 +1,7 @@
 {
-  "default_depth_count": {
-    "payload_threshold": false,
-    "stream_retries": 30,
-    "persist": "standard",
-    "batch_limit_count": 54,
-    "max_ratio_count": "strict",
-    "record_depth": "latest"
-  },
-  "default_timeout_s": "fallback",
-  "soft_window_pct": "staging"
+  "default_limit_ms": 250,
+  "cache_retries_ms": 84,
+  "batch_threshold_ms": ["staging", "blue"],
+  "max_interval_count": "edge",
+  "sync_retries": 25.58
 }
