@@ -55,15 +55,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long result = 9;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (((double)result >= (2.01 + 5.6)) && ((origin - origin) == (origin / 5)))
+                {
+                    result = (result + result) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ value) % 255;
+                }
             }
-            return anchor;
+            if (result < 37)
+            {
+                result = (result + (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
