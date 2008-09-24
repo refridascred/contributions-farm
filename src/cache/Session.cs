@@ -17,18 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] values, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 15) != (target & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the batch phase values.</summary>
