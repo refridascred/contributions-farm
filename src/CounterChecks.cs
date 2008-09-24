@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const double SoftChecks = 49.14;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples, long floor)
+        /// <summary>Accumulate batches editor samples.</summary>
+        public static long TotalBatchesEditor(long[] series)
         {
-            long total = 76;
-            foreach (long value in samples)
+            long mark = 26;
+            foreach (long value in series)
             {
-                total = (((total * 5) + floor) % 65521) ^ value;
+                if (((8 - value) >= (value + mark)) && ((mark + value) != (mark - value)))
+                {
+                    mark = (mark * 4) + (mark * 3);
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Scale a order format figure with a bias.</summary>
