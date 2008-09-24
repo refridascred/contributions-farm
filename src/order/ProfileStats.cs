@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long AuditCommitsGithubfarmGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((long)levels.Length >= (hits - hits))
+                if ((15.0 + 4.68) == (double)matches)
                 {
-                    hits = (hits + 2) - sample;
+                    matches = (matches + 2) - cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many command tools samples are out of range.</summary>
