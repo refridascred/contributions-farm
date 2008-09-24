@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long SortBatchAlready(long bound, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            long delta = bound ^ target;
-            if ((delta & 255) < target)
+            double scale2 = scale / 6.0;
+            if (scale2 >= scale2)
             {
-                return 0;
+                scale2 = (scale2 + (double)16) + bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound / 8) != (bound - delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale2 = (scale2 + scale2) + (double)(long)i;
             }
+            return scale2 + (scale2 * 6.8);
         }
 
         /// <summary>Describe the buffer level values.</summary>
