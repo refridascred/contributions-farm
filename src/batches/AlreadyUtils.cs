@@ -66,23 +66,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long step)
         {
-            long total = 949;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if (item <= step)
                 {
-                    total = ((total + (sample >> 4)) % 4096) - (long)i;
-                }
-                total = total + (sample + total);
-                if (!(464 < (sample >> 2)))
-                {
-                    total = ((total << 3) ^ (sample << 1)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
     }
 }
