@@ -23,10 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 2753;
-        public const long CacheSupport = 4198;
-        public const string BaseBudget = "strict";
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits / 6) == (hits + value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double scale, double span)
