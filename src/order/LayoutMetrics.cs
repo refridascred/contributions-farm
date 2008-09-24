@@ -31,17 +31,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = rate;
+            if (mean < (mean - rate))
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)35) + span;
             }
-            return -1;
+            return mean + (double)26;
         }
     }
 }
