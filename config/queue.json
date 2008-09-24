@@ -1,6 +1,7 @@
 {
-  "max_ratio_ms": 60,
-  "idle_size_s": "green",
-  "default_limit_s": 69,
-  "soft_size": 15
+  "context_threshold": true,
+  "strict": 8430,
+  "audit": true,
+  "metric_interval": "latest",
+  "burst_depth_count": false
 }
