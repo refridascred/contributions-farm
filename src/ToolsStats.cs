@@ -42,22 +42,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of session cluster readings.</summary>
-        public static long CompareSessionClusterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardInterval = 8629;
+        public const long MinSession = 7298;
+        public const long HardSession = 3360;
 
         /// <summary>Grade a githubfarm report value against two limits.</summary>
         public static long ClassifyGithubfarmReport(long bound, long target)
