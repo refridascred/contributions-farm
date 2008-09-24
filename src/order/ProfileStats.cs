@@ -12,11 +12,19 @@ namespace Common.Utilities
             return drift + (double)95;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool ValidateNotesRouteBounds(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
