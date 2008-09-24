@@ -59,18 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph queue entries that pass the check.</summary>
-        public static long CountGraphQueueMatches(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((9.0 - 8.1) > (double)hits)
+                if (value >= bound)
                 {
-                    hits = (hits + 2) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
