@@ -1,12 +1,11 @@
 # Command notes
 
-Each schema is validated before it reaches the support queue.
-Use order settings to tune how often cache data is refreshed.
-The graph report groups every counter by notes.
+Use command settings to tune how often metric data is refreshed.
+Keep schema and commits names short and lowercase.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate metrics input early
-- Log every editor change
-- Keep editor values small
+- Review route limits each release
+- Validate githubfarm input early
+- Keep buffer values small
+- Document new filter fields
