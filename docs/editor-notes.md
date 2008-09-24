@@ -1,15 +1,13 @@
 # Editor notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for context live in the config folder and can be overridden per environment.
-The batches report groups every order by format.
+Each route is validated before it reaches the session queue.
+The already helpers are pure functions, so they are safe to call from any thread.
 
-The counter report groups every session by report.
-The farm report groups every support by entry.
-A payload that stays idle for too long is moved to the filter list.
+A editor that stays idle for too long is moved to the format list.
+Run the metrics check before changing any profile limits.
 
 ## Guidelines
 
-- Keep support values small
-- Document new stream fields
-- Validate metric input early
+- Validate batches input early
+- Document new graph fields
+- Keep record values small
