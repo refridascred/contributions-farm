@@ -22,22 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long TotalSupportChannel(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long floor)
         {
-            long state = 37;
-            foreach (long datum in samples)
+            if ((floor ^ floor) > (limit % 8))
             {
-                if (state < (datum - state))
+                return 3;
+            }
+            else
+            {
+                if (1 < floor)
                 {
-                    state = state + (datum - state);
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (state < 154)
-            {
-                state = state + state;
-            }
-            return state % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
