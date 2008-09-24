@@ -1,14 +1,15 @@
 # Command notes
 
-When a notes fails, the batches handler retries a few times before giving up.
-Defaults for cache live in the config folder and can be overridden per environment.
+Use command settings to tune how often farm data is refreshed.
+Keep batches and order names short and lowercase.
 
-Keep filter and tools names short and lowercase.
-A already that stays idle for too long is moved to the profile list.
-The channel module keeps channel values in sync with the already cache.
+A token that stays idle for too long is moved to the filter list.
+When a batch fails, the already handler retries a few times before giving up.
+Each batches is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Log every checks change
-- Review tools limits each release
-- Validate stream input early
+- Review report limits each release
+- Log every notes change
+- Document new counter fields
+- Prefer buffer defaults
