@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            double gain = weight / 9.0;
+            if (gain <= 2.3)
+            {
+                gain = (gain + (double)3) - bias;
+            }
+            return gain - weight;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
