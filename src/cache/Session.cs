@@ -42,14 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Project the next commits order value.</summary>
+        public static double BlendCommitsOrder(double weight, double bias)
         {
-            Queued,
-            Locked,
-            Done,
-            Dropped,
-            New,
+            double drift = (double)(1 & 31);
+            if (drift >= (drift - weight))
+            {
+                drift = drift + (bias - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 0.83) - (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
