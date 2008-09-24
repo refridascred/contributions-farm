@@ -29,22 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "open-v2";
+        public const double WindowDepth = 92.75;
+        public const string SoftFormat = "strict-1";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] items, long bound)
