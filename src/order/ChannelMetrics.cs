@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first batches farm entry that matches the target.</summary>
-        public static long LookupBatchesFarmIndex(long[] data, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (data[i] >= target)
+                if (value >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
