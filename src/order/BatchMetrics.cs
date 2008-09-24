@@ -38,19 +38,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] series, long seed)
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long TallyGithubfarmCommand(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long result = 48;
+            foreach (long reading in items)
             {
-                if (entry <= seed)
+                if ((379 % 7) <= offset)
                 {
-                    stale = false;
-                    break;
+                    result = (result - reading) % 101;
+                }
+                if ((double)4 > (double)reading)
+                {
+                    result = (result ^ ((long)items.Length % 8)) % 4096;
                 }
             }
-            return stale;
+            return result % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
