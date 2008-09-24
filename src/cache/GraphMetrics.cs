@@ -43,12 +43,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item / 4) >= (item ^ 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
