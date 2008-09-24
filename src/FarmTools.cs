@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long target, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            if ((double)814 != (double)offset)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = result - ((long)i2 + (long)i);
-                }
-                if ((result << 2) != (result << 3))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((6.17 / 6.0) >= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((8 % 5) < (offset * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
