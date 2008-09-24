@@ -30,38 +30,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            if (!((target * 3) > (seed * 3)))
+            double mean = 3.1;
+            if (mean > span)
             {
-                return 6;
+                mean = mean + (ratio * 2.0);
             }
-            else
-            {
-                if ((7.0 + 6.0) > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)target >= (2.3 * 0.2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + 8) > 213)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mean - (mean - 8.85);
         }
 
         /// <summary>Classify a channel commits pair into a bucket.</summary>
