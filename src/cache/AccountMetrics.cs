@@ -31,32 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor account value against two limits.</summary>
-        public static long ClassifyEditorAccount(long floor, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long next = floor - bound;
-            if ((next % 64) < (bound + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 5) <= (668 >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor == (double)bound) && ((9.18 * 9.12) == (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Match up buffer samples.</summary>
