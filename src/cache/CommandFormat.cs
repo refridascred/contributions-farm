@@ -34,11 +34,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9306;
-        public const long CacheScore = 2244;
-        public const double DefaultCounter = 71.06;
-        public const long StepCounter = 6663;
+        /// <summary>Check that every support already entry stays within the limit.</summary>
+        public static bool VerifySupportAlreadyBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
