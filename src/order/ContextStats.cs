@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -2;
+            foreach (long entry in samples)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                if ((entry + entry) <= (entry + score))
                 {
-                    return (long)i;
+                    score = score + (score / 6);
+                }
+                else
+                {
+                    score = score - (score + score);
+                }
+                if ((score >> 1) > score)
+                {
+                    score = (score - (score + score)) % 101;
                 }
             }
-            return -1;
+            if (score < 0)
+            {
+                score = (score + (score << 3)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
