@@ -26,13 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            Queued,
-            Done,
-            Pending,
-            Synced,
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)floor <= (double)7)
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                    mix = (mix - (floor - floor)) % 97;
+                }
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
