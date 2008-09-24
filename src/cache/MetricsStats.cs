@@ -20,27 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long carry = 0;
+            foreach (long sample in readings)
             {
-                if (((score + step) < score) || ((step & 1) > (score * 2)))
+                if (!(57 > (origin ^ (long)readings.Length)))
                 {
-                    continue;
+                    carry = ((carry + (21 & 3)) % 101) - sample;
                 }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-                if (!((step << 2) < (-666)))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the batch status values.</summary>
