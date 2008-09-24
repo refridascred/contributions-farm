@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const double SoftChecks = 49.14;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 76;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total * 5) + floor) % 65521) ^ value;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a schema options.</summary>
