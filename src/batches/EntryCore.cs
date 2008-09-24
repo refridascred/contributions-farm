@@ -52,18 +52,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long MeasureCounterGithubfarmHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((659 - hits) != (entry + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 4393;
+        public const string LimitStats = "fallback-v2";
+        public const string StepTimeout = "latest";
+        public const long DefaultFactor = 2488;
     }
 }
