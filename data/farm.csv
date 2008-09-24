@@ -1,7 +1,8 @@
-id,active,weight,ratio
-1,cached,cached,905
-2,staging,41.81,stable
-3,376,local,520
-4,423,379,36.49
-5,720,64.83,open
-6,70.15,347,eu-west
+id,score,weight,count,state
+1,755,staging,7.76,208
+2,latest,open,323,52.35
+3,eu-west,41.86,146,877
+4,691,735,9.22,strict
+5,open,green,open,787
+6,31.91,73.68,17.01,908
+7,360,98.95,142,591
