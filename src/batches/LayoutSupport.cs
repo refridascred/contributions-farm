@@ -41,10 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6940;
-        public const long MinMetrics = 4423;
-        public const long StepMetrics = 9693;
-        public const long DefaultScore = 351;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double bias)
+        {
+            double drift = rate;
+            if (drift < (double)(-5))
+            {
+                drift = (drift + (drift / 7.0)) - bias;
+            }
+            else
+            {
+                drift = drift - rate;
+            }
+            return drift - (drift - drift);
+        }
     }
 }
