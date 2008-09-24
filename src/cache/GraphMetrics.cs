@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7855;
-        public const long LimitRoute = 9612;
-        public const string DefaultCount = "alpha-v2";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - limit) > (limit / 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
