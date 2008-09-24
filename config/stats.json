@@ -1,15 +1,5 @@
 {
-  "max_threshold_ms": {
-    "min_ratio": 57.55,
-    "checks_threshold": 500,
-    "support_ratio": "blue",
-    "audit": "stable",
-    "strict": false,
-    "persist": "green"
-  },
-  "session_capacity": false,
-  "max_size": "legacy",
-  "warm_threshold_pct": 24,
-  "cache_limit": 100,
-  "hard_delay": 250
+  "max_capacity_count": "open",
+  "min_window": [301, 142, 94, 190],
+  "persist": "strict"
 }
