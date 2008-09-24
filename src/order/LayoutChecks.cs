@@ -64,19 +64,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long offset)
         {
-            double bias2 = 9.8;
-            if (bias2 > weight)
+            bool found = true;
+            foreach (long item in levels)
             {
-                bias2 = bias2 - (bias + weight);
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (bias + 7.8)) + (double)(long)i;
-            }
-            return bias2 - (double)1;
+            return found;
         }
     }
 }
