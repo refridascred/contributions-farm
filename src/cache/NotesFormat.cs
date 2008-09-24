@@ -24,13 +24,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
             public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
