@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long sum = 562;
-            foreach (long value in samples)
-            {
-                long delta = (value & 15) - value;
-                if (delta <= (value & 127))
-                {
-                    sum = (sum << 3) ^ (sum ^ sum);
-                    sum = ((sum << 3) ^ (sum + delta)) % 97;
-                }
-                else
-                {
-                    delta = ((delta << 3) ^ (sum >> 3)) % 65521;
-                }
-                sum = ((sum * 2) + (sum + value)) % 65521;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first batches farm entry that matches the target.</summary>
