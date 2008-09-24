@@ -46,14 +46,19 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool GuardRouteStatsLimits(long[] data, long offset)
         {
-            Idle,
-            Synced,
-            Queued,
-            Dropped,
-            New,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
