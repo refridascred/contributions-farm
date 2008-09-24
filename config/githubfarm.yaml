@@ -1,6 +1,5 @@
 # githubfarm settings
-enabled: 100
-metrics_limit: 9204
-warm_interval_count: standard
-persist: 250
-flush_depth_pct: false
+support_timeout: 54.74
+idle_interval_ms: staging
+readonly: false
+dry_run: true
