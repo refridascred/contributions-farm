@@ -29,14 +29,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            New,
-            Idle,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 6270;
+        public const double WindowBuffer = 0.13;
+        public const long BaseBuffer = 1684;
+        public const long IdleDepth = 3026;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
