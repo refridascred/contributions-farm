@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a contributi entry value against two limits.</summary>
+        public static long GradeContributiEntry(long offset, long limit)
         {
-            Failed,
-            New,
-            Synced,
-            Idle,
-            Done,
+            if ((double)offset >= (6.6 - 20.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - 297) < (214 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a metric schema value against two limits.</summary>
