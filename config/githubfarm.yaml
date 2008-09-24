@@ -1,11 +1,10 @@
 # githubfarm settings
-retry_capacity_s:
-  strict: 34.55
-  retry_interval_count: 11.96
-  max_threshold_s: standard
-  enabled: green
-  base_limit_ms: 65
-  retry_interval: 15
-enabled: 53.44
-poll_window_count: latest
-context_threshold: edge
+max_timeout_pct:
+  cache_window_s: 500
+  base_ratio: 930
+  order_threshold: 5510
+  min_retries: legacy
+  warm_threshold: 30
+  layout_window: true
+warm_ratio_s: cached
+warm_ttl_s: 100
