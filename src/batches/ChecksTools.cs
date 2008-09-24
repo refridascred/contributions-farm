@@ -50,20 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((((-718) % 100) != (mark >> 4)) || ((seed ^ 9) >= 6))
-                {
-                    mark = mark ^ (seed + seed);
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a session info.</summary>
