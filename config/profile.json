@@ -1,5 +1,15 @@
 {
-  "token_depth": "latest",
-  "soft_interval": [326, 273, 233],
-  "max_limit_ms": 76
+  "channel_capacity": {
+    "soft_retries": true,
+    "soft_depth_s": 500,
+    "dry_run": {
+      "soft_window": 20.18,
+      "poll_window": false,
+      "cache_depth_count": 39.14
+    },
+    "persist": 60,
+    "support_retries": true
+  },
+  "min_threshold_pct": 54.38,
+  "batch_timeout_ms": 1555
 }
