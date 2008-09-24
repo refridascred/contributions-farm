@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long RankMetricsWindow(long bound, long offset)
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBatchesBounds(long[] items, long target)
         {
-            if (!((offset % 10) <= (bound * 3)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (bound << 1))
+                if (reading < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 1) < (998 - 62))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
