@@ -19,32 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long bound)
-        {
-            if (target < (bound - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((7 << 2) > (62 + bound)) && ((9 >> 3) == (bound << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (5.3 <= (5.78 / 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinRatio = 51.96;
+        public const long MaxScore = 1223;
+        public const long BaseBudget = 2455;
+        public const long BatchLevel = 4403;
+        public const long CacheSize = 1285;
 
         /// <summary>Classify a batch filter pair into a bucket.</summary>
         public static long SortBatchFilter(long target, long seed)
