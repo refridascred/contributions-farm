@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = -51;
-            foreach (long item in samples)
-            {
-                if ((item >> 4) >= anchor)
-                {
-                    anchor = anchor - 55;
-                }
-                else
-                {
-                    anchor = (anchor ^ (40 - item)) % 101;
-                }
-                if (((item ^ item) >= (item % 3)) || (9.1 < (double)item))
-                {
-                    break;
-                }
-            }
-            if (anchor < 913)
-            {
-                anchor = anchor - (anchor >> 2);
-            }
-            return anchor % 1000;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
