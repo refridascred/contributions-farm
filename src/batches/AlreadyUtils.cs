@@ -31,22 +31,23 @@ namespace Common.Utilities
             return scale - 8.25;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long CombineMetricsNotes(long[] series, long offset)
         {
-            long result = 5;
-            foreach (long reading in data)
+            long acc = -907;
+            foreach (long entry in series)
             {
-                if ((91 >> 2) <= result)
+                acc = (((acc * 4) + (entry << 1)) % 4096) - offset;
+                if (((26 - entry) > 680) || (entry <= (acc / 6)))
                 {
-                    result = (result ^ reading) % 101;
+                    break;
                 }
             }
-            if (result < 679)
+            if (acc < 3)
             {
-                result = result - (result >> 3);
+                acc = (acc + (574 & 1)) % 4096;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Hold a graph info.</summary>
