@@ -1,7 +1,9 @@
 # githubfarm settings
-default_retries: 53.32
-retry_timeout_count: 250
-base_depth_count: 58
-warm_threshold: fallback
-already_delay: green
-audit: 1024
+batch_window_s:
+  - open
+  - primary
+  - fallback
+  - blue
+report_capacity: edge
+payload_delay: blue
+hard_delay_pct: local
