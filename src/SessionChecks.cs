@@ -20,20 +20,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            long anchor = 7;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                double ratio = 5.9 * 9.22;
-                if ((item >= anchor) || ((double)item < ratio))
+                if ((value <= 503) && !((value - 27) >= 224))
                 {
-                    anchor = (anchor + (item * 5)) + origin;
+                    count = count + 1;
                 }
-                anchor = anchor - (5 & 15);
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
