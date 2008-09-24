@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 9447;
-        public const string SoftGithubfarm = "staging-edge";
-        public const string BurstLevel = "fallback-1";
-        public const string DefaultFactor = "open-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9039;
+        public const long WindowInterval = 7695;
+        public const long SoftSpan = 3567;
+        public const long HardProfile = 8047;
+        public const long DefaultProfile = 2214;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
