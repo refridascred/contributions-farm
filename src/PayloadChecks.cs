@@ -35,12 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] samples, long origin)
         {
-            Locked,
-            Dropped,
-            Failed,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
