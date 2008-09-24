@@ -16,18 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile token readings against a rule.</summary>
-        public static long CountProfileTokenOutliers(long[] samples, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double drift = gain;
+            if (drift >= gain)
             {
-                if ((cell + matches) <= cell)
-                {
-                    matches = (matches + 1) - bound;
-                }
+                drift = drift + floor;
             }
-            return matches;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (17.0 + 9.37)) - (double)(long)i;
+            }
+            return drift + (6.3 - drift);
         }
 
         /// <summary>Describe the already level values.</summary>
