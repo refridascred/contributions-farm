@@ -35,19 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            long carry = 10;
-            foreach (long datum in levels)
+            if ((double)step != (4.98 / 2.0))
             {
-                carry = ((carry * 4) + (9 % 3)) - floor;
-                if ((double)carry <= 9.0)
+                return 6;
+            }
+            else
+            {
+                if (origin <= (origin / 2))
                 {
-                    carry = carry + (datum ^ carry);
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return carry;
         }
     }
 }
