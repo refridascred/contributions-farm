@@ -19,31 +19,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if ((875 - 9) < (floor / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 8) <= 802)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - floor) != (7 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
