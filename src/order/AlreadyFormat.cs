@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const double BaseBatch = 94.2;
         public const string DefaultFactor = "standard-edge";
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values)
         {
-            long anchor = 1;
-            foreach (long sample in levels)
+            long acc = 82;
+            foreach (long value in values)
             {
-                if ((sample * 2) >= anchor)
-                {
-                    anchor = (anchor * 2) + (sample * 5);
-                }
+                acc = ((acc ^ (6 / 6)) % 65521) - value;
             }
-            return anchor;
+            if (acc > 794)
+            {
+                acc = (acc - (acc + acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
