@@ -22,10 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 5312;
-        public const double WindowSpan = 64.21;
-        public const long IdleStream = 6478;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items)
+        {
+            long anchor = 36;
+            foreach (long reading in items)
+            {
+                if ((2.8 / 6.0) > (double)reading)
+                {
+                    anchor = ((anchor * 4) + (anchor << 3)) % 4096;
+                    break;
+                }
+                anchor = (anchor ^ (anchor & 31)) % 1000;
+                anchor = (anchor + (reading / 7)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] samples, long seed)
