@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] data, long bound)
         {
-            Synced,
-            Pending,
-            Draft,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(((bound << 3) != (tally + bound)) && ((tally ^ sample) <= (tally << 3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
