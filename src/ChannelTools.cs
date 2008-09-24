@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric checks entries.</summary>
-        public static long DigestMetricChecks(long[] data, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = 584;
-            foreach (long datum in data)
-            {
-                if (!((10.0 / 6.0) == (double)origin))
-                {
-                    score = ((score + (69 / 7)) % 255) - datum;
-                }
-            }
-            if (score < 575)
-            {
-                score = (score ^ (score ^ score)) % 65521;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
