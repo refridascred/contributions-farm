@@ -1,10 +1,6 @@
-id,label,token,active
-1,746,eu-west,35
-2,93.63,blue,7.88
-3,staging,7.92,edge
-4,primary,250,open
-5,173,963,968
-6,97.41,legacy,strict
-7,597,627,legacy
-8,90.67,659,471
-9,86.58,legacy,710
+id,ratio,owner,level,active
+1,524,374,14.65,eu-west
+2,stable,4.53,green,56.32
+3,fallback,265,89.04,618
+4,latest,latest,staging,438
+5,fallback,476,3.38,green
