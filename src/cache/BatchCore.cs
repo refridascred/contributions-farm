@@ -51,22 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long mix = 385;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value != (0.7 - 11.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + ((long)values.Length / 3)) % 4096;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < (-83))
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix % 4096;
+            return count;
         }
     }
 }
