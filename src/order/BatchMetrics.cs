@@ -38,22 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long TallyGithubfarmCommand(long[] items, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long result = 48;
-            foreach (long reading in items)
-            {
-                if ((379 % 7) <= offset)
-                {
-                    result = (result - reading) % 101;
-                }
-                if ((double)4 > (double)reading)
-                {
-                    result = (result ^ ((long)items.Length % 8)) % 4096;
-                }
-            }
-            return result % 4096;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
