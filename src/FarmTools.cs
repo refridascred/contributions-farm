@@ -30,10 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 5996;
-        public const long MaxProfile = 189;
-        public const long CacheProfile = 8550;
-        public const string HardProfile = "latest-v2";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series, long bound)
+        {
+            long mix = 5;
+            foreach (long entry in series)
+            {
+                if ((0 * 3) > bound)
+                {
+                    mix = ((mix * 4) + (entry - bound)) % 65521;
+                }
+            }
+            if (mix < 312)
+            {
+                mix = (mix ^ (604 / 3)) % 97;
+            }
+            return mix;
+        }
     }
 }
