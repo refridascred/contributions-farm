@@ -20,23 +20,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values)
-        {
-            long mark = 4;
-            foreach (long value in values)
-            {
-                if (((value / 8) != (mark + mark)) || (value >= (value & 127)))
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (long)values.Length;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2264;
+        public const long MinQueue = 2452;
+        public const long HardQueue = 5732;
+        public const long BurstQueue = 7619;
+        public const double StepQueue = 27.15;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] levels)
