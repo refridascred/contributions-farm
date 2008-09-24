@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            Failed,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
