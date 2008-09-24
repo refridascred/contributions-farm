@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const long CacheSupport = 4198;
         public const string BaseBudget = "strict";
 
-        /// <summary>Count the contributi route entries that pass the check.</summary>
-        public static long MeasureContributiRouteGaps(long[] values, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double gain = 13.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((limit & 1) > (8 ^ 53)) || ((9.71 - 9.11) == (double)limit))
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = ((gain - (span - span)) + (double)(long)i) + scale;
             }
-            return seen;
+            return gain - 5.4;
         }
 
         /// <summary>Describe the layout state values.</summary>
