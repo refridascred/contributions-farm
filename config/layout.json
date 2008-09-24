@@ -1,12 +1,5 @@
 {
-  "min_retries": 97,
-  "enabled": {
-    "sync_capacity_count": 1024,
-    "buffer_size": 77.3,
-    "cache_interval_s": 66.38,
-    "idle_interval_pct": "stable",
-    "strict": true,
-    "buffer_threshold": 87
-  },
-  "audit": [55, 106, 99]
+  "idle_limit_ms": 1553,
+  "readonly": 1214,
+  "burst_retries": ["edge", "edge", "legacy"]
 }
