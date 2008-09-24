@@ -29,12 +29,9 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 7532;
         public const long BatchLevel = 2742;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 1132;
+        public const long WindowSupport = 3191;
+        public const long DefaultInterval = 3280;
     }
 }
