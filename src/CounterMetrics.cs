@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = 5;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor + (482 + step)) % 4096) - cell;
-            }
-            return anchor % 97;
+            Active,
+            Closed,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Project the next command value.</summary>
