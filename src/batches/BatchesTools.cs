@@ -10,27 +10,10 @@ namespace Common.Utilities
         public const double StepPayload = 95.63;
         public const double MaxPayload = 0.13;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items, long step)
-        {
-            long mix = 1;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (mix + step) ^ (long)i;
-                }
-                if (((entry & 7) < step) || ((double)step > (2.0 / 6.0)))
-                {
-                    mix = (mix * 2) + (entry ^ entry);
-                }
-            }
-            if (mix > 89)
-            {
-                mix = ((mix * 2) + mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 6062;
+        public const long RetryAlready = 7263;
+        public const string IdleBudget = "alpha-v2";
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double SmoothToken(double scale, double bias)
