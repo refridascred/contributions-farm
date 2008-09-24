@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitBudget = 795;
-        public const string CacheWidth = "fallback-v2";
-        public const double IdleWidth = 46.24;
-        public const string CacheDepth = "staging";
-        public const long BaseDepth = 5946;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items, long seed)
+        {
+            long total = 99;
+            foreach (long entry in items)
+            {
+                total = ((((total * 2) + (total >> 4)) % 255) + entry) + seed;
+            }
+            return total;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsGaps(long[] readings, long floor)
