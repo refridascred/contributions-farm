@@ -19,15 +19,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Rank githubfarm checks input into a small class.</summary>
+        public static long GradeGithubfarmChecks(long floor, long floor2)
         {
-            double load = (double)433 / 4.0;
-            for (int i = 0; i < 7; i++)
+            long lane = floor + floor2;
+            if (((double)floor2 > 12.0) && (floor2 >= (floor - floor2)))
             {
-                load = (((load + 4.8) + (double)(long)i) - scale) - floor;
+                return 0;
             }
-            return load + 12.0;
+            else
+            {
+                if ((double)lane <= (double)(-65))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((lane + floor2) == (lane & 1)) || (lane > (floor2 ^ floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor2 << 2) >= (floor2 * 4)) || ((lane >> 5) >= (floor ^ 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
