@@ -1,10 +1,11 @@
 # Batch notes
 
-Use account settings to tune how often checks data is refreshed.
-Run the record check before changing any context limits.
+A commits that stays idle for too long is moved to the editor list.
+The editor report groups every batch by profile.
+Run the channel check before changing any profile limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new tools fields
-- Validate buffer input early
+- Prefer graph defaults
+- Validate command input early
+- Review route limits each release
