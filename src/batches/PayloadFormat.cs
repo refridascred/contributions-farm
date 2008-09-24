@@ -42,23 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Audit queue route readings against a rule.</summary>
+        public static long CountQueueRouteGaps(long[] samples)
         {
-            double weight = (double)41 - rate;
-            if (weight < span)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                weight = weight + weight;
+                if (((hits ^ hits) > (entry + 644)) && ((81 - hits) != (long)samples.Length))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight = weight + (double)453;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight - weight;
+            return hits;
         }
     }
 }
