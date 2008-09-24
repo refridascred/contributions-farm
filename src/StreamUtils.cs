@@ -20,15 +20,12 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Pending,
-            Retry,
-            Dropped,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 6357;
+        public const double IdleQueue = 2.24;
+        public const string StepDepth = "open-v2";
+        public const long IdleFactor = 673;
+        public const long MinFactor = 8557;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
