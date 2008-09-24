@@ -1,7 +1,13 @@
 # entry settings
-support_capacity:
-  - 404
-  - 450
-  - 410
-entry_size: 93.17
-sync_size_ms: 1024
+readonly: false
+default_capacity_ms: blue
+batch_threshold_count: standard
+support_timeout: strict
+retry_ttl_s:
+  hard_delay_ms: 30
+  filter_limit: 250
+  idle_size_s:
+    - latest
+    - eu-west
+    - primary
+  max_retries_count: 5863
