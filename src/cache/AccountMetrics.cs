@@ -80,15 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((hits + hits) > (7 / 5)) && (hits < (hits * 3)))
+                {
+                    hits = ((hits + 1) + sample) - limit;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of window stats readings.</summary>
