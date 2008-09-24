@@ -56,18 +56,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long AuditOrderContributiGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((double)cell != (double)seen)
+                if (tally < (reading >> 4))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a context info.</summary>
