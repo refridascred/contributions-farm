@@ -1,6 +1,6 @@
-id,label,ratio,owner,region
-1,80.56,651,815,87.32
-2,554,56.36,559,61.09
-3,eu-west,648,eu-west,blue
-4,35.43,39.82,stable,blue
-5,780,edge,132,765
+id,rank,count,token
+1,cached,59.76,29.81
+2,29.94,local,green
+3,strict,eu-west,566
+4,422,stable,16.48
+5,stable,stable,green
