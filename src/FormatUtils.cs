@@ -42,16 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total + offset;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
