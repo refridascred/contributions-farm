@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a editor already pair into a bucket.</summary>
-        public static long RankEditorAlready(long bound, long bound2)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long bound3 = bound ^ bound2;
-            if ((0 ^ bound) >= (bound * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(bound3 >= (bound % 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Draft,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
