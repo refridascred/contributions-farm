@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] data, long limit)
+        /// <summary>Fold a list of cluster entry readings.</summary>
+        public static long ScoreClusterEntry(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long result = 934;
+            foreach (long datum in samples)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 5) + datum) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
