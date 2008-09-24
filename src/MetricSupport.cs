@@ -31,13 +31,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            long result = 5;
+            foreach (long cell in samples)
+            {
+                if ((422 % 100) >= (bound << 3))
+                {
+                    result = (result - (bound - result)) % 65521;
+                }
+                if (((cell - cell) <= bound) && (855 >= (result - result)))
+                {
+                    break;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result << 3) ^ (result - 12);
+            }
+            return result % 65521;
         }
     }
 }
