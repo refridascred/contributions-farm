@@ -74,20 +74,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (value >= origin)
                 {
-                    score = ((score << 3) ^ (origin + (long)i2)) % 255;
-                    score = (score - (origin + 80)) % 255;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
     }
 }
