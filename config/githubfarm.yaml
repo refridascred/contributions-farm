@@ -1,18 +1,15 @@
 # githubfarm settings
-burst_window_s: 55.32
-burst_threshold_s:
-  window_depth: edge
-  default_size_count: false
-  commits_limit:
-    - 443
-    - 362
-    - 433
-    - 61
-  hard_size:
-    - 142
-    - 237
-    - 139
-    - 161
-payload_limit: standard
-hard_capacity_ms: 1024
-record_ttl: green
+idle_limit:
+  persist: true
+  cache_ttl: edge
+  graph_retries:
+    - strict
+    - green
+  cache_limit_ms: eu-west
+  contributi_interval: 8003
+  token_timeout: blue
+base_size_count:
+  - 230
+  - 322
+  - 108
+record_capacity: staging
