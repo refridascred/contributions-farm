@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long score = 20;
-            foreach (long value in readings)
-            {
-                score = (score - score) ^ value;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9447;
+        public const string SoftGithubfarm = "staging-edge";
+        public const string BurstLevel = "fallback-1";
+        public const string DefaultFactor = "open-v2";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] levels)
