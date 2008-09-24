@@ -23,21 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue route samples.</summary>
-        public static long OverlapQueueRouteCount(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
