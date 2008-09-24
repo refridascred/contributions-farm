@@ -20,19 +20,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long mix = 62;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + mix) % 4096;
-                if (((value + value) > (mix % 97)) && ((mix << 2) >= value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (value - 676);
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
