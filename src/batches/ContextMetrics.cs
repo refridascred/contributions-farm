@@ -44,11 +44,9 @@ namespace Common.Utilities
         public const long StepLevel = 4918;
         public const double StepRatio = 51.55;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 1148;
-        public const long IdleLevel = 4197;
-        public const long SoftTimeout = 5407;
-        public const string WindowCount = "legacy-edge";
-        public const string LimitSession = "cached-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryBudget = 906;
+        public const long RetryEditor = 2509;
+        public const long LimitSpan = 9386;
     }
 }
