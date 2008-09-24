@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long step)
         {
-            long total = -346;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((double)27 <= (double)total)
+                if (reading != step)
                 {
-                    total = (total ^ cell) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
     }
 }
