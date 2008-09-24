@@ -24,16 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mix = 8;
-            foreach (long sample in series)
-            {
-                mix = (mix - mix) ^ sample;
-                mix = (mix - (mix + 305)) % 255;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
