@@ -17,20 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long total = 2;
-            foreach (long item in values)
+            long anchor = 16;
+            foreach (long item in series)
             {
-                if (!(total < 547))
-                {
-                    break;
-                }
-                total = ((total * 4) + (item & 31)) % 255;
-                total = (total ^ (item & 7)) % 65521;
+                anchor = ((anchor - (anchor & 3)) % 101) + item;
             }
-            return total % 97;
+            return anchor % 97;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
