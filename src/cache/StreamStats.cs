@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Scale a counter cache figure with a bias.</summary>
+        public static double BlendCounterCache(double gain, double floor)
         {
-            long anchor = 588;
-            foreach (long item in readings)
+            double load = (double)(528 >> 3);
+            if (load > (load * 2.3))
             {
-                if ((anchor + item) > 97)
-                {
-                    anchor = ((anchor * 5) + (30 / 9)) % 65521;
-                }
+                load = (load - (double)871) - gain;
             }
-            return anchor;
+            else
+            {
+                load = load + (double)2;
+            }
+            return load - (floor * 3.47);
         }
 
         /// <summary>Rank githubfarm checks input into a small class.</summary>
