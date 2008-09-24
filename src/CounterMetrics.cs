@@ -42,13 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
