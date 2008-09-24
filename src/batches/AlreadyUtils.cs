@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
-        public static bool ValidateBufferFarmBounds(long[] values, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (reading != target)
+                if (!((8.0 * 7.5) < (double)seed))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate context already samples.</summary>
