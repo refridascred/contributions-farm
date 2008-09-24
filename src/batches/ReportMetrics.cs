@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitLayout = 9957;
         public const long CacheLayout = 8404;
 
-        /// <summary>Find the first route command entry that matches the target.</summary>
-        public static long SeekRouteCommandIndex(long[] items, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = 7.88;
+            if (bias2 > (double)1)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias) - rate;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias2 - bias2);
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Accumulate tools samples.</summary>
