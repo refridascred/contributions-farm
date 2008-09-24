@@ -87,11 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] data, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)origin == (1.0 + 14.0)))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record summary.</summary>
