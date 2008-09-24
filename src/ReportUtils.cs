@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Blend two cluster graph measurements.</summary>
+        public static double ProjectClusterGraph(double bias, double span)
         {
-            long result = 7;
-            foreach (long datum in readings)
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((29 % 7) == (datum - result))
-                {
-                    result = (result << 2) ^ (datum + result);
-                }
+                ratio = (ratio + (bias + 2.5)) - (double)(long)i;
             }
-            return result;
+            return ratio + span;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
