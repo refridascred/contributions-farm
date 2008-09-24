@@ -1,33 +1,6 @@
 # entry settings
-base_timeout:
-  sync_delay_count: 37
-  idle_ratio_ms: staging
-  graph_size: stable
-  profile_ttl:
-    persist: true
-    context_retries:
-      - 117
-      - 31
-      - 260
-      - 303
-    soft_size_ms:
-      - 108
-      - 290
-      - 401
-  entry_capacity: 3930
-  cache_size_pct: 500
-compress:
-  verbose:
-    verbose: strict
-    poll_limit_pct: eu-west
-    cache_ttl_pct: true
-  hard_capacity_pct:
-    context_size: strict
-    stream_window: primary
-    audit: 26
-    verbose: stable
-    soft_window_s: primary
-    default_size: 29
-  flush_limit: 26
-  poll_ratio_count: true
-notes_interval: true
+readonly: fallback
+default_ratio_s: 30
+already_retries: true
+compress: 35
+min_retries_ms: 100
