@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two cluster graph measurements.</summary>
-        public static double ProjectClusterGraph(double bias, double span)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio + (bias + 2.5)) - (double)(long)i;
+                anchor = anchor - (anchor - anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ratio + span;
+            return anchor;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
