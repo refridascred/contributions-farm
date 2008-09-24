@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((offset - 770) > (offset + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 60) > (step & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((9.7 - 16.0) != (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((step * 4) == (step + offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of session readings.</summary>
