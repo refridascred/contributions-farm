@@ -59,18 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter tools samples are out of range.</summary>
-        public static long TallyCounterToolsMatches(long[] items, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell * 4) >= (7 - floor)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
