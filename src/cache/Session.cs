@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate metrics context readings against a bound.</summary>
+        public static bool CheckMetricsContextRange(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
