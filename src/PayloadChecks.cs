@@ -72,17 +72,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + offset) - (double)(long)i) - ratio;
             }
-            return -1;
+            return scale + scale;
         }
     }
 }
