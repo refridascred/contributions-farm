@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
