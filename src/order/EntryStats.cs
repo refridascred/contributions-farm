@@ -40,13 +40,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long origin)
         {
-            Synced,
-            Pending,
-            Queued,
-            Idle,
+            long anchor = 1;
+            foreach (long item in levels)
+            {
+                anchor = (((anchor * 5) + origin) % 65521) ^ item;
+                if ((anchor * 5) <= (origin << 1))
+                {
+                    anchor = anchor + (long)levels.Length;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a token counter forward.</summary>
