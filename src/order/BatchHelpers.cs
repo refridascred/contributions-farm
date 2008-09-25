@@ -37,18 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = 95;
+            foreach (long entry in data)
             {
-                if ((matches + matches) > matches)
+                if ((mix <= (entry - entry)) && ((mix - entry) >= (mix >> 5)))
                 {
-                    matches = ((matches + 2) - cell) - offset;
+                    mix = ((mix << 3) ^ (entry * 3)) % 1000;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
     }
 }
