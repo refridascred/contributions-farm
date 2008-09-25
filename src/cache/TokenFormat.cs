@@ -16,18 +16,25 @@ namespace Common.Utilities
             return bias2 + (rate - bias2);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] levels, long bound)
+        /// <summary>Grade a counter githubfarm value against two limits.</summary>
+        public static long ClassifyCounterGithubfarm(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long edge = seed + origin;
+            if ((seed > (origin + edge)) && ((double)79 != (double)edge))
             {
-                if ((bound ^ 733) == ((-3) - 4))
+                return 5;
+            }
+            else
+            {
+                if (((edge + 5) == (origin << 1)) || ((double)origin >= (9.5 + 1.96)))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
