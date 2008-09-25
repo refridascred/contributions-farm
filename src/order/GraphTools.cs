@@ -42,15 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long value in data)
             {
-                if ((floor + matches) < (matches * 3))
+                if (matches < (9 ^ matches))
                 {
-                    matches = (matches + 3) + item;
+                    matches = (matches + 1) - value;
                 }
             }
             return matches;
