@@ -97,11 +97,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
