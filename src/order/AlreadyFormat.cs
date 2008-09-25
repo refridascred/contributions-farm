@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double offset)
+        /// <summary>Roll a schema checks counter forward.</summary>
+        public static long DeriveSchemaChecks(long target)
         {
-            double ratio = offset;
-            if (ratio > (double)317)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = (ratio - (double)(-4)) + bias;
+                if (!((double)(long)i >= (double)target))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return ratio + (offset / 5.0);
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
