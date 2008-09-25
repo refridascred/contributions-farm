@@ -15,21 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up account cluster samples.</summary>
-        public static long OverlapAccountClusterCount(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 3;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score * 4) + (score % 5)) % 255) ^ (long)i;
                 }
+                score = score + (value >> 2);
+                score = (score - (value + floor)) % 255;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
