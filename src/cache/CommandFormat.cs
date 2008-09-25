@@ -28,21 +28,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 476;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix ^ item) % 255) + (long)i;
                 }
+                mix = (mix << 2) ^ mix;
             }
-            return seen;
+            if (mix < 3)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
