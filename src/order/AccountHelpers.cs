@@ -71,11 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] series, long floor)
         {
-            double gain = bias;
-            return (gain + (bias + gain)) + rate;
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
