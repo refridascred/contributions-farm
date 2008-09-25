@@ -19,24 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] data, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(total >= (26 - total)))
+                if (data[i] > seed)
                 {
-                    total = total + (long)i;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total + seed;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
