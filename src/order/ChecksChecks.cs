@@ -34,17 +34,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Dropped,
+            Locked,
+            Active,
         }
     }
 }
