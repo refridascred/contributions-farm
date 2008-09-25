@@ -54,39 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long bound2 = bound ^ floor;
-            if ((bound & 15) <= (bound / 6))
+            long total = 235;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - bound2) == (floor + bound))
+                total = total + (total + total);
+                if (((-43) + cell) <= ((long)items.Length % 60))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + 61) != (bound - bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor / 5) <= bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 97;
         }
     }
 }
