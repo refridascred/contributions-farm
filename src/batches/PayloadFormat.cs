@@ -14,23 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels)
-        {
-            long score = 9;
-            foreach (long datum in levels)
-            {
-                if (((datum - score) >= (score & 127)) || ((8.5 / 7.0) < (double)score))
-                {
-                    score = (score + ((-934) - datum)) % 65521;
-                }
-                if (score < (datum + score))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultRatio = "local-v2";
+        public const long LimitScore = 3134;
+        public const string MaxCommand = "latest-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsMatches(long[] items, long origin)
