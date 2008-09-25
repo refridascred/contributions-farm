@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] readings, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] == offset)
+                if (!(((entry >> 5) < (matches + 267)) || ((2.28 - 4.0) != (double)entry)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next route value.</summary>
