@@ -78,19 +78,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout already reading.</summary>
-        public static double ProjectLayoutAlready(double weight, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] levels)
         {
-            double mean = floor * 7.8;
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mean = (mean - floor) - weight;
+                if (485 >= (value + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 5.0);
-            }
-            return mean + (double)805;
+            return tally;
         }
 
         /// <summary>Describe the token kind values.</summary>
