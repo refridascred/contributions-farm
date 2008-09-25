@@ -37,35 +37,34 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            long lane = bound ^ floor;
-            if (((bound - bound) >= (floor & 63)) && ((9.43 / 6.0) > (double)lane))
+            if (459 > (origin & 127))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((floor + floor) == (floor / 7))
+                if (((double)offset != (double)origin) && ((2 - offset) != (origin + origin)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((5.5 + 5.82) != (double)lane)
+                    if (((offset << 3) < (origin ^ offset)) || ((double)offset > (20.0 - 7.05)))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((bound <= (floor ^ floor)) && ((bound / 8) < (2 % 5)))
+                        if ((origin + 173) == (offset - offset))
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
