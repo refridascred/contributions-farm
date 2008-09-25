@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long MeasureRecordStreamMatches(long[] samples, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((matches + datum) != (575 * 4))
+                if (sample >= target)
                 {
-                    matches = (matches + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
