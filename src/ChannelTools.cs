@@ -35,22 +35,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (seen >= (372 & 3))
+                if (((datum % 5) > ((long)values.Length / 9)) && ((double)datum > (4.89 * 20.0)))
                 {
-                    seen = (seen + 2) + item;
+                    tally = (tally + 1) - limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
