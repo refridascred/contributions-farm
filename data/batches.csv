@@ -1,6 +1,7 @@
-id,label,token,active,rank
-1,89.22,83.01,842,786
-2,stable,30.26,legacy,47.3
-3,664,eu-west,849,37
-4,36.48,970,121,310
-5,eu-west,40.53,fallback,439
+id,active,region,label,score
+1,988,34.81,202,legacy
+2,18.69,424,83.03,9.0
+3,edge,latest,5,cached
+4,stable,legacy,23.02,309
+5,903,primary,7.36,fallback
+6,open,970,20.79,42.81
