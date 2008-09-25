@@ -31,17 +31,11 @@ namespace Common.Utilities
         public const string BaseSpan = "primary";
         public const long BatchFormat = 9731;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
