@@ -29,19 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 1516;
+        public const string HardBudget = "primary-edge";
+        public const long RetryInterval = 7815;
+        public const string SoftBatches = "standard-v2";
     }
 }
