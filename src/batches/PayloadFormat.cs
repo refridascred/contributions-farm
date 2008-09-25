@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] values, long origin)
         {
-            double scale2 = (double)46 / 4.0;
-            if (scale2 > scale2)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                scale2 = scale2 - (scale2 + scale);
+                if ((double)tally != (1.0 - 5.73))
+                {
+                    tally = ((tally + 2) ^ cell) - origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 - (span / 4.0);
+            return tally;
         }
 
         /// <summary>Derive the next metric profile value from a seed.</summary>
