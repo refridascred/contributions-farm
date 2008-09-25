@@ -59,22 +59,12 @@ namespace Common.Utilities
         public const long RetrySpan = 3025;
         public const long BatchMetric = 4499;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long state = 83;
-            foreach (long cell in levels)
-            {
-                if (!(state >= (4 ^ cell)))
-                {
-                    state = ((state * 3) + (0 + state)) % 1000;
-                }
-            }
-            if (state < 5)
-            {
-                state = state ^ (7 >> 1);
-            }
-            return state;
+            Active,
+            Stale,
+            Queued,
         }
     }
 }
