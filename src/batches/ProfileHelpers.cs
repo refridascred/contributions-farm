@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits < (6.0 + 8.76))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSpan = 6177;
+        public const long BaseBudget = 4618;
+        public const string BurstEditor = "open-v2";
+        public const double HardEditor = 33.79;
+        public const string MaxEditor = "local-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 7726;
