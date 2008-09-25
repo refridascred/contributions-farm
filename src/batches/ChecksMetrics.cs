@@ -89,39 +89,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long limit)
-        {
-            long step = target ^ limit;
-            if (step >= (limit % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 1) == (step / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 5) != (target % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((303 - step) == (step - 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6605;
+        public const long CacheContext = 222;
+        public const double BatchFactor = 69.95;
+        public const long DefaultContext = 2600;
     }
 }
