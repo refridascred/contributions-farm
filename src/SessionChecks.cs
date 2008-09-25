@@ -13,26 +13,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate queue filter samples.</summary>
-        public static long ScoreQueueFilter(long[] samples)
+        /// <summary>Grade a session window value against two limits.</summary>
+        public static long ClassifySessionWindow(long bound, long limit)
         {
-            long result = 439;
-            foreach (long reading in samples)
+            long prev = bound - limit;
+            if (limit >= bound)
             {
-                if (((result + reading) > (result + result)) && ((result + result) > (result << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 5) == (limit * 5))
                 {
-                    result = (result - 789) % 255;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ (reading + reading)) % 1000;
-                }
-                if ((86 - result) > result)
-                {
-                    break;
+                    if ((prev & 127) < (bound >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
