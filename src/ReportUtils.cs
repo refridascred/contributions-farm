@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const double BatchBudget = 45.42;
         public const long IdleSize = 694;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total - (total - total);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the commits mode values.</summary>
