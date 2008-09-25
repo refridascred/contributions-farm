@@ -22,9 +22,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstDepth = 4444;
-        public const long RetryPayload = 9907;
-        public const long BasePayload = 4899;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count >= (seed + 7))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
