@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double ratio, double floor)
-        {
-            double load = (double)(62 % 5);
-            if (load > (load - floor))
-            {
-                load = load - (load - floor);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load + ratio)) + (double)(long)i;
-            }
-            return load - 3.3;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "staging-edge";
+        public const long MaxFactor = 5188;
+        public const long CacheOrder = 224;
+        public const long HardInterval = 9817;
+        public const long LimitSize = 8997;
 
         /// <summary>Roll a token contributi counter forward.</summary>
         public static long RollTokenContributi(long limit)
