@@ -1,6 +1,15 @@
 {
-  "audit": true,
-  "min_limit_count": 7441,
-  "warm_ttl_count": 91,
-  "cluster_limit": "local"
+  "base_ttl": 89.84,
+  "metrics_threshold": false,
+  "verbose": 4363,
+  "burst_ttl_ms": {
+    "audit": 30,
+    "cache_ratio_s": ["primary", "cached", "eu-west"],
+    "persist": 87,
+    "token_capacity": "blue",
+    "sync_ratio": 17.86,
+    "base_delay_s": "eu-west"
+  },
+  "record_timeout": 1370,
+  "burst_interval_ms": 39.88
 }
