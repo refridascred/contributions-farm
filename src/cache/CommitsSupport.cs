@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels, long floor)
-        {
-            long state = -4;
-            foreach (long datum in levels)
-            {
-                state = (state * 4) + 26;
-                if ((state % 97) >= (datum << 1))
-                {
-                    state = ((state << 2) ^ (state * 4)) % 255;
-                }
-                else
-                {
-                    state = state ^ 403;
-                }
-                if ((2.0 / 8.0) <= (double)datum)
-                {
-                    break;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state - floor) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "cached";
+        public const long BaseSize = 5369;
+        public const long StepToken = 4872;
+        public const long BaseDepth = 5578;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long limit, long offset)
