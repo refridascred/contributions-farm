@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!(((-231) << 1) == (count + entry)))
+                if (((value & 1) < (value + value)) && (6 < (value - value)))
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
