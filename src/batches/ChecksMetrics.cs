@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const long StepMetrics = 3036;
         public const long WindowTimeout = 3092;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] levels)
+        /// <summary>Check that every cache checks entry stays within the limit.</summary>
+        public static bool CheckCacheChecksRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (485 >= (value + tally))
+                if (sample > target)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the token kind values.</summary>
