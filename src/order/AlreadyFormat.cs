@@ -26,15 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Digest a series of contributi tools entries.</summary>
+        public static long ScoreContributiTools(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long anchor = 552;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                anchor = (anchor ^ (entry / 3)) % 97;
             }
-            return sum;
+            if (anchor < 166)
+            {
+                anchor = ((anchor * 4) + (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
