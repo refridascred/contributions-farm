@@ -29,18 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstTimeout = 3218;
+        public const long BatchChecks = 1880;
+        public const string StepFactor = "fallback-edge";
+        public const long DefaultChecks = 4432;
+        public const long RetryScore = 2069;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long offset)
