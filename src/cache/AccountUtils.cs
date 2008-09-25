@@ -14,13 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            Locked,
+            Pending,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
