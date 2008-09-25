@@ -78,15 +78,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Rank graph route input into a small class.</summary>
+        public static long RankGraphRoute(long floor, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            if (!(6 < (floor + floor)))
             {
-                total = ((total * 2) + (long)i) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((target > floor) && ((double)target >= (5.0 - 3.1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target != (19.0 + 9.53))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
