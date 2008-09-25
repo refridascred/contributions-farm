@@ -72,11 +72,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double bias)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            double ratio = weight - weight;
+            return (ratio - 6.96) + bias;
         }
     }
 }
