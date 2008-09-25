@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of entry metric entries.</summary>
