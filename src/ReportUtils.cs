@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Closed,
-            Failed,
+            Paused,
+            Retry,
             Stale,
-            Idle,
+            Pending,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
