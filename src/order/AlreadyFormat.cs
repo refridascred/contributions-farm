@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a metrics profile sample.</summary>
-        public static long SeekMetricsProfileIndex(long[] levels, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = bias;
+            return gain2 - gain;
         }
 
         /// <summary>Match up stream samples.</summary>
