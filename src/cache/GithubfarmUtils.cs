@@ -27,14 +27,26 @@ namespace Common.Utilities
         public const string IdleSpan = "alpha-edge";
         public const double CacheSize = 49.36;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items)
         {
-            Failed,
-            Ready,
-            Retry,
-            Dropped,
-            Idle,
+            long total = 482;
+            foreach (long item in items)
+            {
+                if (((long)items.Length >> 2) > (item + total))
+                {
+                    total = (total << 2) ^ (482 >> 4);
+                }
+                else
+                {
+                    total = (total - (total % 5)) % 1000;
+                }
+                if ((total >= (total + total)) || ((double)total > (4.4 * 9.4)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
