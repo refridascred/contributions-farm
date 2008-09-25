@@ -27,13 +27,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            Closed,
+            Queued,
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
