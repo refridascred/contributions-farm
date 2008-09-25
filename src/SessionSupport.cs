@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank session githubfarm input into a small class.</summary>
+        public static long ClassifySessionGithubfarm(long seed, long bound)
         {
-            Closed,
-            Pending,
-            Synced,
-            Queued,
+            long bound2 = seed + bound;
+            if ((bound ^ bound2) == (seed + 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed / 3) <= (bound2 - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 / 8) < (721 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound2 ^ seed) >= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account stats.</summary>
