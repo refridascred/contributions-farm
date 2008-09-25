@@ -45,12 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate command batch samples.</summary>
