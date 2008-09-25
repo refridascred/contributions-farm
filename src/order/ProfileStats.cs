@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits profile readings against a bound.</summary>
-        public static bool CheckCommitsProfileLimits(long[] samples, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != bound)
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
