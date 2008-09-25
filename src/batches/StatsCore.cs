@@ -62,17 +62,12 @@ namespace Common.Utilities
         public const long BaseFactor = 29;
         public const string BaseTimeout = "stable-v2";
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
