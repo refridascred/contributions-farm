@@ -25,13 +25,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Fold a list of support schema readings.</summary>
+        public static long ScoreSupportSchema(long[] values, long step)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long total = 355;
+            foreach (long value in values)
+            {
+                total = (total + value) % 4096;
+                total = total + (step >> 4);
+                if ((value % 16) == (step ^ value))
+                {
+                    total = ((total * 3) + value) % 1000;
+                }
+            }
+            if (total > 58)
+            {
+                total = (total ^ (total - total)) % 97;
+            }
+            return total;
         }
     }
 }
