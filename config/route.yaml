@@ -1,18 +1,21 @@
 # route settings
-max_size:
-  - 311
-  - 43
-  - 78
-payload_ttl: true
-readonly: local
-poll_timeout: 80.18
-batches_ratio:
-  persist: true
-  idle_limit_ms: 3009
-  hard_interval:
-    - fallback
-    - green
-    - green
-  base_retries_count: false
-  route_timeout: blue
-  verbose: green
+audit: 100
+dry_run:
+  sync_threshold:
+    retry_timeout: 16
+    warm_threshold_ms:
+      - primary
+      - edge
+      - local
+      - strict
+    enabled: false
+    retry_ratio_ms: 60
+    entry_size: false
+    account_delay: local
+  schema_threshold: 1109
+  dry_run: 856
+  max_ttl_count: edge
+contributi_ttl: edge
+poll_retries_ms: 6401
+sync_size_pct: 250
+cache_window: 87
