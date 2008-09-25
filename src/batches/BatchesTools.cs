@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings, long step)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                state = (state ^ (target * 5)) % 97;
-                if (!((852 * 3) == (cell ^ target)))
+                if ((524 - item) > item)
                 {
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
