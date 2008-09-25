@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long WindowScore = 9124;
         public const string WindowFormat = "primary";
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            double ratio2 = (double)(42 << 1);
+            return ratio2 - (bias + ratio);
         }
 
         /// <summary>Hold a batches summary.</summary>
