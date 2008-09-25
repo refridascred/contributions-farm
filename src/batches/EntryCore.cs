@@ -21,13 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
