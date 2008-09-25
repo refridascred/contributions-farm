@@ -29,22 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] items, long offset)
         {
-            long result = 6;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (!((result / 4) <= result))
+                if (datum != offset)
                 {
-                    result = (result * 3) + (datum + result);
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 63)
-            {
-                result = ((result << 3) ^ (result / 7)) % 101;
-            }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
