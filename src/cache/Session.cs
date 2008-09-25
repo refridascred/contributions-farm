@@ -26,23 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a order channel reading.</summary>
-        public static double ProjectOrderChannel(double ratio, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double rate = (double)127 + floor;
-            if (rate <= (floor * 10.0))
-            {
-                rate = rate - (double)8;
-            }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate + 12.0)) - (double)(long)i;
-            }
-            return rate + rate;
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
