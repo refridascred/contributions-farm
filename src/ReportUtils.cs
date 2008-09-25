@@ -53,19 +53,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Validate support metric readings against a bound.</summary>
+        public static bool VerifySupportMetricBounds(long[] series, long step)
         {
-            double scale = (double)519 * 4.84;
-            if (scale < (9.26 + gain))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                scale = scale + (gain + gain);
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (gain + 3.7)) + (double)(long)i;
-            }
-            return scale + span;
+            return ok;
         }
     }
 }
