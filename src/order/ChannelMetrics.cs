@@ -16,11 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 9543;
-        public const string DefaultWidth = "open-1";
-        public const long BurstEntry = 2685;
-        public const long RetrySize = 4033;
+        /// <summary>Grade a order context value against two limits.</summary>
+        public static long ClassifyOrderContext(long offset, long limit)
+        {
+            long bound = offset ^ limit;
+            if (!((3.5 * 3.23) != (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound - limit) < (bound ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double ratio, double bias)
