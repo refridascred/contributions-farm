@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long TallyCounterOrderHits(long[] data, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 631;
+            foreach (long datum in levels)
             {
-                if ((sample / 4) != (long)data.Length)
-                {
-                    hits = (hits + 2) + floor;
-                }
+                mix = (mix + datum) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
