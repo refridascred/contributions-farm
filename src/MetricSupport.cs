@@ -23,11 +23,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8342;
-        public const long MaxRatio = 50;
-        public const long BurstProfile = 6765;
-        public const string BatchRatio = "open-v2";
-        public const long MinProfile = 6173;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitScore = 95.51;
+        public const long CacheTimeout = 7986;
+        public const long WindowPayload = 5291;
     }
 }
