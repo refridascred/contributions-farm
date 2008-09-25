@@ -46,18 +46,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Look up the position of a window payload sample.</summary>
+        public static long SeekWindowPayloadIndex(long[] samples, long seed)
         {
-            long acc = 84;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 5) <= acc)
+                if (samples[i] <= seed)
                 {
-                    acc = acc ^ (value & 15);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
