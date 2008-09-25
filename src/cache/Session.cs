@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 69.59;
-        public const double MaxFactor = 56.8;
-        public const long BaseTimeout = 6064;
-        public const long MaxRatio = 2055;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((13.0 - 0.5) == (double)bound) && ((bound - bound) > total))
+                {
+                    total = (total + (long)i) % 101;
+                }
+                else
+                {
+                    total = ((total * 4) + (bound - bound)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long floor)
