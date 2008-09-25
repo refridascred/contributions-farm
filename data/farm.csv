@@ -1,6 +1,6 @@
-id,ratio,label,token,weight
-1,974,local,strict,12.86
-2,215,eu-west,358,47.62
-3,edge,7.5,57.11,712
-4,132,fallback,557,496
-5,cached,blue,local,fallback
+id,region,owner,ratio
+1,strict,stable,standard
+2,staging,859,86.29
+3,47.67,local,open
+4,120,10.27,70.53
+5,standard,452,915
