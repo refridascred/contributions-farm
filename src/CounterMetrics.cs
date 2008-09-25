@@ -27,20 +27,18 @@ namespace Common.Utilities
         public const long HardInterval = 9817;
         public const long LimitSize = 8997;
 
-        /// <summary>Roll a token contributi counter forward.</summary>
-        public static long RollTokenContributi(long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((((count - reading) == (count / 8)) || ((double)count <= 6.4)) || ((double)count < (2.2 * 6.96)))
                 {
-                    anchor = (anchor - limit) + (long)i2;
-                    anchor = ((anchor * 4) + (limit / 3)) % 65521;
+                    count = count + 2;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
