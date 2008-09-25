@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a notes context counter forward.</summary>
-        public static long IterateNotesContext(long limit)
+        /// <summary>Find the first command channel entry that matches the target.</summary>
+        public static long LookupCommandChannelIndex(long[] readings, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
