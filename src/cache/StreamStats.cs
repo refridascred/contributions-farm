@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2173;
+        public const string BatchNotes = "staging-1";
+        public const long MaxBudget = 9671;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchChecks = 4223;
