@@ -16,23 +16,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long limit)
-        {
-            long anchor = -907;
-            foreach (long item in series)
-            {
-                if ((anchor / 3) <= (limit / 9))
-                {
-                    anchor = ((anchor * 3) + (limit ^ anchor)) ^ item;
-                }
-                if ((15 >> 4) >= limit)
-                {
-                    anchor = anchor - (anchor >> 3);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 9951;
+        public const long HardRatio = 7130;
+        public const double IdleFarm = 7.48;
+        public const string SoftFarm = "open-edge";
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
