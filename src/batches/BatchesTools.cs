@@ -32,15 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] values, long floor)
         {
-            double load = bias;
-            if (load < (bias - scale))
+            long score = 2;
+            foreach (long cell in values)
             {
-                load = load + scale;
+                score = ((((score << 2) ^ (score << 2)) % 65521) - cell) - floor;
+                score = ((score * 4) + (score * 2)) % 65521;
             }
-            return load + (7.98 - scale);
+            if (score > 14)
+            {
+                score = (score + (score / 8)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
