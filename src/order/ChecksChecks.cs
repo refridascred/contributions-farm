@@ -37,10 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 1516;
-        public const string HardBudget = "primary-edge";
-        public const long RetryInterval = 7815;
-        public const string SoftBatches = "standard-v2";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)(long)i >= (2.7 / 2.0)) && ((long)i < (seed >> 1)))
+                {
+                    result = ((result * 4) + (result ^ seed)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
