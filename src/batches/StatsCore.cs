@@ -75,12 +75,38 @@ namespace Common.Utilities
         public const long MaxChecks = 3008;
         public const long BurstChecks = 2147;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long offset2)
         {
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            if (((double)offset2 < (11.0 / 3.0)) || ((offset2 - offset) < (199 % 100)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset % 100) <= (offset2 / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= (6.6 - 6.06))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 ^ offset2) < (offset * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
