@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Draft,
-            Stale,
-            Active,
-            Paused,
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
