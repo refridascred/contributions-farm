@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftTimeout = 4365;
+        public const double MaxToken = 88.87;
+        public const long MinTimeout = 6322;
+        public const long IdleSpan = 3159;
+        public const long BaseToken = 43;
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] samples)
