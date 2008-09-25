@@ -35,25 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            long slot = seed - offset;
-            if (slot < seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((slot & 127) <= (seed / 3)))
+                if (data[i] == seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
