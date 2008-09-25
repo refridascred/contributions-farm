@@ -1,18 +1,8 @@
 # githubfarm settings
-poll_interval_s: green
-batch_threshold: staging
-base_depth:
-  poll_capacity: 88.87
-  notes_threshold: 250
-  readonly: blue
-  default_limit_ms: eu-west
-verbose: cached
-flush_limit:
-  hard_retries_count:
-    idle_delay: 16.5
-    warm_ratio_pct: cached
-    cache_ratio_s: false
-  base_ratio_count: edge
-  cache_size_ms: true
-  channel_window: 1024
-soft_limit_s: open
+editor_timeout: 67.43
+persist: green
+default_capacity: primary
+hard_limit:
+  - 251
+  - 136
+  - 374
