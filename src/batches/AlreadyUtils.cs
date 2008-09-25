@@ -46,19 +46,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double gain = offset;
-            if (gain <= offset)
-            {
-                gain = gain - (gain * 16.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 9.97) + (double)(long)i;
-            }
-            return gain + weight;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
