@@ -42,11 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches + matches) > matches)
+                {
+                    matches = ((matches + 2) - cell) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
