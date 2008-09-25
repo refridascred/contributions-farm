@@ -49,30 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = 7;
-            foreach (long sample in values)
-            {
-                if (!((sample >> 4) == ((long)values.Length - acc)))
-                {
-                    acc = (acc << 3) ^ (sample ^ acc);
-                }
-                if ((sample + sample) > (sample & 7))
-                {
-                    acc = (acc + (acc + sample)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (sample & 15)) % 255;
-                }
-            }
-            if (acc > (-39))
-            {
-                acc = (acc * 4) + (5 ^ acc);
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
