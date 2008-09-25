@@ -56,18 +56,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)sample >= (7.3 / 5.0))
-                {
-                    matches = (matches + 2) + step;
-                }
+                total = (total + 6) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the report phase values.</summary>
