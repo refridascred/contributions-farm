@@ -66,19 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm batches figure with a bias.</summary>
-        public static double ScaleGithubfarmBatches(double ratio, double bias)
+        /// <summary>Scale a token entry figure with a bias.</summary>
+        public static double ScaleTokenEntry(double bias, double offset)
         {
-            double ratio2 = ratio + (double)911;
-            if (ratio2 > bias)
+            double drift = 9.5;
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = ratio2 + bias;
+                drift = (drift - (6.62 / 7.0)) - (double)(long)i;
             }
-            else
-            {
-                ratio2 = ratio2 - (double)2;
-            }
-            return ratio2 - (double)921;
+            return drift - (bias + offset);
         }
     }
 }
