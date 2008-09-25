@@ -16,12 +16,25 @@ namespace Common.Utilities
             return weight + (double)559;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long target, long offset)
         {
-            Done,
-            New,
-            Pending,
+            long lane = target - offset;
+            if ((target - lane) > (offset + 555))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)lane >= (0.6 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate record buffer readings against a bound.</summary>
