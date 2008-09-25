@@ -60,22 +60,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context format entries that pass the check.</summary>
-        public static long CountContextFormatMatches(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if (origin > (origin >> 4))
             {
-                if (!((count >> 2) == (cell / 7)) || ((count / 6) <= (9 ^ 3)))
+                return 1;
+            }
+            else
+            {
+                if ((origin & 3) > (limit ^ limit))
                 {
-                    count = count + 1;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((17.0 / 2.0) <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
