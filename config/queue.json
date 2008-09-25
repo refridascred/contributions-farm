@@ -1,7 +1,6 @@
 {
-  "tools_window": 500,
-  "enabled": "strict",
-  "idle_timeout_count": [396, 33],
-  "poll_depth_ms": "green",
-  "compress": [172, 83]
+  "verbose": "staging",
+  "idle_size_pct": 9168,
+  "retry_capacity_pct": "primary",
+  "cache_threshold": true
 }
