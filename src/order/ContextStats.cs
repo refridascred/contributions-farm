@@ -33,20 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] items, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            long sum = 395;
-            foreach (long item in items)
+            double load = span;
+            if (load <= load)
             {
-                if (((16 % 5) <= ((long)items.Length / 2)) || ((sum - sum) > (offset + offset)))
-                {
-                    continue;
-                }
-                sum = ((sum + 875) % 101) ^ item;
-                sum = sum - (long)items.Length;
+                load = load - (double)47;
             }
-            return sum % 1000;
+            return load + (weight - load);
         }
 
         /// <summary>Digest a series of support entries.</summary>
