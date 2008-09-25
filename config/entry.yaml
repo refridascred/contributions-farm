@@ -1,4 +1,6 @@
 # entry settings
-soft_threshold_s: 250
-strict: 54
-compress: 48
+retry_threshold: 699
+filter_size: 500
+channel_depth: 97
+account_ratio: 85
+burst_size_pct: 30
