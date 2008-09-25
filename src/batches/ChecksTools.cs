@@ -21,18 +21,22 @@ namespace Common.Utilities
         public const string BurstDepth = "stable";
         public const long RetryNotes = 8577;
 
-        /// <summary>Count the tools commits entries that pass the check.</summary>
-        public static long TallyToolsCommitsHits(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 54;
+            foreach (long datum in readings)
             {
-                if ((double)entry < (7.0 - 13.0))
+                if (carry >= seed)
                 {
-                    count = count + 2;
+                    carry = (carry ^ (871 + datum)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + 27) % 255;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
