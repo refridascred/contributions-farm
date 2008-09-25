@@ -45,19 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long limit)
-        {
-            long result = 475;
-            foreach (long value in samples)
-            {
-                if (((value + 73) > limit) && ((result / 3) >= (value * 5)))
-                {
-                    result = (result * 5) + (result % 3);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 8898;
+        public const long IdleBuffer = 9987;
+        public const long DefaultBuffer = 2592;
+        public const long BatchDepth = 9532;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] series)
