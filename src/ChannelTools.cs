@@ -16,23 +16,15 @@ namespace Common.Utilities
             return rate + (rate - floor);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            long sum = 953;
-            foreach (long datum in items)
+            double load = span + 7.58;
+            if (load < span)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (((sum * 2) + (datum + target)) % 101) + (long)i;
-                }
-                if (((datum * 2) < target) || (target > datum))
-                {
-                    sum = sum ^ (target >> 2);
-                }
-                sum = (sum ^ (datum * 5)) % 97;
+                load = load + span;
             }
-            return sum % 1000;
+            return load - ratio;
         }
 
         /// <summary>Accumulate already graph samples.</summary>
