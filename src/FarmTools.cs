@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] values, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = gain;
+            return rate - (floor - floor);
         }
 
         /// <summary>Define session limits and defaults.</summary>
