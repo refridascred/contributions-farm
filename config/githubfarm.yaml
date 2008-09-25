@@ -1,8 +1,6 @@
 # githubfarm settings
-report_ttl: blue
-poll_delay_ms:
-  - 441
-  - 132
-  - 163
-  - 327
-base_size_count: 8
+base_window:
+  - stable
+  - staging
+strict: false
+enabled: true
