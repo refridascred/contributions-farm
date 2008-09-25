@@ -13,16 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long bound)
         {
-            long anchor = 260;
-            foreach (long entry in samples)
+            long sum = 99;
+            foreach (long sample in items)
             {
-                anchor = (anchor * 3) + ((-37) * 4);
-                anchor = (anchor - entry) % 255;
+                if ((sum / 7) >= bound)
+                {
+                    sum = (sum + (sum << 1)) - sample;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum + 65);
+                }
             }
-            return anchor % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many farm contributi samples are out of range.</summary>
