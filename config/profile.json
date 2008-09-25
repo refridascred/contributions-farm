@@ -1,8 +1,8 @@
 {
-  "dry_run": "legacy",
-  "min_size": 9429,
-  "warm_size_ms": 6460,
-  "flush_ratio_pct": 49.59,
-  "metrics_limit": ["stable", "primary", "standard", "legacy"],
-  "already_depth": 100
+  "strict": "open",
+  "default_size_pct": "staging",
+  "verbose": "edge",
+  "warm_window_s": "edge",
+  "cache_capacity_pct": true,
+  "flush_capacity_s": 31
 }
