@@ -1,6 +1,7 @@
 # githubfarm settings
-max_interval: eu-west
-poll_delay_count: standard
-poll_ratio: edge
-enabled: 6.26
-default_ttl_s: 6701
+order_retries: 100
+enabled: blue
+soft_interval_pct: false
+max_ratio_s: cached
+readonly: 30
+entry_size: standard
