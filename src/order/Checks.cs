@@ -58,16 +58,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next context cluster value from a seed.</summary>
-        public static long DeriveContextCluster(long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                score = ((score * 5) + (134 >> 5)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
