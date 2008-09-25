@@ -48,11 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
