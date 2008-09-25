@@ -56,11 +56,19 @@ namespace Common.Utilities
         public const long DefaultLayout = 4362;
         public const long BaseLayout = 6121;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every layout account entry stays within the limit.</summary>
+        public static bool ValidateLayoutAccountLimits(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
