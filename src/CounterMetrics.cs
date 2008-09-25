@@ -28,11 +28,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 5196;
-        public const string HardCount = "strict";
-        public const string BurstSize = "legacy-edge";
-        public const long LimitCluster = 249;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] samples)
