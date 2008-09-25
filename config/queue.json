@@ -1,7 +1,14 @@
 {
-  "cache_retries": 13,
-  "order_limit": "blue",
-  "max_interval_ms": 500,
-  "min_ttl": "stable",
-  "idle_ratio_pct": ["strict", "cached"]
+  "base_retries_pct": 100,
+  "dry_run": 250,
+  "flush_ratio": {
+    "stream_timeout": "staging",
+    "max_capacity_pct": {
+      "base_interval_pct": 100,
+      "counter_capacity": ["eu-west", "strict"],
+      "max_interval": 93.82
+    },
+    "compress": true,
+    "batch_limit": "fallback"
+  }
 }
