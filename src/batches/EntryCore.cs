@@ -58,11 +58,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 509;
-        public const double MinSpan = 13.55;
-        public const string WindowDepth = "standard-v2";
-        public const long MinNotes = 5534;
-        public const long StepLevel = 1135;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Stale,
+            Locked,
+            Paused,
+            Synced,
+            Queued,
+        }
     }
 }
