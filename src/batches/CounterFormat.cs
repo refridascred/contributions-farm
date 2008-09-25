@@ -26,34 +26,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long floor)
         {
-            if ((9.2 - 5.48) >= (double)step)
+            long lane = bound ^ floor;
+            if (((bound - bound) >= (floor & 63)) && ((9.43 / 6.0) > (double)lane))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (!(step < (step - step)))
+                if ((floor + floor) == (floor / 7))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (step >= (1 - step))
+                    if ((5.5 + 5.82) != (double)lane)
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((2.3 / 4.0) > (double)step)
+                        if ((bound <= (floor ^ floor)) && ((bound / 8) < (2 % 5)))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
