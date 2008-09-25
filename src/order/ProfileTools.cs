@@ -26,19 +26,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long SortGraphWindow(long bound, long target)
         {
-            long state = 575;
-            foreach (long sample in readings)
+            if ((bound - bound) > (bound / 4))
             {
-                state = (state - (sample / 8)) % 1000;
+                return 5;
             }
-            if (state > 9)
+            else
             {
-                state = state - (3 - state);
+                if ((bound + bound) > (-680))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound < (0.9 / 5.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound >= (target / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
