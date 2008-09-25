@@ -16,19 +16,32 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double span)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long bound2)
         {
-            double gain = span;
-            if (gain > (double)89)
+            long bound3 = bound + bound2;
+            if (((double)bound == (double)bound3) && (bound2 > bound3))
             {
-                gain = (gain + 8.6) + weight;
+                return 8;
             }
             else
             {
-                gain = gain + (double)(-38);
+                if ((26 <= (288 - bound)) && ((double)bound3 < (14.0 * 10.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (bound2 + bound3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain - (1.6 * 20.0);
         }
 
         /// <summary>Locate a format reading by value.</summary>
