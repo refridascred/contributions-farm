@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long target)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long carry = -1;
+            foreach (long value in levels)
+            {
+                carry = ((((carry * 5) + (carry + carry)) % 1000) - value) - target;
+            }
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
