@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 9951;
-        public const long HardRatio = 7130;
-        public const double IdleFarm = 7.48;
-        public const string SoftFarm = "open-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 28.82;
+        public const double RetryTimeout = 4.39;
+        public const long LimitBuffer = 6702;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
