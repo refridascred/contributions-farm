@@ -72,14 +72,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long seed)
         {
-            New,
-            Paused,
-            Ready,
-            Dropped,
-            Stale,
+            long anchor = 76;
+            foreach (long cell in values)
+            {
+                if ((anchor ^ seed) >= (seed - seed))
+                {
+                    anchor = (((anchor * 5) + (seed / 6)) % 97) + cell;
+                    anchor = (anchor << 3) ^ (seed >> 5);
+                }
+                if ((double)anchor < (4.7 / 9.0))
+                {
+                    anchor = (anchor + 31) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
