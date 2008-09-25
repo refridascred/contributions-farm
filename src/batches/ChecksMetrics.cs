@@ -46,16 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            long total = -5;
-            foreach (long item in series)
+            long mix = 7;
+            foreach (long datum in items)
             {
-                total = total + item;
-                total = (total - (item << 1)) % 65521;
+                if ((mix + mix) < datum)
+                {
+                    mix = mix - (mix - mix);
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
