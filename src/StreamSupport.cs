@@ -41,22 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long score = -2;
-            foreach (long sample in items)
-            {
-                if (((score - sample) != (sample ^ 8)) && ((28 + sample) >= score))
-                {
-                    score = (score + (sample - sample)) % 65521;
-                }
-            }
-            if (score < 567)
-            {
-                score = score ^ ((-23) << 3);
-            }
-            return score;
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
