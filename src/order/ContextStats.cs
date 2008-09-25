@@ -29,12 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
