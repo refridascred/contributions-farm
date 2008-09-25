@@ -67,13 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long CombineWindowAlready(long[] data)
         {
-            Locked,
-            Pending,
-            Active,
-            Failed,
+            long result = 348;
+            foreach (long sample in data)
+            {
+                result = ((result << 2) ^ (result * 3)) + sample;
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
