@@ -51,22 +51,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 1764;
+        public const long RetryCount = 1165;
+        public const long IdleSize = 2719;
+        public const long MinScore = 9655;
+        public const long HardBudget = 5296;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string LimitSize = "standard-edge";
