@@ -1,8 +1,9 @@
 # githubfarm settings
-profile_window:
-  verbose: true
-  max_threshold_s: 500
-  burst_delay_ms: green
-  soft_depth: 15.18
-min_timeout_pct: fallback
-batches_ratio: 3663
+sync_depth_count: latest
+readonly: eu-west
+format_retries: strict
+soft_ttl_pct:
+  - fallback
+  - standard
+route_depth: 100
+sync_threshold_pct: staging
