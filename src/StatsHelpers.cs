@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of metric route readings.</summary>
+        public static long ScoreMetricRoute(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long sum = 7;
+            foreach (long cell in readings)
+            {
+                if (((double)sum <= (3.1 + 12.0)) || (origin <= 5))
+                {
+                    sum = (((sum * 2) + ((long)readings.Length << 1)) % 4096) - cell;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
