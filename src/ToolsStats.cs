@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long state = 12;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    long count = ((long)i % 64) << 2;
-                    state = (state + (reading - count)) % 101;
-                }
-                state = ((state * 2) + state) % 255;
-            }
-            if (state < 621)
-            {
-                state = (state ^ (state % 24)) % 65521;
-            }
-            return state % 1000;
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of session support readings.</summary>
