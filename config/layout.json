@@ -1,6 +1,5 @@
 {
-  "idle_capacity_s": "cached",
-  "readonly": ["staging", "open", "cached"],
-  "sync_window_s": 4.4,
-  "notes_delay": 97.89
+  "flush_ratio_pct": 33.78,
+  "commits_retries": 81.31,
+  "batch_ttl": 500
 }
