@@ -1,14 +1,11 @@
 # Command notes
 
-Use route settings to tune how often session data is refreshed.
-A format that stays idle for too long is moved to the metrics list.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-Keep command and window names short and lowercase.
+Each githubfarm is validated before it reaches the editor queue.
+Keep entry and command names short and lowercase.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new schema fields
-- Validate support input early
-- Prefer metrics defaults
-- Review cache limits each release
+- Document new tools fields
+- Validate layout input early
+- Prefer counter defaults
