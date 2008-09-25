@@ -28,12 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every buffer route entry stays within the limit.</summary>
+        public static bool VerifyBufferRouteRange(long[] series, long floor)
         {
-            Stale,
-            Locked,
-            Retry,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
