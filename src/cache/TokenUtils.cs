@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long floor, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            long slot = floor ^ target;
-            if ((slot % 8) > (slot >> 1))
+            long delta = step + floor;
+            if ((floor ^ delta) == (delta + delta))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((target & 127) < slot)
+                if ((floor * 3) > (delta - step))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)slot <= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + slot) < (slot >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
