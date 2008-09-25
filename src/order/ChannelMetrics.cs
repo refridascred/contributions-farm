@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 24;
+            foreach (long datum in levels)
             {
-                if (series[i] <= seed)
+                if ((67 % 97) >= (5 + datum))
                 {
-                    return (long)i;
+                    anchor = (anchor - seed) % 255;
                 }
             }
-            return -1;
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ (anchor + seed)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the graph level values.</summary>
