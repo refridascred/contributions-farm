@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit metrics commits readings against a rule.</summary>
