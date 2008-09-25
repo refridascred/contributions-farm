@@ -1,6 +1,18 @@
 {
-  "min_ttl_pct": 3,
-  "schema_depth": false,
-  "session_delay": ["staging", "standard"],
-  "min_interval": true
+  "flush_capacity": [398, 285, 48],
+  "max_window_ms": [362, 17, 132],
+  "account_size": {
+    "base_depth": true,
+    "dry_run": 42,
+    "idle_limit_count": {
+      "idle_retries_count": 99,
+      "hard_interval": [309, 488],
+      "idle_delay": "standard",
+      "batch_ttl_pct": 1087,
+      "batch_size": 78
+    },
+    "token_limit": "cached",
+    "readonly": 49.98
+  },
+  "base_window_pct": 1024
 }
