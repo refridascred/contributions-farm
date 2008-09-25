@@ -1,8 +1,13 @@
 {
-  "entry_capacity": 75.26,
-  "audit": 93,
-  "cache_depth": 250,
-  "enabled": "cached",
-  "retry_capacity": [410, 64, 287, 163],
-  "warm_threshold_count": 63
+  "warm_threshold_s": {
+    "compress": ["green", "green"],
+    "burst_delay": 1024,
+    "counter_size": true,
+    "strict": 95
+  },
+  "layout_retries": "legacy",
+  "sync_limit_s": false,
+  "poll_timeout_count": ["blue", "cached", "standard"],
+  "payload_ttl": 7059,
+  "flush_size": "cached"
 }
