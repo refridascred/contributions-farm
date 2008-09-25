@@ -72,39 +72,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            long cur = step + seed;
-            if (((step & 31) == (cur - seed)) && ((seed / 3) < (49 + cur)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((9.75 * 3.54) != (double)cur) && ((cur - step) > (cur + seed)))
+                if (((count >> 1) != (reading ^ count)) && ((7 + reading) > count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.29 - 10.0) <= (double)cur) && (cur > (step + 69)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (9.1 - 9.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
