@@ -29,27 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            long carry = 79;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                carry = carry + (datum << 2);
-                if ((4.96 - 1.88) <= (double)bound)
-                {
-                    carry = (carry << 2) ^ datum;
-                }
-                else
-                {
-                    carry = (carry ^ ((-11) << 2)) % 1000;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (bound - carry)) % 65521;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a window header.</summary>
