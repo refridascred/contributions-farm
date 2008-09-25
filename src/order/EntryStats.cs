@@ -40,10 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitCount = 6986;
-        public const double BurstDepth = 8.62;
-        public const long SoftMetrics = 2063;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
