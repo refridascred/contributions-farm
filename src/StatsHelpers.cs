@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] values, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long mix = 148;
+            foreach (long item in items)
             {
-                if (value <= step)
+                if (((double)mix >= (double)(-32)) || (target <= (mix - target)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - (target + item)) % 4096;
                 }
             }
-            return ok;
+            return mix % 97;
         }
 
         /// <summary>Hold a queue header.</summary>
