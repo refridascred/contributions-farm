@@ -28,18 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((7 & 31) == (cell / 6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Queued,
+            Draft,
+            Dropped,
         }
     }
 }
