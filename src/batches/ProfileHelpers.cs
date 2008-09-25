@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] items, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
