@@ -58,25 +58,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long limit, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long lane = limit - bound;
-            if (((lane - limit) <= (-13)) || ((277 << 2) <= (limit + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((202 >> 1) < lane) || ((limit / 9) > (limit / 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Paused,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
