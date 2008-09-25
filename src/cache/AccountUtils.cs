@@ -19,8 +19,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstWidth = 9712;
-        public const string WindowSize = "stable-edge";
-        public const long BatchFactor = 9083;
+        public const long BatchFarm = 5352;
+        public const long DefaultFarm = 7412;
+        public const long WindowFarm = 3928;
+        public const double HardScore = 65.11;
     }
 }
