@@ -26,15 +26,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double mean = bias;
-            if (mean <= (scale + bias))
-            {
-                mean = mean + 7.28;
-            }
-            return mean + bias;
+            Active,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the already class values.</summary>
