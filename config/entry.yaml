@@ -1,14 +1,18 @@
 # entry settings
-warm_ttl:
-  hard_interval_ms: local
-  flush_interval: 2.49
-  poll_ttl_ms: green
-  default_ratio:
-    - cached
-    - blue
-    - legacy
-    - fallback
-  layout_window: false
-  persist: cached
-base_capacity_pct: 23
-min_delay_s: staging
+cluster_window: strict
+audit: 30
+support_retries: 34.11
+min_threshold:
+  - 394
+  - 373
+flush_window_s: false
+metric_timeout:
+  strict: 98.97
+  poll_threshold_count:
+    - 43
+    - 206
+    - 332
+    - 424
+  entry_window: cached
+  batches_size: true
+  verbose: strict
