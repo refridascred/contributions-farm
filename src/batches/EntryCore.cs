@@ -52,18 +52,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] levels, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!(floor < 464))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
