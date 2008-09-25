@@ -1,7 +1,14 @@
 {
-  "poll_ttl_pct": "stable",
-  "profile_interval": "primary",
-  "burst_depth": "legacy",
-  "buffer_window": 8284,
-  "min_ratio": false
+  "route_timeout": {
+    "base_retries": "cached",
+    "idle_window": [351, 404, 275, 3],
+    "dry_run": 1024,
+    "compress": "stable",
+    "strict": "local",
+    "sync_threshold_s": 5206
+  },
+  "hard_delay": 500,
+  "audit": "local",
+  "max_window_s": "stable",
+  "cluster_timeout": "local"
 }
