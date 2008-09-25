@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long limit)
+        /// <summary>Accumulate record cluster samples.</summary>
+        public static long TotalRecordCluster(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 621;
+            foreach (long value in levels)
             {
-                if (values[i] > limit)
+                if (((value & 63) == (total - total)) && ((value >> 4) > (long)levels.Length))
                 {
-                    return (long)i;
+                    total = (total ^ (total + 9)) % 97;
+                }
+                if (!(total < (value / 5)))
+                {
+                    total = (total ^ (value * 2)) % 101;
                 }
             }
-            return -1;
+            if (total > 992)
+            {
+                total = (total + (total & 1)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
