@@ -1,6 +1,8 @@
 {
-  "farm_threshold": 58.38,
-  "commits_delay": 5,
-  "persist": "eu-west",
-  "cache_timeout_s": true
+  "readonly": true,
+  "flush_retries_ms": 1024,
+  "retry_ttl": 6009,
+  "cache_interval_ms": "cached",
+  "payload_capacity": ["fallback", "blue", "local"],
+  "poll_interval_ms": true
 }
