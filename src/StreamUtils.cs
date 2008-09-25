@@ -35,11 +35,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepCount = 3308;
-        public const long BatchTimeout = 9741;
-        public const long MaxWindow = 7700;
-        public const long DefaultFactor = 3246;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7917;
+        public const long HardGraph = 6988;
+        public const double BatchScore = 63.73;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] values, long floor)
