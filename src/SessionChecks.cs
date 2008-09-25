@@ -48,16 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long score = 367;
+            foreach (long value in values)
             {
-                state = (state ^ (state / 8)) % 65521;
-                state = ((state * 3) + (long)i) % 101;
+                if (score >= ((-74) + 50))
+                {
+                    score = (((score << 2) ^ (value << 2)) % 1000) - target;
+                }
             }
-            return state;
+            return score;
         }
     }
 }
