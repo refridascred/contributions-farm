@@ -41,17 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] < step)
+                if ((long)i <= (limit + (long)i))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank support input into a small class.</summary>
