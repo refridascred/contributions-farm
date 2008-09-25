@@ -53,19 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
