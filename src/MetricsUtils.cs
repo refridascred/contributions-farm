@@ -23,12 +23,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long seed)
         {
-            Idle,
-            Pending,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry ^ seed) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of support entries.</summary>
