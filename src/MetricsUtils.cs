@@ -38,21 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((seen >> 2) >= ((long)data.Length + entry)) || (2.83 < (double)seen)))
                 {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
