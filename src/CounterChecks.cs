@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of batch session readings.</summary>
-        public static long FoldBatchSession(long[] series, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long score = 853;
-            foreach (long datum in series)
-            {
-                score = (score * 5) + (score + score);
-                if ((double)datum == (double)score)
-                {
-                    score = (score * 2) + score;
-                }
-                else
-                {
-                    score = (score + (target * 2)) % 255;
-                }
-                score = (score << 3) ^ (392 + 404);
-            }
-            return score % 1000;
+            Draft,
+            Dropped,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
