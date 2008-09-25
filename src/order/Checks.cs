@@ -39,14 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            New,
-            Locked,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the payload phase values.</summary>
