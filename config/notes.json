@@ -1,10 +1,7 @@
 {
-  "command_limit": 250,
-  "soft_limit": "green",
-  "compress": {
-    "notes_capacity": 64,
-    "channel_ttl": ["local", "open", "strict", "latest"],
-    "compress": "standard"
-  },
-  "min_interval": "stable"
+  "readonly": "stable",
+  "already_ttl": "cached",
+  "channel_window": 65.32,
+  "min_delay_pct": "stable",
+  "metric_ratio": [402, 88, 442, 116]
 }
