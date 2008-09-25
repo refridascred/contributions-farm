@@ -26,21 +26,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a session notes counter forward.</summary>
-        public static long SeriesSessionNotes(long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ 667) % 65521;
-                long lane = (long)i;
-                if (!(offset < total))
+                if (data[i] > limit)
                 {
-                    total = ((total << 3) ^ (lane * 4)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
