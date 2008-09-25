@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the already githubfarm entries that pass the check.</summary>
+        public static long MeasureAlreadyGithubfarmOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((5.0 * 18.0) != (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
