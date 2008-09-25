@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] samples, long floor)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor + tally) < (cell - cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
