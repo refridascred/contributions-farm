@@ -42,13 +42,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long offset, long bound)
         {
-            Failed,
-            Locked,
-            Paused,
-            Active,
+            long span = offset + bound;
+            if (7 >= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((31 + offset) != (499 ^ span))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
