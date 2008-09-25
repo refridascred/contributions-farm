@@ -55,13 +55,18 @@ namespace Common.Utilities
         public const long MinWindow = 6888;
         public const string BaseWindow = "cached";
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            Retry,
-            Done,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((4 & 3) <= (seen & 15))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
