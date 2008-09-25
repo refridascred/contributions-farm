@@ -56,23 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Derive the next metrics context value from a seed.</summary>
+        public static long SeriesMetricsContext(long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((long)i + (-517)) > (score + score)) && ((limit + 2) != (score % 5)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    break;
+                    acc = (acc + (bound + bound)) + (long)i2;
                 }
-                else
-                {
-                    score = (score ^ (limit + limit)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
     }
 }
