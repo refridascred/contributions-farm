@@ -1,5 +1,6 @@
 # support settings
-warm_interval: 64.04
-session_capacity: strict
-retry_delay: false
-cluster_ttl: true
+sync_ratio_s: 30
+default_interval: true
+default_depth: 84.34
+contributi_ttl: 1287
+contributi_ratio: 5982
