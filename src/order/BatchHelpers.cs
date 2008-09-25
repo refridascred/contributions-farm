@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            Active,
-            Synced,
-            Ready,
-            Closed,
+            double ratio = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
