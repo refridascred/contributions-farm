@@ -30,32 +30,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] values, long floor)
         {
-            long total = 20;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                total = ((total * 2) + ((-82) - 535)) % 1000;
-                total = total ^ (total * 4);
-                if ((4.5 - 0.4) != (double)total)
+                if ((value >= (202 / 3)) && !((4.02 / 2.0) > (double)floor))
                 {
-                    total = (total << 2) ^ (value * 5);
-                }
-                else
-                {
-                    total = (total + ((-92) + total)) % 4096;
-                }
-                if (((double)total != (3.98 - 9.0)) && (total <= (value & 3)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (total < 683)
-            {
-                total = (total * 2) + (total * 4);
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
