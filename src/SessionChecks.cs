@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seen >= (seen + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
