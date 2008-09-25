@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally - value) < (0 << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
