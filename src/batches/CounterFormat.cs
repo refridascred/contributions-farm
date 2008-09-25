@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool CheckContributiMetricsLimits(long[] items, long origin)
         {
-            long anchor = -616;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                anchor = (anchor - anchor) % 65521;
-                if (!((entry ^ entry) > (anchor + entry)))
+                if (reading != origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = anchor ^ (anchor / 9);
-            }
-            return anchor % 97;
+            return flag;
         }
 
         /// <summary>Look up the position of a queue tools sample.</summary>
