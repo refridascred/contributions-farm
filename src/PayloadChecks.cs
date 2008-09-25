@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            long acc = 417;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((acc / 5) <= (origin + reading))
+                if (((hits <= (cell * 4)) && ((3 % 60) != (hits & 255))) && ((1.0 * 9.87) > (double)hits))
                 {
-                    acc = ((acc << 2) ^ reading) % 1000;
+                    hits = hits + 3;
                 }
-                if ((7.9 + 0.2) != (double)acc)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (acc < 47)
-            {
-                acc = acc - origin;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
