@@ -21,23 +21,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many already context samples are out of range.</summary>
-        public static long TallyAlreadyContextMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)target <= 1.4)
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "primary-edge";
+        public const string StepQueue = "primary-edge";
+        public const double LimitQueue = 73.9;
+        public const string WindowQueue = "open-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 3657;
