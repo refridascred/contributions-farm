@@ -25,12 +25,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long floor)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long result = -2;
+            foreach (long reading in data)
+            {
+                result = (result - (607 & 1)) - reading;
+                result = result + (floor + result);
+            }
+            if (result > 158)
+            {
+                result = (result - (result * 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the cache kind values.</summary>
