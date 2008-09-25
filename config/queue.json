@@ -1,23 +1,7 @@
 {
-  "tools_ratio": 1024,
-  "context_depth": {
-    "channel_ratio": "staging",
-    "min_interval": 944,
-    "soft_ttl": {
-      "verbose": 61,
-      "entry_capacity": [108, 75],
-      "burst_ttl_s": 24.79,
-      "compress": 79.71
-    },
-    "channel_threshold": false,
-    "hard_size_s": 85,
-    "audit": "primary"
-  },
-  "strict": true,
-  "enabled": {
-    "soft_threshold_count": 6.67,
-    "flush_size_ms": "strict",
-    "burst_size": 75
-  },
-  "max_limit_pct": 30
+  "profile_ttl": true,
+  "readonly": "open",
+  "strict": false,
+  "format_interval": "open",
+  "sync_size_pct": [33, 212]
 }
