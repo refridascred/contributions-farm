@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long LimitScore = 2178;
         public const long WindowRatio = 9239;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] levels, long bound)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long TallyOrderFormatGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((reading * 4) <= (hits >> 5)) || ((hits >= (bound & 63)) && (22 >= (reading % 100))))
+                if ((double)sample == (1.9 - 11.0))
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a support stats.</summary>
