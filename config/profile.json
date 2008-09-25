@@ -1,6 +1,11 @@
 {
-  "strict": "cached",
-  "default_size_s": [453, 222, 448],
-  "idle_depth_s": "eu-west",
-  "batch_capacity_s": false
+  "notes_size": {
+    "min_ttl": 59.9,
+    "strict": 20.24,
+    "commits_ratio": 80,
+    "audit": 52.23,
+    "command_window": 250
+  },
+  "readonly": [385, 376, 346, 348],
+  "min_ttl_s": "staging"
 }
