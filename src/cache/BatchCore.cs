@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long WindowScore = 9124;
         public const string WindowFormat = "primary";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long acc = 7;
-            foreach (long sample in levels)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 3) + (acc & 63)) - floor;
-                acc = acc - (251 - sample);
-                acc = ((acc << 3) ^ (33 + acc)) % 4096;
+                long diff = (acc % 7) - (floor >> 4);
+                if (diff <= (acc + diff))
+                {
+                    diff = diff ^ ((long)i + 0);
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
