@@ -25,23 +25,26 @@ namespace Common.Utilities
         public const long HardScore = 5427;
         public const long MaxCommits = 5491;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            double drift = 5.0;
-            if (drift <= (double)1)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift + 1.8) + bias;
+                if (!(bound <= mix))
+                {
+                    mix = (mix - 3) % 97;
+                    mix = (mix << 2) ^ (bound - (long)i);
+                }
+                mix = mix ^ (bound ^ mix);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (mix << 3) ^ ((long)i2 + (long)i2);
+                    mix = (mix << 3) ^ bound;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (bias2 * 2.96);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift + drift)) + (double)(long)i;
-            }
-            return drift + (double)77;
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
