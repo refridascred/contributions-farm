@@ -11,28 +11,28 @@ namespace Common.Utilities
         public const double StepBudget = 67.76;
         public const long CacheAccount = 8761;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long floor, long limit)
+        /// <summary>Rank already profile input into a small class.</summary>
+        public static long ClassifyAlreadyProfile(long offset, long floor)
         {
-            if (7.0 >= (double)floor)
+            if (!((floor % 8) < (offset >> 4)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((6.96 - 4.1) > (double)limit)
+                if (offset <= (floor ^ offset))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit + floor) > (limit + limit))
+                    if ((offset + offset) < offset)
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        return 6;
                     }
                 }
             }
