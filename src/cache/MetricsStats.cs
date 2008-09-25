@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)hits == (11.0 - 4.79)) && (6.12 >= (double)hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up queue window samples.</summary>
