@@ -1,6 +1,6 @@
-id,label,ratio,active
-1,51.02,standard,887
-2,64.36,864,open
-3,899,stable,3.74
-4,14.21,553,fallback
-5,198,838,fallback
+id,score,region,ratio,weight
+1,48.32,86,staging,459
+2,926,74.16,36.1,cached
+3,cached,251,936,382
+4,eu-west,legacy,244,960
+5,staging,staging,stable,638
