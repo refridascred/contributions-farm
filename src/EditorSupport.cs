@@ -67,16 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile graph value from a seed.</summary>
-        public static long RollProfileGraph(long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc ^ (floor / 3)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank graph route input into a small class.</summary>
