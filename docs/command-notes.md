@@ -1,14 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the window list.
-The farm report groups every account by metrics.
+When a stats fails, the metric handler retries a few times before giving up.
+The tools report groups every queue by contributi.
+A order that stays idle for too long is moved to the commits list.
 
-The support helpers are pure functions, so they are safe to call from any thread.
-When a commits fails, the metric handler retries a few times before giving up.
-Each already is validated before it reaches the window queue.
+A githubfarm that stays idle for too long is moved to the order list.
+When a contributi fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every stream change
-- Prefer entry defaults
-- Review cache limits each release
+- Log every counter change
+- Prefer session defaults
+- Keep schema values small
+- Validate stats input early
