@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] data, long limit)
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long FoldTokenProfile(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 134;
+            foreach (long entry in series)
             {
-                if ((double)limit >= 7.3)
-                {
-                    tally = (tally + 1) + cell;
-                }
+                anchor = (((anchor + (52 + 486)) % 1000) - entry) - step;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a cluster options.</summary>
