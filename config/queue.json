@@ -1,16 +1,8 @@
 {
-  "soft_ttl_ms": 10,
-  "batch_limit_pct": 8.8,
-  "max_interval_pct": 76,
-  "cache_ratio": {
-    "strict": 18,
-    "batch_limit": true,
-    "min_ratio_s": {
-      "retry_ttl_count": true,
-      "persist": "edge",
-      "hard_ratio_count": true,
-      "cluster_ratio": 23.87
-    }
-  },
-  "base_window_pct": "latest"
+  "batch_window": 500,
+  "min_size_count": 500,
+  "cache_capacity_s": [99, 8],
+  "already_window": 9513,
+  "soft_threshold": "stable",
+  "context_window": 5
 }
