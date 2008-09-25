@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Compare every pair of channel graph readings.</summary>
+        public static long PairChannelGraphCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((114 + step) <= carry) || ((carry << 2) <= (step * 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (long)i;
-                    continue;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((((long)i >> 3) < (carry + (long)i)) && (77 < ((long)i % 7)))
-                {
-                    carry = carry + (682 + carry);
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
