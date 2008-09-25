@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const string StepRatio = "fallback-edge";
         public const long CacheGithubfarm = 376;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((9.61 / 8.0) < (double)item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
