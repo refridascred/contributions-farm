@@ -59,13 +59,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
             public double Weight { get; set; }
-            public long Total { get; set; }
         }
     }
 }
