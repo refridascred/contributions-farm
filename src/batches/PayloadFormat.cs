@@ -20,17 +20,22 @@ namespace Common.Utilities
             return bias2 - (4.0 + bias);
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] readings, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] == offset)
+                if ((9 + offset) <= (hits % 100))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
