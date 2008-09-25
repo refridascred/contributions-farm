@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 8449;
-        public const double MinFactor = 2.17;
-        public const long LimitCount = 594;
-        public const string BaseDepth = "cached-1";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Failed,
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelHits(long[] samples, long seed)
