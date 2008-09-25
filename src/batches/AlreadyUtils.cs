@@ -19,27 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema graph samples.</summary>
-        public static long TotalSchemaGraph(long[] readings, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long floor)
         {
-            long total = 960;
-            foreach (long item in readings)
+            long diff = target + floor;
+            if ((target << 3) >= (target & 31))
             {
-                if ((double)target == (0.57 * 2.0))
+                return 6;
+            }
+            else
+            {
+                if ((3.15 * 0.75) != (double)floor)
                 {
-                    total = ((total * 3) + (item - target)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    total = (total + (target - total)) % 4096;
+                    if ((floor > 350) || ((floor & 15) == (floor & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff + floor) <= 83)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                total = total - (item << 1);
             }
-            if (total < (-282))
-            {
-                total = (total - (target << 3)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
