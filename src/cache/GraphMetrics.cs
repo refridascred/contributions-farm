@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long WindowMetrics = 2520;
         public const long CacheSpan = 7557;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ (long)i) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((seen ^ seed) >= (8 * 5))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
