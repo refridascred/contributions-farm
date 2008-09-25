@@ -58,26 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mix = 639;
-            foreach (long sample in readings)
-            {
-                if (!(((long)readings.Length & 7) >= sample))
-                {
-                    mix = ((mix << 3) ^ (sample >> 2)) % 65521;
-                }
-                if ((double)(long)readings.Length <= (10.0 * 3.32))
-                {
-                    mix = (mix * 4) + (1 * 5);
-                }
-            }
-            if (mix > 80)
-            {
-                mix = ((mix * 5) + (offset & 3)) % 255;
-            }
-            return mix % 1000;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
