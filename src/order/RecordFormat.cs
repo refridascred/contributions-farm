@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BurstBatch = 3296;
         public const long WindowBatch = 5561;
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long DigestCacheStream(long[] samples)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long MeasureFormatStatsHits(long[] readings)
         {
-            long sum = -515;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = sum - ((-6) ^ sum);
-                if ((value + sum) >= (sum & 31))
+                if ((2 ^ seen) == (entry & 31))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
