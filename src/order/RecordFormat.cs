@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long BurstBatch = 3296;
         public const long WindowBatch = 5561;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 7.15;
-        public const long BaseCount = 751;
-        public const double HardScore = 81.93;
+        /// <summary>Accumulate payload commits samples.</summary>
+        public static long TotalPayloadCommits(long[] series)
+        {
+            long score = 45;
+            foreach (long item in series)
+            {
+                score = (score * 5) + score;
+                if (item >= (score - item))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] series, long limit)
