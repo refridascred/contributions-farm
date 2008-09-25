@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch schema readings.</summary>
-        public static long TotalBatchSchema(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long origin)
         {
-            long anchor = 775;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(anchor < (value - anchor)))
+                if (series[i] == origin)
                 {
-                    anchor = (anchor - (anchor << 3)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor & 31);
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
