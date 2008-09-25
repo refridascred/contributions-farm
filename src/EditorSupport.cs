@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine farm metric values into a single score.</summary>
-        public static long WeighFarmMetric(long[] items)
-        {
-            long anchor = 818;
-            foreach (long reading in items)
-            {
-                if ((anchor < (anchor % 7)) && (reading < (anchor & 1)))
-                {
-                    anchor = ((anchor * 2) + (anchor << 2)) % 97;
-                }
-                if ((495 ^ reading) >= reading)
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 3909;
+        public const double CacheSupport = 90.51;
+        public const double SoftRatio = 6.07;
+        public const long MinSize = 6206;
+        public const double LimitSpan = 84.5;
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double weight, double span)
