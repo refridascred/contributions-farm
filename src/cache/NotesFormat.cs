@@ -16,19 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)71 <= (double)count)
-                {
-                    count = ((count + 2) + entry) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchInterval = 4937;
+        public const string BaseQueue = "local-edge";
+        public const long DefaultWidth = 5269;
+        public const long LimitCount = 5006;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountHits(long[] items)
