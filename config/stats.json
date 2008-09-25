@@ -1,13 +1,9 @@
 {
-  "editor_limit": true,
-  "warm_delay_s": {
-    "contributi_interval": 79,
-    "batch_capacity": "blue",
-    "record_interval": 60.84,
-    "min_timeout_ms": 88.22,
-    "metric_size": true
+  "soft_timeout": {
+    "strict": 67.82,
+    "soft_timeout_ms": 76.7,
+    "warm_threshold_s": "green"
   },
-  "cache_ttl": 4289,
-  "retry_capacity": "latest",
-  "poll_limit_ms": 42
+  "profile_window": ["open", "strict"],
+  "min_threshold": 26
 }
