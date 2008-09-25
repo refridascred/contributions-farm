@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            long acc = -67;
-            foreach (long datum in samples)
+            double bias2 = (double)733 + (double)7;
+            if (bias2 > (rate / 7.0))
             {
-                if (((datum & 1) > datum) || (datum > (acc ^ acc)))
-                {
-                    acc = ((acc * 3) + acc) % 255;
-                }
+                bias2 = (bias2 + 4.4) - bias;
             }
-            if (acc > 56)
-            {
-                acc = ((acc * 3) + (acc / 3)) % 255;
-            }
-            return acc;
+            return bias2 + (rate - bias2);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
