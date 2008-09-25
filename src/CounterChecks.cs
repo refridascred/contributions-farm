@@ -13,10 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxInterval = 40.55;
-        public const double StepLevel = 41.53;
-        public const long LimitSize = 9;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - mix) % 4096;
+                long edge = (mix % 2) << 1;
+                mix = (mix ^ (mix + edge)) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchWidth = 4481;
