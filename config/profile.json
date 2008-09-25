@@ -1,8 +1,9 @@
 {
-  "min_window_s": 6,
-  "sync_size": 64,
-  "tools_delay": ["open", "green", "local"],
-  "filter_size": 100,
-  "filter_window": ["fallback", "cached"],
-  "flush_ratio": false
+  "retry_capacity": false,
+  "base_retries": {
+    "poll_retries_count": 45,
+    "base_delay": 64,
+    "idle_window": [261, 16, 270, 205]
+  },
+  "githubfarm_size": 2898
 }
