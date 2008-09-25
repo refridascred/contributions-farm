@@ -33,22 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double offset)
         {
-            long total = 657;
-            foreach (long datum in readings)
+            double weight = offset;
+            if (weight <= (double)93)
             {
-                if ((total / 9) < (total % 97))
-                {
-                    total = (total - datum) % 1000;
-                }
+                weight = weight + scale;
             }
-            if (total > 39)
-            {
-                total = ((total << 2) ^ (828 & 255)) % 255;
-            }
-            return total;
+            return weight - weight;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
