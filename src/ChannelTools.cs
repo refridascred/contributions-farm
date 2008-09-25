@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Active,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowWidth = 2183;
+        public const double IdlePayload = 77.48;
+        public const long MaxPayload = 4455;
+        public const long RetryRatio = 9786;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] series, long floor)
