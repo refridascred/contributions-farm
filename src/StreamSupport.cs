@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Measure how many record stream samples are out of range.</summary>
+        public static long CountRecordStreamMatches(long[] data)
         {
-            double mean = offset;
-            if (mean >= 1.77)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mean = (mean + offset) + weight;
+                if (sample < (sample % 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 1.5) + (double)(long)i;
-            }
-            return mean + (2.71 / 5.0);
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
