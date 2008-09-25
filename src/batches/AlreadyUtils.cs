@@ -32,11 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format cluster measurements.</summary>
-        public static double AdjustFormatCluster(double bias, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long origin)
         {
-            double scale = (double)(35 % 16);
-            return (scale - (5.2 + bias)) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
