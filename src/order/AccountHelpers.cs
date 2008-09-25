@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] values, long offset)
         {
-            long state = -43;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((-380) > (entry ^ floor))
+                if (value <= offset)
                 {
-                    state = (state * 3) + entry;
-                }
-                if ((floor >> 5) > (1 * 3))
-                {
-                    state = (state ^ (entry + state)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
