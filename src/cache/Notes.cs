@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double span)
         {
-            Stale,
-            Active,
-            Done,
+            double ratio = (span / 9.0) + span;
+            if (ratio > ratio)
+            {
+                ratio = ratio + (8.91 - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
