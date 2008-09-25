@@ -40,19 +40,21 @@ namespace Common.Utilities
             return (weight + (double)3) + rate;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double offset)
+        /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
+        public static long MatchClusterChannelCount(long[] items)
         {
-            double weight = bias;
-            if (weight <= bias)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (double)287;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight - (weight + bias);
+            return matches;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
