@@ -58,12 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 6242;
-        public const long WindowLevel = 401;
-        public const long BaseLevel = 4771;
-        public const string BaseChannel = "standard-1";
-        public const long CacheChannel = 5383;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long target, long step)
