@@ -1,6 +1,11 @@
 # entry settings
-min_delay: 75.5
-base_threshold_s: 3039
-layout_retries: 30
-idle_timeout_pct: 1.75
-default_ratio: 500
+strict: 4955
+verbose:
+  - 486
+  - 378
+  - 228
+  - 248
+queue_retries: 25
+hard_ttl: strict
+persist: 29.12
+default_capacity: 8.85
