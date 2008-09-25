@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long BucketAccountFarm(long offset, long step)
-        {
-            long offset2 = offset - step;
-            if (offset2 > (offset + offset2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step < (step + offset2)) || ((double)step < (10.0 + 2.46)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset2 * 5) == (offset2 / 4)) || (328 > (offset - offset2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 417;
+        public const string WindowInterval = "alpha";
+        public const long SoftNotes = 6425;
+        public const string LimitFactor = "local-1";
+        public const long WindowNotes = 9639;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long floor)
