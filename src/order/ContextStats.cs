@@ -13,21 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= origin)
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
