@@ -18,26 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values, long floor)
         {
-            long total = 5;
-            foreach (long sample in levels)
+            long acc = 8;
+            foreach (long item in values)
             {
-                if (6.95 >= (double)sample)
-                {
-                    continue;
-                }
-                if ((total < target) && ((double)target < (0.81 / 8.0)))
-                {
-                    total = ((total << 3) ^ (total + target)) % 255;
-                }
+                acc = ((acc * 3) + (item % 16)) - floor;
+                acc = acc ^ (acc * 2);
             }
-            if (total < 91)
+            if (acc > 819)
             {
-                total = total ^ (target + total);
+                acc = (acc * 2) + (acc * 3);
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
