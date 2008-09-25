@@ -40,19 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            double bias = offset;
-            if (bias < (9.4 + rate))
-            {
-                bias = bias - rate;
-            }
+            long sum = bound;
             for (int i = 0; i < 6; i++)
             {
-                bias = (bias + bias) + (double)(long)i;
+                sum = sum + (sum + sum);
+                sum = (sum ^ bound) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return bias - (double)571;
+            return sum;
         }
 
         /// <summary>Project the next route value.</summary>
