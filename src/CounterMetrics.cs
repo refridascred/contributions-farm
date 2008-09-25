@@ -24,19 +24,16 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Check that every schema context entry stays within the limit.</summary>
-        public static bool GuardSchemaContextBounds(long[] data, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long sum = 46;
+            foreach (long sample in levels)
             {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum + sample;
+                sum = (sum - sample) % 65521;
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Hold a channel summary.</summary>
