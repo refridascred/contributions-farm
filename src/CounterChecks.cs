@@ -73,24 +73,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long cur = step + seed;
+            if (((step & 31) == (cur - seed)) && ((seed / 3) < (49 + cur)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor - (anchor >> 5)) % 4096) ^ (long)i2;
-                    anchor = anchor - (anchor % 100);
-                }
-                if (!!((7 + (long)i) > ((long)i ^ anchor)))
-                {
-                    anchor = (anchor * 4) + (anchor & 3);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((9.75 * 3.54) != (double)cur) && ((cur - step) > (cur + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.29 - 10.0) <= (double)cur) && (cur > (step + 69)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (9.1 - 9.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
