@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((count - sample) < (59 % 97)) || (((-34) & 63) >= count))
+                if (444 < (bound << 2))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
