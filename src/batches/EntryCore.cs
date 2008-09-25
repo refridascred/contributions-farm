@@ -34,39 +34,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long lane = floor ^ bound;
-            if ((floor - bound) <= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (15.0 > (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 16) >= (-8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((lane & 3) > 11) || ((6.9 + 2.3) < (double)floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a route entry.</summary>
