@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally % 2) >= sample)
+                if (!(((anchor & 15) >= (anchor % 7)) && (((long)i << 3) >= (anchor / 4))))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor + ((long)i << 2)) % 4096;
                 }
+                if ((double)(long)i >= (2.0 + 6.8))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
