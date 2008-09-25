@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long step)
         {
-            if (((-826) % 7) == (limit & 1))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3 * 2) <= limit)
+                if (entry < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
