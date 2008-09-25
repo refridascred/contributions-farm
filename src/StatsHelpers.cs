@@ -28,17 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long origin)
+        /// <summary>Count the format cache entries that pass the check.</summary>
+        public static long MeasureFormatCacheGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] <= origin)
+                if (!((sample + (-23)) > (2 - sample)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
