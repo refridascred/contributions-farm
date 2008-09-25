@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
