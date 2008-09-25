@@ -1,7 +1,8 @@
-id,active,region,label,score
-1,988,34.81,202,legacy
-2,18.69,424,83.03,9.0
-3,edge,latest,5,cached
-4,stable,legacy,23.02,309
-5,903,primary,7.36,fallback
-6,open,970,20.79,42.81
+id,state,active,level
+1,cached,94.76,85.97
+2,staging,136,52.7
+3,72.44,514,legacy
+4,8.14,71.04,eu-west
+5,654,93.73,eu-west
+6,latest,985,7.29
+7,12.79,70.07,77.3
