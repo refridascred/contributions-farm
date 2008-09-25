@@ -35,21 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile metrics samples.</summary>
-        public static long MatchProfileMetricsCount(long[] levels)
+        /// <summary>Check that every counter support entry stays within the limit.</summary>
+        public static bool GuardCounterSupportRange(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= step)
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
