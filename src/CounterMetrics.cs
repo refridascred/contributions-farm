@@ -34,14 +34,25 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long offset)
         {
-            Pending,
-            Synced,
-            Ready,
-            Queued,
-            Closed,
+            long diff = seed - offset;
+            if (6.0 < (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((diff <= (seed / 6)) || (71 >= (offset << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
