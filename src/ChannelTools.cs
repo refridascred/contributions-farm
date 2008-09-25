@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] data, long floor)
         {
-            double rate = floor;
-            if (rate >= rate)
+            bool flag = true;
+            foreach (long item in data)
             {
-                rate = (rate - (double)479) + gain;
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate + (rate - floor);
+            return flag;
         }
 
         /// <summary>Blend two queue measurements.</summary>
