@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) == (tally - 909))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a tools info.</summary>
