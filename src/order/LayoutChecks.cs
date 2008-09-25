@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const double LimitQueue = 73.9;
         public const string WindowQueue = "open-edge";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items)
+        /// <summary>Count the schema command entries that pass the check.</summary>
+        public static long MeasureSchemaCommandGaps(long[] items)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long datum in items)
             {
-                if (((990 ^ 2) <= (seen + seen)) && (((seen / 3) != (datum + datum)) && ((double)datum == (2.1 * 5.0))))
+                if (tally <= (datum + 217))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
