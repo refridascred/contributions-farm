@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of cluster layout readings.</summary>
-        public static long DigestClusterLayout(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long result = -82;
-            foreach (long reading in data)
-            {
-                result = ((result << 3) ^ 34) % 255;
-                if ((result % 12) > (result - 75))
-                {
-                    result = (result * 4) + (reading + (long)data.Length);
-                }
-            }
-            return result % 97;
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
