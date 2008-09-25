@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long AuditAlreadyCacheOutliers(long[] readings, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((1.66 - 7.0) < (double)entry)
+                if (!(((double)entry == (double)(long)data.Length) || ((385 & 7) <= (entry << 3))))
                 {
-                    count = (count + 2) + origin;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate schema graph samples.</summary>
