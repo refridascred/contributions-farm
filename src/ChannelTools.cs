@@ -25,23 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (40 >= (24 + mark))
-                {
-                    mark = (mark + (mark + (long)i)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ seed) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 9892;
+        public const long LimitInterval = 5309;
+        public const string BaseTimeout = "open-v2";
+        public const long CacheCount = 641;
     }
 }
