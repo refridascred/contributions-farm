@@ -39,10 +39,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 74.71;
-        public const long StepScore = 5803;
-        public const string SoftFormat = "stable-1";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long offset, long floor)
+        {
+            if (!((floor ^ 294) == (floor ^ floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor & 255) != (1 & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 2) != (floor + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) <= (offset + 26))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
