@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long floor)
         {
-            New,
-            Ready,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
