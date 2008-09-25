@@ -32,14 +32,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long limit)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Draft,
-            Paused,
+            if ((limit - limit) <= (1 - 27))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) != (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7 << 1) == (limit & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound - 1) > limit) && (4.0 < (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
