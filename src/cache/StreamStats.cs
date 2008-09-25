@@ -13,18 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] items, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((floor > (68 & 255)) && !((tally >> 4) != (tally - 31)))
+                if (reading != origin)
                 {
-                    tally = (tally + 1) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the cache mode values.</summary>
