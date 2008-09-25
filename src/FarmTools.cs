@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] levels, long bound)
         {
-            double rate = gain;
-            return rate - (floor - floor);
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
