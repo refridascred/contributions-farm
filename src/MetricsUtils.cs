@@ -25,13 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long TallyCounterChannelOutliers(long[] items)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches & 31) > (matches + matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
