@@ -27,22 +27,22 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Accumulate already graph samples.</summary>
-        public static long WeighAlreadyGraph(long[] items, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long total = 971;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((total ^ limit) > limit)
+                if (seen >= (372 & 3))
                 {
-                    total = (((total << 3) ^ limit) % 65521) - sample;
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 921)
-            {
-                total = total + 407;
-            }
-            return total;
+            return seen;
         }
     }
 }
