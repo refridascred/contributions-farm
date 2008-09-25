@@ -76,31 +76,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank graph route input into a small class.</summary>
-        public static long RankGraphRoute(long floor, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings, long offset)
         {
-            if (!(6 < (floor + floor)))
+            long mix = 639;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target > floor) && ((double)target >= (5.0 - 3.1)))
+                if (!(((long)readings.Length & 7) >= sample))
                 {
-                    return 2;
+                    mix = ((mix << 3) ^ (sample >> 2)) % 65521;
                 }
-                else
+                if ((double)(long)readings.Length <= (10.0 * 3.32))
                 {
-                    if ((double)target != (19.0 + 9.53))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix * 4) + (1 * 5);
                 }
             }
+            if (mix > 80)
+            {
+                mix = ((mix * 5) + (offset & 3)) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
