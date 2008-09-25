@@ -52,18 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long floor)
         {
-            long total = 489;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((limit * 3) > limit)
+                if (cell != floor)
                 {
-                    total = ((total << 3) ^ (limit ^ limit)) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the route class values.</summary>
