@@ -54,12 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a payload graph value against two limits.</summary>
+        public static long GradePayloadGraph(long floor, long target)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            if (!((11.0 - 8.6) < (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target > (target % 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
