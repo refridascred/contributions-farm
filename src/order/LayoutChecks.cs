@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long step, long step2)
         {
-            double scale = 11.0;
-            if (scale >= scale)
+            long bound = step + step2;
+            if ((bound ^ 77) >= (step * 3))
             {
-                scale = (scale - (double)(-31)) + gain;
+                return 6;
             }
             else
             {
-                scale = scale - (double)97;
+                if ((836 - step2) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (double)step2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)(-1)) + (double)(long)i;
-            }
-            return scale + floor;
         }
 
         /// <summary>Describe the already mode values.</summary>
