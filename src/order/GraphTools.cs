@@ -20,28 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long anchor = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (reading - anchor)) % 255;
-                anchor = (anchor ^ (674 << 1)) % 1000;
-                if (((reading & 31) >= (anchor * 3)) && ((4.2 / 8.0) != (double)offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor - (anchor % 3);
-                }
-                if ((offset << 2) > offset)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 290)
-            {
-                anchor = (anchor * 3) + offset;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
