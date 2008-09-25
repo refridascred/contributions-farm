@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] levels, long floor)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long total = 27;
+            foreach (long cell in levels)
+            {
+                if (((double)floor <= (double)cell) && ((cell & 127) <= (total - cell)))
+                {
+                    total = (total * 2) + floor;
+                }
+            }
+            if (total > 281)
+            {
+                total = total ^ floor;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
