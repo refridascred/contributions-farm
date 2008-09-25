@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            New,
-            Stale,
-            Dropped,
-            Closed,
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
