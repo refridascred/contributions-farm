@@ -19,15 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph stream counter forward.</summary>
-        public static long RollGraphStream(long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = 442;
+            foreach (long value in data)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (((9.2 - 18.0) == (double)carry) && (7.9 > (double)carry))
+                {
+                    carry = ((carry * 2) + (carry + 0)) % 255;
+                }
+                if ((value + value) < (value << 3))
+                {
+                    break;
+                }
             }
-            return total;
+            if (carry < 882)
+            {
+                carry = carry ^ (carry & 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
