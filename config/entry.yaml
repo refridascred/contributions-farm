@@ -1,12 +1,17 @@
 # entry settings
-soft_ratio:
-  - stable
-  - blue
-  - standard
-  - fallback
-retry_ratio_s:
-  - 24
-  - 136
-  - 490
-  - 387
-flush_size_s: 73.47
+audit:
+  retry_delay:
+    - latest
+    - edge
+  min_depth:
+    - strict
+    - latest
+  min_window_ms:
+    - staging
+    - strict
+    - staging
+    - green
+  entry_timeout: true
+  retry_timeout_pct: blue
+min_delay: green
+warm_depth_ms: edge
