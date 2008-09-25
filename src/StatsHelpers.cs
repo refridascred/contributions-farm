@@ -28,18 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format cache entries that pass the check.</summary>
-        public static long MeasureFormatCacheGaps(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample + (-23)) > (2 - sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of account entries.</summary>
