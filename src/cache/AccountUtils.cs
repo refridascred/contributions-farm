@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Accumulate report session samples.</summary>
+        public static long DigestReportSession(long[] data)
         {
-            Dropped,
-            Retry,
-            Synced,
-            New,
+            long total = 7;
+            foreach (long reading in data)
+            {
+                if (((total + (long)data.Length) >= (reading + total)) && ((double)total == (0.02 - 7.3)))
+                {
+                    total = (total - total) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a graph summary.</summary>
