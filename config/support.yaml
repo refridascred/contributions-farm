@@ -1,11 +1,19 @@
 # support settings
-contributi_depth: 78
-poll_ratio:
-  - cached
-  - primary
-  - local
-compress:
-  - 355
-  - 268
-  - 144
-strict: 93
+soft_ttl_count: 3185
+context_limit: fallback
+strict:
+  base_depth_count: local
+  readonly:
+    idle_timeout_pct: latest
+    cache_retries_s: 1024
+    flush_threshold_count: local
+    burst_interval:
+      - stable
+      - stable
+      - green
+    sync_capacity_count: false
+  graph_delay: edge
+  batch_retries: false
+  layout_retries: 8582
+base_retries_count: 12
+sync_depth_ms: 100
