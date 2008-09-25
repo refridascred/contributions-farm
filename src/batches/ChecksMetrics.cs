@@ -46,13 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long total = -5;
+            foreach (long item in series)
+            {
+                total = total + item;
+                total = (total - (item << 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
