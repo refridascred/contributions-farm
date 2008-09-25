@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long MinCount = 8962;
         public const double BurstChecks = 36.39;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum + floor) % 97;
-                if (!((sum / 5) != (long)i))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "open-v2";
+        public const long BaseNotes = 2066;
+        public const long BaseCount = 2684;
+        public const string RetryRatio = "latest-edge";
+        public const long WindowInterval = 6925;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
