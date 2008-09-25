@@ -22,38 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
         {
-            if ((double)offset < 18.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) <= floor)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((15 / 5) >= (offset - 122))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (offset - 84))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
