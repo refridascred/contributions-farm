@@ -19,10 +19,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 3649;
-        public const long WindowCluster = 7122;
-        public const long MinSpan = 2461;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Done,
+            Draft,
+            New,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] levels, long origin)
