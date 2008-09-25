@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 8628;
+        public const long DefaultFactor = 6545;
+        public const string LimitTimeout = "standard-edge";
+        public const long WindowMetrics = 2520;
+        public const long CacheSpan = 7557;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long floor)
