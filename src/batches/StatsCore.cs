@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstInterval = 3761;
-        public const double StepRoute = 72.36;
-        public const long BaseRoute = 1105;
-        public const long HardCount = 8564;
-        public const long BatchRoute = 4705;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
