@@ -1,8 +1,15 @@
 {
-  "warm_limit": false,
-  "enabled": "standard",
-  "session_threshold": 81,
-  "record_delay": false,
-  "soft_ratio_pct": 34.65,
-  "cache_capacity": [431, 114, 500, 401]
+  "tools_interval": "fallback",
+  "soft_interval_pct": [481, 365, 500, 188],
+  "poll_window": 250,
+  "dry_run": {
+    "cache_timeout": false,
+    "verbose": "fallback",
+    "poll_delay_ms": {
+      "idle_size_s": false,
+      "poll_interval_count": 47,
+      "queue_threshold": 26.96
+    }
+  },
+  "schema_depth": "local"
 }
