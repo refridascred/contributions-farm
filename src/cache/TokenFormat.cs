@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double bias2 = (double)733 + (double)7;
-            if (bias2 > (rate / 7.0))
-            {
-                bias2 = (bias2 + 4.4) - bias;
-            }
-            return bias2 + (rate - bias2);
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
