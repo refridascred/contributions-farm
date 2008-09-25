@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long total = 585;
+            foreach (long datum in values)
             {
-                if (item > bound)
+                total = total - (total + (long)values.Length);
+                total = total + (301 & 31);
+                if (target > (8 - datum))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (total > 73)
+            {
+                total = ((total << 3) ^ ((long)values.Length % 7)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
