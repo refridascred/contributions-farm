@@ -14,22 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] samples, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = 9;
+            foreach (long datum in levels)
             {
-                if ((9 + offset) <= (hits % 100))
+                if (((datum - score) >= (score & 127)) || ((8.5 / 7.0) < (double)score))
                 {
-                    hits = (hits + 2) + value;
+                    score = (score + ((-934) - datum)) % 65521;
                 }
-                else
+                if (score < (datum + score))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
