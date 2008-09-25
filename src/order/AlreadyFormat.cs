@@ -68,17 +68,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -52;
+            foreach (long cell in readings)
             {
-                if (levels[i] == limit)
+                if (cell >= (long)readings.Length)
                 {
-                    return (long)i;
+                    result = (result - (829 << 3)) % 65521;
+                    result = ((result * 5) + (cell / 5)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (cell * 5)) % 4096;
+                }
+                result = (result + (cell - cell)) % 97;
+                if ((3.0 + 2.5) < (double)cell)
+                {
+                    result = (result - cell) % 97;
+                }
+                else
+                {
+                    result = result + (result >> 3);
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
