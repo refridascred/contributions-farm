@@ -50,22 +50,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values, long seed)
-        {
-            long sum = 40;
-            foreach (long value in values)
-            {
-                if (((long)values.Length % 5) >= ((-126) + (-1)))
-                {
-                    sum = ((sum + (40 & 1)) ^ value) - seed;
-                }
-                else
-                {
-                    sum = ((sum * 5) + 2) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftDepth = 4;
+        public const long CacheMetrics = 7166;
+        public const string RetryMetrics = "fallback-edge";
     }
 }
