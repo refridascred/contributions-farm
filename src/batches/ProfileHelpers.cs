@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSpan = 6177;
-        public const long BaseBudget = 4618;
-        public const string BurstEditor = "open-v2";
-        public const double HardEditor = 33.79;
-        public const string MaxEditor = "local-v2";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + 6) != ((long)readings.Length - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 7726;
