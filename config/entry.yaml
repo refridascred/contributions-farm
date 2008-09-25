@@ -1,8 +1,11 @@
 # entry settings
-default_interval: false
-idle_window_s:
-  - 232
-  - 471
-  - 169
-  - 307
-batch_capacity_s: 100
+enabled: blue
+base_retries_s:
+  - 419
+  - 369
+  - 16
+  - 416
+default_window_count:
+  - 303
+  - 181
+  - 194
