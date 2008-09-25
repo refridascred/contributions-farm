@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((double)count >= 6.56) && ((3 * 5) >= datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 7726;
+        public const double BurstBudget = 10.01;
+        public const long DefaultLevel = 5099;
+        public const long LimitTimeout = 235;
+        public const double SoftInterval = 48.48;
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] values)
