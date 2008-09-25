@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Accumulate entry samples.</summary>
