@@ -20,12 +20,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a profile graph value against two limits.</summary>
+        public static long ClassifyProfileGraph(long origin, long seed)
         {
-            Idle,
-            Failed,
-            Locked,
+            if (seed < (origin % 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (1.3 - 13.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first graph support entry that matches the target.</summary>
