@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long mix = -902;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 2) + (mix / 8)) % 101) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < (-662))
-            {
-                mix = (mix + (mix + mix)) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
