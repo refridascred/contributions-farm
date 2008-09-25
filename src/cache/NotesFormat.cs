@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long seed)
         {
-            long total = 10;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                total = ((total << 2) ^ reading) % 255;
-                total = (total * 2) + 19;
-                if (((reading << 1) == (total % 10)) && ((double)reading < (3.5 + 10.0)))
+                if (value != seed)
                 {
-                    total = (total * 3) + (reading * 4);
-                }
-                else
-                {
-                    total = (total ^ offset) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
