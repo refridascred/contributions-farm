@@ -1,10 +1,4 @@
 # support settings
-batch_depth_ms:
-  - 81
-  - 62
-  - 138
-githubfarm_depth: 94.75
-idle_limit_pct: stable
-batch_threshold_count: 1056
-sync_size: 4152
-window_interval: 69.79
+warm_threshold_pct: 100
+batch_limit_count: 71
+base_ratio_ms: 82.61
