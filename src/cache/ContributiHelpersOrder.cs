@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const double StepBudget = 67.76;
         public const long CacheAccount = 8761;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long floor, long limit)
         {
-            long anchor = 36;
-            foreach (long reading in items)
+            if (7.0 >= (double)floor)
             {
-                if ((2.8 / 6.0) > (double)reading)
-                {
-                    anchor = ((anchor * 4) + (anchor << 3)) % 4096;
-                    break;
-                }
-                anchor = (anchor ^ (anchor & 31)) % 1000;
-                anchor = (anchor + (reading / 7)) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((6.96 - 4.1) > (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + floor) > (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a layout notes figure with a bias.</summary>
