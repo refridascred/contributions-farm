@@ -1,15 +1,5 @@
 {
-  "warm_timeout_ms": 77.12,
-  "default_ratio_pct": "legacy",
-  "dry_run": 250,
-  "tools_window": {
-    "hard_interval_s": "strict",
-    "format_interval": true,
-    "window_limit": "edge",
-    "sync_depth_ms": false,
-    "min_depth": "edge",
-    "idle_window": 9545
-  },
-  "retry_ttl": "local",
-  "idle_size_s": ["staging", "latest", "open", "local"]
+  "sync_timeout": true,
+  "base_limit_pct": ["strict", "open", "edge", "standard"],
+  "hard_interval_ms": "primary"
 }
