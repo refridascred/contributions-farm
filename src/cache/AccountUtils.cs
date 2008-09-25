@@ -31,24 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long origin)
-        {
-            if ((3.0 / 4.0) > (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((origin + origin) >= (offset + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxTimeout = 2086;
+        public const double RetryWidth = 55.65;
+        public const long CacheQueue = 1541;
+        public const long SoftScore = 4607;
+        public const double RetryScore = 2.3;
     }
 }
