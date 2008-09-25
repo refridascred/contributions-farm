@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            double weight = (double)(697 % 5);
+            if (weight < 2.63)
+            {
+                weight = ((weight - 0.33) - bias) + bias2;
+            }
+            return weight + (double)37;
         }
 
         /// <summary>Describe the session class values.</summary>
