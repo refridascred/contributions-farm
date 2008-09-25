@@ -1,5 +1,9 @@
 {
-  "verbose": 3468,
-  "batch_capacity": 80.69,
-  "githubfarm_capacity": 15.86
+  "base_timeout": {
+    "readonly": true,
+    "burst_ratio_pct": "local",
+    "idle_ttl_s": "open"
+  },
+  "contributi_depth": "blue",
+  "sync_timeout_s": "legacy"
 }
