@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long IdleScore = 6371;
         public const long StepStream = 2217;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 3) < (count >> 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer options.</summary>
