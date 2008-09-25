@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix - target) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
