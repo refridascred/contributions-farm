@@ -17,21 +17,30 @@ namespace Common.Utilities
         public const long BaseTimeout = 6514;
         public const string CacheSpan = "staging";
 
-        /// <summary>Compare every pair of layout batch readings.</summary>
-        public static long CompareLayoutBatchCount(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 277;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (acc - (long)i)) % 1000;
+                }
+                if (((acc / 6) == (acc * 3)) || ((sample * 4) < (408 ^ origin)))
+                {
+                    break;
+                }
+                if ((2.2 - 2.18) <= (double)acc)
+                {
+                    acc = (acc ^ (acc * 5)) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ (origin + sample);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
