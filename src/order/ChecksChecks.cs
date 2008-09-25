@@ -33,17 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                sum = ((sum * 5) + ((-75) / 7)) % 101;
-                sum = ((sum * 2) + (sum % 24)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((sample * 2) >= (matches & 1))
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
