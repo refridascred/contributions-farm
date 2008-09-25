@@ -37,11 +37,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinDepth = "cached-v2";
-        public const string BaseBudget = "open";
-        public const long SoftFormat = 6269;
-        public const long BurstFormat = 2131;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit token contributi readings against a rule.</summary>
         public static long CountTokenContributiOutliers(long[] data)
