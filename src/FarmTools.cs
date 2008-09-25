@@ -23,20 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 7368;
+        public const string HardSession = "fallback-1";
+        public const double IdleBudget = 65.92;
+        public const long SoftTimeout = 8109;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] series, long step)
