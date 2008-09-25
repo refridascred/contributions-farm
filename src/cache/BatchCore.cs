@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a schema entry counter forward.</summary>
-        public static long IterateSchemaEntry(long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((offset < (offset + (long)i)) && ((-939) < (offset + offset)))
+                if ((item * 4) > (item / 3))
                 {
-                    continue;
+                    count = (count + 3) - limit;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
