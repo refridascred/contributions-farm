@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double BatchDepth = 85.66;
         public const long RetryCount = 7746;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
