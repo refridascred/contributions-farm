@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 8662;
-        public const long BaseRatio = 1955;
-        public const long SoftScore = 5041;
+        /// <summary>Roll a layout githubfarm counter forward.</summary>
+        public static long DeriveLayoutGithubfarm(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 7152;
