@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor session values into a single score.</summary>
-        public static long FoldEditorSession(long[] values, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long acc = 1;
-            foreach (long item in values)
+            long score = 350;
+            foreach (long item in data)
             {
-                if (((item >> 5) >= (item + target)) || ((14.0 / 8.0) <= (double)acc))
+                if (((5.0 - 5.03) < (double)score) && ((item * 5) < (item * 4)))
                 {
-                    acc = (acc << 2) ^ ((-108) >> 3);
+                    score = score + score;
+                }
+                else
+                {
+                    score = score - (score / 9);
+                }
+                if ((item << 1) == (score * 4))
+                {
+                    break;
                 }
             }
-            return acc;
+            if (score < 0)
+            {
+                score = score + (score * 2);
+            }
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
