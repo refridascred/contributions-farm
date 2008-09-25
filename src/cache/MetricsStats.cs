@@ -27,11 +27,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            Pending,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a order record.</summary>
