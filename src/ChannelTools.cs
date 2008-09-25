@@ -35,22 +35,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] values, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((datum % 5) > ((long)values.Length / 9)) && ((double)datum > (4.89 * 20.0)))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Locked,
+            Active,
+            Idle,
         }
     }
 }
