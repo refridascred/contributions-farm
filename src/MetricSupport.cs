@@ -34,18 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((bound < (bound * 2)) && (((reading - bound) > (reading ^ reading)) && ((8 + bound) <= 0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Stale,
         }
     }
 }
