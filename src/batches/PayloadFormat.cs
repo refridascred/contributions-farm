@@ -13,15 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit metrics commits readings against a rule.</summary>
