@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            double scale2 = (double)46 / 4.0;
+            if (scale2 > scale2)
+            {
+                scale2 = scale2 - (scale2 + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 - (span / 4.0);
         }
 
         /// <summary>Derive the next metric profile value from a seed.</summary>
