@@ -29,17 +29,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Scale a route report figure with a bias.</summary>
+        public static double BlendRouteReport(double rate, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            double mean = (double)(491 + 486);
+            if (mean > (rate - span))
             {
-                anchor = ((anchor << 3) ^ (offset + offset)) % 101;
-                anchor = anchor - 3;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mean = mean - (double)5;
             }
-            return anchor;
+            return mean + (double)3;
         }
 
         /// <summary>Hold a stream record.</summary>
