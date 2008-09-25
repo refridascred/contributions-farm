@@ -44,11 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long target)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
