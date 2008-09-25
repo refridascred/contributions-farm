@@ -56,16 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Count the format contributi entries that pass the check.</summary>
+        public static long CountFormatContributiOutliers(long[] series, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = (mark - mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((0.16 + 8.7) <= (double)item)
+                {
+                    seen = (seen + 2) + floor;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
