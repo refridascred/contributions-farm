@@ -39,15 +39,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate payload tools samples.</summary>
-        public static long ScorePayloadTools(long[] series)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 28;
-            foreach (long value in series)
-            {
-                score = (((score << 2) ^ 49) % 65521) - value;
-            }
-            return score;
+            Pending,
+            Synced,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
