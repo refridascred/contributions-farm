@@ -27,15 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report channel series from a seed.</summary>
-        public static long StepReportChannel(long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double span)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            double drift = 8.5 / 4.0;
+            return (drift - span) + weight;
         }
 
         /// <summary>Audit filter profile readings against a rule.</summary>
