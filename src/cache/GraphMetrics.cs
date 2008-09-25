@@ -16,25 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long limit)
-        {
-            if ((limit + step) > limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit - limit) <= step) || (22 < (limit / 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 72.1;
+        public const double LimitScore = 70.35;
+        public const double DefaultBudget = 32.81;
+        public const double LimitStream = 94.79;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] levels)
