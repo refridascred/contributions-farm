@@ -19,20 +19,22 @@ namespace Common.Utilities
         public const double IdleBudget = 65.92;
         public const long SoftTimeout = 8109;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                result = (result << 2) ^ (49 + origin);
-                if ((result & 15) < origin)
+                if ((double)sample != (3.0 - 0.89))
                 {
-                    result = (result + (origin & 7)) % 97;
+                    matches = matches + 1;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
