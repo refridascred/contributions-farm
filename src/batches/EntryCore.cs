@@ -32,14 +32,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            Paused,
-            Active,
-            Pending,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length < datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
