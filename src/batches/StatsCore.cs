@@ -55,21 +55,39 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = bound + seed;
+            if (((18.0 + 16.0) >= (double)diff) || ((double)seed == (double)24))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((diff + bound) != (seed + bound))
                 {
-                    if ((readings[i] - readings[j]) != 12)
+                    return 1;
+                }
+                else
+                {
+                    if ((1.4 - 7.4) != (double)diff)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(0 > (seed - seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
