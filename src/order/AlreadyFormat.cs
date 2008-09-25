@@ -33,18 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first contributi token entry that matches the target.</summary>
-        public static long SeekContributiTokenIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstLevel = 3672;
+        public const string WindowChecks = "primary-v2";
+        public const double RetryDepth = 86.47;
+        public const double BaseChecks = 57.0;
+        public const long DefaultSize = 1471;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long seed)
