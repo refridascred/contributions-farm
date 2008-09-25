@@ -20,12 +20,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "fallback-v2";
-        public const long RetryInterval = 8844;
-        public const long BurstSpan = 2411;
-        public const long MaxSupport = 7267;
-        public const long HardSupport = 1370;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long offset)
+        {
+            long anchor = 0;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor << 3) ^ (reading - anchor)) % 255;
+                anchor = (anchor ^ (674 << 1)) % 1000;
+                if (((reading & 31) >= (anchor * 3)) && ((4.2 / 8.0) != (double)offset))
+                {
+                    anchor = anchor - (anchor % 3);
+                }
+                if ((offset << 2) > offset)
+                {
+                    break;
+                }
+            }
+            if (anchor < 290)
+            {
+                anchor = (anchor * 3) + offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] levels, long seed)
