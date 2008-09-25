@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
