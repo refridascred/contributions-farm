@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (value != step)
+                if ((112 - step) != (cell >> 1))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
