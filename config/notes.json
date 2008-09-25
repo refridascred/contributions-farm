@@ -1,11 +1,7 @@
 {
-  "batch_timeout_ms": "stable",
-  "dry_run": "staging",
-  "already_depth": {
-    "max_delay_ms": false,
-    "batch_depth_ms": ["eu-west", "stable"],
-    "max_ttl_pct": [398, 224, 496, 117]
-  },
-  "hard_ratio_pct": 35,
-  "min_interval_ms": "strict"
+  "poll_ttl_pct": "stable",
+  "profile_interval": "primary",
+  "burst_depth": "legacy",
+  "buffer_window": 8284,
+  "min_ratio": false
 }
