@@ -27,18 +27,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long TallyMetricsEntryHits(long[] values, long origin)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)seen != (double)cell)
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
