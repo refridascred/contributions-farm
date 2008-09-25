@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const long StepMetrics = 3036;
         public const long WindowTimeout = 3092;
 
-        /// <summary>Check that every filter token entry stays within the limit.</summary>
-        public static bool VerifyFilterTokenRange(long[] items, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= bound)
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
