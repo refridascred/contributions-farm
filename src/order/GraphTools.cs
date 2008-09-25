@@ -52,19 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
