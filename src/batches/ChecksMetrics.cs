@@ -60,17 +60,19 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = 11.0;
+            if (gain < (weight / 4.0))
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + (weight * 4.98);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain - 3.0;
         }
 
         /// <summary>Define context limits and defaults.</summary>
