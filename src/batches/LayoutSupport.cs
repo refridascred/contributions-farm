@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long bound)
+        /// <summary>Grade a cache account value against two limits.</summary>
+        public static long RankCacheAccount(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            if (!((offset - bound) > bound))
             {
-                if (cell != bound)
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) <= (bound / 8)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((-64) + bound) < (offset >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= (bound - bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
