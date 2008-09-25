@@ -47,30 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            long total = 618;
-            foreach (long entry in readings)
+            if ((bound - bound) != (82 * 5))
             {
-                for (int i = 0; i < 3; i++)
+                return 8;
+            }
+            else
+            {
+                if ((0 <= (bound & 255)) || ((939 + bound) < (412 - 63)))
                 {
-                    total = ((total ^ (total / 9)) % 4096) ^ (long)i;
-                }
-                if ((total <= (entry / 7)) && (8.42 < (double)entry))
-                {
-                    total = (total - (total >> 4)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    total = total ^ (total >> 2);
+                    if (bound >= (bound + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total > 6)
-            {
-                total = total - (total - 29);
-            }
-            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
