@@ -40,10 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "open";
-        public const double MinCount = 6.7;
-        public const string BatchGraph = "cached-1";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long target, long offset)
+        {
+            long cur = target + offset;
+            if ((939 - cur) > (offset ^ target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.55 * 4.66) >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] levels, long floor)
