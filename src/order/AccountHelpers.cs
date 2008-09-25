@@ -42,22 +42,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] items, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                if (!((8 > item) && ((item + count) > (offset % 60))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix - (mix - mix)) % 1000) + reading;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
