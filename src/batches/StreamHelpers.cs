@@ -55,39 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long limit2)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            long delta = limit + limit2;
-            if (((limit2 - limit) >= (limit2 ^ 1)) && (limit2 < (limit - limit)))
+            double rate = bias * 18.0;
+            if (rate <= span)
             {
-                return 8;
+                rate = rate + (rate + span);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((delta << 1) >= (5 + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit2 > (limit2 - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 >> 2) > delta)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                rate = (rate - (rate * 20.0)) + (double)(long)i;
             }
+            return rate + (double)(-41);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
