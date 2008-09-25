@@ -44,12 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 7858;
-        public const double HardFarm = 18.02;
-        public const string DefaultRatio = "legacy-v2";
-        public const long WindowFarm = 868;
-        public const long RetryFarm = 9694;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long step)
