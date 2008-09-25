@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9654;
-        public const long WindowContributi = 688;
-        public const string CacheScore = "cached-edge";
-        public const double DefaultRatio = 52.61;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long limit)
+        {
+            long lane = target ^ limit;
+            if (!(limit >= (target & 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)target >= (1.5 * 12.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ limit) < (lane & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long origin, long seed)
