@@ -30,26 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long TallyToolsFilter(long[] samples)
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool ValidateNotesBatchesLimits(long[] values, long offset)
         {
-            long sum = 64;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((double)(long)samples.Length <= (8.03 - 7.33))
+                if (cell != offset)
                 {
-                    sum = ((sum * 2) + (value << 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ 417) % 65521;
-                }
-                if ((value & 255) >= (value + value))
-                {
-                    sum = (sum << 2) ^ (value + value);
+                    found = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
     }
 }
