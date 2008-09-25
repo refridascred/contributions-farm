@@ -1,5 +1,19 @@
 {
-  "hard_timeout_s": true,
-  "compress": 83,
-  "dry_run": 30
+  "sync_ttl_ms": {
+    "flush_interval_count": 40.08,
+    "graph_depth": 100,
+    "contributi_retries": {
+      "soft_delay_count": 65.9,
+      "notes_retries": ["fallback", "green"],
+      "dry_run": 1024,
+      "min_ttl": ["local", "cached"]
+    },
+    "enabled": 4189,
+    "cache_capacity": ["cached", "local"],
+    "idle_window_ms": 15.24
+  },
+  "compress": "primary",
+  "base_interval_pct": true,
+  "max_interval_ms": [197, 451, 375, 307],
+  "stats_depth": ["eu-west", "local", "stable", "green"]
 }
