@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long origin, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] readings, long origin)
         {
-            if (((double)limit == (7.31 * 8.4)) && ((origin + limit) > (limit << 2)))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((limit + limit) < (origin << 2)))
+                if (reading < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
