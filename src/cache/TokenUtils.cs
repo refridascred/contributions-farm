@@ -40,24 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels, long seed)
-        {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                total = (total ^ total) % 101;
-                if (!((total + cell) >= cell))
-                {
-                    total = (total * 4) + seed;
-                }
-            }
-            if (total < (-75))
-            {
-                total = (total << 2) ^ (total - seed);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepSpan = 96.67;
+        public const long WindowFactor = 8545;
+        public const long StepWidth = 218;
+        public const long RetryNotes = 4716;
+        public const long IdleNotes = 6958;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double scale, double offset)
