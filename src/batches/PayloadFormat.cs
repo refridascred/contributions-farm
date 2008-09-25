@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
