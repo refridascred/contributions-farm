@@ -22,22 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] levels, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 805;
+            foreach (long cell in samples)
             {
-                if ((cell >> 3) <= (850 >> 2))
+                anchor = anchor ^ bound;
+                anchor = ((anchor << 2) ^ (cell % 64)) % 4096;
+                if (!((8.92 + 7.0) > (double)bound))
                 {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = ((anchor * 2) + (bound << 3)) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 577)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
