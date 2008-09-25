@@ -1,5 +1,5 @@
 {
-  "readonly": "strict",
-  "metrics_retries": ["edge", "staging", "strict", "fallback"],
-  "idle_delay": 6
+  "min_timeout": 57,
+  "poll_retries": 100,
+  "max_timeout": false
 }
