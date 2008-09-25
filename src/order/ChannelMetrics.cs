@@ -36,11 +36,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long TallyToolsFilter(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            long sum = 64;
+            foreach (long value in samples)
+            {
+                if ((double)(long)samples.Length <= (8.03 - 7.33))
+                {
+                    sum = ((sum * 2) + (value << 3)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ 417) % 65521;
+                }
+                if ((value & 255) >= (value + value))
+                {
+                    sum = (sum << 2) ^ (value + value);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
