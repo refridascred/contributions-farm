@@ -1,22 +1,6 @@
 # githubfarm settings
-cache_delay:
-  dry_run: open
-  default_interval_s:
-    - 145
-    - 276
-  batch_capacity_s: 9216
-  batch_threshold: 9199
-verbose: false
-default_limit_count: 68
-retry_depth: strict
-route_timeout: 62.29
-max_window_ms:
-  soft_interval_pct: 39.97
-  poll_retries: 22.68
-  counter_limit: legacy
-  buffer_timeout:
-    editor_size: 47
-    min_limit_s: 3200
-    soft_timeout: cached
-    batch_interval_s: 50
-    soft_capacity_count: 100
+stream_size: strict
+batch_ttl:
+  - 383
+  - 435
+graph_size: staging
