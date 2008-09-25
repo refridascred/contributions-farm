@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((score + score) == (score * 4)))
+                {
+                    score = (score - (score - offset)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
