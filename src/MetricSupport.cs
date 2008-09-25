@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metrics stream samples are out of range.</summary>
-        public static long CountMetricsStreamGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((6.13 - 18.0) != (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSize = 7167;
+        public const long IdleCommand = 2539;
+        public const double BatchRatio = 32.26;
+        public const double BurstSpan = 48.72;
+        public const long IdleLevel = 8922;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] data, long offset)
