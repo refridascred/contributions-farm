@@ -35,19 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] samples, long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < offset)
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
