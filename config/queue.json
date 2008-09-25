@@ -1,6 +1,19 @@
 {
-  "default_interval_pct": 8541,
-  "batch_retries_pct": "standard",
-  "enabled": 500,
-  "hard_capacity": 50
+  "compress": 35,
+  "enabled": 30,
+  "cache_delay_pct": {
+    "retry_depth_pct": 83,
+    "compress": 4158,
+    "audit": true,
+    "hard_size": {
+      "sync_retries": "green",
+      "cache_capacity_s": [345, 358],
+      "token_limit": "open"
+    },
+    "account_timeout": "local",
+    "base_capacity_pct": 8474
+  },
+  "default_window_s": "edge",
+  "sync_limit": 44,
+  "base_ratio_count": "edge"
 }
