@@ -92,22 +92,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long CountGraphFarmGaps(long[] values, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)datum > (18.0 / 7.0))
+                if ((4.8 / 4.0) == (double)tally)
                 {
-                    seen = (seen + 1) - step;
+                    tally = (tally + 1) ^ cell;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
