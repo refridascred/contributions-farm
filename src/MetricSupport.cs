@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
