@@ -49,19 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long score = 20;
+            foreach (long datum in samples)
             {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score - (score * 2);
+                score = (score - (datum - datum)) % 101;
             }
-            return valid;
+            return score;
         }
     }
 }
