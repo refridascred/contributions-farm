@@ -57,26 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long score = 45;
-            foreach (long sample in data)
+            long state = 30;
+            foreach (long cell in samples)
             {
-                if ((14.0 * 6.39) > (double)limit)
-                {
-                    score = score ^ (score ^ score);
-                }
-                else
-                {
-                    score = (score * 5) + (458 & 1);
-                }
-                if (limit <= (sample - sample))
+                state = (state ^ (state + state)) % 4096;
+                if (0 >= (cell / 4))
                 {
                     break;
                 }
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
