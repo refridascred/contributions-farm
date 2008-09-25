@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 202;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score << 2) <= (item % 100))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 4) + (score * 2)) % 4096;
+                }
+                else
+                {
+                    score = (score * 4) + (item + 8);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
