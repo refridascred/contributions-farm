@@ -24,30 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data, long seed)
         {
-            long anchor = 409;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((-5) - item) >= 377)
+                if ((item - 800) >= 8)
                 {
-                    anchor = (anchor - (661 / 5)) % 255;
-                }
-                if ((item * 3) == (item + anchor))
-                {
-                    anchor = anchor ^ (anchor / 5);
+                    hits = (hits + 3) - seed;
                 }
                 else
                 {
-                    anchor = (anchor ^ 0) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 322)
-            {
-                anchor = (anchor + (anchor / 7)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
