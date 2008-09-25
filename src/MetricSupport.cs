@@ -15,20 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long score = 3;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (((score * 4) + (score % 5)) % 255) ^ (long)i;
-                }
-                score = score + (value >> 2);
-                score = (score - (value + floor)) % 255;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
