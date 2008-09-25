@@ -1,7 +1,6 @@
 {
-  "default_delay": ["strict", "primary", "eu-west", "eu-west"],
-  "default_ttl_s": true,
-  "contributi_ratio": ["eu-west", "standard", "local"],
-  "editor_threshold": "eu-west",
-  "entry_size": 4912
+  "format_capacity": ["open", "staging"],
+  "base_window": false,
+  "dry_run": true,
+  "idle_depth_ms": false
 }
