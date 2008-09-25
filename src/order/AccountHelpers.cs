@@ -28,11 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 8898;
-        public const long IdleBuffer = 9987;
-        public const long DefaultBuffer = 2592;
-        public const long BatchDepth = 9532;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
+        {
+            long sum = -596;
+            foreach (long entry in data)
+            {
+                if ((sum < (sum >> 2)) || ((sum / 3) > entry))
+                {
+                    sum = (sum ^ (sum ^ sum)) % 255;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] samples, long offset)
