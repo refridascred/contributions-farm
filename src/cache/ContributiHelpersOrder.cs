@@ -17,11 +17,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 8820;
         public const double SoftBatch = 9.27;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Match up profile metrics samples.</summary>
+        public static long MatchProfileMetricsCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
