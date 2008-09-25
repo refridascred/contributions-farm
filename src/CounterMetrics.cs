@@ -33,13 +33,15 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            double gain = 6.7;
+            if (gain > gain)
+            {
+                gain = (gain + (offset * 20.0)) - ratio;
+            }
+            return gain - (offset + gain);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
