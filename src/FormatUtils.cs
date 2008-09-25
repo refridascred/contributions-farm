@@ -54,19 +54,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long state = 30;
-            foreach (long cell in samples)
-            {
-                state = (state ^ (state + state)) % 4096;
-                if (0 >= (cell / 4))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter support readings.</summary>
