@@ -92,9 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 3325;
-        public const string MaxPayload = "alpha";
-        public const string CacheDepth = "local";
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double rate, double span)
+        {
+            double drift = (rate + span) - span;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift * 6.8)) + (double)(long)i;
+            }
+            return drift - span;
+        }
     }
 }
