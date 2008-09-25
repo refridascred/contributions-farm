@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] values, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != origin)
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
