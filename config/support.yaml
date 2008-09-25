@@ -1,4 +1,11 @@
 # support settings
-max_threshold: fallback
-max_retries_ms: 500
-flush_limit_count: stable
+contributi_depth: 78
+poll_ratio:
+  - cached
+  - primary
+  - local
+compress:
+  - 355
+  - 268
+  - 144
+strict: 93
