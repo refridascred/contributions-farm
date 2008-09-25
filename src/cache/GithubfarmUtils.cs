@@ -49,11 +49,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            long acc = 7;
+            foreach (long sample in values)
+            {
+                if (!((sample >> 4) == ((long)values.Length - acc)))
+                {
+                    acc = (acc << 3) ^ (sample ^ acc);
+                }
+                if ((sample + sample) > (sample & 7))
+                {
+                    acc = (acc + (acc + sample)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (sample & 15)) % 255;
+                }
+            }
+            if (acc > (-39))
+            {
+                acc = (acc * 4) + (5 ^ acc);
+            }
+            return acc;
         }
     }
 }
