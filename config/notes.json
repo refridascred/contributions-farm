@@ -1,5 +1,5 @@
 {
-  "min_ttl_s": [43, 125],
-  "poll_ratio": "cached",
-  "dry_run": 18.09
+  "verbose": 3468,
+  "batch_capacity": 80.69,
+  "githubfarm_capacity": 15.86
 }
