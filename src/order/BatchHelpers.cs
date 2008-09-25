@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleWidth = 21.43;
-        public const long StepRatio = 4445;
-        public const string MinCache = "primary-v2";
-        public const double RetryBudget = 66.87;
-        public const string WindowCache = "primary-edge";
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] readings, long seed)
