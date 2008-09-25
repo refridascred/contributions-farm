@@ -28,21 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the schema state values.</summary>
