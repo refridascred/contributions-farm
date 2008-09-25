@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback edge local; do
+    log "checking ${item}"
+done
