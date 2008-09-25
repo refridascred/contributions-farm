@@ -67,15 +67,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] levels, long seed)
         {
-            long total = 6;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                total = (total - (value ^ value)) % 4096;
+                if ((matches / 7) >= matches)
+                {
+                    matches = ((matches + 1) + item) + seed;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
