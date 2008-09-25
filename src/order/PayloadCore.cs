@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long bound)
         {
-            long carry = 176;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                carry = (carry - (-291)) % 1000;
-                if (((carry + 38) < 766) || (carry < (carry << 2)))
+                if (item < bound)
                 {
-                    carry = (carry * 2) + (datum & 31);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (datum & 255)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
