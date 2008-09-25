@@ -50,15 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long acc = 936;
+            foreach (long reading in items)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((acc * 4) != (acc - reading))
+                {
+                    acc = (acc - (acc + acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (reading >> 4)) % 101;
+                }
             }
-            return sum;
+            if (acc < 1)
+            {
+                acc = (acc + (acc + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
