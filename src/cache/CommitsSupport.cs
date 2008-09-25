@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "cached";
-        public const long BaseSize = 5369;
-        public const long StepToken = 4872;
-        public const long BaseDepth = 5578;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 88.58;
+        public const long SoftInterval = 3090;
+        public const string BurstTimeout = "alpha";
+        public const string WindowBudget = "primary-edge";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] samples, long step)
