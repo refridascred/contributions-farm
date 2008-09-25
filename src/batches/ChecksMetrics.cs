@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const string CacheScore = "cached-edge";
         public const double DefaultRatio = 52.61;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Idle,
-            Locked,
-            Draft,
-            Synced,
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
