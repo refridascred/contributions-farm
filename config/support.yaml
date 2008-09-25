@@ -1,11 +1,4 @@
 # support settings
-base_limit_count: false
-hard_interval_s: false
-graph_window:
-  - open
-  - eu-west
-  - local
-persist:
-  - 3
-  - 223
-  - 476
+burst_timeout_s: true
+audit: latest
+soft_size: 5735
