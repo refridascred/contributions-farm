@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
