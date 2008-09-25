@@ -28,28 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long seed)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = 65;
-            foreach (long cell in data)
-            {
-                if ((double)cell > 13.0)
-                {
-                    mark = mark - (seed - cell);
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + (seed + (-1))) % 4096;
-                }
-                mark = (mark ^ seed) % 101;
-            }
-            if (mark > 56)
-            {
-                mark = (mark << 3) ^ (5 - mark);
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
