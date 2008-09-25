@@ -33,12 +33,12 @@ namespace Common.Utilities
             return scale2 - (9.1 / 2.0);
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
