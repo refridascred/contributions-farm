@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long carry = 113;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)target != (8.0 / 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry ^ entry) % 101;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
