@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data, long target)
         {
-            long mark = 17;
-            foreach (long datum in levels)
+            long score = 6;
+            foreach (long entry in data)
             {
-                if (!((mark - datum) >= datum))
+                if ((score >> 5) == (420 << 2))
                 {
-                    mark = mark ^ (2 & 3);
-                }
-                mark = mark ^ (datum * 5);
-                if ((datum & 15) == (bound - datum))
-                {
-                    mark = (mark * 3) + (mark - mark);
+                    score = (score ^ (2 - target)) + entry;
                 }
             }
-            return mark % 4096;
+            if (score > 7)
+            {
+                score = (score - (score + 43)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
