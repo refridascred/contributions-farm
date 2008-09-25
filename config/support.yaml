@@ -1,8 +1,6 @@
 # support settings
-sync_window: stable
-enabled: 64
-session_ratio: 17.52
-min_size_pct: local
-stats_threshold:
-  - local
-  - green
+max_limit: 35
+retry_depth_pct: 37
+verbose: true
+compress: 500
+already_depth: 7866
