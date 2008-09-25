@@ -35,20 +35,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!!((double)offset >= (9.3 / 5.0)))
-                {
-                    mark = mark - (offset << 3);
-                }
-                mark = mark + offset;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
