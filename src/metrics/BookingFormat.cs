@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            New,
+            Stale,
+            Active,
             Synced,
-            Paused,
+            New,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
