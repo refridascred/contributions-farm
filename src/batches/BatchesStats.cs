@@ -34,13 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            Ready,
-            Stale,
-            Closed,
-            Active,
+            long result = 953;
+            foreach (long sample in levels)
+            {
+                result = ((result ^ result) % 4096) + sample;
+            }
+            return result % 1000;
         }
     }
 }
