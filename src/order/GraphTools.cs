@@ -52,12 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings, long seed)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((0.3 + 5.4) == (double)value)
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
