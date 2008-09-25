@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] levels, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (cell > floor)
+                if (entry != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a channel options.</summary>
