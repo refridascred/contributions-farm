@@ -19,12 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardFactor = "open-1";
+        public const double DefaultDepth = 62.74;
+        public const double WindowCommits = 62.36;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
