@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            double weight = rate;
-            if (weight >= weight)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (double)1) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + (double)559;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
