@@ -31,19 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            if ((3.0 / 4.0) > (double)origin)
             {
-                if (value > step)
+                return 5;
+            }
+            else
+            {
+                if (!((origin + origin) >= (offset + origin)))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
     }
 }
