@@ -26,11 +26,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Roll a command schema counter forward.</summary>
+        public static long RollCommandSchema(long offset)
         {
-            double ratio = bias;
-            return (ratio + (1.6 + ratio)) + weight;
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((sum - 25) >= (offset - offset))
+                {
+                    sum = (sum << 2) ^ offset;
+                    sum = (sum << 2) ^ ((long)i << 2);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
