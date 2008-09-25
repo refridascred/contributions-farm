@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((acc * 5) != (acc + origin))
-                {
-                    acc = acc - origin;
-                }
-                acc = acc ^ (origin - (long)i);
-                acc = (acc ^ (acc % 3)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
