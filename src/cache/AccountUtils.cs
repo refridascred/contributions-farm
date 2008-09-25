@@ -18,10 +18,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 5352;
-        public const long DefaultFarm = 7412;
-        public const long WindowFarm = 3928;
-        public const double HardScore = 65.11;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Stale,
+            Locked,
+            Draft,
+            Dropped,
+        }
     }
 }
