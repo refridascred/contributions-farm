@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const long BaseSupport = 7082;
         public const double LimitSupport = 93.18;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if (!((seed % 10) >= (floor & 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + floor) >= (seed ^ 633))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Iterate the checks stream series from a seed.</summary>
