@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long IdleScore = 6371;
         public const long StepStream = 2217;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long carry = 274;
-            foreach (long entry in readings)
-            {
-                if (12.0 < (double)entry)
-                {
-                    carry = carry - (-6);
-                }
-                if (((-72) << 1) >= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 895)
-            {
-                carry = (carry + floor) % 101;
-            }
-            return carry % 4096;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
