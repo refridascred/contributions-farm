@@ -63,9 +63,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardWidth = 632;
-        public const double BaseLayout = 92.67;
-        public const long CacheScore = 985;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
