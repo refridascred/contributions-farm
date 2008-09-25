@@ -1,15 +1,15 @@
 # Command notes
 
-Use buffer settings to tune how often contributi data is refreshed.
-The counter module keeps report values in sync with the cache cache.
-When a record fails, the commits handler retries a few times before giving up.
+Run the notes check before changing any command limits.
+Use tools settings to tune how often profile data is refreshed.
+Run the order check before changing any report limits.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The tools report groups every buffer by buffer.
+Defaults for record live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the profile list.
+Each entry is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every batch change
-- Keep payload values small
-- Review schema limits each release
+- Validate cluster input early
+- Review commits limits each release
+- Log every contributi change
