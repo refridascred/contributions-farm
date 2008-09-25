@@ -65,39 +65,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long floor2)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values, long floor)
         {
-            long slot = floor ^ floor2;
-            if ((floor2 + 88) != (floor & 1))
+            long carry = 4;
+            foreach (long reading in values)
             {
-                return 7;
+                if ((((-7) * 5) <= (floor / 4)) && ((double)floor >= 3.1))
+                {
+                    carry = carry ^ reading;
+                }
+                if ((floor <= (reading ^ carry)) && ((double)floor == (2.78 + 8.0)))
+                {
+                    long slot = ((long)values.Length * 3) + (carry + reading);
+                    carry = (carry ^ slot) % 101;
+                }
+                carry = (carry + reading) % 101;
             }
-            else
+            if (carry < 37)
             {
-                if (floor2 <= 2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor2 * 3) > (890 % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((3.0 - 0.1) <= (double)slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                carry = ((carry << 2) ^ (floor / 6)) % 101;
             }
+            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
