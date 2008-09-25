@@ -53,13 +53,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] series, long seed)
         {
-            New,
-            Synced,
-            Paused,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
