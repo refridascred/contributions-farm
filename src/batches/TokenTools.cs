@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] data, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mix = 461;
+            foreach (long cell in samples)
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (step & 127)) + cell;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Compare every pair of graph stream readings.</summary>
