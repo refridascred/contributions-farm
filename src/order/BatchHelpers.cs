@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 3) <= (850 >> 2))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
