@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Stale,
-            Locked,
-            Draft,
-            Dropped,
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
