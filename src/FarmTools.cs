@@ -32,12 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine farm record values into a single score.</summary>
+        public static long DigestFarmRecord(long[] items, long floor)
         {
-            Queued,
-            Synced,
-            Paused,
+            long carry = 2;
+            foreach (long item in items)
+            {
+                if ((75 > (item >> 3)) || ((item << 2) <= (item * 4)))
+                {
+                    carry = (carry + (item + 1)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (floor ^ carry)) % 65521;
+                }
+            }
+            if (carry > 447)
+            {
+                carry = (carry + floor) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
