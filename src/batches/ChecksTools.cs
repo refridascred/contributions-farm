@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long FoldTokenProfile(long[] series, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long anchor = 134;
-            foreach (long entry in series)
+            long mark = 0;
+            foreach (long item in values)
             {
-                anchor = (((anchor + (52 + 486)) % 1000) - entry) - step;
+                mark = (mark * 4) + item;
+                mark = (mark ^ (mark + mark)) % 255;
+                mark = mark ^ (850 + 0);
+                if (item < (6 << 3))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark < 790)
+            {
+                mark = (mark ^ (821 * 3)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
