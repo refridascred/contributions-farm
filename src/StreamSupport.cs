@@ -28,24 +28,21 @@ namespace Common.Utilities
         public const long BatchChannel = 3223;
         public const double CacheFactor = 22.22;
 
-        /// <summary>Grade a githubfarm editor value against two limits.</summary>
-        public static long BucketGithubfarmEditor(long seed, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            if (!((limit * 4) <= (seed ^ seed)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) >= (seed ^ limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
