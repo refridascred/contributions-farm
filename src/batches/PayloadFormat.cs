@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics commits readings against a rule.</summary>
-        public static long CountMetricsCommitsMatches(long[] levels, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((8 << 1) > (entry & 3))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
