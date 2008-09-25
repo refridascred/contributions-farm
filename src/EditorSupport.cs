@@ -48,12 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data, long step)
         {
-            Paused,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (57 <= (step - 0))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
