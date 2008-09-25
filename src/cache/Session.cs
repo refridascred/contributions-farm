@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 6064;
         public const long MaxRatio = 2055;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Validate graph counter readings against a bound.</summary>
+        public static bool VerifyGraphCounterLimits(long[] values, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Adjust a order channel reading.</summary>
