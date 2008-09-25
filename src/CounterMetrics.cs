@@ -41,18 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = total + (limit * 2);
-                total = (total - ((long)i - total)) % 1000;
-                total = total ^ (long)i;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((item >= (tally % 64)) && ((34 >= (tally >> 2)) && (item > (long)samples.Length)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
