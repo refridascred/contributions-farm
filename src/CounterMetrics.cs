@@ -29,19 +29,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((count - reading) == (count / 8)) || ((double)count <= 6.4)) || ((double)count < (2.2 * 6.96)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 5196;
+        public const string HardCount = "strict";
+        public const string BurstSize = "legacy-edge";
+        public const long LimitCluster = 249;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] samples)
