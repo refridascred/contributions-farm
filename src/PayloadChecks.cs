@@ -42,23 +42,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long bound)
         {
-            double bias = (gain - 4.0) + gain;
-            if (bias < gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + gain) - offset;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (gain / 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias + (gain * 4.9);
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
