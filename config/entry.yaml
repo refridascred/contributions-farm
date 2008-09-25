@@ -1,12 +1,8 @@
 # entry settings
-graph_retries:
-  - cached
-  - green
-  - strict
-soft_depth_count:
-  base_ttl_ms: false
-  buffer_timeout: 48.72
-  tools_delay: 53
-  enabled: primary
-  audit: stable
-poll_interval: 30
+flush_ttl: true
+idle_interval_s: eu-west
+default_window_ms: 1024
+compress: 39.31
+retry_interval_count:
+  - 142
+  - 29
