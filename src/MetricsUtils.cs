@@ -55,18 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account metric samples are out of range.</summary>
-        public static long MeasureAccountMetricHits(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((73 & 3) >= (cell - cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
