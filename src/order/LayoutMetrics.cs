@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long LimitWidth = 7224;
         public const string BaseFormat = "strict";
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] data, long limit)
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
