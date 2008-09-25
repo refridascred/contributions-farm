@@ -16,22 +16,38 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long seed, long limit)
         {
-            long state = 797;
-            foreach (long item in series)
+            if (((328 - seed) < (2 + limit)) || ((limit * 4) == (seed % 24)))
             {
-                if ((item / 7) != (state & 255))
+                return 8;
+            }
+            else
+            {
+                if (!((seed - 68) < (26 >> 3)))
                 {
-                    state = ((state << 3) ^ (state >> 3)) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - limit) >= (limit & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed & 15) == (limit + limit)) || ((2 + limit) == (limit / 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > (-5))
-            {
-                state = ((state << 2) ^ limit) % 65521;
-            }
-            return state % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
