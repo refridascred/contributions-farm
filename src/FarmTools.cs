@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const double IdleBudget = 65.92;
         public const long SoftTimeout = 8109;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data)
         {
-            Idle,
-            Paused,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((14.0 / 6.0) > (double)datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
