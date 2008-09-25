@@ -47,16 +47,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series)
-        {
-            long mark = 72;
-            foreach (long value in series)
-            {
-                mark = (mark * 3) + (value + mark);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 6126;
+        public const long MinFormat = 3471;
+        public const string CacheFormat = "legacy-edge";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] items)
