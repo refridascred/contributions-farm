@@ -1,8 +1,6 @@
 # githubfarm settings
-max_ttl_ms: 13.32
-batch_size: open
-cache_retries: 31.37
-default_interval_s:
-  - blue
-  - stable
-  - open
+sync_depth_pct: staging
+hard_size: false
+flush_ttl_s: false
+sync_interval_ms: false
+max_window_pct: standard
