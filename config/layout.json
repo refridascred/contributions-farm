@@ -1,7 +1,11 @@
 {
-  "format_ttl": 8.25,
-  "layout_limit": false,
-  "verbose": "blue",
-  "support_threshold": 4,
-  "strict": false
+  "max_size": 3464,
+  "support_delay": [351, 182, 213, 141],
+  "flush_limit_pct": {
+    "cache_window_s": 9823,
+    "default_limit_pct": ["fallback", "blue"],
+    "stats_depth": true,
+    "cache_ratio_s": ["latest", "staging", "standard"]
+  },
+  "retry_ratio_pct": 10
 }
