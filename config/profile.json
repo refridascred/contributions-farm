@@ -1,19 +1,6 @@
 {
-  "graph_capacity": 250,
-  "cluster_capacity": "staging",
-  "dry_run": {
-    "schema_limit": "stable",
-    "hard_retries": {
-      "cache_window": "open",
-      "idle_retries_s": "primary",
-      "checks_limit": 92,
-      "batch_limit": 30,
-      "command_size": false,
-      "cache_ttl_pct": 1024
-    },
-    "hard_size": 26,
-    "flush_delay_s": 64,
-    "poll_interval_s": "eu-west"
-  },
-  "contributi_timeout": 86
+  "layout_retries": 1024,
+  "record_delay": "edge",
+  "burst_threshold_count": 2788,
+  "soft_ttl_ms": 7077
 }
