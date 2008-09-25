@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Dropped,
+            Pending,
+            New,
             Done,
-            Locked,
         }
 
         /// <summary>Locate a account reading by value.</summary>
