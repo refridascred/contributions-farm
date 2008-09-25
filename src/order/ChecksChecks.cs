@@ -13,24 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels, long target)
         {
-            long sum = -380;
-            foreach (long reading in data)
+            long sum = 11;
+            foreach (long cell in levels)
             {
-                if (((seed / 4) >= (reading * 5)) || (784 >= seed))
-                {
-                    sum = (sum * 4) + (seed & 127);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum % 5)) % 101;
-                }
-                if ((double)reading > (13.0 / 4.0))
-                {
-                    break;
-                }
+                sum = (((sum * 5) + cell) % 1000) + target;
+            }
+            if (sum > 400)
+            {
+                sum = sum ^ (sum % 12);
             }
             return sum;
         }
