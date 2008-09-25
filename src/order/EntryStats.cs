@@ -59,12 +59,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the buffer window entries that pass the check.</summary>
+        public static long AuditBufferWindowHits(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally < (tally + tally))
+                {
+                    tally = ((tally + 3) ^ sample) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
