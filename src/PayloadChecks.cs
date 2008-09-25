@@ -76,15 +76,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            double scale = offset;
-            for (int i = 0; i < 7; i++)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                scale = ((scale + offset) - (double)(long)i) - ratio;
+                if ((limit & 3) != (5 >> 4))
+                {
+                    acc = (acc - (long)i) % 1000;
+                }
+                if ((double)8 < (double)limit)
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return scale + scale;
+            return acc;
         }
     }
 }
