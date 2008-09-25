@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series, long bound)
-        {
-            long acc = 45;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (((acc << 3) ^ cell) % 4096) ^ (long)i;
-                }
-                if (acc < (bound ^ 337))
-                {
-                    acc = (acc + (acc & 15)) % 255;
-                }
-            }
-            if (acc < 792)
-            {
-                acc = (acc << 2) ^ bound;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5877;
+        public const long LimitWidth = 7224;
+        public const string BaseFormat = "strict";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
