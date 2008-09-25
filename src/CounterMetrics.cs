@@ -39,21 +39,19 @@ namespace Common.Utilities
             return load - 3.3;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = bias;
+            if (drift <= 3.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (double)97) - scale;
             }
-            return count;
+            else
+            {
+                drift = drift - (double)2;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
