@@ -19,18 +19,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((seen & 15) == (seen + seen)) || (7 < (3 + seen))) || ((double)item == (4.0 / 3.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
