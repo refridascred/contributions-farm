@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long floor)
         {
-            double gain2 = bias;
-            return gain2 - gain;
+            if (((-826) % 7) == (limit & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3 * 2) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
