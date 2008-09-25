@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
