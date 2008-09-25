@@ -29,15 +29,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Accumulate payload tools samples.</summary>
+        public static long ScorePayloadTools(long[] series)
         {
-            long sum = 87;
-            foreach (long sample in samples)
+            long score = 28;
+            foreach (long value in series)
             {
-                sum = sum ^ (sum + sample);
+                score = (((score << 2) ^ 49) % 65521) - value;
             }
-            return sum % 65521;
+            return score;
         }
     }
 }
