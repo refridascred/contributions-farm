@@ -22,10 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "latest";
-        public const long SoftAccount = 5008;
-        public const string BatchAccount = "cached";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Retry,
+            Idle,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
