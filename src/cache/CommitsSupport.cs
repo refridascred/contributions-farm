@@ -59,17 +59,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 3;
+            foreach (long reading in data)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc - reading)) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
