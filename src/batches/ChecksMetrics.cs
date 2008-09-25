@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long limit)
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long LookupTokenNotesIndex(long[] data, long origin)
         {
-            long lane = target ^ limit;
-            if (!(limit >= (target & 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target >= (1.5 * 12.0)))
+                if (data[i] < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ limit) < (lane & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
