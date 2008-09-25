@@ -87,18 +87,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 4) > (count & 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
