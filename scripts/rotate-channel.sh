@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=281
+CHANNEL_LIMIT=431
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west cached strict primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-blue}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
