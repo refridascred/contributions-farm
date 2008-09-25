@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] series, long floor)
+        /// <summary>Project the next window graph value.</summary>
+        public static double AdjustWindowGraph(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = ratio * 4.5;
+            return (scale + (double)400) + span;
         }
 
         /// <summary>Validate format metrics readings against a bound.</summary>
