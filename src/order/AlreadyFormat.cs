@@ -53,32 +53,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long result = -52;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= (long)readings.Length)
-                {
-                    result = (result - (829 << 3)) % 65521;
-                    result = ((result * 5) + (cell / 5)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (cell * 5)) % 4096;
-                }
-                result = (result + (cell - cell)) % 97;
-                if ((3.0 + 2.5) < (double)cell)
-                {
-                    result = (result - cell) % 97;
-                }
-                else
-                {
-                    result = result + (result >> 3);
-                }
+                score = ((score << 3) ^ 324) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return result % 1000;
+            return score;
         }
     }
 }
