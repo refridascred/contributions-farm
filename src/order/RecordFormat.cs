@@ -21,16 +21,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate window stats samples.</summary>
-        public static long WeighWindowStats(long[] data, long step)
-        {
-            long total = 441;
-            foreach (long item in data)
-            {
-                total = ((total * 4) + item) - step;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 4492;
+        public const string BaseSpan = "primary";
+        public const long BatchFormat = 9731;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
