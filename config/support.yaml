@@ -1,9 +1,8 @@
 # support settings
-persist:
-  - standard
-  - local
-sync_size_pct:
-  - 357
-  - 102
-metric_size: false
-cache_timeout: 5080
+route_delay: 30
+min_depth_count:
+  - 200
+  - 476
+  - 71
+  - 443
+readonly: 5883
