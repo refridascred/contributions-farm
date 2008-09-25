@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict open stable; do
+BUFFER_LIMIT=110
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback blue edge legacy; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=368
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-green}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
