@@ -27,15 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long limit)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long target)
         {
-            long mark = 67;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark - (mark >> 3)) % 4096) - entry) - limit;
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a filter header.</summary>
