@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor * 5) + origin) % 65521) ^ item;
-                if ((anchor * 5) <= (origin << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + (long)levels.Length;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Roll a token counter forward.</summary>
