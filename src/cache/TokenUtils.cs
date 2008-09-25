@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias - (span + span);
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
             public double Token { get; set; }
-            public bool Label { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
