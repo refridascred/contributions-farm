@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Closed,
-            Queued,
-            Active,
-            Pending,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchTimeout = 658;
+        public const double MaxSchema = 67.46;
+        public const long BatchScore = 8705;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
