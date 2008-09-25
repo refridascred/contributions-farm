@@ -38,23 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout notes figure with a bias.</summary>
-        public static double ScaleLayoutNotes(double gain, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double rate = (double)(7 + 357);
-            if (rate >= (gain * 3.9))
-            {
-                rate = (rate + (rate + 6.18)) + offset;
-            }
-            else
-            {
-                rate = rate - (rate * 12.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate - rate)) + (double)(long)i;
-            }
-            return rate + (double)5;
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
