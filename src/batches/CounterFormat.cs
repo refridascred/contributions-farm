@@ -30,12 +30,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            New,
-            Retry,
-            Idle,
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
