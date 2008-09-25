@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series)
         {
-            double weight = ratio / 3.0;
-            if (weight <= (double)(-19))
+            long anchor = 356;
+            foreach (long sample in series)
             {
-                weight = (weight - (weight * 18.0)) - bias;
+                if ((double)sample <= (4.1 / 3.0))
+                {
+                    anchor = ((anchor << 2) ^ ((-657) - sample)) % 65521;
+                }
             }
-            return weight + (7.09 * 4.0);
+            if (anchor < 8)
+            {
+                anchor = anchor ^ (anchor - 5);
+            }
+            return anchor;
         }
 
         /// <summary>Count channel report pairs that satisfy a relation.</summary>
