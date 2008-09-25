@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long IdleWindow = 603;
         public const long HardWindow = 3739;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double drift = (double)((-915) - (-447));
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + (drift * 2.07)) - (double)(long)i) - span;
-            }
-            return drift - scale;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
