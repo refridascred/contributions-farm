@@ -1,11 +1,20 @@
 {
-  "warm_window": "staging",
-  "hard_window_s": {
-    "compress": false,
-    "hard_ttl_s": 100,
-    "report_retries": [34, 457]
+  "burst_capacity_pct": false,
+  "idle_capacity_pct": 36.71,
+  "poll_delay": {
+    "warm_size_pct": "open",
+    "audit": {
+      "profile_delay": 73.1,
+      "checks_window": 29,
+      "soft_depth": "staging",
+      "warm_ratio_ms": 3081,
+      "tools_limit": 83.09
+    },
+    "max_delay_ms": ["edge", "green"],
+    "verbose": "blue",
+    "base_threshold_count": true,
+    "sync_interval_s": "fallback"
   },
-  "dry_run": [256, 235],
-  "cluster_threshold": 1652,
-  "metrics_size": 48
+  "burst_depth_ms": false,
+  "flush_retries_count": 1343
 }
