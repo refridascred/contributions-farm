@@ -1,5 +1,6 @@
 {
-  "metrics_capacity": 90,
-  "retry_retries": false,
-  "warm_delay_s": 54.75
+  "verbose": ["eu-west", "edge"],
+  "flush_threshold_ms": ["blue", "stable"],
+  "retry_ratio": "legacy",
+  "warm_window": ["open", "blue", "edge"]
 }
