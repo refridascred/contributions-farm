@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 37;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor * 2) + (item % 16);
+                if (!(7.53 < (double)anchor))
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
