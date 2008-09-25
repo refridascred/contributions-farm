@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] readings, long floor)
+        /// <summary>Roll a notes context counter forward.</summary>
+        public static long IterateNotesContext(long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < floor)
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of entry metric entries.</summary>
