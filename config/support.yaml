@@ -1,21 +1,12 @@
 # support settings
-enabled: 4.03
-commits_retries: 24
-warm_interval: true
-min_size: false
-burst_size_s:
-  persist:
-    enabled:
-      - edge
-      - legacy
-      - legacy
-    metrics_delay: false
-    format_timeout:
-      - legacy
-      - standard
-    cache_limit: blue
-    poll_threshold_ms: 51
-  cache_size_pct: 13.45
-  metrics_interval: false
-  enabled: false
-  queue_window: blue
+hard_delay_pct:
+  - 46
+  - 175
+  - 199
+  - 481
+payload_threshold: edge
+already_depth:
+  - 457
+  - 163
+  - 95
+context_window: legacy
