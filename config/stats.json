@@ -1,5 +1,7 @@
 {
-  "min_timeout": [434, 370, 39],
-  "layout_depth": 8.69,
-  "default_window_s": 62.6
+  "audit": "open",
+  "persist": "staging",
+  "hard_threshold_ms": "fallback",
+  "warm_size_s": 100,
+  "base_depth": false
 }
