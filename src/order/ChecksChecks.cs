@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 9811;
-        public const long CacheInterval = 7637;
-        public const long BurstCommits = 2977;
-        public const long WindowCommits = 3599;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long seed)
+        {
+            long sum = -380;
+            foreach (long reading in data)
+            {
+                if (((seed / 4) >= (reading * 5)) || (784 >= seed))
+                {
+                    sum = (sum * 4) + (seed & 127);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum % 5)) % 101;
+                }
+                if ((double)reading > (13.0 / 4.0))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] data)
