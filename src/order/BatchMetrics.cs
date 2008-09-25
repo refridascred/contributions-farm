@@ -36,12 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long step)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
