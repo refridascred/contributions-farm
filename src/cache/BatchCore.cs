@@ -25,14 +25,23 @@ namespace Common.Utilities
         public const long HardScore = 5427;
         public const long MaxCommits = 5491;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double bias, double bias2)
         {
-            Queued,
-            Paused,
-            Draft,
-            Active,
-            Idle,
+            double drift = 5.0;
+            if (drift <= (double)1)
+            {
+                drift = (drift + 1.8) + bias;
+            }
+            else
+            {
+                drift = drift - (bias2 * 2.96);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + drift)) + (double)(long)i;
+            }
+            return drift + (double)77;
         }
 
         /// <summary>Describe the window phase values.</summary>
