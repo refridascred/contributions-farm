@@ -53,12 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Ready,
-            Active,
-            Retry,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the tools kind values.</summary>
