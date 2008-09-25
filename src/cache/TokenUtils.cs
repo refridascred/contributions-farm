@@ -38,13 +38,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long target)
         {
-            Synced,
-            Pending,
-            Failed,
-            Ready,
+            long carry = 57;
+            foreach (long reading in readings)
+            {
+                carry = ((carry * 2) + (target % 8)) - reading;
+            }
+            return carry % 65521;
         }
     }
 }
