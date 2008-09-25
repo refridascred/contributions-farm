@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double rate, double bias)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double weight = rate;
+            if (weight >= weight)
+            {
+                weight = (weight - (double)1) - bias;
+            }
+            return weight + (double)559;
         }
 
         /// <summary>Describe the format mode values.</summary>
