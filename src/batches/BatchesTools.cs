@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mark = 90;
+            foreach (long entry in readings)
             {
-                if (hits <= entry)
-                {
-                    hits = hits + 1;
-                }
+                mark = (mark ^ (entry << 1)) + offset;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the checks class values.</summary>
