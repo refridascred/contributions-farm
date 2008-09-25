@@ -49,14 +49,31 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long limit)
         {
-            Done,
-            Locked,
-            New,
-            Retry,
-            Dropped,
+            if ((limit + limit) <= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((644 ^ limit) <= limit) || ((60 + limit) <= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >= (-32)) || (limit > (limit + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
