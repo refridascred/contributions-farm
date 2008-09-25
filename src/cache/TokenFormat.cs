@@ -37,12 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 2083;
+        public const long BurstRatio = 2872;
+        public const long SoftCount = 3865;
+        public const long StepScore = 5046;
+        public const string RetryFactor = "open-v2";
     }
 }
