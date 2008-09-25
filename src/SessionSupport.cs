@@ -26,21 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session report pairs that satisfy a relation.</summary>
-        public static long MatchSessionReportCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = seed - step;
+            if ((double)143 <= (double)gap)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (gap <= (seed + 3))
                 {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
