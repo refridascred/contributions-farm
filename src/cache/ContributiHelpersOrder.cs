@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up profile record samples.</summary>
-        public static long CompareProfileRecordCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitLevel = 5921;
+        public const long BaseAccount = 3233;
+        public const double StepBudget = 67.76;
+        public const long CacheAccount = 8761;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] items)
