@@ -15,39 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a githubfarm batches value against two limits.</summary>
-        public static long SortGithubfarmBatches(long bound, long floor)
+        /// <summary>Match up account cluster samples.</summary>
+        public static long OverlapAccountClusterCount(long[] readings)
         {
-            long bound2 = bound ^ floor;
-            if ((6.39 + 15.0) >= (double)bound)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound2 == (3.4 - 16.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 1) > (bound2 - bound))
+                    if ((readings[i] - readings[j]) > 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound2 > (floor + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
