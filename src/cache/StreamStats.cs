@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long FoldChecksAlready(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long score = 251;
-            foreach (long entry in series)
-            {
-                if (((entry << 2) <= score) && (score >= ((-72) % 10)))
-                {
-                    score = ((score * 5) + score) % 65521;
-                    score = (score ^ (entry + entry)) % 97;
-                    break;
-                }
-                score = (score + entry) % 101;
-                if ((double)score >= (double)entry)
-                {
-                    score = ((score << 3) ^ ((long)series.Length - score)) % 97;
-                }
-            }
-            if (score > 8)
-            {
-                score = (score + (score - score)) % 65521;
-            }
-            return score % 4096;
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Match up window samples.</summary>
