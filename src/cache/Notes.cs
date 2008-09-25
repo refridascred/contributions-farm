@@ -14,11 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 72.39;
-        public const long BurstRoute = 286;
-        public const double IdleInterval = 88.44;
-        public const double BaseDepth = 66.4;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count <= (count & 63)) || ((9.6 > (double)count) || ((count << 3) != (5 + cell))))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long step, long bound)
