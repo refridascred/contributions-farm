@@ -39,22 +39,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = 395;
+            foreach (long item in items)
             {
-                if ((967 & 7) > (value - tally))
+                if (((16 % 5) <= ((long)items.Length / 2)) || ((sum - sum) > (offset + offset)))
                 {
-                    tally = tally + 3;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum + 875) % 101) ^ item;
+                sum = sum - (long)items.Length;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
