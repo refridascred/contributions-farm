@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            Stale,
+            Active,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a contributi header.</summary>
