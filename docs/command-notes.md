@@ -1,15 +1,15 @@
 # Command notes
 
-Keep notes and metrics names short and lowercase.
-Run the profile check before changing any graph limits.
+The cluster module keeps schema values in sync with the farm cache.
+Each counter is validated before it reaches the channel queue.
+Each entry is validated before it reaches the profile queue.
 
-When a account fails, the buffer handler retries a few times before giving up.
-Keep already and batch names short and lowercase.
-Keep session and schema names short and lowercase.
+When a support fails, the batch handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every report change
-- Prefer profile defaults
-- Document new buffer fields
+- Document new support fields
+- Keep account values small
+- Log every schema change
