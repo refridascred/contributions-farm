@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
