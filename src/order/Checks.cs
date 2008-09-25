@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long CountOrderAccountGaps(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (!((59 << 3) != (8 + sample)))
+                if (datum <= target)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
