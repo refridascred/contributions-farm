@@ -33,12 +33,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count schema account pairs that satisfy a relation.</summary>
+        public static long PairSchemaAccountCount(long[] values)
         {
-            Failed,
-            Paused,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
