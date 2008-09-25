@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Retry,
-            Done,
-            Draft,
-            Paused,
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
