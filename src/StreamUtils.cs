@@ -99,9 +99,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchInterval = 45.8;
-        public const string MaxStream = "alpha-v2";
-        public const double LimitStream = 77.61;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
