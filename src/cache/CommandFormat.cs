@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (values[i] > origin)
+                if ((double)matches < (5.4 / 3.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ item) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
