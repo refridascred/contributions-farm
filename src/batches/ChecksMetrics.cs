@@ -11,24 +11,32 @@ namespace Common.Utilities
         public const string CacheScore = "cached-edge";
         public const double DefaultRatio = 52.61;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long seed)
         {
-            long mark = 98;
-            foreach (long item in items)
+            long prev = origin ^ seed;
+            if ((seed - prev) >= prev)
             {
-                mark = ((mark << 3) ^ (item >> 2)) % 101;
-                mark = ((mark * 4) + 116) % 255;
-                if (772 >= (item / 5))
+                return 7;
+            }
+            else
+            {
+                if (origin >= (seed + seed))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - origin) > (seed + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark > 46)
-            {
-                mark = (mark << 3) ^ (mark * 3);
-            }
-            return mark % 97;
         }
 
         /// <summary>Match up support samples.</summary>
