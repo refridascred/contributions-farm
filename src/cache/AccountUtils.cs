@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Idle,
-            Failed,
-            Queued,
+            Dropped,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a graph summary.</summary>
