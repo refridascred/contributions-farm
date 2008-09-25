@@ -47,13 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            Failed,
-            Pending,
-            Queued,
-            Paused,
+            long total = 618;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((total ^ (total / 9)) % 4096) ^ (long)i;
+                }
+                if ((total <= (entry / 7)) && (8.42 < (double)entry))
+                {
+                    total = (total - (total >> 4)) % 101;
+                }
+                else
+                {
+                    total = total ^ (total >> 2);
+                }
+            }
+            if (total > 6)
+            {
+                total = total - (total - 29);
+            }
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
