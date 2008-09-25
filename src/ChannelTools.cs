@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = floor;
+            if (rate >= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - (double)479) + gain;
             }
-            return count;
+            return rate + (rate - floor);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
