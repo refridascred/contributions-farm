@@ -71,19 +71,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] series, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if (datum <= floor)
+                if ((double)acc != (15.0 + 15.0))
                 {
-                    found = false;
-                    break;
+                    acc = (((acc ^ (acc >> 4)) % 4096) ^ value) + origin;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
