@@ -29,19 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] series, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long acc = 34;
+            foreach (long value in items)
             {
-                if (sample >= target)
+                if ((((long)items.Length + 44) < (acc - value)) && ((value << 3) < 916))
                 {
-                    valid = false;
+                    acc = ((acc * 4) + (value & 31)) % 65521;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (value + value);
+                }
+                if (((-7) <= (acc & 127)) || ((acc & 15) <= acc))
+                {
                     break;
                 }
+                else
+                {
+                    acc = acc ^ value;
+                }
+                acc = (acc + (73 - 37)) % 1000;
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
