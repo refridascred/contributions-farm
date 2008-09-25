@@ -36,14 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Done,
-            New,
-            Active,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 4569;
+        public const long MinWindow = 6888;
+        public const string BaseWindow = "cached";
 
         /// <summary>Roll a farm batch counter forward.</summary>
         public static long RollFarmBatch(long origin)
