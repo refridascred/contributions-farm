@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long MaxCache = 2371;
         public const double MinCache = 87.23;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long step)
         {
-            Synced,
-            Paused,
-            Pending,
-            Active,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
