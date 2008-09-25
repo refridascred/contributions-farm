@@ -20,12 +20,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Active,
-            Synced,
-            Draft,
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every buffer route entry stays within the limit.</summary>
