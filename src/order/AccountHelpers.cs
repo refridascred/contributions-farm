@@ -15,17 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = floor - target;
+            if ((3.0 + 9.0) == (double)lane)
             {
-                if (series[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((9 >> 5) < floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
