@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepWidth = 985;
+        public const string MinFactor = "staging";
+        public const long BurstBatch = 3296;
+        public const long WindowBatch = 5561;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
