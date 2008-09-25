@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long bound)
         {
-            if ((478 < (seed / 5)) && ((double)origin <= 5.7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + seed) > seed)
+                if (samples[i] < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > (3.74 - 1.25))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
