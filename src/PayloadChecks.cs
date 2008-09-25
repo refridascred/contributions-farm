@@ -67,23 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double bias, double bias2)
         {
-            long carry = 903;
-            foreach (long datum in series)
+            double drift = bias2;
+            if (drift < 8.2)
             {
-                carry = ((carry * 2) + floor) % 255;
-                if (10.0 <= (double)carry)
-                {
-                    carry = (carry + (carry + datum)) % 1000;
-                }
+                drift = (drift - (bias2 + drift)) + bias;
             }
-            if (carry > (-7))
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 4) + ((-527) + carry)) % 101;
+                drift = drift + (double)(long)i;
             }
-            return carry % 4096;
+            return drift - (double)7;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
