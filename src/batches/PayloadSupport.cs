@@ -26,14 +26,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long RollEntryToken(long floor)
         {
-            Closed,
-            Done,
-            Draft,
-            Paused,
-            Failed,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
