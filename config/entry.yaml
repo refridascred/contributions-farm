@@ -1,4 +1,11 @@
 # entry settings
-flush_ttl_s: 1359
-max_retries_pct: true
-notes_delay: 76.27
+tools_capacity:
+  - 75
+  - 178
+  - 237
+verbose: blue
+editor_ttl:
+  - primary
+  - local
+  - staging
+already_window: edge
