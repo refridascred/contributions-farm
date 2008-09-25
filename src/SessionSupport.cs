@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long offset)
+        /// <summary>Fold a list of editor order readings.</summary>
+        public static long ScoreEditorOrder(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long value in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if ((-8) < (9 - limit))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ value;
                 }
+                else
+                {
+                    state = ((state << 2) ^ (limit - value)) % 255;
+                    state = (state ^ (value ^ 1)) % 255;
+                }
+                state = state + (927 & 255);
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Rank session githubfarm input into a small class.</summary>
