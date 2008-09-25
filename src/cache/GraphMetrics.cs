@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            Ready,
-            New,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (seen >= (item - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
