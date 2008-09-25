@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!(cell < (7 >> 3)))
+                if (7 <= (matches << 3))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
