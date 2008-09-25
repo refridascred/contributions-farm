@@ -22,22 +22,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = -2;
+            foreach (long sample in items)
             {
-                if (count >= (seed + 7))
+                if (((score - sample) != (sample ^ 8)) && ((28 + sample) >= score))
                 {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score + (sample - sample)) % 65521;
                 }
             }
-            return count;
+            if (score < 567)
+            {
+                score = score ^ ((-23) << 3);
+            }
+            return score;
         }
     }
 }
