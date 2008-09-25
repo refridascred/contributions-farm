@@ -1,62 +1,6 @@
 # githubfarm settings
-batch_timeout_pct: 70.83
-account_retries:
-  batch_ratio: staging
-  warm_depth_pct: edge
-  retry_retries_ms: 97.33
-  soft_limit:
-    batch_window: primary
-    default_interval_count: 89.81
-    compress: 9338
-  cache_interval:
-    - 266
-    - 49
-    - 114
-    - 283
-  poll_limit_ms:
-    batch_retries_ms: true
-    hard_interval:
-      - 479
-      - 100
-      - 286
-    retry_timeout_count: local
-    hard_depth_s: open
-batch_threshold:
-  warm_ratio: blue
-  warm_depth_s: 89.18
-  hard_interval_ms: local
-  batch_timeout_pct: 51
-  session_retries:
-    - strict
-    - primary
-    - local
-    - legacy
-  command_interval:
-    - 497
-    - 135
-    - 378
-poll_size_count: legacy
-min_depth_s:
-  token_ratio: green
-  retry_delay_pct:
-    command_interval:
-      - 343
-      - 388
-      - 13
-    idle_timeout_pct: primary
-    compress: 71.25
-    burst_depth_pct: 250
-    soft_interval_pct: true
-    sync_limit_ms: 96
-  poll_ratio_count: 67
-  editor_capacity:
-    - standard
-    - blue
-    - local
-  poll_retries:
-    - 248
-    - 124
-command_capacity:
-  strict: 44.32
-  retry_delay_s: green
-  soft_timeout_s: legacy
+max_interval: eu-west
+poll_delay_count: standard
+poll_ratio: edge
+enabled: 6.26
+default_ttl_s: 6701
