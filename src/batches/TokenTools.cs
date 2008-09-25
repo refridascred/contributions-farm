@@ -28,12 +28,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series, long origin)
         {
-            Ready,
-            Done,
-            Locked,
+            long carry = 48;
+            foreach (long value in series)
+            {
+                carry = (((carry << 3) ^ (origin / 5)) % 1000) ^ value;
+            }
+            return carry % 65521;
         }
     }
 }
