@@ -40,24 +40,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long origin)
+        /// <summary>Derive the next profile metric value from a seed.</summary>
+        public static long IterateProfileMetric(long step)
         {
-            if ((double)origin > (9.7 + 9.63))
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.0 + 5.5) != (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
     }
 }
