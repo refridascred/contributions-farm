@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the editor command series from a seed.</summary>
-        public static long StepEditorCommand(long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            double bias = weight;
+            if (bias < span)
             {
-                if ((10.0 + 13.0) > (double)acc)
-                {
-                    acc = (acc << 3) ^ (target >> 1);
-                }
-                if (7.0 >= (double)acc)
-                {
-                    acc = (acc - (471 + target)) % 65521;
-                    acc = acc + target;
-                }
-                else
-                {
-                    acc = acc - (acc << 1);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                bias = bias - (double)778;
             }
-            return acc;
+            else
+            {
+                bias = bias + (2.0 / 4.0);
+            }
+            return bias - (span + span);
         }
 
         /// <summary>Describe the token status values.</summary>
