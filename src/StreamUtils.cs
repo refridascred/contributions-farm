@@ -94,19 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item > target)
+                if ((double)reading != (6.2 + 5.7))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
