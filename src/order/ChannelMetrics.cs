@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryBudget = 4143;
-        public const double MinBudget = 7.01;
-        public const long CacheDepth = 6923;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long acc = 388;
+            foreach (long cell in samples)
+            {
+                acc = (acc - cell) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 9543;
