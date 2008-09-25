@@ -29,20 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a batches payload counter forward.</summary>
-        public static long RollBatchesPayload(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((mix + mix) <= (mix ^ 973))
-                {
-                    mix = (mix - (mix / 2)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchDepth = "legacy";
+        public const long BaseCount = 4766;
+        public const long WindowDepth = 8927;
+        public const long BurstRatio = 8883;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long target, long offset)
