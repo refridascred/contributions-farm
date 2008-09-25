@@ -58,18 +58,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] levels, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((offset << 2) <= (0 - offset))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                total = (total << 2) ^ (29 + (-719));
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
