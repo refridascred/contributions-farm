@@ -17,10 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5082;
-        public const long LimitTimeout = 7615;
-        public const double LimitCount = 68.57;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
