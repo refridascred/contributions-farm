@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "stable-1";
         public const string HardGithubfarm = "fallback-v2";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((939 - entry) == (count * 4))
+                if (entry >= origin)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
