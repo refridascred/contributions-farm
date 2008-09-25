@@ -50,10 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 9301;
-        public const string LimitTimeout = "staging-v2";
-        public const long BurstInterval = 7682;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long FoldMetric(long[] series)
