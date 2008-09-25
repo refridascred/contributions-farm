@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Iterate the cluster profile series from a seed.</summary>
+        public static long SeriesClusterProfile(long floor)
         {
-            long acc = 27;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)acc == (double)cell)
-                {
-                    acc = (acc - (acc - 66)) % 65521;
-                }
-                acc = acc - (acc & 127);
-                if (!((acc % 24) == (acc % 64)))
-                {
-                    break;
-                }
+                total = ((total << 3) ^ floor) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (58 - acc);
-            }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Match up already metrics samples.</summary>
