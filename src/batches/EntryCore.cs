@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            long state = 212;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                state = (state << 2) ^ (state / 2);
-                state = (state << 2) ^ state;
-                if ((state ^ state) > (state + reading))
+                if (0.42 >= (double)count)
                 {
-                    break;
+                    count = (count + 1) ^ value;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
