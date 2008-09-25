@@ -68,18 +68,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long WeighCounterSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 152;
+            foreach (long value in levels)
             {
-                if (((entry % 2) >= 9) || (18.0 < (double)entry))
+                if (((-432) < (value >> 3)) && ((3.0 / 5.0) > (double)value))
                 {
-                    matches = matches + 3;
+                    score = (score + (score / 5)) % 101;
                 }
             }
-            return matches;
+            if (score > 80)
+            {
+                score = (score - (score << 2)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the notes level values.</summary>
