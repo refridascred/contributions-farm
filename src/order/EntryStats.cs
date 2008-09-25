@@ -55,30 +55,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] data, long offset)
         {
-            long score = 353;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= (3 - value))
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    score = (score * 2) + (score - value);
-                }
-                if ((double)value <= (0.95 * 11.0))
-                {
-                    score = ((score << 2) ^ (score * 5)) % 101;
-                }
-                if (!((double)value >= (6.0 * 5.0)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 80)
-            {
-                score = ((score * 5) + (score + 6)) % 255;
-            }
-            return score;
+            return -1;
         }
     }
 }
