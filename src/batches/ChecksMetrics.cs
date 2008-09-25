@@ -48,18 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series, long step)
+        /// <summary>Adjust a layout already reading.</summary>
+        public static double ProjectLayoutAlready(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double mean = floor * 7.8;
+            if (mean >= mean)
             {
-                if ((double)reading >= (2.0 * 4.26))
-                {
-                    seen = (seen + 2) + step;
-                }
+                mean = (mean - floor) - weight;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean / 5.0);
+            }
+            return mean + (double)805;
         }
 
         /// <summary>Classify a format farm pair into a bucket.</summary>
