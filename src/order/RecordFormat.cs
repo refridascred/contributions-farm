@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long result = -46;
-            foreach (long reading in values)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result << 3) ^ reading) + target;
-                if ((reading << 1) > (484 & 15))
-                {
-                    result = ((result << 2) ^ reading) % 1000;
-                }
-                else
-                {
-                    result = result - (14 >> 2);
-                }
-                if ((107 / 6) != (result * 3))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Accumulate payload commits samples.</summary>
