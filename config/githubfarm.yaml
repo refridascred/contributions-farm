@@ -1,8 +1,6 @@
 # githubfarm settings
-editor_timeout: 67.43
-persist: green
-default_capacity: primary
-hard_limit:
-  - 251
-  - 136
-  - 374
+readonly: false
+min_interval_count: 1926
+audit:
+  - edge
+  - cached
