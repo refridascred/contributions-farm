@@ -1,6 +1,16 @@
 # support settings
-sync_ratio_s: 30
-default_interval: true
-default_depth: 84.34
-contributi_ttl: 1287
-contributi_ratio: 5982
+graph_delay:
+  - 493
+  - 251
+  - 202
+  - 191
+default_ttl: 62.03
+idle_limit_count: true
+sync_delay:
+  burst_ttl_pct: 100
+  route_ratio: false
+  base_limit: 60
+  hard_window_pct: stable
+  buffer_limit: blue
+  flush_window: 88.8
+cluster_capacity: false
