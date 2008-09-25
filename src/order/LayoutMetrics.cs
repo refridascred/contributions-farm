@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (origin2 < (origin2 & 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin2) > (origin2 ^ origin2))
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
