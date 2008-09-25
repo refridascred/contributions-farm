@@ -16,12 +16,18 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels, long limit)
         {
-            Idle,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits / 9) != (limit >> 3))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
