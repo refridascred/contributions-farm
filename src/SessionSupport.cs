@@ -32,25 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] series, long step)
         {
-            long gap = seed - step;
-            if ((double)143 <= (double)gap)
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (gap <= (seed + 3))
+                if (value != step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
