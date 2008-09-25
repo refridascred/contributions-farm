@@ -24,25 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long offset = bound - step;
-            if ((offset ^ bound) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 2) != (bound >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Stale,
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
