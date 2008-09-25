@@ -52,13 +52,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long origin)
         {
             bool ready = true;
-            foreach (long cell in values)
+            foreach (long item in data)
             {
-                if (cell >= floor)
+                if (item < origin)
                 {
                     ready = false;
                     break;
