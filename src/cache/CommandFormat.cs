@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long seed)
-        {
-            long state = 185;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    state = state + datum;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 6320;
+        public const long BaseSpan = 1990;
+        public const string BaseWidth = "open-v2";
+        public const long BaseFarm = 1226;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] values)
