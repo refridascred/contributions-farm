@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] values, long floor)
+        /// <summary>Locate a editor cache reading by value.</summary>
+        public static long LocateEditorCacheIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value ^ floor) == (value - value))
+                if (samples[i] == step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a channel options.</summary>
