@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long BatchCache = 5755;
         public const long HardCache = 718;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the tools commits entries that pass the check.</summary>
+        public static long TallyToolsCommitsHits(long[] items)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (7.0 - 13.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
