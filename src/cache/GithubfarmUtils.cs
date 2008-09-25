@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix - target) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinLevel = 6092;
+        public const string RetrySpan = "alpha";
+        public const double HardCommand = 75.14;
+        public const long IdleCommand = 5488;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsOutliers(long[] values)
