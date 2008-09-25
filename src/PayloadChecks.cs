@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] items)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches >> 2) == (139 & 15))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
