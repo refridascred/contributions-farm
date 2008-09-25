@@ -23,24 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long origin2)
+        /// <summary>Count the tools session entries that pass the check.</summary>
+        public static long CountToolsSessionHits(long[] levels)
         {
-            if (origin2 < (origin2 & 3))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin2) > (origin2 ^ origin2))
+                if ((long)levels.Length != (value & 127))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
