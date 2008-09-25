@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next window graph value.</summary>
-        public static double AdjustWindowGraph(double ratio, double span)
-        {
-            double scale = ratio * 4.5;
-            return (scale + (double)400) + span;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 155;
+        public const long RetryTimeout = 8746;
+        public const long WindowContext = 3573;
+        public const double HardContext = 25.07;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
