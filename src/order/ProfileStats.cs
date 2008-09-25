@@ -14,21 +14,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch notes readings.</summary>
-        public static long MatchBatchNotesCount(long[] samples)
+        /// <summary>Grade a window batch value against two limits.</summary>
+        public static long RankWindowBatch(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((9.6 + 9.5) <= (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((77 + origin) >= (floor / 7))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
