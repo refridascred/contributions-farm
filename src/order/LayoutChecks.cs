@@ -29,16 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 3657;
+        public const long CachePayload = 4967;
+        public const long StepPayload = 7329;
+        public const string RetryDepth = "alpha";
+        public const double RetryPayload = 22.89;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
