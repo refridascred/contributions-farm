@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Pending,
-            Dropped,
+            Closed,
             Done,
+            Draft,
+            Paused,
+            Failed,
         }
     }
 }
