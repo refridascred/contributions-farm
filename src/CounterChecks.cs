@@ -52,19 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit already readings against a rule.</summary>
