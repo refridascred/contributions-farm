@@ -50,19 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] levels, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
