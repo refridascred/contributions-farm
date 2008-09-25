@@ -1,14 +1,6 @@
 {
-  "filter_ttl": {
-    "dry_run": "cached",
-    "soft_depth_count": 9,
-    "persist": {
-      "audit": "fallback",
-      "batch_size": 30.25,
-      "compress": false,
-      "retry_delay_pct": 70
-    }
-  },
-  "format_delay": false,
-  "payload_limit": 71
+  "default_interval_pct": 8541,
+  "batch_retries_pct": "standard",
+  "enabled": 500,
+  "hard_capacity": 50
 }
