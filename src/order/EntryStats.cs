@@ -32,16 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Accumulate profile schema samples.</summary>
+        public static long TallyProfileSchema(long[] readings, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long result = -3;
+            foreach (long value in readings)
             {
-                result = result + (8 ^ 7);
-                result = ((result * 3) + (long)i) % 97;
+                if ((target - target) > target)
+                {
+                    result = (result * 5) + value;
+                }
             }
-            return result;
+            if (result > 97)
+            {
+                result = result ^ 1;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the commits state values.</summary>
