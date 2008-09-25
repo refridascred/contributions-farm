@@ -27,19 +27,11 @@ namespace Common.Utilities
             return (scale + (double)400) + span;
         }
 
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool VerifyFormatMetricsLimits(long[] readings, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
