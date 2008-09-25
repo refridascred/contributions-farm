@@ -28,19 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = 682;
-            foreach (long datum in series)
-            {
-                mark = ((mark * 5) + (datum - (long)series.Length)) % 4096;
-            }
-            if (mark > 6)
-            {
-                mark = (mark * 4) + 4;
-            }
-            return mark % 97;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
