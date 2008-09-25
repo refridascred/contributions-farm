@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long limit)
+        /// <summary>Classify a account farm pair into a bucket.</summary>
+        public static long BucketAccountFarm(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long offset2 = offset - step;
+            if (offset2 > (offset + offset2))
             {
-                if (sample <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((step < (step + offset2)) || ((double)step < (10.0 + 2.46)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset2 * 5) == (offset2 / 4)) || (328 > (offset - offset2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
