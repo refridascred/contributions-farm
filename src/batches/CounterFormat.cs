@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long bound)
         {
-            double bias2 = (double)(14 + 684);
-            if (bias2 < (bias2 * 3.0))
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                bias2 = (bias2 - bias2) + scale;
+                sum = (sum << 2) ^ (long)i;
+                sum = ((sum << 2) ^ (857 ^ sum)) % 255;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = ((sum - (sum + bound)) % 97) ^ (long)i2;
+                    sum = sum - sum;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - 1.9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
