@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((17.0 / 3.0) >= (double)sample)
+                if (values[i] == seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next channel stats value.</summary>
