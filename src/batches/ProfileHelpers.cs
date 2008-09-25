@@ -57,19 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double span)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double scale = (ratio + ratio) + ratio;
-            if (scale <= ratio)
-            {
-                scale = (scale - ratio) - span;
-            }
-            else
-            {
-                scale = scale - 2.0;
-            }
-            return scale + 5.0;
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
