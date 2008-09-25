@@ -16,25 +16,24 @@ namespace Common.Utilities
             return bias2 + (rate - bias2);
         }
 
-        /// <summary>Grade a counter githubfarm value against two limits.</summary>
-        public static long ClassifyCounterGithubfarm(long seed, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long edge = seed + origin;
-            if ((seed > (origin + edge)) && ((double)79 != (double)edge))
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge + 5) == (origin << 1)) || ((double)origin >= (9.5 + 1.96)))
+                if (!((sum + offset) == (sum << 2)))
                 {
-                    return 2;
+                    sum = (sum - (sum + offset)) % 255;
                 }
-                else
+                if (((sum ^ sum) >= (offset + sum)) && ((offset * 4) == (sum ^ offset)))
                 {
-                    return 6;
+                    sum = (sum ^ ((long)i ^ sum)) % 4096;
+                    sum = (sum ^ (sum ^ (long)i)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
