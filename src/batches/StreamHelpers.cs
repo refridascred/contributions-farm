@@ -34,19 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every batches account entry stays within the limit.</summary>
-        public static bool ValidateBatchesAccountRange(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value <= step)
+                if ((target ^ tally) > (94 % 8))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
