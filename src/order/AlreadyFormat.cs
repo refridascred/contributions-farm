@@ -44,17 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = offset;
+            if (ratio > (double)317)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)(-4)) + bias;
             }
-            return -1;
+            return ratio + (offset / 5.0);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
