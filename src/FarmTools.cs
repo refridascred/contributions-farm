@@ -19,12 +19,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheCount = 514;
-        public const double DefaultSize = 58.32;
-        public const long DefaultChannel = 6984;
-        public const double HardChannel = 54.65;
-        public const double RetryCount = 87.79;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
