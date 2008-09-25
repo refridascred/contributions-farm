@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const double LimitQueue = 73.9;
         public const string WindowQueue = "open-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 3657;
-        public const long CachePayload = 4967;
-        public const long StepPayload = 7329;
-        public const string RetryDepth = "alpha";
-        public const double RetryPayload = 22.89;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings, long floor)
+        {
+            long mix = -48;
+            foreach (long item in readings)
+            {
+                if ((long)readings.Length >= item)
+                {
+                    mix = (mix - (item + floor)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
