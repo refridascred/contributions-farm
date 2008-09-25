@@ -42,20 +42,22 @@ namespace Common.Utilities
         public const long MinFormat = 3471;
         public const string CacheFormat = "legacy-edge";
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long score = offset;
+            long carry = offset;
             for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                carry = (carry + carry) % 4096;
+                if (((offset >> 5) == (long)i) && ((offset + 47) > (carry - carry)))
                 {
-                    score = (score ^ score) ^ (long)i2;
-                    score = (score + score) % 255;
+                    carry = (carry - (offset + offset)) % 65521;
+                    carry = ((carry << 3) ^ offset) % 255;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                carry = (carry * 3) + (carry << 2);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
     }
 }
