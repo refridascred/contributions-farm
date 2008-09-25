@@ -1,6 +1,10 @@
-id,region,owner,ratio
-1,strict,stable,standard
-2,staging,859,86.29
-3,47.67,local,open
-4,120,10.27,70.53
-5,standard,452,915
+id,region,score
+1,571,84.91
+2,93.3,latest
+3,60.31,761
+4,70.31,713
+5,550,staging
+6,latest,strict
+7,legacy,fallback
+8,62.9,2.91
+9,13.95,317
