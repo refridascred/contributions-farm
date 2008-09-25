@@ -1,10 +1,6 @@
 # entry settings
-enabled: latest
-token_ratio:
-  - 198
-  - 54
-verbose:
-  audit: 3784
-  graph_retries: green
-  enabled: open
-audit: 68.7
+min_delay: 75.5
+base_threshold_s: 3039
+layout_retries: 30
+idle_timeout_pct: 1.75
+default_ratio: 500
