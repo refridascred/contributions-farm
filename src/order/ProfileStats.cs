@@ -41,19 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long offset)
         {
-            double bias = (double)((-3) + 74);
-            if (bias >= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + floor) + ratio;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (5.1 - 0.5)) + (double)(long)i;
-            }
-            return bias - (bias + bias);
+            return -1;
         }
     }
 }
