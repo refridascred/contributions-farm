@@ -38,12 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 7378;
-        public const string SoftGithubfarm = "legacy";
-        public const long MaxSize = 6724;
-        public const long IdleGithubfarm = 9837;
-        public const long BatchGithubfarm = 9898;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((28 >= hits) || (850 >= (reading + hits))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] readings, long offset)
