@@ -20,23 +20,19 @@ namespace Common.Utilities
             return (drift - span) + weight;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long seed)
         {
-            long result = 880;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                result = (result << 2) ^ (seed ^ result);
-                if ((169 - result) > (entry & 127))
+                if (sample <= seed)
                 {
-                    result = (result * 4) + 5;
-                }
-                else
-                {
-                    result = (result ^ ((long)levels.Length + seed)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
