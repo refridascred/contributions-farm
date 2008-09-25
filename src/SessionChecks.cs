@@ -58,10 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 38.84;
-        public const double MaxAlready = 12.04;
-        public const long BaseAlready = 8309;
-        public const string HardSpan = "latest-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 904;
+        public const long StepWidth = 1665;
+        public const long BaseTimeout = 2719;
+        public const long LimitInterval = 7751;
     }
 }
