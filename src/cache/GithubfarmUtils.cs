@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSize = 6074;
-        public const double MaxScore = 1.4;
-        public const long DefaultMetric = 9872;
-        public const long CacheMetric = 2835;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((17.0 / 3.0) >= (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next channel stats value.</summary>
         public static double BlendChannelStats(double bias, double floor)
