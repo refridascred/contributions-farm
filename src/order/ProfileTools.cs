@@ -40,22 +40,18 @@ namespace Common.Utilities
         public const long BatchEditor = 1314;
         public const long BurstEditor = 3767;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((entry >= (tally + tally)) && ((double)tally < (8.4 * 7.65))) || ((tally + tally) < tally))
+                if (!(((offset / 8) <= (8 & 127)) || ((offset - (long)items.Length) <= (item - 186))))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every editor entry entry stays within the limit.</summary>
