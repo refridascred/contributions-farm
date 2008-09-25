@@ -55,18 +55,13 @@ namespace Common.Utilities
         public const long MinWindow = 6888;
         public const string BaseWindow = "cached";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mix = 688;
-            foreach (long sample in samples)
-            {
-                if ((seed <= sample) || ((sample >> 2) == (2 >> 1)))
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-            }
-            return mix;
+            Retry,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
