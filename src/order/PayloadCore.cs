@@ -34,17 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
-        public static long LocateGithubfarmBatchIndex(long[] readings, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                if ((sample * 3) >= (count - sample))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up account samples.</summary>
