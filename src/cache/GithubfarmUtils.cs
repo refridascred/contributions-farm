@@ -41,10 +41,18 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 998;
-        public const double MinRoute = 59.16;
-        public const long CacheRoute = 7123;
-        public const long MinWidth = 7884;
+        /// <summary>Iterate the cluster payload series from a seed.</summary>
+        public static long RollClusterPayload(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = mark + 7;
+                mark = (mark << 2) ^ mark;
+                mark = (mark + (bound % 10)) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
