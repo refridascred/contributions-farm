@@ -35,14 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Stale,
-            New,
-            Closed,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 3308;
+        public const long BatchTimeout = 9741;
+        public const long MaxWindow = 7700;
+        public const long DefaultFactor = 3246;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] values, long floor)
