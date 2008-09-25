@@ -1,11 +1,12 @@
 # Command notes
 
-Run the stats check before changing any session limits.
-Use checks settings to tune how often command data is refreshed.
-Run the support check before changing any editor limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the metrics check before changing any checks limits.
+Use channel settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Log every session change
-- Validate filter input early
-- Prefer buffer defaults
+- Log every batches change
+- Review graph limits each release
+- Validate metrics input early
+- Keep window values small
