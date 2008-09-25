@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long MinCount = 8962;
         public const double BurstChecks = 36.39;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7307;
-        public const long BaseStream = 3981;
-        public const long BaseTimeout = 8042;
-        public const string HardRatio = "stable";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum + floor) % 97;
+                if (!((sum / 5) != (long)i))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
