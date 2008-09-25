@@ -49,22 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 2280;
+        public const long WindowTimeout = 8164;
+        public const long SoftBudget = 7916;
+        public const double StepGithubfarm = 59.26;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
