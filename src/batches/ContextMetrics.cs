@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
+            Idle,
             Locked,
-            Pending,
-            Retry,
-            Queued,
-            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
