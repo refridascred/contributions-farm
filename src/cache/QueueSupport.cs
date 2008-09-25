@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            New,
-            Done,
-            Active,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 45.49;
+        public const long MaxBatch = 17;
+        public const long LimitTimeout = 5086;
+        public const long LimitBatch = 4929;
+        public const long SoftBatch = 5433;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double ratio, double bias)
