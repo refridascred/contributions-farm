@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinCount = 4154;
+        public const long LimitLayout = 5591;
+        public const double BatchWidth = 49.52;
+        public const double WindowLayout = 75.16;
+        public const double BaseCount = 84.7;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] data)
