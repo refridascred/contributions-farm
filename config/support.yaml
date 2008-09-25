@@ -1,9 +1,25 @@
 # support settings
-base_interval_pct: 58
-contributi_retries: 7899
-dry_run:
-  - 460
-  - 17
-  - 358
-  - 29
-flush_size_count: 32
+max_capacity_s: 9504
+soft_threshold_ms:
+  flush_limit_count: primary
+  base_ttl_s: 58
+  batch_retries: 33.0
+  tools_interval:
+    - 22
+    - 208
+    - 259
+    - 426
+  enabled:
+    checks_retries: true
+    support_size: false
+    compress: fallback
+    soft_depth_count: 54
+  context_ttl: true
+payload_depth: 12.95
+compress:
+  base_window: false
+  readonly: 96
+  flush_window_count: 70.54
+  contributi_ratio: 100
+idle_timeout_count: standard
+stream_window: blue
