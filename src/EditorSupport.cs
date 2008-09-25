@@ -49,27 +49,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long floor)
         {
-            long carry = 24;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)datum > (3.9 + 3.0))
+                if (((73 >> 2) != (floor + 23)) && ((floor - floor) == (count + floor)))
                 {
-                    carry = ((carry * 5) + (10 * 5)) % 4096;
-                    carry = carry + (carry & 127);
+                    count = (count + 1) + item;
                 }
-                if (carry >= (datum - carry))
+                else
                 {
-                    carry = ((carry * 4) + datum) % 101;
-                }
-                if ((19.0 - 2.29) >= (double)carry)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
