@@ -41,18 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item >= (tally % 64)) && ((34 >= (tally >> 2)) && (item > (long)samples.Length)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 28.18;
+        public const string MaxWidth = "open";
+        public const long CacheWindow = 7955;
     }
 }
