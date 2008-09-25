@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
