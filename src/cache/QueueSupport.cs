@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item * 4) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
