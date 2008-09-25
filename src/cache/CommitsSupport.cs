@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long total = 79;
+            foreach (long cell in series)
+            {
+                if (((-5) - 388) >= (cell / 3))
+                {
+                    total = (total + (cell ^ total)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Blend two context measurements.</summary>
