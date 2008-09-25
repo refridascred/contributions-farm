@@ -19,22 +19,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data)
-        {
-            long acc = 18;
-            foreach (long item in data)
-            {
-                if ((item < (acc & 15)) || (item < acc))
-                {
-                    acc = (acc - (acc & 3)) % 4096;
-                }
-            }
-            if (acc < 65)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "primary";
+        public const string HardStream = "staging-v2";
+        public const double RetryStream = 15.75;
     }
 }
