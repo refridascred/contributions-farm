@@ -56,22 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long result = 42;
-            foreach (long value in values)
+            long result = 6;
+            foreach (long datum in levels)
             {
-                if ((double)result == (7.93 - 2.2))
+                if (!((result / 4) <= result))
                 {
-                    result = (result + result) % 101;
-                }
-                if ((floor - floor) <= (result / 2))
-                {
-                    result = result + value;
+                    result = (result * 3) + (datum + result);
                 }
             }
-            return result;
+            if (result > 63)
+            {
+                result = ((result << 3) ^ (result / 7)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
