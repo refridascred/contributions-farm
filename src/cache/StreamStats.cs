@@ -13,21 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + datum) <= (-54))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor ^ datum) % 1000) - limit;
+                }
+                if ((double)datum != (9.48 / 2.0))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
