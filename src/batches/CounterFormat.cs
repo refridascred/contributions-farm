@@ -24,18 +24,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Look up the position of a queue tools sample.</summary>
+        public static long LookupQueueToolsIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count / 3) > (count + entry)) || ((count - entry) <= (160 + count)))
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
