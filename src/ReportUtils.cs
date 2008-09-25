@@ -40,12 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 7450;
-        public const double DefaultLevel = 77.54;
-        public const double LimitScore = 35.7;
-        public const long SoftLayout = 9203;
-        public const double StepLayout = 25.32;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Retry,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardWidth = 632;
