@@ -22,25 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long offset)
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long CountToolsRouteMatches(long[] samples, long bound)
         {
-            long lane = target - offset;
-            if ((target - lane) > (offset + 555))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)lane >= (0.6 / 9.0))
+                if (5.2 >= (double)bound)
                 {
-                    return 5;
+                    tally = (tally + 3) + cell;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
