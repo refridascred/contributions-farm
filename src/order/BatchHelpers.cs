@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double RetryBudget = 66.87;
         public const string WindowCache = "primary-edge";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == limit)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
