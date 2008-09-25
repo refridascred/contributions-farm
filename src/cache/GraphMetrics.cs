@@ -46,17 +46,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = limit + floor;
+            if ((double)cur > (double)limit)
             {
-                if (readings[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if ((7.5 / 8.0) <= (double)cur)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (limit % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit - cur) > (floor >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
