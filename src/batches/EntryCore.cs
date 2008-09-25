@@ -52,12 +52,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!(floor < 464))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
