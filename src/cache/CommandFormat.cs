@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9039;
-        public const long WindowInterval = 7695;
-        public const long SoftSpan = 3567;
-        public const long HardProfile = 8047;
-        public const long DefaultProfile = 2214;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long offset, long seed)
