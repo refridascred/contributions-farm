@@ -21,19 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double ratio2 = (1.2 * 6.4) * 8.94;
-            if (ratio2 >= (2.3 - bias))
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (bias - ratio2);
-            }
-            return ratio2 + (ratio2 / 4.0);
+            Active,
+            Closed,
+            Idle,
         }
     }
 }
