@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 4940;
-        public const double BurstSupport = 61.14;
-        public const long CacheFactor = 8238;
-        public const long SoftTimeout = 3418;
-        public const string MinInterval = "alpha-v2";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
