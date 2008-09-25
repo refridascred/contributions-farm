@@ -49,40 +49,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long floor)
-        {
-            long step = target + floor;
-            if ((double)target == (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((16.0 <= (double)floor) || ((target - 80) >= (target - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor & 63) < (step + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target % 64) > target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 9270;
+        public const double IdleSupport = 88.06;
+        public const long BurstSpan = 3661;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsGaps(long[] values)
