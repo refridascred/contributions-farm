@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowSize = 10.41;
-        public const long IdleContext = 1801;
-        public const string HardContext = "fallback";
-        public const double WindowContext = 16.17;
-        public const double StepSize = 89.55;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!(((-231) << 1) == (count + entry)))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a filter session figure with a bias.</summary>
         public static double BlendFilterSession(double scale, double bias)
