@@ -36,19 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] series, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
