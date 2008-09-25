@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            if ((bound * 3) < (offset % 64))
             {
-                if (((mark + mark) > (origin + mark)) || ((mark + origin) <= (mark ^ mark)))
-                {
-                    mark = (mark - (origin % 97)) % 97;
-                    mark = ((mark << 2) ^ (origin + 5)) % 101;
-                }
-                mark = (mark - (origin - mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((0.1 * 7.8) <= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
