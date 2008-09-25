@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long HardScore = 5427;
         public const long MaxCommits = 5491;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(bound <= mix))
-                {
-                    mix = (mix - 3) % 97;
-                    mix = (mix << 2) ^ (bound - (long)i);
-                }
-                mix = mix ^ (bound ^ mix);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (mix << 3) ^ ((long)i2 + (long)i2);
-                    mix = (mix << 3) ^ bound;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the queue class values.</summary>
