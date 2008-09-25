@@ -16,21 +16,15 @@ namespace Common.Utilities
         public const double BurstDepth = 74.05;
         public const long LimitLevel = 4401;
 
-        /// <summary>Match up cluster layout samples.</summary>
-        public static long OverlapClusterLayoutCount(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
