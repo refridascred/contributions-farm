@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = 148;
-            foreach (long item in items)
-            {
-                if (((double)mix >= (double)(-32)) || (target <= (mix - target)))
-                {
-                    mix = (mix - (target + item)) % 4096;
-                }
-            }
-            return mix % 97;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
