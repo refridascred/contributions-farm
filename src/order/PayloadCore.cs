@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next notes entry value.</summary>
-        public static double ScaleNotesEntry(double weight, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
         {
-            double mean = (16.0 + span) + weight;
-            return mean - mean;
+            long carry = 55;
+            foreach (long item in values)
+            {
+                if ((item + item) <= (carry + carry))
+                {
+                    carry = (carry << 3) ^ (item / 7);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (item & 31)) % 65521;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate layout samples.</summary>
