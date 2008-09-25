@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (((floor / 7) != (seed % 64)) && ((2.4 * 6.0) >= 14.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor <= (1.3 + 9.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) != (630 + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed <= (7.0 / 8.0)) && ((double)floor > (17.0 / 5.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
