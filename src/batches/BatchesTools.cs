@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!(cell < (7 >> 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
