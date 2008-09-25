@@ -41,19 +41,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((state % 16) >= (state - offset))
-                {
-                    state = ((state << 3) ^ (long)i) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Ready,
+            Queued,
         }
     }
 }
