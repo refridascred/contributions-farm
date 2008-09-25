@@ -20,31 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a profile graph value against two limits.</summary>
-        public static long ClassifyProfileGraph(long origin, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long limit)
         {
-            if (seed < (origin % 5))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (1.3 - 13.0))
+                if (datum >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first graph support entry that matches the target.</summary>
