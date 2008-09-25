@@ -35,23 +35,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next metric profile value from a seed.</summary>
-        public static long DeriveMetricProfile(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] levels, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (seed < 4)
+                if ((-7) >= item)
                 {
-                    anchor = ((anchor * 4) + (seed % 100)) % 97;
+                    seen = (seen + 3) - seed;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ seed) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the record state values.</summary>
