@@ -45,13 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long mark = 682;
+            foreach (long datum in series)
+            {
+                mark = ((mark * 5) + (datum - (long)series.Length)) % 4096;
+            }
+            if (mark > 6)
+            {
+                mark = (mark * 4) + 4;
+            }
+            return mark % 97;
         }
     }
 }
