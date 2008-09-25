@@ -1,17 +1,11 @@
 # entry settings
-persist: false
-counter_interval:
-  schema_depth:
-    - 487
-    - 483
-  burst_delay_count:
-    githubfarm_size: 11
-    buffer_delay: 27.11
-    session_retries: 89
-  idle_threshold: latest
-hard_limit_ms: 500
-githubfarm_delay:
-  - stable
-  - stable
-  - edge
-  - blue
+compress: open
+command_ratio:
+  hard_depth_s: 47.36
+  batch_interval: true
+  strict:
+    - 226
+    - 289
+    - 129
+cache_window: fallback
+enabled: 1024
