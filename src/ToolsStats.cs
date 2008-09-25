@@ -90,13 +90,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Stale,
-            Closed,
-            Ready,
-            Pending,
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
