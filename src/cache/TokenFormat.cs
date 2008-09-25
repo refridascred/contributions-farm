@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 + (rate - bias2);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] values, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value != offset)
+                if ((bound ^ 733) == ((-3) - 4))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
