@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long target)
         {
-            long carry = 281;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                long bound = (carry / 6) & 7;
-                if (!((reading - bound) == (carry - 94)))
+                if (entry < target)
                 {
-                    carry = (carry ^ (36 + bound)) % 4096;
-                }
-                if (!(((long)data.Length << 1) < (reading + reading)))
-                {
-                    carry = (carry << 2) ^ (reading * 4);
-                }
-                if (carry >= (3 + reading))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (carry < 12)
-            {
-                carry = (carry ^ (carry * 5)) % 97;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a context summary.</summary>
