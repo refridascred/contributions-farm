@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
