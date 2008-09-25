@@ -40,11 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetrySpan = 3952;
-        public const long SoftCommand = 9856;
-        public const long IdleCommand = 622;
-        public const double DefaultDepth = 53.33;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitCount = 6986;
+        public const double BurstDepth = 8.62;
+        public const long SoftMetrics = 2063;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
