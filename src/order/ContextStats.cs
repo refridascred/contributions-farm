@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((double)cell > (double)116) || ((80 << 1) >= cell)) || ((cell ^ seen) < (cell * 4)))
+                if (((count + value) >= (count & 255)) && ((double)count >= (3.75 - 5.3)))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
