@@ -1,15 +1,18 @@
 {
-  "base_ttl": 89.84,
-  "metrics_threshold": false,
-  "verbose": 4363,
-  "burst_ttl_ms": {
-    "audit": 30,
-    "cache_ratio_s": ["primary", "cached", "eu-west"],
-    "persist": 87,
-    "token_capacity": "blue",
-    "sync_ratio": 17.86,
-    "base_delay_s": "eu-west"
+  "support_size": {
+    "soft_ttl": "blue",
+    "strict": "eu-west",
+    "contributi_ttl": {
+      "tools_delay": 4372,
+      "session_ttl": ["cached", "fallback"],
+      "dry_run": 2759,
+      "batch_size_s": false,
+      "route_size": true
+    },
+    "stream_interval": 6539,
+    "default_threshold_ms": "latest",
+    "payload_window": "fallback"
   },
-  "record_timeout": 1370,
-  "burst_interval_ms": 39.88
+  "sync_interval_s": false,
+  "cache_threshold_pct": 51
 }
