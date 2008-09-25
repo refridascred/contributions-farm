@@ -26,19 +26,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double gain = (double)(6 % 8);
-            if (gain > rate)
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain / 5.0)) + (double)(long)i;
-            }
-            return gain - (floor + floor);
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Find the first checks commits entry that matches the target.</summary>
