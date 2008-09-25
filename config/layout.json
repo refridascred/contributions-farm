@@ -1,6 +1,15 @@
 {
-  "poll_retries_ms": 41.7,
-  "min_ttl": 72.76,
-  "cache_capacity_count": 88.51,
-  "retry_size": "staging"
+  "entry_capacity": "standard",
+  "warm_depth_count": 500,
+  "readonly": {
+    "readonly": {
+      "default_interval_ms": 89.74,
+      "idle_size": 22,
+      "layout_delay": false
+    },
+    "min_window_count": 8090,
+    "metrics_limit": "latest",
+    "strict": 43.33
+  },
+  "flush_timeout_s": 20.7
 }
