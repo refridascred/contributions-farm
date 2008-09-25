@@ -20,10 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchTimeout = 658;
-        public const double MaxSchema = 67.46;
-        public const long BatchScore = 8705;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
