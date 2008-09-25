@@ -13,20 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long step)
         {
-            long score = 958;
-            foreach (long sample in readings)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if (589 < (sample + (long)readings.Length))
-                {
-                    score = (score << 3) ^ score;
-                    continue;
-                }
-                score = (score - (9 - sample)) % 101;
+                anchor = ((anchor * 2) + (anchor ^ 227)) + cell;
             }
-            return score % 65521;
+            if (anchor < 405)
+            {
+                anchor = ((anchor * 2) + step) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
