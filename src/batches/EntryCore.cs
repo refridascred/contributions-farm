@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next metric counter value from a seed.</summary>
-        public static long StepMetricCounter(long origin)
+        /// <summary>Find the first support filter entry that matches the target.</summary>
+        public static long LocateSupportFilterIndex(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6.92 > (double)(long)i)
+                if (readings[i] <= target)
                 {
-                    acc = (acc << 3) ^ (origin << 3);
+                    return (long)i;
                 }
-                acc = (acc << 2) ^ (origin - 42);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
