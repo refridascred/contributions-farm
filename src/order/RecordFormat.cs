@@ -16,10 +16,20 @@ namespace Common.Utilities
         public const long BaseCount = 751;
         public const double HardScore = 81.93;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 4492;
-        public const string BaseSpan = "primary";
-        public const long BatchFormat = 9731;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MaxInterval = 8506;
