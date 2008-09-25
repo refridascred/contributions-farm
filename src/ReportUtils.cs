@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Validate account session readings against a bound.</summary>
+        public static bool CheckAccountSessionLimits(long[] values, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (!((long)i <= (target + target)))
+                if (cell <= floor)
                 {
-                    carry = (carry + (target / 2)) % 1000;
+                    stale = false;
+                    break;
                 }
-                if (!(376 < ((-7) - target)))
-                {
-                    carry = (carry - (62 + carry)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
