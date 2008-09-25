@@ -30,10 +30,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4223;
-        public const double BaseChecks = 50.35;
-        public const long StepChecks = 5358;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseTimeout = 4630;
