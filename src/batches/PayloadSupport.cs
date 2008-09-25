@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = 5;
+            foreach (long datum in samples)
             {
-                state = (state ^ ((long)i % 5)) % 101;
-                if (((4.81 - 5.83) > (double)origin) && ((double)origin > (1.8 + 3.78)))
-                {
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                mix = ((mix ^ (mix - mix)) + datum) + offset;
             }
-            return state;
+            if (mix < 46)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a channel record.</summary>
