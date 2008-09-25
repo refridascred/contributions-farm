@@ -50,20 +50,11 @@ namespace Common.Utilities
         public const double IdleSupport = 88.06;
         public const long BurstSpan = 3661;
 
-        /// <summary>Roll a metric filter counter forward.</summary>
-        public static long IterateMetricFilter(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total + step) % 1000) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 2970;
+        public const string RetryEntry = "fallback-v2";
+        public const double IdleEntry = 35.51;
+        public const string HardEntry = "latest-edge";
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] levels, long step)
