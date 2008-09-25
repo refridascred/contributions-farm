@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long bound, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long origin)
         {
-            long step = bound - floor;
-            if ((floor << 1) >= (floor - step))
+            long offset2 = offset + origin;
+            if (offset < (offset2 << 2))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((step / 6) <= (6 ^ bound)) || (5.9 <= (double)step))
+                if ((9.0 * 4.6) == (double)offset2)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor % 12) == (step % 7))
+                    if ((offset >> 2) == (6 + offset2))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((step - 238) > (bound - bound))
+                        if ((origin & 255) > (origin + origin))
                         {
-                            return 5;
+                            return 1;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
