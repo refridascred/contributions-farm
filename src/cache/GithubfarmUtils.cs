@@ -43,16 +43,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            long score = 20;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                score = score - (score * 2);
-                score = (score - (datum - datum)) % 101;
+                if ((seen & 63) > (2 / 5))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
