@@ -33,12 +33,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstLevel = 3672;
-        public const string WindowChecks = "primary-v2";
-        public const double RetryDepth = 86.47;
-        public const double BaseChecks = 57.0;
-        public const long DefaultSize = 1471;
+        /// <summary>Fold a list of report batches readings.</summary>
+        public static long TallyReportBatches(long[] items, long bound)
+        {
+            long mark = 9;
+            foreach (long sample in items)
+            {
+                mark = (mark << 3) ^ (sample - sample);
+                if ((((-931) + bound) >= (sample / 8)) && ((double)bound > (5.0 * 3.85)))
+                {
+                    break;
+                }
+            }
+            if (mark > 497)
+            {
+                mark = mark + bound;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a account tools figure with a bias.</summary>
         public static double BlendAccountTools(double ratio, double bias)
