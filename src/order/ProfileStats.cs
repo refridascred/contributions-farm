@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 1096;
-        public const long BatchStream = 6614;
-        public const double StepStream = 94.96;
-        public const double RetryInterval = 21.5;
+        /// <summary>Compare every pair of batch notes readings.</summary>
+        public static long MatchBatchNotesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
