@@ -1,11 +1,12 @@
 {
-  "max_size": 3464,
-  "support_delay": [351, 182, 213, 141],
-  "flush_limit_pct": {
-    "cache_window_s": 9823,
-    "default_limit_pct": ["fallback", "blue"],
-    "stats_depth": true,
-    "cache_ratio_s": ["latest", "staging", "standard"]
+  "payload_size": 250,
+  "sync_delay_count": 250,
+  "default_delay_pct": 100,
+  "retry_capacity": {
+    "commits_delay": false,
+    "cache_ratio_ms": "legacy",
+    "readonly": 53
   },
-  "retry_ratio_pct": 10
+  "batch_interval": "blue",
+  "base_size": 41
 }
