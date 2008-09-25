@@ -26,10 +26,15 @@ namespace Common.Utilities
         public const long IdleSpan = 3159;
         public const long BaseToken = 43;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8106;
-        public const long BatchWindow = 8149;
-        public const long SoftWindow = 4802;
-        public const long IdleBudget = 8708;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double bias)
+        {
+            double load = bias;
+            if (load < (bias - scale))
+            {
+                load = load + scale;
+            }
+            return load + (7.98 - scale);
+        }
     }
 }
