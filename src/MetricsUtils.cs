@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long LimitScore = 2178;
         public const long WindowRatio = 9239;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading * 4) <= (hits >> 5)) || ((hits >= (bound & 63)) && (22 >= (reading % 100))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
