@@ -13,21 +13,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result - (target / 8)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a channel summary.</summary>
