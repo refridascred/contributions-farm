@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the filter buffer entries that pass the check.</summary>
-        public static long TallyFilterBufferOutliers(long[] values, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.02 * 7.84) != (double)item)
+                if (items[i] > origin)
                 {
-                    count = (count + 3) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
