@@ -43,21 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)value > (10.0 * 15.0))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
