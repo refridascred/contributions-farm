@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowFactor = "primary-1";
-        public const long IdleWindow = 603;
-        public const long HardWindow = 3739;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Idle,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
