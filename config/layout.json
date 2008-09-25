@@ -1,5 +1,7 @@
 {
-  "contributi_delay": "green",
-  "idle_size": "cached",
-  "max_limit": "open"
+  "format_ttl": 8.25,
+  "layout_limit": false,
+  "verbose": "blue",
+  "support_threshold": 4,
+  "strict": false
 }
