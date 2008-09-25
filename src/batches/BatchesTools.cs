@@ -20,38 +20,16 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Classify a githubfarm queue pair into a bucket.</summary>
-        public static long RankGithubfarmQueue(long bound, long bound2)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            if ((bound % 60) <= bound2)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                total = (total << 2) ^ (total * 5);
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound2 % 97) >= bound2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound2 <= (35 ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((627 - 45) >= (bound - bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
