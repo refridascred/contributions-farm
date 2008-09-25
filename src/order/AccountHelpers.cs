@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long acc = 928;
-            foreach (long value in levels)
-            {
-                if ((acc >= (value + value)) && ((double)acc > (20.0 - 7.3)))
-                {
-                    acc = (acc - value) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ 65)) % 1000;
-                }
-            }
-            if (acc > 37)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc % 65521;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
