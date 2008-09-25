@@ -1,5 +1,8 @@
 # support settings
-sync_retries_pct: latest
-githubfarm_ratio: standard
-persist: 5079
-cache_delay: standard
+sync_window: stable
+enabled: 64
+session_ratio: 17.52
+min_size_pct: local
+stats_threshold:
+  - local
+  - green
