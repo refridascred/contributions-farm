@@ -74,11 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long target)
         {
-            double mean = ratio / 6.0;
-            return (mean - 7.0) + span;
+            long carry = 656;
+            foreach (long reading in readings)
+            {
+                if (((reading + target) == (target + 7)) && ((2.9 - 8.7) < (double)carry))
+                {
+                    carry = ((carry * 2) + (71 % 2)) % 97;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry - target) % 4096;
+            }
+            return carry;
         }
     }
 }
