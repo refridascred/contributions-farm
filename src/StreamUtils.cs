@@ -99,15 +99,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command already figure with a bias.</summary>
-        public static double ProjectCommandAlready(double ratio, double bias)
-        {
-            double bias2 = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = ((bias2 + 1.5) - (double)(long)i) + ratio;
-            }
-            return bias2 + (bias - 9.8);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchInterval = 45.8;
+        public const string MaxStream = "alpha-v2";
+        public const double LimitStream = 77.61;
     }
 }
