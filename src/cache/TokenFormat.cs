@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate record buffer readings against a bound.</summary>
+        public static bool CheckRecordBufferLimits(long[] items, long step)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
