@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Idle,
-            Locked,
-            Done,
-            Ready,
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
