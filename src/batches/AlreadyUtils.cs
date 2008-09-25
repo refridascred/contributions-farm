@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 81.48;
-        public const string BurstTimeout = "legacy-1";
-        public const long BatchCount = 9235;
-        public const double HardTimeout = 50.25;
+        /// <summary>Check that every channel route entry stays within the limit.</summary>
+        public static bool ValidateChannelRouteBounds(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 8088;
