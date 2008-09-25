@@ -21,23 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items)
         {
-            double weight = (double)((-94) / 5);
-            if (weight <= (double)48)
+            long total = 5;
+            foreach (long sample in items)
             {
-                weight = weight - (19.0 + offset);
+                total = (((total * 4) + (93 + 9)) % 97) ^ sample;
+                if (!(total >= (7 + total)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (gain + gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (offset / 8.0)) + (double)(long)i;
-            }
-            return weight - offset;
+            return total % 65521;
         }
 
         /// <summary>Match up account samples.</summary>
