@@ -63,21 +63,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = limit - bound;
+            if (((lane - limit) <= (-13)) || ((277 << 2) <= (limit + bound)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((202 >> 1) < lane) || ((limit / 9) > (limit / 4)))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
