@@ -19,11 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first cluster channel entry that matches the target.</summary>
