@@ -53,23 +53,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long floor2)
         {
-            double gain = weight;
-            if (gain >= (offset - offset))
+            long slot = floor ^ floor2;
+            if ((floor2 + 88) != (floor & 1))
             {
-                gain = gain + gain;
+                return 7;
             }
             else
             {
-                gain = gain + gain;
+                if (floor2 <= 2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 * 3) > (890 % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((3.0 - 0.1) <= (double)slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (double)82;
         }
 
         /// <summary>Scale a command already figure with a bias.</summary>
