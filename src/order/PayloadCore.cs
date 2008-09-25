@@ -39,23 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            double ratio2 = (double)196 / 4.0;
-            if (ratio2 > ratio2)
+            long carry = 176;
+            foreach (long datum in levels)
             {
-                ratio2 = ratio2 + (ratio * 6.92);
+                carry = (carry - (-291)) % 1000;
+                if (((carry + 38) < 766) || (carry < (carry << 2)))
+                {
+                    carry = (carry * 2) + (datum & 31);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (datum & 255)) % 65521;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (floor * 3.98);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (floor / 7.0)) + (double)(long)i;
-            }
-            return ratio2 + (double)486;
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
