@@ -40,23 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
-        {
-            long anchor = -77;
-            foreach (long datum in values)
-            {
-                if ((3 - anchor) >= datum)
-                {
-                    anchor = anchor + (65 - datum);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (5 >> 3)) % 97;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 7450;
+        public const double DefaultLevel = 77.54;
+        public const double LimitScore = 35.7;
+        public const long SoftLayout = 9203;
+        public const double StepLayout = 25.32;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardWidth = 632;
