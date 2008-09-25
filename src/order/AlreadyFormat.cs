@@ -34,19 +34,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a schema checks counter forward.</summary>
-        public static long DeriveSchemaChecks(long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            double gain = (double)(2 * 5);
+            if (gain < offset)
             {
-                if (!((double)(long)i >= (double)target))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                gain = gain - (double)78;
             }
-            return anchor;
+            else
+            {
+                gain = gain + (gain * 13.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + weight) - (double)(long)i;
+            }
+            return gain - (double)94;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
