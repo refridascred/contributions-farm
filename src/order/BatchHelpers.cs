@@ -34,11 +34,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
