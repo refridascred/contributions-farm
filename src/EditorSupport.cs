@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long MinSize = 6206;
         public const double LimitSpan = 84.5;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long value in levels)
             {
-                if (((double)tally <= (0.9 / 2.0)) || (((double)(long)data.Length == (double)7) && (tally <= (91 >> 2))))
+                if (!((82 / 4) != (tally * 3)))
                 {
-                    tally = ((tally + 2) + reading) + seed;
+                    tally = (tally + 1) + value;
                 }
             }
             return tally;
