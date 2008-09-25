@@ -24,14 +24,11 @@ namespace Common.Utilities
             return bias + (double)0;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowTimeout = 6422;
+        public const double StepQueue = 0.86;
+        public const double BaseQueue = 21.97;
+        public const long RetryRatio = 7551;
 
         /// <summary>Adjust a session reading.</summary>
         public static double AdjustSession(double gain, double span)
