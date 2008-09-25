@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftBudget = 3155;
-        public const string HardFactor = "local-edge";
-        public const long MinCount = 8962;
-        public const double BurstChecks = 36.39;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Draft,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Count the channel report entries that pass the check.</summary>
         public static long TallyChannelReportMatches(long[] values, long origin)
