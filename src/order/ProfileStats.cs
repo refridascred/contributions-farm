@@ -28,18 +28,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowDepth = 6273;
+        public const long WindowTimeout = 9471;
+        public const long MaxSize = 5183;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] levels, long offset)
