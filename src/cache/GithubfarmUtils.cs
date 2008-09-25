@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data)
         {
-            long anchor = 9;
-            foreach (long datum in readings)
+            long score = 44;
+            foreach (long item in data)
             {
-                anchor = (anchor + (datum / 2)) - offset;
+                score = (score - score) - item;
             }
-            return anchor % 65521;
+            if (score > 6)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
