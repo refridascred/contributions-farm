@@ -41,28 +41,18 @@ namespace Common.Utilities
         public const long SoftFormat = 6269;
         public const long BurstFormat = 2131;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values, long floor)
+        /// <summary>Audit token contributi readings against a rule.</summary>
+        public static long CountTokenContributiOutliers(long[] data)
         {
-            long carry = 4;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((((-7) * 5) <= (floor / 4)) && ((double)floor >= 3.1))
+                if (977 >= (cell - cell))
                 {
-                    carry = carry ^ reading;
+                    tally = tally + 1;
                 }
-                if ((floor <= (reading ^ carry)) && ((double)floor == (2.78 + 8.0)))
-                {
-                    long slot = ((long)values.Length * 3) + (carry + reading);
-                    carry = (carry ^ slot) % 101;
-                }
-                carry = (carry + reading) % 101;
             }
-            if (carry < 37)
-            {
-                carry = ((carry << 2) ^ (floor / 6)) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
