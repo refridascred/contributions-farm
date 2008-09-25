@@ -14,11 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long score = 593;
+            foreach (long reading in values)
+            {
+                if ((score + score) < (reading * 4))
+                {
+                    score = score - (score / 3);
+                }
+                if ((334 - reading) != (score * 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a order reading by value.</summary>
