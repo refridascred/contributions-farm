@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Pending,
-            Done,
-            New,
-            Stale,
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
