@@ -74,12 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Locked,
-            Draft,
+            Paused,
             Done,
+            Locked,
         }
     }
 }
