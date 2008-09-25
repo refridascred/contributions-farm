@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const double IdleInterval = 88.44;
         public const double BaseDepth = 66.4;
 
-        /// <summary>Count the schema counter entries that pass the check.</summary>
-        public static long AuditSchemaCounterMatches(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((double)count >= 8.73)
+                if (value != origin)
                 {
-                    count = (count + 1) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
