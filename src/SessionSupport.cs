@@ -38,21 +38,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of context record readings.</summary>
-        public static long OverlapContextRecordCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchWidth = 88.19;
+        public const long WindowRatio = 5275;
+        public const long HardWidth = 5657;
     }
 }
