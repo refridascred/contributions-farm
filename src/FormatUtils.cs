@@ -46,12 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Failed,
+            Stale,
+            Done,
+            Synced,
             Locked,
-            Ready,
+            New,
         }
 
         /// <summary>Hold a stream info.</summary>
