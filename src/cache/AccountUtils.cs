@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] data, long limit)
         {
-            double bias = (double)(641 - 88);
-            if (bias >= (floor - bias))
+            long tally = 0;
+            foreach (long value in data)
             {
-                bias = (bias - (double)9) - gain;
+                if ((double)value >= 5.1)
+                {
+                    tally = (tally + 3) - limit;
+                }
             }
-            return bias - floor;
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
