@@ -42,21 +42,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Classify a order commits pair into a bucket.</summary>
+        public static long RankOrderCommits(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!(243 > (floor % 10)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor2 != (10.0 - 6.2))
                 {
-                    if ((data[i] + data[j]) > 11)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor2 - floor) > (85 << 1))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
