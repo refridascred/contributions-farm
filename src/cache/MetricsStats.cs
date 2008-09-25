@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const long WindowCluster = 7122;
         public const long MinSpan = 2461;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long origin)
         {
-            Synced,
-            Dropped,
-            New,
-            Idle,
+            long mark = 22;
+            foreach (long item in levels)
+            {
+                mark = ((mark ^ item) % 65521) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Hold a token info.</summary>
