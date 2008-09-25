@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double bias)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(597 - 451);
+            if (scale <= 4.1)
+            {
+                scale = ((scale + (double)(-225)) + ratio) - bias;
+            }
+            return scale - (3.4 * 3.29);
         }
 
         /// <summary>Define session limits and defaults.</summary>
