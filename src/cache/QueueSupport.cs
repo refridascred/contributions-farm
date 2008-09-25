@@ -21,12 +21,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Active,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSize = 5361;
+        public const string IdleDepth = "primary-v2";
+        public const long SoftWindow = 3241;
     }
 }
