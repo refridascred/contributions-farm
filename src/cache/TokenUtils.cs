@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2803;
-        public const string StepFilter = "cached-1";
-        public const double HardScore = 55.54;
-        public const long SoftSpan = 4234;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftInterval = 4612;
+        public const long MaxBudget = 4766;
+        public const string LimitCluster = "alpha-1";
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
