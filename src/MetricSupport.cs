@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate record cluster samples.</summary>
-        public static long TotalRecordCluster(long[] levels)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long total = 621;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value & 63) == (total - total)) && ((value >> 4) > (long)levels.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total ^ (total + 9)) % 97;
-                }
-                if (!(total < (value / 5)))
-                {
-                    total = (total ^ (value * 2)) % 101;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 992)
-            {
-                total = (total + (total & 1)) % 1000;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
