@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Retry,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Scale a route report figure with a bias.</summary>
