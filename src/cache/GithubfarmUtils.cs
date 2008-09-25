@@ -39,15 +39,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine account channel values into a single score.</summary>
-        public static long ScoreAccountChannel(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long anchor = 8;
-            foreach (long item in series)
-            {
-                anchor = anchor ^ item;
-            }
-            return anchor % 65521;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
