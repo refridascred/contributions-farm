@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long StepToken = 4872;
         public const long BaseDepth = 5578;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up report layout samples.</summary>
