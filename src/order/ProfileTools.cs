@@ -27,18 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] series, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((74 > (value + offset)) || ((double)matches <= 4.37))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
