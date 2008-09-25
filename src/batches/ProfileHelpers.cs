@@ -51,13 +51,15 @@ namespace Common.Utilities
         public const double IdleSupport = 88.06;
         public const long BurstSpan = 3661;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
