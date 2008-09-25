@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record stream samples are out of range.</summary>
-        public static long CountRecordStreamMatches(long[] data)
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long MeasureSupportMetricsOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (sample < (sample % 2))
+                if ((0 ^ 6) >= (target & 63))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
