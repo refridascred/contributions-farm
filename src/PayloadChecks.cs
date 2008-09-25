@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitWidth = 34.0;
-        public const long BaseSpan = 1297;
-        public const string BatchScore = "primary-v2";
-        public const long IdleRoute = 6547;
+        /// <summary>Find the first cache payload entry that matches the target.</summary>
+        public static long LocateCachePayloadIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long origin)
