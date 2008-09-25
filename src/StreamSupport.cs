@@ -31,38 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long target)
+        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
+        public static long PairCounterToolsCount(long[] levels)
         {
-            if ((double)seed >= (double)2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((19.0 - 0.8) < (double)target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed < (14.0 * 1.94)))
+                    if ((levels[i] ^ levels[j]) == 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (8.0 + 2.9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
