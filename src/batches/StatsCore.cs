@@ -69,20 +69,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate batch batches readings against a bound.</summary>
-        public static bool ValidateBatchBatchesLimits(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftSize = 5976;
+        public const long BaseFactor = 29;
+        public const string BaseTimeout = "stable-v2";
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] levels, long origin)
