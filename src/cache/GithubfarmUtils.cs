@@ -37,12 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
