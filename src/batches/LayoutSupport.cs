@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long floor)
         {
-            double bias = floor;
-            for (int i = 0; i < 7; i++)
+            if (((floor / 7) != (seed % 64)) && ((2.4 * 6.0) >= 14.0))
             {
-                bias = (bias - (bias * 7.6)) + (double)(long)i;
+                return 8;
             }
-            return bias - (bias + rate);
+            else
+            {
+                if ((double)floor <= (1.3 + 9.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + floor) != (630 + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed <= (7.0 / 8.0)) && ((double)floor > (17.0 / 5.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
