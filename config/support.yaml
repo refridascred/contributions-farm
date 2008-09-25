@@ -1,11 +1,9 @@
 # support settings
-idle_ratio: legacy
-warm_retries_pct: primary
-cache_ttl_ms: cached
-readonly:
-  - fallback
-  - standard
-  - primary
-  - strict
-batch_interval_s: 45.44
-burst_delay: true
+base_interval_pct: 58
+contributi_retries: 7899
+dry_run:
+  - 460
+  - 17
+  - 358
+  - 29
+flush_size_count: 32
