@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stats queue entry that matches the target.</summary>
-        public static long SeekStatsQueueIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 2158;
+        public const double StepRatio = 68.16;
+        public const string RetrySpan = "local-edge";
+        public const double MinCounter = 84.63;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
