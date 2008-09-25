@@ -49,11 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 2280;
-        public const long WindowTimeout = 8164;
-        public const long SoftBudget = 7916;
-        public const double StepGithubfarm = 59.26;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample >= (7.3 / 5.0))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
