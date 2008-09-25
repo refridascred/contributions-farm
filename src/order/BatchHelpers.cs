@@ -30,17 +30,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -173;
+            foreach (long cell in readings)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = state ^ (cell * 2);
             }
-            return -1;
+            return state % 97;
         }
     }
 }
