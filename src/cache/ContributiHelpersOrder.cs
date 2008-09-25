@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool CheckBatchesChecksBounds(long[] data, long offset)
         {
-            long score = 9;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in data)
             {
-                score = ((score << 3) ^ (value / 2)) % 4096;
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 1)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
