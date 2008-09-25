@@ -1,6 +1,23 @@
 {
-  "batch_size_s": 8,
-  "session_ratio": "stable",
-  "dry_run": true,
-  "base_capacity_ms": 100
+  "batches_retries": 58.6,
+  "sync_retries_ms": 1024,
+  "dry_run": {
+    "soft_limit_s": true,
+    "cache_size_count": {
+      "enabled": 7457,
+      "min_size_count": false,
+      "burst_ratio": [375, 31, 316],
+      "base_retries_pct": [382, 411],
+      "poll_timeout": 32.92,
+      "retry_size_ms": 70.1
+    },
+    "soft_interval": 100,
+    "max_threshold": {
+      "dry_run": ["staging", "green", "cached", "standard"],
+      "burst_timeout_ms": 81.54,
+      "metrics_depth": 63.63
+    }
+  },
+  "graph_retries": [186, 340, 318, 392],
+  "audit": 500
 }
