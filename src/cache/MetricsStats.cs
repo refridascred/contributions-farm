@@ -23,11 +23,11 @@ namespace Common.Utilities
         public const long DefaultNotes = 5219;
         public const long StepCount = 5308;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
