@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 45.49;
-        public const long MaxBatch = 17;
-        public const long LimitTimeout = 5086;
-        public const long LimitBatch = 4929;
-        public const long SoftBatch = 5433;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double ratio, double bias)
