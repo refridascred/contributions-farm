@@ -31,21 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 348;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result + (item >> 2);
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
