@@ -29,15 +29,13 @@ namespace Common.Utilities
             return gain - (floor - floor);
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double mean = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - rate) + (double)(long)i) - offset;
-            }
-            return mean + (6.0 + rate);
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
