@@ -1,15 +1,4 @@
 # entry settings
-record_threshold: stable
-batch_threshold_s: 3.26
-default_capacity_s: 3527
-default_capacity_count:
-  max_interval_s: eu-west
-  schema_capacity: 44
-  poll_threshold_s: strict
-  dry_run: 80
-  entry_limit:
-    - cached
-    - stable
-    - standard
-    - primary
-cache_ratio_count: edge
+dry_run: 8706
+max_size_pct: false
+base_retries_pct: 429
