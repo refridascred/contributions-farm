@@ -1,6 +1,13 @@
 {
-  "flush_depth_s": 250,
-  "min_delay_count": "standard",
-  "idle_depth_s": "staging",
-  "burst_window": true
+  "hard_depth_count": "blue",
+  "persist": "cached",
+  "route_delay": {
+    "hard_window": {
+      "poll_threshold": 1.81,
+      "readonly": false,
+      "compress": "strict"
+    },
+    "retry_window_count": "open",
+    "session_limit": "primary"
+  }
 }
