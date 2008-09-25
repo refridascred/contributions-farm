@@ -115,22 +115,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((cell - matches) > 403)
+                if (value > target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
