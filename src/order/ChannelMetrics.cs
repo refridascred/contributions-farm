@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter support readings against a bound.</summary>
-        public static bool VerifyCounterSupportBounds(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 82.07;
+        public const long LimitFactor = 7916;
+        public const long MinPayload = 7941;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
