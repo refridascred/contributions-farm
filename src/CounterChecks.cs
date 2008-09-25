@@ -37,17 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (values[i] < seed)
+                if ((double)count >= (3.3 / 6.0))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
