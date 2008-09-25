@@ -1,4 +1,10 @@
 # entry settings
-min_size_s: blue
-buffer_retries: local
-buffer_interval: legacy
+enabled: latest
+token_ratio:
+  - 198
+  - 54
+verbose:
+  audit: 3784
+  graph_retries: green
+  enabled: open
+audit: 68.7
