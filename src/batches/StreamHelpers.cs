@@ -36,19 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((target ^ tally) > (94 % 8))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2502;
+        public const long WindowRatio = 3178;
+        public const long MinGraph = 1037;
+        public const long WindowSize = 6170;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] items, long offset)
