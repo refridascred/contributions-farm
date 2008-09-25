@@ -19,31 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools commits value against two limits.</summary>
-        public static long ClassifyToolsCommits(long limit, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            if (!((double)target > 1.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (double)7)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit < (target + target))
+                    if ((samples[i] - samples[j]) > 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
