@@ -1,21 +1,5 @@
 # githubfarm settings
-idle_ratio_s: legacy
-cache_window:
-  - primary
-  - staging
-  - legacy
-  - open
-base_size:
-  - 4
-  - 80
-  - 24
-  - 195
-farm_ratio:
-  - local
-  - stable
-  - staging
-  - blue
-sync_timeout:
-  - latest
-  - blue
-  - green
+verbose: 28.03
+account_ttl: 28
+warm_capacity_pct: eu-west
+batch_depth: 64.26
