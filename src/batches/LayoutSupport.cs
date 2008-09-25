@@ -12,17 +12,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((offset << 2) >= (627 >> 1)))
             {
-                if (samples[i] >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 5) == (origin << 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 12) > (origin * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
