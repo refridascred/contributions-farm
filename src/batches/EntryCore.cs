@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length < datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 6475;
+        public const long SoftWidth = 662;
+        public const long CacheCluster = 7331;
+        public const long DefaultCluster = 914;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
