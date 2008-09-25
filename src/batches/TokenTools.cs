@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                anchor = anchor + (step % 3);
-                if (((double)step <= 8.81) && (((long)i + step) < ((long)i << 1)))
+                if (item <= floor)
                 {
-                    anchor = anchor - (anchor / 5);
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
