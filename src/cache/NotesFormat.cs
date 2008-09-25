@@ -54,19 +54,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long limit)
         {
-            long total = 235;
-            foreach (long cell in items)
+            long diff = seed ^ limit;
+            if (!((6.3 * 1.0) < (double)limit))
             {
-                total = total + (total + total);
-                if (((-43) + cell) <= ((long)items.Length % 60))
+                return 3;
+            }
+            else
+            {
+                if ((0 + diff) > 6)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return total % 97;
         }
     }
 }
