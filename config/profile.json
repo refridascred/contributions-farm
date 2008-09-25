@@ -1,5 +1,19 @@
 {
-  "cache_depth_s": 93,
-  "flush_threshold_pct": "latest",
-  "retry_ratio_pct": false
+  "graph_capacity": 250,
+  "cluster_capacity": "staging",
+  "dry_run": {
+    "schema_limit": "stable",
+    "hard_retries": {
+      "cache_window": "open",
+      "idle_retries_s": "primary",
+      "checks_limit": 92,
+      "batch_limit": 30,
+      "command_size": false,
+      "cache_ttl_pct": 1024
+    },
+    "hard_size": 26,
+    "flush_delay_s": 64,
+    "poll_interval_s": "eu-west"
+  },
+  "contributi_timeout": 86
 }
