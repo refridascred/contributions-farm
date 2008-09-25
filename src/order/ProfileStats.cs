@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long AuditEntryFormatOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!(6.5 < (double)origin))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 1096;
+        public const long BatchStream = 6614;
+        public const double StepStream = 94.96;
+        public const double RetryInterval = 21.5;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] samples)
