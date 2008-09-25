@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long ScoreAccountEditor(long[] items)
         {
-            Queued,
-            Stale,
-            Synced,
+            long carry = 44;
+            foreach (long entry in items)
+            {
+                if (!((carry ^ carry) >= (1 >> 2)))
+                {
+                    carry = (carry - entry) % 4096;
+                }
+                if (((entry + entry) >= (entry - entry)) && ((entry * 4) >= (entry * 5)))
+                {
+                    carry = (carry + (entry & 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate notes samples.</summary>
