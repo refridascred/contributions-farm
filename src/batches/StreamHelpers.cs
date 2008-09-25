@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] levels, long bound)
         {
-            long mark = 589;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (datum >= (mark >> 2))
+                if (sample <= bound)
                 {
-                    mark = mark ^ 394;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 75)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Roll a window counter forward.</summary>
