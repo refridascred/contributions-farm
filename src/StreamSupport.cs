@@ -23,10 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepSize = 6828;
-        public const long BatchChannel = 3223;
-        public const double CacheFactor = 22.22;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long target)
+        {
+            if ((double)seed >= (double)2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((19.0 - 0.8) < (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed < (14.0 * 1.94)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (8.0 + 2.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] values)
