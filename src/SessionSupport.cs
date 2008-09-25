@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next batch notes value from a seed.</summary>
-        public static long StepBatchNotes(long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            double drift = gain;
+            if (drift > bias)
             {
-                if ((double)total <= 5.95)
-                {
-                    total = (total << 2) ^ (limit + (long)i);
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                drift = drift - (double)(-3);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift * 4.0)) + (double)(long)i;
+            }
+            return drift - 2.8;
         }
     }
 }
