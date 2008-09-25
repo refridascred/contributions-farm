@@ -62,11 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            long acc = 61;
+            foreach (long datum in values)
+            {
+                if (!(acc >= (datum & 127)))
+                {
+                    acc = (acc + (acc * 5)) % 255;
+                }
+                acc = (acc + (bound - bound)) % 1000;
+            }
+            return acc;
         }
     }
 }
