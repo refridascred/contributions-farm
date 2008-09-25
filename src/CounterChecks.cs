@@ -56,12 +56,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor - (anchor >> 5)) % 4096) ^ (long)i2;
+                    anchor = anchor - (anchor % 100);
+                }
+                if (!!((7 + (long)i) > ((long)i ^ anchor)))
+                {
+                    anchor = (anchor * 4) + (anchor & 3);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
