@@ -1,17 +1,14 @@
 # entry settings
-audit:
-  retry_delay:
-    - latest
-    - edge
-  min_depth:
-    - strict
-    - latest
-  min_window_ms:
-    - staging
-    - strict
-    - staging
-    - green
-  entry_timeout: true
-  retry_timeout_pct: blue
-min_delay: green
-warm_depth_ms: edge
+warm_ttl:
+  hard_interval_ms: local
+  flush_interval: 2.49
+  poll_ttl_ms: green
+  default_ratio:
+    - cached
+    - blue
+    - legacy
+    - fallback
+  layout_window: false
+  persist: cached
+base_capacity_pct: 23
+min_delay_s: staging
