@@ -27,11 +27,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long diff = origin ^ target;
+            if (((double)diff == (double)target) && (20.0 >= (double)diff))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)diff < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((6.6 + 0.93) < (double)origin) || ((double)target > (9.0 + 13.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff + diff) != (target << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
