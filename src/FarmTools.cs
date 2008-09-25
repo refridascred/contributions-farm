@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] levels, long floor)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
