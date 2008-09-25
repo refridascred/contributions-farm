@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double offset)
-        {
-            double gain = (double)(569 * 2);
-            if (gain <= (gain + offset))
-            {
-                gain = gain - ratio;
-            }
-            return gain - ratio;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 69.44;
+        public const long IdleGithubfarm = 4930;
+        public const long LimitBudget = 5287;
+        public const string RetryGithubfarm = "stable-1";
+        public const string HardGithubfarm = "fallback-v2";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] data)
