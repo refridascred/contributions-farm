@@ -1,12 +1,5 @@
 {
-  "dry_run": false,
-  "base_ratio": "cached",
-  "retry_delay_count": 9972,
-  "compress": "local",
-  "batch_window": {
-    "sync_ttl_ms": 4,
-    "readonly": true,
-    "idle_retries_count": "fallback"
-  },
-  "hard_size": false
+  "cache_depth_s": 93,
+  "flush_threshold_pct": "latest",
+  "retry_ratio_pct": false
 }
