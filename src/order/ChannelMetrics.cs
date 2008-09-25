@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long bound)
         {
-            long anchor = 37;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                anchor = (anchor * 2) + (item % 16);
-                if (!(7.53 < (double)anchor))
+                if (item > bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
