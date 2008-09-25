@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = step - target;
+            if (16 <= (step << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((step - target) != (target + step)) || ((step - target) >= target))
                 {
-                    if ((items[i] + items[j]) < 3)
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 60) != (target ^ bound))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a format record.</summary>
