@@ -61,22 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 5427;
+        public const long BurstSize = 9666;
+        public const long CacheBudget = 1175;
+        public const long StepMetrics = 3036;
+        public const long WindowTimeout = 3092;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesMatches(long[] levels)
