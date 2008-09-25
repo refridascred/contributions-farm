@@ -49,13 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            Closed,
-            Ready,
-            Retry,
-            Stale,
+            double rate = (double)86 / 5.0;
+            if (rate >= rate)
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (bias * 8.55);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
