@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long WeighAccountAlready(long[] series, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long score = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed % 7) <= (score * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (seed * 4)) + datum;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 56)
-            {
-                score = (score * 5) + (4 * 5);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
