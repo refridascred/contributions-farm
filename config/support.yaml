@@ -1,5 +1,7 @@
 # support settings
-filter_threshold: fallback
-graph_interval: strict
-poll_timeout: 57.38
-audit: 82.68
+payload_retries: 100
+contributi_window:
+  poll_ttl_ms: 91.31
+  soft_delay_count: 10
+  idle_depth_ms: 3.39
+poll_threshold: 250
