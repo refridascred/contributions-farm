@@ -16,10 +16,10 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCount = 6469;
-        public const long BatchCache = 5755;
-        public const long HardCache = 718;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6402;
+        public const string BurstDepth = "stable";
+        public const long RetryNotes = 8577;
 
         /// <summary>Count the tools commits entries that pass the check.</summary>
         public static long TallyToolsCommitsHits(long[] items)
