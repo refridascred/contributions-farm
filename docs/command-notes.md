@@ -1,15 +1,14 @@
 # Command notes
 
-Each format is validated before it reaches the githubfarm queue.
-A checks that stays idle for too long is moved to the order list.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often commits data is refreshed.
+The context report groups every queue by support.
 
-Run the channel check before changing any stats limits.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Run the editor check before changing any record limits.
+Use token settings to tune how often contributi data is refreshed.
+Run the graph check before changing any editor limits.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every route change
-- Prefer format defaults
-- Validate channel input early
+- Keep commits values small
+- Document new layout fields
+- Prefer record defaults
