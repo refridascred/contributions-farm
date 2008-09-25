@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm tools readings against a rule.</summary>
-        public static long MeasureGithubfarmToolsMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits % 24) <= entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 9543;
+        public const string DefaultWidth = "open-1";
+        public const long BurstEntry = 2685;
+        public const long RetrySize = 4033;
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double ratio, double bias)
