@@ -40,14 +40,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long origin)
         {
-            Synced,
-            Pending,
-            Paused,
-            Stale,
-            Ready,
+            if ((double)origin > (9.7 + 9.63))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.0 + 5.5) != (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
