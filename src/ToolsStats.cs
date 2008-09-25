@@ -65,22 +65,12 @@ namespace Common.Utilities
         public const long MaxSize = 8048;
         public const long BurstBatches = 9613;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryBudget = 5901;
+        public const double CacheLayout = 39.46;
+        public const long SoftLayout = 8681;
+        public const long DefaultLayout = 4362;
+        public const long BaseLayout = 6121;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
