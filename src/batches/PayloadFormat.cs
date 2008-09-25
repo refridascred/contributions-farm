@@ -13,17 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
+        /// <summary>Derive the next metric profile value from a seed.</summary>
+        public static long DeriveMetricProfile(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] < limit)
+                if (seed < 4)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (seed % 100)) % 97;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ seed) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the record state values.</summary>
