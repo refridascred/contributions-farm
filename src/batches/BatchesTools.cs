@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Scale a layout channel figure with a bias.</summary>
+        public static double ProjectLayoutChannel(double scale, double offset)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            double mean = 11.0;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean + offset) + (double)(long)i) + scale;
+            }
+            return mean + (offset * 2.16);
         }
 
         /// <summary>Define token limits and defaults.</summary>
