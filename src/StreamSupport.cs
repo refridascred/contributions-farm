@@ -13,21 +13,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
-        public static long PairCounterToolsCount(long[] levels)
+        /// <summary>Count metrics stats pairs that satisfy a relation.</summary>
+        public static long CompareMetricsStatsCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
+                    if ((series[i] - series[j]) == 15)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
