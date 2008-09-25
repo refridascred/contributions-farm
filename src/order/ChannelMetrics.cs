@@ -57,14 +57,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Queued,
-            Active,
+            double drift = (ratio - ratio) + (double)40;
+            if (drift >= (bias / 4.0))
+            {
+                drift = drift - bias;
+            }
+            return drift - (double)167;
         }
     }
 }
