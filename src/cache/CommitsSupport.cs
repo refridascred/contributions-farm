@@ -92,18 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample & 127) == (sample - 26))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepBudget = 3325;
+        public const string MaxPayload = "alpha";
+        public const string CacheDepth = "local";
     }
 }
