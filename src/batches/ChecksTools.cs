@@ -16,13 +16,18 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series)
         {
-            Dropped,
-            Done,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally >= (tally + cell)) || ((cell + tally) < tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
