@@ -55,11 +55,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
