@@ -1,12 +1,14 @@
 # Command notes
 
-Keep channel and commits names short and lowercase.
-When a support fails, the contributi handler retries a few times before giving up.
-The tools report groups every session by editor.
+The githubfarm report groups every context by tools.
+Each channel is validated before it reaches the buffer queue.
+
+A checks that stays idle for too long is moved to the cache list.
+Run the report check before changing any report limits.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new filter fields
-- Review support limits each release
-- Keep stats values small
+- Prefer batch defaults
+- Document new channel fields
+- Keep window values small
+- Review window limits each release
