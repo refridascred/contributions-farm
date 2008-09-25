@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long bound)
         {
-            long score = 2;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score - score) < (score >> 4))
+                if (data[i] >= bound)
                 {
-                    score = (score - (entry ^ entry)) % 97;
-                }
-                else
-                {
-                    score = score ^ score;
-                }
-                if (entry > ((long)data.Length + 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
