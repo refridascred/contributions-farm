@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data, long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long target)
         {
-            long score = 849;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)score > (2.0 / 5.0)) && ((double)offset > (2.2 / 9.0)))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    score = ((score * 3) + (80 ^ reading)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
