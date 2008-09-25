@@ -1,8 +1,21 @@
 # entry settings
-min_retries_pct: 8965
-cache_size_pct: 49.09
-support_size: 91
-flush_ratio_count:
-  - 286
-  - 435
-  - 453
+metrics_capacity:
+  max_size: 5861
+  batch_retries: true
+  persist:
+    - staging
+    - latest
+    - local
+    - green
+hard_interval:
+  - eu-west
+  - eu-west
+  - blue
+record_timeout: 30.12
+batch_threshold_ms: primary
+batch_capacity:
+  - 8
+  - 460
+  - 143
+  - 276
+base_limit_pct: edge
