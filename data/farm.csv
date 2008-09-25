@@ -1,8 +1,6 @@
-id,token,active
-1,edge,172
-2,edge,98.91
-3,63,28
-4,blue,218
-5,3.12,119
-6,818,legacy
-7,20.07,local
+id,active,label,region
+1,62.64,fallback,staging
+2,green,78.77,stable
+3,801,33.09,33.15
+4,406,54.47,563
+5,blue,405,fallback
