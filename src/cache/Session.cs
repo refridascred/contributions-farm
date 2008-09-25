@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 417;
-        public const string WindowInterval = "alpha";
-        public const long SoftNotes = 6425;
-        public const string LimitFactor = "local-1";
-        public const long WindowNotes = 9639;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long floor)
