@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a layout channel figure with a bias.</summary>
-        public static double ProjectLayoutChannel(double scale, double offset)
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double SmoothProfileCluster(double weight, double span)
         {
-            double mean = 11.0;
-            for (int i = 0; i < 9; i++)
+            double weight2 = span;
+            if (weight2 > (8.9 - span))
             {
-                mean = ((mean + offset) + (double)(long)i) + scale;
+                weight2 = weight2 - span;
             }
-            return mean + (offset * 2.16);
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (span + span)) - (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Classify a githubfarm queue pair into a bucket.</summary>
