@@ -45,39 +45,18 @@ namespace Common.Utilities
             return gain - (offset - 19.0);
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long floor)
+        /// <summary>Measure how many account metric samples are out of range.</summary>
+        public static long MeasureAccountMetricHits(long[] series)
         {
-            long bound = offset - floor;
-            if (floor <= (offset / 8))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 2) < 1)
+                if ((73 & 3) >= (cell - cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((19.0 + 7.0) == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < (1.55 + 3.41))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
