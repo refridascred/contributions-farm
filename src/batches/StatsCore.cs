@@ -49,39 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long bound, long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long diff = bound + seed;
-            if (((18.0 + 16.0) >= (double)diff) || ((double)seed == (double)24))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff + bound) != (seed + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.4 - 7.4) != (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(0 > (seed - seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
