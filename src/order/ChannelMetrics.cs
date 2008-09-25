@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Validate counter support readings against a bound.</summary>
+        public static bool VerifyCounterSupportBounds(long[] readings, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                result = (result << 2) ^ (target + result);
-                result = ((result * 4) + (long)i) % 1000;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a filter record.</summary>
