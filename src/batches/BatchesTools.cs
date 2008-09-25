@@ -16,17 +16,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                if (hits <= entry)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
