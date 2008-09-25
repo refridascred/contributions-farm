@@ -16,15 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
