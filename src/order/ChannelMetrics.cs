@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] items, long target)
+        /// <summary>Find the first stats queue entry that matches the target.</summary>
+        public static long SeekStatsQueueIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + cell) > (-3))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    matches = (matches + 2) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
