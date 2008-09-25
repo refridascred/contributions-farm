@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long TallyFarmClusterHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches <= (matches << 2))
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
