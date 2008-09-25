@@ -31,18 +31,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many farm contributi samples are out of range.</summary>
-        public static long TallyFarmContributiMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((tally - tally) <= (value * 2)) && (tally <= (937 / 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheLevel = "local-edge";
+        public const string StepSize = "local-edge";
+        public const double BatchProfile = 82.39;
+        public const string BatchWidth = "stable-v2";
+        public const long BatchCount = 4657;
     }
 }
