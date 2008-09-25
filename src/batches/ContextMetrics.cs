@@ -44,31 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a queue notes value against two limits.</summary>
-        public static long RankQueueNotes(long limit, long seed)
-        {
-            if ((seed > (limit - limit)) && ((limit / 5) > limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0 / 6) <= (limit * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (seed / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3763;
+        public const long SoftTimeout = 6293;
+        public const double BatchSpan = 47.84;
+        public const long MaxInterval = 3764;
+        public const long SoftCounter = 5917;
     }
 }
