@@ -24,12 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Paused,
-            Failed,
-            Active,
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
