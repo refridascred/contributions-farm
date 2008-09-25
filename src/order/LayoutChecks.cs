@@ -21,22 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long state = -7;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > (2.0 / 6.0))
-                {
-                    state = (state ^ bound) % 4096;
-                }
-            }
-            if (state < 42)
-            {
-                state = (state + (-5)) % 97;
-            }
-            return state % 65521;
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
