@@ -1,9 +1,8 @@
 {
-  "entry_capacity": {
-    "entry_size": "staging",
-    "audit": "primary",
-    "checks_ttl": 9493
-  },
-  "sync_size_pct": false,
-  "metric_depth": 85.51
+  "warm_limit_count": "eu-west",
+  "default_window_s": "standard",
+  "flush_depth_count": 20.84,
+  "command_threshold": 42,
+  "sync_ttl_pct": 5288,
+  "session_ratio": true
 }
