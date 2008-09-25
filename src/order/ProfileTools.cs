@@ -68,14 +68,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Pending,
-            Retry,
-            Failed,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 86.22;
+        public const long LimitDepth = 6819;
+        public const double DefaultSpan = 88.62;
+        public const double RetryCommits = 28.1;
     }
 }
