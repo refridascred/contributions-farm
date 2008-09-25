@@ -37,9 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultScore = 7428;
-        public const double SoftWidth = 2.68;
-        public const long DefaultContext = 249;
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long TallyBatchesGithubfarmMatches(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((20.0 / 9.0) < (double)step)
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
+        }
     }
 }
