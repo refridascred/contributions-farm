@@ -31,11 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 8234;
-        public const long BatchTimeout = 6992;
-        public const long BurstScore = 5700;
-        public const double RetryReport = 38.18;
-        public const double StepReport = 36.42;
+        /// <summary>Match up notes command samples.</summary>
+        public static long MatchNotesCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
