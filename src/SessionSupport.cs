@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of editor order readings.</summary>
-        public static long ScoreEditorOrder(long[] readings, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long state = 2;
-            foreach (long value in readings)
-            {
-                if ((-8) < (9 - limit))
-                {
-                    state = (state << 2) ^ value;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (limit - value)) % 255;
-                    state = (state ^ (value ^ 1)) % 255;
-                }
-                state = state + (927 & 255);
-            }
-            return state % 4096;
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first cluster buffer entry that matches the target.</summary>
