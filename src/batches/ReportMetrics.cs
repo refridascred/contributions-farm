@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long seed)
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long SeekBufferBatchIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
