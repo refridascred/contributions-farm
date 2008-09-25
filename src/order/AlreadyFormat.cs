@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double BurstDepth = 74.05;
         public const long LimitLevel = 4401;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a schema checks counter forward.</summary>
