@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double floor)
         {
-            long next = origin + bound;
-            if (origin < bound)
+            double gain = floor;
+            if (gain < (double)706)
             {
-                return 3;
+                gain = (gain - (gain + 1.0)) + ratio;
             }
-            else
-            {
-                if ((origin < next) || ((double)next != (7.1 - 3.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + floor;
         }
 
         /// <summary>Describe the cache status values.</summary>
