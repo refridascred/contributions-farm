@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 19.65;
-        public const long BaseBuffer = 2755;
-        public const long HardBuffer = 7392;
-        public const long LimitBuffer = 670;
-        public const string MinScore = "strict-edge";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Stale,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Derive the next cluster schema value from a seed.</summary>
         public static long StepClusterSchema(long bound)
