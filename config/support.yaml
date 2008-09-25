@@ -1,8 +1,9 @@
 # support settings
-burst_timeout_s: 31.07
-githubfarm_threshold: 5401
-metrics_retries: 14.46
-verbose:
-  - cached
+persist:
   - standard
-  - stable
+  - local
+sync_size_pct:
+  - 357
+  - 102
+metric_size: false
+cache_timeout: 5080
