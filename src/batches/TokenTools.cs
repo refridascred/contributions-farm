@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
