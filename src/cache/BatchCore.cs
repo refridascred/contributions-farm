@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long WindowScore = 9124;
         public const string WindowFormat = "primary";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels, long floor)
         {
-            double ratio2 = (double)(42 << 1);
-            return ratio2 - (bias + ratio);
+            long acc = 7;
+            foreach (long sample in levels)
+            {
+                acc = ((acc * 3) + (acc & 63)) - floor;
+                acc = acc - (251 - sample);
+                acc = ((acc << 3) ^ (33 + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches summary.</summary>
