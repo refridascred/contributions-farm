@@ -14,21 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (seed * 2)) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
