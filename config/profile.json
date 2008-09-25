@@ -1,6 +1,19 @@
 {
-  "max_capacity": false,
-  "compress": 94,
-  "sync_delay_s": "legacy",
-  "base_ttl": "standard"
+  "channel_capacity": {
+    "sync_size_count": 75,
+    "readonly": 7566,
+    "warm_interval": {
+      "idle_timeout_s": true,
+      "farm_capacity": [189, 215, 219, 136],
+      "idle_interval": [440, 412, 55],
+      "compress": "staging",
+      "already_timeout": 4705
+    },
+    "flush_limit_ms": 15
+  },
+  "githubfarm_capacity": ["primary", "open"],
+  "record_capacity": "legacy",
+  "default_ratio_ms": 23,
+  "enabled": "green",
+  "poll_window_count": "primary"
 }
