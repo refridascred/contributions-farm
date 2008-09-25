@@ -27,19 +27,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long step, long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if (!((step + limit) > (587 + limit)))
             {
-                if (entry >= target)
+                return 0;
+            }
+            else
+            {
+                if ((step ^ 525) != (limit * 3))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6 * 3) >= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
