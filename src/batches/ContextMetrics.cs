@@ -25,24 +25,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 8042;
         public const string HardRatio = "stable";
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            if ((limit > (origin * 3)) && ((limit % 12) >= (limit ^ origin)))
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin - origin) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a already info.</summary>
