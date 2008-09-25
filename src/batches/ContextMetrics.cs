@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] series, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
