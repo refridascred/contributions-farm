@@ -20,20 +20,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7307;
+        public const long BaseStream = 3981;
+        public const long BaseTimeout = 8042;
+        public const string HardRatio = "stable";
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long limit, long origin)
