@@ -76,11 +76,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
