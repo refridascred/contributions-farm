@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long BurstBatch = 3296;
         public const long WindowBatch = 5561;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate report checks readings against a bound.</summary>
+        public static bool ValidateReportChecksRange(long[] levels, long origin)
         {
-            Locked,
-            Synced,
-            Stale,
-            New,
-            Retry,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
