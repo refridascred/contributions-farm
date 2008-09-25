@@ -39,19 +39,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)count != (15.0 / 9.0))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 74.71;
+        public const long StepScore = 5803;
+        public const string SoftFormat = "stable-1";
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
