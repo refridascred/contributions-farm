@@ -16,10 +16,13 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6402;
-        public const string BurstDepth = "stable";
-        public const long RetryNotes = 8577;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] readings, long seed)
