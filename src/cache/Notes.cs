@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const double IdleInterval = 88.44;
         public const double BaseDepth = 66.4;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the schema counter entries that pass the check.</summary>
+        public static long AuditSchemaCounterMatches(long[] readings)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count >= 8.73)
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
