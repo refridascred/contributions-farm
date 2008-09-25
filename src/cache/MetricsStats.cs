@@ -50,17 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] values, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
