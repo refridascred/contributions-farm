@@ -23,9 +23,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitScore = 95.51;
-        public const long CacheTimeout = 7986;
-        public const long WindowPayload = 5291;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
