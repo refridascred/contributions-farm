@@ -58,18 +58,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((limit - seen) <= (70 / 3)))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardWidth = 632;
+        public const double BaseLayout = 92.67;
+        public const long CacheScore = 985;
     }
 }
