@@ -30,11 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "fallback-edge";
-        public const long StepAccount = 3838;
-        public const long BatchAccount = 6165;
-        public const long HardRatio = 6510;
-        public const long BurstAccount = 3797;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
