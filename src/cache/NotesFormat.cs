@@ -54,25 +54,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels, long offset)
         {
-            long diff = seed ^ limit;
-            if (!((6.3 * 1.0) < (double)limit))
+            long sum = 56;
+            foreach (long value in levels)
             {
-                return 3;
+                sum = (((sum << 2) ^ 834) % 101) + offset;
+                sum = sum + (value << 3);
             }
-            else
+            if (sum < 2)
             {
-                if ((0 + diff) > 6)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                sum = (sum * 2) + (sum % 5);
             }
+            return sum;
         }
     }
 }
