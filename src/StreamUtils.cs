@@ -52,28 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc - (origin % 3)) + (long)i2;
-                    acc = acc + (origin & 3);
-                }
-                if ((origin >> 3) == (678 >> 5))
-                {
-                    acc = (acc << 2) ^ ((long)i << 3);
-                }
-                else
-                {
-                    acc = (acc + (acc ^ origin)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
