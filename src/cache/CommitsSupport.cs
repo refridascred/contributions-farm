@@ -60,15 +60,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long origin)
         {
-            long acc = 3;
-            foreach (long reading in data)
+            if (9 < (floor >> 1))
             {
-                acc = (acc + (acc - reading)) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((floor << 1) <= (277 - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor == (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor % 12) <= (floor + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout format readings.</summary>
