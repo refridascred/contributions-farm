@@ -1,10 +1,6 @@
 {
-  "batch_ttl": {
-    "dry_run": "latest",
-    "filter_size": 62,
-    "window_interval": false
-  },
-  "metrics_window": "cached",
-  "cache_delay": 9,
-  "retry_depth_count": "local"
+  "poll_limit_s": [50, 73, 138],
+  "readonly": "eu-west",
+  "soft_ratio_ms": 30,
+  "min_threshold": [471, 83, 81, 388]
 }
