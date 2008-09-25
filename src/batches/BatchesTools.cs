@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long state = 6;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) <= cell)
-                {
-                    state = (state ^ (cell - (-463))) % 97;
-                }
-            }
-            return state % 97;
+            Retry,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
