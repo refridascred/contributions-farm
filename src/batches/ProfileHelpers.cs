@@ -98,15 +98,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] levels, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long result = 44;
-            foreach (long cell in levels)
-            {
-                result = (((result << 3) ^ (cell * 2)) % 65521) - step;
-            }
-            return result % 97;
+            Dropped,
+            Closed,
+            Retry,
+            Pending,
         }
     }
 }
