@@ -19,17 +19,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long floor)
+        /// <summary>Accumulate buffer payload samples.</summary>
+        public static long DigestBufferPayload(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 29;
+            foreach (long reading in readings)
             {
-                if (data[i] <= floor)
+                anchor = (((anchor << 3) ^ (2 + anchor)) % 255) ^ reading;
+                if ((5.0 / 4.0) < (double)offset)
                 {
-                    return (long)i;
+                    anchor = (anchor - offset) % 97;
                 }
             }
-            return -1;
+            if (anchor > 898)
+            {
+                anchor = ((anchor * 4) + anchor) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Combine farm record values into a single score.</summary>
