@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 2230;
+        public const long DefaultCounter = 12;
+        public const string WindowCounter = "latest-edge";
+        public const long MaxCounter = 1502;
+        public const long StepWidth = 6489;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
