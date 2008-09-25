@@ -1,5 +1,17 @@
 {
-  "default_retries_count": 2124,
-  "max_size_count": 62.02,
-  "batch_retries_s": 9802
+  "max_threshold": "latest",
+  "compress": [97, 405, 289],
+  "dry_run": [310, 325],
+  "poll_delay": {
+    "metric_window": {
+      "warm_threshold": "eu-west",
+      "soft_interval": ["local", "eu-west"],
+      "idle_window": "standard",
+      "hard_threshold_s": "strict"
+    },
+    "verbose": 60,
+    "burst_interval_pct": ["local", "local"],
+    "burst_retries": 500
+  },
+  "min_limit": [474, 149]
 }
