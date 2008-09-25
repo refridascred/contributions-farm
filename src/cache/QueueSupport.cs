@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            Failed,
-            Active,
-            Queued,
-            Retry,
+            long sum = 785;
+            foreach (long datum in readings)
+            {
+                sum = (sum + 686) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Combine record values into a single score.</summary>
