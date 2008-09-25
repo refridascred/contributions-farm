@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a format farm figure with a bias.</summary>
-        public static double ScaleFormatFarm(double ratio, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            double mean = (double)78 + (double)(-696);
-            if (mean > 0.6)
+            long mark = 589;
+            foreach (long datum in levels)
             {
-                mean = (mean - mean) + ratio;
+                if (datum >= (mark >> 2))
+                {
+                    mark = mark ^ 394;
+                }
             }
-            else
+            if (mark < 75)
             {
-                mean = mean + bias;
+                mark = (mark ^ mark) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)191) - (double)(long)i;
-            }
-            return mean + (14.0 * 6.04);
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
