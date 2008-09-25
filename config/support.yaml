@@ -1,9 +1,25 @@
 # support settings
-warm_delay_s: green
-retry_retries_count:
-  - 284
-  - 352
-  - 281
-  - 117
-default_capacity_ms: 73.23
-retry_size: 82
+idle_capacity_ms: legacy
+filter_ttl:
+  max_interval_s:
+    stream_ttl: false
+    poll_timeout_ms: edge
+    base_window_s:
+      - 315
+      - 224
+      - 273
+      - 180
+    soft_depth_s: 51
+  schema_window: 27
+  warm_limit_pct:
+    retry_limit: edge
+    channel_depth:
+      - 275
+      - 445
+      - 267
+      - 418
+    max_ratio: open
+retry_timeout: true
+warm_delay: local
+default_delay_s: latest
+burst_timeout: 67
