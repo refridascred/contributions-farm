@@ -31,12 +31,18 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            Synced,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((939 - entry) == (count * 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
