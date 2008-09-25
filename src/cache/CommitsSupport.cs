@@ -37,10 +37,14 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultLevel = 86.03;
-        public const long DefaultFactor = 6288;
-        public const double LimitLevel = 94.92;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] data)
