@@ -31,13 +31,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long limit)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            if ((2.1 - 6.9) != (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit << 3) <= (limit + limit)) || (7.48 >= (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.78 - 0.1) != (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (4.0 * 2.8)) && (327 < limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
