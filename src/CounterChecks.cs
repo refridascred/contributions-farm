@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long MaxCounter = 1502;
         public const long StepWidth = 6489;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Locate a token cluster reading by value.</summary>
+        public static long FindTokenClusterIndex(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
