@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSize = 2590;
-        public const string BaseBudget = "stable";
-        public const long HardScore = 8815;
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double ratio, double bias)
