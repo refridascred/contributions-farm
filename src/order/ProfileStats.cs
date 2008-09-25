@@ -28,12 +28,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Classify a order token pair into a bucket.</summary>
+        public static long RankOrderToken(long target, long offset)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long span = target ^ offset;
+            if ((8.5 - 9.3) != (double)span)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= (2.8 / 6.0)) && ((8 << 3) < offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >> 5) >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
