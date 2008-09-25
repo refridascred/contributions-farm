@@ -34,24 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double span)
-        {
-            double scale2 = span * 9.2;
-            if (scale2 < 8.96)
-            {
-                scale2 = scale2 + span;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - scale2;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 6295;
+        public const long BurstRatio = 722;
+        public const string SoftRatio = "local-1";
+        public const long BurstFactor = 6820;
+        public const double BurstWindow = 63.41;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
