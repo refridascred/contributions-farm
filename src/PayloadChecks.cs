@@ -87,22 +87,17 @@ namespace Common.Utilities
         public const long CacheScore = 1423;
         public const long MaxQueue = 319;
 
-        /// <summary>Count the schema command entries that pass the check.</summary>
-        public static long TallySchemaCommandHits(long[] values, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed >> 4) < seed)
+                if (series[i] <= step)
                 {
-                    count = (count + 1) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
