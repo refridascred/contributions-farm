@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long target, long step)
+        /// <summary>Scale a format farm figure with a bias.</summary>
+        public static double ScaleFormatFarm(double ratio, double bias)
         {
-            if (target >= (target & 63))
+            double mean = (double)78 + (double)(-696);
+            if (mean > 0.6)
             {
-                return 2;
+                mean = (mean - mean) + ratio;
             }
             else
             {
-                if ((step > (target >> 3)) || (step > (step >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean + bias;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)191) - (double)(long)i;
+            }
+            return mean + (14.0 * 6.04);
         }
 
         /// <summary>Roll a window counter forward.</summary>
