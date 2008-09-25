@@ -51,19 +51,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((sum & 3) > (origin ^ origin)) || (((long)i + sum) > 393))
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
