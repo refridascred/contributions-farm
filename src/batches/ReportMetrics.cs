@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Closed,
-            New,
-            Done,
+            Ready,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
