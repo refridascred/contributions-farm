@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
