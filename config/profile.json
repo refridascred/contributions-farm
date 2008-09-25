@@ -1,7 +1,5 @@
 {
-  "metrics_threshold": 54.82,
-  "default_depth_ms": 18,
-  "burst_threshold_s": ["blue", "primary"],
-  "counter_timeout": false,
-  "dry_run": "strict"
+  "warm_depth": false,
+  "stats_ratio": "eu-west",
+  "poll_timeout_count": "legacy"
 }
