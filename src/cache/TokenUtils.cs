@@ -29,11 +29,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5362;
-        public const string WindowSchema = "cached";
-        public const long HardCount = 9196;
-        public const long RetrySchema = 2880;
-        public const long BaseSchema = 5237;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long step)
+        {
+            long offset = bound - step;
+            if ((offset ^ bound) <= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 2) != (bound >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
