@@ -29,19 +29,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer route entry stays within the limit.</summary>
-        public static bool VerifyBufferRouteRange(long[] series, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long acc = 30;
+            foreach (long value in levels)
             {
-                if (reading < floor)
+                if ((acc + 8) >= (target % 64))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc ^ ((-1) & 255)) % 1000) - value;
                 }
             }
-            return stale;
+            if (acc > 0)
+            {
+                acc = acc + 2;
+            }
+            return acc;
         }
     }
 }
