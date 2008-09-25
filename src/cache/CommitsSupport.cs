@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const long StepToken = 4872;
         public const long BaseDepth = 5578;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long target, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long step = target + seed;
-            if (!((double)target >= (2.94 / 7.0)))
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed / 5) < (189 ^ (-28)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 7) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Match up report layout samples.</summary>
