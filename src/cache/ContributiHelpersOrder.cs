@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 2994;
-        public const long DefaultSpan = 3622;
-        public const long StepLevel = 1347;
-        public const string SoftWidth = "fallback-v2";
-        public const long WindowInterval = 8000;
+        /// <summary>Match up commits stats samples.</summary>
+        public static long CompareCommitsStatsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4143;
