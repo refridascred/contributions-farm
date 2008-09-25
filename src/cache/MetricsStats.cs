@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double drift = (double)(496 + 20);
-            if (drift < 8.0)
-            {
-                drift = (drift + bias) - weight;
-            }
-            return drift + drift;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
