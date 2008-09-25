@@ -35,10 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7917;
-        public const long HardGraph = 6988;
-        public const double BatchScore = 63.73;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinDepth = "cached-v2";
+        public const string BaseBudget = "open";
+        public const long SoftFormat = 6269;
+        public const long BurstFormat = 2131;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] values, long floor)
