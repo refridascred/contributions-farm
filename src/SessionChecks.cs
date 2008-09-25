@@ -13,14 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Locked,
+            Failed,
             Retry,
-            New,
-            Dropped,
+            Draft,
             Active,
+            Closed,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
