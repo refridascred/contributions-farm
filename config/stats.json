@@ -1,6 +1,7 @@
 {
-  "max_window_s": [331, 404, 431],
-  "report_interval": 1586,
-  "default_ratio_s": "stable",
-  "buffer_delay": "latest"
+  "poll_ratio_ms": ["edge", "latest"],
+  "warm_ttl_pct": false,
+  "buffer_size": 30,
+  "batch_threshold_pct": ["latest", "blue", "fallback", "cached"],
+  "commits_ttl": "latest"
 }
