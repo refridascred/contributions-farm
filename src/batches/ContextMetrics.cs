@@ -40,12 +40,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
+            Paused,
+            Ready,
+            Idle,
             Locked,
-            Draft,
-            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
