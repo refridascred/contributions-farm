@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                if ((hits + hits) < (74 >> 4))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + reading) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
