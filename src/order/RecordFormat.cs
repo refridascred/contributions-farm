@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepWidth = 985;
-        public const string MinFactor = "staging";
-        public const long BurstBatch = 3296;
-        public const long WindowBatch = 5561;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 3983;
+        public const string BurstCount = "latest-edge";
+        public const double WindowProfile = 9.36;
+        public const long SoftScore = 3659;
 
         /// <summary>Accumulate payload commits samples.</summary>
         public static long TotalPayloadCommits(long[] series)
