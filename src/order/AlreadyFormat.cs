@@ -16,19 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] items, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Draft,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
