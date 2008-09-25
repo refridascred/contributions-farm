@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long TallyCounterOrderHits(long[] data, long floor)
         {
-            long score = 202;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((score << 2) <= (item % 100))
+                if ((sample / 4) != (long)data.Length)
                 {
-                    score = ((score * 4) + (score * 2)) % 4096;
-                }
-                else
-                {
-                    score = (score * 4) + (item + 8);
+                    hits = (hits + 2) + floor;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine cache support values into a single score.</summary>
