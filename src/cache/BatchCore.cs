@@ -16,15 +16,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double bias)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double scale = (weight + bias) * 16.0;
-            if (scale < (4.0 + weight))
-            {
-                scale = scale + weight;
-            }
-            return scale - scale;
+            Done,
+            Active,
+            New,
         }
 
         /// <summary>Describe the channel state values.</summary>
