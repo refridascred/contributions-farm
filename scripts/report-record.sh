@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west primary strict; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=109
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
