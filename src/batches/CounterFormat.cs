@@ -52,22 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels)
-        {
-            long acc = 387;
-            foreach (long sample in levels)
-            {
-                if (10.0 > (double)sample)
-                {
-                    acc = acc ^ (sample - sample);
-                }
-                if (((sample - 968) < (acc + (long)levels.Length)) || ((14.0 - 5.99) != (double)sample))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 8234;
+        public const long BatchTimeout = 6992;
+        public const long BurstScore = 5700;
+        public const double RetryReport = 38.18;
+        public const double StepReport = 36.42;
     }
 }
