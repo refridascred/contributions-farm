@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -46;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result << 3) ^ reading) + target;
+                if ((reading << 1) > (484 & 15))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ reading) % 1000;
+                }
+                else
+                {
+                    result = result - (14 >> 2);
+                }
+                if ((107 / 6) != (result * 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Accumulate payload commits samples.</summary>
