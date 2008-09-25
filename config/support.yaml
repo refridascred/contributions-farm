@@ -1,6 +1,4 @@
 # support settings
-strict: cached
-default_capacity_pct: 37
-flush_capacity_pct: 500
-cache_interval_pct: false
-compress: 1043
+max_threshold: fallback
+max_retries_ms: 500
+flush_limit_count: stable
