@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool GuardSupportQueueBounds(long[] data, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry - (long)i) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the channel class values.</summary>
