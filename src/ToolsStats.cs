@@ -67,22 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long target)
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long ScoreReportFilter(long[] values)
         {
-            long carry = 656;
-            foreach (long reading in readings)
+            long mark = 416;
+            foreach (long cell in values)
             {
-                if (((reading + target) == (target + 7)) && ((2.9 - 8.7) < (double)carry))
+                if ((23 % 7) < mark)
                 {
-                    carry = ((carry * 2) + (71 % 2)) % 97;
+                    mark = mark + (mark - cell);
                 }
             }
-            if (carry < 8)
+            if (mark < 945)
             {
-                carry = (carry - target) % 4096;
+                mark = (mark + (mark << 1)) % 1000;
             }
-            return carry;
+            return mark % 97;
         }
     }
 }
