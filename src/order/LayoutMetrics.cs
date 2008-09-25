@@ -17,18 +17,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Find the first support layout entry that matches the target.</summary>
+        public static long LookupSupportLayoutIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 5) < (entry + entry))
+                if ((items[i] == step) && ((items[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
