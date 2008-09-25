@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter buffer entries.</summary>
-        public static long CombineCounterBuffer(long[] series, long step)
-        {
-            long state = 31;
-            foreach (long item in series)
-            {
-                state = (state + (state / 6)) + item;
-            }
-            if (state < 98)
-            {
-                state = (state * 2) + (step ^ state);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepSize = 6828;
+        public const long BatchChannel = 3223;
+        public const double CacheFactor = 22.22;
 
         /// <summary>Grade a githubfarm editor value against two limits.</summary>
         public static long BucketGithubfarmEditor(long seed, long limit)
