@@ -34,19 +34,11 @@ namespace Common.Utilities
             return (drift - span) + weight;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] readings, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = bias;
+            return (ratio + (1.6 + ratio)) + weight;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
