@@ -57,15 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long total = 6;
+            foreach (long value in readings)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                total = (total - (value ^ value)) % 4096;
             }
-            return score;
+            return total;
         }
     }
 }
