@@ -1,8 +1,6 @@
 {
-  "strict": "open",
-  "default_size_pct": "staging",
-  "verbose": "edge",
-  "warm_window_s": "edge",
-  "cache_capacity_pct": true,
-  "flush_capacity_s": 31
+  "min_ttl_pct": 3,
+  "schema_depth": false,
+  "session_delay": ["staging", "standard"],
+  "min_interval": true
 }
