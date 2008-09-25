@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftInterval = 4612;
-        public const long MaxBudget = 4766;
-        public const string LimitCluster = "alpha-1";
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long floor, long target)
+        {
+            long slot = floor ^ target;
+            if ((slot % 8) > (slot >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target & 127) < slot)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)slot <= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + slot) < (slot >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
