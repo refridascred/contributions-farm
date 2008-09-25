@@ -1,5 +1,29 @@
 {
-  "support_size": 8134,
-  "retry_size_ms": 80.3,
-  "route_ttl": 90
+  "soft_ttl_ms": 92,
+  "batch_depth_ms": "eu-west",
+  "profile_retries": {
+    "strict": {
+      "max_retries_s": 63.07,
+      "readonly": false,
+      "cache_ratio": "latest",
+      "retry_window_count": 3,
+      "idle_size_pct": 6676,
+      "entry_retries": "open"
+    },
+    "hard_interval_ms": {
+      "soft_capacity_ms": ["fallback", "strict"],
+      "record_ratio": true,
+      "default_threshold_s": true,
+      "min_retries_pct": "stable"
+    },
+    "min_retries_count": ["open", "latest"]
+  },
+  "enabled": 2841,
+  "max_size_count": {
+    "readonly": 9,
+    "enabled": 87.78,
+    "burst_size_pct": 30,
+    "burst_window": "green",
+    "flush_timeout_ms": 15
+  }
 }
