@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 26.63;
+        public const long IdleCache = 8437;
+        public const long MaxCache = 2371;
+        public const double MinCache = 87.23;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] series)
