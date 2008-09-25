@@ -1,11 +1,13 @@
 {
-  "min_window_ms": "edge",
-  "batches_window": {
-    "max_ratio": 57.24,
-    "commits_interval": 13.13,
-    "warm_size": true,
-    "flush_ttl_s": 19
+  "editor_limit": true,
+  "warm_delay_s": {
+    "contributi_interval": 79,
+    "batch_capacity": "blue",
+    "record_interval": 60.84,
+    "min_timeout_ms": 88.22,
+    "metric_size": true
   },
-  "dry_run": "cached",
-  "stream_delay": "open"
+  "cache_ttl": 4289,
+  "retry_capacity": "latest",
+  "poll_limit_ms": 42
 }
