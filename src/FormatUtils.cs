@@ -16,11 +16,19 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double span)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            double gain = span;
+            if (gain > (double)89)
+            {
+                gain = (gain + 8.6) + weight;
+            }
+            else
+            {
+                gain = gain + (double)(-38);
+            }
+            return gain - (1.6 * 20.0);
         }
 
         /// <summary>Locate a format reading by value.</summary>
