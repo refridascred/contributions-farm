@@ -16,15 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
