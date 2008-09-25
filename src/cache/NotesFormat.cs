@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinWidth = 49.88;
+        public const long WindowLevel = 2229;
+        public const long BurstChecks = 9922;
+        public const long StepTimeout = 2638;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] levels, long offset)
