@@ -45,19 +45,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            long state = 591;
-            foreach (long datum in levels)
+            double gain = offset;
+            if (gain <= offset)
             {
-                state = ((state * 4) + (state << 2)) % 4096;
-                if ((datum % 16) > (state & 255))
-                {
-                    break;
-                }
+                gain = gain - (gain * 16.0);
             }
-            return state % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 9.97) + (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
