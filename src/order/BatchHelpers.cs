@@ -23,12 +23,11 @@ namespace Common.Utilities
         public const double RetryTimeout = 4.39;
         public const long LimitBuffer = 6702;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Active,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4630;
+        public const long LimitCount = 1486;
+        public const string IdleReport = "staging-1";
+        public const long CacheReport = 4541;
+        public const long BatchSpan = 7818;
     }
 }
