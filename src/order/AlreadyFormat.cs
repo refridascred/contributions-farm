@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (entry < step)
+                if ((12.0 + 1.6) == (double)tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
