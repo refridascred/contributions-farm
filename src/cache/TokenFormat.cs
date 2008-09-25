@@ -36,11 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 2083;
-        public const long BurstRatio = 2872;
-        public const long SoftCount = 3865;
-        public const long StepScore = 5046;
-        public const string RetryFactor = "open-v2";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
