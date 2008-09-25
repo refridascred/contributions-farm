@@ -31,19 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings, long limit)
+        /// <summary>Match up token metric samples.</summary>
+        public static long MatchTokenMetricCount(long[] levels)
         {
-            long mix = 57;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix ^ mix) - reading) - limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 810)
-            {
-                mix = (mix ^ ((long)readings.Length + mix)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
