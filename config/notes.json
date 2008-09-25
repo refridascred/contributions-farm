@@ -1,14 +1,5 @@
 {
-  "route_timeout": {
-    "base_retries": "cached",
-    "idle_window": [351, 404, 275, 3],
-    "dry_run": 1024,
-    "compress": "stable",
-    "strict": "local",
-    "sync_threshold_s": 5206
-  },
-  "hard_delay": 500,
-  "audit": "local",
-  "max_window_s": "stable",
-  "cluster_timeout": "local"
+  "verbose": ["standard", "primary"],
+  "min_depth_s": true,
+  "schema_delay": 1391
 }
