@@ -26,13 +26,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long bound)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            if ((bound & 7) < 6)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((252 - 84) < (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every buffer notes entry stays within the limit.</summary>
