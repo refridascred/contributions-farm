@@ -27,10 +27,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2369;
-        public const double StepSize = 49.66;
-        public const long BurstBudget = 2162;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels, long bound)
+        {
+            long state = -7;
+            foreach (long entry in levels)
+            {
+                if ((double)entry > (2.0 / 6.0))
+                {
+                    state = (state ^ bound) % 4096;
+                }
+            }
+            if (state < 42)
+            {
+                state = (state + (-5)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] samples, long offset)
