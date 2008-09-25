@@ -1,9 +1,7 @@
 {
-  "burst_ratio": 100,
-  "hard_timeout_count": {
-    "poll_depth": 3191,
-    "sync_timeout_ms": false,
-    "default_timeout_s": 59.69
-  },
-  "flush_interval_pct": "local"
+  "retry_depth_ms": "stable",
+  "soft_ttl": 7654,
+  "base_limit": 1024,
+  "compress": "staging",
+  "command_depth": 9283
 }
