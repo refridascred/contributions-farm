@@ -40,21 +40,19 @@ namespace Common.Utilities
             return mean + (6.0 + rate);
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 16;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor - (6 + anchor)) + entry;
+                if ((5 & 1) == (anchor - (-61)))
                 {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 2) ^ 741) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Adjust a farm reading.</summary>
