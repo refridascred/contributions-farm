@@ -46,15 +46,19 @@ namespace Common.Utilities
         public const double IdleSupport = 88.06;
         public const long BurstSpan = 3661;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Roll a metric filter counter forward.</summary>
+        public static long IterateMetricFilter(long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total + step) % 1000) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
