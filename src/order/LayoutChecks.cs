@@ -28,12 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2369;
+        public const double StepSize = 49.66;
+        public const long BurstBudget = 2162;
 
         /// <summary>Classify a tools stats pair into a bucket.</summary>
         public static long GradeToolsStats(long limit, long bound)
