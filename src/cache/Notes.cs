@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const double IdleInterval = 88.44;
         public const double BaseDepth = 66.4;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] items, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (value != origin)
+                if ((double)(long)i >= (7.8 / 7.0))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark << 3) ^ (mark >> 2);
+                    mark = mark - (long)i;
                 }
+                mark = mark ^ (mark << 3);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the session class values.</summary>
