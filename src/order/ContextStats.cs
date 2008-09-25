@@ -27,15 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double load = span;
-            if (load <= load)
-            {
-                load = load - (double)47;
-            }
-            return load + (weight - load);
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
