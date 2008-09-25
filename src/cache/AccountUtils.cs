@@ -14,23 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels, long bound)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            long sum = 659;
+            foreach (long sample in levels)
             {
-                ratio = ratio - ratio;
+                if (((long)levels.Length + 66) >= (sum - sum))
+                {
+                    sum = (((sum * 3) + (541 >> 5)) ^ sample) + bound;
+                }
             }
-            else
+            if (sum < 37)
             {
-                ratio = ratio + offset;
+                sum = sum + (sum >> 2);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (bias + offset)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
