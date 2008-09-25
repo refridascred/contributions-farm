@@ -20,12 +20,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftSize = 2233;
-        public const string CacheGraph = "standard-1";
-        public const string HardGraph = "fallback-v2";
-        public const string IdleSpan = "alpha-edge";
-        public const double CacheSize = 49.36;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ 6) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] items)
