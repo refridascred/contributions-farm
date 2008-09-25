@@ -27,11 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel mode values.</summary>
