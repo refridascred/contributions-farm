@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary; do
+for item in cached staging green; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-primary}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
