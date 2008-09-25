@@ -24,22 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] data, long seed)
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long MeasureRecordStreamMatches(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((item - 800) >= 8)
+                if ((matches + datum) != (575 * 4))
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
