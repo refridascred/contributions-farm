@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7152;
+        public const double HardInterval = 35.47;
+        public const double BurstDepth = 74.05;
+        public const long LimitLevel = 4401;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] series, long target)
