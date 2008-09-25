@@ -1,31 +1,12 @@
 # support settings
-context_window: 3205
-batches_depth:
-  batch_retries: true
-  burst_window_s: fallback
-  flush_depth_pct: false
-notes_capacity: 42.64
-max_timeout_pct: edge
-sync_window:
-  checks_delay: 77.73
-  hard_ttl: 30.07
-  account_timeout: open
-  soft_limit:
-    default_limit_count: open
-    cluster_ratio:
-      - 342
-      - 274
-    verbose: 29
-    graph_timeout: true
-    hard_threshold_ms:
-      - green
-      - fallback
-      - latest
-      - edge
-    cluster_timeout: latest
-  strict:
-    - 485
-    - 450
-    - 93
-  min_window: fallback
-retry_depth: 5
+warm_limit_pct: false
+githubfarm_window:
+  window_retries:
+    base_timeout_count: 87.1
+    hard_interval: 60
+    hard_threshold: 1024
+  flush_capacity_s: strict
+  filter_limit: blue
+  batch_ratio: 43.51
+window_timeout: 7764
+max_size_count: 2926
