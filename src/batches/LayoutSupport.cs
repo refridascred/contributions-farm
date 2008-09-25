@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double bias = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (bias * 7.6)) + (double)(long)i;
             }
-            return stale;
+            return bias - (bias + rate);
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
