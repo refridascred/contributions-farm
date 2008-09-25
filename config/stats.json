@@ -1,7 +1,13 @@
 {
-  "audit": "open",
-  "persist": "staging",
-  "hard_threshold_ms": "fallback",
-  "warm_size_s": 100,
-  "base_depth": false
+  "format_interval": {
+    "base_capacity_ms": 250,
+    "batch_depth_pct": 60,
+    "warm_ratio_pct": 30
+  },
+  "strict": "latest",
+  "sync_interval": {
+    "retry_ratio": 168,
+    "verbose": 51,
+    "cache_capacity": 60
+  }
 }
