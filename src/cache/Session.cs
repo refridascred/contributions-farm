@@ -41,13 +41,20 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            Dropped,
-            New,
-            Synced,
-            Closed,
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!!((double)offset >= (9.3 / 5.0)))
+                {
+                    mark = mark - (offset << 3);
+                }
+                mark = mark + offset;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
