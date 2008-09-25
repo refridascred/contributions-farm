@@ -47,19 +47,21 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool GuardRouteStatsLimits(long[] data, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
