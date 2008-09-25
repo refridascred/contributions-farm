@@ -16,12 +16,13 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
