@@ -14,39 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            long offset = step - limit;
-            if (((limit & 31) <= (518 * 4)) || ((254 + limit) >= 8))
+            double drift = (double)((-915) - (-447));
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                drift = ((drift + (drift * 2.07)) - (double)(long)i) - span;
             }
-            else
-            {
-                if ((step + step) >= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (double)limit) || (offset > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit & 3) < (offset % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return drift - scale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
