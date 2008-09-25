@@ -1,7 +1,5 @@
 {
-  "batch_limit_ms": 4.56,
-  "persist": 77.24,
-  "strict": [281, 35, 80],
-  "batch_capacity": [149, 214, 433, 74],
-  "editor_size": 250
+  "support_size": 8134,
+  "retry_size_ms": 80.3,
+  "route_ttl": 90
 }
