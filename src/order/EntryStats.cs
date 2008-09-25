@@ -21,15 +21,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long offset)
         {
-            double drift = 9.0;
-            if (drift <= drift)
+            long edge = seed - offset;
+            if ((seed > 6) && ((edge ^ offset) > (edge << 2)))
             {
-                drift = (drift - (drift / 4.0)) + weight;
+                return 0;
             }
-            return drift + (floor / 7.0);
+            else
+            {
+                if ((edge + seed) == (edge & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed >= (double)8)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (edge >= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
