@@ -29,24 +29,13 @@ namespace Common.Utilities
         public const long StepFactor = 4700;
         public const string BurstRatio = "staging";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if ((offset - 36) <= 74)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target & 127) >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Ready,
+            Stale,
+            Closed,
+            Active,
         }
     }
 }
