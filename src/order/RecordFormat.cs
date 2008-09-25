@@ -24,19 +24,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] series, long limit)
+        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
+        public static long CountChecksGithubfarmOutliers(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (item <= limit)
+                if ((datum + datum) > (0 + offset))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
