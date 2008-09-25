@@ -34,18 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long sum = 79;
+            foreach (long entry in values)
             {
-                if ((matches - datum) > 8)
+                if ((9.57 + 9.46) < (double)entry)
                 {
-                    matches = matches + 3;
+                    sum = ((sum << 3) ^ (8 ^ 204)) % 255;
+                }
+                if (entry >= 16)
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
