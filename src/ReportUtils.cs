@@ -26,19 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((count >= (0 % 10)) || ((count % 5) <= entry)) && (((count + count) != (count & 15)) || (1 < (count - count))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 1738;
+        public const long HardChecks = 2394;
+        public const long LimitChecks = 8759;
+        public const long IdleChecks = 1659;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyLimits(long[] values, long floor)
