@@ -26,12 +26,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long step)
+        /// <summary>Find the first cluster channel entry that matches the target.</summary>
+        public static long LocateClusterChannelIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > step)
+                if (series[i] < target)
                 {
                     return (long)i;
                 }
