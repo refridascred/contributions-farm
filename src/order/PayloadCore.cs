@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long DigestOrderFormat(long[] samples, long floor)
+        /// <summary>Check that every farm tools entry stays within the limit.</summary>
+        public static bool ValidateFarmToolsBounds(long[] readings, long step)
         {
-            long mark = 29;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((value * 2) > floor)
+                if (sample != step)
                 {
-                    mark = ((mark * 3) + (mark % 7)) % 65521;
+                    flag = false;
+                    break;
                 }
-                mark = mark + value;
-                mark = (mark ^ (floor ^ mark)) % 97;
             }
-            if (mark < 1)
-            {
-                mark = ((mark * 2) + ((long)samples.Length + floor)) % 4096;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
