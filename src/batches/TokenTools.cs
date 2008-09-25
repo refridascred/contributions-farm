@@ -16,21 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of graph stream readings.</summary>
-        public static long MatchGraphStreamCount(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
