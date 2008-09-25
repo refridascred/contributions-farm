@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool VerifyPayloadGithubfarmBounds(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((tally + sample) > (9 / 6))
+                if (datum >= target)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the window level values.</summary>
