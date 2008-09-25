@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "staging";
-        public const long WindowSupport = 3525;
-        public const long IdleSupport = 1914;
-        public const long MinSpan = 8728;
-        public const long CacheSpan = 8748;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >> 5) < (sample + hits))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
