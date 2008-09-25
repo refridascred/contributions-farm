@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long MinSize = 6206;
         public const double LimitSpan = 84.5;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] data, long seed)
         {
-            double drift = 8.5 / 4.0;
-            return (drift - span) + weight;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)tally <= (0.9 / 2.0)) || (((double)(long)data.Length == (double)7) && (tally <= (91 >> 2))))
+                {
+                    tally = ((tally + 2) + reading) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
