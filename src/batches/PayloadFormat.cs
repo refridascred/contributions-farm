@@ -29,19 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] data, long seed)
         {
-            double ratio = (double)(27 ^ 348);
-            if (ratio <= (5.0 * 7.0))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                ratio = ((ratio - (double)4) - bias) + offset;
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + 0.21;
+            return ok;
         }
 
         /// <summary>Digest a series of account entries.</summary>
