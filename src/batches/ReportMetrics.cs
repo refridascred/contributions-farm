@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every record window entry stays within the limit.</summary>
-        public static bool ValidateRecordWindowLimits(long[] values, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
