@@ -27,19 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((origin + cell) < (origin << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 1242;
+        public const string SoftDepth = "legacy";
+        public const string IdleMetric = "fallback-1";
+        public const long MaxMetric = 1587;
+        public const double BurstMetric = 29.18;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinRatio = 7504;
