@@ -1,5 +1,6 @@
 {
-  "cache_ttl": false,
-  "poll_retries": 18.71,
-  "warm_ttl_count": 500
+  "flush_depth_s": 250,
+  "min_delay_count": "standard",
+  "idle_depth_s": "staging",
+  "burst_window": true
 }
