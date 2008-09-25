@@ -32,13 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            Ready,
-            Idle,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!(((tally / 9) <= (8 >> 5)) && (((-37) / 8) > (entry >> 1))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
