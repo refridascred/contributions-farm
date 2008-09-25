@@ -27,16 +27,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = score - score;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 19.82;
+        public const long WindowEditor = 918;
+        public const double MinScore = 48.67;
     }
 }
