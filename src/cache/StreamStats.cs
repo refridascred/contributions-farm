@@ -28,18 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits & 31) != (value + value))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Adjust a batches reading.</summary>
