@@ -86,18 +86,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double ratio = (double)((-8) % 8);
+            if (ratio <= (bias - ratio))
             {
-                if ((entry + entry) != (bound << 3))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + (ratio / 6.0)) + gain;
             }
-            return hits;
+            return ratio + (ratio + bias);
         }
     }
 }
