@@ -13,32 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a session window value against two limits.</summary>
-        public static long ClassifySessionWindow(long bound, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long prev = bound - limit;
-            if (limit >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) == (limit * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev & 127) < (bound >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
