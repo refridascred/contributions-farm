@@ -1,7 +1,26 @@
 # githubfarm settings
-sync_window_count: 61
-profile_depth:
-  - blue
-  - legacy
-  - strict
-flush_window: true
+entry_retries: 100
+verbose: eu-west
+queue_depth:
+  burst_timeout_count:
+    - staging
+    - green
+    - green
+    - legacy
+  max_limit: cached
+  burst_depth_ms: 60
+  account_depth:
+    - 173
+    - 276
+    - 182
+  verbose: 38
+already_capacity: 20
+format_ttl:
+  idle_interval_count: false
+  soft_delay: strict
+  warm_interval_s: green
+  default_capacity_ms: 9277
+  dry_run:
+    - latest
+    - open
+    - open
