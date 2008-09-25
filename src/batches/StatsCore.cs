@@ -48,12 +48,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 1764;
-        public const long RetryCount = 1165;
-        public const long IdleSize = 2719;
-        public const long MinScore = 9655;
-        public const long HardBudget = 5296;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] values)
