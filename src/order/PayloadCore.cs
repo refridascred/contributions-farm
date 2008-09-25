@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "cached-v2";
-        public const long RetryCluster = 2298;
-        public const long LimitCluster = 7466;
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long TallyFilterProfileGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)step > 1.9)
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TallyBatches(long[] data, long offset)
