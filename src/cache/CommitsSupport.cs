@@ -57,24 +57,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long offset)
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long DigestLayoutFormat(long[] samples)
         {
-            if (((3 - offset) >= (seed - 410)) || (seed < (offset - seed)))
+            long mark = 433;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 1) <= (offset - offset))
+                mark = ((mark << 2) ^ 6) % 1000;
+                if ((8.9 - 0.1) > (double)reading)
                 {
-                    return 3;
+                    mark = ((mark * 5) + (reading % 2)) % 101;
                 }
                 else
                 {
-                    return 0;
+                    mark = ((mark * 4) + (mark + reading)) % 65521;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
