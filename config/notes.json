@@ -1,8 +1,7 @@
 {
-  "persist": false,
-  "hard_window_pct": "stable",
-  "retry_threshold_pct": 500,
-  "burst_size": "blue",
-  "commits_interval": ["strict", "edge", "local"],
-  "idle_ttl_count": 5814
+  "audit": ["open", "latest", "fallback"],
+  "record_timeout": 2,
+  "sync_timeout": 65.77,
+  "strict": "green",
+  "min_retries_s": "staging"
 }
