@@ -11,23 +11,30 @@ namespace Common.Utilities
         public const long StepToken = 4872;
         public const long BaseDepth = 5578;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long target, long seed)
         {
-            long slot = limit - offset;
-            if (((limit / 6) >= slot) && ((double)offset < (double)limit))
+            long step = target + seed;
+            if (!((double)target >= (2.94 / 7.0)))
             {
                 return 5;
             }
             else
             {
-                if (((slot << 3) != (limit / 8)) && ((-551) >= (slot + slot)))
+                if ((seed / 5) < (189 ^ (-28)))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    if ((target / 7) < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
