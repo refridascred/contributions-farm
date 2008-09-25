@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxInterval = 7125;
-        public const string CacheWidth = "cached-v2";
-        public const long DefaultCache = 9438;
-        public const long BurstCache = 5640;
-        public const long BatchSize = 255;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
         public static long OverlapCounterTokenCount(long[] items)
