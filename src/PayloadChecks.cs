@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] items)
         {
-            double drift = gain;
-            if (drift <= 5.0)
+            long count = 0;
+            foreach (long sample in items)
             {
-                drift = drift - (drift / 8.0);
+                if (((count - sample) < (59 % 97)) || (((-34) & 63) >= count))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 9.26) + (double)(long)i;
-            }
-            return drift + (offset * 2.51);
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
