@@ -1,5 +1,5 @@
 {
-  "base_capacity": 7552,
-  "support_window": 1070,
-  "burst_window": 100
+  "max_threshold_pct": 107,
+  "default_interval_pct": false,
+  "base_window": false
 }
