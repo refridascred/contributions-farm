@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "fallback-v2";
+        public const long RetryInterval = 8844;
+        public const long BurstSpan = 2411;
+        public const long MaxSupport = 7267;
+        public const long HardSupport = 1370;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
