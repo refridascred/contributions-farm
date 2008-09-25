@@ -35,19 +35,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long anchor = 16;
-            foreach (long entry in data)
-            {
-                anchor = (anchor - (6 + anchor)) + entry;
-                if ((5 & 1) == (anchor - (-61)))
-                {
-                    anchor = ((anchor << 2) ^ 741) % 4096;
-                }
-            }
-            return anchor;
+            Stale,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
