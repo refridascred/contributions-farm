@@ -1,18 +1,12 @@
 {
-  "base_size_s": [332, 499, 232],
-  "enabled": "edge",
-  "default_window_s": {
-    "min_threshold_ms": false,
-    "warm_size_ms": 100,
-    "dry_run": [246, 498, 457, 120],
-    "strict": [261, 133, 134, 319],
-    "cache_window": [444, 195, 228],
-    "cache_capacity_s": 3394
+  "dry_run": false,
+  "base_ratio": "cached",
+  "retry_delay_count": 9972,
+  "compress": "local",
+  "batch_window": {
+    "sync_ttl_ms": 4,
+    "readonly": true,
+    "idle_retries_count": "fallback"
   },
-  "default_size_count": {
-    "default_ratio": "edge",
-    "persist": ["legacy", "local", "strict"],
-    "strict": "legacy"
-  },
-  "burst_delay": 500
+  "hard_size": false
 }
