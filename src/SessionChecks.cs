@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "latest-edge";
-        public const long BatchAlready = 6503;
-        public const string BurstAlready = "fallback";
-        public const double LimitScore = 36.45;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
