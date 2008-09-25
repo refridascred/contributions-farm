@@ -42,18 +42,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            long carry = 50;
-            foreach (long entry in values)
+            long bound2 = bound ^ floor;
+            if ((bound & 15) <= (bound / 6))
             {
-                if ((double)carry > 5.41)
+                return 8;
+            }
+            else
+            {
+                if ((floor - bound2) == (floor + bound))
                 {
-                    carry = ((carry * 2) + (entry + (-321))) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + 61) != (bound - bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor / 5) <= bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
