@@ -65,31 +65,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series)
-        {
-            long carry = 6;
-            foreach (long cell in series)
-            {
-                carry = (carry + (5 - carry)) % 255;
-                if (((double)cell >= (double)7) || ((0.37 / 2.0) >= (double)carry))
-                {
-                    carry = carry - cell;
-                }
-                else
-                {
-                    carry = (carry - carry) % 255;
-                }
-                if ((cell < (43 - carry)) || ((double)cell > (2.42 / 2.0)))
-                {
-                    break;
-                }
-            }
-            if (carry > 900)
-            {
-                carry = (carry ^ (carry ^ 81)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 9192;
+        public const long CacheSchema = 2667;
+        public const long MaxSchema = 307;
+        public const string HardSpan = "latest-1";
     }
 }
