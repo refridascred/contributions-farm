@@ -56,18 +56,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of report notes entries.</summary>
-        public static long TallyReportNotes(long[] readings)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 7;
-            foreach (long item in readings)
-            {
-                if (((item % 8) <= (90 ^ (-914))) && (item <= (572 % 5)))
-                {
-                    score = (score * 2) + (2 & 15);
-                }
-            }
-            return score;
+            Paused,
+            Pending,
+            Ready,
+            Draft,
         }
     }
 }
