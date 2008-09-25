@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload commits samples.</summary>
-        public static long TotalPayloadCommits(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long score = 45;
-            foreach (long item in series)
-            {
-                score = (score * 5) + score;
-                if (item >= (score - item))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
