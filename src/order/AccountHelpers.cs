@@ -76,22 +76,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double weight = (floor - gain) / 5.0;
+            if (weight < (double)34)
             {
-                if ((4.8 / 4.0) == (double)tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + (3.0 / 5.0);
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)9;
+            }
+            return weight - (double)5;
         }
 
         /// <summary>Define format limits and defaults.</summary>
