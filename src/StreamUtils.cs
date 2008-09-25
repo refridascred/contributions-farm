@@ -16,26 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry metric entries.</summary>
-        public static long CombineEntryMetric(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long carry = 18;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (((carry * 5) + (carry - cell)) % 97) + (long)i;
-                }
-                if ((cell >= (cell ^ carry)) || ((double)cell != (5.63 - 0.76)))
-                {
-                    carry = (carry ^ (7 % 5)) % 1000;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry << 1)) % 97;
-            }
-            return carry % 97;
+            Locked,
+            Pending,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a support entry.</summary>
