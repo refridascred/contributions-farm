@@ -16,15 +16,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine window schema values into a single score.</summary>
-        public static long TotalWindowSchema(long[] data, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long floor)
         {
-            long sum = 6;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 5) + (offset & 63)) % 255) ^ reading;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
