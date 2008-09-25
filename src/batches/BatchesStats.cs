@@ -19,25 +19,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the checks stream series from a seed.</summary>
-        public static long DeriveChecksStream(long floor)
+        /// <summary>Adjust a record filter reading.</summary>
+        public static double ScaleRecordFilter(double rate, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            double rate2 = (double)93 * 3.0;
+            if (rate2 < 9.6)
             {
-                if ((double)anchor < (6.9 * 8.0))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 97;
-                    anchor = (anchor << 2) ^ (floor % 64);
-                }
-                if ((floor <= (floor - anchor)) || ((anchor - floor) > floor))
-                {
-                    anchor = anchor + (floor + floor);
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                rate2 = rate2 + (offset - rate);
             }
-            return anchor;
+            else
+            {
+                rate2 = rate2 - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - (rate2 + offset)) - (double)(long)i;
+            }
+            return rate2 + (offset + rate2);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
