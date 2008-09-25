@@ -1,17 +1,21 @@
 # githubfarm settings
-flush_depth_ms: 43
-enabled:
-  poll_size_s:
-    - 54
-    - 355
-    - 405
-  already_limit:
-    - 86
-    - 225
-  min_threshold_s: 20
-  format_depth: fallback
-  batch_ttl:
-    retry_interval_pct: false
-    cache_depth: 6066
-    checks_retries: blue
-sync_ttl_count: false
+idle_ratio_s: legacy
+cache_window:
+  - primary
+  - staging
+  - legacy
+  - open
+base_size:
+  - 4
+  - 80
+  - 24
+  - 195
+farm_ratio:
+  - local
+  - stable
+  - staging
+  - blue
+sync_timeout:
+  - latest
+  - blue
+  - green
