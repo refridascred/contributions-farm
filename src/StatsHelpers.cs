@@ -28,15 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a route report figure with a bias.</summary>
-        public static double BlendRouteReport(double rate, double span)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long origin)
         {
-            double mean = (double)(491 + 486);
-            if (mean > (rate - span))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (double)5;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)3;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
