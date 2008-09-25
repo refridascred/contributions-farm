@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long bound, long bound2)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            if (((bound + bound2) == (bound2 * 3)) || (30 < (bound2 & 15)))
             {
-                score = score - (limit << 3);
-                score = ((score * 3) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((bound2 % 64) != (bound2 & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 - bound) != (bound2 / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound2 + bound2) > 63)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
