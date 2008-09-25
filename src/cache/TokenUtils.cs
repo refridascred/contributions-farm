@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double BlendStreamEditor(double rate, double floor)
-        {
-            double mean = rate * 14.0;
-            if (mean < rate)
-            {
-                mean = (mean - rate) - floor;
-            }
-            else
-            {
-                mean = mean - rate;
-            }
-            return mean + (double)77;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2803;
+        public const string StepFilter = "cached-1";
+        public const double HardScore = 55.54;
+        public const long SoftSpan = 4234;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
