@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long LimitScore = 3134;
         public const string MaxCommand = "latest-1";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] items, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 57;
+            foreach (long reading in readings)
             {
-                if ((origin >= (count * 5)) && ((count << 1) < (count + origin)))
-                {
-                    count = (count + 3) + value;
-                }
+                mix = ((mix ^ mix) - reading) - limit;
             }
-            return count;
+            if (mix < 810)
+            {
+                mix = (mix ^ ((long)readings.Length + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
