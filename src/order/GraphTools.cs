@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long MaxSupport = 7267;
         public const long HardSupport = 1370;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
