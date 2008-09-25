@@ -1,9 +1,5 @@
 {
-  "soft_timeout": {
-    "strict": 67.82,
-    "soft_timeout_ms": 76.7,
-    "warm_threshold_s": "green"
-  },
-  "profile_window": ["open", "strict"],
-  "min_threshold": 26
+  "min_timeout": [434, 370, 39],
+  "layout_depth": 8.69,
+  "default_window_s": 62.6
 }
