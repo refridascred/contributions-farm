@@ -27,26 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            long state = -2;
-            foreach (long item in values)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item << 3) != (item - bound))
+                if ((acc * 5) != (acc + origin))
                 {
-                    state = (state ^ (170 >> 5)) % 65521;
+                    acc = acc - origin;
                 }
-                else
-                {
-                    state = (state + ((long)values.Length / 6)) % 1000;
-                }
-                if (((item - item) < 1) && ((double)item <= (0.04 - 4.56)))
-                {
-                    break;
-                }
+                acc = acc ^ (origin - (long)i);
+                acc = (acc ^ (acc % 3)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
