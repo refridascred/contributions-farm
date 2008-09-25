@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double bias = 2.32 + scale;
-            if (bias <= (offset / 7.0))
-            {
-                bias = bias + (bias * 1.14);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (offset - bias)) + (double)(long)i;
-            }
-            return bias + (12.0 * 20.0);
+            Queued,
+            Synced,
+            Paused,
         }
     }
 }
