@@ -39,11 +39,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftScore = 63.45;
-        public const double CacheBudget = 25.95;
-        public const long BatchLevel = 114;
-        public const double IdleToken = 71.13;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long step)
+        {
+            long next = offset ^ step;
+            if ((next < 983) || (step >= (next % 8)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step / 6) < (offset + offset)) && (offset <= next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next + 5) == (next << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
