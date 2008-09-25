@@ -31,25 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long limit)
-        {
-            long bound = offset ^ limit;
-            if ((bound <= (bound & 127)) || ((limit + bound) <= (bound - limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (17.0 < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8342;
+        public const long MaxRatio = 50;
+        public const long BurstProfile = 6765;
+        public const string BatchRatio = "open-v2";
+        public const long MinProfile = 6173;
     }
 }
