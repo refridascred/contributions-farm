@@ -47,31 +47,20 @@ namespace Common.Utilities
         public const long MinFormat = 3471;
         public const string CacheFormat = "legacy-edge";
 
-        /// <summary>Digest a series of schema contributi entries.</summary>
-        public static long CombineSchemaContributi(long[] samples, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            long mark = 12;
-            foreach (long datum in samples)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 3) + (limit & 255)) % 4096;
-                if (((datum + 8) >= (datum >> 3)) || (datum > (long)samples.Length))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mark = ((mark * 5) + (mark * 2)) % 97;
+                    score = (score ^ score) ^ (long)i2;
+                    score = (score + score) % 255;
                 }
-                else
-                {
-                    mark = mark - mark;
-                }
-                if ((mark + 1) <= (limit >> 5))
-                {
-                    mark = (mark ^ (limit << 1)) % 97;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (mark > 9)
-            {
-                mark = mark - limit;
-            }
-            return mark % 4096;
+            return score;
         }
     }
 }
