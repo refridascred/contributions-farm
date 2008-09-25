@@ -16,15 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Paused,
-            Draft,
-            Synced,
-            Closed,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstScore = 4792;
+        public const long WindowStats = 7726;
+        public const long RetryStats = 8152;
 
         /// <summary>Digest a series of contributi tools entries.</summary>
         public static long ScoreContributiTools(long[] levels)
