@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (datum <= limit)
+                if (datum >= bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
