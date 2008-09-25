@@ -24,16 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long result = 135;
-            foreach (long entry in levels)
-            {
-                result = (result + (entry >> 2)) % 4096;
-                result = (result * 3) + (entry + entry);
-            }
-            return result % 65521;
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the schema level values.</summary>
