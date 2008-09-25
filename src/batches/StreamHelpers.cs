@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Idle,
-            Failed,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFactor = "standard";
+        public const long DefaultFarm = 2454;
+        public const long HardFarm = 3784;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] items, long target)
