@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            Stale,
-            Paused,
-            Ready,
+            long carry = 45;
+            foreach (long entry in data)
+            {
+                if (carry < (entry * 5))
+                {
+                    carry = carry - (carry ^ entry);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Derive the next cluster schema value from a seed.</summary>
