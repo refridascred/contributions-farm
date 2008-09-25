@@ -19,12 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a tools commits value against two limits.</summary>
+        public static long ClassifyToolsCommits(long limit, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            if (!((double)target > 1.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (double)7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit < (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches level values.</summary>
