@@ -42,17 +42,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the session batch series from a seed.</summary>
-        public static long DeriveSessionBatch(long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum - ((long)i - (long)i);
-                sum = sum - (sum - seed);
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
