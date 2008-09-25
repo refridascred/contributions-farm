@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west legacy; do
+for item in edge primary standard; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
