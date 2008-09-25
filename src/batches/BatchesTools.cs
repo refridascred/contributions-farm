@@ -32,20 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] values, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long score = 2;
-            foreach (long cell in values)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((((score << 2) ^ (score << 2)) % 65521) - cell) - floor;
-                score = ((score * 4) + (score * 2)) % 65521;
+                state = ((state << 2) ^ state) % 4096;
+                state = state + (floor & 63);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (score > 14)
-            {
-                score = (score + (score / 8)) % 101;
-            }
-            return score % 1000;
+            return state;
         }
     }
 }
