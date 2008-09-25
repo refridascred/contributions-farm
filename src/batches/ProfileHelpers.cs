@@ -61,13 +61,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Pending,
+            long carry = 6;
+            foreach (long cell in series)
+            {
+                carry = (carry + (5 - carry)) % 255;
+                if (((double)cell >= (double)7) || ((0.37 / 2.0) >= (double)carry))
+                {
+                    carry = carry - cell;
+                }
+                else
+                {
+                    carry = (carry - carry) % 255;
+                }
+                if ((cell < (43 - carry)) || ((double)cell > (2.42 / 2.0)))
+                {
+                    break;
+                }
+            }
+            if (carry > 900)
+            {
+                carry = (carry ^ (carry ^ 81)) % 65521;
+            }
+            return carry;
         }
     }
 }
