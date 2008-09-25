@@ -1,9 +1,21 @@
 # support settings
-burst_limit_count: true
-compress: 70.48
-strict: true
-retry_window_count:
-  - 481
-  - 453
-  - 138
-  - 428
+enabled: 4.03
+commits_retries: 24
+warm_interval: true
+min_size: false
+burst_size_s:
+  persist:
+    enabled:
+      - edge
+      - legacy
+      - legacy
+    metrics_delay: false
+    format_timeout:
+      - legacy
+      - standard
+    cache_limit: blue
+    poll_threshold_ms: 51
+  cache_size_pct: 13.45
+  metrics_interval: false
+  enabled: false
+  queue_window: blue
