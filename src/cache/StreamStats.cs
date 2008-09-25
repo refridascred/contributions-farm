@@ -13,22 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long anchor = 3;
-            foreach (long datum in series)
+            long score = 958;
+            foreach (long sample in readings)
             {
-                if ((datum + datum) <= (-54))
+                if (589 < (sample + (long)readings.Length))
                 {
-                    anchor = ((anchor ^ datum) % 1000) - limit;
+                    score = (score << 3) ^ score;
+                    continue;
                 }
-                if ((double)datum != (9.48 / 2.0))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
+                score = (score - (9 - sample)) % 101;
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
