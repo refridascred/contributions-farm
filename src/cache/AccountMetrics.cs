@@ -42,22 +42,23 @@ namespace Common.Utilities
         public const long MinFormat = 3471;
         public const string CacheFormat = "legacy-edge";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            double scale2 = offset;
+            if (scale2 > (scale2 * 1.0))
             {
-                carry = (carry + carry) % 4096;
-                if (((offset >> 5) == (long)i) && ((offset + 47) > (carry - carry)))
-                {
-                    carry = (carry - (offset + offset)) % 65521;
-                    carry = ((carry << 3) ^ offset) % 255;
-                }
-                carry = (carry * 3) + (carry << 2);
-                carry = ((carry * 3) + (long)i) % 65521;
+                scale2 = scale2 - scale;
             }
-            return carry;
+            else
+            {
+                scale2 = scale2 + (scale2 + offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - (offset + offset)) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
     }
 }
