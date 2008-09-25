@@ -65,18 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((8.15 * 2.5) == (double)sample)
+                if (sample > bound)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
