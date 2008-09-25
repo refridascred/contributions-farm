@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Combine farm metric values into a single score.</summary>
+        public static long WeighFarmMetric(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 818;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor < (anchor % 7)) && (reading < (anchor & 1)))
                 {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor << 2)) % 97;
+                }
+                if ((495 ^ reading) >= reading)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next farm value.</summary>
