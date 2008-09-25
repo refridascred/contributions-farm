@@ -58,18 +58,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(((48 % 100) <= ((-77) - datum)) || (13.0 >= (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 509;
+        public const double MinSpan = 13.55;
+        public const string WindowDepth = "standard-v2";
+        public const long MinNotes = 5534;
+        public const long StepLevel = 1135;
     }
 }
