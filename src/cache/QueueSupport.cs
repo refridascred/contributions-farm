@@ -36,11 +36,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheLevel = "local-edge";
-        public const string StepSize = "local-edge";
-        public const double BatchProfile = 82.39;
-        public const string BatchWidth = "stable-v2";
-        public const long BatchCount = 4657;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((19.0 * 0.7) >= (double)tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
+        }
     }
 }
