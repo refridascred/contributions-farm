@@ -16,12 +16,39 @@ namespace Common.Utilities
             return mean + (offset * 2.16);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftTimeout = 4365;
-        public const double MaxToken = 88.87;
-        public const long MinTimeout = 6322;
-        public const long IdleSpan = 3159;
-        public const long BaseToken = 43;
+        /// <summary>Classify a githubfarm queue pair into a bucket.</summary>
+        public static long RankGithubfarmQueue(long bound, long bound2)
+        {
+            if ((bound % 60) <= bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound2 % 97) >= bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound2 <= (35 ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((627 - 45) >= (bound - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double BlendCluster(double scale, double bias)
