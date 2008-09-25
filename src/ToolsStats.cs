@@ -25,18 +25,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] values, long seed)
+        /// <summary>Compare every pair of session support readings.</summary>
+        public static long OverlapSessionSupportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.61 + 11.0) < (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 1) + entry) - seed;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
