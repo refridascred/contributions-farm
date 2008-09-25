@@ -83,13 +83,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Paused,
-            Pending,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSpan = 5105;
+        public const string DefaultRatio = "staging-v2";
+        public const long StepStream = 7225;
     }
 }
