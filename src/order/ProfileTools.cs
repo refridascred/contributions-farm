@@ -72,19 +72,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry entry stays within the limit.</summary>
-        public static bool CheckEditorEntryLimits(long[] values, long step)
+        /// <summary>Derive the next counter record value from a seed.</summary>
+        public static long IterateCounterRecord(long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result ^ (floor % 100)) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
     }
 }
