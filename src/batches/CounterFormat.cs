@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long bound, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long floor)
         {
-            if (((double)4 > (double)bound) || (seed <= (541 >> 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (2 <= (seed + 99))
+                if (samples[i] == floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.0 / 3.0) > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound << 2) > bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
