@@ -49,25 +49,9 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long bound)
-        {
-            long prev = floor + bound;
-            if ((double)bound < (double)prev)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 3) <= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSize = 2503;
+        public const long LimitWidth = 5629;
+        public const string IdleCounter = "standard-edge";
     }
 }
