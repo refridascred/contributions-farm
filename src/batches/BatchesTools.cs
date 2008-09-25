@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double SmoothProfileCluster(double weight, double span)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double weight2 = span;
-            if (weight2 > (8.9 - span))
-            {
-                weight2 = weight2 - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (span + span)) - (double)(long)i;
-            }
-            return weight2 - weight;
+            Queued,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
