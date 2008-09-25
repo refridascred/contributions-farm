@@ -1,11 +1,11 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the editor queue.
-Keep entry and command names short and lowercase.
-Defaults for contributi live in the config folder and can be overridden per environment.
+When a profile fails, the commits handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Validate layout input early
-- Prefer counter defaults
+- Review batch limits each release
+- Validate filter input early
+- Document new format fields
+- Keep channel values small
