@@ -22,17 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                if (!((double)bound <= (9.2 / 3.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a filter header.</summary>
