@@ -1,8 +1,6 @@
-id,weight,score
-1,369,648
-2,91.69,335
-3,430,478
-4,latest,204
-5,11.66,cached
-6,54.67,strict
-7,green,803
+id,ratio,weight
+1,326,primary
+2,476,240
+3,141,407
+4,49,fallback
+5,170,352
