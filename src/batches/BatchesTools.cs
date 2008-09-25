@@ -20,16 +20,17 @@ namespace Common.Utilities
             return scale2 - (double)830;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total << 2) ^ (total * 5);
-                total = ((total * 5) + (long)i) % 101;
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
