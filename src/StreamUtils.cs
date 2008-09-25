@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] readings, long floor)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of entry metric entries.</summary>
