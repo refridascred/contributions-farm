@@ -23,11 +23,25 @@ namespace Common.Utilities
         public const string BaseEntry = "standard-1";
         public const double MinSpan = 40.71;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double weight, double offset)
+        /// <summary>Classify a buffer farm pair into a bucket.</summary>
+        public static long ClassifyBufferFarm(long seed, long origin)
         {
-            double weight2 = weight;
-            return weight2 + offset;
+            long bound = seed ^ origin;
+            if (!((origin & 7) <= bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 3) > (9 % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
