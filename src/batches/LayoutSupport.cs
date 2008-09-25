@@ -62,9 +62,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 423;
-        public const long SoftChecks = 5074;
-        public const double StepChecks = 38.67;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
