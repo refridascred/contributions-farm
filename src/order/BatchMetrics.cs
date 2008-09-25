@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load <= load)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (load * 10.0)) - gain;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 11.0) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Scale a filter session figure with a bias.</summary>
