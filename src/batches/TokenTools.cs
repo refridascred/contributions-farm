@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine stream stats values into a single score.</summary>
+        public static long CombineStreamStats(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long score = 25;
+            foreach (long reading in levels)
+            {
+                if (reading <= (score >> 2))
+                {
+                    score = ((score << 3) ^ 187) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ ((long)levels.Length * 4)) % 101;
+                }
+            }
+            if (score < 47)
+            {
+                score = (score + (origin * 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate counter samples.</summary>
