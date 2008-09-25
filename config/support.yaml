@@ -1,7 +1,11 @@
 # support settings
-flush_size_pct: 500
-cache_timeout: primary
-farm_size: 4288
-hard_capacity_pct: false
-readonly: eu-west
-audit: eu-west
+idle_ratio: legacy
+warm_retries_pct: primary
+cache_ttl_ms: cached
+readonly:
+  - fallback
+  - standard
+  - primary
+  - strict
+batch_interval_s: 45.44
+burst_delay: true
