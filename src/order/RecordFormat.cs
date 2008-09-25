@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate session cache samples.</summary>
-        public static long TallySessionCache(long[] readings, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long target)
         {
-            long acc = 8;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc <= (acc >> 3))
+                if (samples[i] <= target)
                 {
-                    acc = (acc - (limit / 8)) - datum;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
