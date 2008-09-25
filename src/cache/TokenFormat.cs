@@ -14,24 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((sum + offset) == (sum << 2)))
-                {
-                    sum = (sum - (sum + offset)) % 255;
-                }
-                if (((sum ^ sum) >= (offset + sum)) && ((offset * 4) == (sum ^ offset)))
-                {
-                    sum = (sum ^ ((long)i ^ sum)) % 4096;
-                    sum = (sum ^ (sum ^ (long)i)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Validate record buffer readings against a bound.</summary>
