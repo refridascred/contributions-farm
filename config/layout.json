@@ -1,8 +1,6 @@
 {
-  "readonly": true,
-  "flush_retries_ms": 1024,
-  "retry_ttl": 6009,
-  "cache_interval_ms": "cached",
-  "payload_capacity": ["fallback", "blue", "local"],
-  "poll_interval_ms": true
+  "audit": 1024,
+  "warm_retries": ["open", "open"],
+  "readonly": ["eu-west", "open", "fallback", "primary"],
+  "compress": 55.32
 }
