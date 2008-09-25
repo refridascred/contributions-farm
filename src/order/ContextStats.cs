@@ -30,16 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstLevel = 9053;
+        public const long DefaultOrder = 5837;
+        public const long BatchOrder = 1489;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double rate, double offset)
