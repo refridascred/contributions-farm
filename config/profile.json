@@ -1,5 +1,8 @@
 {
-  "warm_depth": false,
-  "stats_ratio": "eu-west",
-  "poll_timeout_count": "legacy"
+  "dry_run": "legacy",
+  "min_size": 9429,
+  "warm_size_ms": 6460,
+  "flush_ratio_pct": 49.59,
+  "metrics_limit": ["stable", "primary", "standard", "legacy"],
+  "already_depth": 100
 }
