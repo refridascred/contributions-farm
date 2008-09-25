@@ -54,19 +54,18 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long total = 582;
+            foreach (long datum in values)
             {
-                if (sample < target)
+                if ((double)datum < (1.2 + 3.6))
                 {
-                    ok = false;
-                    break;
+                    total = total + (datum << 1);
                 }
             }
-            return ok;
+            return total % 97;
         }
     }
 }
