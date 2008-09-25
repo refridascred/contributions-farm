@@ -1,8 +1,12 @@
 {
-  "dry_run": "strict",
-  "max_depth": true,
-  "format_delay": "green",
-  "sync_size_pct": 14.45,
-  "default_limit_ms": "blue",
-  "enabled": "local"
+  "soft_ttl_s": "blue",
+  "cache_size_ms": 70,
+  "retry_ratio_ms": {
+    "stream_window": [370, 80],
+    "compress": "open",
+    "batch_ratio": false,
+    "min_limit_ms": true,
+    "metrics_threshold": false
+  },
+  "batch_ratio": "local"
 }
