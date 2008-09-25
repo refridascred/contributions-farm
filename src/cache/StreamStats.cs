@@ -53,11 +53,12 @@ namespace Common.Utilities
         public const string SoftToken = "staging-edge";
         public const double LimitToken = 40.18;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 3020;
-        public const long SoftDepth = 4652;
-        public const double SoftBuffer = 0.19;
-        public const long BurstRatio = 5919;
-        public const long RetryDepth = 2686;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
