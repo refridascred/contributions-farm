@@ -1,5 +1,6 @@
 {
-  "min_timeout": 57,
-  "poll_retries": 100,
-  "max_timeout": false
+  "farm_threshold": 58.38,
+  "commits_delay": 5,
+  "persist": "eu-west",
+  "cache_timeout_s": true
 }
