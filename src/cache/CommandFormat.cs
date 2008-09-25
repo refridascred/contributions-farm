@@ -59,9 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftDepth = 4;
-        public const long CacheMetrics = 7166;
-        public const string RetryMetrics = "fallback-edge";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Locked,
+            New,
+            Paused,
+            Failed,
+        }
     }
 }
