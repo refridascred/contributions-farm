@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitLevel = 5921;
-        public const long BaseAccount = 3233;
-        public const double StepBudget = 67.76;
-        public const long CacheAccount = 8761;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 2994;
+        public const long DefaultSpan = 3622;
+        public const long StepLevel = 1347;
+        public const string SoftWidth = "fallback-v2";
+        public const long WindowInterval = 8000;
 
         /// <summary>Rank already profile input into a small class.</summary>
         public static long ClassifyAlreadyProfile(long offset, long floor)
