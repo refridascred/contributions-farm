@@ -1,11 +1,12 @@
 # entry settings
-strict: 4955
-verbose:
-  - 486
-  - 378
-  - 228
-  - 248
-queue_retries: 25
-hard_ttl: strict
-persist: 29.12
-default_capacity: 8.85
+graph_retries:
+  - cached
+  - green
+  - strict
+soft_depth_count:
+  base_ttl_ms: false
+  buffer_timeout: 48.72
+  tools_delay: 53
+  enabled: primary
+  audit: stable
+poll_interval: 30
