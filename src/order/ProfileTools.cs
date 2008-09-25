@@ -38,21 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of githubfarm counter readings.</summary>
-        public static long MatchGithubfarmCounterCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 70;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step ^ entry) >= acc) || ((step + step) < (entry + acc)))
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (211 / 5)) % 4096;
                 }
             }
-            return seen;
+            if (acc < 944)
+            {
+                acc = ((acc << 2) ^ (27 * 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
