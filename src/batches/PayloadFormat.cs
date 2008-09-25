@@ -48,18 +48,13 @@ namespace Common.Utilities
             return rate - (bias * 8.55);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (10.0 * 15.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Paused,
+            New,
         }
     }
 }
