@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
