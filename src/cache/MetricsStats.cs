@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSize = 8485;
-        public const double BaseNotes = 92.01;
-        public const string MinNotes = "strict-edge";
-        public const long DefaultNotes = 5219;
-        public const long StepCount = 5308;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 33.15;
+        public const long MinInterval = 9798;
+        public const long HardGithubfarm = 8057;
+        public const string StepRatio = "fallback-edge";
+        public const long CacheGithubfarm = 376;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
