@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values, long seed)
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long MeasureCounterOrderOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((tally + (long)values.Length) <= tally)
+                if ((7.67 * 2.0) > (double)count)
                 {
-                    tally = ((tally + 2) + cell) - seed;
+                    count = (count + 1) ^ value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
