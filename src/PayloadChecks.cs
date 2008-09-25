@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                long tally = (step * 5) + (carry - step);
-                if ((step * 2) >= tally)
-                {
-                    carry = ((carry << 3) ^ ((long)i - 8)) % 65521;
-                }
-                else
-                {
-                    tally = ((tally << 2) ^ (carry - step)) % 255;
-                }
-                carry = (carry + (tally - (long)i)) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitWidth = 34.0;
+        public const long BaseSpan = 1297;
+        public const string BatchScore = "primary-v2";
+        public const long IdleRoute = 6547;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
