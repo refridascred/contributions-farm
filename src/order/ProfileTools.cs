@@ -72,16 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter record value from a seed.</summary>
-        public static long IterateCounterRecord(long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result ^ (floor % 100)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
     }
 }
