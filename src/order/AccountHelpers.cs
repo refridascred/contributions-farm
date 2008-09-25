@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long seed, long seed2)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            if (seed >= seed2)
+            long acc = 928;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 24) >= seed)
+                if ((acc >= (value + value)) && ((double)acc > (20.0 - 7.3)))
                 {
-                    return 0;
+                    acc = (acc - value) % 101;
                 }
                 else
                 {
-                    if (!((15.0 + 2.52) == (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc - (acc ^ 65)) % 1000;
                 }
             }
+            if (acc > 37)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
