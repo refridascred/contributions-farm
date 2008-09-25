@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long BurstCommits = 2977;
         public const long WindowCommits = 3599;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] items, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 84;
+            foreach (long value in data)
             {
-                if ((sample * 2) >= (matches & 1))
+                if ((value + 5) <= acc)
                 {
-                    matches = (matches + 1) - offset;
+                    acc = acc ^ (value & 15);
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
