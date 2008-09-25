@@ -13,12 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            Stale,
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
