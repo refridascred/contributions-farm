@@ -15,14 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Queued,
-            New,
-            Active,
-            Failed,
-            Idle,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
