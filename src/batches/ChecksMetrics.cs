@@ -53,19 +53,19 @@ namespace Common.Utilities
         public const long StepMetrics = 3036;
         public const long WindowTimeout = 3092;
 
-        /// <summary>Check that every cache checks entry stays within the limit.</summary>
-        public static bool CheckCacheChecksRange(long[] values, long target)
+        /// <summary>Check that every filter token entry stays within the limit.</summary>
+        public static bool VerifyFilterTokenRange(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (sample > target)
+                if (value <= bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the token kind values.</summary>
