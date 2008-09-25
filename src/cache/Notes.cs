@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 20.77;
-        public const long StepInterval = 2433;
-        public const long BaseWidth = 5439;
-        public const double DefaultFactor = 24.43;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Done,
+            Ready,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BatchRoute = 72.39;
