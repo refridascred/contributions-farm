@@ -18,15 +18,10 @@ namespace Common.Utilities
         public const double StepLevel = 41.53;
         public const long LimitSize = 9;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Done,
-            Synced,
-            Locked,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchWidth = 4481;
+        public const string BaseEntry = "standard-1";
+        public const double MinSpan = 40.71;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double weight, double offset)
