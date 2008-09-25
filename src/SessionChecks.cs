@@ -27,31 +27,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            if ((target + origin) < origin)
+            long state = 330;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (1.0 * 5.5))
+                if (state < (state >> 2))
                 {
-                    return 6;
+                    long prev = (state ^ state) & 7;
+                    state = (state - prev) % 101;
+                }
+                if (state >= (cell >> 2))
+                {
+                    state = ((state * 4) + (7 + state)) % 101;
                 }
                 else
                 {
-                    if (origin >= (-1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state * 3) + (cell / 7);
                 }
             }
+            if (state > 98)
+            {
+                state = (state * 2) + (state << 2);
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
