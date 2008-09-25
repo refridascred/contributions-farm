@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long bound, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if (((bound * 2) <= (bound + limit)) || ((limit * 3) <= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - bound) > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound - limit) <= bound) && ((74 >> 2) > (limit ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
