@@ -36,25 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long offset, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long span = offset + bound;
-            if (7 >= bound)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((31 + offset) != (499 ^ span))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
