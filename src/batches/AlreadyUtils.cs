@@ -19,39 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long floor)
+        /// <summary>Roll a session notes counter forward.</summary>
+        public static long SeriesSessionNotes(long offset)
         {
-            long diff = target + floor;
-            if ((target << 3) >= (target & 31))
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.15 * 0.75) != (double)floor)
+                total = (total ^ 667) % 65521;
+                long lane = (long)i;
+                if (!(offset < total))
                 {
-                    return 8;
+                    total = ((total << 3) ^ (lane * 4)) % 97;
                 }
-                else
-                {
-                    if ((floor > 350) || ((floor & 15) == (floor & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff + floor) <= 83)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
