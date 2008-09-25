@@ -57,19 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support schema value.</summary>
-        public static double BlendSupportSchema(double scale, double offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double weight = offset / 6.0;
-            if (weight >= (7.2 / 9.0))
-            {
-                weight = weight - 7.49;
-            }
-            else
-            {
-                weight = weight + (offset - scale);
-            }
-            return weight - scale;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
