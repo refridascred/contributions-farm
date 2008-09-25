@@ -35,10 +35,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 55.28;
-        public const long IdleEntry = 1719;
-        public const double StepFactor = 42.7;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long origin)
+        {
+            if ((limit > (origin * 3)) && ((limit % 12) >= (limit ^ origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
