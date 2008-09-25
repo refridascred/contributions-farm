@@ -25,24 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support schema readings.</summary>
-        public static long ScoreSupportSchema(long[] values, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long total = 355;
-            foreach (long value in values)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total + value) % 4096;
-                total = total + (step >> 4);
-                if ((value % 16) == (step ^ value))
+                if (40 >= (24 + mark))
                 {
-                    total = ((total * 3) + value) % 1000;
+                    mark = (mark + (mark + (long)i)) % 101;
                 }
+                else
+                {
+                    mark = (mark ^ seed) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (total > 58)
-            {
-                total = (total ^ (total - total)) % 97;
-            }
-            return total;
+            return mark;
         }
     }
 }
