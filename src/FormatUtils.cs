@@ -36,21 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 45;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((14.0 * 6.39) > (double)limit)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    score = score ^ (score ^ score);
+                }
+                else
+                {
+                    score = (score * 5) + (458 & 1);
+                }
+                if (limit <= (sample - sample))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
