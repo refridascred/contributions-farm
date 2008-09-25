@@ -16,12 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
