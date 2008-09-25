@@ -41,26 +41,19 @@ namespace Common.Utilities
         public const long BaseSchema = 9913;
         public const long CacheCount = 4977;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            long carry = 305;
-            foreach (long datum in readings)
+            double gain = rate;
+            if (gain > offset)
             {
-                if ((datum - datum) != (carry ^ carry))
-                {
-                    carry = carry - (carry + carry);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry << 2);
-                }
+                gain = gain - gain;
             }
-            if (carry > 569)
+            else
             {
-                carry = carry + (carry + 99);
+                gain = gain + (offset - rate);
             }
-            return carry % 4096;
+            return gain - (double)(-3);
         }
     }
 }
