@@ -48,13 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
