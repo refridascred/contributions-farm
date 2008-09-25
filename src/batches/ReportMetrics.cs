@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + hits) < (hits % 12))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
