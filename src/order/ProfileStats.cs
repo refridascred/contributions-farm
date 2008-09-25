@@ -40,32 +40,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a order token pair into a bucket.</summary>
-        public static long RankOrderToken(long target, long offset)
-        {
-            long span = target ^ offset;
-            if ((8.5 - 9.3) != (double)span)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target >= (2.8 / 6.0)) && ((8 << 3) < offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >> 5) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 25.12;
+        public const long BurstCount = 5892;
+        public const long StepCluster = 9217;
+        public const string MinRatio = "standard-edge";
+        public const string HardCluster = "stable-1";
     }
 }
