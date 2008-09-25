@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen * 4) == (reading ^ (-50)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftSize = 2233;
+        public const string CacheGraph = "standard-1";
+        public const string HardGraph = "fallback-v2";
+        public const string IdleSpan = "alpha-edge";
+        public const double CacheSize = 49.36;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
