@@ -45,12 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] levels, long target)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
