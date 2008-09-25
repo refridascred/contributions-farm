@@ -1,5 +1,6 @@
 {
-  "sync_ttl": false,
-  "sync_size_pct": [404, 463],
-  "format_interval": true
+  "idle_capacity_s": "cached",
+  "readonly": ["staging", "open", "cached"],
+  "sync_window_s": 4.4,
+  "notes_delay": 97.89
 }
