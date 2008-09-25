@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long TallyFilterProfileGaps(long[] data, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if (((step >> 3) >= (step << 1)) && ((step >> 5) <= (step + floor)))
             {
-                if ((double)step > 1.9)
+                return 5;
+            }
+            else
+            {
+                if ((step + floor) == (step + step))
                 {
-                    matches = (matches + 2) - item;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor / 2) > 99) && (floor < 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (7 > (floor - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
