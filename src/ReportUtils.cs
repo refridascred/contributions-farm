@@ -40,12 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long floor)
         {
-            Retry,
-            Synced,
-            Locked,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
