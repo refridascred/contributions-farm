@@ -22,12 +22,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "staging-v2";
-        public const long BatchCount = 9640;
-        public const double DefaultRatio = 54.61;
-        public const long StepFactor = 4700;
-        public const string BurstRatio = "staging";
+        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
+        public static long AuditNotesGithubfarmHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count & 7) <= (datum + datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
