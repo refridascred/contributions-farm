@@ -48,11 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
