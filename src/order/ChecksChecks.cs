@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight + (double)909;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Derive the next cluster schema value from a seed.</summary>
+        public static long StepClusterSchema(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)result > (double)bound)
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (bound % 8)) % 97;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a already counter forward.</summary>
