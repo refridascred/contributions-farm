@@ -34,18 +34,23 @@ namespace Common.Utilities
             return (drift - span) + weight;
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long MeasureFilterProfileOutliers(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = 880;
+            foreach (long entry in levels)
             {
-                if (!!(8 < hits))
+                result = (result << 2) ^ (seed ^ result);
+                if ((169 - result) > (entry & 127))
                 {
-                    hits = (hits + 1) - cell;
+                    result = (result * 4) + 5;
+                }
+                else
+                {
+                    result = (result ^ ((long)levels.Length + seed)) % 101;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
