@@ -19,14 +19,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheCount = 514;
+        public const double DefaultSize = 58.32;
+        public const long DefaultChannel = 6984;
+        public const double HardChannel = 54.65;
+        public const double RetryCount = 87.79;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
