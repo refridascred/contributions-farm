@@ -1,12 +1,7 @@
 {
-  "dry_run": 30,
-  "persist": 4638,
-  "max_delay_pct": false,
-  "cache_delay_ms": 93,
-  "poll_window_pct": {
-    "soft_threshold": 49.74,
-    "burst_delay": 61.55,
-    "strict": "standard"
-  },
-  "batch_retries": [128, 194, 160, 329]
+  "soft_timeout_pct": "primary",
+  "compress": "strict",
+  "context_limit": false,
+  "cache_capacity_s": 87,
+  "graph_interval": 250
 }
