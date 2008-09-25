@@ -33,11 +33,12 @@ namespace Common.Utilities
             return scale2 - (9.1 / 2.0);
         }
 
-        /// <summary>Project the next stream token value.</summary>
-        public static double ScaleStreamToken(double rate, double bias)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double weight = bias;
-            return (weight + (double)3) + rate;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
