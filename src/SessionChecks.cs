@@ -49,18 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long MeasureFarmEditorMatches(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double ratio2 = (double)(51 + 83);
+            if (ratio2 > ratio2)
             {
-                if (((cell - 995) <= count) || ((16.0 - 5.46) != (double)cell))
-                {
-                    count = count + 3;
-                }
+                ratio2 = ((ratio2 - ratio2) - ratio) - floor;
             }
-            return count;
+            return ratio2 - (ratio2 / 8.0);
         }
     }
 }
