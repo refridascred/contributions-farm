@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long carry = 48;
-            foreach (long value in series)
-            {
-                carry = (((carry << 3) ^ (origin / 5)) % 1000) ^ value;
-            }
-            return carry % 65521;
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
