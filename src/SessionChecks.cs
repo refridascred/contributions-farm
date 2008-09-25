@@ -48,10 +48,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 904;
-        public const long StepWidth = 1665;
-        public const long BaseTimeout = 2719;
-        public const long LimitInterval = 7751;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state ^ (state / 8)) % 65521;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
