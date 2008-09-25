@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias - (span + span);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine window values into a single score.</summary>
