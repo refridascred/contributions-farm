@@ -13,20 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile report values into a single score.</summary>
-        public static long TotalProfileReport(long[] readings)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long origin)
         {
-            long sum = 1;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + 99) % 101;
-                sum = (sum ^ reading) % 1000;
-                if (((457 ^ sum) == (sum & 63)) && ((sum >> 3) >= sum))
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    sum = ((sum << 2) ^ reading) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
