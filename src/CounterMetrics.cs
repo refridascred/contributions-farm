@@ -43,9 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5204;
-        public const long BaseTimeout = 5666;
-        public const double WindowCount = 73.87;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples)
+        {
+            long sum = 87;
+            foreach (long sample in samples)
+            {
+                sum = sum ^ (sum + sample);
+            }
+            return sum % 65521;
+        }
     }
 }
