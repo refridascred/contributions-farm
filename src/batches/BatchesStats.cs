@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long BaseSupport = 7082;
         public const double LimitSupport = 93.18;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            Locked,
-            Retry,
-            New,
-            Done,
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry + ((long)i - carry);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a record filter reading.</summary>
