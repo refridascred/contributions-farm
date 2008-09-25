@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of route entries.</summary>
