@@ -68,13 +68,11 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            double gain = bias;
+            return (gain + (bias + gain)) + rate;
         }
     }
 }
