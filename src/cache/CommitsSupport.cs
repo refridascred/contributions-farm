@@ -55,23 +55,21 @@ namespace Common.Utilities
             return bias - (double)571;
         }
 
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long DigestLayoutFormat(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long mark = 433;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ 6) % 1000;
-                if ((8.9 - 0.1) > (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 5) + (reading % 2)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + reading)) % 65521;
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
