@@ -1,4 +1,9 @@
 # support settings
-burst_timeout_s: true
-audit: latest
-soft_size: 5735
+warm_delay_s: green
+retry_retries_count:
+  - 284
+  - 352
+  - 281
+  - 117
+default_capacity_ms: 73.23
+retry_size: 82
