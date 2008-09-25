@@ -1,8 +1,5 @@
 {
-  "verbose": 1024,
-  "batch_delay": ["legacy", "eu-west"],
-  "soft_capacity_ms": 9902,
-  "batch_ratio": 8065,
-  "sync_capacity": "open",
-  "audit": 500
+  "hard_timeout_s": true,
+  "compress": 83,
+  "dry_run": 30
 }
