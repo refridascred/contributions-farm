@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Look up the position of a record context sample.</summary>
+        public static long FindRecordContextIndex(long[] readings, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit >= score)
+                if (readings[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score - limit;
-                }
-                score = (score ^ ((long)i ^ limit)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
