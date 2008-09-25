@@ -27,19 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (cell <= limit)
+                if (item <= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Classify a order commits pair into a bucket.</summary>
