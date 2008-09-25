@@ -37,26 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long anchor = 3;
-            foreach (long sample in series)
-            {
-                if (sample <= (limit - anchor))
-                {
-                    continue;
-                }
-                if (limit >= (sample % 12))
-                {
-                    anchor = (anchor - limit) % 65521;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
