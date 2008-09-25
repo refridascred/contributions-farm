@@ -1,6 +1,11 @@
 # githubfarm settings
-stream_size: strict
-batch_ttl:
-  - 383
-  - 435
-graph_size: staging
+entry_limit: edge
+burst_interval: true
+sync_ttl:
+  - 422
+  - 397
+batches_delay:
+  max_depth_s: 7946
+  warm_capacity_count: 76.02
+  enabled: 7967
+  warm_ttl_pct: 500
