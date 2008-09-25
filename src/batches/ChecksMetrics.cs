@@ -58,18 +58,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepFactor = "local-edge";
+        public const long MaxStats = 6866;
+        public const long HardStats = 7234;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] levels, long seed)
