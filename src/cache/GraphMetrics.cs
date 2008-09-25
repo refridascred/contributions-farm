@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Paused,
-            Draft,
-            Queued,
-            Failed,
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
