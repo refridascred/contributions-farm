@@ -49,11 +49,14 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            Done,
+            Locked,
+            New,
+            Retry,
+            Dropped,
         }
     }
 }
