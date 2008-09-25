@@ -46,14 +46,18 @@ namespace Common.Utilities
         public const long MinWindow = 6888;
         public const string BaseWindow = "cached";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples, long seed)
         {
-            Closed,
-            Ready,
-            Paused,
-            Failed,
-            Active,
+            long mix = 688;
+            foreach (long sample in samples)
+            {
+                if ((seed <= sample) || ((sample >> 2) == (2 >> 1)))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
