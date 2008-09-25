@@ -31,18 +31,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long bound = offset ^ limit;
+            if ((bound <= (bound & 127)) || ((limit + bound) <= (bound - limit)))
             {
-                if ((seen - offset) < (seen - seen))
+                return 0;
+            }
+            else
+            {
+                if (17.0 < (double)bound)
                 {
-                    seen = (seen + 2) - item;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
