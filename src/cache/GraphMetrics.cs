@@ -16,22 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long limit)
         {
-            if ((bound - step) <= (step & 31))
+            if ((limit + step) > limit)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((bound ^ step) > bound)
+                if (((limit - limit) <= step) || (22 < (limit / 8)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
         }
