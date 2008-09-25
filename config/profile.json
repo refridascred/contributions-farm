@@ -1,6 +1,6 @@
 {
-  "layout_retries": 1024,
-  "record_delay": "edge",
-  "burst_threshold_count": 2788,
-  "soft_ttl_ms": 7077
+  "strict": "cached",
+  "default_size_s": [453, 222, 448],
+  "idle_depth_s": "eu-west",
+  "batch_capacity_s": false
 }
