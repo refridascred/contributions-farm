@@ -40,13 +40,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next profile metric value from a seed.</summary>
-        public static long IterateProfileMetric(long step)
+        /// <summary>Roll a account entry counter forward.</summary>
+        public static long StepAccountEntry(long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (!((anchor % 16) < 956))
+                {
+                    anchor = anchor ^ (anchor - seed);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
             return anchor;
         }
