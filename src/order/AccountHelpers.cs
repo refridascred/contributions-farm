@@ -15,19 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] values, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= offset)
+                if (series[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
