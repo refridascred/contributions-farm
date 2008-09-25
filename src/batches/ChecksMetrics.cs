@@ -41,18 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] items)
+        /// <summary>Audit stats channel readings against a rule.</summary>
+        public static long CountStatsChannelHits(long[] items)
         {
-            long mix = 7;
+            long count = 0;
             foreach (long datum in items)
             {
-                if ((mix + mix) < datum)
+                if ((double)datum > 3.75)
                 {
-                    mix = mix - (mix - mix);
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
