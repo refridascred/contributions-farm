@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 82.07;
-        public const long LimitFactor = 7916;
-        public const long MinPayload = 7941;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) > (-3))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
