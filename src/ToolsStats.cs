@@ -59,11 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstCount = "open-1";
-        public const long CacheBatches = 246;
-        public const long MaxSize = 8048;
-        public const long BurstBatches = 9613;
+        /// <summary>Find the first checks commits entry that matches the target.</summary>
+        public static long LocateChecksCommitsIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryBudget = 5901;
