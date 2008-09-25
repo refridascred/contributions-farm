@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] data, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((478 < (seed / 5)) && ((double)origin <= 5.7))
             {
-                if (sample < target)
+                return 4;
+            }
+            else
+            {
+                if ((origin + seed) > seed)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > (3.74 - 1.25))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
