@@ -65,10 +65,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinInterval = "alpha-v2";
-        public const long SoftRatio = 7083;
-        public const double IdleSize = 38.68;
-        public const long HardNotes = 6163;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Idle,
+            Draft,
+            Queued,
+            Synced,
+        }
     }
 }
