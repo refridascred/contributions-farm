@@ -35,22 +35,10 @@ namespace Common.Utilities
         public const long WindowStream = 3313;
         public const double MinStream = 54.86;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits + 8) <= hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "legacy-v2";
+        public const double StepLevel = 30.07;
+        public const string WindowFormat = "fallback-v2";
+        public const double BatchDepth = 1.92;
     }
 }
