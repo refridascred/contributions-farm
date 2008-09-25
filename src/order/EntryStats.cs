@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftInterval = 7142;
-        public const double StepOrder = 27.12;
-        public const string HardOrder = "fallback";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((mark + mark) > (origin + mark)) || ((mark + origin) <= (mark ^ mark)))
+                {
+                    mark = (mark - (origin % 97)) % 97;
+                    mark = ((mark << 2) ^ (origin + 5)) % 101;
+                }
+                mark = (mark - (origin - mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchMatches(long[] items)
