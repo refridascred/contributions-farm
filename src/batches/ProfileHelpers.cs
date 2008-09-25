@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long AuditSchemaEntryGaps(long[] samples, long offset)
         {
-            long acc = 5;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (sample <= (acc & 3))
+                if ((offset < (offset << 2)) || !((double)offset >= (16.0 / 3.0)))
                 {
-                    acc = (acc - sample) % 101;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
