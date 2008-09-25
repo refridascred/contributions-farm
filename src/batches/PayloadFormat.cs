@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two order window measurements.</summary>
-        public static double ScaleOrderWindow(double scale, double bias)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double bias2 = (bias / 6.0) - bias;
-            if (bias2 >= (17.0 + bias))
-            {
-                bias2 = (bias2 + bias) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (double)73) + (double)(long)i;
-            }
-            return bias2 - (4.0 + bias);
+            Draft,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
