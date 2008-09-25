@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Digest a series of entry metric entries.</summary>
+        public static long CombineEntryMetric(long[] samples)
         {
-            double gain = floor;
-            if (gain >= (gain * 18.0))
+            long carry = 18;
+            foreach (long cell in samples)
             {
-                gain = (gain - (floor * 6.0)) - scale;
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (((carry * 5) + (carry - cell)) % 97) + (long)i;
+                }
+                if ((cell >= (cell ^ carry)) || ((double)cell != (5.63 - 0.76)))
+                {
+                    carry = (carry ^ (7 % 5)) % 1000;
+                }
             }
-            return gain - (floor - floor);
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry << 1)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a support entry.</summary>
