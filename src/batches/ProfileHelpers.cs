@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1 >= (offset % 97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
