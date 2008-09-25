@@ -36,18 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (!(((tally / 9) <= (8 >> 5)) && (((-37) / 8) > (entry >> 1))))
+                if ((offset & 63) >= (81 + 4))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
