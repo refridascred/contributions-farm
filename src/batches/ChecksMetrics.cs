@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long LookupTokenNotesIndex(long[] data, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
