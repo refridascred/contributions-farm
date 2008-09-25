@@ -46,12 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 5427;
-        public const long BurstSize = 9666;
-        public const long CacheBudget = 1175;
-        public const long StepMetrics = 3036;
-        public const long WindowTimeout = 3092;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] items, long target)
