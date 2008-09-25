@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            Queued,
-            Closed,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank context report input into a small class.</summary>
