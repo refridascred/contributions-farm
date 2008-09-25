@@ -47,14 +47,11 @@ namespace Common.Utilities
             return (weight + (double)3) + rate;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Ready,
-            Synced,
-            Locked,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 3520;
+        public const long SoftWidth = 2204;
+        public const long IdleCommand = 1516;
+        public const double MinSize = 36.8;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
