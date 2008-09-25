@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long SeekBufferBatchIndex(long[] samples, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the session status values.</summary>
