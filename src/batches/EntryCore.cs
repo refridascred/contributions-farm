@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Draft,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a cache info.</summary>
