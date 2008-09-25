@@ -48,9 +48,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "primary";
-        public const string HardStream = "staging-v2";
-        public const double RetryStream = 15.75;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double offset)
+        {
+            double scale2 = offset * 19.0;
+            if (scale2 < offset)
+            {
+                scale2 = scale2 - (scale + offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (double)44) + (double)(long)i;
+            }
+            return scale2 - scale2;
+        }
     }
 }
