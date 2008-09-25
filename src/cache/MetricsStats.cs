@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            long carry = 307;
-            foreach (long sample in samples)
+            double drift = (double)(496 + 20);
+            if (drift < 8.0)
             {
-                if (!((2.1 + 8.0) != (double)sample))
-                {
-                    carry = (carry - (carry - sample)) - seed;
-                }
+                drift = (drift + bias) - weight;
             }
-            return carry % 1000;
+            return drift + drift;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
