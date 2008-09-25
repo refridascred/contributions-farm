@@ -60,18 +60,32 @@ namespace Common.Utilities
         public const long MaxMetric = 1251;
         public const long IdleMetric = 9167;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] readings, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long gap = floor ^ step;
+            if ((1.5 / 3.0) <= (double)gap)
             {
-                if (((matches + seed) > 1) && ((double)reading <= 9.67))
+                return 3;
+            }
+            else
+            {
+                if (1 < (step ^ gap))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (!(661 > (floor / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
