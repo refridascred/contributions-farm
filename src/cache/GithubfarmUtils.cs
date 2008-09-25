@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel stats value.</summary>
-        public static double BlendChannelStats(double bias, double floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long bound)
         {
-            double ratio = bias;
-            if (ratio < 1.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (ratio * 4.1);
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - floor;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
