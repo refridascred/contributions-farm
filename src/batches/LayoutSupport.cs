@@ -57,18 +57,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((offset - reading) <= (seen / 6))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 423;
+        public const long SoftChecks = 5074;
+        public const double StepChecks = 38.67;
     }
 }
