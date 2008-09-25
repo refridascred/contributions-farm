@@ -35,22 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = 79;
-            foreach (long entry in values)
-            {
-                if ((9.57 + 9.46) < (double)entry)
-                {
-                    sum = ((sum << 3) ^ (8 ^ 204)) % 255;
-                }
-                if (entry >= 16)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
