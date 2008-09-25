@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long seed)
+        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
+        public static bool VerifyToolsGithubfarmBounds(long[] items, long origin)
         {
-            long carry = 64;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                carry = (carry ^ (seed & 63)) ^ item;
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (carry / 9)) % 4096;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Blend two schema measurements.</summary>
