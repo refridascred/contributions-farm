@@ -1,10 +1,7 @@
 # support settings
-cache_ttl_count:
-  githubfarm_capacity: 12
-  warm_threshold_s: stable
-  queue_threshold: 4789
-  max_threshold_ms: latest
-  warm_interval_ms: strict
-  entry_window: stable
-min_size_pct: legacy
-warm_ttl: 14.75
+batch_delay: 4635
+soft_capacity_count: 46.83
+base_capacity_ms: 7
+strict: fallback
+warm_delay_s: false
+enabled: 11.47
