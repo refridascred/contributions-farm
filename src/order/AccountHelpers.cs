@@ -27,19 +27,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long state = -43;
+            foreach (long entry in data)
             {
-                if (!!((6 % 8) > (acc - 229)))
+                if ((-380) > (entry ^ floor))
                 {
-                    acc = acc + (floor + floor);
+                    state = (state * 3) + entry;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((floor >> 5) > (1 * 3))
+                {
+                    state = (state ^ (entry + state)) % 1000;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
