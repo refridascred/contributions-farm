@@ -16,17 +16,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = span + span;
+            if (drift < drift)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - ratio;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)(-77);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the window mode values.</summary>
