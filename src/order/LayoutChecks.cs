@@ -61,12 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSize = 8523;
+        public const long SoftDepth = 903;
+        public const long LimitLevel = 897;
+        public const long WindowRatio = 534;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCount = 8403;
