@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long origin)
         {
-            Pending,
-            Retry,
-            Draft,
-            Paused,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a session info.</summary>
