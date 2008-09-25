@@ -36,11 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
