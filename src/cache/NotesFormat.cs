@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] readings)
+        /// <summary>Fold a list of batch schema readings.</summary>
+        public static long TotalBatchSchema(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = 775;
+            foreach (long value in samples)
             {
-                if (2.56 > (double)item)
+                if (!(anchor < (value - anchor)))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor - (anchor << 3)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor & 31);
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
