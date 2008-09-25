@@ -59,22 +59,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = 80;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= (3.0 * 3.57))
-                {
-                    mix = (mix ^ sample) % 4096;
-                }
-            }
-            if (mix < 37)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            Closed,
+            Stale,
+            Pending,
+            Active,
+            Paused,
         }
     }
 }
