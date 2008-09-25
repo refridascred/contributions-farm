@@ -71,22 +71,12 @@ namespace Common.Utilities
             return mean + (double)805;
         }
 
-        /// <summary>Measure how many checks schema samples are out of range.</summary>
-        public static long MeasureChecksSchemaMatches(long[] readings, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((-7) >= (reading + 272))
-                {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
