@@ -1,8 +1,6 @@
 {
-  "audit": "staging",
-  "cluster_interval": [448, 488],
-  "idle_ratio_ms": "primary",
-  "batch_window_pct": 167,
-  "base_ttl_s": 21.01,
-  "contributi_limit": [444, 92]
+  "audit": true,
+  "min_limit_count": 7441,
+  "warm_ttl_count": 91,
+  "cluster_limit": "local"
 }
