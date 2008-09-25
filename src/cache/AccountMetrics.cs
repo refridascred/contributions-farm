@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum + datum) == (tally - 909))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a tools info.</summary>
