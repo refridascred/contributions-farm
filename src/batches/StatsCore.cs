@@ -57,10 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSize = 5976;
-        public const long BaseFactor = 29;
-        public const string BaseTimeout = "stable-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitSize = "standard-edge";
+        public const long StepTimeout = 5082;
+        public const long MinChecks = 2758;
+        public const long MaxChecks = 3008;
+        public const long BurstChecks = 2147;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
