@@ -83,23 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route format entries.</summary>
-        public static long ScoreRouteFormat(long[] values, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items)
         {
-            long total = 3;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(((sample - total) < (offset * 3)) && ((sample - offset) == (sample + total))))
+                if ((71 + value) >= 243)
                 {
-                    total = total - (total + offset);
+                    seen = seen + 2;
                 }
-                total = (total << 2) ^ total;
             }
-            if (total > (-6))
-            {
-                total = total + (offset + (long)values.Length);
-            }
-            return total;
+            return seen;
         }
     }
 }
