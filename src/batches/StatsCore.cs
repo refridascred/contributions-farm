@@ -55,12 +55,22 @@ namespace Common.Utilities
         public const long MinScore = 9655;
         public const long HardBudget = 5296;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitSize = "standard-edge";
-        public const long StepTimeout = 5082;
-        public const long MinChecks = 2758;
-        public const long MaxChecks = 3008;
-        public const long BurstChecks = 2147;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 1327;
