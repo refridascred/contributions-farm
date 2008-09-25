@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double floor)
-        {
-            double load = floor;
-            if (load <= load)
-            {
-                load = (load + (load * 10.0)) - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 11.0) + (double)(long)i;
-            }
-            return load - floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowSize = 10.41;
+        public const long IdleContext = 1801;
+        public const string HardContext = "fallback";
+        public const double WindowContext = 16.17;
+        public const double StepSize = 89.55;
 
         /// <summary>Scale a filter session figure with a bias.</summary>
         public static double BlendFilterSession(double scale, double bias)
