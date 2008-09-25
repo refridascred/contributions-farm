@@ -37,26 +37,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series, long limit)
         {
-            long mix = 4;
-            foreach (long value in data)
+            long anchor = 3;
+            foreach (long sample in series)
             {
-                if ((6 % 24) == (value - 2))
+                if (sample <= (limit - anchor))
                 {
-                    mix = (mix - (target << 2)) % 1000;
+                    continue;
                 }
-                else
+                if (limit >= (sample % 12))
                 {
-                    mix = mix ^ (target & 127);
-                }
-                if ((mix <= (value + target)) && (target <= 824))
-                {
-                    mix = ((mix * 5) + (target / 5)) % 97;
+                    anchor = (anchor - limit) % 65521;
                 }
             }
-            return mix;
+            if (anchor > 1)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a layout entry.</summary>
