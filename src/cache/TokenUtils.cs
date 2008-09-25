@@ -28,15 +28,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data)
         {
-            long carry = 57;
-            foreach (long reading in readings)
+            long acc = 18;
+            foreach (long item in data)
             {
-                carry = ((carry * 2) + (target % 8)) - reading;
+                if ((item < (acc & 15)) || (item < acc))
+                {
+                    acc = (acc - (acc & 3)) % 4096;
+                }
             }
-            return carry % 65521;
+            if (acc < 65)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 65521;
         }
     }
 }
