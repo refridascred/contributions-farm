@@ -33,23 +33,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report batches readings.</summary>
-        public static long TallyReportBatches(long[] items, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long seed)
         {
-            long mark = 9;
-            foreach (long sample in items)
+            if (origin >= (673 + origin))
             {
-                mark = (mark << 3) ^ (sample - sample);
-                if ((((-931) + bound) >= (sample / 8)) && ((double)bound > (5.0 * 3.85)))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 3) >= (origin % 16))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < 3.15)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark > 497)
-            {
-                mark = mark + bound;
-            }
-            return mark;
         }
 
         /// <summary>Scale a account tools figure with a bias.</summary>
