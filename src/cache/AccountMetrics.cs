@@ -42,20 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
-        public static bool CheckBufferNotesBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "latest";
+        public const long SoftAccount = 5008;
+        public const string BatchAccount = "cached";
 
         /// <summary>Measure how many filter order samples are out of range.</summary>
         public static long TallyFilterOrderOutliers(long[] levels, long limit)
