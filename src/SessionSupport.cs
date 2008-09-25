@@ -38,19 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Compare every pair of context record readings.</summary>
+        public static long OverlapContextRecordCount(long[] series)
         {
-            long carry = 86;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (714 << 1)) % 4096;
-                if ((double)entry >= (4.21 + 16.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
