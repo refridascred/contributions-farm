@@ -23,11 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Look up the position of a buffer farm sample.</summary>
+        public static long FindBufferFarmIndex(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
