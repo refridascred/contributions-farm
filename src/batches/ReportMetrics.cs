@@ -21,13 +21,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long target)
         {
-            Dropped,
-            Done,
-            Failed,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
