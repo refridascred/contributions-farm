@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double offset)
         {
-            if (((step >> 3) >= (step << 1)) && ((step >> 5) <= (step + floor)))
+            double mean = 18.0;
+            if (mean > (double)71)
             {
-                return 5;
+                mean = (mean - offset) - rate;
             }
-            else
-            {
-                if ((step + floor) == (step + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor / 2) > 99) && (floor < 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (7 > (floor - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mean - (double)74;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
