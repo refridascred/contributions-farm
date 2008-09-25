@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const double RetryCount = 95.28;
         public const string LimitChannel = "cached-1";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry / 2) > count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
