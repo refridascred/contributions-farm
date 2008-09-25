@@ -35,38 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if ((limit - limit) <= (1 - 27))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) != (bound ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7 << 1) == (limit & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound - 1) > limit) && (4.0 < (double)bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
