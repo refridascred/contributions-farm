@@ -1,10 +1,13 @@
 {
-  "command_window": {
-    "batch_interval_ms": true,
-    "readonly": "strict",
-    "warm_threshold": ["fallback", "fallback", "green", "strict"]
+  "editor_interval": 250,
+  "idle_depth": {
+    "checks_capacity": 9449,
+    "strict": 58.87,
+    "already_window": "local",
+    "soft_size_ms": 56.3,
+    "verbose": 88.79
   },
-  "default_ttl_ms": "latest",
-  "max_delay_s": 50.87,
-  "queue_timeout": "strict"
+  "metric_threshold": 100,
+  "poll_size_s": [439, 120],
+  "hard_interval": 30
 }
