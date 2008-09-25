@@ -1,6 +1,6 @@
 {
-  "verbose": ["eu-west", "edge"],
-  "flush_threshold_ms": ["blue", "stable"],
-  "retry_ratio": "legacy",
-  "warm_window": ["open", "blue", "edge"]
+  "hard_depth_count": 15,
+  "sync_capacity_pct": [390, 372, 256],
+  "base_threshold_pct": false,
+  "graph_window": ["stable", "local", "latest"]
 }
