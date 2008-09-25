@@ -22,22 +22,13 @@ namespace Common.Utilities
         public const double IdleBudget = 65.92;
         public const long SoftTimeout = 8109;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] items)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample != (3.0 - 0.89))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
