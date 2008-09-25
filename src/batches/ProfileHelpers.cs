@@ -32,18 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] levels, long offset)
         {
-            long result = 940;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((double)datum != (7.1 / 2.0)))
+                if ((double)count >= (double)667)
                 {
-                    result = ((result << 2) ^ datum) % 1000;
+                    count = ((count + 2) - sample) - offset;
                 }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
