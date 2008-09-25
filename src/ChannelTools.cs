@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
