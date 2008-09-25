@@ -1,5 +1,7 @@
 # support settings
-base_interval: 84
-readonly: cached
-hard_ratio_count: local
-verbose: latest
+default_timeout_ms: green
+burst_capacity: 6484
+token_threshold: green
+strict: 30
+batch_limit_ms: true
+compress: primary
