@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((entry >> 5) < (matches + 267)) || ((2.28 - 4.0) != (double)entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSize = 2590;
+        public const string BaseBudget = "stable";
+        public const long HardScore = 8815;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double ratio, double bias)
