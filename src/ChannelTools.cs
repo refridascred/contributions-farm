@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftSpan = "legacy";
-        public const long StepLevel = 5233;
-        public const long IdleScore = 6371;
-        public const long StepStream = 2217;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxSize = 1899;
