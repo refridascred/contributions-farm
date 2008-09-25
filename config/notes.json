@@ -1,7 +1,5 @@
 {
-  "readonly": "stable",
-  "already_ttl": "cached",
-  "channel_window": 65.32,
-  "min_delay_pct": "stable",
-  "metric_ratio": [402, 88, 442, 116]
+  "warm_size": true,
+  "base_limit_pct": 16.3,
+  "warm_limit_pct": "primary"
 }
