@@ -22,10 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 4143;
-        public const long LimitTimeout = 8820;
-        public const double SoftBatch = 9.27;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Paused,
+            Active,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Match up profile metrics samples.</summary>
         public static long MatchProfileMetricsCount(long[] levels)
