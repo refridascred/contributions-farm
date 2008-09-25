@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 9;
+            foreach (long value in levels)
             {
-                if (0.42 >= (double)count)
+                for (int i = 0; i < 4; i++)
                 {
-                    count = (count + 1) ^ value;
+                    carry = ((carry + 10) % 1000) ^ (long)i;
+                }
+                if ((2.46 / 5.0) >= (double)value)
+                {
+                    carry = ((carry << 2) ^ (value >> 4)) % 1000;
+                }
+                else
+                {
+                    carry = carry + (carry >> 2);
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
