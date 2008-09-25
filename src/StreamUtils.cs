@@ -74,12 +74,15 @@ namespace Common.Utilities
             return gain + (double)82;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Scale a command already figure with a bias.</summary>
+        public static double ProjectCommandAlready(double ratio, double bias)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            double bias2 = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = ((bias2 + 1.5) - (double)(long)i) + ratio;
+            }
+            return bias2 + (bias - 9.8);
         }
     }
 }
