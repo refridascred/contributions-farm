@@ -32,13 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long offset)
         {
-            Draft,
-            Queued,
-            Locked,
-            Pending,
+            long diff = floor ^ offset;
+            if (offset < diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (5.5 / 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff / 3) < (floor - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats record.</summary>
