@@ -44,19 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer counter measurements.</summary>
-        public static double ProjectBufferCounter(double gain, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            double drift = (double)(28 >> 2);
-            if (drift >= (double)870)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (double)0) - gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (5.3 * 2.06);
+            return tally;
         }
     }
 }
