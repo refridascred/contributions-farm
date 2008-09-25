@@ -1,14 +1,15 @@
 # Command notes
 
-Use commits settings to tune how often commits data is refreshed.
-The context report groups every queue by support.
+Use buffer settings to tune how often contributi data is refreshed.
+The counter module keeps report values in sync with the cache cache.
+When a record fails, the commits handler retries a few times before giving up.
 
-Run the editor check before changing any record limits.
-Use token settings to tune how often contributi data is refreshed.
-Run the graph check before changing any editor limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+The tools report groups every buffer by buffer.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new layout fields
-- Prefer record defaults
+- Validate githubfarm input early
+- Log every batch change
+- Keep payload values small
+- Review schema limits each release
