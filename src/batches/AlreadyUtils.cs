@@ -46,13 +46,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
