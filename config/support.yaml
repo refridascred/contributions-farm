@@ -1,17 +1,5 @@
 # support settings
-flush_retries_s: legacy
-base_depth_pct:
-  soft_timeout_count: 100
-  hard_size_pct: 64
-  dry_run:
-    - primary
-    - local
-    - cached
-  warm_threshold: 99
-  strict:
-    max_window: false
-    base_retries_ms: 4
-    warm_threshold_pct:
-      - green
-      - fallback
-order_timeout: true
+filter_threshold: fallback
+graph_interval: strict
+poll_timeout: 57.38
+audit: 82.68
