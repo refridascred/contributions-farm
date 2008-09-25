@@ -94,31 +94,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((double)seed <= (4.7 * 1.37))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Ready,
+            Dropped,
+            Stale,
         }
     }
 }
