@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((bound & 7) < 6)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((252 - 84) < (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
