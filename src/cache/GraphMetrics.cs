@@ -58,38 +58,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a metric editor value against two limits.</summary>
-        public static long GradeMetricEditor(long seed, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long offset)
         {
-            if (!((seed / 2) >= (seed & 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + seed) >= (983 % 2)))
+                if (readings[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 10) != (limit & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((0 + limit) < (limit >> 3)) || ((seed / 2) != (seed + seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
