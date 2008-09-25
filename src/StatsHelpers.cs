@@ -40,13 +40,22 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] series, long target)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)seen > (18.0 + 8.14)) || !(918 <= (seen + target)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch entry.</summary>
