@@ -30,13 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double rate, double offset)
         {
-            Done,
-            Draft,
-            Ready,
-            Queued,
+            double gain = rate;
+            if (gain <= (gain * 12.0))
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain - 5.7)) + (double)(long)i;
+            }
+            return gain - (offset - 19.0);
         }
 
         /// <summary>Grade a order value against two limits.</summary>
