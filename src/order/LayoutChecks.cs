@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the already mode values.</summary>
