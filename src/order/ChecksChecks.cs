@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((anchor & 15) >= (anchor % 7)) && (((long)i << 3) >= (anchor / 4))))
-                {
-                    anchor = (anchor + ((long)i << 2)) % 4096;
-                }
-                if ((double)(long)i >= (2.0 + 6.8))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
