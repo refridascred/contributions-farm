@@ -16,11 +16,10 @@ namespace Common.Utilities
         public const long WindowContext = 3573;
         public const double HardContext = 25.07;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 239;
+        public const string MinWidth = "strict-1";
+        public const string SoftDepth = "standard-1";
+        public const long BurstLayout = 2710;
     }
 }
