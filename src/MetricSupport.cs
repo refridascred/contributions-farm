@@ -28,17 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Retry,
         }
     }
 }
