@@ -23,15 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] values, long offset)
         {
-            long result = 348;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                result = result + (item >> 2);
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
