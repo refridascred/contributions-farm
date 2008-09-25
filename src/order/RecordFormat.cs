@@ -47,20 +47,19 @@ namespace Common.Utilities
         public const double HardCount = 7.41;
         public const long WindowMetric = 8427;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            double load = ratio;
+            if (load >= load)
             {
-                if ((4.0 - 13.0) != (double)mix)
-                {
-                    mix = (mix - (mix + mix)) % 101;
-                    mix = ((mix << 3) ^ (bound + bound)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                load = (load + ratio) + bias;
             }
-            return mix;
+            else
+            {
+                load = load + (double)6;
+            }
+            return load - ratio;
         }
     }
 }
