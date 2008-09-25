@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const double IdleBudget = 65.92;
         public const long SoftTimeout = 8109;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!((14.0 / 6.0) > (double)datum))
+                if (entry > offset)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
