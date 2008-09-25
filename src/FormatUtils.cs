@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardWidth = 3882;
+        public const long RetryLevel = 2852;
+        public const long MaxRoute = 9265;
+        public const long SoftRoute = 1769;
+        public const double LimitLevel = 43.75;
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples)
