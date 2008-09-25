@@ -33,20 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double floor)
-        {
-            double rate = (double)86 / 5.0;
-            if (rate >= rate)
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (bias * 8.55);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSpan = 7650;
+        public const long SoftRatio = 1603;
+        public const long DefaultFilter = 2439;
+        public const long IdleDepth = 1770;
+        public const double SoftWidth = 83.23;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
