@@ -76,19 +76,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] series, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            bool found = true;
-            foreach (long datum in series)
+            double rate = (span / 7.0) - weight;
+            if (rate <= span)
             {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + (weight / 9.0);
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - 4.84;
         }
     }
 }
