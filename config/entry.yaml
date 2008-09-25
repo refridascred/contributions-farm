@@ -1,30 +1,15 @@
 # entry settings
-batch_limit_ms:
-  metric_timeout: 1024
-  retry_ratio_s:
-    - 367
-    - 497
-  cache_depth_count: 2
-  buffer_interval:
-    command_capacity:
-      - 342
-      - 230
-    readonly:
-      - local
-      - blue
-    retry_size:
-      - green
-      - standard
-      - blue
-      - open
-    support_delay:
-      - edge
-      - fallback
-      - staging
-      - stable
-    window_depth: 2824
-hard_interval_count: latest
-hard_ratio_count: 500
-already_delay: 30
-audit: edge
-soft_timeout: 5227
+record_threshold: stable
+batch_threshold_s: 3.26
+default_capacity_s: 3527
+default_capacity_count:
+  max_interval_s: eu-west
+  schema_capacity: 44
+  poll_threshold_s: strict
+  dry_run: 80
+  entry_limit:
+    - cached
+    - stable
+    - standard
+    - primary
+cache_ratio_count: edge
