@@ -28,12 +28,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long lane = floor ^ bound;
+            if ((floor - bound) <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (15.0 > (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 16) >= (-8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((lane & 3) > 11) || ((6.9 + 2.3) < (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route entry.</summary>
