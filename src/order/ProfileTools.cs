@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double scale, double span)
         {
-            long carry = 0;
-            foreach (long entry in series)
-            {
-                if ((origin + origin) <= (carry / 7))
-                {
-                    carry = (carry - (origin + origin)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (carry ^ entry)) % 255;
-                }
-            }
-            if (carry > (-5))
-            {
-                carry = carry ^ (origin % 2);
-            }
-            return carry;
+            double ratio = (double)6 + scale;
+            return ratio - (span - span);
         }
 
         /// <summary>Accumulate token samples.</summary>
