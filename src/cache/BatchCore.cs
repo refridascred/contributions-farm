@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long WindowScore = 9124;
         public const string WindowFormat = "primary";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] series, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long diff = (acc % 7) - (floor >> 4);
-                if (diff <= (acc + diff))
+                if (series[i] >= target)
                 {
-                    diff = diff ^ ((long)i + 0);
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
