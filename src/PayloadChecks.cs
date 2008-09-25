@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                long tally = (step * 5) + (carry - step);
+                if ((step * 2) >= tally)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ ((long)i - 8)) % 65521;
                 }
+                else
+                {
+                    tally = ((tally << 2) ^ (carry - step)) % 255;
+                }
+                carry = (carry + (tally - (long)i)) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a route entry.</summary>
