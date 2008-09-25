@@ -27,14 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Dropped,
-            Idle,
-            Paused,
-            Queued,
-            Pending,
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
