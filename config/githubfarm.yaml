@@ -1,20 +1,8 @@
 # githubfarm settings
-warm_ttl:
-  route_interval: standard
-  flush_threshold:
-    persist: 17
-    poll_limit: 47.32
-    payload_threshold: fallback
-    burst_ratio:
-      - 364
-      - 269
-      - 13
-    flush_ttl_count: primary
-    strict: fallback
-  readonly: 1024
-  session_retries: false
-warm_interval: false
-flush_delay: 61
-flush_capacity_pct: 4268
-poll_capacity_s: open
-sync_size: true
+profile_window:
+  verbose: true
+  max_threshold_s: 500
+  burst_delay_ms: green
+  soft_depth: 15.18
+min_timeout_pct: fallback
+batches_ratio: 3663
