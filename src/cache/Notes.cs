@@ -13,12 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseWidth = "standard-1";
-        public const double HardBatches = 54.19;
-        public const long WindowBatches = 1928;
-        public const long MaxBatches = 3687;
-        public const double StepBatches = 72.29;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxInterval = 7125;
+        public const string CacheWidth = "cached-v2";
+        public const long DefaultCache = 9438;
+        public const long BurstCache = 5640;
+        public const long BatchSize = 255;
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
         public static long OverlapCounterTokenCount(long[] items)
