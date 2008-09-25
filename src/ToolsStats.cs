@@ -21,21 +21,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count payload route pairs that satisfy a relation.</summary>
-        public static long ComparePayloadRouteCount(long[] levels)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(6 % 8);
+            if (gain > rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain / 5.0)) + (double)(long)i;
+            }
+            return gain - (floor + floor);
         }
 
         /// <summary>Find the first checks commits entry that matches the target.</summary>
