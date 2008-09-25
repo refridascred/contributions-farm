@@ -15,15 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] series, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
