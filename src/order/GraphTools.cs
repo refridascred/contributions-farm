@@ -44,14 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            New,
-            Done,
-            Locked,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 97) != (hits << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
