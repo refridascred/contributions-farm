@@ -31,21 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes command samples.</summary>
-        public static long MatchNotesCommandCount(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((9.2 - 5.48) >= (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(step < (step - step)))
                 {
-                    if ((values[i] + values[j]) == 4)
+                    return 3;
+                }
+                else
+                {
+                    if (step >= (1 - step))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.3 / 4.0) > (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
