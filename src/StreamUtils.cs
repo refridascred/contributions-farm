@@ -40,32 +40,21 @@ namespace Common.Utilities
             return mean + (6.0 + rate);
         }
 
-        /// <summary>Grade a route profile value against two limits.</summary>
-        public static long SortRouteProfile(long limit, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long prev = limit - offset;
-            if (limit <= offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (limit - prev))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev + limit) != (limit + limit))
+                    if ((items[i] + items[j]) > 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a farm reading.</summary>
