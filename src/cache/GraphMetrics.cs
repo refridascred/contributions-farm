@@ -51,12 +51,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Dropped,
-            Done,
+            Closed,
             Pending,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a metric editor value against two limits.</summary>
