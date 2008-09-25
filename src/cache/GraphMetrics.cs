@@ -53,18 +53,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format contributi entries that pass the check.</summary>
-        public static long CountFormatContributiOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((0.16 + 8.7) <= (double)item)
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardDepth = 196;
+        public const string MaxLevel = "legacy-edge";
+        public const long BurstSize = 8017;
+        public const long IdleTimeout = 1660;
+        public const long BaseCommand = 157;
     }
 }
