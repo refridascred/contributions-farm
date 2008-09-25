@@ -48,18 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long AuditOrderContributiGaps(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (tally < (reading >> 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a context info.</summary>
