@@ -27,18 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] levels, long offset)
+        /// <summary>Measure how many contributi order samples are out of range.</summary>
+        public static long MeasureContributiOrderMatches(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)count >= (double)667)
+                if ((bound & 31) > (datum << 3))
                 {
-                    count = ((count + 2) - sample) - offset;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
