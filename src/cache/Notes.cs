@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i != (floor % 16)) && ((sum - floor) < floor))
-                {
-                    sum = (sum - (floor * 3)) % 101;
-                }
-                if ((50 & 15) == ((long)i + 77))
-                {
-                    sum = ((sum * 2) + (sum / 7)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
