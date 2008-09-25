@@ -14,21 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = offset;
+            if (ratio >= offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return count;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (bias + offset)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
