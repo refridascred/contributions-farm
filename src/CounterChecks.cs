@@ -53,9 +53,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 9901;
-        public const long LimitRoute = 1529;
-        public const double BatchWidth = 8.67;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultBudget = 4310;
+        public const long MaxOrder = 1917;
+        public const long BatchCount = 8130;
     }
 }
