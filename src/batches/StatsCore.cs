@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long SeriesClusterProfile(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total << 3) ^ floor) % 65521;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2055;
+        public const long BatchPayload = 5138;
+        public const long RetryPayload = 3474;
 
         /// <summary>Match up already metrics samples.</summary>
         public static long MatchAlreadyMetricsCount(long[] items)
