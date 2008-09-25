@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] samples, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long cur = offset ^ seed;
+            if ((7.85 * 15.0) == (double)offset)
             {
-                if ((floor + tally) < (cell - cell))
+                return 7;
+            }
+            else
+            {
+                if ((cur * 3) <= (offset - seed))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 1) == (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur > (cur & 3)) || ((170 * 5) >= (offset + cur)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
