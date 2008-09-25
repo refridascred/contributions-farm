@@ -25,11 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the batches batch entries that pass the check.</summary>
+        public static long MeasureBatchesBatchMatches(long[] items)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry % 10) >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
