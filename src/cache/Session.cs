@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] items, long step)
         {
-            long acc = 20;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                acc = ((acc + acc) ^ entry) + step;
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 8)
-            {
-                acc = (acc ^ (acc >> 4)) % 101;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Blend two metrics command measurements.</summary>
