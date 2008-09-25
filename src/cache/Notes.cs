@@ -37,21 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter token pairs that satisfy a relation.</summary>
-        public static long OverlapCounterTokenCount(long[] items)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double drift = 1.0;
+            return ((drift + 5.0) + bias) + span;
         }
 
         /// <summary>Describe the entry status values.</summary>
