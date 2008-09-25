@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
