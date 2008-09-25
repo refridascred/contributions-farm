@@ -62,19 +62,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every layout account entry stays within the limit.</summary>
-        public static bool ValidateLayoutAccountLimits(long[] readings, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = ratio / 6.0;
+            return (mean - 7.0) + span;
         }
     }
 }
