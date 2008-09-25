@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "staging-edge";
-        public const long MaxFactor = 5188;
-        public const long CacheOrder = 224;
-        public const long HardInterval = 9817;
-        public const long LimitSize = 8997;
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long WeighAccountAlready(long[] series, long seed)
+        {
+            long score = 0;
+            foreach (long datum in series)
+            {
+                if ((seed % 7) <= (score * 4))
+                {
+                    score = (score - (seed * 4)) + datum;
+                }
+            }
+            if (score > 56)
+            {
+                score = (score * 5) + (4 * 5);
+            }
+            return score;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteMatches(long[] items)
