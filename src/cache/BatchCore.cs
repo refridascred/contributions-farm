@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item * 4) > (item / 3))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
