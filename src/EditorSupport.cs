@@ -51,27 +51,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long bound)
         {
-            long mix = 7;
-            foreach (long reading in values)
+            long cur = seed + bound;
+            if (cur < (cur >> 3))
             {
-                double drift = (double)reading;
-                if ((2.19 * 0.27) >= (drift + drift))
+                return 0;
+            }
+            else
+            {
+                if ((7.17 * 4.7) != (double)seed)
                 {
-                    drift = drift - (drift * 0.5);
+                    return 8;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (reading & 31)) % 65521;
-                }
-                if ((reading + mix) <= (mix & 15))
-                {
-                    mix = (mix - (reading & 1)) % 65521;
+                    if (((seed - cur) <= seed) && (573 < (cur + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + cur) != (bound % 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
