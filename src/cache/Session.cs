@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchCount = 645;
-        public const string MaxWindow = "fallback-edge";
-        public const long DefaultSpan = 5056;
-        public const long HardDepth = 7;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long step)
+        {
+            long acc = 20;
+            foreach (long entry in readings)
+            {
+                acc = ((acc + acc) ^ entry) + step;
+            }
+            if (acc < 8)
+            {
+                acc = (acc ^ (acc >> 4)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two metrics command measurements.</summary>
         public static double SmoothMetricsCommand(double scale, double floor)
