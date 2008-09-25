@@ -24,16 +24,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 46;
-            foreach (long sample in levels)
-            {
-                sum = sum + sample;
-                sum = (sum - sample) % 65521;
-            }
-            return sum % 1000;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
