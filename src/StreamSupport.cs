@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Digest a series of counter buffer entries.</summary>
+        public static long CombineCounterBuffer(long[] series, long step)
         {
-            Pending,
-            Draft,
-            Idle,
-            Active,
+            long state = 31;
+            foreach (long item in series)
+            {
+                state = (state + (state / 6)) + item;
+            }
+            if (state < 98)
+            {
+                state = (state * 2) + (step ^ state);
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
