@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardBudget = 43.33;
-        public const long IdleInterval = 2972;
-        public const long HardRecord = 5278;
-        public const long RetryBudget = 8712;
-        public const string MinDepth = "latest-1";
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long step)
+        {
+            if (!((671 / 8) == (step - target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((8 * 4) > target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + target) >= (step * 4)) && ((double)step > 9.5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsRange(long[] data, long limit)
