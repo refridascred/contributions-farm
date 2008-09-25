@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const double BatchDepth = 85.66;
         public const long RetryCount = 7746;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long origin)
         {
-            if ((target * 4) >= (target + 209))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) < target)
+                if (reading <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step << 2) < target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
