@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 7726;
-        public const double BurstBudget = 10.01;
-        public const long DefaultLevel = 5099;
-        public const long LimitTimeout = 235;
-        public const double SoftInterval = 48.48;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (1 >= (offset % 97))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items)
