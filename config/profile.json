@@ -1,7 +1,19 @@
 {
-  "retry_depth_ms": "stable",
-  "soft_ttl": 7654,
-  "base_limit": 1024,
-  "compress": "staging",
-  "command_depth": 9283
+  "cache_ratio_count": "strict",
+  "tools_limit": {
+    "payload_capacity": 24,
+    "batch_size_count": 100,
+    "burst_interval_pct": [231, 351, 365, 127],
+    "batch_limit_ms": "standard",
+    "cache_size_pct": 13,
+    "entry_retries": 1024
+  },
+  "batch_depth": "legacy",
+  "max_limit": 1388,
+  "soft_ttl_pct": {
+    "enabled": true,
+    "readonly": 1477,
+    "context_capacity": ["stable", "green", "primary", "legacy"]
+  },
+  "verbose": false
 }
