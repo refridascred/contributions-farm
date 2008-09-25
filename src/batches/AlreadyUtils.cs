@@ -33,18 +33,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((1.6 / 2.0) < (double)sample)
+                if (((entry << 3) < (-694)) || ((entry ^ tally) == (entry % 100)))
                 {
-                    seen = (seen + 2) - step;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
