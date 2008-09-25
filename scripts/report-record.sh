@@ -6,11 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=251
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
     local)
         log "fast path"
