@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels, long bound)
+        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
+        public static bool CheckBufferNotesBounds(long[] values, long offset)
         {
-            long anchor = 81;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                anchor = (((anchor * 4) + anchor) % 4096) ^ value;
-                if (((-487) - bound) <= bound)
+                if (cell <= offset)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
