@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank commits contributi input into a small class.</summary>
-        public static long ClassifyCommitsContributi(long origin, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long offset)
         {
-            long delta = origin - seed;
-            if (!((double)seed != (5.3 / 2.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (double)11)
+                if (samples[i] < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (6.0 <= (double)delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
