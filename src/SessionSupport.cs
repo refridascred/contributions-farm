@@ -25,39 +25,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank session githubfarm input into a small class.</summary>
-        public static long ClassifySessionGithubfarm(long seed, long bound)
+        /// <summary>Find the first cluster buffer entry that matches the target.</summary>
+        public static long SeekClusterBufferIndex(long[] values, long offset)
         {
-            long bound2 = seed + bound;
-            if ((bound ^ bound2) == (seed + 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 3) <= (bound2 - seed))
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 / 8) < (721 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound2 ^ seed) >= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
