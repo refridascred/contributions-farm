@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm tools entry stays within the limit.</summary>
-        public static bool ValidateFarmToolsBounds(long[] readings, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double ratio2 = (double)196 / 4.0;
+            if (ratio2 > ratio2)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio2 = ratio2 + (ratio * 6.92);
             }
-            return flag;
+            else
+            {
+                ratio2 = ratio2 + (floor * 3.98);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (floor / 7.0)) + (double)(long)i;
+            }
+            return ratio2 + (double)486;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
