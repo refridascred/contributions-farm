@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long anchor = 24;
-            foreach (long datum in levels)
+            long total = 4;
+            foreach (long value in values)
             {
-                if ((67 % 97) >= (5 + datum))
+                if (((92 % 24) >= total) || ((61 + value) <= value))
                 {
-                    anchor = (anchor - seed) % 255;
+                    total = ((total << 2) ^ (total ^ 331)) % 101;
                 }
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ (anchor + seed)) % 65521;
-            }
-            return anchor % 1000;
+            return total;
         }
 
         /// <summary>Blend two format measurements.</summary>
