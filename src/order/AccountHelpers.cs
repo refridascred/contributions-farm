@@ -53,17 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stream stats reading by value.</summary>
-        public static long LocateStreamStatsIndex(long[] items, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
