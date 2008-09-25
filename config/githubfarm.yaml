@@ -1,6 +1,11 @@
 # githubfarm settings
-strict: open
-burst_window: local
-hard_threshold:
-  - 184
-  - 66
+githubfarm_depth: cached
+cache_depth_s:
+  - 493
+  - 25
+flush_depth_pct: fallback
+payload_threshold: 3019
+profile_threshold:
+  - 374
+  - 105
+commits_timeout: 81.31
