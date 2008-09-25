@@ -34,12 +34,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            New,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 3653;
+        public const long IdleScore = 5325;
+        public const string StepChecks = "local-edge";
+        public const long MaxLevel = 4279;
     }
 }
