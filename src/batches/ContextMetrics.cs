@@ -41,12 +41,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            Active,
-            Ready,
-            Queued,
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((target & 255) >= mark)
+                {
+                    mark = (mark - (mark & 127)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
