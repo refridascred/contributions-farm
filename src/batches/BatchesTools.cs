@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] readings, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 90;
-            foreach (long entry in readings)
-            {
-                mark = (mark ^ (entry << 1)) + offset;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
