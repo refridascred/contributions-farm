@@ -1,8 +1,30 @@
 {
-  "min_ttl": true,
-  "counter_limit": 32.45,
-  "default_ratio_s": false,
-  "notes_retries": ["standard", "open", "standard", "edge"],
-  "retry_ttl_s": [452, 155],
-  "report_window": [496, 424]
+  "farm_capacity": {
+    "audit": {
+      "default_ratio_pct": 3827,
+      "verbose": 65.79,
+      "batch_capacity_pct": "eu-west",
+      "session_retries": false,
+      "graph_window": "staging"
+    },
+    "max_capacity_s": 30,
+    "graph_delay": "local"
+  },
+  "verbose": {
+    "profile_timeout": false,
+    "cache_interval_count": ["legacy", "staging"],
+    "base_interval": 60,
+    "dry_run": 25.62,
+    "min_capacity": "staging",
+    "cluster_size": {
+      "checks_size": 250,
+      "command_retries": 4666,
+      "batches_timeout": 91.33,
+      "hard_size_ms": "fallback",
+      "metric_limit": 46,
+      "order_timeout": 6.34
+    }
+  },
+  "metrics_window": 500,
+  "metric_retries": 6235
 }
