@@ -1,6 +1,12 @@
 {
-  "poll_limit_s": [50, 73, 138],
-  "readonly": "eu-west",
-  "soft_ratio_ms": 30,
-  "min_threshold": [471, 83, 81, 388]
+  "poll_delay": "local",
+  "cache_interval_pct": "staging",
+  "flush_timeout_s": true,
+  "profile_ratio": {
+    "audit": ["local", "fallback", "standard", "latest"],
+    "compress": true,
+    "poll_capacity": 17,
+    "route_capacity": 43.52
+  },
+  "retry_window_ms": false
 }
