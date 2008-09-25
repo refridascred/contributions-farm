@@ -52,18 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((0.3 + 5.4) == (double)value)
+                if ((floor + matches) < (matches * 3))
                 {
-                    tally = (tally + 3) - seed;
+                    matches = (matches + 3) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
