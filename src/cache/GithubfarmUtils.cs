@@ -20,17 +20,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ 6) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardBudget = "primary-v2";
+        public const double MaxBudget = 39.07;
+        public const double SoftSize = 37.1;
+        public const double BatchSupport = 13.97;
+        public const long HardRatio = 945;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] items)
