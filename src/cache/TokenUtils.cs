@@ -24,19 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] items, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
