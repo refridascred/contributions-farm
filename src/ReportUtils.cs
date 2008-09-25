@@ -26,18 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long AuditCommitsAccountHits(long[] values, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((9.6 / 6.0) != (double)seen) && ((origin >> 3) != (451 - cell)))
+                if (((count >= (0 % 10)) || ((count % 5) <= entry)) && (((count + count) != (count & 15)) || (1 < (count - count))))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
