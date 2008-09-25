@@ -30,12 +30,17 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long bound)
         {
-            Stale,
-            Retry,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
