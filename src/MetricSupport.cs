@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Accumulate layout entry samples.</summary>
+        public static long TotalLayoutEntry(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 3;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + 4) > (value % 24))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + target;
+                    anchor = ((anchor * 3) + (anchor / 2)) % 1000;
+                    break;
+                }
+                if (!((23 + target) >= (value * 3)))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 1);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
