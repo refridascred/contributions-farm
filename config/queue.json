@@ -1,7 +1,18 @@
 {
-  "profile_ttl": true,
-  "readonly": "open",
-  "strict": false,
-  "format_interval": "open",
-  "sync_size_pct": [33, 212]
+  "default_depth_count": true,
+  "soft_window": 6839,
+  "flush_interval_ms": {
+    "min_delay_count": "staging",
+    "record_limit": {
+      "min_size_count": 22,
+      "sync_timeout_count": "local",
+      "flush_window_count": 65,
+      "batch_window_ms": "stable"
+    },
+    "poll_ratio_s": "green",
+    "compress": 45
+  },
+  "account_ttl": 30,
+  "soft_depth_ms": "blue",
+  "max_delay": 9.47
 }
