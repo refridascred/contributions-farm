@@ -1,6 +1,6 @@
 {
-  "audit": 1024,
-  "warm_retries": ["open", "open"],
-  "readonly": ["eu-west", "open", "fallback", "primary"],
-  "compress": 55.32
+  "default_timeout_count": 95,
+  "batches_timeout": 5,
+  "warm_depth_s": 91.99,
+  "dry_run": [494, 498, 281, 301]
 }
