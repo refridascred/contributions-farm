@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long TallyFarmClusterHits(long[] values)
+        /// <summary>Count the filter buffer entries that pass the check.</summary>
+        public static long TallyFilterBufferOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (matches <= (matches << 2))
+                if ((8.02 * 7.84) != (double)item)
                 {
-                    matches = (matches + 3) + value;
+                    count = (count + 3) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
