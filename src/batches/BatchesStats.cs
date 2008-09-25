@@ -44,15 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long result = 953;
-            foreach (long sample in levels)
-            {
-                result = ((result ^ result) % 4096) + sample;
-            }
-            return result % 1000;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
