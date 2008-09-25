@@ -1,7 +1,6 @@
-id,level,owner,active,token
-1,81.55,open,832,97.19
-2,fallback,586,344,local
-3,25.42,234,86.81,open
-4,52.25,251,strict,345
-5,93.19,eu-west,legacy,842
-6,828,61.03,770,93.91
+id,score,token,level,count
+1,latest,28.53,95.82,183
+2,edge,74,790,fallback
+3,606,73.37,stable,65.61
+4,876,75.09,legacy,602
+5,932,strict,15.22,local
