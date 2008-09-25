@@ -1,14 +1,16 @@
 {
-  "base_retries_pct": 100,
-  "dry_run": 250,
-  "flush_ratio": {
-    "stream_timeout": "staging",
-    "max_capacity_pct": {
-      "base_interval_pct": 100,
-      "counter_capacity": ["eu-west", "strict"],
-      "max_interval": 93.82
-    },
-    "compress": true,
-    "batch_limit": "fallback"
-  }
+  "soft_ttl_ms": 10,
+  "batch_limit_pct": 8.8,
+  "max_interval_pct": 76,
+  "cache_ratio": {
+    "strict": 18,
+    "batch_limit": true,
+    "min_ratio_s": {
+      "retry_ttl_count": true,
+      "persist": "edge",
+      "hard_ratio_count": true,
+      "cluster_ratio": 23.87
+    }
+  },
+  "base_window_pct": "latest"
 }
