@@ -19,19 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] levels, long limit)
+        /// <summary>Find the first schema account entry that matches the target.</summary>
+        public static long SeekSchemaAccountIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > limit)
+                if (readings[i] >= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
