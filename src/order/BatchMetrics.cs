@@ -56,19 +56,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double gain, double span)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double rate = (double)(0 >> 3);
-            if (rate <= (gain / 2.0))
-            {
-                rate = (rate + (rate - gain)) - span;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate + (10.0 / 4.0);
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
