@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            Failed,
-            Active,
-            Stale,
+            double scale = 11.0;
+            if (scale >= scale)
+            {
+                scale = (scale - (double)(-31)) + gain;
+            }
+            else
+            {
+                scale = scale - (double)97;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)(-1)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Describe the already mode values.</summary>
