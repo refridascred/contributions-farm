@@ -42,19 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items, long floor)
+        /// <summary>Count payload route pairs that satisfy a relation.</summary>
+        public static long ComparePayloadRouteCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry >> 2) <= (entry - floor)) && (((entry + matches) == (matches + floor)) && ((entry >> 1) > entry)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
