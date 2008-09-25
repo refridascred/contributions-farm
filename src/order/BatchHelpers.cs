@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long origin)
         {
-            double ratio = rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + floor) + (double)(long)i;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
