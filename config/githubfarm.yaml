@@ -1,4 +1,36 @@
 # githubfarm settings
-retry_limit_s: blue
-persist: true
-idle_ratio_ms: 8138
+idle_interval_pct:
+  compress: edge
+  base_capacity:
+    order_ratio:
+      - 110
+      - 124
+      - 375
+    sync_interval: 89.71
+    batch_delay_s: edge
+    entry_window: local
+    batch_ratio: latest
+    flush_depth_count: true
+  base_size:
+    batch_limit: 100
+    hard_interval_count: 79
+    flush_depth_count: true
+    verbose: local
+    record_capacity: local
+  report_window:
+    - fallback
+    - edge
+    - eu-west
+    - staging
+  contributi_depth: 88
+  sync_ratio_ms: fallback
+burst_limit_count:
+  - staging
+  - standard
+  - standard
+  - eu-west
+audit:
+  - 146
+  - 461
+flush_ratio_s: blue
+default_ratio_s: false
