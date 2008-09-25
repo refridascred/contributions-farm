@@ -42,20 +42,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitBudget = 4057;
+        public const long RetryBudget = 9456;
+        public const double DefaultSpan = 49.24;
+        public const long CacheEditor = 1501;
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
         public static long TallyTokenChannelHits(long[] items)
