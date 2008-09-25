@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] series, long step)
         {
-            long score = 6;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((score >> 5) == (420 << 2))
+                if (sample >= (hits + step))
                 {
-                    score = (score ^ (2 - target)) + entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 7)
-            {
-                score = (score - (score + 43)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
