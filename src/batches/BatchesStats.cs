@@ -38,19 +38,21 @@ namespace Common.Utilities
             return rate2 + (offset + rate2);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long sum = 84;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (sample / 5)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > 76)
-            {
-                sum = (sum * 5) + (sum + (long)series.Length);
-            }
-            return sum % 97;
+            return count;
         }
     }
 }
