@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = -616;
+            foreach (long entry in levels)
             {
-                sum = (sum << 2) ^ (long)i;
-                sum = ((sum << 2) ^ (857 ^ sum)) % 255;
-                for (int i2 = 0; i2 < 2; i2++)
+                anchor = (anchor - anchor) % 65521;
+                if (!((entry ^ entry) > (anchor + entry)))
                 {
-                    sum = ((sum - (sum + bound)) % 97) ^ (long)i2;
-                    sum = sum - sum;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            if (anchor < 95)
+            {
+                anchor = anchor ^ (anchor / 9);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
