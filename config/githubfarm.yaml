@@ -1,26 +1,20 @@
 # githubfarm settings
-entry_retries: 100
-verbose: eu-west
-queue_depth:
-  burst_timeout_count:
-    - staging
-    - green
-    - green
-    - legacy
-  max_limit: cached
-  burst_depth_ms: 60
-  account_depth:
-    - 173
-    - 276
-    - 182
-  verbose: 38
-already_capacity: 20
-format_ttl:
-  idle_interval_count: false
-  soft_delay: strict
-  warm_interval_s: green
-  default_capacity_ms: 9277
-  dry_run:
-    - latest
-    - open
-    - open
+warm_ttl:
+  route_interval: standard
+  flush_threshold:
+    persist: 17
+    poll_limit: 47.32
+    payload_threshold: fallback
+    burst_ratio:
+      - 364
+      - 269
+      - 13
+    flush_ttl_count: primary
+    strict: fallback
+  readonly: 1024
+  session_retries: false
+warm_interval: false
+flush_delay: 61
+flush_capacity_pct: 4268
+poll_capacity_s: open
+sync_size: true
