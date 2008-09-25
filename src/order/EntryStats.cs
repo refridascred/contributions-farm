@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            if ((bound * 3) < (offset % 64))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.1 * 7.8) <= (double)bound)
+                if (!(((matches >> 3) <= ((long)items.Length & 255)) || ((matches - matches) > (8 & 255))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
