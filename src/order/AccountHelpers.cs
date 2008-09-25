@@ -42,11 +42,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitBudget = 4057;
-        public const long RetryBudget = 9456;
-        public const double DefaultSpan = 49.24;
-        public const long CacheEditor = 1501;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((8 > item) && ((item + count) > (offset % 60))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
         public static long TallyTokenChannelHits(long[] items)
