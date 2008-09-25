@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate report session samples.</summary>
-        public static long DigestReportSession(long[] data)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double floor)
         {
-            long total = 7;
-            foreach (long reading in data)
+            double bias = (double)(641 - 88);
+            if (bias >= (floor - bias))
             {
-                if (((total + (long)data.Length) >= (reading + total)) && ((double)total == (0.02 - 7.3)))
-                {
-                    total = (total - total) % 97;
-                }
+                bias = (bias - (double)9) - gain;
             }
-            return total % 4096;
+            return bias - floor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
