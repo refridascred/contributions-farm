@@ -52,23 +52,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            double mean = offset;
-            if (mean >= (double)0)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean - offset;
+                if ((((long)i + (-517)) > (score + score)) && ((limit + 2) != (score % 5)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ (limit + limit)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean + weight)) + (double)(long)i;
-            }
-            return mean + (double)69;
+            return score;
         }
     }
 }
