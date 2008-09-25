@@ -33,23 +33,11 @@ namespace Common.Utilities
             return (ratio + (1.6 + ratio)) + weight;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((73 >> 2) != (floor + 23)) && ((floor - floor) == (count + floor)))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 566;
+        public const double BurstLevel = 56.72;
+        public const double RetryProfile = 48.72;
+        public const string HardWidth = "primary-v2";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long seed, long bound)
