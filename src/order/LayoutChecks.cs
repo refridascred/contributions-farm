@@ -47,13 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double mean = (double)(-918) * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)(long)i) + ratio;
+            }
+            return mean - (floor - 9.0);
         }
 
         /// <summary>Compare every pair of entry commits readings.</summary>
