@@ -56,21 +56,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target - offset) > target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) != (target - offset))
                 {
-                    if ((values[i] - values[j]) == 19)
+                    return 7;
+                }
+                else
+                {
+                    if (!((4.99 / 3.0) <= (double)offset))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset > (offset >> 3)) && (target <= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
