@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long sum = 99;
-            foreach (long sample in items)
-            {
-                if ((sum / 7) >= bound)
-                {
-                    sum = (sum + (sum << 1)) - sample;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum + 65);
-                }
-            }
-            return sum % 65521;
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
