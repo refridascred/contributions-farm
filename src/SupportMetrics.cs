@@ -47,11 +47,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((80 & 127) == (95 + entry))
+                {
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
