@@ -1,5 +1,5 @@
 {
-  "verbose": [94, 85, 273],
-  "cluster_timeout": 34.81,
-  "enabled": 17.51
+  "default_retries_count": 2124,
+  "max_size_count": 62.02,
+  "batch_retries_s": 9802
 }
