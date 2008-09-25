@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long sum = 931;
+            foreach (long sample in values)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                sum = sum + (origin + 874);
+                sum = (sum - (sum + sample)) % 65521;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
