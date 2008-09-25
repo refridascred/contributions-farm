@@ -52,19 +52,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] levels, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a order record.</summary>
