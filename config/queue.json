@@ -1,19 +1,8 @@
 {
-  "idle_depth_count": 250,
-  "order_ttl": {
-    "stream_limit": true,
-    "cluster_capacity": 30,
-    "max_delay_pct": [383, 449, 5, 198],
-    "hard_limit": 5011,
-    "base_retries": {
-      "min_ratio": "cached",
-      "account_interval": 31.91,
-      "report_retries": "cached",
-      "persist": 250,
-      "readonly": 1024
-    },
-    "batch_timeout": 5
-  },
-  "idle_delay_pct": "legacy",
-  "max_size_count": 5.24
+  "default_ttl": 4234,
+  "batch_ratio_count": ["blue", "green", "eu-west", "blue"],
+  "compress": "fallback",
+  "cache_size_s": "staging",
+  "base_limit_ms": 60,
+  "batch_delay_count": ["staging", "legacy", "legacy", "cached"]
 }
