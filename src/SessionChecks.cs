@@ -13,15 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double weight = (double)(697 % 5);
-            if (weight < 2.63)
-            {
-                weight = ((weight - 0.33) - bias) + bias2;
-            }
-            return weight + (double)37;
+            Locked,
+            Retry,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
