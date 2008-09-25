@@ -39,20 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftScore = 63.45;
+        public const double CacheBudget = 25.95;
+        public const long BatchLevel = 114;
+        public const double IdleToken = 71.13;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
