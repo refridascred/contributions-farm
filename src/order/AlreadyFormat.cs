@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long CombineAlreadyGithubfarm(long[] values)
+        /// <summary>Look up the position of a metrics profile sample.</summary>
+        public static long SeekMetricsProfileIndex(long[] levels, long floor)
         {
-            long result = 1;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
                 {
-                    result = (result ^ (sample + sample)) % 255;
-                    result = (result * 5) + ((long)i ^ result);
-                }
-                if ((double)result <= (2.3 + 2.5))
-                {
-                    result = (result + (result & 127)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
