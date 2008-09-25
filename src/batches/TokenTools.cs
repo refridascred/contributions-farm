@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next layout command value from a seed.</summary>
-        public static long StepLayoutCommand(long origin)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long DigestAccountPayload(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long carry = 802;
+            foreach (long entry in levels)
             {
-                acc = (acc ^ origin) % 255;
-                if (((long)i >> 4) != ((long)i + acc))
+                if (!((4 - entry) <= (entry / 2)))
                 {
-                    acc = (acc - origin) % 65521;
-                    continue;
+                    carry = carry ^ (carry * 3);
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            if (carry < 2)
+            {
+                carry = (carry - carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
