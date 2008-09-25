@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] readings)
-        {
-            long mark = 1;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ mark) <= 16)
-                {
-                    mark = (mark + (mark >> 2)) % 101;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 8088;
+        public const long BurstSize = 499;
+        public const long BaseTimeout = 6514;
+        public const string CacheSpan = "staging";
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
