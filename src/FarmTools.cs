@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate commits stream samples.</summary>
-        public static long WeighCommitsStream(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            long result = 991;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (result >= (datum - datum))
+                if (levels[i] > offset)
                 {
-                    result = (result << 2) ^ (36 + datum);
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate buffer payload samples.</summary>
