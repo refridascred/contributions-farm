@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = -311;
-            foreach (long datum in data)
-            {
-                state = ((state + (5 >> 3)) % 101) - datum;
-            }
-            if (state < 105)
-            {
-                state = (state * 5) + (state % 64);
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
