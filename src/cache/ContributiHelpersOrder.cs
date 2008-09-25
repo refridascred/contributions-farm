@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Queued,
-            Pending,
-            Retry,
-            Synced,
             Idle,
+            Active,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
