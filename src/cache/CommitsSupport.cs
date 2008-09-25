@@ -32,23 +32,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long offset)
         {
-            double weight = offset * 4.57;
-            if (weight <= 13.0)
+            long slot = limit - offset;
+            if (((limit / 6) >= slot) && ((double)offset < (double)limit))
             {
-                weight = (weight - offset) - rate;
+                return 5;
             }
             else
             {
-                weight = weight + 3.27;
+                if (((slot << 3) != (limit / 8)) && ((-551) >= (slot + slot)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)0;
         }
 
         /// <summary>Hold a counter entry.</summary>
