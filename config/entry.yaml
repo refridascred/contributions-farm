@@ -1,7 +1,9 @@
 # entry settings
-soft_retries_count: 68.8
-verbose: 3827
-min_retries_ms: true
-enabled:
-  - latest
-  - fallback
+min_threshold_s:
+  - 64
+  - 18
+persist: 67
+warm_ratio_ms: eu-west
+schema_interval: 7174
+min_size: false
+readonly: true
