@@ -11,12 +11,31 @@ namespace Common.Utilities
         public const double BatchDepth = 85.66;
         public const long RetryCount = 7746;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long target)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            if ((target * 4) >= (target + 209))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - target) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((step << 2) < target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
