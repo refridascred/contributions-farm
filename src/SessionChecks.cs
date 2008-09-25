@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
