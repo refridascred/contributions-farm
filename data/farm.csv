@@ -1,8 +1,7 @@
-id,active,ratio,rank
-1,0.43,96.27,primary
-2,813,10,61.05
-3,7.23,157,936
-4,cached,green,latest
-5,295,55.41,618
-6,primary,standard,64.12
-7,cached,142,57.4
+id,score,weight,token
+1,standard,fallback,strict
+2,900,700,staging
+3,legacy,16.55,7.16
+4,722,51,82.08
+5,local,268,598
+6,staging,950,92.86
