@@ -14,17 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next token commits value from a seed.</summary>
-        public static long IterateTokenCommits(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = -4;
+            foreach (long entry in series)
             {
-                sum = (sum ^ sum) % 97;
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                mix = (((mix * 2) + (entry & 15)) % 97) - origin;
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Locate a format reading by value.</summary>
