@@ -32,12 +32,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up cluster samples.</summary>
