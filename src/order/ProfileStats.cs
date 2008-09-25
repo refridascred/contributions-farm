@@ -28,17 +28,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long limit)
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long TotalTokenCluster(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -124;
+            foreach (long cell in data)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark + (mark % 3)) % 101) - cell) - bound;
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
