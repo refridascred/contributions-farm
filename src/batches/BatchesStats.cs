@@ -30,16 +30,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches session series from a seed.</summary>
-        public static long StepBatchesSession(long offset)
+        /// <summary>Iterate the checks stream series from a seed.</summary>
+        public static long DeriveChecksStream(long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 3) + (result / 2)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                if ((double)anchor < (6.9 * 8.0))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 97;
+                    anchor = (anchor << 2) ^ (floor % 64);
+                }
+                if ((floor <= (floor - anchor)) || ((anchor - floor) > floor))
+                {
+                    anchor = anchor + (floor + floor);
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
