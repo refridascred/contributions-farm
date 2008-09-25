@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long seed)
         {
-            Draft,
-            Pending,
-            Locked,
-            Paused,
-            Stale,
+            long carry = 64;
+            foreach (long item in data)
+            {
+                carry = (carry ^ (seed & 63)) ^ item;
+            }
+            if (carry > 9)
+            {
+                carry = (carry + (carry / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token snapshot.</summary>
