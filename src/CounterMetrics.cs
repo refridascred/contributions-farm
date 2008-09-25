@@ -13,16 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            double ratio = offset;
+            if (ratio >= (rate / 3.0))
             {
-                result = (result - (target / 8)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
+                ratio = ratio + (ratio - 17.0);
             }
-            return result;
+            else
+            {
+                ratio = ratio - (9.91 * 16.0);
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Hold a channel summary.</summary>
