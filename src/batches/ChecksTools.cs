@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                long slot = carry - (carry % 7);
-                if (!((951 + carry) != (carry + carry)))
+                if (sample <= seed)
                 {
-                    carry = (carry * 2) + ((long)i << 1);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry - (slot ^ carry)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
