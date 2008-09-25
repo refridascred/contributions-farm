@@ -33,22 +33,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double bias = (double)(69 * 3);
+            if (bias > (double)290)
             {
-                if ((count << 2) != (target + target))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + span;
             }
-            return count;
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias - span;
         }
     }
 }
