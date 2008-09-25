@@ -22,9 +22,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 7525;
-        public const long MinFactor = 744;
-        public const string BurstFactor = "fallback-v2";
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
