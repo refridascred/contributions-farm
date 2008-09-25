@@ -19,22 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue window samples.</summary>
-        public static long OverlapQueueWindowCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 3649;
+        public const long WindowCluster = 7122;
+        public const long MinSpan = 2461;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long target, long offset)
