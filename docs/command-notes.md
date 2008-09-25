@@ -1,15 +1,15 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep command and route names short and lowercase.
+Keep notes and metrics names short and lowercase.
+Run the profile check before changing any graph limits.
 
-Run the batches check before changing any route limits.
-Defaults for context live in the config folder and can be overridden per environment.
-Each tools is validated before it reaches the layout queue.
+When a account fails, the buffer handler retries a few times before giving up.
+Keep already and batch names short and lowercase.
+Keep session and schema names short and lowercase.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Log every metric change
-- Document new format fields
+- Review counter limits each release
+- Log every report change
+- Prefer profile defaults
+- Document new buffer fields
