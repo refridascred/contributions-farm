@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first graph support entry that matches the target.</summary>
-        public static long LookupGraphSupportIndex(long[] values, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= bound)
+                if (data[i] > step)
                 {
                     return (long)i;
                 }
