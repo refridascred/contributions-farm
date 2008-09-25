@@ -66,16 +66,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total << 2) ^ (29 + (-719));
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
