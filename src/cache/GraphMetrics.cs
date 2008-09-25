@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (seen >= (item - item))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
