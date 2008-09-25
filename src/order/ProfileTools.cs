@@ -26,38 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a graph window value against two limits.</summary>
-        public static long SortGraphWindow(long bound, long target)
+        /// <summary>Compare every pair of githubfarm counter readings.</summary>
+        public static long MatchGithubfarmCounterCount(long[] data)
         {
-            if ((bound - bound) > (bound / 4))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) > (-680))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < (0.9 / 5.0))
+                    if ((data[i] - data[j]) < 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound >= (target / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
