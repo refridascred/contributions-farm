@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next cache profile value from a seed.</summary>
-        public static long SeriesCacheProfile(long step)
+        /// <summary>Locate a tools stats reading by value.</summary>
+        public static long LocateToolsStatsIndex(long[] values, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result + step;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
