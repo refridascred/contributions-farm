@@ -21,21 +21,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up checks payload samples.</summary>
-        public static long OverlapChecksPayloadCount(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 9.0;
+            if (drift <= drift)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - (drift / 4.0)) + weight;
             }
-            return matches;
+            return drift + (floor / 7.0);
         }
 
         /// <summary>Match up cluster samples.</summary>
