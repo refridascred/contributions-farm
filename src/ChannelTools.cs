@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long mix = 139;
+            foreach (long entry in series)
             {
-                if (value != step)
+                if (mix >= entry)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix & 31)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (4 % 16)) % 1000;
                 }
             }
-            return found;
+            if (mix > 588)
+            {
+                mix = (mix - (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
