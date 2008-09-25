@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 6320;
-        public const long BaseSpan = 1990;
-        public const string BaseWidth = "open-v2";
-        public const long BaseFarm = 1226;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data, long offset)
+        {
+            long score = 849;
+            foreach (long reading in data)
+            {
+                if (((double)score > (2.0 / 5.0)) && ((double)offset > (2.2 / 9.0)))
+                {
+                    score = ((score * 3) + (80 ^ reading)) % 97;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] values)
