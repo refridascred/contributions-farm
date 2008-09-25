@@ -1,7 +1,15 @@
 {
-  "poll_ratio_ms": ["edge", "latest"],
-  "warm_ttl_pct": false,
-  "buffer_size": 30,
-  "batch_threshold_pct": ["latest", "blue", "fallback", "cached"],
-  "commits_ttl": "latest"
+  "base_retries_ms": [147, 143, 249],
+  "filter_ratio": 36,
+  "session_retries": ["local", "open"],
+  "warm_retries_ms": {
+    "strict": true,
+    "max_timeout_ms": "eu-west",
+    "max_capacity": 9934,
+    "base_size": "standard",
+    "warm_window_ms": "edge",
+    "account_timeout": 38.43
+  },
+  "batch_capacity": 23,
+  "idle_interval_ms": 81.2
 }
