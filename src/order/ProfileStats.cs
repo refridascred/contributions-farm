@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate commits profile readings against a bound.</summary>
+        public static bool CheckCommitsProfileLimits(long[] samples, long bound)
         {
-            Locked,
-            New,
-            Closed,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
