@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowWidth = 2183;
-        public const double IdlePayload = 77.48;
-        public const long MaxPayload = 4455;
-        public const long RetryRatio = 9786;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleRatio = 9666;
+        public const double BurstCluster = 20.86;
+        public const long CacheCluster = 3726;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] series)
