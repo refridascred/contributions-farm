@@ -15,23 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a channel cluster figure with a bias.</summary>
-        public static double ProjectChannelCluster(double gain, double span)
+        /// <summary>Measure how many metrics stream samples are out of range.</summary>
+        public static long CountMetricsStreamGaps(long[] levels)
         {
-            double bias = 9.6;
-            if (bias >= (bias * 3.7))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                bias = bias + span;
+                if ((6.13 - 18.0) != (double)matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            else
-            {
-                bias = bias + (double)730;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + gain;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
