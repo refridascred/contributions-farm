@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples, long bound)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (444 < (bound << 2))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
