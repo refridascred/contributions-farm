@@ -62,13 +62,19 @@ namespace Common.Utilities
         public const double BatchSize = 40.55;
         public const long BaseSchema = 9230;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 8;
+            foreach (long cell in levels)
+            {
+                acc = acc + cell;
+            }
+            if (acc < (-38))
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
