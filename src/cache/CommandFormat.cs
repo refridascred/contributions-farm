@@ -59,13 +59,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Locked,
-            New,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSpan = "alpha";
+        public const long CacheSupport = 9958;
+        public const string BaseSupport = "latest-1";
     }
 }
