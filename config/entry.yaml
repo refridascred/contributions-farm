@@ -1,4 +1,5 @@
 # entry settings
-batch_limit_ms: stable
-strict: 9385
-compress: 70.48
+soft_ratio_ms: local
+burst_ttl_pct: 457
+batch_ratio_ms: staging
+sync_size: 9
