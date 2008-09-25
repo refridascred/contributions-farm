@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] samples, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long datum in samples)
             {
-                if ((floor * 3) > reading)
+                if (hits <= step)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) + datum;
                 }
             }
             return hits;
