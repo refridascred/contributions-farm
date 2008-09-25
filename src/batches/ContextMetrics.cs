@@ -40,14 +40,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Paused,
-            Ready,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchScore = 9233;
+        public const double IdleMetric = 31.02;
+        public const long MinMetric = 7147;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 3763;
