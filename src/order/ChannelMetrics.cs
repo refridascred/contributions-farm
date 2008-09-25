@@ -16,25 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a order context value against two limits.</summary>
-        public static long ClassifyOrderContext(long offset, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            long bound = offset ^ limit;
-            if (!((3.5 * 3.23) != (double)bound))
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
+                result = (result << 2) ^ (target + result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((bound - limit) < (bound ^ offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Blend two format measurements.</summary>
