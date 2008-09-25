@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long TallySchemaCluster(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = 6;
+            foreach (long value in levels)
             {
-                if (!(hits <= (hits << 2)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 4) + (9 & 255)) + value;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
