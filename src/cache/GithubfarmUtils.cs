@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long result = 72;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((99 + entry) == (result + entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (result - entry)) % 97;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 3)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine window schema values into a single score.</summary>
