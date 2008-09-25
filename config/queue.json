@@ -1,19 +1,7 @@
 {
-  "cache_capacity": true,
-  "command_threshold": 1323,
-  "compress": {
-    "default_window": 78.1,
-    "warm_capacity_s": ["fallback", "cached"],
-    "cache_depth_count": true
-  },
-  "retry_ratio_pct": {
-    "cache_retries_s": false,
-    "buffer_delay": {
-      "compress": 85.9,
-      "cache_capacity": 29.56,
-      "hard_size_pct": 5039
-    },
-    "poll_window": 3085,
-    "hard_delay": 19.37
-  }
+  "soft_depth_count": 1024,
+  "sync_size": 39,
+  "flush_size_s": true,
+  "report_ttl": [368, 485, 359, 79],
+  "warm_retries_s": 99
 }
