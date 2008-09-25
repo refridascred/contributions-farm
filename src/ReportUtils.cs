@@ -26,11 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 1738;
-        public const long HardChecks = 2394;
-        public const long LimitChecks = 8759;
-        public const long IdleChecks = 1659;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result + result) % 101;
+                result = result + (bound - result);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyLimits(long[] values, long floor)
