@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = 575;
+            foreach (long sample in readings)
             {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state - (sample / 8)) % 1000;
             }
-            return found;
+            if (state > 9)
+            {
+                state = state - (3 - state);
+            }
+            return state;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
