@@ -40,19 +40,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a account entry counter forward.</summary>
-        public static long StepAccountEntry(long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((anchor % 16) < 956))
-                {
-                    anchor = anchor ^ (anchor - seed);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
