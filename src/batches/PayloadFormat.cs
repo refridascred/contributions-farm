@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepSpan = 7650;
-        public const long SoftRatio = 1603;
-        public const long DefaultFilter = 2439;
-        public const long IdleDepth = 1770;
-        public const double SoftWidth = 83.23;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((origin >= (count * 5)) && ((count << 1) < (count + origin)))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] samples, long limit)
