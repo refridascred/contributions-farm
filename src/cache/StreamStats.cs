@@ -19,14 +19,11 @@ namespace Common.Utilities
         public const double BaseChecks = 50.35;
         public const long StepChecks = 5358;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Ready,
-            Queued,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 4630;
+        public const long RetryToken = 9136;
+        public const string SoftToken = "staging-edge";
+        public const double LimitToken = 40.18;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] series)
