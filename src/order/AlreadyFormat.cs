@@ -69,23 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account tools figure with a bias.</summary>
-        public static double BlendAccountTools(double ratio, double bias)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] samples, long limit)
         {
-            double rate = bias;
-            if (rate > (ratio / 2.0))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                rate = rate + 9.0;
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)824;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate + rate;
+            return flag;
         }
     }
 }
