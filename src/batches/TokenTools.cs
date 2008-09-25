@@ -25,9 +25,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 19.82;
-        public const long WindowEditor = 918;
-        public const double MinScore = 48.67;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((8.7 - 18.0) >= (double)0) || ((count - item) != (seed % 97)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
