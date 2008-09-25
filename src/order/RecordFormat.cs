@@ -13,14 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Ready,
-            Pending,
-            Idle,
+            Locked,
+            Synced,
+            Stale,
             New,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
