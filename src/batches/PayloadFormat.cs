@@ -35,18 +35,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] levels, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-7) >= item)
+                if (readings[i] == offset)
                 {
-                    seen = (seen + 3) - seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
