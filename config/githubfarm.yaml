@@ -1,7 +1,5 @@
 # githubfarm settings
-soft_retries: 72
-hard_threshold_pct: edge
-stream_limit: 54.37
-compress: 85
-audit: false
-soft_window_pct: true
+strict: 73.81
+retry_threshold_s: 3002
+flush_interval_pct: 80
+idle_interval_ms: edge
