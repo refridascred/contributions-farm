@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Match up report layout samples.</summary>
+        public static long CompareReportLayoutCount(long[] samples)
         {
-            long total = 79;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-5) - 388) >= (cell / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (cell ^ total)) % 101;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two context measurements.</summary>
