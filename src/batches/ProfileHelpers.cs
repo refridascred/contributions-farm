@@ -48,18 +48,14 @@ namespace Common.Utilities
         public const long MinWindow = 6888;
         public const string BaseWindow = "cached";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (37 < (tally ^ tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
