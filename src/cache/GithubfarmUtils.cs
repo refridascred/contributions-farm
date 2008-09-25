@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long seed)
         {
-            double load = scale * 10.0;
-            if (load >= (double)7)
+            bool found = true;
+            foreach (long reading in data)
             {
-                load = (load + (double)4) + floor;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)734) - (double)(long)i;
-            }
-            return load - load;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
