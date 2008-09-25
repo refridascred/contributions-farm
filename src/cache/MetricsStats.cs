@@ -34,15 +34,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] values, long limit)
         {
-            long mark = 22;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ item) % 65521) - origin;
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
