@@ -53,17 +53,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                if ((state % 16) >= (state - offset))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (long)i) % 4096;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
