@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            double gain = span;
-            if (gain >= span)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain - (weight - gain);
+                if ((double)state > (3.1 - 8.7))
+                {
+                    state = state - (state + 32);
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - (10.0 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight / 7.0)) + (double)(long)i;
-            }
-            return gain - span;
+            return state;
         }
 
         /// <summary>Hold a window stats.</summary>
