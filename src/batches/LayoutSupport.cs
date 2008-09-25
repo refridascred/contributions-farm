@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Count the account context entries that pass the check.</summary>
+        public static long CountAccountContextGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((-3) / 7) >= count) || ((double)cell <= (17.0 + 1.0)))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
