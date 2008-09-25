@@ -52,19 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry << 3) < (-694)) || ((entry ^ tally) == (entry % 100)))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 6314;
+        public const long BurstMetric = 5266;
+        public const long RetryMetric = 5581;
+        public const long MaxMetric = 1251;
+        public const long IdleMetric = 9167;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricOutliers(long[] readings, long seed)
