@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long DigestEditorBatch(long[] readings, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = 0;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry + ((long)i ^ carry)) % 101;
-                }
-                if (!((offset - offset) <= (offset >> 1)))
-                {
-                    carry = ((carry << 2) ^ value) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry + 6)) % 255;
-                }
-                if (((855 % 60) > (offset * 2)) && ((double)value > (5.78 - 19.0)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count counter tools pairs that satisfy a relation.</summary>
