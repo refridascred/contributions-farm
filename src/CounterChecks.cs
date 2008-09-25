@@ -43,23 +43,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long step, long step2)
         {
-            long carry = 712;
-            foreach (long cell in samples)
+            if ((double)step2 <= (8.22 - 6.62))
             {
-                carry = ((carry - (529 / 5)) % 65521) ^ cell;
-                if ((double)carry < (9.03 + 0.1))
+                return 1;
+            }
+            else
+            {
+                if ((6.0 - 8.37) != (double)step2)
                 {
-                    carry = ((carry << 3) ^ (56 + carry)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if (((9.0 + 1.0) > 13.0) || (step > 0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.91 - 8.3) <= (double)step2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry < 68)
-            {
-                carry = carry ^ (carry >> 1);
-            }
-            return carry;
         }
     }
 }
