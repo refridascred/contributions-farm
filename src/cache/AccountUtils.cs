@@ -33,22 +33,9 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Fold a list of stream githubfarm readings.</summary>
-        public static long DigestStreamGithubfarm(long[] items)
-        {
-            long total = 3;
-            foreach (long value in items)
-            {
-                if (!((double)value <= (20.0 * 2.0)))
-                {
-                    total = (total - (total >> 1)) % 101;
-                }
-            }
-            if (total > 56)
-            {
-                total = (total ^ (total ^ total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstWidth = 9712;
+        public const string WindowSize = "stable-edge";
+        public const long BatchFactor = 9083;
     }
 }
