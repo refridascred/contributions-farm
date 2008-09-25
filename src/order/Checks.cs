@@ -30,10 +30,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowTimeout = "open-edge";
-        public const long WindowStream = 3313;
-        public const double MinStream = 54.86;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double offset)
+        {
+            double bias = ratio;
+            if (bias >= ratio)
+            {
+                bias = (bias + ratio) - offset;
+            }
+            return bias + (double)4;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "legacy-v2";
