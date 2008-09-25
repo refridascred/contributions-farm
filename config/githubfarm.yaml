@@ -1,5 +1,8 @@
 # githubfarm settings
-verbose: 28.03
-account_ttl: 28
-warm_capacity_pct: eu-west
-batch_depth: 64.26
+max_ttl_ms: 13.32
+batch_size: open
+cache_retries: 31.37
+default_interval_s:
+  - blue
+  - stable
+  - open
