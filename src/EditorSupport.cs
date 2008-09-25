@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 3909;
-        public const double CacheSupport = 90.51;
-        public const double SoftRatio = 6.07;
-        public const long MinSize = 6206;
-        public const double LimitSpan = 84.5;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultScore = 700;
+        public const string DefaultTimeout = "local-v2";
+        public const long MaxRecord = 8693;
+        public const long HardRecord = 40;
+        public const long WindowRecord = 94;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] levels)
