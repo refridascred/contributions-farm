@@ -32,14 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Stale,
-            Ready,
-            New,
-            Draft,
-            Failed,
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
