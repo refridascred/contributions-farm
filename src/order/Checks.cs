@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double SoftQueue = 8.83;
         public const long HardQueue = 3912;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1853;
-        public const string WindowFactor = "standard-1";
-        public const double WindowSpan = 71.38;
-        public const string IdleCommits = "alpha";
-        public const double BatchCommits = 51.49;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "legacy-1";
+        public const double MaxNotes = 79.28;
+        public const long MaxInterval = 5587;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long step)
