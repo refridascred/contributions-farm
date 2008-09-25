@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] samples, long step)
         {
-            double scale2 = (double)284 - (floor * 6.42);
-            if (scale2 < (floor * 5.7))
+            long result = 1;
+            foreach (long datum in samples)
             {
-                scale2 = (scale2 - (floor * 14.0)) + scale;
+                if ((step + datum) == (step ^ datum))
+                {
+                    result = (result * 4) + result;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (result > 46)
             {
-                scale2 = (scale2 + 7.9) + (double)(long)i;
+                result = ((result * 2) + (777 << 2)) % 1000;
             }
-            return scale2 - (double)830;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
