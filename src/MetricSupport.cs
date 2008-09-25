@@ -17,21 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values, long floor)
-        {
-            long acc = 8;
-            foreach (long item in values)
-            {
-                acc = ((acc * 3) + (item % 16)) - floor;
-                acc = acc ^ (acc * 2);
-            }
-            if (acc > 819)
-            {
-                acc = (acc * 2) + (acc * 3);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5082;
+        public const long LimitTimeout = 7615;
+        public const double LimitCount = 68.57;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
