@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((71 + value) >= 243)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
