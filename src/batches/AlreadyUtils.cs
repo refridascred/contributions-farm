@@ -19,17 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long bound)
+        /// <summary>Accumulate schema graph samples.</summary>
+        public static long TotalSchemaGraph(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 960;
+            foreach (long item in readings)
             {
-                if (readings[i] == bound)
+                if ((double)target == (0.57 * 2.0))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (item - target)) % 65521;
                 }
+                else
+                {
+                    total = (total + (target - total)) % 4096;
+                }
+                total = total - (item << 1);
             }
-            return -1;
+            if (total < (-282))
+            {
+                total = (total - (target << 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
