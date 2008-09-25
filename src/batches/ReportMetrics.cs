@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order batch figure with a bias.</summary>
-        public static double ProjectOrderBatch(double weight, double bias)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long offset)
         {
-            double bias2 = (double)((-66) + 476);
-            if (bias2 < weight)
+            if ((double)offset < 18.0)
             {
-                bias2 = (bias2 + (bias2 + 0.6)) - bias;
+                return 1;
             }
             else
             {
-                bias2 = bias2 - (bias2 - 1.64);
+                if ((floor + floor) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((15 / 5) >= (offset - 122))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (offset - 84))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return bias2 + 8.04;
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
