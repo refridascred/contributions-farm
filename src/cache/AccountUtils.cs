@@ -14,12 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Locked,
-            Done,
-            Stale,
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
