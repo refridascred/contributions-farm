@@ -31,11 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxTimeout = 2086;
-        public const double RetryWidth = 55.65;
-        public const long CacheQueue = 1541;
-        public const long SoftScore = 4607;
-        public const double RetryScore = 2.3;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepScore = 48.66;
+        public const long DefaultGithubfarm = 9060;
+        public const long LimitWidth = 2638;
+        public const long BurstGithubfarm = 4702;
+        public const long RetryGithubfarm = 5692;
     }
 }
