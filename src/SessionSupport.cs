@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] series, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value != step)
+                if ((12.0 - 9.0) != (double)limit)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
