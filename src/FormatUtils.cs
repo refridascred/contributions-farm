@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate;
+            if (bias >= (double)11)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)2) + floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (4.8 / 4.0);
         }
 
         /// <summary>Describe the window level values.</summary>
