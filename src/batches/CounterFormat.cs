@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + mark) != (bound - 618))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + mark) % 255;
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
