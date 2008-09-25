@@ -44,13 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            Draft,
-            New,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(347 >= (item + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
