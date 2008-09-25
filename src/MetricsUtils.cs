@@ -45,10 +45,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 2559;
-        public const long HardEditor = 8897;
-        public const double WindowFactor = 83.34;
-        public const string SoftEditor = "latest";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long floor)
+        {
+            long bound = offset - floor;
+            if (floor <= (offset / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound / 2) < 1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 + 7.0) == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < (1.55 + 3.41))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
