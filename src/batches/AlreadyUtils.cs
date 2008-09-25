@@ -45,19 +45,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value > offset)
+                if ((1.6 / 2.0) < (double)sample)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - step;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
