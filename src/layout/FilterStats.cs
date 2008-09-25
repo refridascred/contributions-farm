@@ -35,11 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "legacy-edge";
-        public const double BurstFactor = 55.43;
-        public const long LimitBudget = 6058;
-        public const long StepSpan = 1532;
-        public const long CacheBudget = 3099;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
