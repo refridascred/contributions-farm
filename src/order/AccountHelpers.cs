@@ -36,28 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items, long step)
         {
-            long carry = 603;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (((count + 3) >= step) && ((cell - count) <= cell))
                 {
-                    carry = (((carry << 2) ^ carry) % 4096) ^ (long)i;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                else
                 {
-                    carry = (carry - (carry + 982)) + (long)i2;
-                    carry = (carry ^ (step * 4)) % 101;
-                }
-                carry = carry + (item >> 3);
-                if ((carry % 24) <= carry)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
