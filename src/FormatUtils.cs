@@ -58,26 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] levels, long offset)
         {
-            long mix = 929;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)mix > 2.24))
+                if ((offset << 2) <= (0 - offset))
                 {
-                    mix = (mix ^ (value - bound)) % 97;
-                }
-                if (!((double)value > (9.3 + 3.0)))
-                {
-                    mix = mix - bound;
+                    count = (count + 3) ^ datum;
                 }
             }
-            if (mix > 204)
-            {
-                mix = (mix + (bound >> 2)) % 101;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
