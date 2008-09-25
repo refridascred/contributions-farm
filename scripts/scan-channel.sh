@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in legacy stable blue open; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=285
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging green latest; do
-    log "checking ${item}"
-done
