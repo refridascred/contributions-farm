@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const double StepStream = 94.96;
         public const double RetryInterval = 21.5;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
