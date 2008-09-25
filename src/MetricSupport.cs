@@ -33,12 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            New,
-            Retry,
-            Stale,
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
