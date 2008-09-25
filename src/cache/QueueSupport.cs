@@ -19,21 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 260;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor * 3) + ((-37) * 4);
+                anchor = (anchor - entry) % 255;
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
