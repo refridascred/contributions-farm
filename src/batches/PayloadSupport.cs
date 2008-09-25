@@ -19,17 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first schema account entry that matches the target.</summary>
-        public static long SeekSchemaAccountIndex(long[] readings, long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
