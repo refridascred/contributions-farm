@@ -12,21 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 67;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark - (mark >> 3)) % 4096) - entry) - limit;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Locate a token reading by value.</summary>
