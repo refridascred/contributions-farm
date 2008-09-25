@@ -58,10 +58,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstLevel = 50.29;
-        public const string IdleCounter = "latest-1";
-        public const double RetryCounter = 59.18;
-        public const long SoftCounter = 717;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinInterval = "alpha-v2";
+        public const long SoftRatio = 7083;
+        public const double IdleSize = 38.68;
+        public const long HardNotes = 6163;
     }
 }
