@@ -66,19 +66,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double gain = rate;
-            if (gain > offset)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (offset - rate);
-            }
-            return gain - (double)(-3);
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
