@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long seed)
         {
-            long mix = 95;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix <= (entry - entry)) && ((mix - entry) >= (mix >> 5)))
+                if (data[i] == seed)
                 {
-                    mix = ((mix << 3) ^ (entry * 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
