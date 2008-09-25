@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            Ready,
+            Done,
+            Locked,
         }
     }
 }
