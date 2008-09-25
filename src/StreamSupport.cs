@@ -27,18 +27,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long TallyBatchesGithubfarmMatches(long[] data, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((20.0 / 9.0) < (double)step)
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
