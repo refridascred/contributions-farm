@@ -29,9 +29,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSize = 2503;
-        public const long LimitWidth = 5629;
-        public const string IdleCounter = "standard-edge";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] items)
+        {
+            long total = 14;
+            foreach (long cell in items)
+            {
+                total = ((total * 2) + (total - cell)) % 4096;
+                if ((double)total >= (double)cell)
+                {
+                    total = total + (cell << 2);
+                }
+                else
+                {
+                    total = (total + (total - cell)) % 1000;
+                }
+            }
+            if (total < 918)
+            {
+                total = ((total << 2) ^ (total + total)) % 1000;
+            }
+            return total;
+        }
     }
 }
