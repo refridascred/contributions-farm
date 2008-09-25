@@ -1,19 +1,7 @@
 {
-  "cache_ratio_count": "strict",
-  "tools_limit": {
-    "payload_capacity": 24,
-    "batch_size_count": 100,
-    "burst_interval_pct": [231, 351, 365, 127],
-    "batch_limit_ms": "standard",
-    "cache_size_pct": 13,
-    "entry_retries": 1024
-  },
-  "batch_depth": "legacy",
-  "max_limit": 1388,
-  "soft_ttl_pct": {
-    "enabled": true,
-    "readonly": 1477,
-    "context_capacity": ["stable", "green", "primary", "legacy"]
-  },
-  "verbose": false
+  "soft_threshold_count": 889,
+  "hard_size_count": false,
+  "poll_depth_s": 8969,
+  "retry_retries_s": 250,
+  "min_ratio_count": [330, 434, 48, 139]
 }
