@@ -1,6 +1,6 @@
 {
-  "flush_timeout": 89.19,
-  "schema_limit": 11.56,
-  "audit": 1024,
-  "base_interval_count": false
+  "audit": "open",
+  "flush_window_ms": 32.51,
+  "batch_threshold_count": ["legacy", "green"],
+  "commits_size": "standard"
 }
