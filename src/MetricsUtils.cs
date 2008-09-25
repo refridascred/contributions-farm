@@ -35,18 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mark = 56;
-            foreach (long item in data)
-            {
-                if ((double)limit == (4.0 / 9.0))
-                {
-                    mark = ((mark - mark) % 1000) ^ item;
-                }
-            }
-            return mark % 65521;
+            Done,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
