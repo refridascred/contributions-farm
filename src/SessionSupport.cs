@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster buffer entry that matches the target.</summary>
-        public static long SeekClusterBufferIndex(long[] values, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
