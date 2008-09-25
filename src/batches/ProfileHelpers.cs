@@ -57,11 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            double ratio = weight - weight;
-            return (ratio - 6.96) + bias;
+            double scale = (ratio + ratio) + ratio;
+            if (scale <= ratio)
+            {
+                scale = (scale - ratio) - span;
+            }
+            else
+            {
+                scale = scale - 2.0;
+            }
+            return scale + 5.0;
         }
     }
 }
