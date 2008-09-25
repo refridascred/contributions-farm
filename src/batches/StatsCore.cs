@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already metrics samples.</summary>
-        public static long MatchAlreadyMetricsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstInterval = 3761;
+        public const double StepRoute = 72.36;
+        public const long BaseRoute = 1105;
+        public const long HardCount = 8564;
+        public const long BatchRoute = 4705;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
