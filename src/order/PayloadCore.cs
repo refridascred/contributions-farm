@@ -39,19 +39,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
+        public static long LocateGithubfarmBatchIndex(long[] readings, long floor)
         {
-            long total = 5;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 4) + (93 + 9)) % 97) ^ sample;
-                if (!(total >= (7 + total)))
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
