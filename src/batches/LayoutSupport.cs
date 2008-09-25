@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a cache account value against two limits.</summary>
-        public static long RankCacheAccount(long offset, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if (!((offset - bound) > bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + offset) <= (bound / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-64) + bound) < (offset >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= (bound - bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
