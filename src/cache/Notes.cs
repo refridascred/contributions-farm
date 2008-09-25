@@ -17,21 +17,38 @@ namespace Common.Utilities
         public const double IdleInterval = 88.44;
         public const double BaseDepth = 66.4;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            if ((step ^ step) == (bound - step))
             {
-                if ((double)(long)i >= (7.8 / 7.0))
-                {
-                    mark = (mark << 3) ^ (mark >> 2);
-                    mark = mark - (long)i;
-                }
-                mark = mark ^ (mark << 3);
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!((step << 1) >= 57))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step >> 3) > (step >> 5)) && (bound > (step + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step > (3.13 - 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
