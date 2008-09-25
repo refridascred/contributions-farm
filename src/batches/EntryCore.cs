@@ -45,14 +45,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Stale,
-            Locked,
-            Paused,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 88.79;
+        public const long DefaultSupport = 1556;
+        public const long BaseSupport = 7887;
     }
 }
