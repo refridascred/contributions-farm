@@ -16,15 +16,22 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] data)
         {
-            long mix = -4;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mix = (((mix * 2) + (entry & 15)) % 97) - origin;
+                if ((sample / 8) > (sample + sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Locate a format reading by value.</summary>
