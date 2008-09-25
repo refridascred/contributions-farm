@@ -1,11 +1,6 @@
-id,ratio,count
-1,primary,285
-2,669,951
-3,92,209
-4,23.66,829
-5,450,latest
-6,fallback,stable
-7,766,strict
-8,271,239
-9,472,5.8
-10,990,97.9
+id,label,token,active,rank
+1,89.22,83.01,842,786
+2,stable,30.26,legacy,47.3
+3,664,eu-west,849,37
+4,36.48,970,121,310
+5,eu-west,40.53,fallback,439
