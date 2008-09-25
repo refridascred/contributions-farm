@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const string BaseSpan = "primary";
         public const long BatchFormat = 9731;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] series, long bound)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
