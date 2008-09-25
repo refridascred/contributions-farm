@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] levels, long seed)
         {
-            if (!((671 / 8) == (step - target)))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > step)
+                if ((((seen / 6) >= (seen * 3)) && ((seed % 8) >= seen)) || ((double)item == (1.0 - 1.25)))
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (!((8 * 4) > target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + target) >= (step * 4)) && ((double)step > 9.5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
