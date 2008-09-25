@@ -1,8 +1,7 @@
 {
-  "batch_window": 500,
-  "min_size_count": 500,
-  "cache_capacity_s": [99, 8],
-  "already_window": 9513,
-  "soft_threshold": "stable",
-  "context_window": 5
+  "graph_window": false,
+  "compress": "cached",
+  "dry_run": [326, 362],
+  "retry_limit": "legacy",
+  "record_ttl": 86
 }
