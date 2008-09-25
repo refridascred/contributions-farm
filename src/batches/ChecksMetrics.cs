@@ -61,18 +61,17 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long bound)
         {
-            long acc = 71;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc >> 5) >= ((long)levels.Length + seed))
+                if (items[i] < bound)
                 {
-                    acc = (acc ^ (cell - seed)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
