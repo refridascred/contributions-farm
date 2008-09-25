@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool CheckContributiMetricsLimits(long[] items, long origin)
+        /// <summary>Combine batches channel values into a single score.</summary>
+        public static long TallyBatchesChannel(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mark = 543;
+            foreach (long cell in values)
             {
-                if (reading != origin)
+                if (cell <= mark)
                 {
-                    flag = false;
-                    break;
+                    mark = mark - (mark - 2);
+                }
+                else
+                {
+                    mark = mark + (limit >> 2);
                 }
             }
-            return flag;
+            if (mark < 1)
+            {
+                mark = (mark << 3) ^ 62;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
