@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long state = 12;
-            foreach (long entry in items)
-            {
-                state = state ^ (entry + entry);
-            }
-            return state % 65521;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
