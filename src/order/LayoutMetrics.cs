@@ -27,18 +27,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3044;
+        public const long SoftLevel = 7028;
+        public const double BaseSpan = 71.77;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] items)
