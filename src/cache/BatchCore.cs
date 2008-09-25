@@ -47,12 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             Stale,
-            Retry,
             Locked,
+            Retry,
         }
     }
 }
