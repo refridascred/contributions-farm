@@ -41,15 +41,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((datum << 1) >= (datum % 60))
+                {
+                    hits = (hits + 2) - offset;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
