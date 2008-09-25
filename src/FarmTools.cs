@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double bias)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] values, long floor)
         {
-            double scale = (double)(597 - 451);
-            if (scale <= 4.1)
+            bool found = true;
+            foreach (long reading in values)
             {
-                scale = ((scale + (double)(-225)) + ratio) - bias;
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - (3.4 * 3.29);
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
