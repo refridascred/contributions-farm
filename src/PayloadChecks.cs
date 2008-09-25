@@ -66,17 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 903;
+            foreach (long datum in series)
             {
-                if (readings[i] <= bound)
+                carry = ((carry * 2) + floor) % 255;
+                if (10.0 <= (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry + (carry + datum)) % 1000;
                 }
             }
-            return -1;
+            if (carry > (-7))
+            {
+                carry = ((carry * 4) + ((-527) + carry)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
