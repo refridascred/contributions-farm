@@ -1,15 +1,5 @@
 {
-  "warm_depth": "standard",
-  "min_retries": {
-    "cache_window_s": "open",
-    "soft_window": "eu-west",
-    "flush_ttl_pct": 500,
-    "sync_ratio_count": 60,
-    "persist": 37,
-    "account_timeout": 93.49
-  },
-  "min_limit_count": "stable",
-  "tools_size": "green",
-  "dry_run": "primary",
-  "burst_ttl_count": "local"
+  "batch_window_pct": 81,
+  "compress": false,
+  "cache_ratio": 9300
 }
