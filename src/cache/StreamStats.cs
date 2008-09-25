@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const string SoftToken = "staging-edge";
         public const double LimitToken = 40.18;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double bias)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            double mean = (double)((-4) & 63);
+            if (mean > (bias + scale))
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
