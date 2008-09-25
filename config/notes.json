@@ -1,8 +1,6 @@
 {
-  "idle_limit_pct": true,
-  "batch_interval": 22,
-  "filter_ttl": false,
-  "strict": [202, 122, 321],
-  "idle_retries_ms": 58.09,
-  "enabled": "primary"
+  "stream_depth": true,
+  "base_ratio_ms": 33.12,
+  "verbose": "blue",
+  "soft_timeout": 78
 }
