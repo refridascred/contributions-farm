@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 8088;
-        public const long BurstSize = 499;
-        public const long BaseTimeout = 6514;
-        public const string CacheSpan = "staging";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long DigestCommits(long[] samples, long origin)
