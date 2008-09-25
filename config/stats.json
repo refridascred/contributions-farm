@@ -1,19 +1,7 @@
 {
-  "flush_delay_pct": 9537,
-  "dry_run": "edge",
-  "flush_threshold_ms": "legacy",
-  "order_ttl": "local",
-  "payload_threshold": 92,
-  "stats_size": {
-    "persist": 1978,
-    "editor_ratio": "stable",
-    "verbose": {
-      "readonly": 66.81,
-      "base_threshold": 71,
-      "warm_interval": "legacy",
-      "min_size": "staging",
-      "stream_capacity": 90.51,
-      "queue_retries": ["cached", "standard"]
-    }
-  }
+  "base_delay_pct": 250,
+  "already_delay": "open",
+  "enabled": [260, 400, 27, 335],
+  "retry_retries_ms": 8819,
+  "soft_timeout_ms": 100
 }
