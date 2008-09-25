@@ -15,25 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i & 1) >= mark)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark ^ seed;
-                    mark = mark + (seed + seed);
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)i / 7)) % 101;
-                }
-                mark = (mark - (mark & 31)) % 97;
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
