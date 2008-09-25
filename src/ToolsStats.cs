@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            New,
-            Stale,
-            Synced,
+            long state = 12;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    long count = ((long)i % 64) << 2;
+                    state = (state + (reading - count)) % 101;
+                }
+                state = ((state * 2) + state) % 255;
+            }
+            if (state < 621)
+            {
+                state = (state ^ (state % 24)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
