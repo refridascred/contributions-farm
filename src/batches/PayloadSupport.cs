@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
