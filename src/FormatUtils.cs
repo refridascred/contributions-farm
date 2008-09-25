@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long bound2)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] values, long seed)
         {
-            long bound3 = bound + bound2;
-            if (((double)bound == (double)bound3) && (bound2 > bound3))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((26 <= (288 - bound)) && ((double)bound3 < (14.0 * 10.0)))
+                if (reading >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (bound2 + bound3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the schema status values.</summary>
