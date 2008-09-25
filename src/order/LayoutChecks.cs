@@ -48,18 +48,27 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] samples, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 79;
+            foreach (long datum in items)
             {
-                if (((offset + 7) > (cell % 5)) && ((330 + (long)samples.Length) != (cell + seen)))
+                carry = carry + (datum << 2);
+                if ((4.96 - 1.88) <= (double)bound)
                 {
-                    seen = seen + 1;
+                    carry = (carry << 2) ^ datum;
+                }
+                else
+                {
+                    carry = (carry ^ ((-11) << 2)) % 1000;
                 }
             }
-            return seen;
+            if (carry > 5)
+            {
+                carry = (carry ^ (bound - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
