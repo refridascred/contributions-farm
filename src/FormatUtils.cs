@@ -79,15 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Count the contributi cluster entries that pass the check.</summary>
+        public static long CountContributiClusterGaps(long[] series)
         {
-            long state = 1;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                state = (((state * 3) + state) % 101) - item;
+                if ((double)count != (7.88 - 6.3))
+                {
+                    count = (count + 3) - reading;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
