@@ -1,7 +1,4 @@
 # support settings
-min_interval_ms: 92.73
-soft_delay: primary
-batch_timeout_pct: 502
-retry_limit_count: 72
-compress: fallback
-editor_retries: 57
+persist: 27
+strict: staging
+schema_ttl: 20.67
