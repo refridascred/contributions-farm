@@ -37,15 +37,17 @@ namespace Common.Utilities
         public const long IdleSize = 8304;
         public const long BurstDepth = 907;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long seed)
         {
-            long mix = 37;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (82 ^ limit)) ^ item;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
