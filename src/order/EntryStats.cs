@@ -14,19 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (entry != floor)
                 {
-                    result = (result - (seed * 2)) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
