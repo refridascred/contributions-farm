@@ -20,21 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
