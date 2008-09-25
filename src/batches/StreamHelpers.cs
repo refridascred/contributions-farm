@@ -65,17 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] <= origin)
+                if (((sample < tally) || ((8.35 * 5.3) > (double)tally)) && (tally < (sample ^ tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
