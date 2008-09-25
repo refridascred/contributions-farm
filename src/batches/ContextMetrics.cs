@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
