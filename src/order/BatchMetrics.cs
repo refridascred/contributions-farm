@@ -65,17 +65,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a cache notes reading by value.</summary>
-        public static long LocateCacheNotesIndex(long[] values, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
