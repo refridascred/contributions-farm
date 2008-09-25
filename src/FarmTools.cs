@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long carry = 5;
-            foreach (long item in series)
-            {
-                if ((double)offset != (double)item)
-                {
-                    carry = (carry * 3) + (carry & 255);
-                }
-            }
-            if (carry < 11)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
