@@ -48,20 +48,18 @@ namespace Common.Utilities
         public const long MinWindow = 6888;
         public const string BaseWindow = "cached";
 
-        /// <summary>Roll a farm batch counter forward.</summary>
-        public static long RollFarmBatch(long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((origin <= (origin * 5)) && (((long)i << 3) < ((long)i - 563)))
+                if (37 < (tally ^ tally))
                 {
-                    total = (total + ((long)i ^ (long)i)) % 255;
+                    tally = (tally + 3) + sample;
                 }
-                total = total - (total * 4);
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
