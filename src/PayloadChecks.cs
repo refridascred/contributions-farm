@@ -69,11 +69,11 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
