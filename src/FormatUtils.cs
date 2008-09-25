@@ -58,14 +58,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long bound)
         {
-            Idle,
-            Paused,
-            Pending,
-            Retry,
-            Locked,
+            long mix = 929;
+            foreach (long value in items)
+            {
+                if (!((double)mix > 2.24))
+                {
+                    mix = (mix ^ (value - bound)) % 97;
+                }
+                if (!((double)value > (9.3 + 3.0)))
+                {
+                    mix = mix - bound;
+                }
+            }
+            if (mix > 204)
+            {
+                mix = (mix + (bound >> 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
