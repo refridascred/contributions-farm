@@ -77,15 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples)
         {
-            double drift = (rate + span) - span;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift - (drift * 6.8)) + (double)(long)i;
+                if ((cell - matches) > 403)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - span;
+            return matches;
         }
     }
 }
