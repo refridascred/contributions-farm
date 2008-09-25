@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples, long step)
-        {
-            long result = 1;
-            foreach (long datum in samples)
-            {
-                if ((step + datum) == (step ^ datum))
-                {
-                    result = (result * 4) + result;
-                }
-            }
-            if (result > 46)
-            {
-                result = ((result * 2) + (777 << 2)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftCount = 8394;
+        public const string WindowInterval = "standard-1";
+        public const double StepBatch = 33.22;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] levels, long target)
