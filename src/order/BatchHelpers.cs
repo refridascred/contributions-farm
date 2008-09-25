@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 28.82;
-        public const double RetryTimeout = 4.39;
-        public const long LimitBuffer = 6702;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "local";
+        public const string IdleSession = "fallback-1";
+        public const long IdleCount = 9854;
+        public const double CacheSession = 65.64;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
