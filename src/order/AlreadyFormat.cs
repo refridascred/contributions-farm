@@ -42,23 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] levels, long seed)
         {
-            double gain = (double)(2 * 5);
-            if (gain < offset)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - (double)78;
+                if ((count - entry) == (seed >> 1))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain = gain + (gain * 13.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + weight) - (double)(long)i;
-            }
-            return gain - (double)94;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
