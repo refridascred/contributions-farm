@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a order cluster value against two limits.</summary>
-        public static long BucketOrderCluster(long origin, long origin2)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long OverlapStreamEditorCount(long[] readings)
         {
-            if ((2.37 + 0.32) < (double)origin2)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 < (6 & 127)) || ((origin2 % 97) == (origin2 - origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up already metrics samples.</summary>
