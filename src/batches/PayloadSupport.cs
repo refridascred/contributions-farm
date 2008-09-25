@@ -21,18 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile queue entries that pass the check.</summary>
-        public static long MeasureProfileQueueMatches(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((long)readings.Length & 255) <= (seen ^ seen)))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
