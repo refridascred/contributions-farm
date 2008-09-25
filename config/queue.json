@@ -1,5 +1,8 @@
 {
-  "verbose": ["local", "blue"],
-  "commits_retries": "fallback",
-  "dry_run": 100
+  "audit": "staging",
+  "cluster_interval": [448, 488],
+  "idle_ratio_ms": "primary",
+  "batch_window_pct": 167,
+  "base_ttl_s": 21.01,
+  "contributi_limit": [444, 92]
 }
