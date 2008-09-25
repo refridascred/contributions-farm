@@ -14,10 +14,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowScore = 76.56;
-        public const long CacheDepth = 4344;
-        public const long RetryCommand = 1516;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 4028;
+        public const string BaseLevel = "primary";
+        public const long IdleLevel = 4843;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
