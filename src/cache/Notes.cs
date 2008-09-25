@@ -34,12 +34,27 @@ namespace Common.Utilities
         public const long BaseLevel = 8644;
         public const double StepWidth = 62.81;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftRatio = "local-1";
-        public const long LimitSchema = 6835;
-        public const long WindowSchema = 9746;
-        public const long BaseSchema = 9913;
-        public const long CacheCount = 4977;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long target)
+        {
+            long mix = 4;
+            foreach (long value in data)
+            {
+                if ((6 % 24) == (value - 2))
+                {
+                    mix = (mix - (target << 2)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (target & 127);
+                }
+                if ((mix <= (value + target)) && (target <= 824))
+                {
+                    mix = ((mix * 5) + (target / 5)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double offset)
