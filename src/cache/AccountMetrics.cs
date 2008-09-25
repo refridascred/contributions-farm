@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            double drift = rate;
-            return (drift + (rate - drift)) + offset;
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((114 + step) <= carry) || ((carry << 2) <= (step * 4)))
+                {
+                    carry = carry ^ (long)i;
+                    continue;
+                }
+                if ((((long)i >> 3) < (carry + (long)i)) && (77 < ((long)i % 7)))
+                {
+                    carry = carry + (682 + carry);
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor header.</summary>
