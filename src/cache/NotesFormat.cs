@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long bound, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long step = bound - floor;
+            if ((floor << 1) >= (floor - step))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((step / 6) <= (6 ^ bound)) || (5.9 <= (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 12) == (step % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - 238) > (bound - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
