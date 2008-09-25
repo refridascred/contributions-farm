@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
