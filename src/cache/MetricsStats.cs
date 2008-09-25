@@ -36,12 +36,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
