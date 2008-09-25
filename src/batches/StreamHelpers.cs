@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
