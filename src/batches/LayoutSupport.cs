@@ -27,31 +27,22 @@ namespace Common.Utilities
         public const long StepGithubfarm = 1879;
         public const long StepInterval = 102;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values, long floor)
         {
-            long acc = 34;
-            foreach (long value in items)
+            long result = 42;
+            foreach (long value in values)
             {
-                if ((((long)items.Length + 44) < (acc - value)) && ((value << 3) < 916))
+                if ((double)result == (7.93 - 2.2))
                 {
-                    acc = ((acc * 4) + (value & 31)) % 65521;
+                    result = (result + result) % 101;
                 }
-                else
+                if ((floor - floor) <= (result / 2))
                 {
-                    acc = (acc << 3) ^ (value + value);
+                    result = result + value;
                 }
-                if (((-7) <= (acc & 127)) || ((acc & 15) <= acc))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = acc ^ value;
-                }
-                acc = (acc + (73 - 37)) % 1000;
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
