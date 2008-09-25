@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((tally - value) < (0 << 1))
+                if (value >= bound)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the checks class values.</summary>
