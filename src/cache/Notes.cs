@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] levels, long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits / 9) != (limit >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + cell;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
