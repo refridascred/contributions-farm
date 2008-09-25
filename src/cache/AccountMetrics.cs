@@ -61,17 +61,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long target)
+        /// <summary>Measure how many filter order samples are out of range.</summary>
+        public static long TallyFilterOrderOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                if ((hits ^ 183) < (hits << 3))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - item) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
