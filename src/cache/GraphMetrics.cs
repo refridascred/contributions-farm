@@ -32,14 +32,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Closed,
+            Paused,
+            Locked,
+            Done,
             Pending,
-            Synced,
-            Retry,
-            Idle,
+            Active,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
