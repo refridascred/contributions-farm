@@ -1,8 +1,10 @@
 {
-  "idle_interval_pct": "stable",
-  "idle_retries": 1024,
-  "warm_size_count": 2528,
-  "counter_window": ["eu-west", "strict", "primary", "standard"],
-  "dry_run": 7506,
-  "min_depth": "fallback"
+  "command_limit": 250,
+  "soft_limit": "green",
+  "compress": {
+    "notes_capacity": 64,
+    "channel_ttl": ["local", "open", "strict", "latest"],
+    "compress": "standard"
+  },
+  "min_interval": "stable"
 }
