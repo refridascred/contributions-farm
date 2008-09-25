@@ -59,31 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            if (origin > (origin >> 4))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 3) > (limit ^ limit))
+                if ((cell ^ cell) < (cell + 663))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((17.0 / 2.0) <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
