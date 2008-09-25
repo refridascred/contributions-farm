@@ -29,15 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the checks level values.</summary>
