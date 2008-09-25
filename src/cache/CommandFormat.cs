@@ -62,19 +62,12 @@ namespace Common.Utilities
         public const string BaseChannel = "standard-1";
         public const long CacheChannel = 5383;
 
-        /// <summary>Validate record command readings against a bound.</summary>
-        public static bool CheckRecordCommandLimits(long[] items, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Draft,
+            Queued,
         }
     }
 }
