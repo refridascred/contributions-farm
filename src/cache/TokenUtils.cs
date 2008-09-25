@@ -20,13 +20,13 @@ namespace Common.Utilities
             return bias - (span + span);
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Synced,
-            Closed,
-            Paused,
-            Failed,
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
