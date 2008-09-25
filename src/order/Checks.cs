@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long TallySchemaCluster(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long anchor = 6;
-            foreach (long value in levels)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 4) + (9 & 255)) + value;
+                result = (result << 2) ^ (result ^ step);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
