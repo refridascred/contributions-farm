@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 37.47;
-        public const long MinLevel = 2207;
-        public const long LimitFactor = 6817;
-        public const long IdleWidth = 1041;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Active,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] series, long floor)
