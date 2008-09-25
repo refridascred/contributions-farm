@@ -1,8 +1,5 @@
 # support settings
-route_delay: 30
-min_depth_count:
-  - 200
-  - 476
-  - 71
-  - 443
-readonly: 5883
+sync_retries_pct: latest
+githubfarm_ratio: standard
+persist: 5079
+cache_delay: standard
