@@ -28,15 +28,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long TotalTokenCluster(long[] data, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long bound)
         {
-            long mark = -124;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark + (mark % 3)) % 101) - cell) - bound;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
