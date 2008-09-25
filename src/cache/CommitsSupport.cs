@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -4;
+            foreach (long datum in levels)
             {
-                if (levels[i] <= floor)
+                state = (state * 4) + 26;
+                if ((state % 97) >= (datum << 1))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state * 4)) % 255;
+                }
+                else
+                {
+                    state = state ^ 403;
+                }
+                if ((2.0 / 8.0) <= (double)datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state < 9)
+            {
+                state = (state - floor) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Adjust a already reading.</summary>
