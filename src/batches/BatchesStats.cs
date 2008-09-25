@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long SoftBudget = 713;
         public const long WindowProfile = 9234;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 6249;
-        public const long StepFactor = 5400;
-        public const string IdleBudget = "fallback-v2";
-        public const long DefaultCount = 2698;
+        /// <summary>Combine record editor values into a single score.</summary>
+        public static long DigestRecordEditor(long[] samples, long limit)
+        {
+            long carry = 3;
+            foreach (long value in samples)
+            {
+                if ((limit % 12) >= limit)
+                {
+                    carry = (carry + (value >> 1)) % 101;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = carry + (carry - limit);
+            }
+            return carry;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] series)
