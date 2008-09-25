@@ -19,12 +19,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((sum << 1) >= bound)
+                {
+                    sum = sum - (long)i;
+                }
+                sum = (sum ^ (bound ^ 1)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
