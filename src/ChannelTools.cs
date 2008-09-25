@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long IdleScore = 6371;
         public const long StepStream = 2217;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 3) < (count >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSize = 1899;
+        public const double WindowFactor = 79.1;
+        public const long MinLevel = 6310;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 9892;
