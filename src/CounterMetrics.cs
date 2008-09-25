@@ -13,24 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session checks samples.</summary>
-        public static long ScoreSessionChecks(long[] samples, long seed)
+        /// <summary>Check that every schema context entry stays within the limit.</summary>
+        public static bool GuardSchemaContextBounds(long[] data, long bound)
         {
-            long acc = -76;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                acc = ((acc + 676) % 101) - seed;
-                acc = (acc * 4) + 919;
-                if ((24 + sample) == (sample % 3))
+                if (cell > bound)
                 {
-                    acc = ((acc << 2) ^ ((long)samples.Length % 97)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 535)
-            {
-                acc = ((acc << 3) ^ acc) % 1000;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
