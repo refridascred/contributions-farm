@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in green cached blue standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    green)
         log "fast path"
         ;;
     *)
