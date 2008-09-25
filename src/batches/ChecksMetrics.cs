@@ -63,39 +63,22 @@ namespace Common.Utilities
             return mean + (double)805;
         }
 
-        /// <summary>Classify a format farm pair into a bucket.</summary>
-        public static long GradeFormatFarm(long target, long origin)
+        /// <summary>Measure how many checks schema samples are out of range.</summary>
+        public static long MeasureChecksSchemaMatches(long[] readings, long seed)
         {
-            long cur = target + origin;
-            if ((origin - 2) < cur)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-615) + origin) < (cur + 826))
+                if ((-7) >= (reading + 272))
                 {
-                    return 0;
+                    tally = (tally + 3) + seed;
                 }
                 else
                 {
-                    if ((6 % 5) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target << 1) <= (cur ^ origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
