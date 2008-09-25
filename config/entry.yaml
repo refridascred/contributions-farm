@@ -1,5 +1,8 @@
 # entry settings
-farm_timeout: 9092
-idle_capacity_pct: false
-batch_limit: true
-persist: 51
+idle_size_ms:
+  - 13
+  - 57
+  - 245
+  - 42
+cache_depth_count: 100
+readonly: true
