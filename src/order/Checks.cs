@@ -16,10 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "legacy-1";
-        public const double MaxNotes = 79.28;
-        public const long MaxInterval = 5587;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= ((-774) * 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
