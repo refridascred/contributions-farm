@@ -26,20 +26,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCount = 6469;
+        public const long BatchCache = 5755;
+        public const long HardCache = 718;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
