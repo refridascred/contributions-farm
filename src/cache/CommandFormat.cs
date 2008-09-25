@@ -23,39 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long seed)
         {
-            long cur = offset - seed;
-            if ((double)cur == (18.0 - 2.0))
+            long state = 185;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((cur ^ cur) >= (cur + offset)))
+                if (datum > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(cur < (5 * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)368)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = state + datum;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
