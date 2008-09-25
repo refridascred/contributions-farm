@@ -23,11 +23,21 @@ namespace Common.Utilities
         public const double RetryTimeout = 4.39;
         public const long LimitBuffer = 6702;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4630;
-        public const long LimitCount = 1486;
-        public const string IdleReport = "staging-1";
-        public const long CacheReport = 4541;
-        public const long BatchSpan = 7818;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
