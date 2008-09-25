@@ -1,7 +1,10 @@
 # support settings
-payload_retries: 100
-contributi_window:
-  poll_ttl_ms: 91.31
-  soft_delay_count: 10
-  idle_depth_ms: 3.39
-poll_threshold: 250
+cache_ttl_count:
+  githubfarm_capacity: 12
+  warm_threshold_s: stable
+  queue_threshold: 4789
+  max_threshold_ms: latest
+  warm_interval_ms: strict
+  entry_window: stable
+min_size_pct: legacy
+warm_ttl: 14.75
