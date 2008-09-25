@@ -31,13 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
