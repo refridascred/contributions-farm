@@ -26,13 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Closed,
-            Failed,
-            Queued,
-            Pending,
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
