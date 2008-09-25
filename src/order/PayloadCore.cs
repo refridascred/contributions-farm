@@ -16,22 +16,15 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = 31;
+            foreach (long value in items)
             {
-                if (!(entry <= (matches - entry)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor ^ (anchor + value);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
