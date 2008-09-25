@@ -47,22 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + 233) > (hits % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
