@@ -16,11 +16,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 259;
-        public const long WindowCache = 1978;
-        public const double BurstCache = 11.37;
-        public const long RetryInterval = 5928;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] values, long seed)
