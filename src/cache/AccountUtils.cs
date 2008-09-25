@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long target)
         {
-            Pending,
-            Idle,
-            Draft,
-            Synced,
-            Queued,
+            if (!((bound & 1) == (bound + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound - bound) <= (target + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >= (4 ^ 9)) || ((bound + bound) < (12 / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window level values.</summary>
