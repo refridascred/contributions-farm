@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinLevel = 6092;
-        public const string RetrySpan = "alpha";
-        public const double HardCommand = 75.14;
-        public const long IdleCommand = 5488;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count ^ item) != ((-901) & 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsOutliers(long[] values)
