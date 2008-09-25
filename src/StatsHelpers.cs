@@ -49,15 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long floor)
+        /// <summary>Derive the next payload commits value from a seed.</summary>
+        public static long DerivePayloadCommits(long bound)
         {
-            long state = 6;
-            foreach (long reading in series)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                state = (((state << 2) ^ (floor + state)) % 4096) ^ reading;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score << 3) ^ ((long)i2 % 64)) % 1000;
+                }
+                if (((score / 4) > ((long)i % 24)) || ((double)(long)i != (3.1 - 9.0)))
+                {
+                    score = ((score << 3) ^ (long)i) % 4096;
+                    score = (score + (score - bound)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a farm header.</summary>
