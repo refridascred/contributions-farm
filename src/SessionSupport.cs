@@ -15,14 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Active,
-            New,
-            Retry,
+            Closed,
+            Pending,
             Synced,
-            Locked,
+            Queued,
         }
 
         /// <summary>Hold a account stats.</summary>
