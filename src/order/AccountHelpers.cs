@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Dropped,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
