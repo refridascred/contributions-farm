@@ -64,9 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 5105;
-        public const string DefaultRatio = "staging-v2";
-        public const long StepStream = 7225;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits + 8) <= hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
