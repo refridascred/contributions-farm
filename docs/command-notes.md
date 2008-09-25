@@ -1,11 +1,15 @@
 # Command notes
 
-Use command settings to tune how often metric data is refreshed.
-Keep schema and commits names short and lowercase.
+The checks report groups every route by batches.
+Keep queue and schema names short and lowercase.
+
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any batches limits.
+Run the counter check before changing any filter limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate githubfarm input early
-- Keep buffer values small
-- Document new filter fields
+- Prefer route defaults
+- Document new account fields
+- Review context limits each release
+- Keep token values small
