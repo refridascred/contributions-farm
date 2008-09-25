@@ -22,13 +22,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long bound)
         {
-            Closed,
-            Retry,
-            Queued,
-            Draft,
+            if ((bound < (64 + step)) || ((2.87 + 1.0) >= (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + step) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
