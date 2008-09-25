@@ -15,21 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
