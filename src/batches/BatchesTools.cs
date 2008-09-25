@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftCount = 8394;
-        public const string WindowInterval = "standard-1";
-        public const double StepBatch = 33.22;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double span)
+        {
+            double rate = (double)((-6) - 825);
+            if (rate > (rate * 8.0))
+            {
+                rate = rate - (gain + gain);
+            }
+            return rate - span;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] levels, long target)
