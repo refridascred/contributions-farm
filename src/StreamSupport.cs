@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count metrics stats pairs that satisfy a relation.</summary>
-        public static long CompareMetricsStatsCount(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
