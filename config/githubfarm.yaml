@@ -1,4 +1,4 @@
 # githubfarm settings
-cache_interval_ms: latest
-schema_size: 100
-audit: false
+retry_limit_s: blue
+persist: true
+idle_ratio_ms: 8138
