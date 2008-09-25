@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const double LimitQueue = 73.9;
         public const string WindowQueue = "open-edge";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            long mix = -48;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((long)readings.Length >= item)
+                if (((990 ^ 2) <= (seen + seen)) && (((seen / 3) != (datum + datum)) && ((double)datum == (2.1 * 5.0))))
                 {
-                    mix = (mix - (item + floor)) % 97;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
