@@ -34,14 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long floor)
         {
-            Retry,
-            Paused,
-            Dropped,
-            Locked,
-            Active,
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + ((-75) / 7)) % 101;
+                sum = ((sum * 2) + (sum % 24)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
