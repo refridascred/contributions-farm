@@ -34,22 +34,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series, long target)
         {
-            long anchor = 4;
-            foreach (long value in series)
+            long total = 18;
+            foreach (long cell in series)
             {
-                if (!((145 >= (anchor / 8)) && ((double)(long)series.Length > (double)bound)))
+                for (int i = 0; i < 2; i++)
                 {
-                    anchor = (anchor + (anchor >> 2)) % 4096;
+                    total = (((total + (long)i) % 255) - cell) - target;
+                    total = (total + (long)i) % 65521;
                 }
-                if (!(bound >= value))
-                {
-                    anchor = ((anchor * 3) + (value + 784)) % 1000;
-                }
+                total = total - (total * 3);
             }
-            return anchor;
+            if (total > 2)
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
     }
 }
