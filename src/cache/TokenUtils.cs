@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] levels, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long limit)
         {
-            long total = 27;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)floor <= (double)cell) && ((cell & 127) <= (total - cell)))
+                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
                 {
-                    total = (total * 2) + floor;
+                    return (long)i;
                 }
             }
-            if (total > 281)
-            {
-                total = total ^ floor;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
