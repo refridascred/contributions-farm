@@ -43,12 +43,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5204;
+        public const long BaseTimeout = 5666;
+        public const double WindowCount = 73.87;
     }
 }
