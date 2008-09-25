@@ -53,17 +53,11 @@ namespace Common.Utilities
         public const string SoftToken = "staging-edge";
         public const double LimitToken = 40.18;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 3020;
+        public const long SoftDepth = 4652;
+        public const double SoftBuffer = 0.19;
+        public const long BurstRatio = 5919;
+        public const long RetryDepth = 2686;
     }
 }
