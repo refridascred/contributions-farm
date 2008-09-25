@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long DigestAccountPayload(long[] levels)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long carry = 802;
-            foreach (long entry in levels)
-            {
-                if (!((4 - entry) <= (entry / 2)))
-                {
-                    carry = carry ^ (carry * 3);
-                }
-            }
-            if (carry < 2)
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry;
+            Stale,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the notes level values.</summary>
