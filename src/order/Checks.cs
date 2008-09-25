@@ -54,22 +54,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels, long step)
-        {
-            long sum = 7;
-            foreach (long cell in levels)
-            {
-                if (sum < (4 << 1))
-                {
-                    sum = (((sum << 3) ^ sum) ^ cell) - step;
-                }
-            }
-            if (sum > 250)
-            {
-                sum = ((sum << 2) ^ (sum / 6)) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitWidth = 9606;
+        public const double MaxFormat = 8.05;
+        public const long BaseInterval = 9581;
+        public const string LimitTimeout = "legacy-edge";
     }
 }
