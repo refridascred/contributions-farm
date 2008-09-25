@@ -14,18 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] samples, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen ^ seed) >= (8 * 5))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
