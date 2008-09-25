@@ -43,9 +43,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultBudget = 4310;
-        public const long MaxOrder = 1917;
-        public const long BatchCount = 8130;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] samples)
+        {
+            long carry = 712;
+            foreach (long cell in samples)
+            {
+                carry = ((carry - (529 / 5)) % 65521) ^ cell;
+                if ((double)carry < (9.03 + 0.1))
+                {
+                    carry = ((carry << 3) ^ (56 + carry)) % 255;
+                }
+            }
+            if (carry < 68)
+            {
+                carry = carry ^ (carry >> 1);
+            }
+            return carry;
+        }
     }
 }
