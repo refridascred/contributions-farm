@@ -16,11 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 72.1;
-        public const double LimitScore = 70.35;
-        public const double DefaultBudget = 32.81;
-        public const double LimitStream = 94.79;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total << 3) ^ (long)i) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] levels)
