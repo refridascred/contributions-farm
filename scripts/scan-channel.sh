@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=33
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict stable legacy blue; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=194
-log "limit is ${CHANNEL_LIMIT}"
