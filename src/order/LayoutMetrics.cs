@@ -27,10 +27,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3044;
-        public const long SoftLevel = 7028;
-        public const double BaseSpan = 71.77;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] items)
