@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Dropped,
-            Draft,
-            Active,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftInterval = 7142;
+        public const double StepOrder = 27.12;
+        public const string HardOrder = "fallback";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] items)
