@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 17;
+            foreach (long datum in levels)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                if (!((mark - datum) >= datum))
                 {
-                    return (long)i;
+                    mark = mark ^ (2 & 3);
+                }
+                mark = mark ^ (datum * 5);
+                if ((datum & 15) == (bound - datum))
+                {
+                    mark = (mark * 3) + (mark - mark);
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
