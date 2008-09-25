@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 6064;
         public const long MaxRatio = 2055;
 
-        /// <summary>Validate graph counter readings against a bound.</summary>
-        public static bool VerifyGraphCounterLimits(long[] values, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= target)
+                if (data[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
