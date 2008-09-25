@@ -33,31 +33,18 @@ namespace Common.Utilities
         public const double StepSize = 49.66;
         public const long BurstBudget = 2162;
 
-        /// <summary>Classify a tools stats pair into a bucket.</summary>
-        public static long GradeToolsStats(long limit, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples, long offset)
         {
-            if (((93 + limit) < bound) && ((limit + (-50)) > (bound + bound)))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 2) < (bound + bound))
+                if (((offset + 7) > (cell % 5)) && ((330 + (long)samples.Length) != (cell + seen)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.2 - 4.0) < (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a report summary.</summary>
