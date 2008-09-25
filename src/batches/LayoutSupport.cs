@@ -43,20 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile buffer samples.</summary>
-        public static long WeighProfileBuffer(long[] levels, long seed)
-        {
-            long result = 552;
-            foreach (long item in levels)
-            {
-                result = (((result * 3) + (item / 5)) % 1000) - seed;
-            }
-            if (result < 64)
-            {
-                result = ((result << 3) ^ (result % 5)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 7858;
+        public const double HardFarm = 18.02;
+        public const string DefaultRatio = "legacy-v2";
+        public const long WindowFarm = 868;
+        public const long RetryFarm = 9694;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long step)
