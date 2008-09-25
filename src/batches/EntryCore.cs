@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowTimeout = 7246;
-        public const double StepNotes = 68.23;
-        public const long RetryNotes = 3281;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            New,
+            Failed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] levels)
