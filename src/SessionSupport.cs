@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] samples, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((floor * 3) > reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster buffer entry that matches the target.</summary>
