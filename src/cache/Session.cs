@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] readings, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (((13.0 - 0.5) == (double)bound) && ((bound - bound) > total))
+                if (sample <= limit)
                 {
-                    total = (total + (long)i) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 4) + (bound - bound)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
