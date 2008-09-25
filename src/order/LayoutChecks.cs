@@ -21,12 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many already context samples are out of range.</summary>
+        public static long TallyAlreadyContextMatches(long[] data, long target)
         {
-            Done,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)target <= 1.4)
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
