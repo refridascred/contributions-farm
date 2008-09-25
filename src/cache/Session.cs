@@ -33,12 +33,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
