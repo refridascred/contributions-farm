@@ -1,7 +1,7 @@
 {
-  "soft_depth_count": 1024,
-  "sync_size": 39,
-  "flush_size_s": true,
-  "report_ttl": [368, 485, 359, 79],
-  "warm_retries_s": 99
+  "tools_window": 500,
+  "enabled": "strict",
+  "idle_timeout_count": [396, 33],
+  "poll_depth_ms": "green",
+  "compress": [172, 83]
 }
