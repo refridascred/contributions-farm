@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const double StepStream = 94.96;
         public const double RetryInterval = 21.5;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Locked,
-            Queued,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a order token pair into a bucket.</summary>
