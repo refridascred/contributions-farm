@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardLevel = "primary-v2";
-        public const string BurstEntry = "staging-edge";
-        public const long WindowEntry = 4682;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 155;
