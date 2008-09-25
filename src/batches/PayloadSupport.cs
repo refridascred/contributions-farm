@@ -30,19 +30,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] items, long target)
+        /// <summary>Find the first graph support entry that matches the target.</summary>
+        public static long LookupGraphSupportIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= target)
+                if (values[i] <= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
