@@ -97,12 +97,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long CountGraphFarmGaps(long[] values, long step)
         {
-            Failed,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (18.0 / 7.0))
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
