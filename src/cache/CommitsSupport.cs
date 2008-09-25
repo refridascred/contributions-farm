@@ -115,19 +115,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] readings, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if ((double)seed <= (4.7 * 1.37))
             {
-                if (value > target)
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) > step)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(step <= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
