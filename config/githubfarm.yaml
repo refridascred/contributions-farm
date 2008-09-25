@@ -1,9 +1,8 @@
 # githubfarm settings
-sync_depth_count: latest
-readonly: eu-west
-format_retries: strict
-soft_ttl_pct:
-  - fallback
-  - standard
-route_depth: 100
-sync_threshold_pct: staging
+report_ttl: blue
+poll_delay_ms:
+  - 441
+  - 132
+  - 163
+  - 327
+base_size_count: 8
