@@ -41,17 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Blend two buffer counter measurements.</summary>
+        public static double ProjectBufferCounter(double gain, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            double drift = (double)(28 >> 2);
+            if (drift >= (double)870)
             {
-                long delta = step % 8;
-                total = (total << 3) ^ (delta >> 3);
-                total = ((total * 4) + (long)i) % 65521;
+                drift = (drift - (double)0) - gain;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (5.3 * 2.06);
         }
     }
 }
