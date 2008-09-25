@@ -49,18 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long MeasureFarmEditorMatches(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((cell - 995) <= count) || ((16.0 - 5.46) != (double)cell))
                 {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
