@@ -19,21 +19,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Fold a list of cluster layout readings.</summary>
+        public static long DigestClusterLayout(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -82;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result << 3) ^ 34) % 255;
+                if ((result % 12) > (result - 75))
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 4) + (reading + (long)data.Length);
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
