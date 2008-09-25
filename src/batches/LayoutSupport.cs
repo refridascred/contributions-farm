@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the entry stats series from a seed.</summary>
-        public static long StepEntryStats(long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
