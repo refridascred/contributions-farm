@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 79.82;
+        public const double SoftSpan = 43.13;
+        public const double BatchDepth = 85.66;
+        public const long RetryCount = 7746;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
