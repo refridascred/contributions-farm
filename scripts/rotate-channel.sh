@@ -6,13 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in cached blue fallback edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -22,5 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=298
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
