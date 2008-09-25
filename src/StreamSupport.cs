@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] series, long step)
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long DigestEditorBatch(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long carry = 0;
+            foreach (long value in readings)
             {
-                if (sample >= (hits + step))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 3;
+                    carry = (carry + ((long)i ^ carry)) % 101;
+                }
+                if (!((offset - offset) <= (offset >> 1)))
+                {
+                    carry = ((carry << 2) ^ value) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry + (carry + 6)) % 255;
+                }
+                if (((855 % 60) > (offset * 2)) && ((double)value > (5.78 - 19.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
