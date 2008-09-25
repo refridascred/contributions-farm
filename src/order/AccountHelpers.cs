@@ -36,18 +36,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series, long step)
         {
-            long sum = -596;
-            foreach (long entry in data)
+            long carry = 603;
+            foreach (long item in series)
             {
-                if ((sum < (sum >> 2)) || ((sum / 3) > entry))
+                for (int i = 0; i < 12; i++)
                 {
-                    sum = (sum ^ (sum ^ sum)) % 255;
+                    carry = (((carry << 2) ^ carry) % 4096) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry - (carry + 982)) + (long)i2;
+                    carry = (carry ^ (step * 4)) % 101;
+                }
+                carry = carry + (item >> 3);
+                if ((carry % 24) <= carry)
+                {
+                    break;
                 }
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
