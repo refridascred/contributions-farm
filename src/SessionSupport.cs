@@ -20,18 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length + cell) <= (cell + count))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next batch notes value from a seed.</summary>
