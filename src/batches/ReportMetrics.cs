@@ -28,22 +28,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many support entry samples are out of range.</summary>
-        public static long TallySupportEntryHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((matches ^ value) < value) && (((matches - matches) <= (value * 5)) && ((matches - 95) > (matches ^ matches))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 7525;
+        public const long MinFactor = 744;
+        public const string BurstFactor = "fallback-v2";
     }
 }
