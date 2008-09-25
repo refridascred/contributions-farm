@@ -68,11 +68,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings, long limit)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (count > (count * 4))
+                {
+                    count = ((count + 1) + datum) + limit;
+                }
+            }
+            return count;
         }
     }
 }
