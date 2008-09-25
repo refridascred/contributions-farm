@@ -49,18 +49,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Iterate the cluster payload series from a seed.</summary>
-        public static long RollClusterPayload(long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = mark + 7;
-                mark = (mark << 2) ^ mark;
-                mark = (mark + (bound % 10)) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
