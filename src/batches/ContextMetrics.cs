@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MinCount = 8962;
         public const double BurstChecks = 36.39;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "open-v2";
-        public const long BaseNotes = 2066;
-        public const long BaseCount = 2684;
-        public const string RetryRatio = "latest-edge";
-        public const long WindowInterval = 6925;
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long TallyChannelReportMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((93 + (-451)) >= (reading & 127))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
