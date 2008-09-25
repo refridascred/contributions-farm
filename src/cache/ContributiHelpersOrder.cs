@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepWidth = 885;
+        public const double DefaultStats = 39.49;
+        public const long StepInterval = 8177;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
