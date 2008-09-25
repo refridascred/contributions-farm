@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer record readings.</summary>
-        public static long FoldBufferRecord(long[] data, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 51;
-            foreach (long reading in data)
-            {
-                sum = (((sum + sum) % 1000) + reading) - floor;
-            }
-            if (sum < 250)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 1000;
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the layout state values.</summary>
