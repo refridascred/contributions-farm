@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a cache info.</summary>
