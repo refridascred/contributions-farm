@@ -59,13 +59,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCount = 8403;
+        public const string CacheWidth = "fallback-1";
+        public const double DefaultDepth = 34.2;
+        public const long BatchCache = 1035;
+        public const double CacheLevel = 28.87;
     }
 }
