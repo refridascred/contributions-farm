@@ -49,31 +49,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] values, long offset)
         {
-            if ((limit + limit) <= limit)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((644 ^ limit) <= limit) || ((60 + limit) <= limit))
+                if (sample > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >= (-32)) || (limit > (limit + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
