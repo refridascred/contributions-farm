@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const double BaseQueue = 21.97;
         public const long RetryRatio = 7551;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double bias = (double)(69 * 3);
-            if (bias > (double)290)
-            {
-                bias = bias + span;
-            }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias - span;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
