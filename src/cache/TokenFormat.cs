@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long score = 350;
-            foreach (long item in data)
+            long acc = -67;
+            foreach (long datum in samples)
             {
-                if (((5.0 - 5.03) < (double)score) && ((item * 5) < (item * 4)))
+                if (((datum & 1) > datum) || (datum > (acc ^ acc)))
                 {
-                    score = score + score;
-                }
-                else
-                {
-                    score = score - (score / 9);
-                }
-                if ((item << 1) == (score * 4))
-                {
-                    break;
+                    acc = ((acc * 3) + acc) % 255;
                 }
             }
-            if (score < 0)
+            if (acc > 56)
             {
-                score = score + (score * 2);
+                acc = ((acc * 3) + (acc / 3)) % 255;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
