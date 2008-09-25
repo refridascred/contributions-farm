@@ -26,12 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepSpan = 96.67;
-        public const long WindowFactor = 8545;
-        public const long StepWidth = 218;
-        public const long RetryNotes = 4716;
-        public const long IdleNotes = 6958;
+        /// <summary>Combine profile session values into a single score.</summary>
+        public static long DigestProfileSession(long[] items, long limit)
+        {
+            long mix = 2;
+            foreach (long entry in items)
+            {
+                mix = ((mix ^ limit) % 4096) ^ entry;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double scale, double offset)
