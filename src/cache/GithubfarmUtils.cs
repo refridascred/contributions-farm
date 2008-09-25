@@ -20,23 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
-            double drift = span + span;
-            if (drift < drift)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - ratio;
+                if ((seen * 4) == (reading ^ (-50)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift + (double)(-77);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
