@@ -1,5 +1,8 @@
 {
-  "soft_limit_s": [486, 230, 381, 29],
-  "retry_timeout_pct": "stable",
-  "metric_size": false
+  "idle_capacity_ms": ["blue", "strict"],
+  "flush_depth_ms": 56.3,
+  "verbose": 943,
+  "hard_window": true,
+  "command_depth": 68.7,
+  "contributi_capacity": "edge"
 }
