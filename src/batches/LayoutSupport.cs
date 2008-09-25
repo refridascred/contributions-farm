@@ -73,17 +73,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long limit)
+        /// <summary>Derive the next channel editor value from a seed.</summary>
+        public static long IterateChannelEditor(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                long edge = seed - (seed ^ carry);
+                carry = (carry ^ (edge << 1)) % 65521;
+                if ((carry * 5) > ((long)i + (long)i))
                 {
-                    return (long)i;
+                    edge = edge + (4 & 255);
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
