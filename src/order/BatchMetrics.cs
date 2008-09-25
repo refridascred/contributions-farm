@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 9629;
+        public const long LimitDepth = 265;
+        public const long DefaultFactor = 1269;
+        public const double DefaultScore = 39.11;
+        public const long RetryTimeout = 5637;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] items, long step)
