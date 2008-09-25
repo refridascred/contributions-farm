@@ -27,19 +27,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Grade a context metrics value against two limits.</summary>
+        public static long RankContextMetrics(long step, long step2)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long prev = step ^ step2;
+            if (!((double)step < (double)step2))
             {
-                if (((double)(long)i >= (2.7 / 2.0)) && ((long)i < (seed >> 1)))
-                {
-                    result = ((result * 4) + (result ^ seed)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (step2 < prev)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
