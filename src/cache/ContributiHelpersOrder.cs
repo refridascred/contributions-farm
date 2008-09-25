@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 9810;
+        public const long IdleFormat = 9037;
+        public const long IdleTimeout = 3595;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 155;
