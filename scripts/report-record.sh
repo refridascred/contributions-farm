@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green latest; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=399
+log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
