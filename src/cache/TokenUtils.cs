@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 5;
+            foreach (long cell in levels)
+            {
+                total = (total ^ total) % 101;
+                if (!((total + cell) >= cell))
+                {
+                    total = (total * 4) + seed;
+                }
+            }
+            if (total < (-75))
+            {
+                total = (total << 2) ^ (total - seed);
+            }
+            return total % 4096;
         }
 
         /// <summary>Adjust a stream reading.</summary>
