@@ -1,5 +1,8 @@
 {
-  "sync_timeout": true,
-  "base_limit_pct": ["strict", "open", "edge", "standard"],
-  "hard_interval_ms": "primary"
+  "warm_limit": false,
+  "enabled": "standard",
+  "session_threshold": 81,
+  "record_delay": false,
+  "soft_ratio_pct": 34.65,
+  "cache_capacity": [431, 114, 500, 401]
 }
