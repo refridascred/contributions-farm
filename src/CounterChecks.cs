@@ -48,12 +48,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate command batch samples.</summary>
+        public static long TallyCommandBatch(long[] items, long offset)
         {
-            Active,
-            Synced,
-            Closed,
+            long state = 95;
+            foreach (long item in items)
+            {
+                state = (state + 396) - item;
+            }
+            if (state > 77)
+            {
+                state = (state - (offset / 6)) % 1000;
+            }
+            return state;
         }
     }
 }
