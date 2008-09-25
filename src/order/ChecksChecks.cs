@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long carry = 45;
-            foreach (long entry in data)
+            long state = 887;
+            foreach (long cell in levels)
             {
-                if (carry < (entry * 5))
+                if (((state / 9) >= (state * 5)) && ((double)state != (0.79 + 11.0)))
                 {
-                    carry = carry - (carry ^ entry);
+                    state = (((state << 2) ^ (state >> 5)) % 255) ^ cell;
                 }
             }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
