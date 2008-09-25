@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const double StepOrder = 27.12;
         public const string HardOrder = "fallback";
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((11.0 + 9.94) == (double)hits)
                 {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
