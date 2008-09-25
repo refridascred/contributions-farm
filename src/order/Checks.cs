@@ -30,19 +30,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value >= (202 / 3)) && !((4.02 / 2.0) > (double)floor))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowTimeout = "open-edge";
+        public const long WindowStream = 3313;
+        public const double MinStream = 54.86;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] samples)
