@@ -1,11 +1,15 @@
 # Command notes
 
-The filter module keeps layout values in sync with the notes cache.
-When a checks fails, the channel handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
+The window module keeps commits values in sync with the report cache.
+Use payload settings to tune how often queue data is refreshed.
+
+Keep cluster and graph names short and lowercase.
+A graph that stays idle for too long is moved to the notes list.
+When a buffer fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate context input early
-- Review format limits each release
-- Document new layout fields
-- Prefer schema defaults
+- Keep contributi values small
+- Prefer batch defaults
+- Document new buffer fields
