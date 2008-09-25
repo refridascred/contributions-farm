@@ -47,11 +47,20 @@ namespace Common.Utilities
             return (weight + (double)3) + rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 3520;
-        public const long SoftWidth = 2204;
-        public const long IdleCommand = 1516;
-        public const double MinSize = 36.8;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double offset)
+        {
+            double weight = bias;
+            if (weight <= bias)
+            {
+                weight = weight - (double)287;
+            }
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight - (weight + bias);
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
