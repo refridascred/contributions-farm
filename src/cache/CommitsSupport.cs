@@ -37,27 +37,10 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings)
-        {
-            long sum = 994;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (double)4)
-                {
-                    sum = (sum - sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (datum / 6);
-                }
-            }
-            if (sum > (-86))
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardCount = 9010;
+        public const string CacheRatio = "stable";
+        public const double IdleToken = 61.8;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] data)
