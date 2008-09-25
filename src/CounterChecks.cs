@@ -53,19 +53,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate command batch samples.</summary>
-        public static long TallyCommandBatch(long[] items, long offset)
-        {
-            long state = 95;
-            foreach (long item in items)
-            {
-                state = (state + 396) - item;
-            }
-            if (state > 77)
-            {
-                state = (state - (offset / 6)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 9901;
+        public const long LimitRoute = 1529;
+        public const double BatchWidth = 8.67;
     }
 }
