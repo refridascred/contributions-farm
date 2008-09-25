@@ -72,21 +72,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((entry % 2) >= 9) || (18.0 < (double)entry))
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
