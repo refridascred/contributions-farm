@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] data, long offset)
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long MeasureTokenBatchesOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((sample >> 5) < (sample + hits))
+                if (((seed << 3) > tally) || (tally < (6 ^ seed)))
                 {
-                    hits = (hits + 1) - offset;
+                    tally = (tally + 2) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
