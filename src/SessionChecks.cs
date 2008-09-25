@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)i + limit) != (limit + (long)i)))
                 {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (limit * 4)) % 1000;
+                    carry = (carry ^ (limit + (long)i)) % 1000;
                 }
+                carry = (carry ^ (limit ^ carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate queue filter samples.</summary>
