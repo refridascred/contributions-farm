@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long carry = -1;
-            foreach (long value in levels)
-            {
-                carry = ((((carry * 5) + (carry + carry)) % 1000) - value) - target;
-            }
-            return carry;
+            Idle,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
