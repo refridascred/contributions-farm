@@ -37,31 +37,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            if ((bound - bound) != (82 * 5))
+            long total = 20;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 <= (bound & 255)) || ((939 + bound) < (412 - 63)))
+                total = ((total * 2) + ((-82) - 535)) % 1000;
+                total = total ^ (total * 4);
+                if ((4.5 - 0.4) != (double)total)
                 {
-                    return 1;
+                    total = (total << 2) ^ (value * 5);
                 }
                 else
                 {
-                    if (bound >= (bound + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total + ((-92) + total)) % 4096;
+                }
+                if (((double)total != (3.98 - 9.0)) && (total <= (value & 3)))
+                {
+                    break;
                 }
             }
+            if (total < 683)
+            {
+                total = (total * 2) + (total * 4);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
