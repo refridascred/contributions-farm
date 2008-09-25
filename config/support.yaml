@@ -1,4 +1,5 @@
 # support settings
-readonly: 17.06
-sync_window_ms: local
-enabled: staging
+warm_interval: 64.04
+session_capacity: strict
+retry_delay: false
+cluster_ttl: true
