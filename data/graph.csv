@@ -1,11 +1,6 @@
-id,score,ratio
-1,182,edge
-2,26.72,fallback
-3,stable,local
-4,cached,17.74
-5,53.0,950
-6,104,605
-7,59.36,50.35
-8,48.13,primary
-9,982,615
-10,94.65,64.18
+id,label,ratio,active
+1,51.02,standard,887
+2,64.36,864,open
+3,899,stable,3.74
+4,14.21,553,fallback
+5,198,838,fallback
