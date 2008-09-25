@@ -1,6 +1,7 @@
-id,rank,count
-1,146,73.32
-2,78.53,cached
-3,open,884
-4,843,866
-5,75.56,fallback
+id,weight,region,active
+1,572,stable,16.19
+2,142,356,14.3
+3,54.79,stable,18.74
+4,36,44.87,green
+5,26.05,49.38,53
+6,289,stable,834
