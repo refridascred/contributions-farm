@@ -44,13 +44,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Pending,
+            Paused,
+            Stale,
+            Ready,
         }
     }
 }
