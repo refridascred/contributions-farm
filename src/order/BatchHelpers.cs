@@ -42,15 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long state = -173;
-            foreach (long cell in readings)
-            {
-                state = state ^ (cell * 2);
-            }
-            return state % 97;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
