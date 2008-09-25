@@ -46,17 +46,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = total ^ ((long)i << 2);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
