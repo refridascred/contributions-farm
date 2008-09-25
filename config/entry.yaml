@@ -1,9 +1,4 @@
 # entry settings
-default_timeout:
-  - green
-  - fallback
-  - open
-dry_run: false
-default_threshold_s: eu-west
-batch_timeout_ms: 81.73
-checks_ttl: staging
+flush_ttl_s: 1359
+max_retries_pct: true
+notes_delay: 76.27
