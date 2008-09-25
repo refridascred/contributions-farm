@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long LimitScore = 2178;
         public const long WindowRatio = 9239;
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long TallyOrderFormatGaps(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((floor2 >= (floor2 + floor)) || (5 < (floor & 255)))
             {
-                if ((double)sample == (1.9 - 11.0))
+                return 2;
+            }
+            else
+            {
+                if ((floor << 3) > (floor2 >> 1))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + floor2) <= floor) || ((floor & 7) < (floor + floor2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
