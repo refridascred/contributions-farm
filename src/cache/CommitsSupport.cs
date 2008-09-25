@@ -41,38 +41,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            if (9 < (floor >> 1))
+            double bias = offset;
+            if (bias < (9.4 + rate))
             {
-                return 4;
+                bias = bias - rate;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((floor << 1) <= (277 - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor == (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor % 12) <= (floor + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                bias = (bias + bias) + (double)(long)i;
             }
+            return bias - (double)571;
         }
 
         /// <summary>Fold a list of layout format readings.</summary>
