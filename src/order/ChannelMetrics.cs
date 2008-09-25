@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Audit githubfarm tools readings against a rule.</summary>
+        public static long MeasureGithubfarmToolsMatches(long[] series)
         {
-            long total = 4;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((92 % 24) >= total) || ((61 + value) <= value))
+                if ((hits % 24) <= entry)
                 {
-                    total = ((total << 2) ^ (total ^ 331)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Blend two format measurements.</summary>
