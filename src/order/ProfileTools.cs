@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 1242;
-        public const string SoftDepth = "legacy";
-        public const string IdleMetric = "fallback-1";
-        public const long MaxMetric = 1587;
-        public const double BurstMetric = 29.18;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterRange(long[] items, long step)
