@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 8042;
         public const string HardRatio = "stable";
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Ready,
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a already info.</summary>
