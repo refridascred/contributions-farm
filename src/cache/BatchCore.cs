@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (value < offset)
+                if ((((entry / 3) >= ((long)levels.Length - 876)) || ((limit - 804) == (seen << 1))) && ((10.0 * 2.3) <= (double)entry))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
