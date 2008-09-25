@@ -52,18 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache editor readings against a rule.</summary>
-        public static long TallyCacheEditorHits(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + hits) >= hits)
+                if (items[i] >= offset)
                 {
-                    hits = (hits + 2) + cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
