@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit token farm readings against a rule.</summary>
-        public static long AuditTokenFarmMatches(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits + datum) <= (datum + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
