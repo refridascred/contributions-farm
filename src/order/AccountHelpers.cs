@@ -80,19 +80,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long MeasureAccountChannelHits(long[] items)
         {
-            double rate = (span / 7.0) - weight;
-            if (rate <= span)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                rate = rate + (weight / 9.0);
+                if (((cell + tally) < (tally + tally)) && !((tally + tally) == (cell - cell)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 4.84;
+            return tally;
         }
     }
 }
