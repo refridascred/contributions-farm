@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 81.48;
+        public const string BurstTimeout = "legacy-1";
+        public const long BatchCount = 9235;
+        public const double HardTimeout = 50.25;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 8088;
