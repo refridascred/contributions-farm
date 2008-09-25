@@ -35,13 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] items, long target)
         {
             bool ok = true;
-            foreach (long datum in readings)
+            foreach (long item in items)
             {
-                if (datum > offset)
+                if (item <= target)
                 {
                     ok = false;
                     break;
