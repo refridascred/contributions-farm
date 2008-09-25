@@ -1,12 +1,10 @@
 # entry settings
-record_limit:
+cache_window_ms:
+  - eu-west
+  - eu-west
+  - eu-west
   - staging
-  - staging
-  - green
-retry_depth_s: 86.39
-burst_ttl_pct: 53.95
-max_interval_pct:
-  - primary
-  - local
-min_interval_count: 74
-session_ratio: 2943
+burst_threshold: true
+max_depth_s: 2265
+burst_timeout: 250
+min_ttl_count: 17
