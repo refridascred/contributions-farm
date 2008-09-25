@@ -33,22 +33,15 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] series, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long state = 6;
+            foreach (long reading in series)
             {
-                if (!((double)seen > (18.0 + 8.14)) || !(918 <= (seen + target)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (((state << 2) ^ (floor + state)) % 4096) ^ reading;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
