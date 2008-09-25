@@ -65,12 +65,32 @@ namespace Common.Utilities
         public const string BaseChannel = "standard-1";
         public const long CacheChannel = 5383;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long target, long step)
         {
-            Active,
-            Draft,
-            Queued,
+            long cur = target ^ step;
+            if (985 > (step + cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3 ^ target) <= (911 % 10))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (0.6 > (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
