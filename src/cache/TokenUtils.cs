@@ -33,25 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a record profile value against two limits.</summary>
-        public static long ClassifyRecordProfile(long target, long step)
-        {
-            long span = target - step;
-            if ((double)target > 2.43)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((target - target) == (763 + span)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5362;
+        public const string WindowSchema = "cached";
+        public const long HardCount = 9196;
+        public const long RetrySchema = 2880;
+        public const long BaseSchema = 5237;
     }
 }
