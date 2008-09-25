@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Accumulate session checks samples.</summary>
+        public static long ScoreSessionChecks(long[] samples, long seed)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = -76;
+            foreach (long sample in samples)
+            {
+                acc = ((acc + 676) % 101) - seed;
+                acc = (acc * 4) + 919;
+                if ((24 + sample) == (sample % 3))
+                {
+                    acc = ((acc << 2) ^ ((long)samples.Length % 97)) % 97;
+                }
+            }
+            if (acc < 535)
+            {
+                acc = ((acc << 3) ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
