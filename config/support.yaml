@@ -1,4 +1,31 @@
 # support settings
-warm_threshold_pct: 100
-batch_limit_count: 71
-base_ratio_ms: 82.61
+context_window: 3205
+batches_depth:
+  batch_retries: true
+  burst_window_s: fallback
+  flush_depth_pct: false
+notes_capacity: 42.64
+max_timeout_pct: edge
+sync_window:
+  checks_delay: 77.73
+  hard_ttl: 30.07
+  account_timeout: open
+  soft_limit:
+    default_limit_count: open
+    cluster_ratio:
+      - 342
+      - 274
+    verbose: 29
+    graph_timeout: true
+    hard_threshold_ms:
+      - green
+      - fallback
+      - latest
+      - edge
+    cluster_timeout: latest
+  strict:
+    - 485
+    - 450
+    - 93
+  min_window: fallback
+retry_depth: 5
