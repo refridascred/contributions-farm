@@ -1,10 +1,14 @@
 # githubfarm settings
-contributi_delay: strict
-sync_interval: true
-context_delay: true
-audit: 9408
-idle_capacity_ms:
-  - staging
-  - primary
-  - fallback
-  - fallback
+cache_retries_count: fallback
+readonly:
+  sync_limit:
+    idle_window: false
+    compress: false
+    soft_ttl: 41.6
+  channel_limit: false
+  persist: staging
+  default_interval_ms: 250
+max_threshold: 60
+hard_ttl_ms: 93.53
+default_delay_count: edge
+flush_delay_ms: 69.99
