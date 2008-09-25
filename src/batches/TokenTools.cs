@@ -37,11 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                score = score - score;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
