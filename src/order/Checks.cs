@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 5006;
+        public const double BaseQueue = 12.24;
+        public const string BatchQueue = "latest";
+        public const double SoftQueue = 8.83;
+        public const long HardQueue = 3912;
 
         /// <summary>Roll a layout channel counter forward.</summary>
         public static long SeriesLayoutChannel(long seed)
