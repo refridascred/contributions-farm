@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (load - offset) + rate;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Done,
-            Active,
-            New,
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
