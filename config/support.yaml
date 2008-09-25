@@ -1,16 +1,7 @@
 # support settings
-graph_delay:
-  - 493
-  - 251
-  - 202
-  - 191
-default_ttl: 62.03
-idle_limit_count: true
-sync_delay:
-  burst_ttl_pct: 100
-  route_ratio: false
-  base_limit: 60
-  hard_window_pct: stable
-  buffer_limit: blue
-  flush_window: 88.8
-cluster_capacity: false
+flush_size_pct: 500
+cache_timeout: primary
+farm_size: 4288
+hard_capacity_pct: false
+readonly: eu-west
+audit: eu-west
