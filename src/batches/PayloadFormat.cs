@@ -45,13 +45,15 @@ namespace Common.Utilities
         public const long IdleDepth = 1770;
         public const double SoftWidth = 83.23;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples, long limit)
         {
-            Synced,
-            Active,
-            Paused,
-            New,
+            long anchor = 6;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor ^ entry) - limit;
+            }
+            return anchor;
         }
     }
 }
