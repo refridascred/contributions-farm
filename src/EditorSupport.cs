@@ -67,15 +67,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long CombineWindowAlready(long[] data)
+        /// <summary>Derive the next profile graph value from a seed.</summary>
+        public static long RollProfileGraph(long floor)
         {
-            long result = 348;
-            foreach (long sample in data)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result << 2) ^ (result * 3)) + sample;
+                acc = (acc ^ (floor / 3)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Rank graph route input into a small class.</summary>
