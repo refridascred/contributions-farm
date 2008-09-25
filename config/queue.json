@@ -1,5 +1,13 @@
 {
-  "default_interval_count": 6,
-  "githubfarm_limit": [174, 472],
-  "sync_ratio_pct": true
+  "account_interval": "green",
+  "compress": {
+    "account_size": "open",
+    "max_retries": "primary",
+    "persist": "cached",
+    "burst_delay_ms": ["local", "open", "blue", "cached"]
+  },
+  "base_depth_count": 100,
+  "idle_ratio": 81,
+  "default_limit_ms": "staging",
+  "token_delay": 8675
 }
