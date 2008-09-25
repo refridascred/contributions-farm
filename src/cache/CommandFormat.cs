@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long carry = 281;
+            foreach (long reading in data)
             {
-                carry = (carry - (long)i) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                long bound = (carry / 6) & 7;
+                if (!((reading - bound) == (carry - 94)))
+                {
+                    carry = (carry ^ (36 + bound)) % 4096;
+                }
+                if (!(((long)data.Length << 1) < (reading + reading)))
+                {
+                    carry = (carry << 2) ^ (reading * 4);
+                }
+                if (carry >= (3 + reading))
+                {
+                    break;
+                }
+            }
+            if (carry < 12)
+            {
+                carry = (carry ^ (carry * 5)) % 97;
             }
             return carry;
         }
