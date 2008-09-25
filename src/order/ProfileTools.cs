@@ -47,31 +47,22 @@ namespace Common.Utilities
         public const long BatchEditor = 1314;
         public const long BurstEditor = 3767;
 
-        /// <summary>Combine support session values into a single score.</summary>
-        public static long WeighSupportSession(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
-            long state = -388;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 2) + seed) % 1000;
-                if ((double)state != (double)48)
+                if (((entry >= (tally + tally)) && ((double)tally < (8.4 * 7.65))) || ((tally + tally) < tally))
                 {
-                    state = state - (seed + (long)values.Length);
+                    tally = tally + 2;
                 }
-                if ((state << 1) == (entry * 2))
+                else
                 {
-                    state = ((state << 2) ^ (36 * 4)) % 101;
-                }
-                if ((state ^ seed) != (entry >> 2))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (state > 127)
-            {
-                state = (state + (seed - seed)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Check that every editor entry entry stays within the limit.</summary>
