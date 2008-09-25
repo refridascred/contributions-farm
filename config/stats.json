@@ -1,13 +1,5 @@
 {
-  "hard_depth_count": "blue",
-  "persist": "cached",
-  "route_delay": {
-    "hard_window": {
-      "poll_threshold": 1.81,
-      "readonly": false,
-      "compress": "strict"
-    },
-    "retry_window_count": "open",
-    "session_limit": "primary"
-  }
+  "verbose": [94, 85, 273],
+  "cluster_timeout": 34.81,
+  "enabled": 17.51
 }
