@@ -1,6 +1,12 @@
 # githubfarm settings
-sync_depth_pct: staging
-hard_size: false
-flush_ttl_s: false
-sync_interval_ms: false
-max_window_pct: standard
+compress: 500
+max_retries_s:
+  channel_retries: primary
+  context_interval:
+    - 171
+    - 69
+    - 183
+  base_capacity_s: true
+  base_timeout: 7.63
+enabled: 5098
+burst_depth_s: 11
