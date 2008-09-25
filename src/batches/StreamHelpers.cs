@@ -58,20 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double span)
-        {
-            double rate = bias * 18.0;
-            if (rate <= span)
-            {
-                rate = rate + (rate + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate * 20.0)) + (double)(long)i;
-            }
-            return rate + (double)(-41);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowInterval = "standard";
+        public const string DefaultRatio = "strict-1";
+        public const string RetryScore = "strict-edge";
+        public const long BurstFilter = 192;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyRange(long[] readings, long origin)
