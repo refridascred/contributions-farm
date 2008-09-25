@@ -19,18 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 6249;
+        public const long StepFactor = 5400;
+        public const string IdleBudget = "fallback-v2";
+        public const long DefaultCount = 2698;
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] series)
