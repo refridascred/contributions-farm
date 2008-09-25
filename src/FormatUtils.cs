@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            Ready,
-            Retry,
-            Draft,
-            Queued,
+            double rate = floor;
+            if (rate <= 10.0)
+            {
+                rate = rate + rate;
+            }
+            return rate + (ratio / 7.0);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
