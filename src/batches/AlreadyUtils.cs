@@ -26,17 +26,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 323;
+            foreach (long sample in values)
             {
-                if (data[i] > limit)
+                if ((acc - sample) < (-666))
                 {
-                    return (long)i;
+                    acc = (acc + (bound & 7)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 5) + (bound + acc);
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Hold a farm record.</summary>
