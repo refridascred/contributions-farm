@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long floor)
+        /// <summary>Iterate the entry stats series from a seed.</summary>
+        public static long StepEntryStats(long seed)
         {
-            long lane = step + floor;
-            if ((step << 1) > (floor << 1))
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((1.1 - 19.0) != (double)lane)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the format level values.</summary>
