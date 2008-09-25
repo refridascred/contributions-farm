@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Idle,
-            Active,
-            Queued,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseScore = 82.13;
+        public const long DefaultSpan = 3996;
+        public const long SoftRatio = 8159;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionBounds(long[] series, long floor)
