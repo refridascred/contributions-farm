@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((count + 474) <= sample) && ((sample > (count + sample)) || ((double)count <= (15.0 * 6.55))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 8485;
+        public const double BaseNotes = 92.01;
+        public const string MinNotes = "strict-edge";
+        public const long DefaultNotes = 5219;
+        public const long StepCount = 5308;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] items)
