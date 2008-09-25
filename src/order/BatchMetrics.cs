@@ -41,21 +41,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
-        public static long MatchClusterChannelCount(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count != (15.0 / 9.0))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
