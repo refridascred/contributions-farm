@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first cluster commits entry that matches the target.</summary>
-        public static long LocateClusterCommitsIndex(long[] levels, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
