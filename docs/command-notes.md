@@ -1,12 +1,11 @@
 # Command notes
 
-Run the tools check before changing any order limits.
-The metrics module keeps counter values in sync with the token cache.
-A token that stays idle for too long is moved to the command list.
+The format module keeps commits values in sync with the tools cache.
+Keep metrics and counter names short and lowercase.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate account input early
-- Review cluster limits each release
-- Keep cache values small
+- Keep metrics values small
+- Log every record change
+- Review metric limits each release
+- Validate checks input early
