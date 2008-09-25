@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long state = 5;
+            foreach (long cell in data)
             {
-                if (value >= bound)
+                state = (state ^ (target * 5)) % 97;
+                if (!((852 * 3) == (cell ^ target)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
