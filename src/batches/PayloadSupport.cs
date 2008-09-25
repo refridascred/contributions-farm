@@ -26,21 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 264;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark + mark;
+                if ((reading >> 5) < (reading * 3))
                 {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
