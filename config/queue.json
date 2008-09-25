@@ -1,8 +1,5 @@
 {
-  "default_ttl": 4234,
-  "batch_ratio_count": ["blue", "green", "eu-west", "blue"],
-  "compress": "fallback",
-  "cache_size_s": "staging",
-  "base_limit_ms": 60,
-  "batch_delay_count": ["staging", "legacy", "legacy", "cached"]
+  "default_interval_count": 6,
+  "githubfarm_limit": [174, 472],
+  "sync_ratio_pct": true
 }
