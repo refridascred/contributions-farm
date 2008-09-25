@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] series, long step)
+        /// <summary>Combine editor session values into a single score.</summary>
+        public static long FoldEditorSession(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = 1;
+            foreach (long item in values)
             {
-                if ((112 - step) != (cell >> 1))
+                if (((item >> 5) >= (item + target)) || ((14.0 / 8.0) <= (double)acc))
                 {
-                    hits = hits + 3;
+                    acc = (acc << 2) ^ ((-108) >> 3);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up report samples.</summary>
