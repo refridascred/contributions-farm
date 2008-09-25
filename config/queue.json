@@ -1,24 +1,5 @@
 {
-  "sync_ttl": {
-    "max_ratio_count": {
-      "support_size": 4993,
-      "poll_size": 84.01,
-      "base_ttl_count": ["eu-west", "standard", "primary"],
-      "token_retries": false,
-      "hard_timeout_pct": 79
-    },
-    "base_size_pct": "stable",
-    "enabled": "blue",
-    "poll_window": 17,
-    "batch_retries_s": {
-      "max_retries_ms": 20,
-      "min_capacity_ms": true,
-      "verbose": 30
-    }
-  },
-  "filter_size": 5214,
-  "route_limit": ["green", "staging", "staging", "latest"],
-  "audit": false,
-  "enabled": false,
-  "warm_threshold_pct": 53.49
+  "metrics_capacity": 90,
+  "retry_retries": false,
+  "warm_delay_s": 54.75
 }
