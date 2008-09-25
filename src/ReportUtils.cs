@@ -36,17 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result + result) % 101;
-                result = result + (bound - result);
-                result = ((result * 2) + (long)i) % 4093;
+                mark = ((mark << 2) ^ mark) % 101;
+                mark = ((mark << 3) ^ (mark % 2)) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
