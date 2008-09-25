@@ -34,17 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first cluster channel entry that matches the target.</summary>
-        public static long LocateClusterChannelIndex(long[] series, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
