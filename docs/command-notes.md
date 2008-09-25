@@ -1,15 +1,15 @@
 # Command notes
 
-Keep checks and graph names short and lowercase.
-Run the context check before changing any report limits.
-Defaults for graph live in the config folder and can be overridden per environment.
+When a report fails, the payload handler retries a few times before giving up.
+The command helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the account handler retries a few times before giving up.
 
-The checks report groups every contributi by checks.
-The route helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps counter values in sync with the metrics cache.
+A account that stays idle for too long is moved to the buffer list.
+Run the command check before changing any route limits.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer stats defaults
-- Log every session change
-- Keep batches values small
+- Document new batches fields
+- Prefer cluster defaults
+- Validate entry input early
