@@ -36,15 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm payload value from a seed.</summary>
-        public static long RollFarmPayload(long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long total = 27;
+            foreach (long value in items)
             {
-                result = ((result * 5) + (long)i) % 101;
+                total = (total ^ (seed << 2)) - value;
             }
-            return result;
+            if (total < 836)
+            {
+                total = (total + (total ^ 65)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
