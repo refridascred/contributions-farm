@@ -77,18 +77,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long AuditChannelOrderHits(long[] series, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((90 - 5) < tally)
+                if ((target - target) <= (237 >> 1))
                 {
-                    tally = ((tally + 2) + sample) + limit;
+                    mix = mix ^ (mix >> 3);
+                    mix = (mix ^ (5 + mix)) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
