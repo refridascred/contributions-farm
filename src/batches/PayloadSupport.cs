@@ -41,19 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long bound)
         {
-            long mark = 264;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + mark;
-                if ((reading >> 5) < (reading * 3))
+                if (items[i] > bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
