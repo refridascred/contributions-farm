@@ -51,12 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout entry.</summary>
