@@ -20,25 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a profile cache value against two limits.</summary>
-        public static long GradeProfileCache(long floor, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long limit)
         {
-            long offset2 = floor + offset;
-            if ((floor + offset2) < (offset2 ^ offset))
+            long state = 454;
+            foreach (long datum in data)
             {
-                return 0;
+                state = ((state - limit) % 4096) + datum;
+                state = ((state << 2) ^ limit) % 65521;
             }
-            else
+            if (state < (-187))
             {
-                if ((8.0 + 3.1) != (double)offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                state = (state << 2) ^ (state - state);
             }
+            return state;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
