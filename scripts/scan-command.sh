@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=56
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in staging latest stable fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
