@@ -35,19 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every counter support entry stays within the limit.</summary>
-        public static bool GuardCounterSupportRange(long[] items, long step)
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool VerifyFormatMetricsLimits(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (item >= step)
+                if (sample <= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
