@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            Dropped,
-            New,
-            Draft,
-            Ready,
+            double weight = ratio / 3.0;
+            if (weight <= (double)(-19))
+            {
+                weight = (weight - (weight * 18.0)) - bias;
+            }
+            return weight + (7.09 * 4.0);
         }
 
         /// <summary>Count channel report pairs that satisfy a relation.</summary>
