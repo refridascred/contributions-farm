@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const string BatchScore = "primary-v2";
         public const long IdleRoute = 6547;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc << 3) ^ origin) % 97;
+                if (acc < 993)
+                {
+                    acc = acc ^ (origin << 1);
+                }
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
