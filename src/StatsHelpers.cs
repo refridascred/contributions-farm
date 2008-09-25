@@ -51,11 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((mix ^ 40) > (floor & 255)) || (((long)i + 56) >= (floor - mix)))
+                {
+                    mix = ((mix * 3) + (floor * 4)) % 65521;
+                }
+                mix = (mix * 2) + floor;
+                mix = (mix ^ (floor - (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
