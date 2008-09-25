@@ -1,10 +1,20 @@
 # entry settings
-enabled: staging
-sync_depth_count: false
-batch_ttl_s: strict
-tools_delay: false
-default_size_s:
-  - 314
-  - 255
-  - 229
-hard_delay_pct: primary
+checks_depth: 56.86
+compress: 80
+flush_timeout:
+  sync_timeout:
+    flush_interval_s: 31.32
+    verbose: 79.79
+    metrics_threshold: true
+    max_delay:
+      - fallback
+      - staging
+      - strict
+    schema_depth: 2
+    default_window_count: primary
+  filter_interval: blue
+  soft_timeout: cached
+  warm_capacity:
+    poll_ttl: 7508
+    default_timeout_pct: 86.54
+    soft_interval_ms: 8794
