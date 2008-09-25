@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            Paused,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
