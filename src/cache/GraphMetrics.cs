@@ -45,14 +45,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Paused,
-            Locked,
-            Done,
-            Pending,
             Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count the format contributi entries that pass the check.</summary>
