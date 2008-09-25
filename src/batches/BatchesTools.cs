@@ -30,17 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                state = ((state << 2) ^ state) % 4096;
-                state = state + (floor & 63);
-                state = ((state * 2) + (long)i) % 4093;
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
