@@ -14,16 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Grade a profile cache value against two limits.</summary>
+        public static long GradeProfileCache(long floor, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long offset2 = floor + offset;
+            if ((floor + offset2) < (offset2 ^ offset))
             {
-                total = total - (total - total);
-                total = ((total * 3) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((8.0 + 3.1) != (double)offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
