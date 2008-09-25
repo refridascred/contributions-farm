@@ -33,12 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a githubfarm editor value against two limits.</summary>
+        public static long BucketGithubfarmEditor(long seed, long limit)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            if (!((limit * 4) <= (seed ^ seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) >= (seed ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
