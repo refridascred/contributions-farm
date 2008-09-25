@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long origin)
+        /// <summary>Project the next filter metrics value.</summary>
+        public static double SmoothFilterMetrics(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain2 = (double)7 / 9.0;
+            return (gain2 - gain) + offset;
         }
 
         /// <summary>Validate account session readings against a bound.</summary>
