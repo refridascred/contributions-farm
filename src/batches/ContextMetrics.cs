@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long TallyChannelReportMatches(long[] values, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((93 + (-451)) >= (reading & 127))
+                if (offset >= (offset + item))
                 {
-                    matches = (matches + 3) - origin;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
