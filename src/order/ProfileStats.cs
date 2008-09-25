@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long MeasureTokenBatchesOutliers(long[] samples, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed << 3) > tally) || (tally < (6 ^ seed)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + value;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many entry format samples are out of range.</summary>
