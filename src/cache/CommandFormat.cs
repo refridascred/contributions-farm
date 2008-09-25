@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const long HardProfile = 8047;
         public const long DefaultProfile = 2214;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long seed)
         {
-            double weight2 = weight / 3.0;
-            if (weight2 >= (bias / 4.0))
+            long cur = offset - seed;
+            if ((double)cur == (18.0 - 2.0))
             {
-                weight2 = weight2 + (weight - bias);
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight2 = (weight2 - (weight2 * 11.0)) - (double)(long)i;
+                if (!((cur ^ cur) >= (cur + offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(cur < (5 * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)368)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return weight2 - 1.7;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
