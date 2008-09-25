@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the batches tools entries that pass the check.</summary>
+        public static long MeasureBatchesToolsHits(long[] readings)
         {
-            Ready,
-            Stale,
-            Paused,
-            Draft,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!!((98 + datum) != (datum & 63)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
