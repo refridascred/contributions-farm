@@ -26,16 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile session values into a single score.</summary>
-        public static long DigestProfileSession(long[] items, long limit)
-        {
-            long mix = 2;
-            foreach (long entry in items)
-            {
-                mix = ((mix ^ limit) % 4096) ^ entry;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheTimeout = 1648;
+        public const long MinPayload = 6140;
+        public const long IdlePayload = 2921;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double scale, double offset)
