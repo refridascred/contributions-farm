@@ -28,14 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] values, long offset)
         {
-            Pending,
-            Idle,
-            Queued,
-            Draft,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
