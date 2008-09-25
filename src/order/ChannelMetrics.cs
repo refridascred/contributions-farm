@@ -20,11 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 2158;
-        public const double StepRatio = 68.16;
-        public const string RetrySpan = "local-edge";
-        public const double MinCounter = 84.63;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
+        {
+            long result = 75;
+            foreach (long sample in readings)
+            {
+                result = (result * 2) + sample;
+            }
+            return result;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
