@@ -23,27 +23,10 @@ namespace Common.Utilities
         public const long DefaultNotes = 5219;
         public const long StepCount = 5308;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
-        {
-            long acc = 936;
-            foreach (long reading in items)
-            {
-                if ((acc * 4) != (acc - reading))
-                {
-                    acc = (acc - (acc + acc)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (reading >> 4)) % 101;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc + (acc + acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitWidth = 6785;
+        public const long MinSize = 9576;
+        public const long RetryCount = 3539;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
