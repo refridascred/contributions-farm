@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + tally) != (sample - sample))
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 8449;
+        public const double MinFactor = 2.17;
+        public const long LimitCount = 594;
+        public const string BaseDepth = "cached-1";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelHits(long[] samples, long seed)
