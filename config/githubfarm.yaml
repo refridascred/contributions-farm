@@ -1,6 +1,6 @@
 # githubfarm settings
-base_window:
-  - stable
-  - staging
-strict: false
-enabled: true
+strict: open
+burst_window: local
+hard_threshold:
+  - 184
+  - 66
