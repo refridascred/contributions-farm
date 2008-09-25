@@ -30,19 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double rate, double offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double gain = rate;
-            if (gain <= (gain * 12.0))
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain - 5.7)) + (double)(long)i;
-            }
-            return gain - (offset - 19.0);
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many account metric samples are out of range.</summary>
