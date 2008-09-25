@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)limit == (7.31 * 8.4)) && ((origin + limit) > (limit << 2)))
             {
-                if (readings[i] >= seed)
+                return 0;
+            }
+            else
+            {
+                if (!((limit + limit) < (origin << 2)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a commits header.</summary>
