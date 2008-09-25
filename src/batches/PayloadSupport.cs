@@ -28,15 +28,28 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            long score = 11;
-            foreach (long cell in items)
+            long anchor = 718;
+            foreach (long item in samples)
             {
-                score = (score + ((-2) - 9)) + cell;
+                if (item <= (anchor << 3))
+                {
+                    anchor = ((anchor * 3) + item) % 4096;
+                    anchor = anchor + (anchor % 97);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (9 - anchor)) % 4096;
+                }
+                anchor = anchor + anchor;
             }
-            return score;
+            if (anchor < 421)
+            {
+                anchor = (anchor ^ (anchor - 45)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
