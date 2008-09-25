@@ -36,11 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Grade a queue notes value against two limits.</summary>
