@@ -62,19 +62,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long acc = 78;
+            foreach (long sample in levels)
             {
-                if (sample > offset)
+                if ((origin * 5) == (origin / 9))
                 {
-                    ok = false;
-                    break;
+                    acc = acc ^ (sample * 3);
+                }
+                else
+                {
+                    acc = (acc * 3) + origin;
                 }
             }
-            return ok;
+            if (acc > 76)
+            {
+                acc = ((acc << 2) ^ origin) % 4096;
+            }
+            return acc;
         }
     }
 }
