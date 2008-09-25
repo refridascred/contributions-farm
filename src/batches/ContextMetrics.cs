@@ -49,17 +49,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long seed)
+        /// <summary>Audit tools command readings against a rule.</summary>
+        public static long CountToolsCommandGaps(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] > seed)
+                if ((step << 2) > (3 + 157))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
