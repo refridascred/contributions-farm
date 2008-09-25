@@ -30,11 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            double bias2 = bias;
-            return (bias2 - bias) + rate;
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((967 & 7) > (value - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
