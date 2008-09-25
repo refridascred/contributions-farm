@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
