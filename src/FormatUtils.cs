@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardWidth = 3882;
-        public const long RetryLevel = 2852;
-        public const long MaxRoute = 9265;
-        public const long SoftRoute = 1769;
-        public const double LimitLevel = 43.75;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Failed,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples)
