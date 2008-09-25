@@ -37,18 +37,20 @@ namespace Common.Utilities
         public const double HardCount = 7.41;
         public const long WindowMetric = 8427;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum << 1) >= (datum % 60))
+                if ((4.0 - 13.0) != (double)mix)
                 {
-                    hits = (hits + 2) - offset;
+                    mix = (mix - (mix + mix)) % 101;
+                    mix = ((mix << 3) ^ (bound + bound)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
