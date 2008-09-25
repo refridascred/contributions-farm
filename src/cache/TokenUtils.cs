@@ -29,13 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Done,
-            Locked,
-            Ready,
+            Synced,
+            Closed,
             Paused,
+            Failed,
         }
 
         /// <summary>Combine window values into a single score.</summary>
