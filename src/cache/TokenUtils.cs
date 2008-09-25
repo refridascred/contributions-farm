@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] levels, long origin)
+        /// <summary>Audit counter cache readings against a rule.</summary>
+        public static long AuditCounterCacheHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum < origin)
+                if (18 < (target ^ entry))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
