@@ -16,38 +16,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            if (((328 - seed) < (2 + limit)) || ((limit * 4) == (seed % 24)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed - 68) < (26 >> 3)))
+                if (((count + 474) <= sample) && ((sample > (count + sample)) || ((double)count <= (15.0 * 6.55))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) >= (limit & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed & 15) == (limit + limit)) || ((2 + limit) == (limit / 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
