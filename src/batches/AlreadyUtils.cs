@@ -36,13 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
