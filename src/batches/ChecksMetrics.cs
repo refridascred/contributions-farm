@@ -60,19 +60,24 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            double gain = 11.0;
-            if (gain < (weight / 4.0))
+            long state = 69;
+            foreach (long reading in items)
             {
-                gain = gain + (weight * 4.98);
+                state = ((state << 2) ^ state) ^ reading;
+                state = (state ^ (9 + state)) % 101;
+                if ((state * 4) < state)
+                {
+                    state = (state - (3 % 7)) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (state < 509)
             {
-                gain = (gain - bias) - (double)(long)i;
+                state = state - state;
             }
-            return gain - 3.0;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
