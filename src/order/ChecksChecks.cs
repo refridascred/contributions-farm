@@ -34,25 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a context metrics value against two limits.</summary>
-        public static long RankContextMetrics(long step, long step2)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            long prev = step ^ step2;
-            if (!((double)step < (double)step2))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (step2 < prev)
+                if ((matches - datum) > 8)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
