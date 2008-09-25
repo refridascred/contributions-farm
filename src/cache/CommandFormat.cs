@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool GuardSupportQueueBounds(long[] data, long target)
         {
-            long total = 183;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                total = (total << 3) ^ (-8);
-                if ((16 - total) < (8 + entry))
+                if (datum >= target)
                 {
-                    total = ((total << 2) ^ total) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 64)
-            {
-                total = ((total * 4) + (total + 194)) % 255;
-            }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
