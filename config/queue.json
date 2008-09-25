@@ -1,18 +1,5 @@
 {
-  "support_size": {
-    "soft_ttl": "blue",
-    "strict": "eu-west",
-    "contributi_ttl": {
-      "tools_delay": 4372,
-      "session_ttl": ["cached", "fallback"],
-      "dry_run": 2759,
-      "batch_size_s": false,
-      "route_size": true
-    },
-    "stream_interval": 6539,
-    "default_threshold_ms": "latest",
-    "payload_window": "fallback"
-  },
-  "sync_interval_s": false,
-  "cache_threshold_pct": 51
+  "max_interval_ms": 80.21,
+  "cache_delay_pct": "stable",
+  "sync_threshold_s": "eu-west"
 }
