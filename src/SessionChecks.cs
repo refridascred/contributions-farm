@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(((long)i + limit) != (limit + (long)i)))
-                {
-                    carry = (carry + (limit * 4)) % 1000;
-                    carry = (carry ^ (limit + (long)i)) % 1000;
-                }
-                carry = (carry ^ (limit ^ carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate queue filter samples.</summary>
