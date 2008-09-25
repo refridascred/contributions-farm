@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools contributi readings against a rule.</summary>
-        public static long MeasureToolsContributiGaps(long[] samples, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((double)matches <= (6.57 - 14.0))
+                if (item < origin)
                 {
-                    matches = ((matches + 1) - entry) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
