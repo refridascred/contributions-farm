@@ -1,6 +1,5 @@
 {
-  "channel_threshold": "primary",
-  "cluster_delay": "primary",
-  "readonly": 31.85,
-  "default_ratio_s": [182, 49, 235, 42]
+  "readonly": "strict",
+  "metrics_retries": ["edge", "staging", "strict", "fallback"],
+  "idle_delay": 6
 }
