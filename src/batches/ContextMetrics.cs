@@ -34,17 +34,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] series, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
