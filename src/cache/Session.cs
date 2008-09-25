@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            New,
-            Closed,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 69.59;
+        public const double MaxFactor = 56.8;
+        public const long BaseTimeout = 6064;
+        public const long MaxRatio = 2055;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long offset)
