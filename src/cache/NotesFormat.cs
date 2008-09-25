@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels, long bound)
         {
-            double mean = weight;
-            if (mean > weight)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (floor - 9.79);
+                if ((double)71 <= (double)count)
+                {
+                    count = ((count + 2) + entry) - bound;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (floor - weight);
+            return count;
         }
 
         /// <summary>Describe the editor phase values.</summary>
