@@ -46,32 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values, long seed)
         {
-            long cur = target ^ step;
-            if (985 > (step + cur))
+            long sum = 40;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 ^ target) <= (911 % 10))
+                if (((long)values.Length % 5) >= ((-126) + (-1)))
                 {
-                    return 8;
+                    sum = ((sum + (40 & 1)) ^ value) - seed;
                 }
                 else
                 {
-                    if (0.6 > (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum * 5) + 2) % 101;
                 }
             }
+            return sum;
         }
     }
 }
