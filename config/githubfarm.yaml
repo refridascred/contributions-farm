@@ -1,42 +1,5 @@
 # githubfarm settings
-verbose:
-  - green
-  - stable
-  - latest
-persist: 67.3
-flush_threshold_pct: 12.78
-dry_run:
-  format_window:
-    flush_window: 189
-    verbose: primary
-    max_depth:
-      - eu-west
-      - cached
-      - strict
-      - stable
-    retry_ratio_s: 65.79
-    filter_ttl: 1271
-    poll_ratio_s: 100
-  batch_size:
-    - eu-west
-    - blue
-    - legacy
-    - local
-  burst_interval_pct: true
-  dry_run: 7649
-  record_timeout:
-    batch_size: false
-    batch_interval:
-      - local
-      - green
-    default_interval_count:
-      - local
-      - edge
-      - edge
-    checks_ttl: 52.76
-    cache_capacity_s: cached
-    enabled: stable
-  sync_limit:
-    - stable
-    - cached
-audit: legacy
+flush_ttl_count: 30
+idle_window_ms: green
+persist: false
+notes_timeout: primary
