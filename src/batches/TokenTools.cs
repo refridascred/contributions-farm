@@ -23,18 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] data, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)bound <= (9.2 / 3.0)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the tools class values.</summary>
