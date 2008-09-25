@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 4630;
-        public const long RetryToken = 9136;
-        public const string SoftToken = "staging-edge";
-        public const double LimitToken = 40.18;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits & 31) != (value + value))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double AdjustBatches(double scale, double bias)
