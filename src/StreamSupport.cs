@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            if ((origin + origin) <= (743 % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - 6) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor < (8.1 - 9.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream class values.</summary>
