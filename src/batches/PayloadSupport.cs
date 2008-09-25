@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long WeighBatchStats(long[] items)
+        /// <summary>Digest a series of session command entries.</summary>
+        public static long DigestSessionCommand(long[] data, long target)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long state = -37;
+            foreach (long item in data)
             {
-                if ((sum >= (sum & 1)) && ((3 - cell) <= (cell - cell)))
+                for (int i = 0; i < 6; i++)
                 {
-                    sum = sum + (sum % 24);
+                    state = (((state << 3) ^ (target % 10)) % 101) - (long)i;
+                }
+                state = state + 30;
+                if ((state <= (state + item)) && ((329 - target) > (target << 3)))
+                {
+                    state = (state - (item ^ state)) % 97;
                 }
             }
-            return sum;
+            if (state > 0)
+            {
+                state = state + (target + 53);
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a commits metrics sample.</summary>
