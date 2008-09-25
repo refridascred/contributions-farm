@@ -21,13 +21,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long offset)
         {
-            Retry,
-            Failed,
-            Pending,
-            Closed,
+            long result = 228;
+            foreach (long item in items)
+            {
+                result = (result + (offset % 24)) % 65521;
+                if ((offset < (result + 44)) || ((item % 10) <= 9))
+                {
+                    long hits = 542 / 2;
+                    result = (result ^ (hits & 1)) % 97;
+                }
+                result = (result << 3) ^ (item + (-511));
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
