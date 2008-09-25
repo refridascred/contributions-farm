@@ -25,12 +25,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 69.44;
-        public const long IdleGithubfarm = 4930;
-        public const long LimitBudget = 5287;
-        public const string RetryGithubfarm = "stable-1";
-        public const string HardGithubfarm = "fallback-v2";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels, long target)
+        {
+            long total = 5;
+            foreach (long sample in levels)
+            {
+                if (6.95 >= (double)sample)
+                {
+                    continue;
+                }
+                if ((total < target) && ((double)target < (0.81 / 8.0)))
+                {
+                    total = ((total << 3) ^ (total + target)) % 255;
+                }
+            }
+            if (total < 91)
+            {
+                total = total ^ (target + total);
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] samples, long bound)
