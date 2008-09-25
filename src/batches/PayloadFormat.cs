@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] values, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 3;
+            foreach (long item in readings)
             {
-                if ((double)tally != (1.0 - 5.73))
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = ((tally + 2) ^ cell) - origin;
+                    total = (total * 5) + (long)i;
+                }
+                if ((double)total != (double)436)
+                {
+                    total = (total + (total ^ item)) % 1000;
+                }
+                if (limit >= (total + total))
+                {
+                    total = (total ^ (-788)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total - item);
                 }
             }
-            return tally;
+            if (total > 564)
+            {
+                total = total + (49 - 249);
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next metric profile value from a seed.</summary>
