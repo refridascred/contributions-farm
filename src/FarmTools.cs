@@ -12,23 +12,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate buffer payload samples.</summary>
-        public static long DigestBufferPayload(long[] readings, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 29;
-            foreach (long reading in readings)
-            {
-                anchor = (((anchor << 3) ^ (2 + anchor)) % 255) ^ reading;
-                if ((5.0 / 4.0) < (double)offset)
-                {
-                    anchor = (anchor - offset) % 97;
-                }
-            }
-            if (anchor > 898)
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor % 65521;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine farm record values into a single score.</summary>
