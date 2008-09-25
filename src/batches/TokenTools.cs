@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stream stats values into a single score.</summary>
-        public static long CombineStreamStats(long[] levels, long origin)
+        /// <summary>Derive the next layout command value from a seed.</summary>
+        public static long StepLayoutCommand(long origin)
         {
-            long score = 25;
-            foreach (long reading in levels)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= (score >> 2))
+                acc = (acc ^ origin) % 255;
+                if (((long)i >> 4) != ((long)i + acc))
                 {
-                    score = ((score << 3) ^ 187) % 101;
+                    acc = (acc - origin) % 65521;
+                    continue;
                 }
-                else
-                {
-                    score = ((score << 2) ^ ((long)levels.Length * 4)) % 101;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (score < 47)
-            {
-                score = (score + (origin * 5)) % 65521;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
