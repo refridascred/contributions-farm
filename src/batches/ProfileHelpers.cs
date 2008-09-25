@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= (acc & 3))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - sample) % 101;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Combine format values into a single score.</summary>
