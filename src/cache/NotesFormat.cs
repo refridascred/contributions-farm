@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstCount = 4028;
-        public const string BaseLevel = "primary";
-        public const long IdleLevel = 4843;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double floor)
+        {
+            double mean = weight;
+            if (mean > weight)
+            {
+                mean = mean + (floor - 9.79);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (floor - weight);
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
