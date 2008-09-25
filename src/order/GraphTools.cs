@@ -27,12 +27,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheLevel = 62.73;
-        public const double BatchStream = 16.08;
-        public const long RetryInterval = 5511;
-        public const double StepFactor = 17.62;
-        public const long SoftScore = 8265;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] data)
