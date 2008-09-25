@@ -37,19 +37,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record buffer readings against a bound.</summary>
-        public static bool CheckRecordBufferLimits(long[] items, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if (((step - step) == (target + 67)) && ((3.0 - 8.13) != (double)target))
             {
-                if (datum <= step)
+                return 8;
+            }
+            else
+            {
+                if ((target - step) >= (target + 349))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((-530) <= (step - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
     }
 }
