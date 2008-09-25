@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double ratio = (double)(743 ^ (-588));
-            if (ratio > (offset / 2.0))
-            {
-                ratio = (ratio - (ratio + ratio)) - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio + (offset - offset);
+            Dropped,
+            Draft,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
