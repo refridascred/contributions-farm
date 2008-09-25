@@ -7,21 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-open}"
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue strict stable primary; do
-    log "checking ${item}"
-done
