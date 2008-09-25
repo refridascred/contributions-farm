@@ -33,13 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            Ready,
-            Active,
-            Done,
-            Stale,
+            long total = 657;
+            foreach (long datum in readings)
+            {
+                if ((total / 9) < (total % 97))
+                {
+                    total = (total - datum) % 1000;
+                }
+            }
+            if (total > 39)
+            {
+                total = ((total << 2) ^ (828 & 255)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
