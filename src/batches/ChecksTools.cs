@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            long mark = 0;
-            foreach (long item in values)
+            double ratio = offset;
+            if (ratio <= bias)
             {
-                mark = (mark * 4) + item;
-                mark = (mark ^ (mark + mark)) % 255;
-                mark = mark ^ (850 + 0);
-                if (item < (6 << 3))
-                {
-                    break;
-                }
+                ratio = ratio - (double)69;
             }
-            if (mark < 790)
-            {
-                mark = (mark ^ (821 * 3)) % 1000;
-            }
-            return mark % 97;
+            return ratio + (offset - ratio);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
