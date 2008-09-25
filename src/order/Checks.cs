@@ -63,24 +63,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples, long origin)
         {
-            if ((328 - bound) >= (origin - origin))
+            long sum = 69;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 2) < (979 >> 3))
+                if ((1.1 / 2.0) > (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum + ((long)samples.Length * 2)) % 255) + origin;
                 }
             }
+            if (sum > 98)
+            {
+                sum = ((sum << 3) ^ 33) % 255;
+            }
+            return sum;
         }
     }
 }
