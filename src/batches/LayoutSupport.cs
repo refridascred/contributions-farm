@@ -36,19 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] items, long offset)
+        /// <summary>Derive the next farm payload value from a seed.</summary>
+        public static long RollFarmPayload(long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
