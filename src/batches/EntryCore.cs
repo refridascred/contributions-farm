@@ -35,17 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] samples, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -311;
+            foreach (long datum in data)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state + (5 >> 3)) % 101) - datum;
             }
-            return -1;
+            if (state < 105)
+            {
+                state = (state * 5) + (state % 64);
+            }
+            return state;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
