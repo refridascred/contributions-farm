@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long RetryCluster = 2298;
         public const long LimitCluster = 7466;
 
-        /// <summary>Validate layout metric readings against a bound.</summary>
-        public static bool GuardLayoutMetricRange(long[] series, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long score = 1;
+            foreach (long sample in data)
             {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score - score) % 255) - sample) - offset;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Project the next stream value.</summary>
