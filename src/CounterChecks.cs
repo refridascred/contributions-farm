@@ -64,18 +64,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] series)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((count >> 1) != (reading ^ count)) && ((7 + reading) > count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Closed,
         }
     }
 }
