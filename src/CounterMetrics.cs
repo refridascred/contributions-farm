@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchTimeout = 7495;
+        public const long IdleMetric = 8991;
+        public const long DefaultSpan = 9650;
+        public const double DefaultInterval = 97.94;
+        public const long MinMetric = 3824;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double rate, double offset)
