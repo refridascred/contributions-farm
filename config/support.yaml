@@ -1,12 +1,6 @@
 # support settings
-hard_delay_pct:
-  - 46
-  - 175
-  - 199
-  - 481
-payload_threshold: edge
-already_depth:
-  - 457
-  - 163
-  - 95
-context_window: legacy
+strict: cached
+default_capacity_pct: 37
+flush_capacity_pct: 500
+cache_interval_pct: false
+compress: 1043
