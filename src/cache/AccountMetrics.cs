@@ -41,15 +41,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Synced,
-            Retry,
-            Idle,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 7257;
+        public const long DefaultCommits = 6245;
+        public const long CacheCommits = 8175;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double scale, double offset)
