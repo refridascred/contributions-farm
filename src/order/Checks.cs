@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double SoftQueue = 8.83;
         public const long HardQueue = 3912;
 
-        /// <summary>Roll a layout channel counter forward.</summary>
-        public static long SeriesLayoutChannel(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 3) + (469 * 3)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1853;
+        public const string WindowFactor = "standard-1";
+        public const double WindowSpan = 71.38;
+        public const string IdleCommits = "alpha";
+        public const double BatchCommits = 51.49;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long step)
