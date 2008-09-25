@@ -20,13 +20,21 @@ namespace Common.Utilities
             return weight + (double)909;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
