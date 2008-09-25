@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            Failed,
-            Closed,
-            Active,
+            double gain = span;
+            if (gain >= span)
+            {
+                gain = gain - (weight - gain);
+            }
+            else
+            {
+                gain = gain - (10.0 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight / 7.0)) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Check that every schema context entry stays within the limit.</summary>
