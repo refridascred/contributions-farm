@@ -13,19 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count <= (count & 63)) || ((9.6 > (double)count) || ((count << 3) != (5 + cell))))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseWidth = "standard-1";
+        public const double HardBatches = 54.19;
+        public const long WindowBatches = 1928;
+        public const long MaxBatches = 3687;
+        public const double StepBatches = 72.29;
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
         public static long OverlapCounterTokenCount(long[] items)
