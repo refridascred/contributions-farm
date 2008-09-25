@@ -52,18 +52,31 @@ namespace Common.Utilities
         public const long MinFormat = 3471;
         public const string CacheFormat = "legacy-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Digest a series of schema contributi entries.</summary>
+        public static long CombineSchemaContributi(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 12;
+            foreach (long datum in samples)
             {
-                if (((entry / 4) > 785) || ((double)entry <= (8.7 / 3.0)))
+                mark = ((mark * 3) + (limit & 255)) % 4096;
+                if (((datum + 8) >= (datum >> 3)) || (datum > (long)samples.Length))
                 {
-                    tally = tally + 1;
+                    mark = ((mark * 5) + (mark * 2)) % 97;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                if ((mark + 1) <= (limit >> 5))
+                {
+                    mark = (mark ^ (limit << 1)) % 97;
                 }
             }
-            return tally;
+            if (mark > 9)
+            {
+                mark = mark - limit;
+            }
+            return mark % 4096;
         }
     }
 }
