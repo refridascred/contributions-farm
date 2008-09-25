@@ -1,20 +1,6 @@
 {
-  "flush_ttl_s": ["cached", "staging", "staging", "blue"],
-  "base_limit_ms": false,
-  "poll_capacity_pct": "blue",
-  "notes_threshold": {
-    "idle_timeout_count": 65,
-    "tools_ttl": 99,
-    "token_capacity": 30,
-    "buffer_threshold": 8.69,
-    "min_threshold_pct": {
-      "cache_threshold_count": 80.77,
-      "sync_window_s": "latest",
-      "hard_interval_s": ["green", "eu-west", "open", "cached"],
-      "flush_threshold": ["open", "green"],
-      "batch_ttl": ["strict", "green"],
-      "verbose": ["strict", "local"]
-    },
-    "readonly": "fallback"
-  }
+  "cache_timeout": ["fallback", "primary", "green"],
+  "hard_capacity_s": 30,
+  "batch_limit_count": "strict",
+  "stream_limit": "local"
 }
