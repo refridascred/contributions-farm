@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double BlendStreamEditor(double rate, double floor)
         {
-            double bias = weight;
-            if (bias < span)
+            double mean = rate * 14.0;
+            if (mean < rate)
             {
-                bias = bias - (double)778;
+                mean = (mean - rate) - floor;
             }
             else
             {
-                bias = bias + (2.0 / 4.0);
+                mean = mean - rate;
             }
-            return bias - (span + span);
+            return mean + (double)77;
         }
 
         /// <summary>Hold a cluster record.</summary>
