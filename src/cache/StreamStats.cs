@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] items, long floor)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 2) + (anchor ^ 227)) + cell;
+                if ((floor > (68 & 255)) && !((tally >> 4) != (tally - 31)))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            if (anchor < 405)
-            {
-                anchor = ((anchor * 2) + step) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the cache mode values.</summary>
