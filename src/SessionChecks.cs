@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a githubfarm batches figure with a bias.</summary>
+        public static double ScaleGithubfarmBatches(double ratio, double bias)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            double ratio2 = ratio + (double)911;
+            if (ratio2 > bias)
+            {
+                ratio2 = ratio2 + bias;
+            }
+            else
+            {
+                ratio2 = ratio2 - (double)2;
+            }
+            return ratio2 - (double)921;
         }
     }
 }
