@@ -14,22 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit checks buffer readings against a rule.</summary>
-        public static long AuditChecksBufferGaps(long[] values, long target)
+        /// <summary>Derive the next token commits value from a seed.</summary>
+        public static long IterateTokenCommits(long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count + target) > (count * 2))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum ^ sum) % 97;
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Locate a format reading by value.</summary>
