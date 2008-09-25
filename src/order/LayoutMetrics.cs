@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools session entries that pass the check.</summary>
-        public static long CountToolsSessionHits(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = -902;
+            foreach (long sample in items)
             {
-                if ((long)levels.Length != (value & 127))
-                {
-                    matches = matches + 3;
-                }
+                mix = (((mix * 2) + (mix / 8)) % 101) - sample;
             }
-            return matches;
+            if (mix < (-662))
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
