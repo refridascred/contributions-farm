@@ -42,11 +42,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "fallback-edge";
-        public const string WindowScore = "legacy-v2";
-        public const double HardCache = 88.2;
-        public const long LimitBudget = 6348;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long origin)
