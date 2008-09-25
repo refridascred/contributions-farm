@@ -59,15 +59,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Grade a metric editor value against two limits.</summary>
+        public static long GradeMetricEditor(long seed, long limit)
         {
-            double scale = gain;
-            if (scale <= scale)
+            if (!((seed / 2) >= (seed & 3)))
             {
-                scale = scale - (double)499;
+                return 3;
             }
-            return scale - (span + gain);
+            else
+            {
+                if (!((limit + seed) >= (983 % 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 10) != (limit & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0 + limit) < (limit >> 3)) || ((seed / 2) != (seed + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
