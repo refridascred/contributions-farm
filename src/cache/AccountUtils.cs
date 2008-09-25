@@ -31,11 +31,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepScore = 48.66;
-        public const long DefaultGithubfarm = 9060;
-        public const long LimitWidth = 2638;
-        public const long BurstGithubfarm = 4702;
-        public const long RetryGithubfarm = 5692;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data, long step)
+        {
+            long anchor = 6;
+            foreach (long value in data)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (((anchor * 2) + (value + value)) % 255) ^ (long)i2;
+                    anchor = anchor ^ (496 % 64);
+                }
+                if ((anchor / 6) == (value - 56))
+                {
+                    anchor = anchor ^ (step << 2);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                }
+            }
+            if (anchor > (-35))
+            {
+                anchor = anchor ^ (28 / 9);
+            }
+            return anchor;
+        }
     }
 }
