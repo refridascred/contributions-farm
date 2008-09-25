@@ -43,9 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 28.18;
-        public const string MaxWidth = "open";
-        public const long CacheWindow = 7955;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
