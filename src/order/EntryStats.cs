@@ -43,18 +43,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the buffer window entries that pass the check.</summary>
-        public static long AuditBufferWindowHits(long[] data, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 353;
+            foreach (long value in readings)
             {
-                if (tally < (tally + tally))
+                if (value >= (3 - value))
                 {
-                    tally = ((tally + 3) ^ sample) - floor;
+                    score = (score * 2) + (score - value);
+                }
+                if ((double)value <= (0.95 * 11.0))
+                {
+                    score = ((score << 2) ^ (score * 5)) % 101;
+                }
+                if (!((double)value >= (6.0 * 5.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 80)
+            {
+                score = ((score * 5) + (score + 6)) % 255;
+            }
+            return score;
         }
     }
 }
