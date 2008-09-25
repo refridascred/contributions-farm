@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Find the first graph support entry that matches the target.</summary>
