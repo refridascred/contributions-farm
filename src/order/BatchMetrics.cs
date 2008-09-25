@@ -19,12 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 9629;
-        public const long LimitDepth = 265;
-        public const long DefaultFactor = 1269;
-        public const double DefaultScore = 39.11;
-        public const long RetryTimeout = 5637;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long seed, long floor)
+        {
+            long offset = seed - floor;
+            if ((floor + floor) < offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed > (seed ^ offset)) && ((double)seed <= (4.0 / 9.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] items, long step)
