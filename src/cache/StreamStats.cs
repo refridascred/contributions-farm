@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const string SoftToken = "staging-edge";
         public const double LimitToken = 40.18;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits ^ 320) >= (reading + reading))
+                if (samples[i] <= floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
