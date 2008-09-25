@@ -35,14 +35,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate already graph samples.</summary>
+        public static long WeighAlreadyGraph(long[] items, long limit)
         {
-            Closed,
-            Stale,
-            Pending,
-            Active,
-            Paused,
+            long total = 971;
+            foreach (long sample in items)
+            {
+                if ((total ^ limit) > limit)
+                {
+                    total = (((total << 3) ^ limit) % 65521) - sample;
+                }
+            }
+            if (total > 921)
+            {
+                total = total + 407;
+            }
+            return total;
         }
     }
 }
