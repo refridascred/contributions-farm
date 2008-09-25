@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] samples)
         {
-            if (!((bound & 1) == (bound + bound)))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound - bound) <= (target + bound)))
+                if ((tally + sample) > (9 / 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >= (4 ^ 9)) || ((bound + bound) < (12 / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the window level values.</summary>
