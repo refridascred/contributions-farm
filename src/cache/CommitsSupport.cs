@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long StepToken = 4872;
         public const long BaseDepth = 5578;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up report layout samples.</summary>
