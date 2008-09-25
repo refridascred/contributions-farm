@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long MaxCache = 2371;
         public const double MinCache = 87.23;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Project the next route value.</summary>
