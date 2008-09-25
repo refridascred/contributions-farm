@@ -1,6 +1,12 @@
 {
-  "verbose": ["staging", "cached"],
-  "idle_threshold": 100,
-  "min_limit_s": 7586,
-  "sync_retries_pct": "blue"
+  "soft_delay_s": 58,
+  "min_interval_ms": {
+    "poll_ratio": 81.93,
+    "verbose": 100,
+    "strict": 7.86,
+    "persist": 97,
+    "flush_capacity": 5852,
+    "compress": "blue"
+  },
+  "poll_interval_ms": 28
 }
