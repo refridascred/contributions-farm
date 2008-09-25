@@ -1,5 +1,5 @@
 {
-  "verbose": ["standard", "primary"],
-  "min_depth_s": true,
-  "schema_delay": 1391
+  "cache_timeout": "eu-west",
+  "burst_timeout": [195, 107],
+  "cache_size": 77
 }
