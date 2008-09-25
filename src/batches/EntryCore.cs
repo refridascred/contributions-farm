@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            Locked,
-            Draft,
-            New,
-            Closed,
-            Ready,
+            long state = 212;
+            foreach (long reading in values)
+            {
+                state = (state << 2) ^ (state / 2);
+                state = (state << 2) ^ state;
+                if ((state ^ state) > (state + reading))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
