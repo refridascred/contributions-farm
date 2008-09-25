@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool ValidateRecordEntryLimits(long[] items, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Dropped,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
