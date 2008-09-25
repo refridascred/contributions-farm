@@ -23,17 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Combine window schema values into a single score.</summary>
+        public static long TotalWindowSchema(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long reading in data)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 5) + (offset & 63)) % 255) ^ reading;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a command reading by value.</summary>
