@@ -1,6 +1,7 @@
 # githubfarm settings
-readonly: false
-min_interval_count: 1926
-audit:
-  - edge
-  - cached
+sync_window_count: 61
+profile_depth:
+  - blue
+  - legacy
+  - strict
+flush_window: true
