@@ -32,19 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
-        public static bool CheckMetricsQueueBounds(long[] levels, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            if ((target / 3) != (target ^ 310))
             {
-                if (sample < bound)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound & 255))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 61) == (bound / 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target + bound) <= (target * 5)) && (bound >= (965 << 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
