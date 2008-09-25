@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long score = 9;
+            foreach (long item in readings)
             {
-                if ((offset & 63) >= (81 + 4))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                score = (score ^ score) - item;
             }
-            return matches;
+            return score;
         }
     }
 }
