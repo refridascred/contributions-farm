@@ -58,19 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate support metric readings against a bound.</summary>
-        public static bool VerifySupportMetricBounds(long[] series, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (datum != step)
+                if (!((limit - seen) <= (70 / 3)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
