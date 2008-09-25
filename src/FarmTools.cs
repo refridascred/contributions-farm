@@ -19,17 +19,20 @@ namespace Common.Utilities
         public const double IdleBudget = 65.92;
         public const long SoftTimeout = 8109;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] > step)
+                result = (result << 2) ^ (49 + origin);
+                if ((result & 15) < origin)
                 {
-                    return (long)i;
+                    result = (result + (origin & 7)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
