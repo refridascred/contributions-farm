@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a order cluster value against two limits.</summary>
+        public static long BucketOrderCluster(long origin, long origin2)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            if ((2.37 + 0.32) < (double)origin2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin2 < (6 & 127)) || ((origin2 % 97) == (origin2 - origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up already metrics samples.</summary>
