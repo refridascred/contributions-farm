@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits < (6.0 + 8.76))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
