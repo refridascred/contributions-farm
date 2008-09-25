@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 7791;
-        public const long BatchStats = 6827;
-        public const long RetryFactor = 6002;
-        public const string MinStats = "staging";
-        public const string DefaultSize = "staging-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchFactor = 9459;
+        public const string BurstCommand = "latest-v2";
+        public const double MinCommand = 60.77;
+        public const long BurstFactor = 1437;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] data, long limit)
