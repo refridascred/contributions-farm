@@ -17,17 +17,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (57 >= (origin - origin))
             {
-                if (samples[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (9.3 / 9.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (bound <= (origin & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
