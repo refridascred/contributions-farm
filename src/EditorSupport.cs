@@ -55,12 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseBudget = 6361;
-        public const long HardRatio = 4940;
-        public const long BurstInterval = 4019;
-        public const double BatchSize = 40.55;
-        public const long BaseSchema = 9230;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Paused,
+            Synced,
+            New,
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] levels)
