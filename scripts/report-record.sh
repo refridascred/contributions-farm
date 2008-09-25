@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in fallback strict primary; do
+for item in legacy cached; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=37
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
