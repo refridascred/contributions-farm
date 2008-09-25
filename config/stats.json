@@ -1,7 +1,20 @@
 {
-  "cache_depth": [353, 148, 214, 190],
-  "default_capacity": 25.33,
-  "already_window": true,
-  "already_ttl": 500,
-  "cache_delay": 10
+  "support_timeout": [274, 363],
+  "idle_capacity_count": {
+    "warm_retries_ms": 98.62,
+    "flush_depth_pct": {
+      "base_ttl": false,
+      "default_delay_pct": 7859,
+      "window_timeout": 7,
+      "batch_depth": "legacy"
+    },
+    "max_delay": 64,
+    "sync_window": {
+      "sync_threshold_pct": "edge",
+      "flush_threshold_s": 26.97,
+      "poll_interval_pct": 500
+    },
+    "batch_window": "strict"
+  },
+  "buffer_ttl": 500
 }
