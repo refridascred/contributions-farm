@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
