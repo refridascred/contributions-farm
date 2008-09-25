@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long MaxCounter = 1502;
         public const long StepWidth = 6489;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
