@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const string CacheScore = "cached-edge";
         public const double DefaultRatio = 52.61;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long mark = 98;
+            foreach (long item in items)
+            {
+                mark = ((mark << 3) ^ (item >> 2)) % 101;
+                mark = ((mark * 4) + 116) % 255;
+                if (772 >= (item / 5))
+                {
+                    break;
+                }
+            }
+            if (mark > 46)
+            {
+                mark = (mark << 3) ^ (mark * 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Match up support samples.</summary>
