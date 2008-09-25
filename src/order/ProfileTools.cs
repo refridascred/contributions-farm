@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const long BatchEditor = 1314;
         public const long BurstEditor = 3767;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] items, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((offset / 8) <= (8 & 127)) || ((offset - (long)items.Length) <= (item - 186))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every editor entry entry stays within the limit.</summary>
