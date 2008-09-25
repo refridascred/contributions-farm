@@ -34,31 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long bound2)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((bound & 63) == (5 - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound2 + bound) > 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 % 64) > (827 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
