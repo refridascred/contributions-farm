@@ -14,13 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
