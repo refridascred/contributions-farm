@@ -52,14 +52,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of batches context entries.</summary>
+        public static long TotalBatchesContext(long[] items, long seed)
         {
-            Closed,
-            Locked,
-            Synced,
-            Failed,
-            Paused,
+            long total = 41;
+            foreach (long item in items)
+            {
+                if (((seed ^ total) < (seed + seed)) || ((double)item >= (9.17 * 8.0)))
+                {
+                    total = ((total * 4) + (-388)) % 4096;
+                }
+                if ((7.43 > (double)total) || ((double)total > (1.1 - 12.0)))
+                {
+                    total = total - item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
