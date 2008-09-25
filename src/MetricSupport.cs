@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] samples, long seed)
+        /// <summary>Derive the next cache profile value from a seed.</summary>
+        public static long SeriesCacheProfile(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                result = result + step;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of session entries.</summary>
