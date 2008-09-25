@@ -57,22 +57,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batches context entries.</summary>
-        public static long TotalBatchesContext(long[] items, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series, long limit)
         {
-            long total = 41;
-            foreach (long item in items)
+            long total = 380;
+            foreach (long cell in series)
             {
-                if (((seed ^ total) < (seed + seed)) || ((double)item >= (9.17 * 8.0)))
+                if (!((total << 2) < (cell / 5)))
                 {
-                    total = ((total * 4) + (-388)) % 4096;
-                }
-                if ((7.43 > (double)total) || ((double)total > (1.1 - 12.0)))
-                {
-                    total = total - item;
+                    total = total - (total & 63);
                 }
             }
-            return total;
+            if (total < 37)
+            {
+                total = (total ^ (limit - limit)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
