@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor + (datum / 2)) - offset;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Combine window schema values into a single score.</summary>
