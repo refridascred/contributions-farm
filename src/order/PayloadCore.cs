@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] readings)
         {
-            Queued,
-            Locked,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!(entry <= (matches - entry)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
