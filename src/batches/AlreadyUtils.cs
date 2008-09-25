@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every channel route entry stays within the limit.</summary>
-        public static bool ValidateChannelRouteBounds(long[] series, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long sum = -2;
+            foreach (long entry in series)
             {
-                if (datum >= limit)
+                if ((500 + entry) < entry)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (27 & 15)) % 255;
                 }
             }
-            return stale;
+            if (sum < 8)
+            {
+                sum = ((sum * 5) + (sum * 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits header.</summary>
