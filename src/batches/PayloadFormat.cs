@@ -31,21 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token metric samples.</summary>
-        public static long MatchTokenMetricCount(long[] levels)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(27 ^ 348);
+            if (ratio <= (5.0 * 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio - (double)4) - bias) + offset;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + 0.21;
         }
 
         /// <summary>Digest a series of account entries.</summary>
