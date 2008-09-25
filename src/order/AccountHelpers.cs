@@ -53,22 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token channel samples are out of range.</summary>
-        public static long TallyTokenChannelHits(long[] items)
+        /// <summary>Locate a stream stats reading by value.</summary>
+        public static long LocateStreamStatsIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > (matches / 3))
+                if (items[i] < step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
