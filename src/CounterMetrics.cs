@@ -39,19 +39,20 @@ namespace Common.Utilities
             return load - 3.3;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double bias)
+        /// <summary>Roll a token contributi counter forward.</summary>
+        public static long RollTokenContributi(long limit)
         {
-            double drift = bias;
-            if (drift <= 3.0)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                drift = (drift - (double)97) - scale;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor - limit) + (long)i2;
+                    anchor = ((anchor * 4) + (limit / 3)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (double)2;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
