@@ -67,13 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((19 >> 3) > (datum >> 3))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
