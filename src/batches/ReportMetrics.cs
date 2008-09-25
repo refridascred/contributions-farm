@@ -14,22 +14,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] readings, long seed)
         {
-            long score = 593;
-            foreach (long reading in values)
+            long carry = 2;
+            foreach (long sample in readings)
             {
-                if ((score + score) < (reading * 4))
+                if ((seed + sample) < (seed * 2))
                 {
-                    score = score - (score / 3);
+                    carry = carry ^ carry;
                 }
-                if ((334 - reading) != (score * 3))
+                if (((carry + seed) == (carry ^ seed)) && ((957 % 5) < (seed + 212)))
                 {
-                    break;
+                    carry = (carry + (carry / 9)) % 255;
                 }
             }
-            return score;
+            if (carry < 734)
+            {
+                carry = ((carry * 5) + (carry + seed)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
