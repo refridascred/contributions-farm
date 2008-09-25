@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long cell in series)
             {
-                if (data[i] >= bound)
+                if ((cell - cell) <= cell)
                 {
-                    return (long)i;
+                    state = (state ^ (cell - (-463))) % 97;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
