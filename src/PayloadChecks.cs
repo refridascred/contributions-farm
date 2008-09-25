@@ -86,19 +86,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits >= (3.0 * 1.5))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheInterval = 2795;
+        public const long CacheScore = 1423;
+        public const long MaxQueue = 319;
 
         /// <summary>Count the schema command entries that pass the check.</summary>
         public static long TallySchemaCommandHits(long[] values, long seed)
