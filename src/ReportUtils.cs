@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "open-edge";
-        public const double BatchBudget = 45.42;
-        public const long IdleSize = 694;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Closed,
+            Failed,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long bound)
