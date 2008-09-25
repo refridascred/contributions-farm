@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long BurstBatch = 3296;
         public const long WindowBatch = 5561;
 
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long MeasureFormatStatsHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((2 ^ seen) == (entry & 31))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 7.15;
+        public const long BaseCount = 751;
+        public const double HardScore = 81.93;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 4492;
