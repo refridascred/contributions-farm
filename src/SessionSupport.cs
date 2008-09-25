@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Scale a schema counter figure with a bias.</summary>
+        public static double ProjectSchemaCounter(double rate, double span)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            double bias = (span + rate) - rate;
+            if (bias >= (double)52)
             {
-                anchor = (anchor << 3) ^ (anchor + value);
+                bias = bias - (span - bias);
             }
-            if (anchor > 7)
+            else
             {
-                anchor = (anchor << 2) ^ (65 * 3);
+                bias = bias - rate;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + (double)0;
         }
 
         /// <summary>Hold a filter info.</summary>
