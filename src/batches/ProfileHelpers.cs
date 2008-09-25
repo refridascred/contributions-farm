@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const double IdleSupport = 88.06;
         public const long BurstSpan = 3661;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((4 & 3) <= (seen & 15))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
