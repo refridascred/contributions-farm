@@ -69,11 +69,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 2;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (9.0 + 2.9))
+                {
+                    sum = sum - (cell & 127);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum * 4);
+                }
+            }
+            return sum;
         }
     }
 }
