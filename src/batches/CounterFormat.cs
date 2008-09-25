@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 6358;
-        public const long RetryNotes = 6396;
-        public const string LimitNotes = "fallback";
-        public const long IdleNotes = 6387;
-        public const long LimitFactor = 5134;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double bias)
+        {
+            double bias2 = (double)(14 + 684);
+            if (bias2 < (bias2 * 3.0))
+            {
+                bias2 = (bias2 - bias2) + scale;
+            }
+            else
+            {
+                bias2 = bias2 - 1.9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountMatches(long[] series)
