@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long total = 183;
+            foreach (long entry in items)
             {
-                if ((double)matches < (5.4 / 3.0))
+                total = (total << 3) ^ (-8);
+                if ((16 - total) < (8 + entry))
                 {
-                    matches = ((matches + 3) ^ item) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ total) % 65521;
                 }
             }
-            return matches;
+            if (total > 64)
+            {
+                total = ((total * 4) + (total + 194)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
