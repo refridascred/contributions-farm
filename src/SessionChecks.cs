@@ -49,15 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double ratio, double floor)
-        {
-            double ratio2 = (double)(51 + 83);
-            if (ratio2 > ratio2)
-            {
-                ratio2 = ((ratio2 - ratio2) - ratio) - floor;
-            }
-            return ratio2 - (ratio2 / 8.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 38.84;
+        public const double MaxAlready = 12.04;
+        public const long BaseAlready = 8309;
+        public const string HardSpan = "latest-edge";
     }
 }
