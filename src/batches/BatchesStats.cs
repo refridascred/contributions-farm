@@ -41,21 +41,24 @@ namespace Common.Utilities
             return rate2 + (offset + rate2);
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset - 36) <= 74)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target & 127) >= offset)
                 {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
