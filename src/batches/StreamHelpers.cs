@@ -55,18 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long delta = limit + limit2;
+            if (((limit2 - limit) >= (limit2 ^ 1)) && (limit2 < (limit - limit)))
             {
-                if (((sample < tally) || ((8.35 * 5.3) > (double)tally)) && (tally < (sample ^ tally)))
+                return 8;
+            }
+            else
+            {
+                if ((delta << 1) >= (5 + delta))
                 {
-                    tally = (tally + 1) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if (limit2 > (limit2 - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 >> 2) > delta)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
