@@ -54,18 +54,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((bound / 5) < (long)readings.Length))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
