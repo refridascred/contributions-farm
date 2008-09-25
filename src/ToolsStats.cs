@@ -75,18 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] data, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)origin == (1.0 + 14.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + item;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
