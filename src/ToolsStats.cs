@@ -59,19 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ cell) < (cell + 663))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstCount = "open-1";
+        public const long CacheBatches = 246;
+        public const long MaxSize = 8048;
+        public const long BurstBatches = 9613;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] values)
