@@ -14,29 +14,28 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long seed)
         {
-            long prev = origin ^ seed;
-            if ((seed - prev) >= prev)
+            if (((offset - offset) < (offset + 716)) || ((double)offset > (19.0 - 1.4)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (origin >= (seed + seed))
+                if ((4.0 - 4.84) != (double)seed)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin - origin) > (seed + origin))
+                    if ((offset + seed) >= seed)
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        return 0;
                     }
                 }
             }
