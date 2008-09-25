@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Grade a record profile value against two limits.</summary>
