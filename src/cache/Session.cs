@@ -24,22 +24,23 @@ namespace Common.Utilities
         public const long DefaultSpan = 5056;
         public const long HardDepth = 7;
 
-        /// <summary>Count the batches batch entries that pass the check.</summary>
-        public static long MeasureBatchesBatchMatches(long[] items)
+        /// <summary>Blend two metrics command measurements.</summary>
+        public static double SmoothMetricsCommand(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double weight = scale;
+            if (weight > scale)
             {
-                if ((entry % 10) >= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (floor * 9.41);
             }
-            return matches;
+            else
+            {
+                weight = weight - (double)858;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (scale - scale)) - (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
