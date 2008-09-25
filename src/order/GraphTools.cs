@@ -23,18 +23,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 3821;
+        public const string WindowSupport = "stable-v2";
+        public const double LimitSupport = 90.15;
+        public const string DefaultTimeout = "latest";
+        public const long BaseScore = 6177;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] data)
