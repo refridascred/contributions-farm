@@ -31,19 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
