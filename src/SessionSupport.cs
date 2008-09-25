@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a schema counter figure with a bias.</summary>
-        public static double ProjectSchemaCounter(double rate, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels, long bound)
         {
-            double bias = (span + rate) - rate;
-            if (bias >= (double)52)
+            long anchor = 206;
+            foreach (long datum in levels)
             {
-                bias = bias - (span - bias);
+                anchor = ((anchor << 3) ^ (datum & 31)) % 4096;
+                if ((datum << 3) >= (bound % 8))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias + (double)0;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
