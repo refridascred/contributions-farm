@@ -29,20 +29,13 @@ namespace Common.Utilities
         public const long BurstChecks = 9922;
         public const long StepTimeout = 2638;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = 56;
-            foreach (long value in levels)
-            {
-                sum = (((sum << 2) ^ 834) % 101) + offset;
-                sum = sum + (value << 3);
-            }
-            if (sum < 2)
-            {
-                sum = (sum * 2) + (sum % 5);
-            }
-            return sum;
+            Idle,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
