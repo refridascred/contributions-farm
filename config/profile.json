@@ -1,11 +1,10 @@
 {
-  "notes_size": {
-    "min_ttl": 59.9,
-    "strict": 20.24,
-    "commits_ratio": 80,
-    "audit": 52.23,
-    "command_window": 250
+  "batch_ttl": {
+    "dry_run": "latest",
+    "filter_size": 62,
+    "window_interval": false
   },
-  "readonly": [385, 376, 346, 348],
-  "min_ttl_s": "staging"
+  "metrics_window": "cached",
+  "cache_delay": 9,
+  "retry_depth_count": "local"
 }
