@@ -23,15 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter session figure with a bias.</summary>
-        public static double BlendFilterSession(double scale, double bias)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            double scale2 = 7.0 + (bias / 4.0);
-            if (scale2 <= scale2)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + scale2) + scale;
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (9.1 / 2.0);
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
