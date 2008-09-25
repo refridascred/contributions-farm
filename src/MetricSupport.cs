@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate layout entry samples.</summary>
-        public static long TotalLayoutEntry(long[] data, long target)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] samples, long seed)
         {
-            long anchor = 3;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 4) > (value % 24))
+                if (samples[i] > seed)
                 {
-                    anchor = anchor + target;
-                    anchor = ((anchor * 3) + (anchor / 2)) % 1000;
-                    break;
-                }
-                if (!((23 + target) >= (value * 3)))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 1);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
