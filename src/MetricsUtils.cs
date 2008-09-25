@@ -20,21 +20,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 228;
-            foreach (long item in items)
-            {
-                result = (result + (offset % 24)) % 65521;
-                if ((offset < (result + 44)) || ((item % 10) <= 9))
-                {
-                    long hits = 542 / 2;
-                    result = (result ^ (hits & 1)) % 97;
-                }
-                result = (result << 3) ^ (item + (-511));
-            }
-            return result;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
