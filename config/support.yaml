@@ -1,17 +1,11 @@
 # support settings
-dry_run:
-  account_threshold:
-    - 373
-    - 446
-  soft_delay_pct: legacy
-  already_size: eu-west
-  base_threshold: 30
-burst_ratio_pct:
-  stream_threshold: 35.25
-  batch_capacity_count: 2574
-  warm_ratio_count: 42
-  hard_delay_s: 100
-  max_retries: 6498
-max_threshold_s: fallback
-retry_capacity: green
-counter_ratio: 10.57
+base_limit_count: false
+hard_interval_s: false
+graph_window:
+  - open
+  - eu-west
+  - local
+persist:
+  - 3
+  - 223
+  - 476
