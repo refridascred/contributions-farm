@@ -52,21 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel editor value from a seed.</summary>
-        public static long IterateChannelEditor(long seed)
+        /// <summary>Fold a list of window batch readings.</summary>
+        public static long CombineWindowBatch(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long total = 6;
+            foreach (long item in levels)
             {
-                long edge = seed - (seed ^ carry);
-                carry = (carry ^ (edge << 1)) % 65521;
-                if ((carry * 5) > ((long)i + (long)i))
+                total = (total + item) % 101;
+                if (!(item < ((-743) & 1)))
                 {
-                    edge = edge + (4 & 255);
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
