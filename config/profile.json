@@ -1,9 +1,9 @@
 {
-  "retry_capacity": false,
-  "base_retries": {
-    "poll_retries_count": 45,
-    "base_delay": 64,
-    "idle_window": [261, 16, 270, 205]
+  "burst_ratio": 100,
+  "hard_timeout_count": {
+    "poll_depth": 3191,
+    "sync_timeout_ms": false,
+    "default_timeout_s": 59.69
   },
-  "githubfarm_size": 2898
+  "flush_interval_pct": "local"
 }
