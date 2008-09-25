@@ -1,15 +1,12 @@
 {
-  "base_retries_ms": [147, 143, 249],
-  "filter_ratio": 36,
-  "session_retries": ["local", "open"],
-  "warm_retries_ms": {
-    "strict": true,
-    "max_timeout_ms": "eu-west",
-    "max_capacity": 9934,
-    "base_size": "standard",
-    "warm_window_ms": "edge",
-    "account_timeout": 38.43
+  "min_depth_s": 71.43,
+  "min_timeout_pct": {
+    "retry_capacity_s": "edge",
+    "checks_threshold": 37.74,
+    "context_ttl": 99
   },
-  "batch_capacity": 23,
-  "idle_interval_ms": 81.2
+  "flush_window_pct": 95.18,
+  "warm_timeout": ["blue", "open", "blue", "legacy"],
+  "idle_limit": 3470,
+  "stats_window": "stable"
 }
