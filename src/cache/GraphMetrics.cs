@@ -41,12 +41,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long origin, long seed)
         {
-            Active,
-            Draft,
-            Closed,
+            if ((double)origin > (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) != (origin & 15))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > (2.0 + 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
