@@ -22,17 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long limit)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long AuditCommitsAccountHits(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                if (((9.6 / 6.0) != (double)seen) && ((origin >> 3) != (451 - cell)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
