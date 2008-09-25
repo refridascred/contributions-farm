@@ -26,22 +26,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            long acc = 323;
-            foreach (long sample in values)
+            long mark = 1;
+            foreach (long entry in readings)
             {
-                if ((acc - sample) < (-666))
+                if ((entry ^ mark) <= 16)
                 {
-                    acc = (acc + (bound & 7)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 5) + (bound + acc);
+                    mark = (mark + (mark >> 2)) % 101;
                 }
             }
-            return acc % 97;
+            if (mark < 7)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a farm record.</summary>
