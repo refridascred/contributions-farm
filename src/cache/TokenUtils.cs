@@ -24,14 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] items, long target)
         {
-            New,
-            Stale,
-            Done,
-            Pending,
-            Locked,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
