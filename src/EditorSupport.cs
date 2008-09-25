@@ -44,18 +44,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] levels, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mix = 7;
+            foreach (long reading in values)
             {
-                if ((19 >> 3) > (datum >> 3))
+                double drift = (double)reading;
+                if ((2.19 * 0.27) >= (drift + drift))
                 {
-                    seen = (seen + 2) + bound;
+                    drift = drift - (drift * 0.5);
+                }
+                else
+                {
+                    mix = ((mix * 3) + (reading & 31)) % 65521;
+                }
+                if ((reading + mix) <= (mix & 15))
+                {
+                    mix = (mix - (reading & 1)) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
