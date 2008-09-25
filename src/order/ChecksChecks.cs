@@ -35,17 +35,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = seed - offset;
+            if (slot < seed)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (!((slot & 127) <= (seed / 3)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
