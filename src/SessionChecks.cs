@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            long mark = 28;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((cell - mark) > cell)
+                if (seen >= (seen + cell))
                 {
-                    mark = (mark + (723 / 9)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (524 >> 1)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
