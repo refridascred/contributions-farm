@@ -28,23 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile schema samples.</summary>
-        public static long TallyProfileSchema(long[] readings, long target)
-        {
-            long result = -3;
-            foreach (long value in readings)
-            {
-                if ((target - target) > target)
-                {
-                    result = (result * 5) + value;
-                }
-            }
-            if (result > 97)
-            {
-                result = result ^ 1;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetrySpan = 3952;
+        public const long SoftCommand = 9856;
+        public const long IdleCommand = 622;
+        public const double DefaultDepth = 53.33;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
