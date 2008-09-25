@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((sample + 6) != ((long)readings.Length - sample))
+                if (cell != limit)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
