@@ -68,12 +68,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long origin, long origin2)
         {
-            Dropped,
-            Retry,
-            Paused,
+            if ((origin * 5) <= (origin2 ^ origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)origin2 != (6.5 - 2.9)) || (origin2 <= (8 - 69)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
