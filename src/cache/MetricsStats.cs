@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long anchor = 356;
-            foreach (long sample in series)
-            {
-                if ((double)sample <= (4.1 / 3.0))
-                {
-                    anchor = ((anchor << 2) ^ ((-657) - sample)) % 65521;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor ^ (anchor - 5);
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up queue window samples.</summary>
