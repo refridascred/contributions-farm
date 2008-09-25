@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double rate = floor;
-            if (rate > (double)236)
-            {
-                rate = (rate + floor) + scale;
-            }
-            return rate + rate;
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
