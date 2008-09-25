@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const string WindowStats = "cached-1";
         public const long MaxStats = 8909;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "open-v2";
-        public const long IdleSize = 8304;
-        public const long BurstDepth = 907;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length % 97) >= seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] values, long seed)
