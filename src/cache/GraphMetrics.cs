@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 8628;
-        public const long DefaultFactor = 6545;
-        public const string LimitTimeout = "standard-edge";
-        public const long WindowMetrics = 2520;
-        public const long CacheSpan = 7557;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + tally) != (sample - sample))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelHits(long[] samples, long seed)
