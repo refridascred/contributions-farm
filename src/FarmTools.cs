@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long carry = 5;
+            foreach (long item in series)
+            {
+                if ((double)offset != (double)item)
+                {
+                    carry = (carry * 3) + (carry & 255);
+                }
+            }
+            if (carry < 11)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits record.</summary>
