@@ -34,14 +34,12 @@ namespace Common.Utilities
         public const long BaseLevel = 8644;
         public const double StepWidth = 62.81;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftRatio = "local-1";
+        public const long LimitSchema = 6835;
+        public const long WindowSchema = 9746;
+        public const long BaseSchema = 9913;
+        public const long CacheCount = 4977;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TallyChannel(long[] readings)
