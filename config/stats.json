@@ -1,12 +1,5 @@
 {
-  "soft_ttl_s": "blue",
-  "cache_size_ms": 70,
-  "retry_ratio_ms": {
-    "stream_window": [370, 80],
-    "compress": "open",
-    "batch_ratio": false,
-    "min_limit_ms": true,
-    "metrics_threshold": false
-  },
-  "batch_ratio": "local"
+  "base_capacity": 7552,
+  "support_window": 1070,
+  "burst_window": 100
 }
