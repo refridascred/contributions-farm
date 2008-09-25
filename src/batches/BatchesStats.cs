@@ -22,24 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a record filter reading.</summary>
-        public static double ScaleRecordFilter(double rate, double offset)
-        {
-            double rate2 = (double)93 * 3.0;
-            if (rate2 < 9.6)
-            {
-                rate2 = rate2 + (offset - rate);
-            }
-            else
-            {
-                rate2 = rate2 - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - (rate2 + offset)) - (double)(long)i;
-            }
-            return rate2 + (offset + rate2);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "staging-v2";
+        public const long BatchCount = 9640;
+        public const double DefaultRatio = 54.61;
+        public const long StepFactor = 4700;
+        public const string BurstRatio = "staging";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long target, long offset)
