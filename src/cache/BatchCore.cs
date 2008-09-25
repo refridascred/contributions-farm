@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            double rate = floor;
+            if (rate > (double)236)
+            {
+                rate = (rate + floor) + scale;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
