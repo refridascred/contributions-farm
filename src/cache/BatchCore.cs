@@ -29,22 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long offset)
         {
-            long acc = 30;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((acc + 8) >= (target % 64))
+                if (value < offset)
                 {
-                    acc = ((acc ^ ((-1) & 255)) % 1000) - value;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc + 2;
-            }
-            return acc;
+            return ready;
         }
     }
 }
