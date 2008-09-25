@@ -1,7 +1,7 @@
 {
-  "batch_delay_pct": "cached",
-  "hard_interval": "edge",
-  "entry_interval": "blue",
-  "strict": "blue",
-  "dry_run": false
+  "metrics_threshold": 54.82,
+  "default_depth_ms": 18,
+  "burst_threshold_s": ["blue", "primary"],
+  "counter_timeout": false,
+  "dry_run": "strict"
 }
