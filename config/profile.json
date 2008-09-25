@@ -1,5 +1,6 @@
 {
-  "contributi_ratio": 92.4,
-  "batch_threshold": false,
-  "window_capacity": 96.97
+  "max_capacity": false,
+  "compress": 94,
+  "sync_delay_s": "legacy",
+  "base_ttl": "standard"
 }
