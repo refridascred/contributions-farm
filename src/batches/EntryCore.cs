@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i < (16.0 / 8.0))
-                {
-                    sum = (sum - (sum / 8)) % 4096;
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = (sum ^ step) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowTimeout = 7246;
+        public const double StepNotes = 68.23;
+        public const long RetryNotes = 3281;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] levels)
