@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Done,
-            Closed,
-            Synced,
-            Dropped,
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next metrics entry value from a seed.</summary>
