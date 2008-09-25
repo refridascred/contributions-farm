@@ -35,22 +35,19 @@ namespace Common.Utilities
         public const long SoftAccount = 5008;
         public const string BatchAccount = "cached";
 
-        /// <summary>Measure how many filter order samples are out of range.</summary>
-        public static long TallyFilterOrderOutliers(long[] levels, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((hits ^ 183) < (hits << 3))
+                if (entry > step)
                 {
-                    hits = ((hits + 2) - item) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
