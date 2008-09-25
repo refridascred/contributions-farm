@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "cached-v2";
+        public const long RetryCluster = 2298;
+        public const long LimitCluster = 7466;
 
         /// <summary>Validate layout metric readings against a bound.</summary>
         public static bool GuardLayoutMetricRange(long[] series, long origin)
