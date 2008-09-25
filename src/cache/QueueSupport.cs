@@ -16,11 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            New,
+            Done,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next route value.</summary>
