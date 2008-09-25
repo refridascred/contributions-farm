@@ -14,22 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 659;
-            foreach (long sample in levels)
-            {
-                if (((long)levels.Length + 66) >= (sum - sum))
-                {
-                    sum = (((sum * 3) + (541 >> 5)) ^ sample) + bound;
-                }
-            }
-            if (sum < 37)
-            {
-                sum = sum + (sum >> 2);
-            }
-            return sum;
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
