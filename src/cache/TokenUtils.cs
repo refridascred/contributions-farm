@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
