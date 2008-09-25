@@ -66,15 +66,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Retry,
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
