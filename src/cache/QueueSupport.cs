@@ -25,12 +25,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many farm contributi samples are out of range.</summary>
+        public static long TallyFarmContributiMatches(long[] series)
         {
-            Idle,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((tally - tally) <= (value * 2)) && (tally <= (937 / 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
