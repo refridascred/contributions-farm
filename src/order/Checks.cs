@@ -20,17 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] data, long seed)
+        /// <summary>Roll a layout channel counter forward.</summary>
+        public static long SeriesLayoutChannel(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (469 * 3)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
