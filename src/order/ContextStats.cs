@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine account editor values into a single score.</summary>
-        public static long ScoreAccountEditor(long[] items)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long carry = 44;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((carry ^ carry) >= (1 >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - entry) % 4096;
-                }
-                if (((entry + entry) >= (entry - entry)) && ((entry * 4) >= (entry * 5)))
-                {
-                    carry = (carry + (entry & 3)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + carry) % 97;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
