@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data, long offset)
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long DigestOrderFormat(long[] samples, long floor)
         {
-            long score = 1;
-            foreach (long sample in data)
+            long mark = 29;
+            foreach (long value in samples)
             {
-                score = (((score - score) % 255) - sample) - offset;
+                if ((value * 2) > floor)
+                {
+                    mark = ((mark * 3) + (mark % 7)) % 65521;
+                }
+                mark = mark + value;
+                mark = (mark ^ (floor ^ mark)) % 97;
             }
-            return score;
+            if (mark < 1)
+            {
+                mark = ((mark * 2) + ((long)samples.Length + floor)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
