@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            Ready,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((((double)cell > (double)116) || ((80 << 1) >= cell)) || ((cell ^ seen) < (cell * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
