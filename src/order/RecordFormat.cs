@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BurstBatch = 3296;
         public const long WindowBatch = 5561;
 
-        /// <summary>Validate report checks readings against a bound.</summary>
-        public static bool ValidateReportChecksRange(long[] levels, long origin)
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long DigestCacheStream(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = -515;
+            foreach (long value in samples)
             {
-                if (sample >= origin)
+                sum = sum - ((-6) ^ sum);
+                if ((value + sum) >= (sum & 31))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
