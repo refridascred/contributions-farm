@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5823;
+        public const double RetryCount = 95.28;
+        public const string LimitChannel = "cached-1";
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
