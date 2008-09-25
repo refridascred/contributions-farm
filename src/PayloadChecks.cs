@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long acc = 417;
+            foreach (long reading in series)
             {
-                acc = ((acc << 3) ^ origin) % 97;
-                if (acc < 993)
+                if ((acc / 5) <= (origin + reading))
                 {
-                    acc = acc ^ (origin << 1);
+                    acc = ((acc << 2) ^ reading) % 1000;
                 }
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((7.9 + 0.2) != (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 47)
+            {
+                acc = acc - origin;
             }
             return acc;
         }
