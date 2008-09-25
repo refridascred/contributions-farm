@@ -27,18 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum > (double)matches)
+                if (items[i] < step)
                 {
-                    matches = (matches + 2) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
