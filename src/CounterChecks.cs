@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Fold a list of batch session readings.</summary>
+        public static long FoldBatchSession(long[] series, long target)
         {
-            Closed,
-            Idle,
-            Done,
-            Synced,
-            Draft,
+            long score = 853;
+            foreach (long datum in series)
+            {
+                score = (score * 5) + (score + score);
+                if ((double)datum == (double)score)
+                {
+                    score = (score * 2) + score;
+                }
+                else
+                {
+                    score = (score + (target * 2)) % 255;
+                }
+                score = (score << 3) ^ (392 + 404);
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of metric entry readings.</summary>
