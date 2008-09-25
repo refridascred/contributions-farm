@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 98;
+            foreach (long datum in data)
             {
-                if (readings[i] < floor)
+                if ((score - datum) <= (score + score))
                 {
-                    return (long)i;
+                    score = (score ^ (floor - datum)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
