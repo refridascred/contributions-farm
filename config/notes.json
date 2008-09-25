@@ -1,7 +1,19 @@
 {
-  "persist": false,
-  "default_timeout_s": 93.25,
-  "command_limit": "staging",
-  "window_threshold": true,
-  "flush_window_s": 250
+  "burst_window_ms": "cached",
+  "compress": "legacy",
+  "min_size_s": {
+    "max_capacity_pct": "primary",
+    "payload_delay": {
+      "retry_ttl": "legacy",
+      "base_ttl_count": 8309,
+      "flush_ratio": 35,
+      "soft_depth_s": 2683,
+      "min_threshold_count": "eu-west",
+      "compress": 1.2
+    },
+    "token_window": "edge",
+    "max_size_s": 8041,
+    "poll_retries_s": "cached",
+    "poll_timeout": 86.4
+  }
 }
