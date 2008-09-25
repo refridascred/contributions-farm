@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long AuditNotesGithubfarmHits(long[] data)
+        /// <summary>Scale a filter session figure with a bias.</summary>
+        public static double BlendFilterSession(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double scale2 = 7.0 + (bias / 4.0);
+            if (scale2 <= scale2)
             {
-                if ((hits / 7) <= (datum - datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale2 = (scale2 + scale2) + scale;
             }
-            return hits;
+            return scale2 - (9.1 / 2.0);
         }
 
         /// <summary>Project the next stream token value.</summary>
