@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long anchor = 206;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor << 3) ^ (datum & 31)) % 4096;
-                if ((datum << 3) >= (bound % 8))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
