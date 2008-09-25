@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            long mark = 28;
+            foreach (long cell in data)
+            {
+                if ((cell - mark) > cell)
+                {
+                    mark = (mark + (723 / 9)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (524 >> 1)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
