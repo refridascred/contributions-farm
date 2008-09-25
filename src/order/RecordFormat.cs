@@ -21,15 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long mark = 9;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark + (value ^ value)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a batches info.</summary>
