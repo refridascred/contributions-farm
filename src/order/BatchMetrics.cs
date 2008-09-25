@@ -72,18 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count > (count * 4))
-                {
-                    count = ((count + 1) + datum) + limit;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Ready,
+            Queued,
         }
     }
 }
