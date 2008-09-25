@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((hits <= (cell * 4)) && ((3 % 60) != (hits & 255))) && ((1.0 * 9.87) > (double)hits))
+                if ((tally + (long)values.Length) <= tally)
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 2) + cell) - seed;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a farm info.</summary>
