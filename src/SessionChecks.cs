@@ -22,21 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long ScoreQueueFilter(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 439;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((result + reading) > (result + result)) && ((result + result) > (result << 2)))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - 789) % 255;
+                }
+                else
+                {
+                    result = (result ^ (reading + reading)) % 1000;
+                }
+                if ((86 - result) > result)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
