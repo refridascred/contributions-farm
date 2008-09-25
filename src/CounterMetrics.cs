@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchTimeout = 7495;
-        public const long IdleMetric = 8991;
-        public const long DefaultSpan = 9650;
-        public const double DefaultInterval = 97.94;
-        public const long MinMetric = 3824;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double rate, double offset)
