@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((12.0 + 1.6) == (double)tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 8662;
+        public const long BaseRatio = 1955;
+        public const long SoftScore = 5041;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 7152;
