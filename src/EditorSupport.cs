@@ -67,19 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long acc = 8;
-            foreach (long cell in levels)
-            {
-                acc = acc + cell;
-            }
-            if (acc < (-38))
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc;
+            Locked,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
