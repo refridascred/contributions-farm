@@ -28,32 +28,13 @@ namespace Common.Utilities
         public const double MaxNotes = 79.28;
         public const long MaxInterval = 5587;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long next = offset ^ step;
-            if ((next < 983) || (step >= (next % 8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step / 6) < (offset + offset)) && (offset <= next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next + 5) == (next << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
