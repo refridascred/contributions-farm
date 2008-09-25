@@ -1,15 +1,6 @@
 {
-  "entry_capacity": "standard",
-  "warm_depth_count": 500,
-  "readonly": {
-    "readonly": {
-      "default_interval_ms": 89.74,
-      "idle_size": 22,
-      "layout_delay": false
-    },
-    "min_window_count": 8090,
-    "metrics_limit": "latest",
-    "strict": 43.33
-  },
-  "flush_timeout_s": 20.7
+  "batch_size_s": 8,
+  "session_ratio": "stable",
+  "dry_run": true,
+  "base_capacity_ms": 100
 }
