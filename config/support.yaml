@@ -1,12 +1,8 @@
 # support settings
-warm_limit_pct: false
-githubfarm_window:
-  window_retries:
-    base_timeout_count: 87.1
-    hard_interval: 60
-    hard_threshold: 1024
-  flush_capacity_s: strict
-  filter_limit: blue
-  batch_ratio: 43.51
-window_timeout: 7764
-max_size_count: 2926
+warm_window_pct:
+  - cached
+  - edge
+  - eu-west
+  - strict
+buffer_capacity: true
+contributi_timeout: green
