@@ -54,12 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryBudget = 5901;
-        public const double CacheLayout = 39.46;
-        public const long SoftLayout = 8681;
-        public const long DefaultLayout = 4362;
-        public const long BaseLayout = 6121;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every layout account entry stays within the limit.</summary>
         public static bool ValidateLayoutAccountLimits(long[] readings, long limit)
