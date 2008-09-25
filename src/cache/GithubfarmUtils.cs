@@ -43,22 +43,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
+        /// <summary>Combine account channel values into a single score.</summary>
+        public static long ScoreAccountChannel(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 8;
+            foreach (long item in series)
             {
-                if ((seen & 63) > (2 / 5))
-                {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = anchor ^ item;
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
