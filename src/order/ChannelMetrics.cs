@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] series, long target)
         {
-            long total = 585;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = total - (total + (long)values.Length);
-                total = total + (301 & 31);
-                if (target > (8 - datum))
+                if (((entry + target) < matches) && (6 > (matches % 2)))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (total > 73)
-            {
-                total = ((total << 3) ^ ((long)values.Length % 7)) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
