@@ -35,19 +35,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] values, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double offset)
         {
-            long acc = 61;
-            foreach (long datum in values)
+            double load = 3.6;
+            if (load > (double)96)
             {
-                if (!(acc >= (datum & 127)))
-                {
-                    acc = (acc + (acc * 5)) % 255;
-                }
-                acc = (acc + (bound - bound)) % 1000;
+                load = load - 9.2;
             }
-            return acc;
+            else
+            {
+                load = load + (rate * 14.0);
+            }
+            return load - offset;
         }
     }
 }
