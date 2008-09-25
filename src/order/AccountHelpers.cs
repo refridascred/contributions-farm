@@ -27,38 +27,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            if ((target / 3) != (target ^ 310))
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (bound & 255))
+                if (!!((6 % 8) > (acc - 229)))
                 {
-                    return 6;
+                    acc = acc + (floor + floor);
                 }
-                else
-                {
-                    if ((target - 61) == (bound / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target + bound) <= (target * 5)) && (bound >= (965 << 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
