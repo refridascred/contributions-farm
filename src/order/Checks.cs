@@ -58,19 +58,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((328 - bound) >= (origin - origin))
             {
-                if (reading < limit)
+                return 4;
+            }
+            else
+            {
+                if ((bound / 2) < (979 >> 3))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
     }
 }
