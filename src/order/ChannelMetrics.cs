@@ -34,15 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double drift = (ratio - ratio) + (double)40;
-            if (drift >= (bias / 4.0))
-            {
-                drift = drift - bias;
-            }
-            return drift - (double)167;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
