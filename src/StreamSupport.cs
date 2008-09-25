@@ -37,21 +37,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
-            {
-                long next = target;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    next = (((next * 3) + (target + next)) % 97) ^ (long)i2;
-                }
-                anchor = (anchor + (next ^ next)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultScore = 7428;
+        public const double SoftWidth = 2.68;
+        public const long DefaultContext = 249;
     }
 }
