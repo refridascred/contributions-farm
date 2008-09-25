@@ -1,6 +1,7 @@
 {
-  "format_capacity": ["open", "staging"],
-  "base_window": false,
-  "dry_run": true,
-  "idle_depth_ms": false
+  "cache_interval": 56.54,
+  "graph_capacity": "local",
+  "min_interval_pct": 13.21,
+  "audit": "latest",
+  "sync_interval_s": "eu-west"
 }
