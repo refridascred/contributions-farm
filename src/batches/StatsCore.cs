@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long OverlapStreamEditorCount(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long bound, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound * 2) <= (bound + limit)) || ((limit * 3) <= bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit - bound) > bound)
                 {
-                    if ((readings[i] + readings[j]) == 8)
+                    return 7;
+                }
+                else
+                {
+                    if (((bound - limit) <= bound) && ((74 >> 2) > (limit ^ bound)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up already metrics samples.</summary>
