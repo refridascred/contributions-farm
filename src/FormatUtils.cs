@@ -56,22 +56,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long WeighCounterSupport(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 152;
-            foreach (long value in levels)
-            {
-                if (((-432) < (value >> 3)) && ((3.0 / 5.0) > (double)value))
-                {
-                    score = (score + (score / 5)) % 101;
-                }
-            }
-            if (score > 80)
-            {
-                score = (score - (score << 2)) % 4096;
-            }
-            return score % 65521;
+            Dropped,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the notes level values.</summary>
