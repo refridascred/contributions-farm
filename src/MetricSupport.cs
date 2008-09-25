@@ -20,12 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            Locked,
-            Pending,
-            Closed,
+            double gain = (double)(569 * 2);
+            if (gain <= (gain + offset))
+            {
+                gain = gain - ratio;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Describe the commits mode values.</summary>
