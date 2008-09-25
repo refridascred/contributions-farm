@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] values, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the schema status values.</summary>
