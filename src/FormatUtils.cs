@@ -77,18 +77,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi cluster entries that pass the check.</summary>
-        public static long CountContributiClusterGaps(long[] series)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count != (7.88 - 6.3))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Closed,
         }
     }
 }
