@@ -1,18 +1,7 @@
 {
-  "profile_window": "stable",
-  "poll_size_s": {
-    "poll_timeout_pct": 1024,
-    "hard_delay_count": ["primary", "staging", "cached", "primary"],
-    "soft_timeout": {
-      "sync_ratio_pct": "open",
-      "enabled": false,
-      "support_size": false
-    },
-    "verbose": "local",
-    "sync_window": "stable"
-  },
-  "stats_size": "staging",
-  "enabled": ["fallback", "primary", "legacy"],
-  "poll_limit_ms": 30,
-  "record_interval": 35.54
+  "persist": false,
+  "default_timeout_s": 93.25,
+  "command_limit": "staging",
+  "window_threshold": true,
+  "flush_window_s": 250
 }
