@@ -1,17 +1,11 @@
 {
-  "max_threshold": "latest",
-  "compress": [97, 405, 289],
-  "dry_run": [310, 325],
-  "poll_delay": {
-    "metric_window": {
-      "warm_threshold": "eu-west",
-      "soft_interval": ["local", "eu-west"],
-      "idle_window": "standard",
-      "hard_threshold_s": "strict"
-    },
-    "verbose": 60,
-    "burst_interval_pct": ["local", "local"],
-    "burst_retries": 500
+  "min_window_ms": "edge",
+  "batches_window": {
+    "max_ratio": 57.24,
+    "commits_interval": 13.13,
+    "warm_size": true,
+    "flush_ttl_s": 19
   },
-  "min_limit": [474, 149]
+  "dry_run": "cached",
+  "stream_delay": "open"
 }
