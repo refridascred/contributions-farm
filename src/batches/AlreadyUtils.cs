@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long floor)
         {
-            long total = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)total < (16.0 * 1.8)) || ((double)total < 9.84))
+                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
                 {
-                    total = ((total ^ 51) % 255) + limit;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total ^ (4 - total);
-                }
-                total = (total - cell) % 1000;
-                total = (total - total) % 255;
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
