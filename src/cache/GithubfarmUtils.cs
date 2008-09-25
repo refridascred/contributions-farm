@@ -33,17 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Fold a list of command readings.</summary>
