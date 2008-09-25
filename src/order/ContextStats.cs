@@ -52,25 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long bound)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long CombineBatchesBatch(long[] values, long floor)
         {
-            long step = floor ^ bound;
-            if ((double)step > (double)floor)
+            long score = 654;
+            foreach (long entry in values)
             {
-                return 4;
+                score = (score - (floor + entry)) % 4096;
             }
-            else
-            {
-                if (step <= (floor << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score % 65521;
         }
     }
 }
