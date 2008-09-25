@@ -54,11 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6368;
-        public const long WindowAccount = 9686;
-        public const long BaseAccount = 6928;
-        public const long StepLevel = 3523;
-        public const string DefaultBudget = "staging-edge";
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
