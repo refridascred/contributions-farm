@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] items, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
