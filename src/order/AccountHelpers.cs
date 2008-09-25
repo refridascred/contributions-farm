@@ -54,22 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 9860;
+        public const long DefaultTimeout = 333;
+        public const long BatchFactor = 4914;
+        public const string MinCount = "local-1";
+        public const string CacheCount = "fallback-v2";
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
