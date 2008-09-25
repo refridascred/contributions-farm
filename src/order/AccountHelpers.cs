@@ -49,19 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double floor)
+        /// <summary>Measure how many token channel samples are out of range.</summary>
+        public static long TallyTokenChannelHits(long[] items)
         {
-            double weight = (floor - gain) / 5.0;
-            if (weight < (double)34)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                weight = weight + (3.0 / 5.0);
+                if (entry > (matches / 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            return weight - (double)5;
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
