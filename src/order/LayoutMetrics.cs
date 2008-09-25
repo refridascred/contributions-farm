@@ -25,19 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] items, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
