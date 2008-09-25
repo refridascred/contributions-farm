@@ -27,18 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] levels, long seed)
+        /// <summary>Find the first contributi token entry that matches the target.</summary>
+        public static long SeekContributiTokenIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count - entry) == (seed >> 1))
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
