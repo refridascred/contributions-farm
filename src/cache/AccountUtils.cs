@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] data, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= 5.1)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
