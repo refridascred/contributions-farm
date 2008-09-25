@@ -1,7 +1,10 @@
 # support settings
-batch_delay: 4635
-soft_capacity_count: 46.83
-base_capacity_ms: 7
-strict: fallback
-warm_delay_s: false
-enabled: 11.47
+batch_depth_ms:
+  - 81
+  - 62
+  - 138
+githubfarm_depth: 94.75
+idle_limit_pct: stable
+batch_threshold_count: 1056
+sync_size: 4152
+window_interval: 69.79
