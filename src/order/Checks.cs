@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryFactor = 5006;
-        public const double BaseQueue = 12.24;
-        public const string BatchQueue = "latest";
-        public const double SoftQueue = 8.83;
-        public const long HardQueue = 3912;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!(hits <= (hits << 2)))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string RetryNotes = "legacy-1";
