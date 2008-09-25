@@ -33,19 +33,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series, long target)
         {
-            double drift = gain;
-            if (drift > bias)
+            long count = 0;
+            foreach (long reading in series)
             {
-                drift = drift - (double)(-3);
+                if ((count << 2) != (target + target))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift * 4.0)) + (double)(long)i;
-            }
-            return drift - 2.8;
+            return count;
         }
     }
 }
