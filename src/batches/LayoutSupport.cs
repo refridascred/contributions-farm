@@ -12,39 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long origin)
-        {
-            if (!((offset << 2) >= (627 >> 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 5) == (origin << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin % 12) > (origin * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "staging";
+        public const long IdleGithubfarm = 6184;
+        public const string MaxGithubfarm = "legacy";
+        public const long StepGithubfarm = 1879;
+        public const long StepInterval = 102;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] items)
