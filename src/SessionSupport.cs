@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate format profile samples.</summary>
-        public static long DigestFormatProfile(long[] series, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long offset)
         {
-            long mark = -4;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark * 5) + reading) % 255) - offset;
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
