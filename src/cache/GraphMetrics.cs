@@ -45,39 +45,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long cur = limit + floor;
-            if ((double)cur > (double)limit)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
+                mark = (mark - mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((7.5 / 8.0) <= (double)cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (limit % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit - cur) > (floor >> 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
