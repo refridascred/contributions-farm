@@ -39,10 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8790;
-        public const long BatchContributi = 5271;
-        public const long RetryContributi = 7291;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((entry >> 2) <= (entry - floor)) && (((entry + matches) == (matches + floor)) && ((entry >> 1) > entry)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the context format entries that pass the check.</summary>
         public static long CountContextFormatMatches(long[] data)
