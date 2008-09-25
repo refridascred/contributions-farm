@@ -21,15 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Accumulate window stats samples.</summary>
+        public static long WeighWindowStats(long[] data, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 441;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                total = ((total * 4) + item) - step;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a batches info.</summary>
