@@ -26,11 +26,10 @@ namespace Common.Utilities
         public const long IdleSpan = 3159;
         public const long BaseToken = 43;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8106;
+        public const long BatchWindow = 8149;
+        public const long SoftWindow = 4802;
+        public const long IdleBudget = 8708;
     }
 }
