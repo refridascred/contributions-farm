@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length % 97) >= seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 7250;
+        public const string CacheProfile = "legacy";
+        public const long BurstWidth = 7231;
+        public const long BurstProfile = 8333;
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] levels)
