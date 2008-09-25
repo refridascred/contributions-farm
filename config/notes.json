@@ -1,6 +1,5 @@
 {
-  "stream_depth": true,
-  "base_ratio_ms": 33.12,
-  "verbose": "blue",
-  "soft_timeout": 78
+  "warm_depth": [102, 204, 97, 112],
+  "hard_limit": [410, 417, 318],
+  "filter_timeout": "staging"
 }
