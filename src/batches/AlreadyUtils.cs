@@ -76,26 +76,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] levels, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] samples, long limit)
         {
-            long acc = 78;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((origin * 5) == (origin / 9))
+                if (cell < limit)
                 {
-                    acc = acc ^ (sample * 3);
-                }
-                else
-                {
-                    acc = (acc * 3) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 76)
-            {
-                acc = ((acc << 2) ^ origin) % 4096;
-            }
-            return acc;
+            return flag;
         }
     }
 }
