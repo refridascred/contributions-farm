@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            Queued,
-            Draft,
-            Ready,
-            Pending,
+            double scale2 = (double)284 - (floor * 6.42);
+            if (scale2 < (floor * 5.7))
+            {
+                scale2 = (scale2 - (floor * 14.0)) + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + 7.9) + (double)(long)i;
+            }
+            return scale2 - (double)830;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
