@@ -14,24 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long limit)
         {
-            long anchor = 805;
-            foreach (long cell in samples)
+            long anchor = -907;
+            foreach (long item in series)
             {
-                anchor = anchor ^ bound;
-                anchor = ((anchor << 2) ^ (cell % 64)) % 4096;
-                if (!((8.92 + 7.0) > (double)bound))
+                if ((anchor / 3) <= (limit / 9))
                 {
-                    anchor = ((anchor * 2) + (bound << 3)) % 65521;
+                    anchor = ((anchor * 3) + (limit ^ anchor)) ^ item;
+                }
+                if ((15 >> 4) >= limit)
+                {
+                    anchor = anchor - (anchor >> 3);
                 }
             }
-            if (anchor > 577)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
