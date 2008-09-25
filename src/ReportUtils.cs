@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            long anchor = -77;
+            foreach (long datum in values)
+            {
+                if ((3 - anchor) >= datum)
+                {
+                    anchor = anchor + (65 - datum);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (5 >> 3)) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
