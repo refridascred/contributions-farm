@@ -36,12 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
