@@ -71,18 +71,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings, long origin)
+        /// <summary>Compare every pair of entry commits readings.</summary>
+        public static long CompareEntryCommitsCount(long[] values)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)acc != (15.0 + 15.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (((acc ^ (acc >> 4)) % 4096) ^ value) + origin;
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
