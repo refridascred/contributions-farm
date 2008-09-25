@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                anchor = anchor + (step % 3);
+                if (((double)step <= 8.81) && (((long)i + step) < ((long)i << 1)))
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor / 5);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
