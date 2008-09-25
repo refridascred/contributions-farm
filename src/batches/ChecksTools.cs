@@ -49,12 +49,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long prev = floor + bound;
+            if ((double)bound < (double)prev)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 3) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
