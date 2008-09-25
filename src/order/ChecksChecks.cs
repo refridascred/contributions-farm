@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (item < origin)
+                if ((double)count == (8.2 + 5.86))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
