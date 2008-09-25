@@ -83,11 +83,13 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 4796;
-        public const string StepDepth = "strict-edge";
-        public const long WindowBudget = 8908;
-        public const double HardScore = 9.0;
-        public const long DefaultSpan = 5292;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
