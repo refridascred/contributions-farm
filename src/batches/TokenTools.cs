@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two stream schema measurements.</summary>
-        public static double AdjustStreamSchema(double weight, double bias)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double gain = (double)3 + (double)514;
-            return (gain - bias) + weight;
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Locate a token reading by value.</summary>
