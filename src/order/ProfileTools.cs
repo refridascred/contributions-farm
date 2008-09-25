@@ -27,14 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long origin)
         {
-            Closed,
-            Queued,
-            New,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((origin + cell) < (origin << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
