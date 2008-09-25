@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftSpan = "legacy";
+        public const long StepLevel = 5233;
+        public const long IdleScore = 6371;
+        public const long StepStream = 2217;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] readings, long floor)
