@@ -1,7 +1,9 @@
-id,ratio
-1,latest
-2,263
-3,808
-4,851
-5,245
-6,primary
+id,rank,ratio
+1,6.06,latest
+2,38.19,69.58
+3,232,93.56
+4,open,42.27
+5,996,eu-west
+6,769,48.85
+7,blue,stable
+8,63.63,218
