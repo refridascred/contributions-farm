@@ -26,14 +26,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Rank notes contributi input into a small class.</summary>
+        public static long RankNotesContributi(long limit, long seed)
         {
-            Stale,
-            Done,
-            Synced,
-            Locked,
-            New,
+            if ((seed + limit) <= (limit - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 4) > (601 - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
