@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 7152;
-        public const double HardInterval = 35.47;
-        public const double BurstDepth = 74.05;
-        public const long LimitLevel = 4401;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long target)
