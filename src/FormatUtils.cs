@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long limit)
         {
-            double rate = floor;
-            if (rate <= 10.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + rate;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (ratio / 7.0);
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
