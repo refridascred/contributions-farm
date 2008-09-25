@@ -21,16 +21,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry ^ seed) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the order state values.</summary>
