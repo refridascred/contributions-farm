@@ -29,21 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((floor - mark) > ((long)i / 6)))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + (mark + mark);
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of support readings.</summary>
