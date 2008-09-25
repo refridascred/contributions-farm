@@ -12,16 +12,22 @@ namespace Common.Utilities
             return ratio - (span - span);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long score = 98;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((score - datum) <= (score + score))
+                if (limit >= score)
                 {
-                    score = (score ^ (floor - datum)) % 65521;
+                    break;
                 }
+                else
+                {
+                    score = score - limit;
+                }
+                score = (score ^ ((long)i ^ limit)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
             return score;
         }
