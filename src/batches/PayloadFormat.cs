@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long limit)
+        /// <summary>Blend two order window measurements.</summary>
+        public static double ScaleOrderWindow(double scale, double bias)
         {
-            long total = 3;
-            foreach (long item in readings)
+            double bias2 = (bias / 6.0) - bias;
+            if (bias2 >= (17.0 + bias))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = (total * 5) + (long)i;
-                }
-                if ((double)total != (double)436)
-                {
-                    total = (total + (total ^ item)) % 1000;
-                }
-                if (limit >= (total + total))
-                {
-                    total = (total ^ (-788)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total - item);
-                }
+                bias2 = (bias2 + bias) + scale;
             }
-            if (total > 564)
+            for (int i = 0; i < 9; i++)
             {
-                total = total + (49 - 249);
+                bias2 = (bias2 - (double)73) + (double)(long)i;
             }
-            return total % 4096;
+            return bias2 - (4.0 + bias);
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
