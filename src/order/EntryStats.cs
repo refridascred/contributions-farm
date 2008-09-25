@@ -59,11 +59,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
