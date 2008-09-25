@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark + mark) != (bound - 618))
+                {
+                    mark = (mark + mark) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank already input into a small class.</summary>
