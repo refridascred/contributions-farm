@@ -1,7 +1,4 @@
 # support settings
-default_timeout_ms: green
-burst_capacity: 6484
-token_threshold: green
-strict: 30
-batch_limit_ms: true
-compress: primary
+readonly: 17.06
+sync_window_ms: local
+enabled: staging
