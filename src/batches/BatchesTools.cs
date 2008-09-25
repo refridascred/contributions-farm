@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] values, long floor)
         {
-            double rate = (double)((-6) - 825);
-            if (rate > (rate * 8.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                rate = rate - (gain + gain);
+                if ((value ^ floor) == (value - value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate - span;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
