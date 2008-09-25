@@ -15,11 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowTimeout = 6422;
-        public const double StepQueue = 0.86;
-        public const double BaseQueue = 21.97;
-        public const long RetryRatio = 7551;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Active,
+            New,
+            Retry,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
