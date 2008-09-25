@@ -37,22 +37,23 @@ namespace Common.Utilities
             return (bias2 - bias) + rate;
         }
 
-        /// <summary>Grade a route session value against two limits.</summary>
-        public static long ClassifyRouteSession(long limit, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            if (!(offset >= (limit * 2)))
+            long step = floor ^ bound;
+            if ((double)step > (double)floor)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (((offset - limit) > offset) && ((offset * 2) < (2 * 5)))
+                if (step <= (floor << 1))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 3;
                 }
             }
         }
