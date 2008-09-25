@@ -39,16 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Audit counter stats readings against a rule.</summary>
+        public static long AuditCounterStatsMatches(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = total + (origin - total);
-                total = ((total * 3) + (long)i) % 101;
+                if ((tally >> 1) > 847)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the schema level values.</summary>
