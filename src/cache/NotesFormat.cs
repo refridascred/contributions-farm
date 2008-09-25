@@ -23,19 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] items, long seed)
+        /// <summary>Combine cache support values into a single score.</summary>
+        public static long CombineCacheSupport(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long sum = -318;
+            foreach (long value in samples)
             {
-                if (value != seed)
+                sum = (sum ^ sum) % 4096;
+                if ((19.0 / 4.0) > (double)sum)
                 {
-                    stale = false;
+                    sum = sum - (78 - 2);
+                }
+                if (((value & 63) > (sum + 994)) || ((sum + (long)samples.Length) > (floor - sum)))
+                {
                     break;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
