@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double span)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long bound)
         {
-            double ratio = (span / 9.0) + span;
-            if (ratio > ratio)
+            long next = origin + bound;
+            if (origin < bound)
             {
-                ratio = ratio + (8.91 - bias);
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if ((origin < next) || ((double)next != (7.1 - 3.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio - bias;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
