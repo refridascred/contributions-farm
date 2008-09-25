@@ -1,47 +1,9 @@
 # entry settings
-burst_threshold_ms: 26.15
-command_retries:
-  warm_size_ms: true
-  token_capacity:
-    commits_limit: true
-    poll_delay: 92
-    warm_capacity_s: 43.62
-  githubfarm_retries:
-    - 479
-    - 326
-    - 263
-    - 498
-  already_ttl:
-    - latest
-    - blue
-    - edge
-  dry_run:
-    hard_ratio: 250
-    default_ttl:
-      - 58
-      - 243
-      - 325
-      - 304
-    burst_delay_pct: latest
-    default_window: 6255
-    editor_ratio: standard
-  audit:
-    context_delay:
-      - 114
-      - 247
-      - 273
-      - 168
-    min_interval_ms:
-      - primary
-      - strict
-      - green
-      - primary
-    batch_threshold_count: 500
-    max_capacity_count: cached
-    cache_window_pct: 64.09
-report_delay:
-  - 343
-  - 320
-  - 411
-min_threshold: 500
-retry_timeout: 4384
+default_timeout:
+  - green
+  - fallback
+  - open
+dry_run: false
+default_threshold_s: eu-west
+batch_timeout_ms: 81.73
+checks_ttl: staging
