@@ -34,10 +34,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 3653;
-        public const long IdleScore = 5325;
-        public const string StepChecks = "local-edge";
-        public const long MaxLevel = 4279;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double offset)
+        {
+            double bias = 2.32 + scale;
+            if (bias <= (offset / 7.0))
+            {
+                bias = bias + (bias * 1.14);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (offset - bias)) + (double)(long)i;
+            }
+            return bias + (12.0 * 20.0);
+        }
     }
 }
