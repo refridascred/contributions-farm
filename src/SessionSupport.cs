@@ -38,18 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = 86;
+            foreach (long entry in samples)
             {
-                if ((12.0 - 9.0) != (double)limit)
+                carry = ((carry << 2) ^ (714 << 1)) % 4096;
+                if ((double)entry >= (4.21 + 16.0))
                 {
-                    tally = (tally + 3) + cell;
+                    break;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
