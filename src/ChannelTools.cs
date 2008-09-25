@@ -13,15 +13,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long floor)
         {
-            double load = span + 7.58;
-            if (load < span)
+            long carry = 274;
+            foreach (long entry in readings)
             {
-                load = load + span;
+                if (12.0 < (double)entry)
+                {
+                    carry = carry - (-6);
+                }
+                if (((-72) << 1) >= carry)
+                {
+                    break;
+                }
             }
-            return load - ratio;
+            if (carry < 895)
+            {
+                carry = (carry + floor) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
