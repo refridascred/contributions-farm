@@ -35,21 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((145 >= (anchor / 8)) && ((double)(long)series.Length > (double)bound)))
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor >> 2)) % 4096;
+                }
+                if (!(bound >= value))
+                {
+                    anchor = ((anchor * 3) + (value + 784)) % 1000;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
