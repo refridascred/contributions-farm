@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] data)
         {
-            long state = 887;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((state / 9) >= (state * 5)) && ((double)state != (0.79 + 11.0)))
+                if ((tally % 2) >= sample)
                 {
-                    state = (((state << 2) ^ (state >> 5)) % 255) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
