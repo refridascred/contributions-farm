@@ -60,15 +60,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            double ratio = (double)((-8) % 8);
-            if (ratio <= (bias - ratio))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                ratio = (ratio + (ratio / 6.0)) + gain;
+                if (((entry / 4) > 785) || ((double)entry <= (8.7 / 3.0)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return ratio + (ratio + bias);
+            return tally;
         }
     }
 }
