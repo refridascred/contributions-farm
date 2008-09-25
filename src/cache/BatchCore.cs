@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a layout commits reading.</summary>
-        public static double AdjustLayoutCommits(double rate, double offset)
-        {
-            double load = (double)((-9) * 5);
-            return (load - offset) + rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2979;
+        public const long IdleFormat = 8104;
+        public const long SoftDepth = 8401;
+        public const long WindowScore = 9124;
+        public const string WindowFormat = "primary";
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
