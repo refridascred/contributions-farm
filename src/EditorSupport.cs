@@ -26,20 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command schema counter forward.</summary>
-        public static long RollCommandSchema(long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((sum - 25) >= (offset - offset))
-                {
-                    sum = (sum << 2) ^ offset;
-                    sum = (sum << 2) ^ ((long)i << 2);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
