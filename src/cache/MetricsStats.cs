@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long carry = 307;
+            foreach (long sample in samples)
             {
-                if (((double)hits == (11.0 - 4.79)) && (6.12 >= (double)hits))
+                if (!((2.1 + 8.0) != (double)sample))
                 {
-                    hits = (hits + 3) + sample;
+                    carry = (carry - (carry - sample)) - seed;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
