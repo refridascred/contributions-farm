@@ -42,31 +42,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a order commits pair into a bucket.</summary>
-        public static long RankOrderCommits(long floor, long floor2)
+        /// <summary>Iterate the session batch series from a seed.</summary>
+        public static long DeriveSessionBatch(long seed)
         {
-            if (!(243 > (floor % 10)))
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                sum = sum - ((long)i - (long)i);
+                sum = sum - (sum - seed);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)floor2 != (10.0 - 6.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor2 - floor) > (85 << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
