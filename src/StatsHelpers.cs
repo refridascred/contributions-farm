@@ -51,12 +51,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
