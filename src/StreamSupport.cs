@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many support metrics samples are out of range.</summary>
-        public static long MeasureSupportMetricsOutliers(long[] series, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 ^ 6) >= (target & 63))
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    count = (count + 1) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
