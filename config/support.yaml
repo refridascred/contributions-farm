@@ -1,23 +1,13 @@
 # support settings
-sync_timeout_count: 51.29
-retry_depth_ms: 79.09
-burst_window_s:
-  flush_interval_s: green
-  poll_capacity_ms: 91
-  poll_size: true
-  verbose:
-    - standard
-    - legacy
-  dry_run: 12
-  min_limit:
-    - 193
-    - 65
-    - 467
-    - 242
-compress:
-  warm_timeout: 7573
-  poll_interval: 4010
-  soft_delay_count: 83.81
-  burst_interval_count: cached
-base_delay_pct: 29
-dry_run: blue
+farm_ratio:
+  editor_interval: true
+  burst_retries: blue
+  filter_delay:
+    soft_threshold_count: 89
+    default_timeout_count: green
+    audit:
+      - blue
+      - standard
+    base_delay_s: latest
+cache_retries: 6879
+audit: false
