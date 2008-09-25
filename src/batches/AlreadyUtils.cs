@@ -55,12 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchBudget = 610;
+        public const long BatchEditor = 7346;
+        public const long RetryLevel = 6934;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] levels, long origin)
