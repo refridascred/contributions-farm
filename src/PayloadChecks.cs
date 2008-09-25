@@ -58,10 +58,12 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheInterval = 2795;
-        public const long CacheScore = 1423;
-        public const long MaxQueue = 319;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long step)
