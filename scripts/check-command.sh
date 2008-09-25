@@ -6,10 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=76
+COMMAND_LIMIT=47
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-legacy}"
+for item in eu-west edge primary staging; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
     local)
         log "fast path"
