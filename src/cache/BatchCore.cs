@@ -16,10 +16,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 8872;
-        public const long HardScore = 5427;
-        public const long MaxCommits = 5491;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "standard";
+        public const long MinSpan = 1399;
+        public const double MaxCache = 35.73;
+        public const long RetryCache = 2927;
+        public const double BurstDepth = 7.02;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
