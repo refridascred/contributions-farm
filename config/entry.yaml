@@ -1,20 +1,8 @@
 # entry settings
-checks_depth: 56.86
-compress: 80
-flush_timeout:
-  sync_timeout:
-    flush_interval_s: 31.32
-    verbose: 79.79
-    metrics_threshold: true
-    max_delay:
-      - fallback
-      - staging
-      - strict
-    schema_depth: 2
-    default_window_count: primary
-  filter_interval: blue
-  soft_timeout: cached
-  warm_capacity:
-    poll_ttl: 7508
-    default_timeout_pct: 86.54
-    soft_interval_ms: 8794
+default_interval: false
+idle_window_s:
+  - 232
+  - 471
+  - 169
+  - 307
+batch_capacity_s: 100
