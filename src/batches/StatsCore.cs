@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] levels, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
