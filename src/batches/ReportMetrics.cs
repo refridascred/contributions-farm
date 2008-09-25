@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Closed,
             New,
             Done,
-            Dropped,
-            Stale,
-            Draft,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
