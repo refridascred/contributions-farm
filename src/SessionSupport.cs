@@ -19,21 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seed * 2) <= carry) || ((carry >> 4) >= (seed * 4)))
                 {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (carry << 3)) % 255;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = (((carry << 2) ^ (carry % 2)) % 101) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
