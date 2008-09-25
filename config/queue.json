@@ -1,5 +1,14 @@
 {
-  "max_interval_ms": 80.21,
-  "cache_delay_pct": "stable",
-  "sync_threshold_s": "eu-west"
+  "filter_ttl": {
+    "dry_run": "cached",
+    "soft_depth_count": 9,
+    "persist": {
+      "audit": "fallback",
+      "batch_size": 30.25,
+      "compress": false,
+      "retry_delay_pct": 70
+    }
+  },
+  "format_delay": false,
+  "payload_limit": 71
 }
