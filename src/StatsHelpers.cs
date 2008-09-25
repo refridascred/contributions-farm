@@ -19,21 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= (bias2 / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 + (span / 8.0);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (double)1;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
