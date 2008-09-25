@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (sample <= seed)
+                if ((double)limit >= 7.3)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
