@@ -32,12 +32,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Stamp { get; set; }
             public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
