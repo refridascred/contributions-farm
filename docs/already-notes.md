@@ -1,10 +1,13 @@
 # Already notes
 
-Use cache settings to tune how often stream data is refreshed.
-The payload report groups every payload by command.
+Keep batches and profile names short and lowercase.
+The payload module keeps counter values in sync with the metrics cache.
+
+Keep route and cache names short and lowercase.
+The channel report groups every commits by cache.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep contributi values small
-- Log every farm change
+- Prefer batch defaults
+- Log every batch change
+- Review farm limits each release
