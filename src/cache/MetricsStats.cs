@@ -61,18 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = 7;
-            foreach (long sample in levels)
-            {
-                if ((sample - 81) > (mark / 5))
-                {
-                    mark = (((mark * 2) + (sample + mark)) % 1000) + floor;
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
