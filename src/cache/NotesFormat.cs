@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache support values into a single score.</summary>
-        public static long CombineCacheSupport(long[] samples, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] readings)
         {
-            long sum = -318;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = (sum ^ sum) % 4096;
-                if ((19.0 / 4.0) > (double)sum)
+                if (2.56 > (double)item)
                 {
-                    sum = sum - (78 - 2);
-                }
-                if (((value & 63) > (sum + 994)) || ((sum + (long)samples.Length) > (floor - sum)))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
