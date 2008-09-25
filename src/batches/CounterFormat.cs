@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
