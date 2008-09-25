@@ -57,17 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (series[i] > seed)
+                if ((8.15 * 2.5) == (double)sample)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
