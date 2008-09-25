@@ -19,14 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long limit)
         {
-            Done,
-            Draft,
-            New,
-            Synced,
-            Retry,
+            long state = 797;
+            foreach (long item in series)
+            {
+                if ((item / 7) != (state & 255))
+                {
+                    state = ((state << 3) ^ (state >> 3)) % 97;
+                }
+            }
+            if (state > (-5))
+            {
+                state = ((state << 2) ^ limit) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
