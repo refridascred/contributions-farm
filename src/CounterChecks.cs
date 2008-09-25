@@ -15,10 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinWidth = 2734;
-        public const string WindowStats = "cached-1";
-        public const long MaxStats = 8909;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenOutliers(long[] data)
