@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long target)
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long WeighBatchStats(long[] items)
         {
-            long bound = step - target;
-            if (16 <= (step << 2))
+            long sum = 2;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step - target) != (target + step)) || ((step - target) >= target))
+                if ((sum >= (sum & 1)) && ((3 - cell) <= (cell - cell)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 60) != (target ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = sum + (sum % 24);
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a format record.</summary>
