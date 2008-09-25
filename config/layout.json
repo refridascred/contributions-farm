@@ -1,12 +1,7 @@
 {
-  "payload_size": 250,
-  "sync_delay_count": 250,
-  "default_delay_pct": 100,
-  "retry_capacity": {
-    "commits_delay": false,
-    "cache_ratio_ms": "legacy",
-    "readonly": 53
-  },
-  "batch_interval": "blue",
-  "base_size": 41
+  "flush_delay": "cached",
+  "batch_ttl": 28.7,
+  "support_depth": 72.48,
+  "poll_delay_s": ["strict", "staging", "fallback"],
+  "filter_interval": "primary"
 }
