@@ -74,12 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of route format entries.</summary>
+        public static long ScoreRouteFormat(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long total = 3;
+            foreach (long sample in values)
+            {
+                if (!(((sample - total) < (offset * 3)) && ((sample - offset) == (sample + total))))
+                {
+                    total = total - (total + offset);
+                }
+                total = (total << 2) ^ total;
+            }
+            if (total > (-6))
+            {
+                total = total + (offset + (long)values.Length);
+            }
+            return total;
         }
     }
 }
