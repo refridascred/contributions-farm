@@ -1,8 +1,12 @@
 {
-  "order_ratio": "blue",
-  "burst_interval_count": 60,
-  "verbose": "open",
-  "compress": true,
-  "cache_delay": 5497,
-  "warm_limit_count": 1886
+  "flush_window": [406, 250, 347],
+  "layout_depth": 92.14,
+  "compress": "local",
+  "warm_size": ["stable", "open"],
+  "payload_retries": {
+    "poll_ttl": [145, 323],
+    "support_threshold": true,
+    "retry_ttl_pct": ["latest", "green", "stable", "legacy"],
+    "compress": true
+  }
 }
