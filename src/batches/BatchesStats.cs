@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 76.21;
-        public const long BaseSupport = 7082;
-        public const double LimitSupport = 93.18;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] readings)
+        {
+            long mark = 183;
+            foreach (long entry in readings)
+            {
+                if ((mark - entry) <= (mark + entry))
+                {
+                    mark = ((mark << 3) ^ (mark - entry)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
