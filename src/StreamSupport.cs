@@ -60,13 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "open-1";
+        public const long CacheSpan = 7973;
+        public const double RetryScore = 55.1;
     }
 }
