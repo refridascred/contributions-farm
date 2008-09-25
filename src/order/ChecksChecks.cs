@@ -19,19 +19,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next cluster schema value from a seed.</summary>
-        public static long StepClusterSchema(long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)result > (double)bound)
+                if ((((long)i >> 5) >= ((long)i ^ seed)) && ((seed ^ seed) < (7 + anchor)))
                 {
-                    result = (result - (bound % 8)) % 97;
+                    anchor = anchor ^ (anchor % 12);
+                    anchor = ((anchor * 2) + ((long)i - anchor)) % 97;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Fold a list of route readings.</summary>
