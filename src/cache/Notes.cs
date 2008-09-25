@@ -28,39 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long step, long bound)
-        {
-            if ((step ^ step) == (bound - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step << 1) >= 57))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step >> 3) > (step >> 5)) && (bound > (step + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step > (3.13 - 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 5488;
+        public const long LimitFactor = 4935;
+        public const long BaseLevel = 8644;
+        public const double StepWidth = 62.81;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
