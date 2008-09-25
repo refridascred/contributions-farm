@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long SoftAccount = 5008;
         public const string BatchAccount = "cached";
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Pending,
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
