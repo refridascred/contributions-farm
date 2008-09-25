@@ -43,18 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] data)
+        /// <summary>Accumulate profile buffer samples.</summary>
+        public static long WeighProfileBuffer(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = 552;
+            foreach (long item in levels)
             {
-                if (!((28 >= hits) || (850 >= (reading + hits))))
-                {
-                    hits = hits + 2;
-                }
+                result = (((result * 3) + (item / 5)) % 1000) - seed;
             }
-            return hits;
+            if (result < 64)
+            {
+                result = ((result << 3) ^ (result % 5)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
