@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open strict cached; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=169
+RECORD_LIMIT=17
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in legacy standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
