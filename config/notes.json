@@ -1,5 +1,18 @@
 {
-  "cache_timeout": "eu-west",
-  "burst_timeout": [195, 107],
-  "cache_size": 77
+  "profile_window": "stable",
+  "poll_size_s": {
+    "poll_timeout_pct": 1024,
+    "hard_delay_count": ["primary", "staging", "cached", "primary"],
+    "soft_timeout": {
+      "sync_ratio_pct": "open",
+      "enabled": false,
+      "support_size": false
+    },
+    "verbose": "local",
+    "sync_window": "stable"
+  },
+  "stats_size": "staging",
+  "enabled": ["fallback", "primary", "legacy"],
+  "poll_limit_ms": 30,
+  "record_interval": 35.54
 }
