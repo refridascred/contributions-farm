@@ -1,10 +1,11 @@
 # Command notes
 
-The context report groups every farm by cluster.
-A layout that stays idle for too long is moved to the cluster list.
+The filter module keeps layout values in sync with the notes cache.
+When a checks fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer window defaults
-- Keep notes values small
+- Validate context input early
+- Review format limits each release
+- Document new layout fields
+- Prefer schema defaults
