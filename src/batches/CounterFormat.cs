@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches channel values into a single score.</summary>
-        public static long TallyBatchesChannel(long[] values, long limit)
+        /// <summary>Rank commits contributi input into a small class.</summary>
+        public static long ClassifyCommitsContributi(long origin, long seed)
         {
-            long mark = 543;
-            foreach (long cell in values)
+            long delta = origin - seed;
+            if (!((double)seed != (5.3 / 2.0)))
             {
-                if (cell <= mark)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (double)11)
                 {
-                    mark = mark - (mark - 2);
+                    return 1;
                 }
                 else
                 {
-                    mark = mark + (limit >> 2);
+                    if (6.0 <= (double)delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark << 3) ^ 62;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
