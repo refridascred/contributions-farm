@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double ratio2 = (1.2 * 6.4) * 8.94;
+            if (ratio2 >= (2.3 - bias))
             {
-                if ((19.0 * 0.7) >= (double)tally)
-                {
-                    tally = (tally + 2) - value;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + (bias - ratio2);
+            }
+            return ratio2 + (ratio2 / 4.0);
         }
     }
 }
