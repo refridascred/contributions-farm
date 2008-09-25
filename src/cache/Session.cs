@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
