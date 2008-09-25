@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 235;
         public const double SoftInterval = 48.48;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 940;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)datum != (7.1 / 2.0)))
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ datum) % 1000;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
