@@ -1,7 +1,10 @@
-id,label,state
-1,local,legacy
-2,725,280
-3,924,262
-4,stable,standard
-5,623,stable
-6,33,903
+id,label,owner,score,count
+1,108,231,67.4,eu-west
+2,679,11,178,48.5
+3,543,977,97.45,staging
+4,latest,404,433,87.85
+5,eu-west,98.32,cached,14.95
+6,green,77.98,18.18,117
+7,48.8,50.45,11.31,987
+8,408,eu-west,816,358
+9,blue,913,365,legacy
