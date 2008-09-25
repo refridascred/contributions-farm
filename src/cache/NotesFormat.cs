@@ -28,13 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items)
         {
-            Idle,
-            Locked,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((9 <= sample) && (((sample >> 4) > (hits - 785)) && (93 <= sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
