@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2055;
-        public const long BatchPayload = 5138;
-        public const long RetryPayload = 3474;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Match up already metrics samples.</summary>
         public static long MatchAlreadyMetricsCount(long[] items)
