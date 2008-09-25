@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] data, long target)
         {
-            long sum = 785;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = (sum + 686) - datum;
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
