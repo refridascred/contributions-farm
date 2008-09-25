@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long AuditEntryFormatOutliers(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!(6.5 < (double)origin))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
