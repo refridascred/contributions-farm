@@ -1,6 +1,27 @@
 # support settings
-max_limit: 35
-retry_depth_pct: 37
-verbose: true
-compress: 500
-already_depth: 7866
+session_ratio: fallback
+max_limit_s:
+  sync_depth_count:
+    - 278
+    - 488
+  flush_delay_s: 11
+  burst_limit:
+    base_timeout: 5113
+    soft_size: 100
+    retry_interval: true
+    strict: 14
+    warm_retries_s:
+      - 58
+      - 354
+      - 309
+      - 351
+    graph_retries: primary
+token_ttl: local
+poll_ratio: 56
+min_timeout_s:
+  dry_run: true
+  enabled: 10.79
+  flush_ratio_ms: standard
+  batch_delay: strict
+  poll_depth: false
+  hard_ttl_s: 500
