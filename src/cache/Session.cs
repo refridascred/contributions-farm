@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchCount = 645;
+        public const string MaxWindow = "fallback-edge";
+        public const long DefaultSpan = 5056;
+        public const long HardDepth = 7;
 
         /// <summary>Count the batches batch entries that pass the check.</summary>
         public static long MeasureBatchesBatchMatches(long[] items)
