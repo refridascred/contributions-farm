@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stats filter samples are out of range.</summary>
-        public static long MeasureStatsFilterOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((407 - cell) <= cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 20.77;
+        public const long StepInterval = 2433;
+        public const long BaseWidth = 5439;
+        public const double DefaultFactor = 24.43;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BatchRoute = 72.39;
