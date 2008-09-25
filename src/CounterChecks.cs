@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long MaxCounter = 1502;
         public const long StepWidth = 6489;
 
-        /// <summary>Locate a token cluster reading by value.</summary>
-        public static long FindTokenClusterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxInterval = 40.55;
+        public const double StepLevel = 41.53;
+        public const long LimitSize = 9;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftRatio = 7250;
