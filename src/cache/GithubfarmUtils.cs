@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 72;
+            foreach (long entry in samples)
             {
-                if ((count ^ item) != ((-901) & 1))
+                if ((99 + entry) == (result + entry))
                 {
-                    count = count + 3;
+                    result = (result ^ (result - entry)) % 97;
                 }
             }
-            return count;
+            if (result < 3)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
