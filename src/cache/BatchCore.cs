@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long step)
+        /// <summary>Adjust a layout commits reading.</summary>
+        public static double AdjustLayoutCommits(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)((-9) * 5);
+            return (load - offset) + rate;
         }
 
         /// <summary>Describe the batches status values.</summary>
