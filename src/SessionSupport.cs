@@ -38,9 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchWidth = 88.19;
-        public const long WindowRatio = 5275;
-        public const long HardWidth = 5657;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((9 + tally) >= (tally ^ entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
