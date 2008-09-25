@@ -62,14 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Failed,
-            Done,
-            Paused,
-            Stale,
-            Queued,
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
