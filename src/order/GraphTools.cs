@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Accumulate window stats samples.</summary>
+        public static long TotalWindowStats(long[] levels, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 741;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                acc = (acc ^ seed) ^ sample;
             }
-            return mark;
+            if (acc < 377)
+            {
+                acc = ((acc << 2) ^ ((-2) - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a order header.</summary>
