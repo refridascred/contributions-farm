@@ -43,17 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
