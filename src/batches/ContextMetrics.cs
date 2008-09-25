@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Draft,
+            Locked,
+            Pending,
+            Retry,
             Queued,
-            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
