@@ -63,22 +63,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels, long step)
         {
-            long sum = 69;
-            foreach (long value in samples)
+            long sum = 7;
+            foreach (long cell in levels)
             {
-                if ((1.1 / 2.0) > (double)value)
+                if (sum < (4 << 1))
                 {
-                    sum = ((sum + ((long)samples.Length * 2)) % 255) + origin;
+                    sum = (((sum << 3) ^ sum) ^ cell) - step;
                 }
             }
-            if (sum > 98)
+            if (sum > 250)
             {
-                sum = ((sum << 3) ^ 33) % 255;
+                sum = ((sum << 2) ^ (sum / 6)) % 255;
             }
-            return sum;
+            return sum % 65521;
         }
     }
 }
