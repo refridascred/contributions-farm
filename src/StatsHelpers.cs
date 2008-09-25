@@ -34,24 +34,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((bound < (64 + step)) || ((2.87 + 1.0) >= (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Derive the next payload commits value from a seed.</summary>
