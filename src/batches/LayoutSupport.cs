@@ -50,19 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
-        {
-            long total = 7;
-            foreach (long reading in values)
-            {
-                if (reading < (reading + reading))
-                {
-                    total = total ^ total;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7378;
+        public const string SoftGithubfarm = "legacy";
+        public const long MaxSize = 6724;
+        public const long IdleGithubfarm = 9837;
+        public const long BatchGithubfarm = 9898;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] readings, long offset)
