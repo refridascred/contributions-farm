@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double gain = floor;
-            if (gain < (double)706)
-            {
-                gain = (gain - (gain + 1.0)) + ratio;
-            }
-            return gain + floor;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
