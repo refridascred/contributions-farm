@@ -14,11 +14,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinWidth = 49.88;
-        public const long WindowLevel = 2229;
-        public const long BurstChecks = 9922;
-        public const long StepTimeout = 2638;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowScore = 76.56;
+        public const long CacheDepth = 4344;
+        public const long RetryCommand = 1516;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
