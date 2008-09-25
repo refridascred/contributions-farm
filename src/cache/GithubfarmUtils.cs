@@ -49,11 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
