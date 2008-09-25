@@ -20,20 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long state = 454;
-            foreach (long datum in data)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state - limit) % 4096) + datum;
-                state = ((state << 2) ^ limit) % 65521;
+                if (!((long)i <= (target + target)))
+                {
+                    carry = (carry + (target / 2)) % 1000;
+                }
+                if (!(376 < ((-7) - target)))
+                {
+                    carry = (carry - (62 + carry)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (state < (-187))
-            {
-                state = (state << 2) ^ (state - state);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
