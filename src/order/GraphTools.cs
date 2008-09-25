@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] data, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (!(((bound << 3) != (tally + bound)) && ((tally ^ sample) <= (tally << 3))))
+                if (sample >= bound)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
