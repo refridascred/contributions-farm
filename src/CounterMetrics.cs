@@ -43,18 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] levels, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(0.7 > (double)item) || ((double)floor > (3.04 - 4.07)))
-                {
-                    hits = hits + 2;
-                }
+                total = total + (limit * 2);
+                total = (total - ((long)i - total)) % 1000;
+                total = total ^ (long)i;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
