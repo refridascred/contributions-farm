@@ -1,11 +1,10 @@
 # entry settings
-compress: open
-command_ratio:
-  hard_depth_s: 47.36
-  batch_interval: true
-  strict:
-    - 226
-    - 289
-    - 129
-cache_window: fallback
-enabled: 1024
+enabled: staging
+sync_depth_count: false
+batch_ttl_s: strict
+tools_delay: false
+default_size_s:
+  - 314
+  - 255
+  - 229
+hard_delay_pct: primary
