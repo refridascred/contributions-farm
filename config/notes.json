@@ -1,6 +1,10 @@
 {
-  "cache_timeout": ["fallback", "primary", "green"],
-  "hard_capacity_s": 30,
-  "batch_limit_count": "strict",
-  "stream_limit": "local"
+  "command_window": {
+    "batch_interval_ms": true,
+    "readonly": "strict",
+    "warm_threshold": ["fallback", "fallback", "green", "strict"]
+  },
+  "default_ttl_ms": "latest",
+  "max_delay_s": 50.87,
+  "queue_timeout": "strict"
 }
