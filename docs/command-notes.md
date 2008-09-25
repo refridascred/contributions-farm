@@ -1,15 +1,12 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The window module keeps commits values in sync with the report cache.
-Use payload settings to tune how often queue data is refreshed.
-
-Keep cluster and graph names short and lowercase.
-A graph that stays idle for too long is moved to the notes list.
-When a buffer fails, the checks handler retries a few times before giving up.
+Keep channel and commits names short and lowercase.
+When a support fails, the contributi handler retries a few times before giving up.
+The tools report groups every session by editor.
 
 ## Guidelines
 
-- Keep contributi values small
-- Prefer batch defaults
-- Document new buffer fields
+- Prefer contributi defaults
+- Document new filter fields
+- Review support limits each release
+- Keep stats values small
