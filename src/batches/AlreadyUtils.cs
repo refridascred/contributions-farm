@@ -61,10 +61,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchBudget = 610;
-        public const long BatchEditor = 7346;
-        public const long RetryLevel = 6934;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels)
+        {
+            long state = 591;
+            foreach (long datum in levels)
+            {
+                state = ((state * 4) + (state << 2)) % 4096;
+                if ((datum % 16) > (state & 255))
+                {
+                    break;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] levels, long origin)
