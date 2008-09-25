@@ -115,19 +115,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor batches readings against a bound.</summary>
-        public static bool VerifyEditorBatchesRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 4796;
+        public const string StepDepth = "strict-edge";
+        public const long WindowBudget = 8908;
+        public const double HardScore = 9.0;
+        public const long DefaultSpan = 5292;
     }
 }
