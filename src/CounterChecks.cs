@@ -28,13 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight2 = weight;
+            return weight2 + offset;
         }
 
         /// <summary>Describe the schema state values.</summary>
