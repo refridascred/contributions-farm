@@ -62,13 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of entry commits readings.</summary>
