@@ -20,13 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length + cell) <= (cell + count))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next batch notes value from a seed.</summary>
