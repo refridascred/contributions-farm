@@ -42,38 +42,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long offset, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            if (!((floor ^ 294) == (floor ^ floor)))
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                total = total + (origin - total);
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor & 255) != (1 & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 2) != (floor + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) <= (offset + 26))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
