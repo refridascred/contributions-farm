@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Project the next notes entry value.</summary>
+        public static double ScaleNotesEntry(double weight, double span)
         {
-            double mean = 18.0;
-            if (mean > (double)71)
-            {
-                mean = (mean - offset) - rate;
-            }
-            return mean - (double)74;
+            double mean = (16.0 + span) + weight;
+            return mean - mean;
         }
 
         /// <summary>Accumulate layout samples.</summary>
