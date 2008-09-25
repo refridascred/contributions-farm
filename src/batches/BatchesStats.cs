@@ -17,17 +17,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean <= (scale + bias))
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + 7.28;
             }
-            return -1;
+            return mean + bias;
         }
 
         /// <summary>Describe the already class values.</summary>
