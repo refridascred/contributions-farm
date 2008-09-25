@@ -29,22 +29,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Roll a batches payload counter forward.</summary>
+        public static long RollBatchesPayload(long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((seen >> 2) >= ((long)data.Length + entry)) || (2.83 < (double)seen)))
+                if ((mix + mix) <= (mix ^ 973))
                 {
-                    seen = seen + 2;
+                    mix = (mix - (mix / 2)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
