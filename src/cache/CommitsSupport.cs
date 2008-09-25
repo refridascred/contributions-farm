@@ -26,21 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up report layout samples.</summary>
-        public static long CompareReportLayoutCount(long[] samples)
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long MeasureChannelToolsGaps(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally - sample) <= 534)
                 {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two context measurements.</summary>
