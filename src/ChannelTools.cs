@@ -33,14 +33,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Stale,
-            Failed,
-            Locked,
-            Active,
-            Idle,
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
