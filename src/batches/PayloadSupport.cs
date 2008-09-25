@@ -28,17 +28,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a commits metrics sample.</summary>
-        public static long FindCommitsMetricsIndex(long[] values, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 11;
+            foreach (long cell in items)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = (score + ((-2) - 9)) + cell;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a account reading by value.</summary>
