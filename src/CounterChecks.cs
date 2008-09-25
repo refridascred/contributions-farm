@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 2230;
-        public const long DefaultCounter = 12;
-        public const string WindowCounter = "latest-edge";
-        public const long MaxCounter = 1502;
-        public const long StepWidth = 6489;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MaxInterval = 40.55;
