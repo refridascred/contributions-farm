@@ -20,15 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double drift = 0.3;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (rate + span)) + (double)(long)i;
-            }
-            return drift + drift;
+            Stale,
+            Retry,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Match up commits samples.</summary>
