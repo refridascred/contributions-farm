@@ -65,10 +65,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 9192;
-        public const long CacheSchema = 2667;
-        public const long MaxSchema = 307;
-        public const string HardSpan = "latest-1";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
