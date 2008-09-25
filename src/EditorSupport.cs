@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] values, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 494;
-            foreach (long item in values)
-            {
-                if ((mix + mix) > (mix * 4))
-                {
-                    mix = (mix ^ (floor ^ floor)) % 101;
-                }
-                else
-                {
-                    mix = mix + (mix ^ item);
-                }
-                if (((item & 255) != (1 << 3)) && (floor < mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Project the next farm value.</summary>
