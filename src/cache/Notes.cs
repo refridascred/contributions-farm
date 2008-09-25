@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count counter token pairs that satisfy a relation.</summary>
