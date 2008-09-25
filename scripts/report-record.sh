@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy; do
+for item in open green latest; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=422
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
