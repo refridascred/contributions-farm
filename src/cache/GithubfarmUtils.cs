@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double load = scale * 10.0;
+            if (load >= (double)7)
             {
-                if ((84 & 15) <= (tally % 60))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                load = (load + (double)4) + floor;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)734) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
