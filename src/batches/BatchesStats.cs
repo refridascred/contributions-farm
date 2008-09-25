@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseSupport = 7082;
         public const double LimitSupport = 93.18;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9932;
-        public const long IdleInterval = 7355;
-        public const long SoftInterval = 3162;
-        public const string StepScore = "strict-v2";
-        public const double MaxInterval = 2.73;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatOutliers(long[] levels, long target)
