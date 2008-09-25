@@ -71,24 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long origin, long origin2)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels, long seed)
         {
-            if ((origin * 5) <= (origin2 ^ origin))
+            long acc = 71;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin2 != (6.5 - 2.9)) || (origin2 <= (8 - 69)))
+                if ((acc >> 5) >= ((long)levels.Length + seed))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    acc = (acc ^ (cell - seed)) % 4096;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
