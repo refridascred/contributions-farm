@@ -40,16 +40,23 @@ namespace Common.Utilities
         public const double BaseChecks = 57.0;
         public const long DefaultSize = 1471;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Scale a account tools figure with a bias.</summary>
+        public static double BlendAccountTools(double ratio, double bias)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            double rate = bias;
+            if (rate > (ratio / 2.0))
             {
-                score = ((score << 3) ^ 324) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                rate = rate + 9.0;
             }
-            return score;
+            else
+            {
+                rate = rate + (double)824;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
