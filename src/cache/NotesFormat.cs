@@ -42,11 +42,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 63.72;
-        public const long MaxChecks = 3141;
-        public const long LimitSpan = 4094;
-        public const long IdleWidth = 7473;
-        public const string LimitChecks = "primary-v2";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] values)
+        {
+            long carry = 50;
+            foreach (long entry in values)
+            {
+                if ((double)carry > 5.41)
+                {
+                    carry = ((carry * 2) + (entry + (-321))) % 101;
+                }
+            }
+            return carry;
+        }
     }
 }
