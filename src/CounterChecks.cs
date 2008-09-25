@@ -25,22 +25,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of metric entry readings.</summary>
-        public static long OverlapMetricEntryCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinWidth = 2734;
+        public const string WindowStats = "cached-1";
+        public const long MaxStats = 8909;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string HardCommand = "open-v2";
