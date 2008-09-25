@@ -43,38 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long step, long step2)
+        /// <summary>Project the next support schema value.</summary>
+        public static double BlendSupportSchema(double scale, double offset)
         {
-            if ((double)step2 <= (8.22 - 6.62))
+            double weight = offset / 6.0;
+            if (weight >= (7.2 / 9.0))
             {
-                return 1;
+                weight = weight - 7.49;
             }
             else
             {
-                if ((6.0 - 8.37) != (double)step2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((9.0 + 1.0) > 13.0) || (step > 0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.91 - 8.3) <= (double)step2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = weight + (offset - scale);
             }
+            return weight - scale;
         }
     }
 }
