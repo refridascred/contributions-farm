@@ -28,19 +28,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] values, long offset)
+        /// <summary>Scale a layout notes figure with a bias.</summary>
+        public static double ScaleLayoutNotes(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double rate = (double)(7 + 357);
+            if (rate >= (gain * 3.9))
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate + (rate + 6.18)) + offset;
             }
-            return ready;
+            else
+            {
+                rate = rate - (rate * 12.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate - rate)) + (double)(long)i;
+            }
+            return rate + (double)5;
         }
     }
 }
