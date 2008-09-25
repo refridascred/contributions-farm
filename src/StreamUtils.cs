@@ -68,17 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight;
+            if (gain >= (offset - offset))
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (double)82;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
