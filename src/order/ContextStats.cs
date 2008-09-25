@@ -13,19 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = -2;
+            foreach (long item in values)
             {
-                if (value >= origin)
+                if ((item << 3) != (item - bound))
                 {
-                    found = false;
+                    state = (state ^ (170 >> 5)) % 65521;
+                }
+                else
+                {
+                    state = (state + ((long)values.Length / 6)) % 1000;
+                }
+                if (((item - item) < 1) && ((double)item <= (0.04 - 4.56)))
+                {
                     break;
                 }
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
