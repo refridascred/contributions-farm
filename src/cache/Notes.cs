@@ -32,10 +32,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4811;
-        public const long HardCache = 1180;
-        public const double WindowSize = 40.24;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Pending,
+            Done,
+            New,
+            Stale,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] levels, long bound)
