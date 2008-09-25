@@ -36,11 +36,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2502;
-        public const long WindowRatio = 3178;
-        public const long MinGraph = 1037;
-        public const long WindowSize = 6170;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] items, long offset)
