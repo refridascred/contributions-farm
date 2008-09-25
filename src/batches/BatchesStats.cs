@@ -17,18 +17,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits <= 2)
+                if (readings[i] == bound)
                 {
-                    hits = ((hits + 2) - item) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
