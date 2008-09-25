@@ -52,18 +52,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token contributi readings against a rule.</summary>
-        public static long CountTokenContributiOutliers(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (977 >= (cell - cell))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = tally + 1;
+                    acc = (acc - (origin % 3)) + (long)i2;
+                    acc = acc + (origin & 3);
                 }
+                if ((origin >> 3) == (678 >> 5))
+                {
+                    acc = (acc << 2) ^ ((long)i << 3);
+                }
+                else
+                {
+                    acc = (acc + (acc ^ origin)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
