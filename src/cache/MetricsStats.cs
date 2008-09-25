@@ -56,12 +56,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            Ready,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 4) > (count & 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
