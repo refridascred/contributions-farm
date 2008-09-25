@@ -55,32 +55,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route window pair into a bucket.</summary>
-        public static long GradeRouteWindow(long offset, long offset2)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long prev = offset ^ offset2;
-            if ((offset2 / 5) != (395 % 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((prev + 9) >= offset) && (prev >= (prev << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset2 > 4.25))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Stale,
         }
     }
 }
