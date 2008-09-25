@@ -15,20 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((sum << 1) >= bound)
-                {
-                    sum = sum - (long)i;
-                }
-                sum = (sum ^ (bound ^ 1)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Done,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
