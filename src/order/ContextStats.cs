@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((count + value) >= (count & 255)) && ((double)count >= (3.75 - 5.3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
