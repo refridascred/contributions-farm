@@ -1,10 +1,4 @@
 # entry settings
-cache_window_ms:
-  - eu-west
-  - eu-west
-  - eu-west
-  - staging
-burst_threshold: true
-max_depth_s: 2265
-burst_timeout: 250
-min_ttl_count: 17
+batch_limit_ms: stable
+strict: 9385
+compress: 70.48
