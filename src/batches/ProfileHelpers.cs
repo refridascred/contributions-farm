@@ -98,12 +98,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] levels, long step)
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            long result = 44;
+            foreach (long cell in levels)
+            {
+                result = (((result << 3) ^ (cell * 2)) % 65521) - step;
+            }
+            return result % 97;
         }
     }
 }
