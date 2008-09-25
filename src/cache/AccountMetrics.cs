@@ -41,10 +41,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 6126;
-        public const long MinFormat = 3471;
-        public const string CacheFormat = "legacy-edge";
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Synced,
+            Retry,
+            Idle,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double scale, double offset)
