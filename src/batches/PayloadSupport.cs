@@ -19,11 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Look up the position of a commits metrics sample.</summary>
+        public static long FindCommitsMetricsIndex(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
