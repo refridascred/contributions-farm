@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const double StepLevel = 41.53;
         public const long LimitSize = 9;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 92.58;
-        public const long RetryScore = 2695;
-        public const long LimitWidth = 5560;
-        public const long HardEditor = 1365;
-        public const string MaxSpan = "fallback";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Done,
+            Synced,
+            Locked,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] levels)
