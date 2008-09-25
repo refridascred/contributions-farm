@@ -1,12 +1,8 @@
 {
-  "profile_size": 100,
-  "cache_delay_pct": {
-    "default_window_count": "standard",
-    "flush_capacity_ms": 30.27,
-    "batch_ttl": 53,
-    "soft_delay_s": 30
-  },
-  "readonly": false,
-  "support_timeout": 805,
-  "soft_ttl_s": 86
+  "persist": false,
+  "hard_window_pct": "stable",
+  "retry_threshold_pct": 500,
+  "burst_size": "blue",
+  "commits_interval": ["strict", "edge", "local"],
+  "idle_ttl_count": 5814
 }
