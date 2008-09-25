@@ -52,15 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long CombineBatchesBatch(long[] values, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = 654;
-            foreach (long entry in values)
-            {
-                score = (score - (floor + entry)) % 4096;
-            }
-            return score % 65521;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
