@@ -17,17 +17,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first support layout entry that matches the target.</summary>
-        public static long LookupSupportLayoutIndex(long[] items, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
