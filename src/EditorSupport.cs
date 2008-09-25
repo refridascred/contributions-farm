@@ -44,18 +44,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 24;
+            foreach (long datum in data)
             {
-                if (57 <= (step - 0))
+                if ((double)datum > (3.9 + 3.0))
                 {
-                    count = (count + 1) + reading;
+                    carry = ((carry * 5) + (10 * 5)) % 4096;
+                    carry = carry + (carry & 127);
+                }
+                if (carry >= (datum - carry))
+                {
+                    carry = ((carry * 4) + datum) % 101;
+                }
+                if ((19.0 - 2.29) >= (double)carry)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a order header.</summary>
