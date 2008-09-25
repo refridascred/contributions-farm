@@ -55,21 +55,19 @@ namespace Common.Utilities
             return bias - (double)571;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(864 ^ 47);
+            if (drift >= weight)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + 8.0;
             }
-            return matches;
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift - (weight / 6.0);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
