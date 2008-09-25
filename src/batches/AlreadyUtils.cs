@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] samples, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (cell < limit)
+                if (((matches + seed) > 1) && ((double)reading <= 9.67))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
