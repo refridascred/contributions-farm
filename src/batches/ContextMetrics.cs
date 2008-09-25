@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double bias)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] samples, long step)
         {
-            double gain = rate;
-            if (gain < (gain * 4.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                gain = gain - (bias / 4.0);
+                if ((double)reading > 3.7)
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
