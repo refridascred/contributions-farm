@@ -105,11 +105,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryDepth = "latest-1";
-        public const long CacheCommand = 9244;
-        public const string MaxCommand = "fallback-1";
-        public const long SoftCommand = 786;
-        public const string BaseCommand = "alpha-edge";
+        /// <summary>Validate editor batches readings against a bound.</summary>
+        public static bool VerifyEditorBatchesRange(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
