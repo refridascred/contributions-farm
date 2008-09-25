@@ -66,15 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token entry figure with a bias.</summary>
-        public static double ScaleTokenEntry(double bias, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            double drift = 9.5;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (6.62 / 7.0)) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (bias + offset);
+            return count;
         }
     }
 }
