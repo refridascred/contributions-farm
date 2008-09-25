@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] items)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!(((matches >> 3) <= ((long)items.Length & 255)) || ((matches - matches) > (8 & 255))))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            New,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
