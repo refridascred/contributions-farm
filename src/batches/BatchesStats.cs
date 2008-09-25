@@ -22,22 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
-        public static long AuditNotesGithubfarmHits(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((count & 7) <= (datum + datum))
+                if (hits <= 2)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 2) - item) - target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the already class values.</summary>
