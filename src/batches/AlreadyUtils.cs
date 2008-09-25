@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] data, long offset)
         {
-            long sum = -2;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((500 + entry) < entry)
+                if (value >= offset)
                 {
-                    sum = (sum - (27 & 15)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 5) + (sum * 2)) % 65521;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Look up the position of a buffer farm sample.</summary>
