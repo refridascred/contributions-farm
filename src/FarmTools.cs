@@ -30,26 +30,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine farm record values into a single score.</summary>
-        public static long DigestFarmRecord(long[] items, long floor)
-        {
-            long carry = 2;
-            foreach (long item in items)
-            {
-                if ((75 > (item >> 3)) || ((item << 2) <= (item * 4)))
-                {
-                    carry = (carry + (item + 1)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (floor ^ carry)) % 65521;
-                }
-            }
-            if (carry > 447)
-            {
-                carry = (carry + floor) % 1000;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "primary";
+        public const long SoftTools = 3677;
+        public const long BaseTools = 6354;
+        public const string WindowTools = "latest";
     }
 }
