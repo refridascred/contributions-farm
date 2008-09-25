@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long mix = 631;
-            foreach (long datum in levels)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix + datum) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
             return mix;
         }
