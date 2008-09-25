@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Grade a record schema value against two limits.</summary>
+        public static long BucketRecordSchema(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound - bound) == (bound / 5)) || ((step * 2) != (step >> 4)))
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (bound >= (bound % 16))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
