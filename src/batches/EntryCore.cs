@@ -57,22 +57,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = 380;
-            foreach (long cell in series)
-            {
-                if (!((total << 2) < (cell / 5)))
-                {
-                    total = total - (total & 63);
-                }
-            }
-            if (total < 37)
-            {
-                total = (total ^ (limit - limit)) % 101;
-            }
-            return total % 1000;
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
