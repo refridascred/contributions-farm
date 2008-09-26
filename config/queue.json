@@ -1,13 +1,12 @@
 {
-  "queue_ratio": 42.25,
-  "hard_interval": [469, 37, 310, 90],
-  "schema_capacity": "green",
-  "strict": {
-    "batch_threshold": ["green", "standard", "legacy", "open"],
-    "commits_capacity": 1024,
-    "cache_timeout": 30,
-    "batch_interval_ms": 17.02,
-    "dry_run": true
+  "min_size": 250,
+  "retry_delay_ms": 1024,
+  "batch_limit": {
+    "base_delay": 24,
+    "metrics_window": "stable",
+    "base_capacity_s": true,
+    "default_window": 46,
+    "burst_threshold_ms": 23.47
   },
-  "dry_run": "standard"
+  "burst_threshold_ms": "local"
 }
