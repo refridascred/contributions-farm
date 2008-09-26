@@ -1,5 +1,9 @@
 # githubfarm settings
-buffer_depth: 60
-warm_depth: 1700
-hard_capacity: 325
-readonly: true
+poll_ttl_count: 6.03
+sync_ttl_pct: 30
+channel_window:
+  - standard
+  - eu-west
+  - local
+  - latest
+readonly: 1024
