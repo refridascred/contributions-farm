@@ -71,24 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long floor)
         {
-            if ((double)limit < (4.9 - 14.0))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit - offset) <= (limit % 12)))
+                if (value >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
