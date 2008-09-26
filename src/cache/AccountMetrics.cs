@@ -70,23 +70,15 @@ namespace Common.Utilities
         public const long DefaultCommits = 6245;
         public const long CacheCommits = 8175;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            double scale2 = offset;
-            if (scale2 > (scale2 * 1.0))
+            double gain = offset;
+            if (gain <= 9.41)
             {
-                scale2 = scale2 - scale;
+                gain = (gain - (offset * 9.18)) - scale;
             }
-            else
-            {
-                scale2 = scale2 + (scale2 + offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - (offset + offset)) + (double)(long)i;
-            }
-            return scale2 - scale;
+            return gain + (16.0 - gain);
         }
     }
 }
