@@ -1,11 +1,7 @@
 {
-  "retry_limit_ms": "green",
-  "cache_size_ms": "staging",
-  "hard_limit_pct": 8524,
-  "strict": {
-    "persist": [263, 434],
-    "flush_capacity": "staging",
-    "enabled": "edge"
-  },
-  "enabled": 66.3
+  "report_retries": "standard",
+  "compress": "blue",
+  "audit": true,
+  "hard_retries": 6.48,
+  "metrics_limit": 81.66
 }
