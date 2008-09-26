@@ -31,13 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state ^ (seed * 5)) % 255) ^ (long)i2;
+                }
+                state = ((state << 2) ^ (state & 15)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
