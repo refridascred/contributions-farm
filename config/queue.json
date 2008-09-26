@@ -1,7 +1,8 @@
 {
-  "retry_limit": "blue",
-  "persist": "local",
-  "poll_retries_ms": 100,
-  "burst_interval_pct": ["latest", "standard", "staging"],
-  "cache_ratio": 6383
+  "burst_limit": 5455,
+  "min_interval": 1024,
+  "base_retries": 38,
+  "min_ratio_s": 49.31,
+  "retry_delay_count": 6733,
+  "schema_timeout": "local"
 }
