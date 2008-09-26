@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 3266;
-        public const double RetryBudget = 80.83;
-        public const long MaxChecks = 1117;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long floor, long limit)
