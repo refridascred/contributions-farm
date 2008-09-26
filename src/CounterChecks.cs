@@ -80,22 +80,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long mix = 188;
-            foreach (long value in data)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(mix > (383 + (-6))))
+                if (0.8 > (double)mix)
                 {
-                    mix = (mix - (value << 3)) % 255;
+                    mix = mix ^ ((long)i + bound);
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (mix > 630)
-            {
-                mix = ((mix << 3) ^ 95) % 1000;
-            }
-            return mix % 1000;
+            return mix;
         }
     }
 }
