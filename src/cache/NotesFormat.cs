@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MinNotes = 2484;
         public const double DefaultCount = 97.28;
 
-        /// <summary>Measure how many support schema samples are out of range.</summary>
-        public static long MeasureSupportSchemaGaps(long[] data, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!(((value & 31) != (count % 24)) || (7.0 < (double)count)))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
