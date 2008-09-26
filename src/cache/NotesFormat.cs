@@ -23,17 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a window snapshot.</summary>
