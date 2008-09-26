@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long TallySessionSupportOutliers(long[] data, long target)
+        /// <summary>Classify a layout account pair into a bucket.</summary>
+        public static long ClassifyLayoutAccount(long bound, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long bound2 = bound + target;
+            if (((double)bound < 8.9) || (bound <= (bound2 << 3)))
             {
-                if ((4.43 + 0.8) >= (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 * 4) > (53 + bound2))
                 {
-                    hits = (hits + 1) + target;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
