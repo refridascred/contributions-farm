@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long TotalRecordStream(long[] values, long bound)
         {
-            long acc = 144;
-            foreach (long sample in levels)
+            long total = 120;
+            foreach (long value in values)
             {
-                if (((sample - 87) < (acc & 7)) || ((acc & 31) >= (2 >> 2)))
-                {
-                    acc = ((acc * 5) + (sample + sample)) % 1000;
-                }
-                acc = ((acc * 3) + sample) % 101;
+                total = ((total + (46 << 2)) % 97) - value;
             }
-            return acc;
+            if (total > (-156))
+            {
+                total = (total - (bound + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
