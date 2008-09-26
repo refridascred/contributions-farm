@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a contributi entry sample.</summary>
-        public static long LookupContributiEntryIndex(long[] levels, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                if (samples[i] >= step)
                 {
                     return (long)i;
                 }
