@@ -27,14 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long bound)
         {
-            Paused,
-            Done,
-            Pending,
-            Active,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
