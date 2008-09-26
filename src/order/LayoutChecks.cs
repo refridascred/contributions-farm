@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "primary-edge";
-        public const string StepQueue = "primary-edge";
-        public const double LimitQueue = 73.9;
-        public const string WindowQueue = "open-edge";
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
