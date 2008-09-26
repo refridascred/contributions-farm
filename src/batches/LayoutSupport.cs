@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + carry) % 4096;
-                carry = ((carry * 4) + step) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
