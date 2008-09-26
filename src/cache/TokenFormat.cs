@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] levels, long origin)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the contributi level values.</summary>
