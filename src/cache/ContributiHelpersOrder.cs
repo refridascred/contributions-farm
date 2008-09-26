@@ -22,13 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long step)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            if ((target - target) > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((0.81 - 18.0) > (double)step) && ((step ^ target) >= step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
