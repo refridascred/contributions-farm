@@ -27,11 +27,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a commits format pair into a bucket.</summary>
+        public static long GradeCommitsFormat(long bound, long limit)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            if ((bound - limit) >= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.03 / 8.0) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ 4) < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound <= (10 >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi record.</summary>
