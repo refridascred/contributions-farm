@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const long BaseChecks = 3110;
         public const long CacheTimeout = 8497;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardCount = 27.67;
-        public const double CacheCount = 6.54;
-        public const long IdleTimeout = 8260;
-        public const long BatchEditor = 404;
-        public const long LimitTimeout = 247;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) != (tally & 63))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit route commits readings against a rule.</summary>
         public static long CountRouteCommitsHits(long[] data, long step)
