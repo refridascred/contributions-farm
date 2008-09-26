@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Adjust a channel counter reading.</summary>
+        public static double BlendChannelCounter(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = (gain * 9.1) / 2.0;
+            if (gain2 >= 6.1)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = gain2 + (span + span);
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - gain2;
         }
     }
 }
