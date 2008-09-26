@@ -40,17 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = seed + offset;
+            if (((seed >> 2) < (offset / 7)) || ((gap << 2) > (offset + gap)))
             {
-                if (items[i] >= step)
+                return 5;
+            }
+            else
+            {
+                if ((3.26 - 4.21) == (double)seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((gap <= (7 / 3)) && ((offset % 8) != (51 * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= gap)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit counter stats readings against a rule.</summary>
