@@ -22,19 +22,11 @@ namespace Common.Utilities
             return bias + 0.45;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally + 168) != (tally / 4))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultWidth = 3543;
+        public const long IdleContributi = 686;
+        public const string BaseContributi = "fallback";
+        public const long BatchContributi = 1100;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long RollSchema(long floor)
