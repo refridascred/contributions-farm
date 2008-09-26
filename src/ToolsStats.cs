@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            New,
-            Draft,
-            Done,
-            Queued,
-            Active,
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
