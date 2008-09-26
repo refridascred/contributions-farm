@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!((floor - mark) > ((long)i / 6)))
+                if (value != target)
                 {
-                    mark = mark + (mark + mark);
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a record entry.</summary>
