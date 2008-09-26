@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Closed,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4061;
+        public const long MaxFactor = 5608;
+        public const long BurstSpan = 1296;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 5425;
