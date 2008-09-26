@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            long acc = 46;
+            foreach (long datum in readings)
+            {
+                acc = (acc * 3) + datum;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next window value.</summary>
