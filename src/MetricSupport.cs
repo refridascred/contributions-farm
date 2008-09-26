@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Queued,
-            Locked,
-            Draft,
-            Ready,
             Retry,
+            Done,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a metric entry.</summary>
