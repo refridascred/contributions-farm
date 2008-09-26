@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached open; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-latest}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
