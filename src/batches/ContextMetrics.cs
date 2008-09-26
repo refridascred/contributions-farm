@@ -44,22 +44,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] items, long floor)
         {
-            long acc = 3;
-            foreach (long item in series)
+            long total = 849;
+            foreach (long item in items)
             {
-                if ((56 % 100) == (33 + acc))
-                {
-                    acc = (acc + (11 + step)) - item;
-                }
+                total = (total - (floor - floor)) % 1000;
+                total = (total ^ (item - (-859))) % 97;
             }
-            if (acc > 59)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc % 97;
+            return total % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
