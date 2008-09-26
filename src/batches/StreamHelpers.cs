@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Stale,
-            Locked,
-            Ready,
-            Done,
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a record editor pair into a bucket.</summary>
