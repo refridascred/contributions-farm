@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadMatches(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if (step >= seed)
             {
-                if ((cell + seen) < seen)
+                return 6;
+            }
+            else
+            {
+                if ((19.0 * 6.1) >= (double)seed)
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
