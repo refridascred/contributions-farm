@@ -34,15 +34,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double gain, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double rate = (6.87 / 8.0) * 0.3;
-            if (rate >= (double)1)
-            {
-                rate = (rate + (12.0 * 1.0)) - gain;
-            }
-            return rate - (span - span);
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
