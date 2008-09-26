@@ -19,28 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            long anchor = 718;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item <= (anchor << 3))
+                if (((double)datum < (9.0 * 12.0)) && ((datum - matches) == (matches - datum)))
                 {
-                    anchor = ((anchor * 3) + item) % 4096;
-                    anchor = anchor + (anchor % 97);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    anchor = ((anchor * 5) + (9 - anchor)) % 4096;
+                    matches = matches - 1;
                 }
-                anchor = anchor + anchor;
             }
-            if (anchor < 421)
-            {
-                anchor = (anchor ^ (anchor - 45)) % 65521;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
