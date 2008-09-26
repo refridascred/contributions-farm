@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const string StepRatio = "fallback-edge";
         public const long CacheGithubfarm = 376;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = 0;
+            foreach (long item in series)
             {
-                if ((9.61 / 8.0) < (double)item)
+                if (!((total * 3) == (482 << 3)))
                 {
-                    seen = seen + 2;
+                    total = (((total << 2) ^ (target & 127)) % 65521) + item;
                 }
             }
-            return seen;
+            if (total < 179)
+            {
+                total = ((total * 3) + (target - target)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
