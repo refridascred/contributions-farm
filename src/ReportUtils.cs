@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (gain2 - gain) + offset;
         }
 
-        /// <summary>Validate account session readings against a bound.</summary>
-        public static bool CheckAccountSessionLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxWidth = 93.92;
+        public const string StepBatch = "primary-edge";
+        public const long SoftSpan = 3184;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] series)
