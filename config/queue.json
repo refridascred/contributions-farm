@@ -1,7 +1,8 @@
 {
-  "sync_retries_count": 19.31,
-  "persist": "edge",
-  "route_delay": 9111,
-  "filter_window": 6658,
-  "queue_timeout": [141, 340, 384]
+  "soft_ttl_count": 90,
+  "dry_run": 26,
+  "metrics_window": "blue",
+  "layout_retries": "open",
+  "command_depth": "primary",
+  "strict": [281, 201, 299]
 }
