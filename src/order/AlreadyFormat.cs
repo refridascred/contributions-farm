@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                if ((double)limit < (17.0 / 8.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
