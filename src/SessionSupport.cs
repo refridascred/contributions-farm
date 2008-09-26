@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every report stats entry stays within the limit.</summary>
-        public static bool ValidateReportStatsLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "primary-1";
+        public const long BaseFactor = 6348;
+        public const long BatchSize = 1033;
+        public const long LimitCounter = 7461;
+        public const long SoftWidth = 2832;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double ratio, double floor)
