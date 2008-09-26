@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 508;
+            foreach (long entry in items)
             {
-                if (series[i] >= target)
+                if ((anchor % 97) == (entry + offset))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor + offset);
+                }
+                else
+                {
+                    anchor = anchor ^ (entry / 6);
+                }
+                if ((anchor >= (anchor >> 4)) && ((double)anchor == (9.5 * 7.13)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
