@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = origin + floor;
+            if ((double)4 == (double)step)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((floor / 9) <= (step << 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (step + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
