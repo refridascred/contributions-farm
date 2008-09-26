@@ -13,30 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            long total = -868;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (0 >= (entry << 1))
+                if (((7.4 * 1.4) < (double)cell) || ((1.3 * 7.11) < (double)cell))
                 {
-                    total = (total + (total ^ total)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ 8) % 65521;
-                }
-                if ((entry + 76) <= entry)
-                {
-                    total = ((total << 3) ^ (total ^ entry)) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (entry / 6)) % 4096;
+                    count = count + 1;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
