@@ -1,4 +1,21 @@
 # githubfarm settings
-account_threshold: false
-cache_delay_s: stable
-readonly: open
+poll_capacity_pct:
+  idle_limit_s: true
+  hard_interval_ms:
+    format_ratio: standard
+    warm_ttl_ms:
+      - 44
+      - 26
+      - 182
+    readonly:
+      - open
+      - edge
+      - strict
+  filter_retries:
+    - open
+    - open
+    - legacy
+  buffer_timeout: latest
+base_ttl_pct: 30
+sync_threshold_ms: 8446
+sync_interval_ms: 7172
