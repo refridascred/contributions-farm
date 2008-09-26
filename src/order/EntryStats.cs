@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] data, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < target)
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
