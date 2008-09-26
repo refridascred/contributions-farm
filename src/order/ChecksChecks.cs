@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] levels, long seed)
         {
-            Stale,
-            Failed,
-            Done,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (seed <= (755 >> 4))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two format measurements.</summary>
