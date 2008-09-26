@@ -23,26 +23,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank checks context input into a small class.</summary>
-        public static long ClassifyChecksContext(long limit, long step)
-        {
-            long step2 = limit + step;
-            if (((limit / 6) >= 1) || ((4 >> 2) <= (step / 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit < (step + step2)) || ((4.2 + 9.0) >= (double)step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4141;
+        public const long MaxSpan = 9077;
+        public const string DefaultFarm = "stable-1";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] levels, long step)
