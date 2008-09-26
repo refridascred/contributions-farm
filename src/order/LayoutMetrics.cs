@@ -26,38 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long origin)
-        {
-            if ((0.89 + 4.6) <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((98 << 3) < bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((18.0 / 3.0) >= (double)origin) && (bound > (origin << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) < (5 - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 509;
+        public const string StepBatches = "cached-edge";
+        public const long LimitInterval = 5086;
+        public const long LimitScore = 2532;
     }
 }
