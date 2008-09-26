@@ -1,10 +1,16 @@
 # entry settings
-sync_retries_s:
+sync_delay_pct: 2082
+enabled:
   - primary
   - eu-west
-  - blue
-retry_timeout_pct: cached
-warm_ttl_s: 30
-enabled: false
-readonly: 81.9
-audit: edge
+route_retries:
+  stream_retries:
+    base_timeout_pct: 2329
+    cache_delay:
+      - strict
+      - strict
+    editor_delay: 3326
+    strict: true
+  queue_ttl: standard
+  warm_depth_pct: false
+  soft_depth_s: 95.14
