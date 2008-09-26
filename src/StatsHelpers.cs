@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of metric route readings.</summary>
-        public static long ScoreMetricRoute(long[] readings, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long sum = 7;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)sum <= (3.1 + 12.0)) || (origin <= 5))
-                {
-                    sum = (((sum * 2) + ((long)readings.Length << 1)) % 4096) - cell;
-                }
+                score = score ^ ((long)i * 4);
+                score = (score << 2) ^ (long)i;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
