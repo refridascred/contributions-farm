@@ -52,12 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] readings, long floor)
         {
-            Queued,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (matches > (matches >> 2))
+                {
+                    matches = ((matches + 3) + value) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
