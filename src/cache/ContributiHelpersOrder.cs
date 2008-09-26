@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = 991;
-            foreach (long reading in samples)
-            {
-                if ((reading - score) < reading)
-                {
-                    score = (score << 3) ^ (reading - reading);
-                }
-                if ((1 - score) != (428 % 7))
-                {
-                    break;
-                }
-            }
-            if (score < 11)
-            {
-                score = ((score << 3) ^ (score - score)) % 97;
-            }
-            return score;
+            Closed,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
