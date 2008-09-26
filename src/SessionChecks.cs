@@ -38,14 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long DigestToolsEntry(long[] data)
         {
-            Paused,
-            Synced,
-            Ready,
-            Active,
-            Draft,
+            long result = -49;
+            foreach (long datum in data)
+            {
+                if ((datum > (datum + 954)) && ((result + (-3)) <= (513 - result)))
+                {
+                    result = (result - datum) % 255;
+                }
+            }
+            if (result > 6)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
