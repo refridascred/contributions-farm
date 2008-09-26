@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter stats readings against a rule.</summary>
-        public static long AuditCounterStatsMatches(long[] data)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally >> 1) > 847)
+                if (samples[i] <= offset)
                 {
-                    tally = (tally + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
