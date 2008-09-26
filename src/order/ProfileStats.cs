@@ -45,11 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftScore = 8014;
-        public const long MinScore = 2605;
-        public const double LimitLevel = 75.72;
-        public const double BaseFactor = 8.84;
-        public const string WindowWidth = "staging";
+        /// <summary>Match up editor githubfarm samples.</summary>
+        public static long CompareEditorGithubfarmCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
