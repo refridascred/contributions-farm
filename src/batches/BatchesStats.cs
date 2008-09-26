@@ -29,19 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double scale = (1.07 - 6.0) * 0.29;
+            if (scale < (span * 2.93))
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - scale;
             }
-            return ready;
+            return scale - (gain + gain);
         }
 
         /// <summary>Hold a record entry.</summary>
