@@ -1,6 +1,7 @@
 {
-  "persist": "stable",
-  "session_ratio": true,
-  "hard_ratio_s": ["eu-west", "green", "standard"],
-  "base_delay_pct": 100
+  "sync_retries_count": 19.31,
+  "persist": "edge",
+  "route_delay": 9111,
+  "filter_window": 6658,
+  "queue_timeout": [141, 340, 384]
 }
