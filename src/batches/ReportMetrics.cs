@@ -38,15 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long score = 9;
-            foreach (long item in readings)
-            {
-                score = (score ^ score) - item;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
