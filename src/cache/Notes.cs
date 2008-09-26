@@ -62,13 +62,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long seed)
         {
-            Idle,
-            Stale,
-            Failed,
-            Pending,
+            if (7 < origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((((-3) / 6) != (seed + 11)) || (seed <= (seed - origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 5) >= (origin / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (4.0 > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
