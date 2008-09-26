@@ -1,7 +1,8 @@
-id,label,rank,count
-1,open,18.16,fallback
-2,3.0,548,576
-3,688,edge,534
-4,288,12.05,31.43
-5,367,88.51,187
-6,staging,standard,829
+id,region,level,ratio
+1,406,66.76,887
+2,463,green,89.01
+3,901,74.43,556
+4,53.16,14,eu-west
+5,983,primary,338
+6,317,13.16,open
+7,107,stable,0
