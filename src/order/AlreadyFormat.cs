@@ -46,14 +46,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] levels)
         {
-            Locked,
-            Idle,
-            Active,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((matches + matches) < (item & 1)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
