@@ -34,20 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long CombineMetricStats(long[] series)
-        {
-            long total = 96;
-            foreach (long entry in series)
-            {
-                total = (total ^ entry) % 97;
-            }
-            if (total < 67)
-            {
-                total = total + (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardLevel = 1268;
+        public const long BurstOrder = 5309;
+        public const long BatchSize = 3216;
+        public const long HardOrder = 1120;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 9589;
