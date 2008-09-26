@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of already support readings.</summary>
-        public static long MatchAlreadySupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftCount = 74.12;
+        public const double RetryQueue = 91.78;
+        public const long SoftQueue = 3777;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] items, long floor)
