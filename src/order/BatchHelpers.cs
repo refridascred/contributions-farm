@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 68.9;
-        public const string HardGraph = "alpha-edge";
-        public const string LimitSpan = "legacy-edge";
-        public const double LimitGraph = 80.05;
+        /// <summary>Combine buffer graph values into a single score.</summary>
+        public static long DigestBufferGraph(long[] values, long limit)
+        {
+            long sum = 997;
+            foreach (long datum in values)
+            {
+                sum = ((sum * 3) + limit) + datum;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmLimits(long[] levels, long bound)
