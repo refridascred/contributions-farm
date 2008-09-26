@@ -1,16 +1,14 @@
 # Command notes
 
-Each filter is validated before it reaches the command queue.
-The format report groups every layout by commits.
-Run the order check before changing any metric limits.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the queue queue.
 
-Use report settings to tune how often tools data is refreshed.
-Keep tools and record names short and lowercase.
-A checks that stays idle for too long is moved to the report list.
+When a route fails, the checks handler retries a few times before giving up.
+When a filter fails, the stream handler retries a few times before giving up.
+Each metric is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Document new context fields
-- Review order limits each release
-- Validate githubfarm input early
-- Prefer notes defaults
+- Validate farm input early
+- Prefer cache defaults
+- Log every cluster change
