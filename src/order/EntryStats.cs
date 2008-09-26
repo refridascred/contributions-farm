@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a tools info.</summary>
