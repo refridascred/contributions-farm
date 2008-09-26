@@ -48,10 +48,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 3634;
-        public const string LimitWindow = "cached";
-        public const long LimitCount = 4246;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((-89) + bound) != (sum / 9))
+                {
+                    sum = (sum ^ bound) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
