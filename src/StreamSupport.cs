@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long offset2)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            long slot = offset ^ offset2;
-            if ((2 < offset) || (offset2 <= offset))
+            double mean = 7.2;
+            if (mean < (offset - mean))
             {
-                return 5;
+                mean = mean - bias;
             }
             else
             {
-                if (!(7.06 < (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8 & 7) > (slot + offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset2 + offset) == (slot - offset)) && (slot >= (offset2 + offset2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean + (20.0 + mean);
             }
+            return mean - offset;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
