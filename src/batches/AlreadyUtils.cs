@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long TotalBatchesTools(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] series, long seed)
         {
-            long carry = 179;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                carry = (carry ^ (item ^ carry)) % 1000;
+                if (!(seed < item))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (carry > 5)
-            {
-                carry = (carry << 3) ^ (carry << 3);
-            }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
