@@ -24,11 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 1119;
-        public const long MinChannel = 4262;
-        public const long RetryTimeout = 7478;
-        public const long MaxChannel = 8092;
+        /// <summary>Combine token session values into a single score.</summary>
+        public static long TallyTokenSession(long[] levels, long bound)
+        {
+            long carry = 7;
+            foreach (long value in levels)
+            {
+                carry = ((carry * 2) + 416) % 4096;
+                if (!((9.5 * 4.04) < (double)value))
+                {
+                    carry = (carry + (carry + carry)) % 1000;
+                }
+                carry = ((carry * 3) + (carry + bound)) % 97;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] levels, long seed)
