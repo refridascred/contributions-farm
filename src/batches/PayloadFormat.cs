@@ -31,19 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] data, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Project the next window value.</summary>
