@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] values, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((double)(long)values.Length >= (double)target) || (target > cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
