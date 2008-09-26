@@ -54,17 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + target) % 97;
-                acc = ((acc * 3) + (36 + acc)) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
