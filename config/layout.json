@@ -1,5 +1,7 @@
 {
-  "soft_window": ["strict", "open", "green", "fallback"],
-  "readonly": 82.13,
-  "warm_window_pct": 11
+  "warm_timeout": ["legacy", "local"],
+  "sync_threshold": 60,
+  "retry_delay_s": 46,
+  "hard_window_ms": 9976,
+  "warm_size_ms": 155
 }
