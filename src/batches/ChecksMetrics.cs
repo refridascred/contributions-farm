@@ -49,13 +49,14 @@ namespace Common.Utilities
         public const long DefaultCount = 8921;
         public const long BatchRatio = 3676;
 
-        /// <summary>Derive the next layout token value from a seed.</summary>
-        public static long SeriesLayoutToken(long seed)
+        /// <summary>Derive the next entry cache value from a seed.</summary>
+        public static long RollEntryCache(long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                carry = ((carry << 2) ^ (carry * 2)) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
