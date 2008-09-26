@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix - (seed / 3)) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
