@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
