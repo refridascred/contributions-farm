@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long CountContributiTokenGaps(long[] series, long floor)
+        /// <summary>Digest a series of cluster layout entries.</summary>
+        public static long ScoreClusterLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = 481;
+            foreach (long entry in samples)
             {
-                if ((cell << 1) >= (floor >> 1))
+                if (533 <= entry)
                 {
-                    matches = matches + 2;
+                    anchor = (anchor - anchor) % 97;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Hold a cache info.</summary>
