@@ -57,11 +57,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 8123;
-        public const string HardWidth = "alpha-edge";
-        public const string BaseBudget = "alpha-1";
-        public const long SoftQueue = 3418;
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long GradeCommandFormat(long limit, long floor)
+        {
+            long delta = limit ^ floor;
+            if (((7.8 / 4.0) <= (double)floor) || ((8.8 * 5.26) == (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (delta < (delta << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (delta < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long floor, long step)
