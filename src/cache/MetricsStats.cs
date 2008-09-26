@@ -27,25 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long offset, long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long bound = offset + seed;
-            if ((bound & 31) > (seed - seed))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (bound % 60))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
