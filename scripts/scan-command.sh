@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+COMMAND_LIMIT=13
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for item in fallback edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
