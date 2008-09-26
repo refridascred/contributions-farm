@@ -1,5 +1,6 @@
 {
-  "window_timeout": 59,
-  "token_interval": 3.21,
-  "layout_window": 30
+  "persist": true,
+  "counter_ratio": ["edge", "green", "cached"],
+  "notes_size": "eu-west",
+  "cache_ratio_pct": false
 }
