@@ -72,15 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double floor)
+        /// <summary>Adjust a buffer window reading.</summary>
+        public static double ProjectBufferWindow(double weight, double span)
         {
-            double ratio = floor;
-            if (ratio < (weight + weight))
-            {
-                ratio = ratio + (1.9 - floor);
-            }
-            return ratio + floor;
+            double weight2 = weight;
+            return (weight2 - (weight * 9.2)) + span;
         }
     }
 }
