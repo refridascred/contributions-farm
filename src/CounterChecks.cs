@@ -22,23 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter session samples are out of range.</summary>
-        public static long TallyFilterSessionMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((step - entry) > (hits ^ step)) && ((hits >> 2) >= (hits - step))) && ((0.18 * 8.19) == (double)hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 2.83;
+        public const long LimitScore = 5348;
+        public const long StepScore = 2428;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardLevel = 1268;
