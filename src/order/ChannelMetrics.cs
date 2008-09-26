@@ -14,21 +14,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset + target;
+            if ((delta + delta) > (delta * 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((17.0 + 10.0) < (double)target)
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a metric account sample.</summary>
