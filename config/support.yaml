@@ -1,6 +1,4 @@
 # support settings
-readonly: 30
-hard_delay_count:
-  - legacy
-  - primary
-flush_ratio_ms: open
+max_timeout_pct: open
+soft_limit_ms: edge
+enabled: local
