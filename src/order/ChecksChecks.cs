@@ -39,18 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] readings, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)tally <= (11.0 / 7.0))
+                if ((hits + hits) >= (hits + item))
                 {
-                    tally = ((tally + 1) + reading) + origin;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
