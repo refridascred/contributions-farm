@@ -34,18 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series, long seed)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long AuditBatchEditorGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((matches + matches) > sample)
+                if (count < (369 ^ datum))
                 {
-                    matches = (matches + 2) - seed;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
