@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of editor payload readings.</summary>
-        public static long CombineEditorPayload(long[] levels, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] readings, long target)
         {
-            long state = 1;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (floor <= (state / 4))
+                if (entry > target)
                 {
-                    state = ((state - (floor * 5)) % 101) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
