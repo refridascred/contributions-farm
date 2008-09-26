@@ -19,17 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long limit)
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long TallyEntryContributiMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] == limit)
+                if ((double)seen == (1.57 / 7.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
