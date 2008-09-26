@@ -40,10 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 9270;
-        public const double IdleSupport = 88.06;
-        public const long BurstSpan = 3661;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
+        {
+            long carry = 17;
+            foreach (long datum in values)
+            {
+                if ((double)carry >= (3.11 + 9.71))
+                {
+                    carry = ((carry + (24 / 2)) % 1000) ^ datum;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 2970;
