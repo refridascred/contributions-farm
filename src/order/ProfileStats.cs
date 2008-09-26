@@ -28,19 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long mix = -9;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (mix ^ step) - value;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (mix > 2)
-            {
-                mix = (mix + step) % 255;
-            }
-            return mix % 65521;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
