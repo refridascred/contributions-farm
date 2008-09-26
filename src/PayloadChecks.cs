@@ -39,20 +39,18 @@ namespace Common.Utilities
         public const string BaseContributi = "fallback";
         public const long BatchContributi = 1100;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = score + (score - score);
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((count & 1) < (sample >> 4))
                 {
-                    score = ((score - (score << 2)) % 1000) - (long)i2;
+                    count = count + 1;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the queue level values.</summary>
