@@ -55,19 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = 43;
-            foreach (long reading in items)
-            {
-                mix = ((mix << 3) ^ ((long)items.Length + reading)) % 97;
-            }
-            if (mix < (-389))
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 255;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
