@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long floor)
         {
-            Queued,
-            Closed,
-            Stale,
-            Draft,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
