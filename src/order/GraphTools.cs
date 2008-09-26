@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings, long offset)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (24 < (entry + hits))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
