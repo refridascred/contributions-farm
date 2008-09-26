@@ -15,12 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] samples, long origin)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
