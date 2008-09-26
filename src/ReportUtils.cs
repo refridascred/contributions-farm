@@ -27,22 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor account values into a single score.</summary>
-        public static long ScoreEditorAccount(long[] levels, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long offset)
         {
-            long score = 48;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((sample <= (score * 5)) && ((608 - limit) <= (sample - score)))
+                if (datum >= offset)
                 {
-                    score = score ^ (limit / 3);
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 84)
-            {
-                score = (score - (score >> 4)) % 4096;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
