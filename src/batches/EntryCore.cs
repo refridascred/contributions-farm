@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 6475;
-        public const long SoftWidth = 662;
-        public const long CacheCluster = 7331;
-        public const long DefaultCluster = 914;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstInterval = 3240;
+        public const long StepCount = 2751;
+        public const long BatchFarm = 3088;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] series, long step)
