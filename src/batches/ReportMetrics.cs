@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchBudget = "staging-edge";
-        public const long BurstChannel = 1278;
-        public const long WindowTimeout = 3184;
-        public const string WindowChannel = "local-1";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((17.0 * 5.99) != (double)seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] readings)
