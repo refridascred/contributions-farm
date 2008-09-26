@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] readings, long step)
+        /// <summary>Measure how many channel tools samples are out of range.</summary>
+        public static long TallyChannelToolsGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (cell > step)
+                if ((hits * 5) != ((-29) + value))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
