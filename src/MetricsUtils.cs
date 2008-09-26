@@ -38,18 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long TallyCounterChannelOutliers(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches & 31) > (matches + matches))
+                mix = mix - (long)i;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = (matches + 2) + datum;
+                    mix = (mix << 3) ^ (offset + (long)i2);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
