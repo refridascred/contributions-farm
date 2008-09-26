@@ -1,8 +1,7 @@
-id,ratio,state
-1,local,725
-2,61,primary
-3,582,local
-4,edge,staging
-5,632,395
-6,80.91,standard
-7,local,open
+id,owner,label,active
+1,358,63.29,staging
+2,667,17.74,blue
+3,88.0,10.27,359
+4,85.12,94,primary
+5,4.45,eu-west,staging
+6,73.15,587,678
