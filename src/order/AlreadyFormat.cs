@@ -102,21 +102,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Iterate the schema counter series from a seed.</summary>
+        public static long RollSchemaCounter(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((limit - limit) <= (52 - result)))
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 4) + result;
+                    result = (result * 2) + (result / 3);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
