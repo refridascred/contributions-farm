@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long floor)
+        /// <summary>Measure how many order already samples are out of range.</summary>
+        public static long AuditOrderAlreadyMatches(long[] samples)
         {
-            long state = 352;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = (state ^ (state % 64)) - reading;
+                if ((cell + cell) >= (count ^ 11))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < (-32))
-            {
-                state = ((state * 3) + floor) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
