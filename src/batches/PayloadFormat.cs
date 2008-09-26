@@ -40,31 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long origin, long floor)
+        /// <summary>Count the route stats entries that pass the check.</summary>
+        public static long CountRouteStatsMatches(long[] data, long offset)
         {
-            if ((origin << 2) >= floor)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((322 & 1) < (floor * 3)) && ((origin % 5) <= origin))
+                if ((offset - cell) > ((long)data.Length - cell))
                 {
-                    return 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!(700 > (floor << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
