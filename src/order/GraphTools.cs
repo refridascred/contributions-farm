@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long CountWindowCommandHits(long[] series)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long entry in series)
             {
-                if ((matches + cell) >= (cell / 7))
+                if (((matches & 1) > entry) || ((entry - 111) <= (matches >> 2)))
                 {
                     matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
