@@ -49,24 +49,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels, long offset)
-        {
-            long sum = 202;
-            foreach (long cell in levels)
-            {
-                if (!((sum >> 3) <= cell))
-                {
-                    sum = (sum << 2) ^ (0 - 7);
-                    sum = (sum * 2) + (sum / 5);
-                }
-                if ((double)offset <= 7.3)
-                {
-                    sum = sum + ((-9) - (long)levels.Length);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7541;
+        public const long CacheSpan = 4332;
+        public const long HardLevel = 2000;
+        public const double BatchSpan = 81.57;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCount = 8403;
