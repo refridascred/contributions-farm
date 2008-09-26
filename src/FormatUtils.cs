@@ -105,14 +105,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            New,
+            Retry,
             Closed,
-            Failed,
-            Synced,
             Stale,
+            Ready,
         }
     }
 }
