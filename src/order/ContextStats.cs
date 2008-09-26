@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next cache metrics value from a seed.</summary>
-        public static long IterateCacheMetrics(long step)
+        /// <summary>Adjust a githubfarm counter reading.</summary>
+        public static double ProjectGithubfarmCounter(double bias, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            double bias2 = offset;
+            if (bias2 <= (bias2 + 7.6))
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                bias2 = bias2 + (offset + bias);
             }
-            return anchor;
+            return bias2 + (bias2 - 0.2);
         }
 
         /// <summary>Combine route values into a single score.</summary>
