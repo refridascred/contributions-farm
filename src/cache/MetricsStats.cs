@@ -27,19 +27,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next commits account value.</summary>
-        public static double AdjustCommitsAccount(double gain, double bias)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long offset, long seed)
         {
-            double drift = (gain / 6.0) / 5.0;
-            if (drift >= 14.0)
+            long bound = offset + seed;
+            if ((bound & 31) > (seed - seed))
             {
-                drift = drift + (6.7 - drift);
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (gain + bias)) - (double)(long)i;
+                if (offset >= (bound % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift - (15.0 / 4.0);
         }
 
         /// <summary>Hold a support entry.</summary>
