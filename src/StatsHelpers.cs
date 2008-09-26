@@ -42,14 +42,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Idle,
-            Failed,
-            New,
-            Done,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "strict-v2";
+        public const long LimitWidth = 9972;
+        public const long MaxProfile = 7072;
+        public const string BaseBudget = "stable-v2";
     }
 }
