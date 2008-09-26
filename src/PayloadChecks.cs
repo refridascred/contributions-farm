@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 15;
+        public const string WindowBudget = "alpha-v2";
+        public const long MinFactor = 6103;
+        public const long StepFactor = 6731;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double gain, double floor)
