@@ -29,13 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            Ready,
+            Closed,
+            Draft,
         }
     }
 }
