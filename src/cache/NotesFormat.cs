@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftSize = "alpha";
-        public const string IdleCluster = "local";
-        public const long BatchCluster = 7393;
-        public const long StepInterval = 5964;
-        public const long RetryBudget = 6202;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double ratio, double span)
