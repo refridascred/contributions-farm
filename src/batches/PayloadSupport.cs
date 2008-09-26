@@ -36,14 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            Synced,
-            Paused,
-            Closed,
-            Stale,
-            Pending,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value - 262) <= (-353)) && ((16.0 / 2.0) >= (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
