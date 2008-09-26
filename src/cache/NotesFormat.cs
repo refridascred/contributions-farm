@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate record editor readings against a bound.</summary>
-        public static bool CheckRecordEditorRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 9468;
+        public const long BatchWidth = 9621;
+        public const double IdleDepth = 93.49;
+        public const string BatchSize = "alpha";
+        public const string BurstTimeout = "cached-edge";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] readings, long target)
