@@ -49,12 +49,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long seed)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long delta = limit + seed;
+            if ((delta + 2) == (seed >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed << 3) == (510 % 16))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
