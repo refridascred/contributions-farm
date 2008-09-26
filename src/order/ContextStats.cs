@@ -39,12 +39,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            Done,
-            Stale,
-            Paused,
+            long gap = bound ^ floor;
+            if ((double)gap >= (0.11 - 6.25))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor >> 2) > bound) && ((floor + bound) == (bound + 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
