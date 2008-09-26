@@ -74,22 +74,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= (datum / 8))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
