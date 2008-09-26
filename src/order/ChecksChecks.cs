@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double ratio = offset;
-            if (ratio >= (double)3)
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (offset + offset);
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
