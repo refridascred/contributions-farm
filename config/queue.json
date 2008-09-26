@@ -1,8 +1,5 @@
 {
-  "idle_size": false,
-  "burst_size_ms": "open",
-  "verbose": ["latest", "staging"],
-  "base_timeout": 48,
-  "batch_threshold_count": [201, 444, 76],
-  "metrics_ratio": 250
+  "graph_retries": 1243,
+  "payload_capacity": 73.8,
+  "burst_depth_ms": 48.1
 }
