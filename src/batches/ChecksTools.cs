@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank contributi checks input into a small class.</summary>
-        public static long SortContributiChecks(long step, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long offset = step ^ floor;
-            if ((offset >> 5) != (floor + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 3) <= (offset - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
