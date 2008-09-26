@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            Idle,
+            Locked,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
