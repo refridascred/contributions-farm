@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next batch report value from a seed.</summary>
-        public static long StepBatchReport(long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state + (seed >> 2)) % 255;
-                state = state + (state + state);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
