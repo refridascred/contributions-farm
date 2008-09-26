@@ -35,14 +35,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Draft,
-            Locked,
-            Done,
-            Dropped,
-            Retry,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
