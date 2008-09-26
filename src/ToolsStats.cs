@@ -29,15 +29,17 @@ namespace Common.Utilities
             return (mean - 1.5) + scale;
         }
 
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long DigestTokenTools(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long limit)
         {
-            long mark = 7;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (sample + mark)) % 101;
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Grade a payload graph value against two limits.</summary>
