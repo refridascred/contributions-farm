@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit report payload readings against a rule.</summary>
-        public static long AuditReportPayloadGaps(long[] series, long seed)
+        /// <summary>Match up batch counter samples.</summary>
+        public static long OverlapBatchCounterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((seed & 15) <= (seed + datum)) || (((long)series.Length + hits) > datum)) && ((datum + datum) <= seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
