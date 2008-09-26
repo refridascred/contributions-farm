@@ -22,14 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Idle,
-            Paused,
+            Pending,
             Queued,
-            Done,
-            Retry,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
