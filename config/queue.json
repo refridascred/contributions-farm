@@ -1,8 +1,8 @@
 {
-  "base_retries": 22,
-  "default_capacity_ms": 40,
-  "idle_size_pct": "legacy",
-  "account_interval": "eu-west",
-  "checks_interval": 62,
-  "sync_capacity": "strict"
+  "compress": "staging",
+  "default_timeout_s": 52,
+  "batch_depth_pct": 97,
+  "channel_delay": false,
+  "verbose": 80.66,
+  "route_capacity": false
 }
