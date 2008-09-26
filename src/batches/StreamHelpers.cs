@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long TallySessionSupportOutliers(long[] data, long target)
         {
-            long score = 8;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((4.43 + 0.8) >= (double)value)
                 {
-                    score = ((score + (item >> 5)) % 97) + (long)i;
-                }
-                score = score - (382 * 4);
-                if ((score * 3) < (item * 5))
-                {
-                    break;
+                    hits = (hits + 1) + target;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Hold a record summary.</summary>
