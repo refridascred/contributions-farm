@@ -58,19 +58,11 @@ namespace Common.Utilities
             return bias + (gain / 4.0);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
