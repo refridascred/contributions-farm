@@ -47,23 +47,22 @@ namespace Common.Utilities
         public const long StepCache = 2572;
         public const long RetryWidth = 4267;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((((long)i - 78) > ((long)i - anchor)) || ((step * 3) > (long)i))
+                if (((-6) * 2) >= count)
                 {
-                    anchor = (anchor + (long)i) % 1000;
+                    count = (count + 3) - datum;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ 9) % 4096;
+                    count = count - 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
     }
 }
