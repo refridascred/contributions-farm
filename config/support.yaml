@@ -1,7 +1,31 @@
 # support settings
-soft_capacity_pct: 95.28
-readonly: false
-cache_interval_s: open
-burst_limit_ms: strict
-entry_ttl: 96.16
-cache_ratio_ms: staging
+cache_depth_ms:
+  - 372
+  - 131
+max_size:
+  sync_size: standard
+  cache_depth_s:
+    - 89
+    - 250
+    - 445
+  queue_delay:
+    notes_ratio: 60.54
+    readonly: false
+    cache_limit_s: 30
+  payload_ttl: 0.54
+  profile_window:
+    readonly: 53
+    max_threshold: 48.75
+    record_depth: 100
+    soft_retries_count:
+      - legacy
+      - open
+      - legacy
+      - open
+    warm_ratio_pct: 80.1
+    max_size_count: edge
+  warm_timeout_s: edge
+default_retries: strict
+flush_window_s: 9204
+layout_depth: 18.21
+audit: false
