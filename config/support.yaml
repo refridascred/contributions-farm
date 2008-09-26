@@ -1,6 +1,32 @@
 # support settings
-format_window: legacy
-editor_threshold: false
-enabled: 48
-schema_ratio: true
-readonly: 30
+flush_window_ms: 98.82
+cache_depth: 9721
+min_window:
+  counter_ratio: false
+  burst_ratio_pct:
+    readonly:
+      - 495
+      - 191
+    warm_depth: 99
+    audit: strict
+  strict: 30
+  poll_size: true
+channel_interval:
+  - local
+  - open
+  - strict
+  - eu-west
+soft_delay_count:
+  schema_limit: open
+  verbose:
+    poll_ratio_pct: edge
+    record_delay: 1024
+    idle_size: 73
+    readonly: 94.3
+    soft_window_pct: stable
+  retry_depth_ms: 719
+  readonly:
+    - latest
+    - edge
+  buffer_ttl: legacy
+burst_depth_ms: false
