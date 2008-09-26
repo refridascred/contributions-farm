@@ -52,28 +52,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long limit)
         {
-            if (origin >= (673 + origin))
+            if ((floor + floor) < (floor - (-8)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((origin * 3) >= (origin % 16))
+                if ((96 <= (floor * 3)) || (limit >= (194 >> 1)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)origin < 3.15)
+                    if ((limit % 5) < floor)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        if ((floor <= limit) && ((floor << 1) <= (floor % 64)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
