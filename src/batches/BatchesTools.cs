@@ -24,17 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (data[i] < floor)
+                if ((tally - sample) < (sample - 284))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
