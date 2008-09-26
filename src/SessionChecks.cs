@@ -36,15 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data, long floor)
         {
-            long acc = 936;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                acc = ((acc - (acc + (-186))) + datum) + bound;
+                if ((value / 6) >= (floor ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
