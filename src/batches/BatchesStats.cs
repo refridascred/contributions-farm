@@ -48,23 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account metric reading.</summary>
-        public static double BlendAccountMetric(double scale, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series, long target)
         {
-            double weight = span;
-            if (weight < (double)6)
+            long result = 9;
+            foreach (long sample in series)
             {
-                weight = (weight + 20.0) + scale;
+                if ((result + result) < ((long)series.Length + target))
+                {
+                    result = ((result << 3) ^ (934 + sample)) % 255;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result >> 1);
+                }
             }
-            else
-            {
-                weight = weight - 14.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)(-833)) + (double)(long)i;
-            }
-            return weight + span;
+            return result;
         }
     }
 }
