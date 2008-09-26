@@ -48,22 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)(-3) <= (double)seen) || (((sample & 63) <= seen) || ((sample - sample) > (sample / 7))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
