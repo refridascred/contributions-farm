@@ -30,13 +30,10 @@ namespace Common.Utilities
             return gain2 + (5.64 * 20.0);
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstBudget = 38.32;
+        public const long SoftMetrics = 8524;
+        public const string BatchMetrics = "fallback-1";
+        public const long BatchLevel = 2840;
     }
 }
