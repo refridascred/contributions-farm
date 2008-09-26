@@ -81,14 +81,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            New,
-            Pending,
-            Draft,
-            Ready,
-            Paused,
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
