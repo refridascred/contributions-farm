@@ -70,18 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = 43;
+            foreach (long reading in items)
             {
-                if ((9.0 + 2.56) != (double)hits)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
+                mix = ((mix << 3) ^ ((long)items.Length + reading)) % 97;
             }
-            return hits;
+            if (mix < (-389))
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 255;
+            }
+            return mix;
         }
     }
 }
