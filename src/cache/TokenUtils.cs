@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Measure how many schema report samples are out of range.</summary>
-        public static long AuditSchemaReportOutliers(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8.91 < (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + sample;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
