@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples, long offset)
+        /// <summary>Adjust a schema entry reading.</summary>
+        public static double AdjustSchemaEntry(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = (double)(7 - 288);
+            if (mean >= ratio)
             {
-                if ((((entry * 4) < offset) || (251 > (matches ^ entry))) && ((7.3 * 0.5) <= (double)offset))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 5.3) + (double)(long)i;
+            }
+            return mean + 20.0;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
