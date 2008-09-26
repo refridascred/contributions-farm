@@ -46,18 +46,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((offset + offset) > offset)
+                if (reading <= target)
                 {
-                    hits = (hits + 2) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
