@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long sum = 11;
-            foreach (long cell in levels)
-            {
-                sum = (((sum * 5) + cell) % 1000) + target;
-            }
-            if (sum > 400)
-            {
-                sum = sum ^ (sum % 12);
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank notes checks input into a small class.</summary>
