@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFactor = "primary-edge";
-        public const long IdleFarm = 9570;
-        public const long LimitCount = 8590;
-        public const double DefaultFarm = 2.9;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally < (1.63 * 16.0))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
