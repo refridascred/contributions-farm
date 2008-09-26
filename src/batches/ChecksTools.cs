@@ -27,19 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long carry = 7;
-            foreach (long entry in levels)
-            {
-                carry = (carry ^ (floor + entry)) % 65521;
-            }
-            if (carry < (-93))
-            {
-                carry = ((carry << 3) ^ (floor & 3)) % 65521;
-            }
-            return carry;
+            Paused,
+            New,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a tools record.</summary>
