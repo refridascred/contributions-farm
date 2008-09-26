@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5825;
+        public const long RetryQueue = 178;
+        public const double IdleQueue = 1.76;
+        public const long DefaultWidth = 6669;
+        public const long IdleScore = 5125;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmBounds(long[] values, long origin)
