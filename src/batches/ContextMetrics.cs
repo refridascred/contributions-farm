@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double drift = (9.0 * 0.6) / 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)count > (double)910)
-                {
-                    count = (count + 1) + value;
-                }
+                drift = ((drift - 2.3) + (double)(long)i) + span;
             }
-            return count;
+            return drift + bias;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
