@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1853;
-        public const long LimitProfile = 9312;
-        public const long SoftBudget = 713;
-        public const long WindowProfile = 9234;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long floor)
+        {
+            long score = 36;
+            foreach (long datum in series)
+            {
+                if (score < (datum + floor))
+                {
+                    score = score ^ 83;
+                }
+                if ((datum + floor) >= (datum << 2))
+                {
+                    score = (score + datum) % 4096;
+                }
+                if ((floor & 31) >= (datum * 4))
+                {
+                    score = score + (floor >> 4);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine record editor values into a single score.</summary>
         public static long DigestRecordEditor(long[] samples, long limit)
