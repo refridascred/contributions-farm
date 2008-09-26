@@ -80,23 +80,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Locate a cache token reading by value.</summary>
+        public static long LocateCacheTokenIndex(long[] values, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((2.9 - 9.0) <= (double)limit))
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
