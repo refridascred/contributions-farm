@@ -1,6 +1,8 @@
 {
-  "default_delay_s": true,
-  "min_timeout_pct": 68.78,
-  "idle_ttl_pct": 8546,
-  "batch_window_pct": 250
+  "retry_capacity_s": ["local", "blue"],
+  "poll_capacity": 94.33,
+  "burst_timeout": false,
+  "sync_retries_ms": "stable",
+  "session_capacity": 80.58,
+  "dry_run": false
 }
