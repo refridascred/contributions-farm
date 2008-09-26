@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((count << 2) > (value - value))
                 {
-                    mix = ((mix * 3) + step) - (long)i2;
+                    count = count + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
     }
 }
