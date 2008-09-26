@@ -28,9 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "standard-1";
-        public const long MaxBatch = 7791;
-        public const long RetryTimeout = 635;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
