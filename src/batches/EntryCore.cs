@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
