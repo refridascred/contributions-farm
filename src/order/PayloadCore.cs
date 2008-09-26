@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support format readings against a bound.</summary>
-        public static bool CheckSupportFormatRange(long[] levels, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (cell <= limit)
+                if (value < limit)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a cluster header.</summary>
