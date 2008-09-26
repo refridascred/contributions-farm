@@ -1,4 +1,9 @@
 # support settings
-layout_depth: 80.15
-account_size: 78.14
-hard_interval: eu-west
+warm_delay: strict
+max_interval: false
+default_capacity: true
+enabled:
+  - 216
+  - 356
+base_window: 10
+cache_delay_s: 31
