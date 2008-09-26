@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 6;
+            foreach (long entry in data)
             {
-                if ((origin + item) <= item)
+                if (!((entry - mark) > (entry << 3)))
                 {
-                    hits = hits + 3;
+                    mark = (mark - mark) % 97;
                 }
             }
-            return hits;
+            if (mark < 934)
+            {
+                mark = (mark + (mark ^ mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
