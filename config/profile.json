@@ -1,7 +1,6 @@
 {
-  "cluster_retries": 4855,
-  "base_timeout_ms": "staging",
-  "compress": [15, 330, 18],
-  "stats_size": 9839,
-  "warm_retries_count": 10.96
+  "strict": "stable",
+  "session_window": 70.65,
+  "default_depth_ms": 29.44,
+  "base_ttl_ms": 500
 }
