@@ -25,11 +25,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] series)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long total = -320;
+            foreach (long value in series)
+            {
+                if ((7 + total) > total)
+                {
+                    total = ((total << 3) ^ value) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value >> 5)) % 65521;
+                    total = ((total * 4) + value) % 255;
+                }
+                total = (total ^ (value + total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
