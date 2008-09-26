@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] items, long offset)
+        /// <summary>Roll a report metrics counter forward.</summary>
+        public static long SeriesReportMetrics(long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item == (double)1)
-                {
-                    tally = (tally + 3) + offset;
-                }
+                mark = (mark - (mark + 83)) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
