@@ -62,39 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long offset)
         {
-            long span = origin + bound;
-            if ((origin % 8) < (10 - (-8)))
+            long carry = 2;
+            foreach (long reading in readings)
             {
-                return 7;
+                carry = ((carry * 3) + offset) ^ reading;
             }
-            else
-            {
-                if (((-511) * 2) <= (99 - span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((8.18 * 2.74) == (double)span) || (span <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + 5) < (origin ^ 834))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Blend two payload measurements.</summary>
