@@ -22,16 +22,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            long state = 10;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                state = (state * 2) + (datum & 255);
-                state = (state << 2) ^ (datum % 16);
+                if (((seen * 5) < (reading & 7)) || ((double)4 > (double)(long)items.Length))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
