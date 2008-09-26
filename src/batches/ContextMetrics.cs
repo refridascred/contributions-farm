@@ -40,19 +40,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit tools command readings against a rule.</summary>
-        public static long CountToolsCommandGaps(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((step << 2) > (3 + 157))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3636;
+        public const double MaxFarm = 18.22;
+        public const string LimitFarm = "strict";
+        public const long HardLevel = 6685;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultRatio = 6143;
