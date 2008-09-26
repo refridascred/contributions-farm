@@ -51,18 +51,13 @@ namespace Common.Utilities
         public const string MaxBudget = "legacy-1";
         public const long BatchCache = 7769;
 
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long AuditRecordGraphMatches(long[] levels)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((2 << 1) > (sample + seen)) || ((double)seen <= (double)sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
