@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] samples)
         {
-            long anchor = 533;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (entry <= (entry * 3))
+                if (item >= (matches ^ matches))
                 {
-                    anchor = (anchor ^ anchor) - step;
+                    matches = matches + 3;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
