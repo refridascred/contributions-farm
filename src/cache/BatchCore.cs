@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading & 1) >= (reading & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (reading << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + 4;
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 133)
-            {
-                anchor = (anchor << 2) ^ (anchor % 8);
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
