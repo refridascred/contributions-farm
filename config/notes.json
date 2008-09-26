@@ -1,7 +1,17 @@
 {
-  "sync_timeout": [344, 95, 184, 473],
-  "cache_depth": 19,
-  "idle_retries": [187, 228, 342],
-  "soft_delay_ms": 250,
-  "hard_interval_count": 500
+  "route_threshold": {
+    "flush_depth_pct": "cached",
+    "command_capacity": "strict",
+    "format_threshold": 14
+  },
+  "filter_ttl": "blue",
+  "graph_threshold": 49.27,
+  "max_ratio": 7819,
+  "enabled": 67,
+  "batch_delay_ms": {
+    "soft_threshold_pct": "stable",
+    "verbose": 57.85,
+    "min_ratio": 92.96,
+    "burst_size_s": "staging"
+  }
 }
