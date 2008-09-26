@@ -65,23 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items, long step)
         {
-            double mean = weight * 0.5;
-            if (mean > weight)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mean = mean - weight;
+                if ((matches * 3) >= (sample - matches))
+                {
+                    matches = (matches + 2) - step;
+                }
             }
-            else
-            {
-                mean = mean + (span / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (weight - mean)) + (double)(long)i;
-            }
-            return mean - span;
+            return matches;
         }
     }
 }
