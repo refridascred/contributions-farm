@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long step)
         {
-            double bias = rate;
-            if (bias >= (double)11)
+            long gap = origin + step;
+            if (origin > (gap & 1))
             {
-                bias = (bias + (double)2) + floor;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias + bias) - (double)(long)i;
+                if ((origin + origin) != (628 + (-78)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((591 - gap) < (origin / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias - (4.8 / 4.0);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
