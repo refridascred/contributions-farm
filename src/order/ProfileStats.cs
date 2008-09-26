@@ -28,15 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Scale a filter window figure with a bias.</summary>
+        public static double ProjectFilterWindow(double gain, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            double gain2 = gain / 2.0;
+            if (gain2 < (gain2 / 7.0))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                gain2 = gain2 + gain2;
             }
-            return sum;
+            else
+            {
+                gain2 = gain2 + (floor + floor);
+            }
+            return gain2 - (floor * 2.99);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
