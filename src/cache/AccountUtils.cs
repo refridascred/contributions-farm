@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every report route entry stays within the limit.</summary>
-        public static bool CheckReportRouteBounds(long[] items, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
