@@ -15,19 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double span)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            double gain2 = 7.76 + (gain - span);
-            if (gain2 > span)
+            double load = (double)9;
+            for (int i = 0; i < 2; i++)
             {
-                gain2 = gain2 + (gain / 9.0);
+                load = (load - (offset * 2.2)) - (double)(long)i;
             }
-            else
-            {
-                gain2 = gain2 - (gain2 - gain);
-            }
-            return gain2 + (5.64 * 20.0);
+            return load + rate;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
