@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] values, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Scale a filter contributi figure with a bias.</summary>
