@@ -1,11 +1,14 @@
 # support settings
-compress:
-  - 385
-  - 32
-  - 455
-  - 254
-account_threshold: standard
-graph_size: 51.66
-min_timeout_count: 9266
-burst_retries_count: 85
-persist: true
+retry_delay_count: 500
+already_window: primary
+soft_retries_s: 34
+verbose:
+  retry_capacity_ms: 58
+  sync_threshold: edge
+  base_depth_s: 13.12
+persist:
+  - cached
+  - fallback
+  - edge
+  - green
+readonly: 3354
