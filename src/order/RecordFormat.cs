@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Scale a batches account figure with a bias.</summary>
+        public static double BlendBatchesAccount(double weight, double bias)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            double drift = (double)(6 >> 3);
+            if (drift >= bias)
+            {
+                drift = drift + (drift * 1.51);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Locate a batch filter reading by value.</summary>
