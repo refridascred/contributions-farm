@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 2) ^ (floor - floor)) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
