@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(12 << 2);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (((rate + rate) + (double)(long)i) - ratio) - span;
             }
-            return count;
+            return rate - (double)74;
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
