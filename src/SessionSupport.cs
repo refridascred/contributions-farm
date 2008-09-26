@@ -14,23 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] values, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((seed * 2) <= carry) || ((carry >> 4) >= (seed * 4)))
+                if (value < seed)
                 {
-                    carry = (carry - (carry << 3)) % 255;
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry % 2)) % 101) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
