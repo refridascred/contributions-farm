@@ -44,15 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next account stream value.</summary>
-        public static double ProjectAccountStream(double gain, double bias)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long offset)
         {
-            double weight = gain;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                weight = (weight + gain) + (double)(long)i;
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (3.1 - bias);
+            return flag;
         }
 
         /// <summary>Match up cache batches samples.</summary>
