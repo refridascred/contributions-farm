@@ -22,13 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
+            long acc = 30;
+            foreach (long datum in samples)
+            {
+                if ((3 / 5) < datum)
+                {
+                    acc = (acc * 5) + (acc * 2);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc >> 5)) % 97;
+                }
+            }
+            if (acc > 32)
+            {
+                acc = (acc ^ (848 * 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
