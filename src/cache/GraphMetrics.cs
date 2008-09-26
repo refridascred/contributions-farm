@@ -55,12 +55,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSpan = 844;
-        public const long StepLevel = 2596;
-        public const long WindowCommits = 4664;
-        public const string MinSize = "cached-edge";
-        public const long MinCommits = 5525;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxInterval = 64.83;
