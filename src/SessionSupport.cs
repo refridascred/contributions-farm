@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long step, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            if (step >= (0 + 99))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step >= (7.12 + 5.93)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.7 * 5.9) <= (double)step) || ((70 ^ step) >= (607 / 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double drift = 6.0;
+            return (drift + offset) + bias;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
