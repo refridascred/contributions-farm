@@ -48,16 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            long mark = 50;
+            foreach (long sample in samples)
             {
-                total = (total + 6) % 65521;
-                total = ((total * 4) + (long)i) % 101;
+                if (90 < mark)
+                {
+                    mark = mark ^ (sample + mark);
+                }
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
