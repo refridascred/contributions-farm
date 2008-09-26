@@ -59,19 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long limit)
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long AuditEntryCounterHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (value != limit)
+                if (matches >= (matches + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
