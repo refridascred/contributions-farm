@@ -58,26 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            long anchor = 624;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((198 + item) >= 2)
-                {
-                    anchor = anchor + (item * 4);
-                }
-                else
-                {
-                    anchor = anchor + (item / 8);
-                }
+                acc = ((acc * 2) + target) % 97;
+                acc = ((acc * 3) + (36 + acc)) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (anchor > 56)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-            }
-            return anchor % 97;
+            return acc;
         }
     }
 }
