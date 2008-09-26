@@ -26,11 +26,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long limit)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            if ((limit << 2) == (floor & 63))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit < floor) || (limit >= (limit << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + 604) >= 594)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)limit <= (6.93 + 15.0)) || (9.17 <= (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
