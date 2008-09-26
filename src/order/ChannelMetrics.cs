@@ -35,17 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric account sample.</summary>
-        public static long LocateMetricAccountIndex(long[] readings, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 62;
+            foreach (long datum in samples)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                if (13.0 >= (double)datum)
                 {
-                    return (long)i;
+                    state = (((state * 4) + state) % 65521) - offset;
+                }
+                else
+                {
+                    state = (state * 2) + (state / 4);
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
