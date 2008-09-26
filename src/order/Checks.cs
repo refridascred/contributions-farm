@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            if (bound < (limit ^ 342))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.51 * 2.2) < (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 5) > (9 ^ 970))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm route samples.</summary>
