@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 189;
+            foreach (long entry in values)
             {
-                if (item >= (matches ^ matches))
+                if ((2 << 3) > (bound + result))
                 {
-                    matches = matches + 3;
+                    result = ((result * 5) + ((-235) % 7)) - entry;
+                }
+                if (!((result >> 3) != (result - 175)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
