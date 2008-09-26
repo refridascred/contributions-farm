@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((7.2 - 0.01) > (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (step <= (floor >> 3))
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
