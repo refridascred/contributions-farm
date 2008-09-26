@@ -15,31 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long seed)
+        /// <summary>Iterate the metric order series from a seed.</summary>
+        public static long RollMetricOrder(long origin)
         {
-            if ((((-9) / 9) == (seed >> 2)) || ((6.42 / 7.0) == (double)seed))
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                mix = (mix * 4) + (origin << 1);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((1.81 + 9.9) <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (258 > (seed & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a schema options.</summary>
