@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] values, long target)
         {
-            double rate = span;
-            return (rate - (double)1) + ratio;
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((double)(long)values.Length >= (double)target) || (target > cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a command queue counter forward.</summary>
