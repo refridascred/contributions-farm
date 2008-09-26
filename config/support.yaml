@@ -1,19 +1,9 @@
 # support settings
-cluster_limit: false
-burst_size_count:
-  min_size: true
-  cache_threshold_pct: eu-west
-  window_interval: open
-  filter_retries:
-    - stable
-    - stable
-    - latest
-  cache_threshold: true
-hard_ttl: 16
-max_ratio_pct: 6
-notes_delay: eu-west
-githubfarm_ttl:
-  - strict
-  - strict
-  - cached
-  - eu-west
+cluster_capacity:
+  commits_interval: eu-west
+  warm_size: 95
+  hard_delay: 500
+checks_delay: legacy
+sync_interval: primary
+cache_retries: 81.8
+batch_threshold: true
