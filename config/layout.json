@@ -1,15 +1,8 @@
 {
-  "idle_depth": 68,
-  "order_ratio": "cached",
-  "sync_threshold": "latest",
-  "audit": 97,
-  "batch_ttl_pct": {
-    "cache_retries": 67,
-    "route_depth": 58.1,
-    "warm_window_pct": {
-      "window_limit": 5,
-      "readonly": 2.75,
-      "cache_ratio_s": true
-    }
-  }
+  "dry_run": "standard",
+  "retry_capacity": 5651,
+  "soft_interval_ms": "latest",
+  "batch_ttl": false,
+  "cache_window_ms": "latest",
+  "support_ratio": 250
 }
