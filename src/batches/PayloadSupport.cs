@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] series, long target)
+        /// <summary>Accumulate checks batch samples.</summary>
+        public static long CombineChecksBatch(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = 658;
+            foreach (long item in levels)
             {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (((mix ^ 13) % 65521) ^ item) + step;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
