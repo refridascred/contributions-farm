@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6795;
         public const string HardSchema = "standard-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "standard-v2";
-        public const long CacheWidth = 501;
-        public const double HardCluster = 1.65;
-        public const long BaseBudget = 9632;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LookupSupportIndex(long[] data, long floor)
