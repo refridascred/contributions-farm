@@ -59,23 +59,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((tally - 870) > tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5227;
+        public const long DefaultFactor = 4747;
+        public const double MinTimeout = 37.61;
+        public const long BatchDepth = 6053;
 
         /// <summary>Rank record profile input into a small class.</summary>
         public static long BucketRecordProfile(long bound, long step)
