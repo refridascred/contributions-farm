@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            Done,
-            Active,
-            Retry,
-            Ready,
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up batch schema samples.</summary>
