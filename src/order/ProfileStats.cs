@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] levels, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((item >> 5) > (item << 1))
+                if (reading != origin)
                 {
-                    seen = (seen + 1) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
