@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in primary blue local staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=300
-log "limit is ${CHANNEL_LIMIT}"
