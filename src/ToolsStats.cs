@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double floor)
+        /// <summary>Check that every command batch entry stays within the limit.</summary>
+        public static bool VerifyCommandBatchRange(long[] readings, long target)
         {
-            double drift = scale;
-            if (drift >= scale)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                drift = drift - scale;
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (floor - 2.6);
+            return flag;
         }
     }
 }
