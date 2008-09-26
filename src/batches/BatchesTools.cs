@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!!((datum / 7) >= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
