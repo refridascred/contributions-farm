@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cluster route entry stays within the limit.</summary>
-        public static bool VerifyClusterRouteBounds(long[] data, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a cluster header.</summary>
