@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((97 + sample) == (sample + sample))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
