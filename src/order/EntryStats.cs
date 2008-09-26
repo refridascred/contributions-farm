@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
