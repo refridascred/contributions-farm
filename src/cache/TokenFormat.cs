@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score + (1 >> 4)) % 101;
+                score = (score ^ (score ^ (long)i)) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
