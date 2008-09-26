@@ -1,5 +1,16 @@
 {
-  "burst_depth_count": true,
-  "tools_timeout": "eu-west",
-  "min_capacity": 93.0
+  "retry_ttl_count": "legacy",
+  "readonly": "staging",
+  "verbose": {
+    "audit": 60,
+    "burst_timeout": ["staging", "strict", "staging", "eu-west"],
+    "min_timeout_ms": {
+      "soft_delay_ms": [87, 147],
+      "flush_timeout": 60,
+      "enabled": ["edge", "green"],
+      "burst_capacity_s": 500,
+      "cache_delay": "latest",
+      "min_retries_count": "strict"
+    }
+  }
 }
