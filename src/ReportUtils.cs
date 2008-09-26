@@ -38,18 +38,21 @@ namespace Common.Utilities
             return gain2 - (8.3 / 8.0);
         }
 
-        /// <summary>Fold a list of farm metric readings.</summary>
-        public static long CombineFarmMetric(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long result = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum % 3) == (datum / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + (datum ^ result)) % 97;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
