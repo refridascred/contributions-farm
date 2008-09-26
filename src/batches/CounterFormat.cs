@@ -28,16 +28,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a entry queue counter forward.</summary>
-        public static long StepEntryQueue(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total * 2) + offset;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8469;
+        public const long BaseWidth = 7796;
+        public const long SoftProfile = 3386;
     }
 }
