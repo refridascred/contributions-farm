@@ -28,21 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Combine metrics cluster values into a single score.</summary>
+        public static long CombineMetricsCluster(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.37 * 5.83) != (double)item)
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 4) + (score - item)) % 65521;
+                }
+                if (!((item / 5) != (score % 5)))
+                {
+                    score = (score ^ (item - item)) % 65521;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next graph route value from a seed.</summary>
