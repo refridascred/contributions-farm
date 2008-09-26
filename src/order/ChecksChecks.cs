@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] items, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample < step)
+                if ((double)tally <= (11.0 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) + reading) + origin;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
