@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)reading > (3.78 + 3.2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
