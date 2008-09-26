@@ -39,19 +39,16 @@ namespace Common.Utilities
         public const long DefaultOrder = 5837;
         public const long BatchOrder = 1489;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Derive the next record farm value from a seed.</summary>
+        public static long DeriveRecordFarm(long target)
         {
-            double load = 3.6;
-            if (load > (double)96)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                load = load - 9.2;
+                state = ((state * 5) + (long)i) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (rate * 14.0);
-            }
-            return load - offset;
+            return state;
         }
     }
 }
