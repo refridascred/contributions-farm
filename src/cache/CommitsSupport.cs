@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string DefaultBudget = "open-edge";
         public const string WindowEditor = "cached-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 9841;
-        public const long HardCount = 6761;
-        public const long MinAlready = 480;
-        public const double CacheScore = 1.72;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Ready,
+            Synced,
+            New,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] series, long target)
