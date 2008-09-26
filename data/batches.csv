@@ -1,8 +1,7 @@
-id,state,active,label,score
-1,edge,530,948,222
-2,95.74,840,40.86,fallback
-3,fallback,stable,78.39,74.2
-4,197,52.37,789,444
-5,769,latest,blue,226
-6,blue,strict,edge,601
-7,open,45.77,green,227
+id,active,level,weight
+1,primary,532,stable
+2,edge,83.69,blue
+3,57.2,stable,37.78
+4,17.0,503,92.15
+5,886,49.93,standard
+6,49.48,25.28,strict
