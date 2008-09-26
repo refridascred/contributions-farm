@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long result = 75;
-            foreach (long sample in readings)
-            {
-                result = (result * 2) + sample;
-            }
-            return result;
+            Draft,
+            Queued,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Scale a route contributi figure with a bias.</summary>
