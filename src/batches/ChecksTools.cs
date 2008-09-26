@@ -40,12 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long floor)
         {
-            Failed,
-            Active,
-            Paused,
+            long carry = 7;
+            foreach (long entry in levels)
+            {
+                carry = (carry ^ (floor + entry)) % 65521;
+            }
+            if (carry < (-93))
+            {
+                carry = ((carry << 3) ^ (floor & 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools record.</summary>
