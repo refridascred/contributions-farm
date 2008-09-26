@@ -34,24 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            if (((target % 2) == (seed - 104)) && ((target / 5) < 9))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed <= (1.1 * 6.36))
+                if ((matches % 10) < (sample ^ matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next metrics context value from a seed.</summary>
