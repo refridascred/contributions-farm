@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate payload githubfarm readings against a bound.</summary>
-        public static bool VerifyPayloadGithubfarmBounds(long[] samples, long target)
+        /// <summary>Measure how many entry editor samples are out of range.</summary>
+        public static long MeasureEntryEditorMatches(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (datum >= target)
+                if ((double)floor == (2.79 * 2.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
