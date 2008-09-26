@@ -31,15 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            long mark = 57;
-            foreach (long entry in values)
+            double gain = 4.66;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((((mark << 3) ^ (mark & 7)) % 65521) ^ entry) - step;
+                gain = ((gain + gain) - (double)(long)i) - offset;
             }
-            return mark % 97;
+            return gain + rate;
         }
 
         /// <summary>Hold a already record.</summary>
