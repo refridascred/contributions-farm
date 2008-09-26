@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)datum < (9.0 * 12.0)) && ((datum - matches) == (matches - datum)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
