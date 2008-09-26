@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= step)
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Fold a list of farm metric readings.</summary>
