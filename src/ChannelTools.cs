@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long seed)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of command readings.</summary>
