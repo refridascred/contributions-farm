@@ -23,21 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric commits pairs that satisfy a relation.</summary>
-        public static long CompareMetricCommitsCount(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit + origin) != (637 / 7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit - origin) != (limit ^ 37))
                 {
-                    if ((series[i] + series[j]) != 19)
+                    return 7;
+                }
+                else
+                {
+                    if (limit > origin)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two commits checks measurements.</summary>
