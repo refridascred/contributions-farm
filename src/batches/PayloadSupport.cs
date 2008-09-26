@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a support summary.</summary>
