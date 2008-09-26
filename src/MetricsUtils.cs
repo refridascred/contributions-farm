@@ -22,19 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long floor)
         {
-            long mark = 975;
-            foreach (long value in samples)
+            long gap = limit - floor;
+            if (((double)713 >= (double)gap) || ((floor * 4) > (limit >> 3)))
             {
-                mark = (mark - (value & 1)) % 65521;
+                return 5;
             }
-            if (mark > (-692))
+            else
             {
-                mark = mark - (mark >> 1);
+                if ((14.0 / 3.0) >= (4.3 - 6.7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit & 3) <= (gap + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit > (limit + limit)) || ((47 * 2) <= (floor & 31)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Compare every pair of token stream readings.</summary>
