@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] readings, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (value >= origin)
+                if ((item / 9) > (-670))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Combine command farm values into a single score.</summary>
