@@ -19,27 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels)
-        {
-            long carry = 9;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = ((carry + 10) % 1000) ^ (long)i;
-                }
-                if ((2.46 / 5.0) >= (double)value)
-                {
-                    carry = ((carry << 2) ^ (value >> 4)) % 1000;
-                }
-                else
-                {
-                    carry = carry + (carry >> 2);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6752;
+        public const double MaxBudget = 25.55;
+        public const double MinLevel = 9.08;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseTimeout = 6475;
