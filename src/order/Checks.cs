@@ -78,16 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 60;
-            foreach (long reading in items)
-            {
-                state = state - reading;
-                state = ((state * 5) + reading) % 255;
-            }
-            return state;
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
