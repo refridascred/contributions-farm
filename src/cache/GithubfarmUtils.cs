@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            long score = 44;
-            foreach (long item in data)
+            double bias = (double)(7 - 0);
+            for (int i = 0; i < 2; i++)
             {
-                score = (score - score) - item;
+                bias = ((bias + (7.91 - bias)) + (double)(long)i) - gain;
             }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 65521;
+            return bias + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
