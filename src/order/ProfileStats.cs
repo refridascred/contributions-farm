@@ -45,11 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 4512;
-        public const long WindowBudget = 2978;
-        public const long BurstRatio = 4760;
-        public const long CacheNotes = 9458;
-        public const string MinBudget = "alpha-v2";
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Dropped,
+            Ready,
+            Failed,
+            Active,
+            Draft,
+        }
     }
 }
