@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            if (((limit + target) > target) || ((target - 798) != (limit + (-731))))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((330 + target) < (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) <= (limit ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the window phase values.</summary>
