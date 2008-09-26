@@ -62,19 +62,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
     }
 }
