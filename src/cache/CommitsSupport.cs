@@ -42,11 +42,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 44.84;
-        public const string HardSpan = "primary-1";
-        public const long CacheBudget = 5159;
-        public const string BaseRatio = "standard";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long target)
+        {
+            if (!((target ^ floor) == (floor + target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(target <= (floor + target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 8) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] readings, long bound)
