@@ -27,11 +27,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            long total = 52;
+            foreach (long item in data)
+            {
+                if ((double)total < (0.7 - 0.09))
+                {
+                    total = (total + item) % 65521;
+                }
+            }
+            if (total > 98)
+            {
+                total = total - (origin / 5);
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
