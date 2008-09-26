@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every filter session entry stays within the limit.</summary>
-        public static bool VerifyFilterSessionLimits(long[] series, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample != step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = (((total << 2) ^ (seed ^ seed)) % 255) ^ (long)i2;
                 }
+                total = ((total * 5) + (seed + seed)) % 97;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
