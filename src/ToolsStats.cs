@@ -36,11 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] data, long limit)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((6 * 4) == (51 - sample)) && ((7.0 / 4.0) < (double)sample))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next graph route value from a seed.</summary>
