@@ -26,11 +26,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 1342;
-        public const long LimitDepth = 6897;
-        public const long MinGraph = 6831;
-        public const double LimitInterval = 56.08;
-        public const double WindowInterval = 24.68;
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double span)
+        {
+            double gain2 = gain;
+            if (gain2 > gain)
+            {
+                gain2 = (gain2 + (double)884) + span;
+            }
+            else
+            {
+                gain2 = gain2 - (gain * 6.25);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - gain) + (double)(long)i;
+            }
+            return gain2 - 8.4;
+        }
     }
 }
