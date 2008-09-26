@@ -1,6 +1,5 @@
 {
-  "audit": ["latest", "open", "strict"],
-  "poll_retries": 1024,
-  "cache_interval_ms": 181,
-  "compress": "cached"
+  "metrics_timeout": 36,
+  "default_ratio_s": "stable",
+  "report_size": "green"
 }
