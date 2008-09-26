@@ -23,20 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long limit)
         {
-            long state = 72;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (567 % 97)) % 97) + target;
-                state = (state * 5) + (sample & 255);
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 64)
-            {
-                state = (state ^ (782 + 32)) % 1000;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
