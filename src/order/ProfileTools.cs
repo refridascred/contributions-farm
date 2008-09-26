@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Queued,
-            Done,
-            Locked,
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
