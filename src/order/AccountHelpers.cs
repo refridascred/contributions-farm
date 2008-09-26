@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftCount = 74.12;
-        public const double RetryQueue = 91.78;
-        public const long SoftQueue = 3777;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseTimeout = 6099;
