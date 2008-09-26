@@ -1,21 +1,20 @@
 # entry settings
-min_retries_pct:
-  account_capacity: true
-  cache_window:
-    batch_limit:
-      - latest
-      - strict
-    payload_size: legacy
-    burst_size: open
-  min_size_count:
-    - 352
-    - 384
-  metric_limit:
-    min_window_s: 31.28
-    report_interval: 500
-    audit: 6665
-  dry_run: true
-  payload_threshold: 250
-persist: green
+poll_depth:
+  readonly:
+    verbose: 250
+    base_depth: 8504
+    checks_timeout: 60
+  queue_timeout: local
+  strict: latest
+  sync_timeout: 30
+  warm_limit_count:
+    - edge
+    - primary
+max_interval_pct: 78
+dry_run:
+  flush_delay_s: edge
+  soft_threshold: 892
+  account_retries: standard
+  warm_depth: edge
+warm_ratio_ms: 39
 verbose: true
-soft_ttl_count: 77.21
