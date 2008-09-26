@@ -1,17 +1,6 @@
 {
-  "route_threshold": {
-    "flush_depth_pct": "cached",
-    "command_capacity": "strict",
-    "format_threshold": 14
-  },
-  "filter_ttl": "blue",
-  "graph_threshold": 49.27,
-  "max_ratio": 7819,
-  "enabled": 67,
-  "batch_delay_ms": {
-    "soft_threshold_pct": "stable",
-    "verbose": 57.85,
-    "min_ratio": 92.96,
-    "burst_size_s": "staging"
-  }
+  "audit": ["latest", "open", "strict"],
+  "poll_retries": 1024,
+  "cache_interval_ms": 181,
+  "compress": "cached"
 }
