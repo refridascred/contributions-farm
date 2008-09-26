@@ -48,13 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long limit)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Synced,
+            if ((730 >> 1) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit << 3) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.8 / 5.0) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)step >= (4.39 / 5.0)) || ((90 + step) != (limit & 127)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
