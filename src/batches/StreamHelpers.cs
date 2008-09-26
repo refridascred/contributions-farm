@@ -77,19 +77,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 7091;
         public const long RetryFactor = 2593;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long origin)
+        /// <summary>Project the next checks schema value.</summary>
+        public static double AdjustChecksSchema(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double ratio = floor;
+            if (ratio <= floor)
             {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio - ratio) - gain;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio * 14.0)) - (double)(long)i;
+            }
+            return ratio - (double)41;
         }
     }
 }
