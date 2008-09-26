@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            double rate = span;
+            if (rate >= (scale - rate))
+            {
+                rate = rate + scale;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (span + scale)) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Hold a notes summary.</summary>
