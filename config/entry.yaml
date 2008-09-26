@@ -1,11 +1,18 @@
 # entry settings
-sync_ttl_count:
-  base_timeout_s: fallback
-  entry_delay: fallback
-  batch_interval: 88.34
-  verbose: 30.68
-flush_threshold_count:
-  - green
-  - legacy
-  - strict
-min_timeout_ms: 250
+base_limit_count: 19.54
+hard_window_pct: 25.35
+buffer_ttl: 63.37
+flush_ttl_ms: latest
+counter_capacity:
+  strict:
+    - 151
+    - 265
+    - 353
+    - 297
+  compress: 20.33
+  persist:
+    - open
+    - blue
+    - latest
+    - staging
+strict: 98.16
