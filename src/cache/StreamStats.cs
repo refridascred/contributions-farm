@@ -33,18 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.69 * 0.45) != (double)entry)
+                if (samples[i] > step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
