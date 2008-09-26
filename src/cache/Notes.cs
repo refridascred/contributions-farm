@@ -46,13 +46,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a session layout value against two limits.</summary>
+        public static long BucketSessionLayout(long origin, long bound)
         {
-            Draft,
-            Pending,
-            Done,
-            Queued,
+            long slot = origin ^ bound;
+            if ((slot + slot) >= (origin - slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.9 + 7.69) != (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)origin == (double)9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cache stats measurements.</summary>
