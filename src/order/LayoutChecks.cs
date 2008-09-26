@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Done,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "primary-v2";
+        public const long MaxProfile = 2863;
+        public const long DefaultCount = 2101;
+        public const long LimitSize = 4022;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MaxQueue = "primary-edge";
