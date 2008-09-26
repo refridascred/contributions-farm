@@ -51,27 +51,21 @@ namespace Common.Utilities
             return (weight + (floor / 7.0)) + bias;
         }
 
-        /// <summary>Digest a series of buffer record entries.</summary>
-        public static long DigestBufferRecord(long[] data, long step)
+        /// <summary>Match up cache batches samples.</summary>
+        public static long PairCacheBatchesCount(long[] readings)
         {
-            long state = -9;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state - 847;
-                if (!((state ^ value) > (step ^ value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - (state << 1);
-                }
-                else
-                {
-                    state = (state ^ (value & 127)) % 97;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 108)
-            {
-                state = state ^ (312 - state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
