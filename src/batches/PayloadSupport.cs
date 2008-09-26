@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] items, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (item != offset)
+                if ((((entry ^ entry) == (seen - 499)) && ((1.3 - 17.0) < (double)seen)) || ((entry & 15) < (seen - entry)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
