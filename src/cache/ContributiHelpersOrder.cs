@@ -22,12 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long seed)
         {
-            Draft,
-            Paused,
-            Pending,
+            if ((seed & 1) >= (target ^ seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >> 3) > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed + target) != (seed << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((525 + target) <= (81 >> 4)) && ((seed - target) >= 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
