@@ -14,31 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            if ((seed >> 1) == (seed % 7))
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                sum = (sum - target) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((seed << 2) > 59) || (bound > (bound - 138)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
