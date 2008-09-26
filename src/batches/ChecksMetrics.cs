@@ -50,24 +50,18 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long state = 69;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                state = ((state << 2) ^ state) ^ reading;
-                state = (state ^ (9 + state)) % 101;
-                if ((state * 4) < state)
+                if ((entry ^ tally) < tally)
                 {
-                    state = (state - (3 % 7)) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (state < 509)
-            {
-                state = state - state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
