@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 97.66;
-        public const string MaxLayout = "local-edge";
-        public const string CacheSpan = "standard-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheInterval = 7306;
+        public const long LimitCommand = 4507;
+        public const string RetryCommand = "local";
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] items)
