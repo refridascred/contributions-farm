@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long bound = seed + floor;
-            if (!((10.0 - 20.0) == (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < (15.0 + 4.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)419 != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((12.0 - 7.3) < (double)seed) || ((double)bound <= (8.0 * 6.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Rank account input into a small class.</summary>
