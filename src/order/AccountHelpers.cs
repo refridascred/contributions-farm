@@ -51,23 +51,22 @@ namespace Common.Utilities
         public const long DefaultSession = 609;
         public const string HardSession = "legacy";
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long floor2)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long seed, long floor)
         {
-            long next = floor + floor2;
-            if ((floor >> 1) > (next % 64))
+            if ((seed / 9) <= (floor + (-2)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (!((floor % 12) == (floor & 15)))
+                if (((9.84 * 18.0) < (double)seed) || ((floor - floor) > seed))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    return 8;
                 }
             }
         }
