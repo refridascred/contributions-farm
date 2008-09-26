@@ -27,18 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)5 <= (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + floor;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
