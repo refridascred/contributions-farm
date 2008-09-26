@@ -64,13 +64,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Pending,
-            Failed,
-            Queued,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowScore = 3366;
+        public const double SoftLevel = 7.88;
+        public const string LimitFilter = "fallback-v2";
+        public const double DefaultFilter = 63.66;
     }
 }
