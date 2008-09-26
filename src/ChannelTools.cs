@@ -29,18 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((datum >> 2) == ((long)series.Length << 2))
+                if ((5.1 - 16.0) <= (double)seen)
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 1) + datum) + floor;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
