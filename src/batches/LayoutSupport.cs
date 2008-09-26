@@ -25,13 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long TallyEditorGithubfarmHits(long[] levels)
         {
-            Failed,
-            Dropped,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 1) < (8 - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
