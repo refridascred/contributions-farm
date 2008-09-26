@@ -33,31 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long limit)
         {
-            long carry = 71;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9 * 2) > carry)
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    carry = (carry + (carry - carry)) % 101;
-                    carry = ((carry << 2) ^ carry) % 101;
-                }
-                if ((5 ^ carry) > sample)
-                {
-                    carry = carry - (carry << 3);
-                }
-                else
-                {
-                    carry = carry ^ (sample * 2);
+                    return (long)i;
                 }
             }
-            if (carry < 2)
-            {
-                carry = carry ^ (697 - (long)levels.Length);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
