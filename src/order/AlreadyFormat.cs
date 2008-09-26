@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a layout githubfarm counter forward.</summary>
-        public static long DeriveLayoutGithubfarm(long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
