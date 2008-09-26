@@ -51,22 +51,37 @@ namespace Common.Utilities
         public const long DefaultSession = 609;
         public const string HardSession = "legacy";
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long seed, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long origin, long bound)
         {
-            if ((seed / 9) <= (floor + (-2)))
+            long span = origin + bound;
+            if ((origin % 8) < (10 - (-8)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((9.84 * 18.0) < (double)seed) || ((floor - floor) > seed))
+                if (((-511) * 2) <= (99 - span))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (((8.18 * 2.74) == (double)span) || (span <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + 5) < (origin ^ 834))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
