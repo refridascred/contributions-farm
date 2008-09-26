@@ -48,25 +48,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank farm session input into a small class.</summary>
-        public static long BucketFarmSession(long target, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long cur = target - seed;
-            if (((double)seed != (1.3 - 1.76)) && ((cur / 8) > (seed / 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target >= (seed - cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a command entry.</summary>
