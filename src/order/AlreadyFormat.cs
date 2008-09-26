@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            Dropped,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
