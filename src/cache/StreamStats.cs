@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long AuditContextReportOutliers(long[] values)
         {
-            long mark = 44;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mark = mark ^ (mark / 4);
-                if (((20.0 / 5.0) != (double)item) && ((mark % 10) <= mark))
+                if ((datum < matches) || ((8.1 + 13.0) != (double)matches))
                 {
-                    mark = mark - (mark + (long)values.Length);
+                    matches = matches + 1;
                 }
             }
-            if (mark > (-7))
-            {
-                mark = (mark - (mark - mark)) % 101;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
