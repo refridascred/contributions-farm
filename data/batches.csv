@@ -1,10 +1,7 @@
-id,token,count,level
-1,699,72,37.39
-2,fallback,702,560
-3,staging,latest,289
-4,32.49,cached,583
-5,standard,486,241
-6,567,64.86,32.96
-7,eu-west,66.31,869
-8,234,783,216
-9,latest,563,995
+id,score,rank,label,active
+1,eu-west,163,422,532
+2,latest,231,strict,cached
+3,latest,13.58,138,966
+4,95.05,171,primary,66.55
+5,194,446,strict,847
+6,239,930,99,latest
