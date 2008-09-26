@@ -14,12 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Dropped,
-            Failed,
-            Stale,
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
