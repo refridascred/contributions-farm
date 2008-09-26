@@ -1,6 +1,12 @@
 # entry settings
-cluster_ttl: 2435
-dry_run:
-  - standard
-  - local
-burst_threshold_count: 15.45
+channel_capacity: 10.83
+hard_threshold_s: strict
+burst_window_ms:
+  batch_depth:
+    metric_depth: staging
+    idle_window_s: 19
+    farm_interval: stable
+    audit: latest
+    soft_threshold: 3188
+  poll_delay: 19.3
+  metric_delay: 19.6
