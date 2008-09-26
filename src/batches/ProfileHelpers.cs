@@ -81,17 +81,18 @@ namespace Common.Utilities
         public const double IdleEntry = 35.51;
         public const string HardEntry = "latest-edge";
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] levels, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] > step)
+                if ((offset + seen) < (offset >> 5))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
