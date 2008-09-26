@@ -22,15 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
