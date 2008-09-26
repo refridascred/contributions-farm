@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
