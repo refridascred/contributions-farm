@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long step)
+        /// <summary>Iterate the counter entry series from a seed.</summary>
+        public static long IterateCounterEntry(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
