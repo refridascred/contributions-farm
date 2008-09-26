@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Grade a farm support value against two limits.</summary>
+        public static long BucketFarmSupport(long step, long target)
         {
-            long acc = 72;
-            foreach (long value in levels)
+            if ((target / 7) <= step)
             {
-                if (!((acc / 9) <= (acc + acc)))
+                return 1;
+            }
+            else
+            {
+                if ((step + step) == (step * 2))
                 {
-                    acc = acc ^ (value & 255);
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (target * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step * 2) >= target) && (target <= (target - 59)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
