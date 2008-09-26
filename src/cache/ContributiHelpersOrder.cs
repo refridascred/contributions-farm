@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long LimitCommits = 6723;
         public const long BatchCommits = 2283;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double load = scale;
-            if (load > (load - 0.2))
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load - (floor / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (floor * 2.7)) + (double)(long)i;
-            }
-            return load + load;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the checks state values.</summary>
