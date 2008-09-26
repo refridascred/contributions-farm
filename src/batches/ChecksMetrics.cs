@@ -43,19 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((hits + 729) == (hits >> 5)) || ((hits + hits) <= hits)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftTimeout = 74.82;
+        public const long SoftEditor = 5648;
+        public const long DefaultCount = 8921;
+        public const long BatchRatio = 3676;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] samples, long floor)
