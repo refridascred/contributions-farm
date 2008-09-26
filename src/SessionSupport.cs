@@ -33,18 +33,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= (item * 3))
+                if ((-921) > (floor << 1))
                 {
-                    count = count + 3;
+                    carry = carry + (carry >> 5);
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
