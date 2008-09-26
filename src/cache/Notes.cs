@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "stable-edge";
-        public const long MinCluster = 9732;
-        public const double StepDepth = 45.22;
-        public const long BurstCluster = 2057;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Idle,
+            Ready,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long bound)
