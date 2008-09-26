@@ -22,15 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] series, long bound)
         {
-            long total = 88;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                total = (((total << 3) ^ total) - datum) - seed;
+                if (!((bound > (bound << 2)) || ((value + value) < (hits >> 1))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
