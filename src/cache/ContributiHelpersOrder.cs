@@ -35,18 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((count << 2) > (value - value))
+                if ((854 / 5) < (item - seen))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
