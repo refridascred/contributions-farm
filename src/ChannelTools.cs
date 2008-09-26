@@ -22,13 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (61 >= seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
