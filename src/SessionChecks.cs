@@ -36,13 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings, long bound)
         {
-            New,
-            Closed,
-            Failed,
-            Done,
+            long acc = 936;
+            foreach (long datum in readings)
+            {
+                acc = ((acc - (acc + (-186))) + datum) + bound;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
