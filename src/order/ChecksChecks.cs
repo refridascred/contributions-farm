@@ -29,12 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
             public long Size { get; set; }
-            public double Total { get; set; }
         }
     }
 }
