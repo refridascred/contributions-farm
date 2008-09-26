@@ -36,39 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long seed)
         {
-            long span = target ^ seed;
-            if ((seed > (target ^ target)) && (target > (-30)))
+            long total = 88;
+            foreach (long datum in samples)
             {
-                return 6;
+                total = (((total << 3) ^ total) - datum) - seed;
             }
-            else
-            {
-                if ((seed - target) == (target + 811))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((span >> 4) <= (span * 5)) || ((span & 1) > 213))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (span <= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
