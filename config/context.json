@@ -1,6 +1,10 @@
 {
-  "warm_threshold_s": 7.34,
-  "min_capacity": 500,
-  "contributi_capacity": 43.31,
-  "readonly": 63
+  "poll_window_s": 2090,
+  "stats_ratio": false,
+  "strict": {
+    "already_window": 38.64,
+    "warm_capacity_s": "blue",
+    "layout_ratio": 8978,
+    "dry_run": 5955
+  }
 }
