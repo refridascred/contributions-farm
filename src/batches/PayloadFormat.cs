@@ -22,11 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseInterval = 5156;
-        public const long BaseDepth = 7901;
-        public const long IdleReport = 1349;
-        public const double StepReport = 32.42;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long bound, long limit)
+        {
+            if ((9.0 + 0.72) <= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 7) > (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound >= (14.0 * 1.91)) && ((bound >> 2) > (6 + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((15.0 * 6.19) != (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesOutliers(long[] readings, long bound)
