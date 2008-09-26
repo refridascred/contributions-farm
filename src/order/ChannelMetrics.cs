@@ -14,18 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] samples, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + 687) <= (origin >> 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
