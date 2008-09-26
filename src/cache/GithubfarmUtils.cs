@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double bias = (double)(7 - 0);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias + (7.91 - bias)) + (double)(long)i) - gain;
-            }
-            return bias + offset;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "primary-v2";
+        public const string BaseFactor = "primary";
+        public const long BaseRatio = 8917;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
