@@ -30,9 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 1699;
-        public const long StepBatch = 9462;
-        public const long BatchSpan = 1155;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5425;
+        public const string SoftQueue = "local";
+        public const double BurstInterval = 85.48;
+        public const long HardQueue = 3584;
+        public const long BaseBudget = 6358;
     }
 }
