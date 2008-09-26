@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a layout account pair into a bucket.</summary>
-        public static long ClassifyLayoutAccount(long bound, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long bound2 = bound + target;
-            if (((double)bound < 8.9) || (bound <= (bound2 << 3)))
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                carry = (carry + carry) % 101;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound2 * 4) > (53 + bound2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a channel summary.</summary>
