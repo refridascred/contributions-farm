@@ -21,31 +21,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Iterate the metric checks series from a seed.</summary>
+        public static long DeriveMetricChecks(long offset)
         {
-            long state = 330;
-            foreach (long cell in samples)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (state < (state >> 2))
+                if ((offset - result) != (long)i)
                 {
-                    long prev = (state ^ state) & 7;
-                    state = (state - prev) % 101;
-                }
-                if (state >= (cell >> 2))
-                {
-                    state = ((state * 4) + (7 + state)) % 101;
+                    result = (result - (result * 3)) % 101;
                 }
                 else
                 {
-                    state = (state * 3) + (cell / 7);
+                    result = ((result << 3) ^ (319 & 63)) % 255;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (state > 98)
-            {
-                state = (state * 2) + (state << 2);
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
