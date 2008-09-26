@@ -35,18 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] items, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((854 / 5) < (item - seen))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
