@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series, long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((matches + 279) <= (value + value)) && ((matches % 64) >= (value << 2)))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
