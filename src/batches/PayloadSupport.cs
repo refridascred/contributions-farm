@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            Failed,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
