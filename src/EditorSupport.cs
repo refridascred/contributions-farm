@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Check that every layout command entry stays within the limit.</summary>
+        public static bool CheckLayoutCommandLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((6.79 * 19.0) == (double)tally)
+                if (value < target)
                 {
-                    tally = (tally + 2) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the window phase values.</summary>
