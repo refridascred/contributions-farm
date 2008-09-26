@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Active,
-            Done,
-            Draft,
-            Synced,
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
