@@ -68,19 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (value < seed)
+                if (entry != bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
