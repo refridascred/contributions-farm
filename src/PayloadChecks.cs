@@ -45,21 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
