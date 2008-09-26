@@ -11,15 +11,26 @@ namespace Common.Utilities
         public const long MinFactor = 6103;
         public const long StepFactor = 6731;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Combine graph batch values into a single score.</summary>
+        public static long DigestGraphBatch(long[] series)
         {
-            double bias = 3.0;
-            if (bias < gain)
+            long mark = 58;
+            foreach (long cell in series)
             {
-                bias = (bias - (double)2) - floor;
+                if ((74 >> 3) < cell)
+                {
+                    mark = (mark ^ (869 >> 3)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (mark >> 1);
+                }
             }
-            return bias + 0.45;
+            if (mark > 56)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
