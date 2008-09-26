@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
+            public double Weight { get; set; }
+            public bool Token { get; set; }
             public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
