@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= target)
                 {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Scale a filter contributi figure with a bias.</summary>
