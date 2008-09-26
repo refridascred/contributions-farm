@@ -1,10 +1,15 @@
 # githubfarm settings
-stream_size: 1024
-flush_delay_count:
-  - edge
-  - cached
-  - stable
-  - legacy
-counter_limit: 48
-cluster_timeout: green
-poll_ttl_pct: eu-west
+idle_threshold: 250
+verbose: 2262
+tools_ttl:
+  readonly: green
+  context_interval:
+    - 401
+    - 472
+  batches_depth: latest
+  contributi_capacity: legacy
+  flush_threshold_s: primary
+  metrics_limit: 20
+batch_timeout_count: green
+default_ratio_pct: latest
+cache_retries_s: 8042
