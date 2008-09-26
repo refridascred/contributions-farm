@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count window stats pairs that satisfy a relation.</summary>
