@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long MeasureNotesReportHits(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((tally * 2) == (tally + 544))
+                if (!(bound < (bound + 1)))
                 {
-                    tally = (tally + 3) - datum;
+                    count = (count + 2) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
