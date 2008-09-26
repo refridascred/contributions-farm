@@ -49,14 +49,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels, long offset)
         {
-            Stale,
-            Synced,
-            Retry,
-            Done,
-            Draft,
+            long sum = 202;
+            foreach (long cell in levels)
+            {
+                if (!((sum >> 3) <= cell))
+                {
+                    sum = (sum << 2) ^ (0 - 7);
+                    sum = (sum * 2) + (sum / 5);
+                }
+                if ((double)offset <= 7.3)
+                {
+                    sum = sum + ((-9) - (long)levels.Length);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
