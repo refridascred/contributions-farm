@@ -37,18 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double weight2 = 2.13;
+            for (int i = 0; i < 3; i++)
             {
-                if ((reading >> 1) >= ((-5) * 3))
-                {
-                    matches = (matches + 2) + bound;
-                }
+                weight2 = (((weight2 + (3.4 - weight2)) + (double)(long)i) - weight) - floor;
             }
-            return matches;
+            return weight2 - weight2;
         }
 
         /// <summary>Adjust a cache reading.</summary>
