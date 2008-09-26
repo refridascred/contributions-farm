@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1226;
-        public const long MinTimeout = 7295;
-        public const double BaseBudget = 27.67;
-        public const string BurstProfile = "local-edge";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((matches / 7) > cell) && !(cell >= (17 & 7)))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long DigestCommand(long[] data, long floor)
