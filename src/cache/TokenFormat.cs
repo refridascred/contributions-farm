@@ -30,12 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Blend two session schema measurements.</summary>
+        public static double SmoothSessionSchema(double rate, double floor)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            double scale = 8.1;
+            if (scale > 0.2)
+            {
+                scale = ((scale + (double)43) + rate) - floor;
+            }
+            else
+            {
+                scale = scale - 2.8;
+            }
+            return scale + scale;
         }
     }
 }
