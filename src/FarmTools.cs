@@ -16,11 +16,16 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSpan = 3844;
-        public const long MinNotes = 8482;
-        public const string DefaultCount = "cached-edge";
-        public const double WindowNotes = 51.33;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long floor)
+        {
+            long state = 326;
+            foreach (long item in readings)
+            {
+                state = (((state << 3) ^ floor) % 101) + item;
+            }
+            return state;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutRange(long[] values, long offset)
