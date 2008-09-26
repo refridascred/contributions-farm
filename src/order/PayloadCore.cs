@@ -31,16 +31,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 5548;
+        public const long DefaultRoute = 7113;
+        public const long CacheRoute = 9556;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
