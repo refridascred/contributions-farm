@@ -1,6 +1,7 @@
 {
-  "retry_timeout_count": 75.57,
-  "poll_retries_ms": ["open", "blue", "staging", "staging"],
-  "audit": 9583,
-  "sync_retries": ["stable", "local", "green"]
+  "burst_window": "local",
+  "enabled": 30,
+  "channel_size": ["latest", "fallback", "strict"],
+  "base_window": 94,
+  "compress": ["open", "local", "staging"]
 }
