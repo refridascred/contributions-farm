@@ -1,8 +1,19 @@
 # support settings
-queue_depth: 5355
-strict:
-  - 294
-  - 347
-dry_run: latest
-flush_interval_pct: 19.12
-farm_depth: standard
+audit:
+  farm_ttl: 94
+  enabled:
+    - blue
+    - local
+    - latest
+    - staging
+  poll_threshold_ms: primary
+  metrics_threshold: 2
+record_size:
+  - fallback
+  - open
+  - eu-west
+readonly: 33
+token_window: 38.08
+soft_window:
+  - 235
+  - 190
