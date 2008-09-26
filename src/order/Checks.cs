@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry - entry) >= (seen << 2)) || ((entry ^ seen) <= (27 - seen)))
+                if (values[i] > seed)
                 {
-                    seen = (seen + 1) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
