@@ -29,19 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((datum / 7) >= tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
