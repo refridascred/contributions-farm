@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long target)
+        /// <summary>Derive the next farm payload value from a seed.</summary>
+        public static long RollFarmPayload(long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell < target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + (mark + mark)) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Grade a commits tools value against two limits.</summary>
