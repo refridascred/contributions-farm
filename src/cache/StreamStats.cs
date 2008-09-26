@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate channel cache readings against a bound.</summary>
-        public static bool GuardChannelCacheBounds(long[] series, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
