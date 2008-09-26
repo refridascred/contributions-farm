@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
