@@ -49,17 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total - (step + total)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9589;
+        public const long BatchInterval = 4061;
+        public const long DefaultDepth = 6714;
+        public const long CacheFormat = 2505;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
