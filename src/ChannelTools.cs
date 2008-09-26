@@ -19,18 +19,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the entry contributi entries that pass the check.</summary>
-        public static long TallyEntryContributiMatches(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen == (1.57 / 7.0))
-                {
-                    seen = (seen + 2) - datum;
-                }
+                carry = carry ^ (bound - 7);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
