@@ -24,20 +24,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Roll a record stream counter forward.</summary>
-        public static long DeriveRecordStream(long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((anchor % 3) == (63 + origin)) || ((13.0 * 11.0) != (double)anchor))
-                {
-                    anchor = anchor ^ (anchor - origin);
-                }
-                anchor = ((anchor * 2) + anchor) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the contributi layout series from a seed.</summary>
