@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double bias)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double rate = (bias * 0.1) / 4.0;
-            if (rate < (gain / 8.0))
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias / 2.0)) + (double)(long)i;
-            }
-            return rate - (bias / 9.0);
+            Synced,
+            Closed,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Accumulate counter samples.</summary>
