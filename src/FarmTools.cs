@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double floor)
         {
-            long anchor = 3;
-            foreach (long datum in readings)
+            double bias = weight;
+            if (bias <= (weight + bias))
             {
-                anchor = (((anchor - (anchor + 3)) % 101) ^ datum) - limit;
+                bias = (bias - weight) + floor;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias + 1.2;
         }
 
         /// <summary>Match up layout samples.</summary>
