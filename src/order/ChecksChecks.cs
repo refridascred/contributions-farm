@@ -23,13 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long total = -71;
+            foreach (long value in values)
+            {
+                if ((8.5 * 4.4) == (double)(long)values.Length)
+                {
+                    total = (total ^ total) % 255;
+                    total = total - (target - value);
+                }
+                total = ((total << 3) ^ (value + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
