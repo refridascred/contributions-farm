@@ -69,11 +69,18 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!(811 < ((-34) - cell)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
