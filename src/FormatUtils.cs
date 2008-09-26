@@ -51,10 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 4729;
-        public const long LimitDepth = 2068;
-        public const long IdleDepth = 3321;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Idle,
+            Draft,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
