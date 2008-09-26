@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
