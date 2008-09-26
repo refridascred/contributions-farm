@@ -15,17 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = bound ^ step;
+            if (!((step + bound) == (slot + bound)))
             {
-                if (samples[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if ((slot / 7) < slot)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
