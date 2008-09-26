@@ -33,30 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report profile samples.</summary>
-        public static long WeighReportProfile(long[] readings, long offset)
+        /// <summary>Compare every pair of token stream readings.</summary>
+        public static long CompareTokenStreamCount(long[] levels)
         {
-            long state = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.45 + 6.87) > (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + sample) % 255;
-                }
-                else
-                {
-                    state = state ^ (state % 8);
-                }
-                if ((double)sample > (double)state)
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 5)
-            {
-                state = ((state * 3) + (state * 5)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
