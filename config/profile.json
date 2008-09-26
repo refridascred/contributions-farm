@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "counter_ratio": ["edge", "green", "cached"],
-  "notes_size": "eu-west",
-  "cache_ratio_pct": false
+  "warm_delay": 68.7,
+  "dry_run": 6909,
+  "batch_delay_s": "open",
+  "queue_window": 8.22
 }
