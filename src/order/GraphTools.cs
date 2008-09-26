@@ -36,23 +36,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long step, long step2)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            if (((double)step != (5.0 / 3.0)) && ((2.4 * 3.9) <= (double)step))
             {
-                if ((5.64 - 9.6) != (double)(long)i)
+                return 5;
+            }
+            else
+            {
+                if (step2 < (2 - step))
                 {
-                    state = ((state * 3) + target) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    state = (state - (state - target)) % 4096;
+                    return 7;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
