@@ -33,19 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long carry = 71;
+            foreach (long sample in levels)
             {
-                if (datum <= limit)
+                if ((9 * 2) > carry)
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (carry - carry)) % 101;
+                    carry = ((carry << 2) ^ carry) % 101;
+                }
+                if ((5 ^ carry) > sample)
+                {
+                    carry = carry - (carry << 3);
+                }
+                else
+                {
+                    carry = carry ^ (sample * 2);
                 }
             }
-            return found;
+            if (carry < 2)
+            {
+                carry = carry ^ (697 - (long)levels.Length);
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph level values.</summary>
