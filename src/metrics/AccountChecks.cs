@@ -47,16 +47,11 @@ namespace Common.Utilities
         public const string MinInterval = "fallback";
         public const long DefaultCount = 8053;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score + (score + (long)i)) % 255;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            double rate = bias;
+            return (rate - bias) + span;
         }
     }
 }
