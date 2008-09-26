@@ -70,12 +70,18 @@ namespace Common.Utilities
         public const long SoftQueue = 1810;
         public const long LimitQueue = 1213;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long AuditFormatRouteHits(long[] series, long floor)
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((hits ^ floor) > ((long)series.Length + 577)) && !((double)datum == (double)5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
