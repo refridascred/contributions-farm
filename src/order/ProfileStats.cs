@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
