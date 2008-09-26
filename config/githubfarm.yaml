@@ -1,4 +1,25 @@
 # githubfarm settings
-cache_window: 54.49
-cache_size_count: 5311
-persist: cached
+batch_size:
+  readonly:
+    contributi_interval: staging
+    min_window: eu-west
+    base_timeout_ms: 53
+    default_depth:
+      - 208
+      - 285
+    warm_retries_s: standard
+  flush_limit_ms:
+    - strict
+    - blue
+    - primary
+    - legacy
+  default_ttl: latest
+  default_interval_pct: 1024
+burst_capacity_s:
+  warm_window_count: 17.95
+  profile_interval: eu-west
+  audit: 1024
+  graph_limit: false
+  report_depth: 31.35
+  batch_depth: 85.12
+soft_delay_count: 23
