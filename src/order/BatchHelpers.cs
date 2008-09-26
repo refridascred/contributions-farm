@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count metric githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareMetricGithubfarmCount(long[] readings)
+        /// <summary>Compare every pair of layout queue readings.</summary>
+        public static long PairLayoutQueueCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
+                    if ((levels[i] + levels[j]) != 17)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
