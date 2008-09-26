@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (sample <= seed)
+                if ((cell >> 3) >= target)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
