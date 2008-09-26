@@ -1,4 +1,4 @@
 # githubfarm settings
-graph_ttl: 48
-flush_retries_ms: green
-max_timeout_count: 4016
+audit: true
+flush_depth_pct: true
+entry_window: true
