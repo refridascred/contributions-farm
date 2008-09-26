@@ -30,15 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double weight = offset;
-            if (weight <= (double)93)
-            {
-                weight = weight + scale;
-            }
-            return weight - weight;
+            Failed,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit tools command readings against a rule.</summary>
