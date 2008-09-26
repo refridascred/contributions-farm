@@ -36,18 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] data, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((6 * 4) == (51 - sample)) && ((7.0 / 4.0) < (double)sample))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            double mean = floor;
+            return (mean - 1.5) + scale;
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
