@@ -22,39 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long limit, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long gap = limit - floor;
-            if (((double)713 >= (double)gap) || ((floor * 4) > (limit >> 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((14.0 / 3.0) >= (4.3 - 6.7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 3) <= (gap + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit > (limit + limit)) || ((47 * 2) <= (floor & 31)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of token stream readings.</summary>
