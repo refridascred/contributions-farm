@@ -70,18 +70,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen >= (value >> 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Done,
         }
     }
 }
