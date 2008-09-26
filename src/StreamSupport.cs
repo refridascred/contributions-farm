@@ -20,13 +20,20 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long total = 450;
+            foreach (long value in items)
+            {
+                total = ((total << 3) ^ (value ^ origin)) % 1000;
+                total = (total + origin) % 101;
+                if ((double)value < (9.58 / 8.0))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
