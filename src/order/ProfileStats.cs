@@ -45,21 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor githubfarm samples.</summary>
-        public static long CompareEditorGithubfarmCount(long[] levels)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 7)
+                    if ((items[i] ^ items[j]) == 7)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
