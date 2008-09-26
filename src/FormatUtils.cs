@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series, long bound)
+        /// <summary>Look up the position of a format schema sample.</summary>
+        public static long LookupFormatSchemaIndex(long[] items, long step)
         {
-            long mark = 68;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark - value) % 65521) + bound;
-                mark = ((mark * 5) + (value / 2)) % 97;
-                if ((value << 1) > (4 % 2))
+                if (items[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
