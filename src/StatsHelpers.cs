@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 8;
+            foreach (long item in items)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = acc - acc;
+                if ((754 & 127) > (item << 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 6)
+            {
+                acc = acc ^ (acc & 255);
             }
             return acc;
         }
