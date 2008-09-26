@@ -55,18 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Find the first cluster graph entry that matches the target.</summary>
+        public static long FindClusterGraphIndex(long[] values, long bound)
         {
-            long acc = 62;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading < (double)acc)
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
                 {
-                    acc = (acc - (reading - 79)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
