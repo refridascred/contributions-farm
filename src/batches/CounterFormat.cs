@@ -20,23 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window editor samples.</summary>
-        public static long WeighWindowEditor(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double floor)
         {
-            long total = 2;
-            foreach (long item in readings)
+            double load = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5 - item) > 8)
-                {
-                    total = ((total * 5) + ((-78) << 1)) % 255;
-                    total = total ^ (1 ^ item);
-                }
-                if (((total & 31) < item) || ((9.0 * 9.2) != (double)item))
-                {
-                    total = (total - (item ^ item)) % 97;
-                }
+                load = (load - (floor - floor)) + (double)(long)i;
             }
-            return total;
+            return load + (floor + floor);
         }
 
         /// <summary>Match up graph samples.</summary>
