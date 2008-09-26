@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
