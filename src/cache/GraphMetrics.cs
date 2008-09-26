@@ -59,18 +59,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the account filter entries that pass the check.</summary>
-        public static long TallyAccountFilterOutliers(long[] levels, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double bias = offset * 1.95;
+            if (bias <= (ratio / 8.0))
             {
-                if ((double)cell > (double)count)
-                {
-                    count = (count + 2) - origin;
-                }
+                bias = bias - offset;
             }
-            return count;
+            else
+            {
+                bias = bias - (double)6;
+            }
+            return bias - (ratio - bias);
         }
     }
 }
