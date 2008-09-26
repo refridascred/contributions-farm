@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const string MinDepth = "standard-v2";
         public const long MaxRatio = 962;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] items, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((count + 3) >= step) && ((cell - count) <= cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every metric record entry stays within the limit.</summary>
