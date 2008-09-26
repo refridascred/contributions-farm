@@ -1,5 +1,20 @@
 # entry settings
-tools_size: true
-cache_window_count: false
-strict: false
-retry_limit_ms: strict
+commits_threshold:
+  max_depth_s:
+    graph_ratio: eu-west
+    cache_depth_count: 22
+    stats_threshold: legacy
+    verbose: blue
+    soft_size_ms: 6873
+  notes_limit: true
+  soft_retries_count: false
+  notes_ttl:
+    - open
+    - eu-west
+    - stable
+    - green
+cache_capacity: false
+context_retries: local
+burst_ttl_s: 67.71
+route_threshold: local
+readonly: 27.39
