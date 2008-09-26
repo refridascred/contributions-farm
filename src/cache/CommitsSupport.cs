@@ -25,18 +25,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long MeasureChannelToolsGaps(long[] items, long origin)
+        /// <summary>Roll a command queue counter forward.</summary>
+        public static long IterateCommandQueue(long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally - sample) <= 534)
-                {
-                    tally = (tally + 1) - origin;
-                }
+                carry = (carry + (origin & 7)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
