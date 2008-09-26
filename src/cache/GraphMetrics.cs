@@ -57,20 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheWidth = "cached-1";
+        public const long WindowToken = 5204;
+        public const string SoftCount = "local";
+        public const long BurstToken = 9991;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxInterval = 64.83;
