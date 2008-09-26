@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 1302;
-        public const string BurstCount = "latest";
-        public const long LimitLayout = 9419;
-        public const string HardBudget = "alpha-1";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "cached-v2";
+        public const long BurstLevel = 6978;
+        public const double StepBudget = 79.44;
+        public const long BatchLevel = 1672;
+        public const long MaxEntry = 1146;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] series)
