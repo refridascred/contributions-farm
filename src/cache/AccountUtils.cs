@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long limit)
-        {
-            if (bound <= (bound + 786))
-            {
-                return 4;
-            }
-            else
-            {
-                if (843 >= (limit / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 3337;
+        public const long LimitWidth = 5335;
+        public const long RetryPayload = 8279;
+        public const long SoftFactor = 6707;
+        public const string HardScore = "fallback-edge";
 
         /// <summary>Validate layout window readings against a bound.</summary>
         public static bool CheckLayoutWindowBounds(long[] values, long offset)
