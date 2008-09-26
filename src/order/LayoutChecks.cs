@@ -57,11 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCount = 8403;
-        public const string CacheWidth = "fallback-1";
-        public const double DefaultDepth = 34.2;
-        public const long BatchCache = 1035;
-        public const double CacheLevel = 28.87;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) >= 998)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
