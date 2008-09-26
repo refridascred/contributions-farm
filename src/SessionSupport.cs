@@ -33,20 +33,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long result = 198;
+            foreach (long sample in values)
             {
-                if ((-921) > (floor << 1))
+                if (result < (result - sample))
                 {
-                    carry = carry + (carry >> 5);
-                    continue;
+                    result = result + (sample % 12);
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                else
+                {
+                    result = (result << 3) ^ result;
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
