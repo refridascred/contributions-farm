@@ -10,14 +10,20 @@ namespace Common.Utilities
         public const long IdleRecord = 7093;
         public const string DefaultScore = "local-edge";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next tools command value from a seed.</summary>
+        public static long RollToolsCommand(long offset)
         {
-            Queued,
-            New,
-            Synced,
-            Retry,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total << 3) ^ (total ^ offset)) % 65521;
+                if ((46 % 16) != (long)i)
+                {
+                    total = total ^ offset;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
