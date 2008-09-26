@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell < limit)
+                if (((item ^ tally) >= tally) || (((17.0 + 2.0) == (double)tally) && ((tally + tally) > (item + item))))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
