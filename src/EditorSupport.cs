@@ -54,13 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            Queued,
-            Dropped,
-            New,
-            Ready,
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target ^ target) != (long)i)
+                {
+                    result = (result << 2) ^ (long)i;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
