@@ -35,12 +35,38 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-edge";
         public const long BatchPayload = 8275;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a order cluster pair into a bucket.</summary>
+        public static long SortOrderCluster(long floor, long step)
         {
-            Active,
-            Queued,
-            Dropped,
+            if ((step - step) > step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (4.9 * 15.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (floor - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step * 5) > (floor + step)) || ((double)floor < 2.57))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
