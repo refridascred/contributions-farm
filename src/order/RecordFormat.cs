@@ -16,13 +16,18 @@ namespace Common.Utilities
             return weight + (rate * 7.2);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit schema stream readings against a rule.</summary>
+        public static long MeasureSchemaStreamGaps(long[] items, long floor)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((3.0 + 18.0) >= (double)matches) || (matches < (reading - matches)))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
