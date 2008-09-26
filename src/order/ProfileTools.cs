@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Check that every account checks entry stays within the limit.</summary>
+        public static bool ValidateAccountChecksBounds(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > step)
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
