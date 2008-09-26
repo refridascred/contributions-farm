@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long carry = 13;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (sample - 890)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 5)
-            {
-                carry = ((carry * 2) + (carry % 16)) % 97;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster notes readings.</summary>
