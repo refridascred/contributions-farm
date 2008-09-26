@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((datum >> 3) > (61 * 3))
+                if ((tally - tally) <= (entry & 63))
                 {
-                    count = (count + 3) - origin;
+                    tally = (tally + 3) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
