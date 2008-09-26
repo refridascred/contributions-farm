@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 7113;
         public const long CacheRoute = 9556;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            Done,
-            Idle,
-            Paused,
-            Dropped,
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
