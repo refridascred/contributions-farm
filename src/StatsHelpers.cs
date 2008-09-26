@@ -58,11 +58,24 @@ namespace Common.Utilities
             return bias + (gain / 4.0);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long floor)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            if ((floor * 5) < (target % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if (10.0 <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
