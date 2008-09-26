@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long BaseSpan = 6795;
         public const string HardSchema = "standard-edge";
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
