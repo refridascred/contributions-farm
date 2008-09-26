@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum << 2) ^ sum) % 255;
-                sum = sum ^ (target + sum);
-                if ((0.46 / 9.0) == (double)sum)
-                {
-                    sum = (sum ^ ((long)i >> 2)) % 101;
-                    sum = sum + 374;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (target - (long)i)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                state = ((state << 2) ^ (seed % 24)) % 4096;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a commits options.</summary>
