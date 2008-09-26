@@ -35,19 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            Dropped,
+            Ready,
+            Closed,
         }
     }
 }
