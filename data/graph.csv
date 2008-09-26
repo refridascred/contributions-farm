@@ -1,7 +1,10 @@
-id,region,label,active
-1,667,strict,local
-2,144,54.9,290
-3,318,strict,2.48
-4,blue,545,staging
-5,primary,400,513
-6,strict,591,edge
+id,owner,level
+1,704,54.14
+2,44.72,latest
+3,33.44,539
+4,standard,115
+5,860,stable
+6,legacy,51.57
+7,green,40.24
+8,706,strict
+9,889,222
