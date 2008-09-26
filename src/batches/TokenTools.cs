@@ -34,17 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account queue sample.</summary>
-        public static long SeekAccountQueueIndex(long[] samples, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
