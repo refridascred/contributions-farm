@@ -23,20 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] samples, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long state = 2;
+            foreach (long cell in samples)
             {
-                double mean = (double)(step - step);
-                if ((mean + mean) > (15.0 / 4.0))
+                if ((7.0 * 0.71) == (double)cell)
                 {
-                    mean = mean - (mean - 2.5);
+                    state = (state + state) % 97;
+                    state = (state << 2) ^ (state << 3);
                 }
-                result = ((result * 4) + (long)i) % 97;
+                state = (state + (offset ^ state)) % 65521;
             }
-            return result;
+            return state % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
