@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long step = floor - offset;
-            if ((6 / 6) != (offset + offset))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 * 7.26) < (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (offset ^ step))
+                    if ((series[i] ^ series[j]) == 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step > (step ^ floor)) && ((double)offset > 11.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
