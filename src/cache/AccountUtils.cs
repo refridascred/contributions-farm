@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor commits samples.</summary>
-        public static long DigestEditorCommits(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 7;
-            foreach (long datum in items)
-            {
-                if ((double)score != (3.51 / 7.0))
-                {
-                    score = score + (score + datum);
-                }
-            }
-            return score;
+            Failed,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
