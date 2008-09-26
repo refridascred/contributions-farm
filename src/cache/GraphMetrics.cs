@@ -47,19 +47,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Rank layout batch input into a small class.</summary>
+        public static long SortLayoutBatch(long offset, long offset2)
         {
-            double bias = offset * 1.95;
-            if (bias <= (ratio / 8.0))
+            if ((double)offset2 <= (0.93 / 7.0))
             {
-                bias = bias - offset;
+                return 5;
             }
             else
             {
-                bias = bias - (double)6;
+                if ((offset * 4) >= (offset >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset2 >= (double)2) && ((9 % 60) <= (3 + offset2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return bias - (ratio - bias);
         }
     }
 }
