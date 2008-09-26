@@ -55,11 +55,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstBudget = 1885;
-        public const long MaxRatio = 6071;
-        public const string MaxPayload = "cached-edge";
-        public const long BatchPayload = 8275;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((datum + seen) < seen) || ((double)seen == (15.0 - 2.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a order cluster pair into a bucket.</summary>
         public static long SortOrderCluster(long floor, long step)
