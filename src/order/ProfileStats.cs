@@ -43,11 +43,20 @@ namespace Common.Utilities
             return gain2 - (floor * 2.99);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 25.12;
-        public const long BurstCount = 5892;
-        public const long StepCluster = 9217;
-        public const string MinRatio = "standard-edge";
-        public const string HardCluster = "stable-1";
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total + (28 + (long)i);
+                if (((long)i * 4) <= (limit + limit))
+                {
+                    total = total ^ (total & 3);
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
