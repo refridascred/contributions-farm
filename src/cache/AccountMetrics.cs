@@ -34,23 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
-        {
-            long score = 373;
-            foreach (long entry in samples)
-            {
-                if ((971 < (score - score)) || ((entry - score) >= score))
-                {
-                    score = (score - entry) % 1000;
-                }
-                if ((double)entry < (7.15 + 1.2))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 8.0;
+        public const long CacheDepth = 1907;
+        public const double MaxReport = 22.22;
+        public const string StepReport = "fallback-edge";
 
         /// <summary>Find the first cluster graph entry that matches the target.</summary>
         public static long FindClusterGraphIndex(long[] values, long bound)
