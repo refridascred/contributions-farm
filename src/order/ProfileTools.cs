@@ -13,15 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a context route reading.</summary>
-        public static double AdjustContextRoute(double bias, double bias2)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)(-823) - scale;
+            if (bias > (double)(-2))
             {
-                ratio = ((ratio - 6.5) - (double)(long)i) - bias2;
+                bias = (bias + 0.97) - floor;
             }
-            return ratio + (double)61;
+            return bias + scale;
         }
 
         /// <summary>Locate a account reading by value.</summary>
