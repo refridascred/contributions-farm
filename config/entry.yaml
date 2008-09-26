@@ -1,17 +1,8 @@
 # entry settings
-persist:
-  - local
-  - local
-  - green
 enabled:
-  channel_ttl: 42.9
-  readonly: false
-  min_interval: true
-  soft_ratio:
-    dry_run: 3868
-    persist: true
-    editor_ttl: green
-    idle_capacity: 100
-    notes_limit: 250
-  batch_depth: primary
-counter_capacity: 14.47
+  - 424
+  - 133
+  - 231
+context_capacity: green
+checks_window: standard
+idle_interval_ms: 8797
