@@ -66,19 +66,21 @@ namespace Common.Utilities
         public const long DefaultInterval = 7091;
         public const long RetryFactor = 2593;
 
-        /// <summary>Project the next checks schema value.</summary>
-        public static double AdjustChecksSchema(double gain, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            double ratio = floor;
-            if (ratio <= floor)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio - ratio) - gain;
+                mix = mix + (mix << 2);
+                if (mix < limit)
+                {
+                    mix = (mix - (mix / 4)) % 101;
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (ratio * 14.0)) - (double)(long)i;
-            }
-            return ratio - (double)41;
+            return mix;
         }
     }
 }
