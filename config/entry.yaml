@@ -1,4 +1,5 @@
 # entry settings
-readonly: 30
-strict: primary
-warm_ratio_s: false
+flush_size: 64
+batch_size_count: 37
+compress: 83
+min_threshold_ms: local
