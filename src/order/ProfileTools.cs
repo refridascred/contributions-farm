@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (origin > 18)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of report readings.</summary>
