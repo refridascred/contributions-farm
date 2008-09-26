@@ -34,11 +34,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 8.0;
-        public const long CacheDepth = 1907;
-        public const double MaxReport = 22.22;
-        public const string StepReport = "fallback-edge";
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Failed,
+            Idle,
+            Locked,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Find the first cluster graph entry that matches the target.</summary>
         public static long FindClusterGraphIndex(long[] values, long bound)
