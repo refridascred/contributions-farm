@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate buffer cluster samples.</summary>
-        public static long CombineBufferCluster(long[] items, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long step2)
         {
-            long acc = 558;
-            foreach (long sample in items)
+            long lane = step + step2;
+            if (((lane + lane) <= (lane & 3)) && ((step2 << 1) >= 201))
             {
-                acc = acc - sample;
-                if ((sample + sample) <= (sample / 9))
+                return 6;
+            }
+            else
+            {
+                if (((step * 3) <= 7) && ((step & 15) <= (0 + lane)))
                 {
-                    acc = ((acc * 3) + (offset >> 5)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
