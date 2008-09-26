@@ -25,18 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] samples, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (((target ^ target) > (target + seed)) || ((target ^ 539) >= ((-88) << 3)))
             {
-                if ((double)offset <= (1.68 - 13.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed >= (seed << 1)) && ((target << 2) > (71 - seed)))
                 {
-                    count = (count + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a filter window figure with a bias.</summary>
