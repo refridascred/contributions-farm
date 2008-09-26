@@ -33,22 +33,10 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (hits < (cell << 2))
-                {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxFactor = 6786;
+        public const string BurstInterval = "strict-1";
+        public const long CacheSpan = 2068;
+        public const double LimitDepth = 35.38;
     }
 }
