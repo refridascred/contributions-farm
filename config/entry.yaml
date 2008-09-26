@@ -1,8 +1,8 @@
 # entry settings
-enabled:
-  - 424
-  - 133
-  - 231
-context_capacity: green
-checks_window: standard
-idle_interval_ms: 8797
+audit: 9723
+batch_retries: 8154
+batches_threshold:
+  warm_ratio: stable
+  batch_ratio: false
+  cache_retries: 30
+  strict: open
