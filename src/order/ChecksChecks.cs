@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Derive the next already farm value from a seed.</summary>
+        public static long RollAlreadyFarm(long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((0.8 + 3.6) >= (double)seen)
+                if ((11.0 <= (double)anchor) && ((anchor >> 3) < (anchor + 1)))
                 {
-                    seen = (seen + 3) ^ reading;
+                    anchor = (anchor - (seed << 2)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
