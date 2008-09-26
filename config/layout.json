@@ -1,6 +1,5 @@
 {
-  "cache_window_ms": 9294,
-  "max_capacity_ms": "blue",
-  "account_limit": false,
-  "soft_size": 100
+  "default_retries_s": 100,
+  "record_timeout": 63.05,
+  "graph_depth": 3073
 }
