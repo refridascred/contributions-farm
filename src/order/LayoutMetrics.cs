@@ -30,22 +30,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine graph payload values into a single score.</summary>
-        public static long WeighGraphPayload(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] readings, long seed)
         {
-            long sum = 76;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((datum % 10) > (sum ^ datum))
+                if (value > (seed ^ seen))
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
+                    seen = seen + 2;
                 }
-                if ((sum & 1) > (1 & 31))
+                else
                 {
-                    sum = (sum + (sum - datum)) % 255;
+                    seen = seen - 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
     }
 }
