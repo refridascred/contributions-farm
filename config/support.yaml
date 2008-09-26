@@ -1,4 +1,4 @@
 # support settings
-max_timeout_pct: open
-soft_limit_ms: edge
-enabled: local
+notes_depth: 100
+hard_size: 21.32
+queue_interval: 2464
