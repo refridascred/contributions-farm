@@ -66,13 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Draft,
             Queued,
-            Stale,
             Ready,
+            Paused,
         }
     }
 }
