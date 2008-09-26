@@ -45,12 +45,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data, long floor)
         {
-            New,
-            Idle,
-            Failed,
+            long result = 4;
+            foreach (long sample in data)
+            {
+                if ((sample % 5) >= (sample * 5))
+                {
+                    result = (result * 2) + floor;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result ^ (result + 87)) % 65521;
+            }
+            return result;
         }
     }
 }
