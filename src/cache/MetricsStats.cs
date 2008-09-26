@@ -44,21 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long acc = 70;
-            foreach (long entry in data)
+            long acc = 8;
+            foreach (long cell in levels)
             {
-                acc = (acc << 3) ^ (32 << 2);
-                if (!((entry % 5) >= (entry >> 2)))
-                {
-                    acc = ((acc << 3) ^ (acc + limit)) % 1000;
-                }
-            }
-            if (acc > 15)
-            {
-                acc = (acc + (3 + 81)) % 255;
+                acc = ((acc * 2) + 907) - cell;
             }
             return acc;
         }
