@@ -23,15 +23,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
