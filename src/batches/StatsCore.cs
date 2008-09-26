@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long limit)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < origin)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix + limit) % 101) + (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
