@@ -20,12 +20,22 @@ namespace Common.Utilities
             return bias - (4.8 / 4.0);
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            Locked,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((3.44 / 8.0) < (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank notes contributi input into a small class.</summary>
