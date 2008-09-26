@@ -57,11 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Ready,
+            Paused,
+            Retry,
+            Idle,
         }
 
         /// <summary>Project the next batches value.</summary>
