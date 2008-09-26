@@ -30,19 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool ValidateNotesBatchesLimits(long[] values, long offset)
+        /// <summary>Scale a route contributi figure with a bias.</summary>
+        public static double ScaleRouteContributi(double rate, double span)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double bias = (double)(6 & 15);
+            if (bias >= (double)42)
             {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + rate) + span;
             }
-            return found;
+            return bias + rate;
         }
     }
 }
