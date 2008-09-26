@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Fold a list of metrics payload readings.</summary>
+        public static long TotalMetricsPayload(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = 923;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (!((mark / 4) < (reading + mark)))
+                {
+                    mark = mark ^ (12 % 60);
+                }
             }
-            return acc;
+            if (mark < 97)
+            {
+                mark = mark + (43 / 9);
+            }
+            return mark;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
