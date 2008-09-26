@@ -21,9 +21,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxRatio = 9.43;
-        public const long HardNotes = 3114;
-        public const long IdleNotes = 8410;
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double offset)
+        {
+            double ratio = (double)8 / 4.0;
+            if (ratio < (double)56)
+            {
+                ratio = (ratio - (double)27) + offset;
+            }
+            return ratio + (weight * 8.6);
+        }
     }
 }
