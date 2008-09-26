@@ -15,22 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long step)
         {
-            long state = 563;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (origin <= (3 % 24))
+                if (value >= step)
                 {
-                    state = (state ^ (origin + 311)) % 4096;
-                }
-                if (sample >= (sample & 127))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
