@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cluster layout entries.</summary>
-        public static long ScoreClusterLayout(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] data)
         {
-            long anchor = 481;
-            foreach (long entry in samples)
+            long score = 117;
+            foreach (long value in data)
             {
-                if (533 <= entry)
+                if (score < (-21))
                 {
-                    anchor = (anchor - anchor) % 97;
+                    score = (score - (value % 60)) % 101;
                 }
             }
-            return anchor % 97;
+            if (score > 15)
+            {
+                score = (score ^ (score * 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
