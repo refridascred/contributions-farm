@@ -58,10 +58,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 1306;
-        public const long BurstGraph = 7338;
-        public const long WindowBudget = 1567;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long origin, long bound)
+        {
+            long prev = origin + bound;
+            if ((prev % 24) <= ((-5) - prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 12) <= (origin + 301))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Adjust a buffer window reading.</summary>
         public static double ProjectBufferWindow(double weight, double span)
