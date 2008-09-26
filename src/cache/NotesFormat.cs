@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long SoftFactor = 7362;
         public const long DefaultFactor = 8810;
 
-        /// <summary>Count the order support entries that pass the check.</summary>
-        public static long TallyOrderSupportGaps(long[] values, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((double)bound < (15.0 * 7.3)) && ((28 ^ datum) >= ((long)values.Length + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
