@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate buffer payload readings against a bound.</summary>
-        public static bool VerifyBufferPayloadRange(long[] samples, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (datum < offset)
+                if (item != origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
