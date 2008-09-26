@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)seen <= (1.0 + 8.5)) && ((double)item >= (double)seen))
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
