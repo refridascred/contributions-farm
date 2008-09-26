@@ -27,18 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Compare every pair of cluster support readings.</summary>
+        public static long OverlapClusterSupportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry / 9) <= (-66)) && (((entry ^ entry) >= entry) && ((double)entry >= (4.7 / 9.0))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
