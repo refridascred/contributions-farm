@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)matches == (double)cell)
+                if ((hits & 255) == (entry << 1))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
