@@ -16,31 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] readings, long limit)
         {
-            if ((39 + floor) > bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor - 93) >= bound) && ((bound << 1) != (bound / 9)))
+                if (readings[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound - floor) <= (floor + floor)) && ((double)bound != (0.38 / 4.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
