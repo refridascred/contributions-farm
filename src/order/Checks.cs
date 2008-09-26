@@ -45,17 +45,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks stream sample.</summary>
-        public static long LookupChecksStreamIndex(long[] readings, long floor)
+        /// <summary>Iterate the window report series from a seed.</summary>
+        public static long SeriesWindowReport(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] <= floor)
+                if ((double)(long)i >= (17.0 * 4.28))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (8 + bound)) % 1000;
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
