@@ -24,38 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a commits format pair into a bucket.</summary>
-        public static long GradeCommitsFormat(long bound, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long floor)
         {
-            if ((bound - limit) >= limit)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.03 / 8.0) != (double)bound)
+                if (cell != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ 4) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound <= (10 >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two filter support measurements.</summary>
