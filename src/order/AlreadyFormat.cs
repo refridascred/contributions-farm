@@ -53,21 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order schema pairs that satisfy a relation.</summary>
-        public static long CompareOrderSchemaCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -47;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3 ^ carry) <= (194 ^ carry))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry ^ carry) % 65521) + value;
+                }
+                else
+                {
+                    carry = (carry * 5) + carry;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the account phase values.</summary>
