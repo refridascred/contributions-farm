@@ -22,13 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            Paused,
+            Locked,
+            New,
+            Done,
         }
     }
 }
