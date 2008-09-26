@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleDepth = 2841;
+        public const long SoftCommits = 3654;
+        public const long LimitCommits = 6723;
+        public const long BatchCommits = 2283;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long limit)
