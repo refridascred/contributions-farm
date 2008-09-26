@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long DeriveToolsContributi(long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] values, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
