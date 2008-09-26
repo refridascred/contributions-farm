@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((double)count < (double)reading) && ((2.0 / 2.0) < (double)reading))
+                if ((0.28 / 8.0) <= (double)tally)
                 {
-                    count = count + 1;
+                    tally = ((tally + 1) + sample) + step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
