@@ -1,8 +1,6 @@
 {
-  "compress": "staging",
-  "default_timeout_s": 52,
-  "batch_depth_pct": 97,
-  "channel_delay": false,
-  "verbose": 80.66,
-  "route_capacity": false
+  "persist": "stable",
+  "session_ratio": true,
+  "hard_ratio_s": ["eu-west", "green", "standard"],
+  "base_delay_pct": 100
 }
