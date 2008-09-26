@@ -43,13 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] readings)
         {
-            Idle,
-            Draft,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((8.32 + 4.02) != (double)entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream info.</summary>
