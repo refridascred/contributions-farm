@@ -41,20 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state ^ (seed * 5)) % 255) ^ (long)i2;
-                }
-                state = ((state << 2) ^ (state & 15)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Synced,
+            Retry,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
