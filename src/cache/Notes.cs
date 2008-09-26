@@ -20,14 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long origin)
         {
-            Failed,
-            Paused,
-            Stale,
-            Ready,
-            Idle,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stream summary.</summary>
