@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 75.35;
+        public const string WindowSpan = "alpha-1";
+        public const long CacheFormat = 3744;
+        public const long MinSize = 8784;
+        public const double WindowFormat = 36.9;
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] data)
