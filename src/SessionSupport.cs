@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((5.0 / 9.0) >= (double)(long)i))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 4) + (floor / 6);
                 }
+                mix = ((mix << 2) ^ floor) % 4096;
+                mix = (mix - ((long)i >> 3)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
