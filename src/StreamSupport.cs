@@ -28,27 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long acc = 59;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (acc / 5)) % 101) + (long)i;
-                    acc = (acc * 4) + item;
-                }
-                if ((item / 4) > (seed - 505))
-                {
-                    acc = acc - 0;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (seed & 31)) % 4096;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
