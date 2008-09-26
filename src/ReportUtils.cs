@@ -17,14 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Done,
-            Dropped,
-            Paused,
-            Retry,
-            Active,
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
