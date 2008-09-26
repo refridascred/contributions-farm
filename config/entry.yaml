@@ -1,8 +1,20 @@
 # entry settings
-support_threshold: 7797
-poll_threshold:
-  persist: 9.49
-  warm_window_pct: edge
-  record_capacity: blue
-  burst_capacity: 1024
-default_depth_ms: fallback
+soft_delay_pct:
+  burst_interval: 500
+  editor_limit: local
+  verbose: 120
+  soft_timeout_pct: false
+  burst_limit_count: 82.43
+  compress:
+    poll_size_count: false
+    retry_retries_ms: eu-west
+    cluster_depth: 250
+    min_capacity:
+      - 317
+      - 411
+      - 19
+      - 195
+    batch_delay_pct: false
+    sync_depth_s: 8130
+enabled: latest
+audit: fallback
