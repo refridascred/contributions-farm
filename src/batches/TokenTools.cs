@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Synced,
-            Pending,
-            Dropped,
+            Ready,
+            Done,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
