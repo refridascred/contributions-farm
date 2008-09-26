@@ -25,18 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((tally - sample) < (sample - 284))
+                if (datum < step)
                 {
-                    tally = (tally + 3) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
