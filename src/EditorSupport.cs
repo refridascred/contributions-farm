@@ -33,11 +33,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 566;
-        public const double BurstLevel = 56.72;
-        public const double RetryProfile = 48.72;
-        public const string HardWidth = "primary-v2";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long seed, long bound)
