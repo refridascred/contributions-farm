@@ -13,21 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Blend two session schema measurements.</summary>
