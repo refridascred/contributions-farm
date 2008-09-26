@@ -90,18 +90,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] levels, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long prev = bound + origin;
+            if ((75 & 31) < (prev % 8))
             {
-                if ((offset + seen) < (offset >> 5))
+                return 5;
+            }
+            else
+            {
+                if (((origin + prev) > origin) || (bound < (65 & 31)))
                 {
-                    seen = (seen + 3) + sample;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
