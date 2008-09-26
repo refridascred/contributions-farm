@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank filter schema input into a small class.</summary>
+        public static long ClassifyFilterSchema(long seed, long bound)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long edge = seed - bound;
+            if ((31 & 255) > (edge - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(bound >= (bound >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >= ((-79) / 7)) || ((seed * 3) <= (edge + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - 4) > (4 >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
