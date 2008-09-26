@@ -66,15 +66,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series, long bound)
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long AuditOrderQueueHits(long[] readings)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long cell in readings)
             {
-                if (!((count + bound) <= (count + count)))
+                if ((count - 0) <= (cell & 3))
                 {
-                    count = (count + 1) + datum;
+                    count = count + 3;
                 }
             }
             return count;
