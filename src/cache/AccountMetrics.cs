@@ -44,18 +44,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cluster graph entry that matches the target.</summary>
-        public static long FindClusterGraphIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 0.24;
+        public const long BaseBudget = 741;
+        public const long HardLevel = 2268;
+        public const string BaseScore = "stable-edge";
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
