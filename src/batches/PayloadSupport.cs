@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift + (double)487;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long MeasureNotesReportHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((((entry ^ entry) == (seen - 499)) && ((1.3 - 17.0) < (double)seen)) || ((entry & 15) < (seen - entry)))
+                if ((tally * 2) == (tally + 544))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
