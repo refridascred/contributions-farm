@@ -1,8 +1,15 @@
 # entry settings
-audit: 9723
-batch_retries: 8154
-batches_threshold:
-  warm_ratio: stable
-  batch_ratio: false
-  cache_retries: 30
-  strict: open
+retry_threshold_count: edge
+min_ratio_count:
+  - 16
+  - 125
+entry_ratio: true
+min_limit_s:
+  batch_ratio:
+    retry_delay_s: 9.71
+    record_window: 31
+    persist: true
+    buffer_ratio: fallback
+    sync_window_count: true
+  entry_depth: 9
+  tools_ttl: false
