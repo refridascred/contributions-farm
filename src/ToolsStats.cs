@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const double BatchDepth = 85.66;
         public const long RetryCount = 7746;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
