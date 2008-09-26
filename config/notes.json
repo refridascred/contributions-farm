@@ -1,12 +1,9 @@
 {
-  "persist": 91,
-  "base_ttl_count": {
-    "min_ttl_count": [418, 148],
-    "already_interval": 77.9,
-    "burst_depth": 92,
-    "sync_capacity": 1288,
-    "min_retries": false,
-    "profile_capacity": ["stable", "cached", "stable", "local"]
+  "audit": {
+    "burst_capacity_s": "open",
+    "sync_interval": false,
+    "editor_window": 8883
   },
-  "already_ratio": 81.5
+  "readonly": 36,
+  "idle_depth_pct": [395, 343]
 }
