@@ -51,12 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftCount = 6314;
-        public const long BurstMetric = 5266;
-        public const long RetryMetric = 5581;
-        public const long MaxMetric = 1251;
-        public const long IdleMetric = 9167;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 8123;
+        public const string HardWidth = "alpha-edge";
+        public const string BaseBudget = "alpha-1";
+        public const long SoftQueue = 3418;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long floor, long step)
