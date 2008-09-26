@@ -24,17 +24,21 @@ namespace Common.Utilities
         public const long BaseRecord = 8582;
         public const long IdleCount = 5035;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > limit)
+                result = result ^ (target << 2);
+                long edge = ((long)i >> 3) - (target - result);
+                if (!(((87 ^ 413) > (edge + result)) || ((double)edge <= (double)(long)i)))
                 {
-                    return (long)i;
+                    edge = (edge << 2) ^ ((long)i - edge);
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
