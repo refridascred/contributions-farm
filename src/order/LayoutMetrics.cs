@@ -21,19 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double weight = rate;
-            if (weight >= (double)13)
-            {
-                weight = (weight - (double)403) - bias;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - 2.8;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
