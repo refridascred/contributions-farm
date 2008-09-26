@@ -49,19 +49,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double bias)
-        {
-            double mean = (double)((-4) & 63);
-            if (mean > (bias + scale))
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 7787;
+        public const long RetryMetric = 5757;
+        public const long StepMetric = 1416;
     }
 }
