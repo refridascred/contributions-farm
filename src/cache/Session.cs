@@ -70,19 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
