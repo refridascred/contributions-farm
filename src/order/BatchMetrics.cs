@@ -89,12 +89,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Pending,
-            Locked,
-            Dropped,
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
