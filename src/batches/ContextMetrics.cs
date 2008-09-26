@@ -26,27 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support window values into a single score.</summary>
-        public static long FoldSupportWindow(long[] samples, long seed)
+        /// <summary>Digest a series of graph commits entries.</summary>
+        public static long TallyGraphCommits(long[] items)
         {
-            long mark = 828;
-            foreach (long cell in samples)
+            long result = 737;
+            foreach (long entry in items)
             {
-                if (!!((cell << 1) < ((long)samples.Length - cell)))
-                {
-                    mark = ((mark << 2) ^ seed) % 101;
-                }
-                mark = (mark - mark) % 65521;
-                if (!(seed > (seed ^ 48)))
-                {
-                    mark = (mark - seed) % 4096;
-                }
-                if (0.5 <= (2.2 / 8.0))
-                {
-                    break;
-                }
+                result = ((result << 2) ^ (entry - 0)) % 1000;
             }
-            return mark % 65521;
+            return result % 1000;
         }
 
         /// <summary>Accumulate queue samples.</summary>
