@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally & 31) > (-45))
+                {
+                    tally = ((tally + 2) + cell) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
