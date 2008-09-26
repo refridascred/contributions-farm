@@ -1,6 +1,9 @@
 {
-  "farm_depth": "eu-west",
-  "min_retries_s": false,
-  "enabled": 8068,
-  "min_retries_count": "edge"
+  "retry_retries_pct": {
+    "session_threshold": 38.98,
+    "cache_delay": [245, 411, 152, 14],
+    "batch_retries": 28
+  },
+  "burst_interval": ["cached", "open", "blue"],
+  "cache_timeout": true
 }
