@@ -54,19 +54,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double bias, double bias2)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long limit, long step)
         {
-            double drift = bias2;
-            if (drift < 8.2)
+            long gap = limit + step;
+            if (gap < (step << 2))
             {
-                drift = (drift - (bias2 + drift)) + bias;
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if ((limit & 7) <= (12 + gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift - (double)7;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
