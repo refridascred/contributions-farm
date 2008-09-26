@@ -30,18 +30,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long CountRecordLayoutMatches(long[] samples)
+        /// <summary>Match up account metric samples.</summary>
+        public static long MatchAccountMetricCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((double)entry < (2.5 + 18.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of farm metric readings.</summary>
