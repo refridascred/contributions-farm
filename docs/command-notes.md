@@ -1,10 +1,14 @@
 # Command notes
 
-A window that stays idle for too long is moved to the editor list.
-The notes report groups every report by token.
+The format helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps record values in sync with the counter cache.
+Each cluster is validated before it reaches the schema queue.
+
+A profile that stays idle for too long is moved to the checks list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new buffer fields
-- Prefer batch defaults
+- Validate format input early
+- Review support limits each release
+- Keep context values small
