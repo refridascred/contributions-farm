@@ -1,16 +1,5 @@
 # entry settings
-enabled: eu-west
-poll_limit_s: 100
-session_limit:
-  retry_capacity_ms: 91.8
-  batch_limit: 93.83
-  warm_ratio_count: standard
-  enabled:
-    - edge
-    - primary
-  schema_delay: 22.91
-poll_limit_ms:
-  - legacy
-  - stable
-audit: 8774
-burst_size: standard
+idle_size: true
+session_retries: fallback
+retry_capacity_count: 54
+warm_limit_count: edge
