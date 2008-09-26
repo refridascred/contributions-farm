@@ -28,17 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window payload sample.</summary>
-        public static long SeekWindowPayloadIndex(long[] samples, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
