@@ -1,18 +1,13 @@
 # support settings
-burst_retries_s:
-  - latest
+readonly:
+  - green
+  - fallback
+  - primary
   - legacy
-  - edge
-soft_timeout_s: fallback
-min_retries: 500
-soft_delay_s: 1024
-batches_ttl: 57.0
-hard_capacity_pct:
-  readonly: 60
-  flush_threshold:
-    - local
-    - open
-    - cached
-    - stable
-  persist: 50
-  filter_timeout: 90.1
+notes_window: false
+cache_capacity_s: 19.99
+burst_ratio: strict
+base_size:
+  - 161
+  - 418
+sync_threshold: 61.66
