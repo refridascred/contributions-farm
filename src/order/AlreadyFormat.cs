@@ -71,17 +71,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
