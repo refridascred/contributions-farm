@@ -43,17 +43,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultLevel = 39.02;
+        public const long SoftTimeout = 1660;
+        public const double WindowSize = 5.5;
+        public const long CacheSchema = 776;
     }
 }
