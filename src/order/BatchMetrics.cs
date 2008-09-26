@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((value & 1) < (value + value)) && (6 < (value - value)))
-                {
-                    matches = matches + 3;
-                }
+                sum = (sum * 5) + ((long)i + floor);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the account status values.</summary>
