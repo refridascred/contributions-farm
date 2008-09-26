@@ -35,13 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every metric record entry stays within the limit.</summary>
+        public static bool GuardMetricRecordLimits(long[] series, long bound)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a format counter forward.</summary>
