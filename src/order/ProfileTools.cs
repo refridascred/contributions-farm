@@ -40,18 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) != (tally & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit route commits readings against a rule.</summary>
