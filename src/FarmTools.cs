@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            Dropped,
-            Synced,
-            Done,
-            Stale,
+            double load = (double)7 + bias;
+            if (load <= load)
+            {
+                load = load + (floor + 4.28);
+            }
+            return load + bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
