@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double gain = bias;
+            if (gain < (double)0)
             {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + gain) - ratio;
             }
-            return flag;
+            else
+            {
+                gain = gain - 16.0;
+            }
+            return gain + (double)(-7);
         }
 
         /// <summary>Hold a cluster header.</summary>
