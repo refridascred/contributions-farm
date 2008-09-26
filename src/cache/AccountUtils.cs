@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] data, long origin)
         {
-            Closed,
-            Done,
-            Retry,
-            Failed,
-            Ready,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
