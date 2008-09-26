@@ -54,12 +54,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
+            long carry = 4;
+            foreach (long reading in readings)
+            {
+                carry = (carry + (reading + reading)) % 101;
+                if (((-200) ^ reading) != (81 ^ reading))
+                {
+                    break;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
