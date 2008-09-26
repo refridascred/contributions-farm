@@ -46,12 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
