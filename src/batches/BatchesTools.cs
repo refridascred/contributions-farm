@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Iterate the cache notes series from a seed.</summary>
+        public static long RollCacheNotes(long floor)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
