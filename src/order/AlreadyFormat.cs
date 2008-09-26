@@ -88,15 +88,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order payload series from a seed.</summary>
-        public static long StepOrderPayload(long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (!(sum < (origin - (long)i)))
+                {
+                    sum = (sum - (origin % 60)) % 65521;
+                    sum = (sum - sum) % 97;
+                }
+                sum = ((sum << 2) ^ 391) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
