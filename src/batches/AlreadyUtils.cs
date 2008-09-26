@@ -20,22 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double bias)
         {
-            long state = 636;
-            foreach (long value in values)
-            {
-                if (!(value >= (value ^ value)))
-                {
-                    state = state - (value * 4);
-                }
-                else
-                {
-                    state = ((state * 5) + (0 + state)) % 97;
-                }
-            }
-            return state;
+            double load = scale;
+            return load + bias;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
