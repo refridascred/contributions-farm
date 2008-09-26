@@ -23,19 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (((carry << 3) ^ (3 / 4)) - reading) + target;
+                double mean = (double)(step - step);
+                if ((mean + mean) > (15.0 / 4.0))
+                {
+                    mean = mean - (mean - 2.5);
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (carry > 63)
-            {
-                carry = (carry - (carry << 1)) % 65521;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
