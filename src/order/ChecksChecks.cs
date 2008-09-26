@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            public double Flag { get; set; }
             public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next already farm value from a seed.</summary>
