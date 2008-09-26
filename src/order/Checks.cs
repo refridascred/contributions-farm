@@ -70,18 +70,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings, long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((8 % 7) < (offset + offset))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
