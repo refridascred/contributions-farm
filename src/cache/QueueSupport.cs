@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a record counter sample.</summary>
