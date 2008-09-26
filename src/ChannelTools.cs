@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
+            Paused,
+            Done,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
