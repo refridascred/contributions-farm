@@ -1,5 +1,11 @@
 {
-  "queue_delay": 6957,
-  "stats_retries": 5514,
-  "strict": 80.39
+  "warm_delay_ms": {
+    "session_depth": 250,
+    "sync_threshold_pct": 90.17,
+    "poll_ratio_s": 4938
+  },
+  "sync_limit_pct": 87,
+  "cache_ttl": "cached",
+  "verbose": 6047,
+  "soft_interval_s": 63
 }
