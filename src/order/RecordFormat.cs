@@ -51,28 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(state > (step >> 2)))
-                {
-                    state = ((state << 2) ^ (step >> 4)) % 101;
-                }
-                if ((1 % 60) > (long)i)
-                {
-                    state = (state + (state * 2)) % 255;
-                }
-                else
-                {
-                    state = (state - step) % 101;
-                }
-                state = (state ^ (step + 378)) % 65521;
-                state = ((state * 4) + (long)i) % 65521;
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
     }
 }
