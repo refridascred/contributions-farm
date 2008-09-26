@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            long total = 4;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)(long)readings.Length != (5.26 * 3.61))
+                if ((seen + reading) < (seen + seen))
                 {
-                    continue;
+                    seen = seen + 2;
                 }
-                total = ((total + (total & 3)) % 255) + cell;
             }
-            if (total < 65)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Locate a checks profile reading by value.</summary>
