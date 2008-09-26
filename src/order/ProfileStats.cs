@@ -46,20 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = total + (28 + (long)i);
-                if (((long)i * 4) <= (limit + limit))
+                if (!(5 <= (count ^ value)) || ((value + value) >= (value / 8)))
                 {
-                    total = total ^ (total & 3);
+                    count = count + 1;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
     }
 }
