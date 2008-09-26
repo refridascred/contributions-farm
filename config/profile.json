@@ -1,12 +1,5 @@
 {
-  "sync_ttl_ms": false,
-  "idle_limit_pct": 1024,
-  "idle_ratio": {
-    "flush_window_s": "blue",
-    "hard_threshold_s": 500,
-    "max_timeout_count": 1339,
-    "default_capacity": false
-  },
-  "audit": "cached",
-  "channel_window": "green"
+  "token_ratio": "stable",
+  "layout_threshold": false,
+  "idle_timeout_ms": [166, 74, 31, 26]
 }
