@@ -28,13 +28,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long FoldAlreadyEntry(long[] data)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Stale,
+            long sum = 700;
+            foreach (long sample in data)
+            {
+                if (((double)8 <= (double)sample) && ((double)sum <= 9.38))
+                {
+                    sum = sum + (sum - sample);
+                }
+                else
+                {
+                    sum = (sum - (6 & 127)) % 4096;
+                }
+            }
+            if (sum < 34)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
     }
 }
