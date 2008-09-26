@@ -23,12 +23,20 @@ namespace Common.Utilities
         public const long BatchLevel = 1672;
         public const long MaxEntry = 1146;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 2580;
-        public const double IdleLevel = 57.23;
-        public const string DefaultCounter = "latest";
-        public const long IdleCounter = 9773;
-        public const long CacheTimeout = 6255;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
