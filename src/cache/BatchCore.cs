@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor * 4) + (5 + value);
+                if ((double)value <= (5.6 * 1.13))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + seed) % 65521;
                 }
             }
-            return count;
+            if (anchor < 525)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next profile value.</summary>
