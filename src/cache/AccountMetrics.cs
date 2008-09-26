@@ -39,20 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] samples, long target)
         {
-            long state = -37;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 5) + limit) % 1000;
-                state = (state * 3) + (datum - 41);
-                if ((datum >> 5) > (limit % 64))
+                if (tally >= (tally % 24))
                 {
-                    state = (state << 3) ^ datum;
+                    tally = ((tally + 2) - entry) - target;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
