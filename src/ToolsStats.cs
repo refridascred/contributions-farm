@@ -78,22 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long ScoreReportFilter(long[] values)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long mark = 416;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((23 % 7) < mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (mark - cell);
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 945)
-            {
-                mark = (mark + (mark << 1)) % 1000;
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
