@@ -58,18 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks profile reading by value.</summary>
-        public static long FindChecksProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 1306;
+        public const long BurstGraph = 7338;
+        public const long WindowBudget = 1567;
 
         /// <summary>Adjust a buffer window reading.</summary>
         public static double ProjectBufferWindow(double weight, double span)
