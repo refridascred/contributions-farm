@@ -20,11 +20,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double bias)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long target)
         {
-            double load = scale;
-            return load + bias;
+            if ((target >> 4) <= (origin + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target % 3) > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
