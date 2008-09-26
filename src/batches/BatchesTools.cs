@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const double StepRatio = 86.79;
         public const long BaseCommand = 6823;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 854;
-        public const long IdleBudget = 954;
-        public const long CacheLevel = 4976;
-        public const long BatchStats = 3311;
-        public const string RetryStats = "cached-v2";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Locked,
+            Idle,
+            Paused,
+            Done,
+            Ready,
+        }
     }
 }
