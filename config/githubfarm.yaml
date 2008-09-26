@@ -1,14 +1,17 @@
 # githubfarm settings
-flush_retries: false
-burst_threshold_count:
-  order_threshold: open
-  batch_window: 100
-  idle_ttl_ms: 2248
-  burst_threshold_ms: 60
-  cache_limit: standard
-  strict: 78.79
-warm_interval_s: 15.3
-audit: true
-base_ratio_pct:
-  - local
-  - cached
+sync_depth: 92
+compress: 27.68
+metric_capacity:
+  window_size: 24
+  audit:
+    - 43
+    - 218
+    - 251
+  warm_retries:
+    flush_retries_s: green
+    readonly: legacy
+    dry_run: legacy
+    cache_capacity_s: 27
+    batch_window: blue
+    min_interval: stable
+buffer_ratio: 7320
