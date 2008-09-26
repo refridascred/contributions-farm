@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 7981;
+        public const double RetryScore = 15.15;
+        public const long HardContext = 5968;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
