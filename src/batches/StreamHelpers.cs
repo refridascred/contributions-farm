@@ -72,21 +72,39 @@ namespace Common.Utilities
         public const long DefaultInterval = 7091;
         public const long RetryFactor = 2593;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long bound, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long cur = bound ^ floor;
+            if ((floor + floor) <= (bound - 94))
             {
-                mix = mix + (mix << 2);
-                if (mix < limit)
-                {
-                    mix = (mix - (mix / 4)) % 101;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (5.0 < (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound & 1) == (cur >> 4)) && ((bound * 2) != (949 - 67)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.3 - 0.39) <= (double)cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
