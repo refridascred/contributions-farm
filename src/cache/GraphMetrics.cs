@@ -36,11 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheWidth = "cached-1";
-        public const long WindowToken = 5204;
-        public const string SoftCount = "local";
-        public const long BurstToken = 9991;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long target)
+        {
+            long mix = 80;
+            foreach (long value in series)
+            {
+                mix = (mix - (7 ^ target)) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxInterval = 64.83;
