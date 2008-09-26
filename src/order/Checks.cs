@@ -37,13 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
