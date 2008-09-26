@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double StepDepth = 45.22;
         public const long BurstCluster = 2057;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values, long step)
         {
-            long anchor = 914;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                anchor = anchor ^ (value << 2);
+                if (step < cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
