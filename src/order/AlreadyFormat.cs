@@ -46,22 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((matches + matches) < (item & 1)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
