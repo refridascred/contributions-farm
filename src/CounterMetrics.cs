@@ -19,18 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((floor % 97) >= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report commits sample.</summary>
