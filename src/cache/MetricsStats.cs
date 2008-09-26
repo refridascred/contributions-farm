@@ -57,14 +57,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
+            Pending,
+            Ready,
             Done,
-            Dropped,
-            Closed,
+            Idle,
             Draft,
-            Paused,
         }
     }
 }
