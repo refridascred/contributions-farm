@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] data, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a buffer farm sample.</summary>
