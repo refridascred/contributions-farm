@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally - tally) <= (entry & 63))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFactor = "primary-edge";
+        public const long IdleFarm = 9570;
+        public const long LimitCount = 8590;
+        public const double DefaultFarm = 2.9;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
