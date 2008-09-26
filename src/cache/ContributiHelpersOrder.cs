@@ -14,19 +14,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate channel metrics readings against a bound.</summary>
-        public static bool VerifyChannelMetricsLimits(long[] series, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + (11 % 5)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
