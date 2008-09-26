@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double ratio = offset;
-            if (ratio >= (rate / 3.0))
-            {
-                ratio = ratio + (ratio - 17.0);
-            }
-            else
-            {
-                ratio = ratio - (9.91 * 16.0);
-            }
-            return ratio + (double)1;
+            Stale,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Project the next metric metrics value.</summary>
