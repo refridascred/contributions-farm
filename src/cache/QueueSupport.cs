@@ -34,9 +34,10 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 318;
-        public const long StepScore = 5647;
-        public const long HardCount = 419;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 3937;
+        public const long MinTimeout = 8460;
+        public const long StepSpan = 1381;
+        public const string BurstSize = "legacy-1";
     }
 }
