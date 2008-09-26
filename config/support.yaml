@@ -1,5 +1,4 @@
 # support settings
-base_ratio: latest
-stream_limit: 45
-profile_capacity: 56.6
-soft_interval: strict
+layout_depth: 80.15
+account_size: 78.14
+hard_interval: eu-west
