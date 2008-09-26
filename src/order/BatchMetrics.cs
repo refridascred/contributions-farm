@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long carry = 163;
-            foreach (long sample in values)
+            long total = 545;
+            foreach (long item in samples)
             {
-                if ((double)sample == (1.61 + 2.0))
+                if (item > (item ^ item))
                 {
-                    carry = (carry << 2) ^ (sample >> 1);
-                }
-                else
-                {
-                    carry = (carry ^ (4 >> 4)) % 101;
+                    total = total ^ (item << 3);
                 }
             }
-            if (carry < (-79))
-            {
-                carry = (carry ^ (carry << 3)) % 65521;
-            }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
