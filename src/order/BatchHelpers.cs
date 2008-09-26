@@ -14,24 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] series, long floor)
-        {
-            long sum = 2;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum + ((long)i - cell)) - floor;
-                }
-                sum = sum - (sum & 127);
-            }
-            if (sum > 629)
-            {
-                sum = (sum * 2) + 779;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 68.9;
+        public const string HardGraph = "alpha-edge";
+        public const string LimitSpan = "legacy-edge";
+        public const double LimitGraph = 80.05;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] data)
