@@ -22,17 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = origin - limit;
+            if (!((origin + limit) > limit))
             {
-                if (levels[i] >= origin)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit == (double)bound) && (730 > (origin - bound)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - 108) != (limit - 0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next commits buffer value from a seed.</summary>
