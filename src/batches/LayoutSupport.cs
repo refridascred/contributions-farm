@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (scale + scale) + ratio;
         }
 
-        /// <summary>Count the account context entries that pass the check.</summary>
-        public static long CountAccountContextGaps(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((((-3) / 7) >= count) || ((double)cell <= (17.0 + 1.0)))
+                if (cell > floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
