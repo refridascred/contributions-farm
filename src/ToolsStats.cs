@@ -61,19 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool ValidateChecksFilterRange(long[] series, long step)
+        /// <summary>Accumulate profile report samples.</summary>
+        public static long FoldProfileReport(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long acc = 498;
+            foreach (long cell in samples)
             {
-                if (sample < step)
+                if ((8.0 / 5.0) != (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = acc ^ (cell - target);
+                    acc = (acc ^ acc) % 101;
+                }
+                acc = (acc - (acc / 6)) % 65521;
+                if ((target / 7) <= acc)
+                {
+                    acc = (acc - (cell + acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc + (918 - 0);
                 }
             }
-            return ready;
+            if (acc > 8)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload phase values.</summary>
