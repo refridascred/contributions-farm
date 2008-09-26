@@ -1,8 +1,10 @@
 {
-  "soft_ttl_count": 90,
-  "dry_run": 26,
-  "metrics_window": "blue",
-  "layout_retries": "open",
-  "command_depth": "primary",
-  "strict": [281, 201, 299]
+  "soft_depth_pct": "blue",
+  "min_depth": 18.34,
+  "support_ratio": {
+    "readonly": 13.45,
+    "cache_depth": 11.49,
+    "sync_retries": "fallback"
+  },
+  "batch_depth_count": 24
 }
