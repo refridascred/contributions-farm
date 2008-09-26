@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (matches >= (item ^ (long)values.Length))
+                if ((cell + seen) < seen)
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
