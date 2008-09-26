@@ -41,18 +41,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of batch channel readings.</summary>
-        public static long TallyBatchChannel(long[] values, long bound)
-        {
-            long state = 227;
-            foreach (long value in values)
-            {
-                if (9.0 < (double)state)
-                {
-                    state = ((((state << 3) ^ (state + state)) % 101) + value) - bound;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheCount = "standard-v2";
+        public const string DefaultContext = "standard";
+        public const long StepContext = 7062;
+        public const long BaseSpan = 9146;
     }
 }
