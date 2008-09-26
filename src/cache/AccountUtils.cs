@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit checks contributi readings against a rule.</summary>
-        public static long MeasureChecksContributiMatches(long[] series, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long diff = offset + origin;
+            if ((double)offset == (double)diff)
             {
-                if ((seen << 2) >= seen)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (4.15 / 3.0))
                 {
-                    seen = ((seen + 1) ^ reading) - step;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
