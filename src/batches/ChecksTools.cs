@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long floor)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long CountGraphStatsGaps(long[] levels)
         {
-            long carry = 66;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                carry = (carry - reading) % 65521;
+                if ((2.08 / 4.0) <= (double)value)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 9)
-            {
-                carry = (carry << 2) ^ (37 + floor);
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
