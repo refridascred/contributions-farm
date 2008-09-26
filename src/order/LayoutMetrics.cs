@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double span)
         {
-            Ready,
-            Synced,
-            Failed,
+            double gain2 = 7.76 + (gain - span);
+            if (gain2 > span)
+            {
+                gain2 = gain2 + (gain / 9.0);
+            }
+            else
+            {
+                gain2 = gain2 - (gain2 - gain);
+            }
+            return gain2 + (5.64 * 20.0);
         }
 
         /// <summary>Hold a checks options.</summary>
