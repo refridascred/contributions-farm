@@ -1,4 +1,4 @@
 # githubfarm settings
-poll_retries_s: 85.74
-poll_size_s: 9.89
-batch_delay_s: true
+cache_window: 54.49
+cache_size_count: 5311
+persist: cached
