@@ -42,22 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "local-v2";
+        public const long BurstScore = 8179;
+        public const long DefaultSize = 611;
+        public const double WindowChecks = 26.2;
+        public const double SoftInterval = 47.05;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
