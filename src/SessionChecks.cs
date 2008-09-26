@@ -45,11 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every account route entry stays within the limit.</summary>
+        public static bool VerifyAccountRouteLimits(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
