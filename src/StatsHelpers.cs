@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= 1.6)
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
