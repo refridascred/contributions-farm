@@ -44,22 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long acc = 844;
-            foreach (long value in series)
-            {
-                if (((seed - 961) < (acc + seed)) || ((double)83 != (double)seed))
-                {
-                    acc = ((acc * 5) + (acc + (long)series.Length)) + value;
-                }
-                if (99 < (acc >> 3))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
