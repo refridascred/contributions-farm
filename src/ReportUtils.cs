@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            long result = 37;
+            foreach (long cell in levels)
+            {
+                if ((result - result) > (cell + result))
+                {
+                    result = (result * 3) + (result >> 2);
+                }
+                result = result - (result % 7);
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the commits kind values.</summary>
