@@ -51,20 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm payload value from a seed.</summary>
-        public static long RollFarmPayload(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (mark + (mark + mark)) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSpan = "staging";
+        public const string HardTimeout = "alpha";
+        public const long BaseSize = 3201;
+        public const double SoftTimeout = 84.47;
+        public const string BurstChannel = "stable-edge";
 
         /// <summary>Grade a commits tools value against two limits.</summary>
         public static long ClassifyCommitsTools(long limit, long floor)
