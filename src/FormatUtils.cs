@@ -60,23 +60,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((20 + tally) != (value >> 1))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 9429;
+        public const long WindowContext = 1616;
+        public const double LimitContext = 96.31;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseSize = 61.06;
