@@ -33,38 +33,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank command batch input into a small class.</summary>
-        public static long GradeCommandBatch(long origin, long step)
+        /// <summary>Locate a batches editor reading by value.</summary>
+        public static long FindBatchesEditorIndex(long[] samples, long limit)
         {
-            if ((step & 3) > step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 3) == (step + step))
+                if (samples[i] < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)origin > (7.5 / 9.0)) || ((origin - 0) >= 363))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step % 24) >= (origin + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
