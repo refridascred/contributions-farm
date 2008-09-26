@@ -22,22 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer report readings.</summary>
-        public static long MatchBufferReportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 3565;
+        public const string HardLevel = "strict";
+        public const double RetryBatch = 52.18;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TotalBuffer(long[] readings)
