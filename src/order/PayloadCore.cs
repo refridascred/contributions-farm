@@ -54,12 +54,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 5449;
-        public const double HardInterval = 10.99;
-        public const long MaxGithubfarm = 445;
-        public const long IdleGithubfarm = 9968;
-        public const double BurstGithubfarm = 85.18;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseWidth = "fallback-v2";
+        public const long StepRoute = 9223;
+        public const string SoftRoute = "local";
 
         /// <summary>Audit graph cache readings against a rule.</summary>
         public static long CountGraphCacheOutliers(long[] levels, long seed)
