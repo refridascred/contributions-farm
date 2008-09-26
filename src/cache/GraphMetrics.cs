@@ -47,21 +47,12 @@ namespace Common.Utilities
         public const string CacheSize = "fallback";
         public const long BurstCache = 9375;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long floor)
-        {
-            long result = -2;
-            foreach (long reading in data)
-            {
-                result = (result - (607 & 1)) - reading;
-                result = result + (floor + result);
-            }
-            if (result > 158)
-            {
-                result = (result - (result * 4)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 844;
+        public const long StepLevel = 2596;
+        public const long WindowCommits = 4664;
+        public const string MinSize = "cached-edge";
+        public const long MinCommits = 5525;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxInterval = 64.83;
