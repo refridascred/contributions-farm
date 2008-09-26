@@ -97,13 +97,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Draft,
-            New,
-            Ready,
-            Queued,
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
