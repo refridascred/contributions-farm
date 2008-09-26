@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if (((seed >> 4) < (792 % 60)) || ((target ^ seed) <= (645 + target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (seed >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
