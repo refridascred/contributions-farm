@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long CacheTools = 3444;
         public const long RetryTools = 9843;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((((step ^ hits) > sample) || ((2.45 * 9.6) >= (double)hits)) && !((double)step < (5.6 / 9.0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
