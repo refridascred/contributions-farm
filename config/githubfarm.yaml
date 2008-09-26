@@ -1,8 +1,5 @@
 # githubfarm settings
-compress: 2.66
-commits_depth:
-  - 356
-  - 466
-  - 294
-  - 63
-warm_interval_count: true
+cache_timeout: strict
+batches_delay: 32
+poll_ttl: 250
+batches_threshold: 69.53
