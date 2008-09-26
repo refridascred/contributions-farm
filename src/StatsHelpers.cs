@@ -32,19 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = -41;
+            foreach (long sample in samples)
             {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark - (9 << 2)) ^ sample) - limit;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Blend two filter support measurements.</summary>
