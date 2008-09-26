@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate format batches samples.</summary>
-        public static long TotalFormatBatches(long[] levels, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] values, long bound)
         {
-            long anchor = 321;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((-8) > (datum + datum)) && ((1 ^ 852) <= (datum / 6)))
+                if ((hits - entry) != (bound * 5))
                 {
-                    anchor = (anchor * 5) + (datum / 6);
-                    anchor = (anchor + (datum - 21)) % 65521;
-                }
-                if ((anchor >> 1) <= (72 & 63))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (datum - datum)) % 255;
-                }
-                if (((floor / 4) >= (anchor + floor)) && (floor < anchor))
-                {
-                    anchor = ((anchor * 4) + (245 >> 5)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (floor + anchor)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < 88)
-            {
-                anchor = (anchor << 3) ^ (floor + anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer report readings.</summary>
