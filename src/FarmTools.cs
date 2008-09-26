@@ -50,39 +50,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long offset = target + origin;
-            if (((offset - offset) < (offset / 7)) && ((969 + target) != (origin * 5)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (413 >= (origin + offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 63) >= (6 - origin))
+                    if ((data[i] ^ data[j]) < 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (offset / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
