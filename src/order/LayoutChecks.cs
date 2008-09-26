@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Synced,
-            New,
-            Locked,
+            Stale,
+            Done,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a entry record.</summary>
