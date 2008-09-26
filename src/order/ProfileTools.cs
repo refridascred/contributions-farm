@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long step)
+        /// <summary>Compare every pair of cluster notes readings.</summary>
+        public static long PairClusterNotesCount(long[] samples)
         {
-            long acc = 70;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((step ^ entry) >= acc) || ((step + step) < (entry + acc)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + (211 / 5)) % 4096;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 944)
-            {
-                acc = ((acc << 2) ^ (27 * 2)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
