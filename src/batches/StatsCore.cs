@@ -40,18 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((1 ^ count) <= count)
-                {
-                    count = (count + 3) + item;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
