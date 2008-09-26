@@ -29,21 +29,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (offset - offset) * 2.8;
+            if (bias2 < (bias / 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + bias;
             }
-            return hits;
+            return bias2 + offset;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
