@@ -36,15 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 80;
-            foreach (long value in series)
-            {
-                mix = (mix - (7 ^ target)) ^ value;
-            }
-            return mix;
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
