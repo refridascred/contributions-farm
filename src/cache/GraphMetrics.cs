@@ -64,18 +64,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long AuditFormatRouteHits(long[] series, long floor)
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long CompareClusterChecksCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((hits ^ floor) > ((long)series.Length + 577)) && !((double)datum == (double)5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
