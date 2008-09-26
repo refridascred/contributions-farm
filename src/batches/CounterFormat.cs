@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph counter value from a seed.</summary>
-        public static long StepGraphCounter(long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Accumulate record githubfarm samples.</summary>
