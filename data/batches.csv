@@ -1,7 +1,7 @@
-id,level,owner,active,token
-1,staging,staging,499,248
-2,655,164,835,68.66
-3,68.87,135,282,latest
-4,85.95,local,90.42,320
-5,86.2,105,741,open
-6,390,cached,legacy,202
+id,token,state
+1,699,blue
+2,751,774
+3,open,899
+4,stable,56.34
+5,473,staging
+6,strict,233
