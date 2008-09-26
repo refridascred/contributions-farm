@@ -38,22 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((9 + tally) >= (tally ^ entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Draft,
         }
     }
 }
