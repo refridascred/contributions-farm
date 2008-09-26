@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            double drift = (2.97 + weight) * 0.1;
-            if (drift >= (floor * 2.1))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (double)487;
+            return hits;
         }
 
         /// <summary>Measure how many notes report samples are out of range.</summary>
