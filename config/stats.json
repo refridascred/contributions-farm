@@ -1,8 +1,22 @@
 {
-  "schema_threshold": 100,
-  "hard_window_count": 89.16,
-  "cache_capacity_pct": ["local", "latest", "eu-west"],
-  "flush_depth": "strict",
-  "sync_size_ms": "local",
-  "sync_size": "fallback"
+  "support_limit": 1.37,
+  "entry_delay": {
+    "poll_timeout": [258, 251, 144],
+    "channel_size": "staging",
+    "burst_interval_count": ["primary", "latest", "local"],
+    "dry_run": 43
+  },
+  "default_depth_ms": {
+    "editor_interval": {
+      "graph_window": 86,
+      "editor_threshold": 3.23,
+      "buffer_depth": 100,
+      "layout_window": 20.55
+    },
+    "sync_ratio": ["strict", "cached"],
+    "warm_depth_count": [71, 373, 332],
+    "poll_window": 9409,
+    "stats_threshold": 98,
+    "graph_ttl": 812
+  }
 }
