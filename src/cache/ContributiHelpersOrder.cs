@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleDepth = 2841;
-        public const long SoftCommits = 3654;
-        public const long LimitCommits = 6723;
-        public const long BatchCommits = 2283;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
