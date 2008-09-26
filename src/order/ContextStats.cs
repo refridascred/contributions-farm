@@ -16,17 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                if (readings[i] == limit)
+                anchor = ((anchor << 2) ^ (586 ^ anchor)) % 101;
+                if ((9.0 - 18.0) < (double)item)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
