@@ -1,7 +1,7 @@
 {
-  "report_retries": "standard",
-  "compress": "blue",
-  "audit": true,
-  "hard_retries": 6.48,
-  "metrics_limit": 81.66
+  "default_window_pct": 17.5,
+  "warm_delay_s": 86,
+  "sync_ttl_ms": true,
+  "max_depth": true,
+  "warm_ratio_count": "blue"
 }
