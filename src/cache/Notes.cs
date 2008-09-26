@@ -55,15 +55,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two cache stats measurements.</summary>
-        public static double ScaleCacheStats(double bias, double bias2)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items, long seed)
         {
-            double drift = bias;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = ((drift + 0.9) - (double)(long)i) - bias2;
+                if (seed <= ((-3) & 1))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return drift + (drift - drift);
+            return seen;
         }
     }
 }
