@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank buffer layout input into a small class.</summary>
+        public static long GradeBufferLayout(long origin, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            if (!((double)seed > (1.7 * 12.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed % 60) < seed) || ((origin * 5) < (seed * 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
