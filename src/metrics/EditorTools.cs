@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5050;
-        public const long DefaultInterval = 8984;
-        public const long IdleRoute = 6193;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples)
+        {
+            long sum = 898;
+            foreach (long entry in samples)
+            {
+                if ((224 / 3) >= (sum + sum))
+                {
+                    sum = (sum - (entry + entry)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (sum ^ sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] samples, long origin)
