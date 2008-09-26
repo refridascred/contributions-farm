@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a route farm reading by value.</summary>
-        public static long FindRouteFarmIndex(long[] samples, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (floor - floor)) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate batches samples.</summary>
