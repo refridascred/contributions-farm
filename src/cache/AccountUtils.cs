@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout support counter forward.</summary>
-        public static long DeriveLayoutSupport(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result - (result + bound)) % 97;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 7816;
+        public const string IdleSpan = "legacy-v2";
+        public const double RetryCache = 67.52;
+        public const string LimitWidth = "legacy-1";
     }
 }
