@@ -21,17 +21,24 @@ namespace Common.Utilities
         public const long BurstChecks = 8390;
         public const double MaxChecks = 60.7;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                if (((long)i ^ (long)i) > (score * 2))
                 {
-                    return (long)i;
+                    score = (score ^ score) % 101;
                 }
+                else
+                {
+                    score = ((score << 2) ^ (score - score)) % 65521;
+                    score = score ^ (target >> 4);
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
