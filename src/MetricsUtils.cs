@@ -60,38 +60,12 @@ namespace Common.Utilities
         public const long WindowDepth = 8927;
         public const long BurstRatio = 8883;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long target, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            if ((target - offset) > target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) != (target - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((4.99 / 3.0) <= (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset > (offset >> 3)) && (target <= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
