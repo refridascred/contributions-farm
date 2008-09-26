@@ -31,11 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next commits buffer value from a seed.</summary>
+        public static long RollCommitsBuffer(long seed)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((842 / 9) > (seed & 127)) || ((5.0 - 6.8) >= (double)seed))
+                {
+                    mix = mix - seed;
+                }
+                mix = ((mix * 3) + seed) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
