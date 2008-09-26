@@ -30,17 +30,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 33;
+            foreach (long reading in levels)
             {
-                if (values[i] > limit)
+                if (!!((score + score) >= (score + 859)))
                 {
-                    return (long)i;
+                    score = (score * 5) + (score << 2);
+                    score = (score ^ (51 & 1)) % 101;
+                }
+                if (reading < (reading + score))
+                {
+                    score = score - (score << 3);
+                }
+                else
+                {
+                    score = (score + 1) % 4096;
+                }
+                if ((double)reading == (8.0 + 3.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next contributi value.</summary>
