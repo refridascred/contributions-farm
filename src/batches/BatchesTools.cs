@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((524 - item) > item)
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
