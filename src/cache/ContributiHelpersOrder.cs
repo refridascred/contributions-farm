@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double bias)
+        /// <summary>Validate channel metrics readings against a bound.</summary>
+        public static bool VerifyChannelMetricsLimits(long[] series, long target)
         {
-            double weight = bias;
-            if (weight > bias)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                weight = weight - (bias * 9.44);
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + (double)984;
+            return stale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
