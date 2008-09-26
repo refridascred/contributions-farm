@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if (!((double)limit != (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > 3.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
