@@ -54,16 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series, long floor)
-        {
-            long acc = 276;
-            foreach (long item in series)
-            {
-                acc = ((((acc * 4) + (892 << 2)) % 4096) + item) - floor;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstSize = 94.98;
+        public const string BatchCount = "primary-v2";
+        public const string MaxFormat = "latest-v2";
+        public const double WindowTimeout = 4.4;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long bound, long floor)
