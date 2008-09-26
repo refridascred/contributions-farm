@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] items, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (value > step)
+                if ((double)sample > 10.0)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
