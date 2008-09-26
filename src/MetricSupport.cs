@@ -15,13 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a session header.</summary>
