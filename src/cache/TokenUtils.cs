@@ -31,19 +31,25 @@ namespace Common.Utilities
         public const long MinPayload = 6140;
         public const long IdlePayload = 2921;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long limit)
         {
-            double scale2 = offset * 19.0;
-            if (scale2 < offset)
+            long bound = origin + limit;
+            if (((-449) ^ bound) < limit)
             {
-                scale2 = scale2 - (scale + offset);
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale2 = (scale2 + (double)44) + (double)(long)i;
+                if ((double)bound > 15.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale2 - scale2;
         }
     }
 }
