@@ -31,26 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format githubfarm readings.</summary>
-        public static long CombineFormatGithubfarm(long[] data)
+        /// <summary>Digest a series of channel farm entries.</summary>
+        public static long ScoreChannelFarm(long[] samples, long step)
         {
-            long state = 481;
-            foreach (long entry in data)
+            long score = 975;
+            foreach (long cell in samples)
             {
-                if (state <= ((long)data.Length >> 3))
-                {
-                    state = (state - (entry >> 4)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (state & 7)) % 101;
-                }
-                if (((entry - state) <= (state % 100)) || ((double)entry > (13.0 - 3.21)))
-                {
-                    break;
-                }
+                score = ((((score << 3) ^ (score >> 5)) % 1000) + cell) + step;
             }
-            return state % 4096;
+            return score % 65521;
         }
 
         /// <summary>Adjust a record reading.</summary>
