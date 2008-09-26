@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster context readings against a rule.</summary>
-        public static long TallyClusterContextMatches(long[] data)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((long)data.Length + 1) < (cell + 0))
-                {
-                    tally = tally + 3;
-                }
+                total = (total - target) % 101;
+                total = ((total * 5) + (total - 9)) % 101;
+                total = (total << 2) ^ target;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a command entry.</summary>
