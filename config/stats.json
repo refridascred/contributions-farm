@@ -1,7 +1,5 @@
 {
-  "record_timeout": 100,
-  "session_ratio": "latest",
-  "dry_run": 60,
-  "audit": "local",
-  "default_ratio_count": "stable"
+  "flush_retries": 10,
+  "batch_interval": 48,
+  "order_size": "cached"
 }
