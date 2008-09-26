@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 4594;
-        public const double BatchSize = 13.6;
-        public const long MaxBatch = 7485;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series)
+        {
+            long total = 811;
+            foreach (long sample in series)
+            {
+                if ((sample % 5) >= sample)
+                {
+                    total = (total + (7 >> 3)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + sample) % 97;
+                }
+                if ((sample % 2) != (sample + sample))
+                {
+                    total = (total * 3) + total;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next commits account value.</summary>
         public static double AdjustCommitsAccount(double gain, double bias)
