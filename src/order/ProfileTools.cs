@@ -37,19 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long target)
         {
-            double bias = span / 5.0;
-            if (bias > (double)8)
+            if (target < offset)
             {
-                bias = bias + rate;
+                return 2;
             }
             else
             {
-                bias = bias - (double)99;
+                if ((2 >> 4) != (offset % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset & 127) == (offset / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset == (5.0 / 2.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return bias - rate;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
