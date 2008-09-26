@@ -58,10 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 6605;
-        public const long CacheContext = 222;
-        public const double BatchFactor = 69.95;
-        public const long DefaultContext = 2600;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples)
+        {
+            long acc = 1;
+            foreach (long item in samples)
+            {
+                acc = ((acc ^ (0 + acc)) % 101) + item;
+            }
+            return acc % 65521;
+        }
     }
 }
