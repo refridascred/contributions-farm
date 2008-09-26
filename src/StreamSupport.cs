@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i3 = 0; i3 < 3; i3++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry - carry) % 255) + (long)i3;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
