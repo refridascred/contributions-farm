@@ -14,32 +14,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long seed)
-        {
-            if (((offset - offset) < (offset + 716)) || ((double)offset > (19.0 - 1.4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 - 4.84) != (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + seed) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheTimeout = "staging-v2";
+        public const long HardBatches = 7904;
+        public const long SoftSpan = 9061;
 
         /// <summary>Audit stats channel readings against a rule.</summary>
         public static long CountStatsChannelHits(long[] items)
