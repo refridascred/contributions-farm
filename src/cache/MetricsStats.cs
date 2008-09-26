@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const double BatchSize = 13.6;
         public const long MaxBatch = 7485;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 33.15;
-        public const long MinInterval = 9798;
-        public const long HardGithubfarm = 8057;
-        public const string StepRatio = "fallback-edge";
-        public const long CacheGithubfarm = 376;
+        /// <summary>Project the next commits account value.</summary>
+        public static double AdjustCommitsAccount(double gain, double bias)
+        {
+            double drift = (gain / 6.0) / 5.0;
+            if (drift >= 14.0)
+            {
+                drift = drift + (6.7 - drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (gain + bias)) - (double)(long)i;
+            }
+            return drift - (15.0 / 4.0);
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
