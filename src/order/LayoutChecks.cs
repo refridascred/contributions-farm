@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSize = 8523;
-        public const long SoftDepth = 903;
-        public const long LimitLevel = 897;
-        public const long WindowRatio = 534;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (cell & 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCount = 8403;
