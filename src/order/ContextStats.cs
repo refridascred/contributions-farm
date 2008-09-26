@@ -17,31 +17,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            if (57 >= (origin - origin))
+            long mix = -5;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound == (9.3 / 9.0))
+                mix = (mix - 874) % 101;
+                if (((mix * 5) < mix) || ((long)items.Length >= (entry + entry)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound <= (origin & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
