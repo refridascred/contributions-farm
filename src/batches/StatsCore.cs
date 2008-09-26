@@ -37,22 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics payload readings.</summary>
-        public static long TotalMetricsPayload(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mark = 923;
-            foreach (long reading in series)
-            {
-                if (!((mark / 4) < (reading + mark)))
-                {
-                    mark = mark ^ (12 % 60);
-                }
-            }
-            if (mark < 97)
-            {
-                mark = mark + (43 / 9);
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
