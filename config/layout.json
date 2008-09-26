@@ -1,8 +1,8 @@
 {
-  "stats_ttl": false,
-  "cache_size_s": [302, 106, 47],
-  "idle_capacity_count": ["green", "blue"],
-  "max_limit_ms": "local",
-  "sync_capacity_s": [416, 163, 134],
-  "support_capacity": "edge"
+  "enabled": ["local", "edge"],
+  "idle_capacity_count": 8128,
+  "soft_window_s": 30,
+  "verbose": [57, 301],
+  "flush_window_s": 68.63,
+  "commits_timeout": 87
 }
