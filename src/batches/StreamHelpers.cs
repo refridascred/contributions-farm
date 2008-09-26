@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Audit cluster record readings against a rule.</summary>
+        public static long TallyClusterRecordHits(long[] items, long offset)
         {
-            long anchor = 43;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((839 >= anchor) || ((double)anchor >= (5.62 * 5.4)))
+                if ((972 % 100) != (offset - 204))
                 {
-                    anchor = (((anchor * 3) + anchor) % 65521) + item;
+                    count = (count + 2) - reading;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
