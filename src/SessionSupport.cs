@@ -30,18 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((step & 127) >= step) && ((double)step <= (4.02 + 2.15)))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheRatio = "cached-1";
+        public const long BurstCount = 767;
+        public const string MinRatio = "local-edge";
+        public const double BurstBudget = 74.91;
     }
 }
