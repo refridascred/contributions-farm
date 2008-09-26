@@ -45,11 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 5227;
-        public const long DefaultFactor = 4747;
-        public const double MinTimeout = 37.61;
-        public const long BatchDepth = 6053;
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool GuardSchemaFormatLimits(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank record profile input into a small class.</summary>
         public static long BucketRecordProfile(long bound, long step)
