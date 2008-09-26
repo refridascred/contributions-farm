@@ -75,19 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster record readings against a rule.</summary>
-        public static long TallyClusterRecordHits(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((972 % 100) != (offset - 204))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "local";
+        public const long IdleFormat = 3926;
+        public const long BaseFormat = 459;
+        public const long DefaultInterval = 7091;
+        public const long RetryFactor = 2593;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyRange(long[] readings, long origin)
