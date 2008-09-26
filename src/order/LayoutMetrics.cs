@@ -21,17 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = rate;
+            if (weight >= (double)13)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)403) - bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - 2.8;
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
