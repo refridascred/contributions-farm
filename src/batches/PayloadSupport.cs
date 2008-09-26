@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                long slot = bound % 24;
+                if ((84 * 5) <= (slot >> 5))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
