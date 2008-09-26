@@ -15,18 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] levels, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((7.36 * 2.65) > (1.9 * 16.0))
-                {
-                    tally = ((tally + 3) + value) - bound;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
