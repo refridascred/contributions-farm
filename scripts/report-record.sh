@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=45
-log "limit is ${RECORD_LIMIT}"
