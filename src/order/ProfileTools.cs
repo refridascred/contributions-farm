@@ -14,13 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] series, long target)
         {
-            Retry,
-            Synced,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell > (4.69 + 5.2)) || ((tally - cell) != (tally ^ target)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
