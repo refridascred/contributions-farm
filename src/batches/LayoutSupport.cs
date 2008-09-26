@@ -36,17 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] levels, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
