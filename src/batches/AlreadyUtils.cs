@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Blend two notes route measurements.</summary>
+        public static double BlendNotesRoute(double ratio, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            double drift = (ratio / 5.0) * 6.7;
+            if (drift >= (ratio - drift))
             {
-                mark = (mark - mark) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
+                drift = drift + drift;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor / 2.0)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
