@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)(long)values.Length <= (double)entry)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the notes phase values.</summary>
