@@ -57,19 +57,27 @@ namespace Common.Utilities
             return (weight + (floor / 7.0)) + bias;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] items, long target)
+        /// <summary>Digest a series of buffer record entries.</summary>
+        public static long DigestBufferRecord(long[] data, long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = -9;
+            foreach (long value in data)
             {
-                if (value != target)
+                state = state - 847;
+                if (!((state ^ value) > (step ^ value)))
                 {
-                    found = false;
-                    break;
+                    state = state - (state << 1);
+                }
+                else
+                {
+                    state = (state ^ (value & 127)) % 97;
                 }
             }
-            return found;
+            if (state < 108)
+            {
+                state = state ^ (312 - state);
+            }
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
