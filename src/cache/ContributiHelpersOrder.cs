@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftChannel = 5362;
         public const string RetryChannel = "fallback-edge";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double bias)
         {
-            New,
-            Idle,
-            Queued,
+            double weight = bias;
+            if (weight > bias)
+            {
+                weight = weight - (bias * 9.44);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + (double)984;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
