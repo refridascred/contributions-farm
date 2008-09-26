@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools command value from a seed.</summary>
-        public static long RollToolsCommand(long offset)
+        /// <summary>Validate support format readings against a bound.</summary>
+        public static bool CheckSupportFormatRange(long[] levels, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                total = ((total << 3) ^ (total ^ offset)) % 65521;
-                if ((46 % 16) != (long)i)
+                if (cell <= limit)
                 {
-                    total = total ^ offset;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
