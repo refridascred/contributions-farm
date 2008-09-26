@@ -82,19 +82,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowBudget = 6619;
+        public const long HardContext = 6641;
+        public const long RetryContext = 6538;
+        public const double CacheContext = 35.54;
+        public const long WindowInterval = 5991;
     }
 }
