@@ -71,32 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double gain, double span)
         {
-            long lane = floor - seed;
-            if ((6 + floor) >= (94 ^ seed))
+            double rate = (double)(5 << 2);
+            if (rate >= gain)
             {
-                return 2;
+                rate = (rate + 12.0) - span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((lane << 3) != (seed % 16)) && ((lane + (-86)) <= (floor >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((512 << 1) >= floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = (rate - gain) + (double)(long)i;
             }
+            return rate - (gain - rate);
         }
     }
 }
