@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const double RetryScore = 15.15;
         public const long HardContext = 5968;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] values, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                sum = ((sum * 5) + sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the schema status values.</summary>
