@@ -36,19 +36,11 @@ namespace Common.Utilities
         public const long DefaultOrder = 5837;
         public const long BatchOrder = 1489;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxTimeout = 7931;
+        public const long MinSession = 4481;
+        public const long IdleSession = 1893;
+        public const double BatchSession = 67.4;
+        public const long BaseSession = 2714;
     }
 }
