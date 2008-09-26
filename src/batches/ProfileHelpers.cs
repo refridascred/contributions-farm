@@ -75,11 +75,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 2970;
-        public const string RetryEntry = "fallback-v2";
-        public const double IdleEntry = 35.51;
-        public const string HardEntry = "latest-edge";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings)
+        {
+            long mark = 87;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark - mark) % 65521) + (long)i;
+                }
+                mark = ((mark << 2) ^ (mark - sample)) % 97;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileGaps(long[] levels, long offset)
