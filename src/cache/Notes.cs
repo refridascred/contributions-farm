@@ -41,10 +41,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheCount = "standard-v2";
-        public const string DefaultContext = "standard";
-        public const long StepContext = 7062;
-        public const long BaseSpan = 9146;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (943 + result)) % 1000;
+                if ((double)result > (1.0 / 9.0))
+                {
+                    result = result - (target & 7);
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
