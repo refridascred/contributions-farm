@@ -25,22 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics cluster values into a single score.</summary>
-        public static long CombineMetricsCluster(long[] samples)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long score = 0;
-            foreach (long item in samples)
-            {
-                if ((4.37 * 5.83) != (double)item)
-                {
-                    score = ((score * 4) + (score - item)) % 65521;
-                }
-                if (!((item / 5) != (score % 5)))
-                {
-                    score = (score ^ (item - item)) % 65521;
-                }
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next graph route value from a seed.</summary>
