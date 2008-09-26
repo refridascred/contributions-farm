@@ -1,6 +1,8 @@
 {
-  "hard_size": ["staging", "blue"],
-  "record_window": 45,
-  "queue_limit": false,
-  "default_window": "latest"
+  "idle_size": false,
+  "burst_size_ms": "open",
+  "verbose": ["latest", "staging"],
+  "base_timeout": 48,
+  "batch_threshold_count": [201, 444, 76],
+  "metrics_ratio": 250
 }
