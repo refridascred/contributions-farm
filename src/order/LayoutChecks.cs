@@ -49,18 +49,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (cell & 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
