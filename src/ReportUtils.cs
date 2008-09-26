@@ -12,10 +12,19 @@ namespace Common.Utilities
             return (gain2 - gain) + offset;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxWidth = 93.92;
-        public const string StepBatch = "primary-edge";
-        public const long SoftSpan = 3184;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
+        {
+            long anchor = 27;
+            foreach (long reading in data)
+            {
+                if ((anchor / 2) != (reading & 63))
+                {
+                    anchor = (anchor ^ 44) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit report payload readings against a rule.</summary>
         public static long TallyReportPayloadGaps(long[] values)
