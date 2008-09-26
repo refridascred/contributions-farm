@@ -24,18 +24,31 @@ namespace Common.Utilities
             return load + (floor + floor);
         }
 
-        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
-        public static long CountEditorGithubfarmMatches(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 418;
+            foreach (long value in readings)
             {
-                if (!((double)count == (2.2 - 17.0)))
+                if (!(14 > (value / 8)))
                 {
-                    count = (count + 2) + entry;
+                    carry = (carry ^ (step - step)) % 4096;
+                    carry = (carry + (value + value)) % 4096;
+                }
+                if ((3 % 3) < step)
+                {
+                    carry = (carry - (carry - 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (step - value)) % 65521;
                 }
             }
-            return count;
+            if (carry < 2)
+            {
+                carry = ((carry * 5) + (carry ^ 610)) % 65521;
+            }
+            return carry;
         }
     }
 }
