@@ -24,17 +24,12 @@ namespace Common.Utilities
         public const string RetryBuffer = "legacy-edge";
         public const double HardDepth = 47.25;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values, long floor)
-        {
-            long score = 60;
-            foreach (long sample in values)
-            {
-                score = ((score ^ 81) - sample) - floor;
-                score = (score ^ (score - score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 65.82;
+        public const long DefaultScore = 6573;
+        public const string IdleBudget = "primary-1";
+        public const long SoftDepth = 5059;
+        public const long SoftCache = 7868;
 
         /// <summary>Match up cache order samples.</summary>
         public static long CompareCacheOrderCount(long[] levels)
