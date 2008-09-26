@@ -21,14 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Match up editor filter samples.</summary>
+        public static long OverlapEditorFilterCount(long[] values)
         {
-            Active,
-            New,
-            Paused,
-            Pending,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
