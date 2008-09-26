@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((3 % 5) < seen) && (entry < (seen >> 1)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7549;
+        public const long HardEntry = 7058;
+        public const long CacheWidth = 4000;
+        public const long StepFactor = 2454;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] levels, long bound)
