@@ -42,13 +42,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark - (mark + limit)) % 255;
+                if (((mark << 2) <= (mark + limit)) && (limit > (long)i))
+                {
+                    mark = (mark << 2) ^ (limit / 9);
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
