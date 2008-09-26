@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long origin)
         {
-            double scale = ratio;
-            for (int i = 0; i < 5; i++)
+            long bound = seed - origin;
+            if (((seed >> 5) < (seed / 3)) || ((1.0 * 2.0) != (double)bound))
             {
-                scale = (scale + scale) + (double)(long)i;
+                return 7;
             }
-            return scale - (ratio + floor);
+            else
+            {
+                if (2.57 >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
