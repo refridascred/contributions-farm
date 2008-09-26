@@ -1,8 +1,6 @@
 # support settings
-burst_threshold: 1
-schema_delay: 250
-enabled: latest
-base_limit_ms:
-  - 307
-  - 117
-stream_capacity: fallback
+compress: 5.47
+idle_ttl_ms: 40
+idle_capacity_pct: open
+sync_interval_count: false
+audit: 8312
