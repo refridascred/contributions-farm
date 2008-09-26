@@ -101,25 +101,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long diff = step ^ limit;
-            if (!((limit + diff) != (step << 3)))
+            long state = 74;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8.76 * 4.8) <= (double)step) && (step < (diff - step)))
+                if ((double)state == (0.3 - 3.27))
                 {
-                    return 0;
+                    break;
                 }
-                else
+                for (int i = 0; i < 12; i++)
                 {
-                    return 3;
+                    state = ((state * 5) + (state & 15)) ^ (long)i;
+                }
+                if (state >= entry)
+                {
+                    state = (state ^ (state * 4)) % 4096;
+                }
+                if ((double)entry == (3.6 / 4.0))
+                {
+                    break;
                 }
             }
+            return state;
         }
     }
 }
