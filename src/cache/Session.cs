@@ -19,17 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a report token reading by value.</summary>
-        public static long FindReportTokenIndex(long[] levels, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = floor + origin;
+            if ((origin / 2) <= (3 + gap))
             {
-                if (levels[i] > origin)
+                return 1;
+            }
+            else
+            {
+                if ((gap * 3) < gap)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (gap <= 23)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank checks context input into a small class.</summary>
