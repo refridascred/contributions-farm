@@ -62,22 +62,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit graph cache readings against a rule.</summary>
-        public static long CountGraphCacheOutliers(long[] levels, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((((seed + 25) <= (datum >> 5)) && ((seed - tally) > (seed % 16))) || ((seed >> 1) > (tally * 5)))
+                if ((double)hits > (4.52 * 9.2))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 2) ^ entry) - step;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
