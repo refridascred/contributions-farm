@@ -24,19 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] items, long target)
         {
-            long mark = 64;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                mark = (((mark * 3) + (offset * 5)) % 1000) ^ sample;
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 47)
-            {
-                mark = (mark - (offset % 60)) % 101;
-            }
-            return mark % 97;
+            return valid;
         }
     }
 }
