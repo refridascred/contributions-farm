@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long offset)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long MeasureCommitsFarmHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (values[i] == offset)
+                if ((-1) < (seen ^ entry))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
