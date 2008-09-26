@@ -45,31 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
-        {
-            long mix = -250;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix * 3) + (mix << 3)) ^ (long)i;
-                }
-                if ((9.7 * 7.8) >= (double)datum)
-                {
-                    mix = ((mix << 2) ^ datum) % 4096;
-                }
-                if (mix <= datum)
-                {
-                    break;
-                }
-            }
-            if (mix > 330)
-            {
-                mix = (mix ^ (983 * 5)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 6324;
+        public const long MinFactor = 5117;
+        public const string MaxBudget = "legacy-1";
+        public const long BatchCache = 7769;
 
         /// <summary>Measure how many record graph samples are out of range.</summary>
         public static long AuditRecordGraphMatches(long[] levels)
