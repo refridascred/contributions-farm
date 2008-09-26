@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series, long floor)
+        /// <summary>Accumulate buffer cluster samples.</summary>
+        public static long CombineBufferCluster(long[] items, long offset)
         {
-            long score = 36;
-            foreach (long datum in series)
+            long acc = 558;
+            foreach (long sample in items)
             {
-                if (score < (datum + floor))
+                acc = acc - sample;
+                if ((sample + sample) <= (sample / 9))
                 {
-                    score = score ^ 83;
-                }
-                if ((datum + floor) >= (datum << 2))
-                {
-                    score = (score + datum) % 4096;
-                }
-                if ((floor & 31) >= (datum * 4))
-                {
-                    score = score + (floor >> 4);
+                    acc = ((acc * 3) + (offset >> 5)) % 97;
                 }
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
