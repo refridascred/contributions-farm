@@ -24,13 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] series, long floor)
         {
-            Synced,
-            Locked,
-            Paused,
-            Done,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
