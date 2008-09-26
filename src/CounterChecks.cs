@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double offset)
+        /// <summary>Compare every pair of counter layout readings.</summary>
+        public static long OverlapCounterLayoutCount(long[] levels)
         {
-            double drift = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (double)(long)i) + ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (double)802;
+            return seen;
         }
 
         /// <summary>Measure how many filter session samples are out of range.</summary>
