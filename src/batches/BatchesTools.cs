@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long origin)
-        {
-            if (origin <= (seed * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - seed) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(1 > origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1644;
+        public const string SoftSchema = "open-v2";
+        public const long BaseSpan = 6795;
+        public const string HardSchema = "standard-edge";
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
