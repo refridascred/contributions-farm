@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((8.29 - 2.7) > (double)seen)
+                {
+                    seen = ((seen + 3) + datum) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
