@@ -66,12 +66,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((count + bound) <= (count + count)))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
     }
 }
