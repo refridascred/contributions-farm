@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit commits farm readings against a rule.</summary>
