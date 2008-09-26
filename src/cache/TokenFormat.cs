@@ -30,15 +30,22 @@ namespace Common.Utilities
         public const long RetryTimeout = 7478;
         public const long MaxChannel = 8092;
 
-        /// <summary>Iterate the report support series from a seed.</summary>
-        public static long SeriesReportSupport(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long state = 4;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((double)state < (2.3 + 1.4))
+                {
+                    state = ((state * 5) + (state - state)) + reading;
+                }
             }
-            return carry;
+            if (state < 0)
+            {
+                state = ((state * 5) + (seed - seed)) % 101;
+            }
+            return state % 1000;
         }
     }
 }
