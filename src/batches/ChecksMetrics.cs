@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc + (acc << 2)) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 3135;
+        public const double LimitGraph = 86.91;
+        public const long BurstBudget = 6419;
+        public const long CacheGraph = 6642;
+        public const long BurstSpan = 9055;
 
         /// <summary>Combine stats report values into a single score.</summary>
         public static long ScoreStatsReport(long[] series)
