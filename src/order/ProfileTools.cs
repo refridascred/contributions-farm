@@ -13,25 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long origin)
+        /// <summary>Adjust a context route reading.</summary>
+        public static double AdjustContextRoute(double bias, double bias2)
         {
-            long edge = target - origin;
-            if ((6.0 + 5.8) == (double)edge)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                ratio = ((ratio - 6.5) - (double)(long)i) - bias2;
             }
-            else
-            {
-                if ((target % 8) > edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return ratio + (double)61;
         }
 
         /// <summary>Locate a account reading by value.</summary>
