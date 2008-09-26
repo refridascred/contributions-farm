@@ -1,4 +1,6 @@
 # support settings
-persist: 27
-strict: staging
-schema_ttl: 20.67
+tools_threshold: fallback
+filter_threshold: 1024
+support_retries: fallback
+dry_run: 56.25
+soft_threshold_pct: 64
