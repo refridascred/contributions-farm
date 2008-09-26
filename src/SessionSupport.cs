@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "primary-1";
-        public const long BaseFactor = 6348;
-        public const long BatchSize = 1033;
-        public const long LimitCounter = 7461;
-        public const long SoftWidth = 2832;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 109;
+        public const long SoftBatches = 6456;
+        public const long DefaultCount = 5032;
+        public const long CacheBatches = 9198;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double ratio, double floor)
