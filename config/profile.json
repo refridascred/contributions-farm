@@ -1,12 +1,6 @@
 {
-  "default_interval": {
-    "githubfarm_size": 60,
-    "min_capacity": 6933,
-    "soft_delay": 2014
-  },
-  "dry_run": "cached",
-  "account_ttl": [140, 303, 110, 381],
-  "retry_threshold_count": "green",
-  "flush_limit_s": [30, 187, 343],
-  "cache_ttl_pct": false
+  "default_delay_s": true,
+  "min_timeout_pct": 68.78,
+  "idle_ttl_pct": 8546,
+  "batch_window_pct": 250
 }
