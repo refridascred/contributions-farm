@@ -24,32 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long BucketProfileLayout(long seed, long origin)
-        {
-            if (((seed % 100) <= origin) && ((origin + origin) > origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 + 0.7) > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-81) << 3) <= (seed + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 1119;
+        public const long MinChannel = 4262;
+        public const long RetryTimeout = 7478;
+        public const long MaxChannel = 8092;
 
         /// <summary>Iterate the report support series from a seed.</summary>
         public static long SeriesReportSupport(long limit)
