@@ -31,20 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Look up the position of a metric account sample.</summary>
+        public static long LocateMetricAccountIndex(long[] readings, long target)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((step >> 1) == (result ^ 5)) || ((step + result) > 9)))
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    result = (result * 3) + 33;
-                    result = result ^ (result ^ result);
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
     }
 }
