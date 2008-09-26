@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseCount = 3350;
-        public const string MaxScore = "stable-1";
-        public const double BaseSpan = 76.03;
-        public const long DefaultWindow = 6605;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate record githubfarm samples.</summary>
         public static long CombineRecordGithubfarm(long[] data)
