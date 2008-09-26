@@ -19,19 +19,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 / 3.0))
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                bias2 = bias2 + (span / 8.0);
+                anchor = (anchor + (anchor ^ (long)i)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - (double)1;
-            }
-            return bias2 - bias;
+            return anchor;
         }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
