@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] samples, long origin)
         {
-            if ((target + bound) <= (30 / 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (-558))
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ target) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
