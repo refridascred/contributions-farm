@@ -28,12 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Retry,
+            Pending,
+            Stale,
         }
     }
 }
