@@ -35,13 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long anchor = 914;
+            foreach (long value in readings)
+            {
+                anchor = anchor ^ (value << 2);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
