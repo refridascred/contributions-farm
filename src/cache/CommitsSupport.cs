@@ -68,22 +68,12 @@ namespace Common.Utilities
             return drift - (weight / 6.0);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] values, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((bound / 7) <= (count * 5))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Synced,
         }
     }
 }
