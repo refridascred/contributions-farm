@@ -1,7 +1,7 @@
 {
-  "channel_capacity": [417, 253, 376, 464],
-  "farm_depth": true,
-  "command_ttl": "standard",
-  "strict": 1024,
-  "retry_threshold_pct": 65
+  "soft_timeout": "latest",
+  "sync_capacity_s": [215, 442, 111, 304],
+  "strict": 100,
+  "dry_run": "blue",
+  "max_ttl_ms": 72.39
 }
