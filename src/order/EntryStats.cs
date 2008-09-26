@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long state = 119;
+            foreach (long datum in values)
             {
-                carry = (carry * 5) + (9 & 127);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((state ^ datum) == (datum + offset)) || ((datum % 64) < (datum - state)))
+                {
+                    state = (state << 2) ^ state;
+                }
             }
-            return carry;
+            if (state > 1)
+            {
+                state = (state + offset) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
