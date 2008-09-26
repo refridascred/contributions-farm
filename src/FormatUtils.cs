@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a format schema sample.</summary>
-        public static long LookupFormatSchemaIndex(long[] items, long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= step)
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
