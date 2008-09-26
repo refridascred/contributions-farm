@@ -1,7 +1,12 @@
 {
-  "hard_interval": 80,
-  "persist": 36.0,
-  "commits_capacity": 8312,
-  "soft_ratio_ms": 100,
-  "queue_capacity": 9012
+  "max_size": {
+    "idle_ttl": [12, 221],
+    "soft_timeout": "eu-west",
+    "max_limit_count": 6826,
+    "cache_window": 2527
+  },
+  "sync_timeout_ms": true,
+  "enabled": true,
+  "burst_ratio_s": "green",
+  "order_retries": 72.48
 }
