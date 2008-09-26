@@ -82,14 +82,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            Pending,
-            Ready,
-            Done,
-            Idle,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
