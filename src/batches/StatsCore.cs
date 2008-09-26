@@ -54,18 +54,12 @@ namespace Common.Utilities
         public const double SoftTimeout = 84.47;
         public const string BurstChannel = "stable-edge";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value * 2) == ((-201) - value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
