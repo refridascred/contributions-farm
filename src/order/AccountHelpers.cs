@@ -61,11 +61,18 @@ namespace Common.Utilities
         public const string MinCount = "local-1";
         public const string CacheCount = "fallback-v2";
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            double load = span;
-            return load - (0.8 + bias);
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen <= (datum * 5)) || ((((-6) * 3) <= seen) && ((double)seen == (double)521)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
