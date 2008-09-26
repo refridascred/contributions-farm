@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long bound)
-        {
-            if ((double)target == (8.34 - 5.8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= 705)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4594;
+        public const double BatchSize = 13.6;
+        public const long MaxBatch = 7485;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double RetryGithubfarm = 33.15;
