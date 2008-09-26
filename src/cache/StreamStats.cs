@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Retry,
-            Done,
-            Active,
-            Closed,
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate channel cache readings against a bound.</summary>
