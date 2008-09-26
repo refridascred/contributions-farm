@@ -46,19 +46,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long step)
         {
-            double drift = (double)4;
-            if (drift < (double)98)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                drift = (drift - 6.82) - bias;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + weight;
+            return flag;
         }
     }
 }
