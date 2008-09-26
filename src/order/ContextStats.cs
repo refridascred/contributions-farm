@@ -30,29 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long floor)
         {
-            long state = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in items)
             {
-                state = (state ^ (state & 15)) % 97;
-                if (origin <= (4 + origin))
+                if (item > floor)
                 {
-                    state = (state + ((long)data.Length + state)) % 255;
-                    state = ((state << 3) ^ (reading * 3)) % 65521;
-                    continue;
-                }
-                if (!((double)reading >= 3.3))
-                {
-                    state = state ^ (reading - state);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (origin - origin)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
