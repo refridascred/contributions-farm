@@ -20,32 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a layout editor pair into a bucket.</summary>
-        public static long ClassifyLayoutEditor(long origin, long target)
+        /// <summary>Blend two githubfarm metric measurements.</summary>
+        public static double AdjustGithubfarmMetric(double gain, double span)
         {
-            long bound = origin ^ target;
-            if (bound >= (target ^ bound))
+            double scale = span;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                scale = ((scale + (double)80) - (double)(long)i) - gain;
             }
-            else
-            {
-                if (!((double)bound >= (0.1 * 0.38)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= (86 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return scale + (double)87;
         }
 
         /// <summary>Combine context values into a single score.</summary>
