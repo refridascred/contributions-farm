@@ -35,15 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Dropped,
-            Idle,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepScore = "stable";
+        public const double BatchTimeout = 54.44;
+        public const long BaseWidth = 2152;
+        public const long LimitCluster = 2816;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
