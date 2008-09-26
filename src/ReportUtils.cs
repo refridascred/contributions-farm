@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            double ratio = bias;
+            if (ratio >= (double)75)
+            {
+                ratio = (ratio + (bias + bias)) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 5.0) + (double)(long)i;
+            }
+            return ratio + 7.02;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
