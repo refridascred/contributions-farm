@@ -48,21 +48,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Accumulate metric tools samples.</summary>
+        public static long DigestMetricTools(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -726;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state ^ (state - state)) % 65521) ^ item) + target;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Hold a metrics options.</summary>
