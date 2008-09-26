@@ -1,6 +1,7 @@
 {
-  "verbose": 49,
-  "compress": 9128,
-  "retry_ttl": 1.09,
-  "cache_ttl_pct": "legacy"
+  "sync_timeout": [344, 95, 184, 473],
+  "cache_depth": 19,
+  "idle_retries": [187, 228, 342],
+  "soft_delay_ms": 250,
+  "hard_interval_count": 500
 }
