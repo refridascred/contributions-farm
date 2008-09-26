@@ -14,16 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long sum = 21;
+            foreach (long entry in values)
             {
-                sum = (sum - target) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                sum = ((sum * 3) + sum) % 4096;
+                if (((entry / 4) != (entry ^ entry)) || ((double)entry != (5.4 + 8.7)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
