@@ -1,14 +1,15 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The metric module keeps record values in sync with the counter cache.
-Each cluster is validated before it reaches the schema queue.
+The buffer report groups every commits by stats.
+Use entry settings to tune how often already data is refreshed.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-A profile that stays idle for too long is moved to the checks list.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the order handler retries a few times before giving up.
+Each already is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Validate format input early
-- Review support limits each release
-- Keep context values small
+- Log every counter change
+- Prefer layout defaults
+- Keep checks values small
+- Validate githubfarm input early
