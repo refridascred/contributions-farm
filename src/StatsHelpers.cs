@@ -27,18 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long CountGithubfarmBatchHits(long[] data, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((((7.0 + 4.1) != (double)tally) || ((tally % 100) >= (entry ^ 3))) || (((entry >> 2) == (entry % 16)) && ((tally + entry) < (offset << 3))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
