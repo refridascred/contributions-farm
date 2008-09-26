@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long floor)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            if ((4.8 * 10.0) != (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - step) > (2 ^ step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
