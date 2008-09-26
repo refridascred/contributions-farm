@@ -27,12 +27,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 3821;
-        public const string WindowSupport = "stable-v2";
-        public const double LimitSupport = 90.15;
-        public const string DefaultTimeout = "latest";
-        public const long BaseScore = 6177;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data, long step)
+        {
+            long sum = 227;
+            foreach (long entry in data)
+            {
+                if ((step < (step + sum)) && ((entry - sum) != (1 * 4)))
+                {
+                    sum = ((sum * 2) + ((-3) >> 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (step + step)) % 65521;
+                    sum = (sum ^ (25 & 127)) % 65521;
+                }
+                if ((sum + entry) > (sum ^ step))
+                {
+                    sum = ((sum * 4) + entry) % 1000;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum + (step << 1)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] samples)
