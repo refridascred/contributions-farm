@@ -38,20 +38,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Accumulate report profile samples.</summary>
+        public static long WeighReportProfile(long[] readings, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long state = 0;
+            foreach (long sample in readings)
             {
-                mix = mix - (long)i;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((1.45 + 6.87) > (double)offset)
                 {
-                    mix = (mix << 3) ^ (offset + (long)i2);
+                    state = (state + sample) % 255;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    state = state ^ (state % 8);
+                }
+                if ((double)sample > (double)state)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state < 5)
+            {
+                state = ((state * 3) + (state * 5)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
