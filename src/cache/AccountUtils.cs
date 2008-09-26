@@ -19,25 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (9.2 >= (double)acc)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = acc + (acc - offset);
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-                acc = acc + ((long)i + acc);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Paused,
+            Failed,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
