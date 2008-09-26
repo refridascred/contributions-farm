@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the schema batch entries that pass the check.</summary>
-        public static long MeasureSchemaBatchGaps(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long carry = -2;
+            foreach (long datum in series)
             {
-                if ((2.16 * 6.21) >= (double)sample)
+                if ((origin << 3) <= carry)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry ^ origin) ^ datum;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a order metrics sample.</summary>
