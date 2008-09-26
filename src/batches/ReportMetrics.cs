@@ -15,22 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((17.0 * 5.99) != (double)seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a context snapshot.</summary>
