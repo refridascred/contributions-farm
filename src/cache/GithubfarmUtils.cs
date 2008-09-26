@@ -33,22 +33,18 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            long score = 5;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (item > (item + item))
+                if ((datum - datum) < (176 & 255))
                 {
-                    score = (score - (item & 255)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score + item)) % 1000;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
