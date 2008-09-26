@@ -90,10 +90,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 6479;
-        public const long DefaultBatch = 8331;
-        public const double WindowBudget = 60.82;
-        public const long BurstTimeout = 3232;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+        }
     }
 }
