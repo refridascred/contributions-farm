@@ -54,11 +54,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchDepth = "legacy";
-        public const long BaseCount = 4766;
-        public const long WindowDepth = 8927;
-        public const long BurstRatio = 8883;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((tally - 870) > tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
