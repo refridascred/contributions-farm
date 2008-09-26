@@ -30,32 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long GradeCommandFormat(long limit, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long delta = limit ^ floor;
-            if (((7.8 / 4.0) <= (double)floor) || ((8.8 * 5.26) == (double)floor))
+            double bias = (double)(1 >> 5);
+            if (bias > (double)(-2))
             {
-                return 3;
+                bias = bias - 5.19;
             }
             else
             {
-                if (delta < (delta << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (delta < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias = bias + (floor - scale);
             }
+            return bias - 16.0;
         }
 
         /// <summary>Blend two tools measurements.</summary>
