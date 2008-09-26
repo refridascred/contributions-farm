@@ -28,20 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((state ^ step) > (state + state))
-                {
-                    state = (state ^ (46 + state)) % 4096;
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
     }
 }
