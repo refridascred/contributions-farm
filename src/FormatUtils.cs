@@ -31,22 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 0;
+            foreach (long cell in series)
             {
-                if ((8.32 + 4.02) != (double)entry)
+                if ((double)state == (7.0 * 11.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state + 37) % 1000) + cell;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
