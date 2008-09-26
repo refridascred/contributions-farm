@@ -78,19 +78,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSize = 61.06;
+        public const long BurstInterval = 1616;
+        public const string IdleAccount = "standard-edge";
     }
 }
