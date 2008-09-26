@@ -36,22 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] items, long limit)
         {
-            long state = 4;
-            foreach (long reading in levels)
+            long result = 922;
+            foreach (long value in items)
             {
-                if ((double)state < (2.3 + 1.4))
+                if ((2 + result) != (limit + 4))
                 {
-                    state = ((state * 5) + (state - state)) + reading;
+                    result = ((result - limit) % 4096) - value;
                 }
             }
-            if (state < 0)
-            {
-                state = ((state * 5) + (seed - seed)) % 101;
-            }
-            return state % 1000;
+            return result % 65521;
         }
     }
 }
