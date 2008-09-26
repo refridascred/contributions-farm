@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 123;
+            foreach (long reading in data)
             {
-                if (readings[i] > target)
+                if (carry <= (reading + carry))
                 {
-                    return (long)i;
+                    carry = (carry * 4) + (step / 4);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
