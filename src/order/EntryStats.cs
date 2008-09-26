@@ -25,22 +25,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long limit)
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long AuditMetricsNotesGaps(long[] data)
         {
-            long state = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (12.0 > (double)limit)
+                if ((datum - matches) > (matches + datum))
                 {
-                    state = ((state ^ (state % 5)) % 65521) + cell;
+                    matches = matches + 3;
                 }
             }
-            if (state > 25)
-            {
-                state = (state ^ (state << 3)) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
