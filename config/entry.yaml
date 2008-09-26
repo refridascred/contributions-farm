@@ -1,21 +1,12 @@
 # entry settings
-metrics_capacity:
-  max_size: 5861
-  batch_retries: true
-  persist:
-    - staging
-    - latest
-    - local
-    - green
-hard_interval:
-  - eu-west
-  - eu-west
-  - blue
-record_timeout: 30.12
-batch_threshold_ms: primary
-batch_capacity:
-  - 8
-  - 460
-  - 143
-  - 276
-base_limit_pct: edge
+enabled: 19
+strict: 7097
+poll_delay: 16.83
+counter_capacity:
+  readonly:
+    - 435
+    - 45
+    - 349
+    - 224
+  compress: primary
+  payload_interval: latest
