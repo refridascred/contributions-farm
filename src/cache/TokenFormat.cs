@@ -19,20 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token session values into a single score.</summary>
-        public static long TallyTokenSession(long[] levels, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 2) + 416) % 4096;
-                if (!((9.5 * 4.04) < (double)value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry + (carry + carry)) % 1000;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 3) + (carry + bound)) % 97;
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
