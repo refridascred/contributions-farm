@@ -38,22 +38,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long CountToolsBatchesGaps(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (((target % 2) == (seed - 104)) && ((target / 5) < 9))
             {
-                if ((double)matches > (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (1.1 * 6.36))
                 {
-                    matches = matches + 3;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next metrics context value from a seed.</summary>
