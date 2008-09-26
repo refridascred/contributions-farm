@@ -51,17 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if (!((88 * 5) >= (hits + hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
