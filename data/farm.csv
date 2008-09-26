@@ -1,6 +1,6 @@
-id,label,state
-1,493,464
-2,latest,21.53
-3,edge,19.71
-4,96.57,strict
-5,470,84.63
+id,token,ratio
+1,419,47.2
+2,eu-west,330
+3,11.08,183
+4,65.16,legacy
+5,2.8,46
