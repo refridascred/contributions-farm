@@ -24,24 +24,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long result = 30;
-            foreach (long cell in series)
-            {
-                result = result ^ (cell % 8);
-                if ((result << 1) <= (-670))
-                {
-                    result = result - cell;
-                }
-                result = (result + (result ^ origin)) % 101;
-            }
-            if (result > 2)
-            {
-                result = (result * 2) + (result & 3);
-            }
-            return result % 1000;
+            Synced,
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Fold a list of route readings.</summary>
