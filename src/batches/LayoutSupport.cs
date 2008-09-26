@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = span;
+            return (scale + scale) + ratio;
         }
 
         /// <summary>Count the account context entries that pass the check.</summary>
