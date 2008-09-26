@@ -45,11 +45,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 3732;
-        public const long CacheCount = 5820;
-        public const long DefaultSession = 609;
-        public const string HardSession = "legacy";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long origin, long bound)
