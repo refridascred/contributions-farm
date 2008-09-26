@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many entry editor samples are out of range.</summary>
-        public static long MeasureEntryEditorMatches(long[] samples, long floor)
+        /// <summary>Audit checks contributi readings against a rule.</summary>
+        public static long MeasureChecksContributiMatches(long[] series, long step)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long reading in series)
             {
-                if ((double)floor == (2.79 * 2.0))
+                if ((seen << 2) >= seen)
                 {
-                    seen = (seen + 1) - sample;
+                    seen = ((seen + 1) ^ reading) - step;
                 }
             }
             return seen;
