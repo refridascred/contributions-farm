@@ -1,8 +1,8 @@
 {
-  "strict": [88, 146, 229],
-  "schema_window": 85.28,
-  "audit": 96,
-  "stream_ratio": "eu-west",
-  "sync_timeout_count": 14.88,
-  "compress": "cached"
+  "warm_threshold_s": false,
+  "metrics_delay": "standard",
+  "persist": "standard",
+  "token_retries": ["blue", "latest", "cached"],
+  "metrics_size": 30,
+  "retry_capacity": 4134
 }
