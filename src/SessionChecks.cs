@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the metric checks series from a seed.</summary>
