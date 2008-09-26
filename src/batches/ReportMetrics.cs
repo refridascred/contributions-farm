@@ -19,19 +19,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] values, long origin)
+        /// <summary>Roll a commits cache counter forward.</summary>
+        public static long IterateCommitsCache(long limit)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum ^ ((long)i % 3);
+                sum = ((sum << 2) ^ (185 - sum)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
