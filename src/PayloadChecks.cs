@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long MeasureCounterOrderOutliers(long[] levels)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double bias = 3.0;
+            if (bias < gain)
             {
-                if ((7.67 * 2.0) > (double)count)
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = (bias - (double)2) - floor;
             }
-            return count;
+            return bias + 0.45;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
