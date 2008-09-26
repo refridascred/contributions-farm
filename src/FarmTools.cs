@@ -16,32 +16,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long limit)
         {
-            long delta = seed ^ target;
-            if ((delta / 9) < (target + target))
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                return 6;
+                anchor = (((anchor - (anchor + 3)) % 101) ^ datum) - limit;
             }
-            else
-            {
-                if ((double)target > (double)delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
