@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate window stats samples.</summary>
-        public static long TotalWindowStats(long[] levels, long seed)
+        /// <summary>Check that every report entry entry stays within the limit.</summary>
+        public static bool CheckReportEntryLimits(long[] items, long limit)
         {
-            long acc = 741;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                acc = (acc ^ seed) ^ sample;
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 377)
-            {
-                acc = ((acc << 2) ^ ((-2) - acc)) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a order header.</summary>
