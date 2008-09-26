@@ -15,12 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleSpan = 31.79;
-        public const long HardInterval = 1476;
-        public const string DefaultTools = "staging-1";
-        public const long CacheTools = 7105;
-        public const long RetryTimeout = 6860;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 37.99;
+        public const long RetryPayload = 2033;
+        public const string WindowPayload = "alpha-edge";
+        public const double SoftSpan = 62.2;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
