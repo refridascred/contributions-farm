@@ -48,13 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardCount = 27.67;
+        public const double CacheCount = 6.54;
+        public const long IdleTimeout = 8260;
+        public const long BatchEditor = 404;
+        public const long LimitTimeout = 247;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double CacheCommits = 86.22;
