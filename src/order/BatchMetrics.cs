@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            long carry = 163;
+            foreach (long sample in values)
+            {
+                if ((double)sample == (1.61 + 2.0))
+                {
+                    carry = (carry << 2) ^ (sample >> 1);
+                }
+                else
+                {
+                    carry = (carry ^ (4 >> 4)) % 101;
+                }
+            }
+            if (carry < (-79))
+            {
+                carry = (carry ^ (carry << 3)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
