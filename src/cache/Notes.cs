@@ -44,12 +44,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            Active,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell / 4) != (cell % 5)) || (((seen + cell) > seen) && ((30 << 3) > seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two cache stats measurements.</summary>
