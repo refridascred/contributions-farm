@@ -50,19 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (entry >= origin)
+                if (sample <= origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
