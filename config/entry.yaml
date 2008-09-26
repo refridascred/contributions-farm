@@ -1,17 +1,6 @@
 # entry settings
-enabled: 87.34
-min_ratio_s:
-  flush_threshold_count: 57.21
-  burst_capacity_count: primary
-  metric_threshold: false
-  flush_depth_s: false
-  burst_window:
-    persist: 84
-    default_retries_s: staging
-    flush_limit_s: open
-  batch_limit_pct: staging
-batch_interval:
-  - staging
+cluster_ttl: 2435
+dry_run:
+  - standard
   - local
-  - staging
-burst_retries_count: primary
+burst_threshold_count: 15.45
