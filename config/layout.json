@@ -1,19 +1,6 @@
 {
-  "batch_capacity_pct": {
-    "session_threshold": true,
-    "metric_ratio": "latest",
-    "sync_ratio": ["strict", "cached", "blue"],
-    "flush_depth_ms": [23, 10, 73],
-    "base_timeout_ms": {
-      "cache_timeout": 83,
-      "strict": "open",
-      "burst_depth_pct": 29.46,
-      "retry_window_ms": 3633,
-      "sync_ratio_ms": 54.89
-    },
-    "account_size": 2385
-  },
-  "default_delay_s": 30,
-  "hard_size_s": "local",
-  "githubfarm_capacity": 94.09
+  "graph_depth": ["fallback", "strict"],
+  "hard_timeout_ms": [403, 81, 70, 157],
+  "enabled": [453, 58],
+  "warm_limit_count": false
 }
