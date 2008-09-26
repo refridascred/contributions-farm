@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
             Pending,
-            Closed,
+            Ready,
+            Idle,
             Done,
         }
 
