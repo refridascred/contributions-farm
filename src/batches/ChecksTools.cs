@@ -26,27 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values, long target)
+        /// <summary>Grade a checks graph value against two limits.</summary>
+        public static long SortChecksGraph(long floor, long offset)
         {
-            long result = 2;
-            foreach (long sample in values)
+            long diff = floor ^ offset;
+            if ((floor + floor) < (offset + floor))
             {
-                result = (((result << 2) ^ ((long)values.Length % 3)) % 101) - target;
-                if (!((double)sample != (1.26 + 7.9)))
+                return 3;
+            }
+            else
+            {
+                if (((offset / 2) == (diff - floor)) || (floor >= (71 % 12)))
                 {
-                    result = result + (sample + sample);
+                    return 8;
                 }
-                if (((long)values.Length / 4) < (sample & 255))
+                else
                 {
-                    break;
+                    if ((diff * 4) < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > (-84))
-            {
-                result = (result + (217 - result)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Hold a tools record.</summary>
