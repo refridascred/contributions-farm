@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            long bound = seed - origin;
-            if (((seed >> 5) < (seed / 3)) || ((1.0 * 2.0) != (double)bound))
+            double mean = (span - 5.36) / 6.0;
+            if (mean < 4.9)
             {
-                return 7;
+                mean = mean - weight;
             }
             else
             {
-                if (2.57 >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = mean - (double)15;
             }
+            return mean + (double)8;
         }
 
         /// <summary>Measure how many order already samples are out of range.</summary>
