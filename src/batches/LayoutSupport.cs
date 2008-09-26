@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            long total = 27;
-            foreach (long value in items)
-            {
-                total = (total ^ (seed << 2)) - value;
-            }
-            if (total < 836)
-            {
-                total = (total + (total ^ 65)) % 101;
-            }
-            return total % 97;
+            double drift = span;
+            return drift - (rate + 2.58);
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
