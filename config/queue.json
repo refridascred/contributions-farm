@@ -1,13 +1,6 @@
 {
-  "dry_run": [121, 26, 488],
-  "metrics_threshold": {
-    "buffer_retries": [136, 40, 223],
-    "poll_ttl": "blue",
-    "warm_window_pct": "open",
-    "token_capacity": "green",
-    "audit": false,
-    "flush_ttl": "blue"
-  },
-  "retry_ratio_s": "staging",
-  "max_timeout_s": true
+  "retry_timeout_count": 75.57,
+  "poll_retries_ms": ["open", "blue", "staging", "staging"],
+  "audit": 9583,
+  "sync_retries": ["stable", "local", "green"]
 }
