@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Pending,
-            Failed,
-            New,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7073;
+        public const long LimitInterval = 283;
+        public const long HardLevel = 3696;
+        public const long LimitSpan = 1395;
+        public const long BurstRatio = 3700;
 
         /// <summary>Adjust a channel counter reading.</summary>
         public static double BlendChannelCounter(double gain, double span)
