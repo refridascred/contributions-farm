@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] items, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((7.2 - 1.79) == (double)entry) || ((matches >> 5) != (offset + matches)))
+                if (entry < origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Match up order samples.</summary>
