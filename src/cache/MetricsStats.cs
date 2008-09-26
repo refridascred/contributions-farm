@@ -70,21 +70,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9709;
+        public const long WindowStream = 4350;
+        public const double BurstBudget = 66.77;
+        public const string RetryStream = "standard-v2";
     }
 }
