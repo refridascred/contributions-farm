@@ -33,19 +33,17 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] readings, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != origin)
+                if (series[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
