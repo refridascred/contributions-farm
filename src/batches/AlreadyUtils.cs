@@ -46,20 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double scale, double floor)
-        {
-            double bias = (double)(1 >> 5);
-            if (bias > (double)(-2))
-            {
-                bias = bias - 5.19;
-            }
-            else
-            {
-                bias = bias + (floor - scale);
-            }
-            return bias - 16.0;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardBudget = 91.76;
+        public const long BatchSize = 6207;
+        public const string RetryLevel = "primary-edge";
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ScaleTools(double ratio, double span)
