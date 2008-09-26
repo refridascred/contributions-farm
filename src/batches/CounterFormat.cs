@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many profile queue samples are out of range.</summary>
+        public static long MeasureProfileQueueMatches(long[] items, long seed)
         {
-            Stale,
-            Active,
-            Pending,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((-315) + entry) < (seed - entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
