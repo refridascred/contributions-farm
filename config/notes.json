@@ -1,6 +1,5 @@
 {
-  "readonly": "stable",
-  "entry_ttl": [5, 365, 214],
-  "checks_capacity": 4346,
-  "window_timeout": false
+  "session_ttl": "latest",
+  "dry_run": ["edge", "cached", "eu-west"],
+  "min_limit": 6257
 }
