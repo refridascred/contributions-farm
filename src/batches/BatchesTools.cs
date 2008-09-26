@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long origin)
         {
-            Draft,
-            New,
-            Locked,
-            Idle,
-            Queued,
+            if (origin <= (seed * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - seed) < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(1 > origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes phase values.</summary>
