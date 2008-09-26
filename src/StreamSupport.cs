@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
         {
-            long score = 2;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                score = score ^ (reading + floor);
-                score = (score - (1 / 5)) % 65521;
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    carry = ((carry - carry) % 255) + (long)i3;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (score < 9)
-            {
-                score = (score - (score - 6)) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
