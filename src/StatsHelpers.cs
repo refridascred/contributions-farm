@@ -16,10 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4997;
-        public const long WindowRecord = 5751;
-        public const string StepScore = "legacy";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
         public static long CountGithubfarmBatchHits(long[] data, long offset)
