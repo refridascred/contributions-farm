@@ -45,14 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Dropped,
-            Ready,
-            Failed,
-            Active,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftScore = 8014;
+        public const long MinScore = 2605;
+        public const double LimitLevel = 75.72;
+        public const double BaseFactor = 8.84;
+        public const string WindowWidth = "staging";
     }
 }
