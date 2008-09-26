@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinCount = "primary-v2";
-        public const double RetryAlready = 72.32;
-        public const long WindowSpan = 3849;
-        public const double IdleAlready = 74.78;
-        public const long MinAlready = 7931;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            New,
+            Pending,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
