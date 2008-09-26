@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen & 15) > ((long)items.Length + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
