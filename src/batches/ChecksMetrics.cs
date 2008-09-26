@@ -51,18 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (bound <= (bound >> 1))
+                if ((count + item) > (item % 7))
                 {
-                    matches = (matches + 3) + datum;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
