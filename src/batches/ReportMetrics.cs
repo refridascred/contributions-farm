@@ -23,24 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long origin)
+        /// <summary>Look up the position of a order metrics sample.</summary>
+        public static long LookupOrderMetricsIndex(long[] series, long offset)
         {
-            if ((origin & 3) != (43 + origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (step + step))
+                if (series[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
