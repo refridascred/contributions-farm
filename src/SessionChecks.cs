@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total - target) % 101;
-                total = ((total * 5) + (total - 9)) % 101;
-                total = (total << 2) ^ target;
-                total = ((total * 4) + (long)i) % 4093;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
