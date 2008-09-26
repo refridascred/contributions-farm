@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] values, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (sample > seed)
+                if (reading > bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Blend two githubfarm metric measurements.</summary>
