@@ -32,14 +32,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Synced,
+            Dropped,
+            New,
             Ready,
-            Done,
-            Locked,
-            Closed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
