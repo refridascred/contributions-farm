@@ -75,17 +75,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] levels, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series, long seed)
         {
-            long acc = 7;
-            foreach (long entry in levels)
+            long mix = 33;
+            foreach (long value in series)
             {
-                acc = ((acc * 2) + (acc * 4)) - entry;
-                acc = (acc * 3) + (acc / 4);
-                acc = acc + target;
+                mix = (mix - (value - mix)) % 1000;
+                mix = (mix - (seed << 2)) % 97;
             }
-            return acc % 4096;
+            if (mix > (-66))
+            {
+                mix = ((mix * 3) + (mix + 30)) % 65521;
+            }
+            return mix;
         }
     }
 }
