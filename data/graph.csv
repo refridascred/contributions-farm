@@ -1,9 +1,7 @@
-id,level,rank
-1,287,639
-2,607,480
-3,local,4.95
-4,primary,859
-5,13.84,cached
-6,37.6,primary
-7,edge,727
-8,415,75
+id,score
+1,981
+2,940
+3,fallback
+4,blue
+5,650
+6,71.19
