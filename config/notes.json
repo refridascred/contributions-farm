@@ -1,7 +1,17 @@
 {
-  "verbose": "open",
-  "flush_limit_pct": true,
-  "enabled": "stable",
-  "buffer_threshold": 28,
-  "base_threshold_s": true
+  "already_size": "edge",
+  "hard_ttl_s": {
+    "max_size_s": ["staging", "stable", "fallback"],
+    "soft_depth": ["latest", "open"],
+    "retry_threshold_count": false,
+    "batch_delay_s": 21,
+    "channel_depth": "strict",
+    "batch_threshold": {
+      "graph_window": "fallback",
+      "hard_threshold_count": 6732,
+      "verbose": "cached",
+      "compress": "eu-west"
+    }
+  },
+  "warm_window_pct": ["legacy", "green"]
 }
