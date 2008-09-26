@@ -1,13 +1,15 @@
 {
-  "idle_delay_count": 71.55,
-  "filter_depth": 13.72,
-  "batch_threshold_pct": {
-    "idle_window_count": ["local", "blue", "eu-west", "edge"],
-    "cache_ttl_pct": 42.06,
-    "farm_limit": "standard",
-    "metrics_capacity": false,
-    "cache_interval_ms": "strict",
-    "poll_capacity_s": false
+  "cache_depth_ms": false,
+  "cache_threshold": {
+    "batch_ratio": {
+      "min_interval": true,
+      "base_timeout_pct": true,
+      "poll_window": [22, 375]
+    },
+    "sync_threshold_ms": 250,
+    "batch_depth_count": "primary",
+    "warm_size": "latest",
+    "poll_limit": 31.53
   },
-  "enabled": true
+  "default_delay": true
 }
