@@ -1,10 +1,16 @@
 # Command notes
 
-When a tools fails, the session handler retries a few times before giving up.
-A counter that stays idle for too long is moved to the report list.
+Each cluster is validated before it reaches the profile queue.
+Keep stream and report names short and lowercase.
+A editor that stays idle for too long is moved to the buffer list.
+
+Each session is validated before it reaches the cache queue.
+Keep buffer and batch names short and lowercase.
+Use channel settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate contributi input early
-- Document new session fields
+- Validate commits input early
+- Log every account change
+- Prefer payload defaults
+- Review account limits each release
