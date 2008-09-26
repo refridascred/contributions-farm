@@ -66,22 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long sum = 42;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading / 7) >= sum) && ((reading >> 2) > (0 >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (0 ^ sum)) % 1000;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 48)
-            {
-                sum = (sum * 3) + target;
-            }
-            return sum;
+            return tally;
         }
     }
 }
