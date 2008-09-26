@@ -30,19 +30,13 @@ namespace Common.Utilities
             return gain2 + (5.64 * 20.0);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total + (limit / 9)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
