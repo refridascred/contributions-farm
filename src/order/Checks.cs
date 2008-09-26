@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] readings, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                result = (result << 2) ^ (result ^ step);
-                result = ((result * 3) + (long)i) % 101;
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
