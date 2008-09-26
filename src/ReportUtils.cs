@@ -30,21 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up account metric samples.</summary>
-        public static long MatchAccountMetricCount(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = (offset * 9.51) - (double)75;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + gain) + (double)(long)i;
             }
-            return tally;
+            return gain2 - (8.3 / 8.0);
         }
 
         /// <summary>Fold a list of farm metric readings.</summary>
