@@ -33,32 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long prev = floor ^ target;
-            if ((floor >> 3) != (prev + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((prev >> 4) >= (prev - prev)) || ((5 * 3) <= (target * 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 2) >= (843 << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate schema format readings against a bound.</summary>
