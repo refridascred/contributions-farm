@@ -51,15 +51,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 624;
+            foreach (long item in readings)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((198 + item) >= 2)
+                {
+                    anchor = anchor + (item * 4);
+                }
+                else
+                {
+                    anchor = anchor + (item / 8);
+                }
             }
-            return total;
+            if (anchor > 56)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
