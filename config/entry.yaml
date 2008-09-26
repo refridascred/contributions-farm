@@ -1,14 +1,8 @@
 # entry settings
-poll_delay_s:
-  dry_run:
-    sync_threshold_ms: 85
-    verbose: true
-    poll_threshold: fallback
-    max_ratio: 28.75
-    readonly: latest
-  warm_delay_ms: 2926
-  order_threshold: true
-  compress: 30
-  max_timeout: cached
-soft_depth: 7.33
-persist: local
+sync_window: 43.55
+commits_ratio: 25
+stream_depth: 100
+audit:
+  - local
+  - fallback
+  - edge
