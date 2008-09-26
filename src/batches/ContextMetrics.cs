@@ -55,21 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum - datum) <= 387)
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
