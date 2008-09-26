@@ -54,10 +54,18 @@ namespace Common.Utilities
         public const long BatchEditor = 404;
         public const long LimitTimeout = 247;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 86.22;
-        public const long LimitDepth = 6819;
-        public const double DefaultSpan = 88.62;
-        public const double RetryCommits = 28.1;
+        /// <summary>Audit route commits readings against a rule.</summary>
+        public static long CountRouteCommitsHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen > (sample ^ 49)) && ((step + (long)data.Length) >= step))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
