@@ -1,4 +1,8 @@
 # support settings
-notes_depth: 100
-hard_size: 21.32
-queue_interval: 2464
+queue_depth: 5355
+strict:
+  - 294
+  - 347
+dry_run: latest
+flush_interval_pct: 19.12
+farm_depth: standard
