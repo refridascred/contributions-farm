@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items, long origin)
+        /// <summary>Accumulate githubfarm route samples.</summary>
+        public static long WeighGithubfarmRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mix = 90;
+            foreach (long datum in items)
             {
-                if ((hits & 255) == (entry << 1))
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix - (mix / 8)) % 1000) ^ datum;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
