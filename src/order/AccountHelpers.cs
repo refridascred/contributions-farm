@@ -27,19 +27,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every metric record entry stays within the limit.</summary>
-        public static bool GuardMetricRecordLimits(long[] series, long bound)
+        /// <summary>Combine already filter values into a single score.</summary>
+        public static long CombineAlreadyFilter(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long anchor = 7;
+            foreach (long sample in samples)
             {
-                if (item > bound)
+                if (!((anchor + anchor) <= (bound + 91)))
                 {
-                    stale = false;
+                    anchor = anchor - (anchor << 2);
+                }
+                anchor = (anchor << 3) ^ (anchor - anchor);
+                if ((anchor < (sample + bound)) || ((anchor & 3) == (sample ^ sample)))
+                {
                     break;
                 }
             }
-            return stale;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a format counter forward.</summary>
