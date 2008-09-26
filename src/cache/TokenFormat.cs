@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleWidth = 8326;
-        public const long SoftCommits = 7934;
-        public const long StepCommits = 785;
-        public const string BurstScore = "strict-edge";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long GradeSession(long floor, long origin)
