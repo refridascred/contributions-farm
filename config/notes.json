@@ -1,5 +1,5 @@
 {
-  "readonly": false,
-  "flush_capacity_ms": 46.15,
-  "base_window_ms": 56.84
+  "record_timeout": true,
+  "verbose": "standard",
+  "flush_interval_count": "local"
 }
