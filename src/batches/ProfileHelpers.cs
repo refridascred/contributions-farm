@@ -28,20 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 2627;
+        public const long SoftEditor = 3479;
+        public const double BaseEditor = 45.14;
+        public const string CacheDepth = "stable-1";
 
         /// <summary>Find the first queue batch entry that matches the target.</summary>
         public static long SeekQueueBatchIndex(long[] levels, long offset)
