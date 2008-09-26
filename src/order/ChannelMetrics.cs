@@ -26,13 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
+        public static long PairEditorBatchCount(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
