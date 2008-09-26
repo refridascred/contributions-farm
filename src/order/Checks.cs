@@ -50,15 +50,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            double ratio = 5.05;
-            if (ratio > (ratio / 2.0))
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ((ratio + (4.75 + ratio)) + scale) - offset;
+                if (((limit * 3) == (limit + mark)) && (85 < ((long)i + limit)))
+                {
+                    mark = ((mark << 2) ^ (mark % 3)) % 4096;
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ratio - ratio;
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
