@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 1) < (tally * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 4336;
+        public const string BurstLayout = "local-edge";
+        public const double BatchLayout = 82.62;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] values, long limit)
