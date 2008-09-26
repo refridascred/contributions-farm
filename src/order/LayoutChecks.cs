@@ -49,11 +49,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7541;
-        public const long CacheSpan = 4332;
-        public const long HardLevel = 2000;
-        public const double BatchSpan = 81.57;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((17.0 / 3.0) < (double)sum)
+                {
+                    sum = (sum << 2) ^ (limit << 3);
+                    sum = ((sum << 3) ^ 14) % 97;
+                }
+                sum = (sum * 3) + (-4);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCount = 8403;
