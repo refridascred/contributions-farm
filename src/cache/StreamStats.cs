@@ -17,12 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            Queued,
-            Done,
-            Locked,
+            double mean = ratio;
+            if (mean <= ratio)
+            {
+                mean = mean + floor;
+            }
+            return mean + (2.22 * 13.0);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
