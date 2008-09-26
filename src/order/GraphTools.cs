@@ -48,18 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell % 97) != (hits << 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
