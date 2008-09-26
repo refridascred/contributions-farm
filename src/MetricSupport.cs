@@ -30,11 +30,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 1699;
+        public const long StepBatch = 9462;
+        public const long BatchSpan = 1155;
     }
 }
