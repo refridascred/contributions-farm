@@ -86,19 +86,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] samples, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long limit)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long diff = step ^ limit;
+            if (!((limit + diff) != (step << 3)))
             {
-                if (cell < limit)
+                return 5;
+            }
+            else
+            {
+                if (((8.76 * 4.8) <= (double)step) && (step < (diff - step)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
