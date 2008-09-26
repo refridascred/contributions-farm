@@ -22,21 +22,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 489;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5 + item) >= (mark + item))
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 2) ^ (seed + mark);
                 }
             }
-            return seen;
+            if (mark < 2)
+            {
+                mark = ((mark * 5) + (86 - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
