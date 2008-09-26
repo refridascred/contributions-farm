@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            Failed,
-            Active,
-            Locked,
+            long score = 119;
+            foreach (long sample in levels)
+            {
+                if ((score * 4) > (score & 1))
+                {
+                    score = ((score ^ (score * 3)) % 97) + sample;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
