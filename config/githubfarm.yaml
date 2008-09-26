@@ -1,8 +1,5 @@
 # githubfarm settings
-min_size: blue
-flush_size_pct:
-  - green
-  - cached
-  - latest
-graph_depth: 250
-min_threshold_s: 42
+buffer_depth: 60
+warm_depth: 1700
+hard_capacity: 325
+readonly: true
