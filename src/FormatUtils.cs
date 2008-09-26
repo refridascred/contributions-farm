@@ -51,25 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes contributi input into a small class.</summary>
-        public static long RankNotesContributi(long limit, long seed)
-        {
-            if ((seed + limit) <= (limit - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 4) > (601 - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 4729;
+        public const long LimitDepth = 2068;
+        public const long IdleDepth = 3321;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
