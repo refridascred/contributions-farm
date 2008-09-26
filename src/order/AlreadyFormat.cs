@@ -88,21 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!(sum < (origin - (long)i)))
+                if (1 < reading)
                 {
-                    sum = (sum - (origin % 60)) % 65521;
-                    sum = (sum - sum) % 97;
+                    seen = (seen + 1) - seed;
                 }
-                sum = ((sum << 2) ^ 391) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
