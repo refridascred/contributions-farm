@@ -1,5 +1,5 @@
 {
-  "order_timeout": 6214,
-  "hard_window_ms": 94.36,
-  "retry_limit": false
+  "soft_window": ["strict", "open", "green", "fallback"],
+  "readonly": 82.13,
+  "warm_window_pct": 11
 }
