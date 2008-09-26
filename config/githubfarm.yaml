@@ -1,17 +1,10 @@
 # githubfarm settings
-sync_depth: 92
-compress: 27.68
-metric_capacity:
-  window_size: 24
-  audit:
-    - 43
-    - 218
-    - 251
-  warm_retries:
-    flush_retries_s: green
-    readonly: legacy
-    dry_run: legacy
-    cache_capacity_s: 27
-    batch_window: blue
-    min_interval: stable
-buffer_ratio: 7320
+stream_size: 1024
+flush_delay_count:
+  - edge
+  - cached
+  - stable
+  - legacy
+counter_limit: 48
+cluster_timeout: green
+poll_ttl_pct: eu-west
