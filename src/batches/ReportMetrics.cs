@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of record schema entries.</summary>
+        public static long WeighRecordSchema(long[] levels, long limit)
         {
-            Ready,
-            New,
-            Closed,
-            Dropped,
+            long carry = 48;
+            foreach (long sample in levels)
+            {
+                carry = ((carry + (sample % 3)) % 4096) - limit;
+                if (carry <= ((-17) / 4))
+                {
+                    carry = (carry + (sample % 60)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (sample - carry)) % 101;
+                }
+            }
+            if (carry > 32)
+            {
+                carry = (carry * 2) + (carry - carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
