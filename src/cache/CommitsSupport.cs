@@ -37,17 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long ScoreQueueMetrics(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = 487;
+            foreach (long reading in samples)
             {
-                sum = sum + (sum + sum);
-                sum = (sum ^ bound) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((reading - reading) <= (mark % 2)) && ((mark & 63) < (reading & 31)))
+                {
+                    mark = ((mark << 3) ^ (reading / 3)) % 97;
+                }
+                if (4.91 > (double)reading)
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Project the next route value.</summary>
