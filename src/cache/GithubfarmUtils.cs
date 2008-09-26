@@ -26,16 +26,17 @@ namespace Common.Utilities
         public const long CacheRatio = 6696;
         public const string StepSize = "fallback-1";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (long)i) % 65521;
-                result = ((result * 2) + (long)i) % 101;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
