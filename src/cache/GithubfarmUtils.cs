@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a filter contributi figure with a bias.</summary>
-        public static double BlendFilterContributi(double rate, double bias)
-        {
-            double rate2 = rate / 2.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - 8.55) + (double)(long)i;
-            }
-            return rate2 - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 2150;
+        public const long BaseSupport = 4911;
+        public const string BatchSpan = "primary-edge";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiHits(long[] readings)
