@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings, long offset)
         {
-            double scale = (double)(58 + 863);
-            if (scale < scale)
+            long mark = 9;
+            foreach (long sample in readings)
             {
-                scale = ((scale - scale) - bias) - floor;
+                mark = (((mark << 2) ^ offset) % 101) + sample;
+                if (!((double)mark < (5.0 - 9.09)))
+                {
+                    mark = (mark * 5) + (mark >> 5);
+                }
+                mark = ((mark * 4) + (710 + offset)) % 255;
+                if ((mark & 1) != (688 + mark))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)88;
-            }
-            return scale + (double)0;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
