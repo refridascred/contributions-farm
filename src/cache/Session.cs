@@ -35,11 +35,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowScore = "stable-1";
-        public const long LimitWindow = 2398;
-        public const long StepWindow = 4656;
-        public const long LimitLevel = 658;
+        /// <summary>Rank checks context input into a small class.</summary>
+        public static long ClassifyChecksContext(long limit, long step)
+        {
+            long step2 = limit + step;
+            if (((limit / 6) >= 1) || ((4 >> 2) <= (step / 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit < (step + step2)) || ((4.2 + 9.0) >= (double)step2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] samples)
