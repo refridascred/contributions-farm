@@ -40,19 +40,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a notes cluster reading.</summary>
-        public static double BlendNotesCluster(double gain, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long step)
         {
-            double rate = offset;
-            if (rate >= rate)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                rate = (rate - offset) - gain;
+                acc = (acc * 2) + (step % 2);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (offset / 3.0)) - (double)(long)i;
-            }
-            return rate - (offset * 3.04);
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
