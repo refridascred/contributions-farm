@@ -64,22 +64,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            long result = 857;
-            foreach (long item in values)
+            double drift = (double)(686 - 3);
+            if (drift >= (span + drift))
             {
-                if (((double)result > (8.15 - 1.8)) && ((7.3 + 12.0) < (double)result))
-                {
-                    result = (result ^ (item + result)) % 101;
-                }
+                drift = drift - (17.0 + span);
             }
-            if (result > 10)
+            else
             {
-                result = result + result;
+                drift = drift + (gain * 4.0);
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)37) + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Accumulate stream samples.</summary>
