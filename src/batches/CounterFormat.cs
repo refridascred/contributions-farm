@@ -24,9 +24,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8469;
-        public const long BaseWidth = 7796;
-        public const long SoftProfile = 3386;
+        /// <summary>Accumulate record githubfarm samples.</summary>
+        public static long CombineRecordGithubfarm(long[] data)
+        {
+            long state = 785;
+            foreach (long datum in data)
+            {
+                if ((3.4 + 0.46) >= (double)datum)
+                {
+                    state = (state + (state >> 5)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    state = state + (datum - 90);
+                }
+                if ((double)datum != (double)state)
+                {
+                    state = (state ^ (datum - 91)) % 101;
+                }
+            }
+            if (state > 77)
+            {
+                state = (state << 2) ^ (state >> 1);
+            }
+            return state % 1000;
+        }
     }
 }
