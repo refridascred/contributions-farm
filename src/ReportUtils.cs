@@ -44,19 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] data, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
