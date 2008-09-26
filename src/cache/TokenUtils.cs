@@ -28,23 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            double gain2 = gain;
-            if (gain2 > gain)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = (gain2 + (double)884) + span;
+                if ((state ^ step) > (state + state))
+                {
+                    state = (state ^ (46 + state)) % 4096;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                gain2 = gain2 - (gain * 6.25);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 - 8.4;
+            return state;
         }
     }
 }
