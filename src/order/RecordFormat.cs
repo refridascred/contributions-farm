@@ -16,19 +16,10 @@ namespace Common.Utilities
             return weight + (rate * 7.2);
         }
 
-        /// <summary>Audit schema stream readings against a rule.</summary>
-        public static long MeasureSchemaStreamGaps(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((3.0 + 18.0) >= (double)matches) || (matches < (reading - matches)))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstScore = 1296;
+        public const long BurstChecks = 8390;
+        public const double MaxChecks = 60.7;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] data, long floor)
