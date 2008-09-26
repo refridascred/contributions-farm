@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a editor token value against two limits.</summary>
-        public static long ClassifyEditorToken(long floor, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] items, long offset)
         {
-            long cur = floor - step;
-            if ((7.4 - 6.93) < (double)step)
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + cur) > (floor * 3))
+                if ((double)item == (double)1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (cur + 33))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor ^ step) > (cur >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 3) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
