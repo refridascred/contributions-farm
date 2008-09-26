@@ -1,28 +1,10 @@
 # support settings
-verbose: true
-hard_timeout:
-  - legacy
-  - primary
-  - legacy
-  - open
-channel_interval:
-  - 42
-  - 465
-  - 326
-  - 222
-burst_window_pct:
-  min_interval: true
-  poll_size:
-    dry_run: false
-    verbose: 3143
-    cache_depth_ms:
-      - edge
-      - standard
-      - standard
-      - cached
-    order_threshold: 1024
-    poll_depth_s: false
-    checks_limit: 250
-  graph_depth: 83.52
-poll_capacity_count: standard
-flush_retries: true
+readonly: green
+warm_depth_ms:
+  poll_window_pct: 84.49
+  cluster_retries: 3323
+  verbose: edge
+warm_limit: 22
+default_capacity: false
+retry_limit: 74.68
+stream_size: 96
