@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm route samples.</summary>
-        public static long WeighGithubfarmRoute(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            long mix = 90;
-            foreach (long datum in items)
+            double weight = (double)(7 - 45);
+            if (weight <= (4.0 / 6.0))
             {
-                mix = ((mix - (mix / 8)) % 1000) ^ datum;
+                weight = (weight + weight) - floor;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + 5.46;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
