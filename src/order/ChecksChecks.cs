@@ -34,21 +34,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long RankNotesChecks(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((target % 97) >= (limit / 8)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 2) == (890 * 5))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
