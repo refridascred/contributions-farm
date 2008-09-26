@@ -28,11 +28,19 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Project the next metric metrics value.</summary>
+        public static double ScaleMetricMetrics(double weight, double span)
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = span;
+            if (scale >= (scale * 0.2))
+            {
+                scale = scale + (scale + scale);
+            }
+            else
+            {
+                scale = scale - (double)(-3);
+            }
+            return scale + weight;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
