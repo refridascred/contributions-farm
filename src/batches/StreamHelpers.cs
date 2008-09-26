@@ -37,22 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item / 9) > (-670))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine command farm values into a single score.</summary>
