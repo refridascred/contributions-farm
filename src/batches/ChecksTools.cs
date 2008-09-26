@@ -61,15 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long state = 3;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((((state << 3) ^ (75 * 4)) % 4096) ^ sample) + limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return seen;
         }
     }
 }
