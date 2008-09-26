@@ -46,22 +46,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell / 4) != (cell % 5)) || (((seen + cell) > seen) && ((30 << 3) > seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Blend two cache stats measurements.</summary>
