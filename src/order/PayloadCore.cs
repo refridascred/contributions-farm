@@ -38,19 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] samples, long step)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long CountToolsBatchesGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample <= step)
+                if ((double)matches > (double)value)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next metrics context value from a seed.</summary>
