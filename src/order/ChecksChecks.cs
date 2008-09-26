@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowScore = "latest";
+        public const long BaseRecord = 8582;
+        public const long IdleCount = 5035;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] values, long limit)
