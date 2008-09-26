@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((14.0 / 8.0) >= (double)datum) && ((datum >> 3) == (datum ^ datum)))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 23.08;
+        public const double CacheRatio = 39.12;
+        public const long StepEditor = 8933;
+        public const string DefaultBudget = "open-edge";
+        public const string WindowEditor = "cached-1";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
