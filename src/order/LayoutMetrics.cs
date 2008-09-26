@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const double MinSpan = 16.42;
         public const long HardBudget = 487;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values, long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double gain, double span)
         {
-            long result = 199;
-            foreach (long sample in values)
+            double rate = (6.87 / 8.0) * 0.3;
+            if (rate >= (double)1)
             {
-                if ((375 >= (sample >> 5)) && ((574 / 4) <= (sample * 5)))
-                {
-                    result = (result * 2) + result;
-                }
-                else
-                {
-                    result = result ^ origin;
-                }
+                rate = (rate + (12.0 * 1.0)) - gain;
             }
-            return result;
+            return rate - (span - span);
         }
     }
 }
