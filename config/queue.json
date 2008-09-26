@@ -1,7 +1,6 @@
 {
-  "sync_timeout_ms": 34,
-  "support_window": false,
-  "layout_size": true,
-  "readonly": 30,
-  "cache_ttl": [256, 415]
+  "verbose": 84.27,
+  "poll_capacity_pct": [75, 493, 133, 192],
+  "sync_limit_count": "primary",
+  "default_delay_pct": 94.29
 }
