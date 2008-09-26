@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const string LimitSpan = "legacy-edge";
         public const double LimitGraph = 80.05;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 67.76;
-        public const long DefaultFactor = 4323;
-        public const string WindowFormat = "alpha-v2";
-        public const long MaxFactor = 5694;
-        public const string BatchRatio = "latest";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
