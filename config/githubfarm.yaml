@@ -1,9 +1,25 @@
 # githubfarm settings
-poll_ttl_count: 6.03
-sync_ttl_pct: 30
-channel_window:
-  - standard
-  - eu-west
-  - local
-  - latest
-readonly: 1024
+warm_ratio:
+  enabled: local
+  idle_capacity: 17.62
+  support_limit:
+    - 230
+    - 373
+    - 161
+  profile_interval: staging
+  compress:
+    - cached
+    - strict
+    - latest
+entry_timeout:
+  verbose:
+    - fallback
+    - cached
+    - primary
+  batches_window: 250
+  metric_window:
+    - 184
+    - 329
+    - 487
+max_delay_count: staging
+warm_ratio_ms: stable
