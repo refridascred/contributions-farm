@@ -1,15 +1,14 @@
 # entry settings
-base_size_ms: true
-min_retries:
-  cache_ttl_ms: 250
-  entry_window: 18.68
-  hard_interval_count: 2968
-  max_ttl_pct: open
-  max_window_s: cached
-  buffer_delay: legacy
-burst_window: stable
-cache_limit_count:
-  - local
-  - primary
-  - eu-west
-profile_capacity: true
+poll_delay_s:
+  dry_run:
+    sync_threshold_ms: 85
+    verbose: true
+    poll_threshold: fallback
+    max_ratio: 28.75
+    readonly: latest
+  warm_delay_ms: 2926
+  order_threshold: true
+  compress: 30
+  max_timeout: cached
+soft_depth: 7.33
+persist: local
