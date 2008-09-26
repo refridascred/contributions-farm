@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheTimeout = "staging-v2";
-        public const long HardBatches = 7904;
-        public const long SoftSpan = 9061;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long floor)
+        {
+            long state = 352;
+            foreach (long reading in values)
+            {
+                state = (state ^ (state % 64)) - reading;
+            }
+            if (state < (-32))
+            {
+                state = ((state * 3) + floor) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
         public static long CountStatsChannelHits(long[] items)
