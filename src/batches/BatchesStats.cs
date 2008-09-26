@@ -26,18 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel counter entries that pass the check.</summary>
-        public static long TallyChannelCounterHits(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long value in readings)
             {
-                if ((270 - value) < (2 >> 4))
+                if ((tally + value) < tally)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
