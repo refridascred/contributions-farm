@@ -1,11 +1,7 @@
 {
-  "channel_size": true,
-  "audit": "edge",
-  "persist": [6, 107, 476, 407],
-  "route_limit": {
-    "batch_retries_count": 32.45,
-    "default_depth_count": "eu-west",
-    "default_interval_ms": 4447
-  },
-  "record_ratio": "eu-west"
+  "strict": 58.5,
+  "sync_threshold": 5448,
+  "idle_interval_s": "latest",
+  "metrics_depth": 99,
+  "support_retries": 71.63
 }
