@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 2192;
-        public const string LimitCache = "stable-v2";
-        public const long IdleCount = 6923;
-        public const long CacheWidth = 9211;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] data, long step)
