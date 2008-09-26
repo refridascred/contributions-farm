@@ -40,11 +40,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3636;
-        public const double MaxFarm = 18.22;
-        public const string LimitFarm = "strict";
-        public const long HardLevel = 6685;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series, long step)
+        {
+            long acc = 3;
+            foreach (long item in series)
+            {
+                if ((56 % 100) == (33 + acc))
+                {
+                    acc = (acc + (11 + step)) - item;
+                }
+            }
+            if (acc > 59)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultRatio = 6143;
