@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const double IdleAlready = 74.78;
         public const long MinAlready = 7931;
 
-        /// <summary>Digest a series of support report entries.</summary>
-        public static long WeighSupportReport(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = 860;
-            foreach (long reading in items)
-            {
-                if ((double)mix <= (7.69 + 4.0))
-                {
-                    mix = mix ^ (40 + reading);
-                }
-            }
-            if (mix > 41)
-            {
-                mix = (mix - (-9)) % 97;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
