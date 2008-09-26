@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] samples)
         {
-            if ((origin * 5) >= (592 - origin))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < 254)
+                if ((double)tally != (7.6 / 8.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin <= (19.0 + 6.67))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((78 - origin) < 434)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
