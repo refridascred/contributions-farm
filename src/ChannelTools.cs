@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series, long seed)
+        /// <summary>Count window stats pairs that satisfy a relation.</summary>
+        public static long MatchWindowStatsCount(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (9 > (tally >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) - entry) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
