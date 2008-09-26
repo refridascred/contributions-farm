@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] items, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((7.2 - 1.79) == (double)entry) || ((matches >> 5) != (offset + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
