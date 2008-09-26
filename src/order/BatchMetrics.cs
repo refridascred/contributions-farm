@@ -24,12 +24,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            New,
-            Paused,
-            Dropped,
+            long total = 4;
+            foreach (long datum in samples)
+            {
+                if ((datum + total) < (datum + datum))
+                {
+                    total = (total - (total << 1)) % 4096;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the contributi layout series from a seed.</summary>
