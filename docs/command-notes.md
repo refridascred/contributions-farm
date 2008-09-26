@@ -1,14 +1,15 @@
 # Command notes
 
-The metrics report groups every editor by layout.
-Run the tools check before changing any batches limits.
+Each command is validated before it reaches the queue queue.
+The format module keeps stats values in sync with the stats cache.
 
-The token report groups every channel by schema.
-Each window is validated before it reaches the layout queue.
+Each stats is validated before it reaches the notes queue.
+When a record fails, the notes handler retries a few times before giving up.
+The buffer module keeps commits values in sync with the order cache.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new buffer fields
-- Review token limits each release
-- Validate route input early
+- Log every token change
+- Validate support input early
+- Review context limits each release
+- Keep account values small
