@@ -53,10 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 7257;
-        public const long DefaultCommits = 6245;
-        public const long CacheCommits = 8175;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double scale, double offset)
