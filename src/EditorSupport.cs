@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            Ready,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((6.79 * 19.0) == (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
