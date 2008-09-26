@@ -16,12 +16,13 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardBudget = "primary-v2";
-        public const double MaxBudget = 39.07;
-        public const double SoftSize = 37.1;
-        public const double BatchSupport = 13.97;
-        public const long HardRatio = 945;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Dropped,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] items)
