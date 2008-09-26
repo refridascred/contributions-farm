@@ -38,12 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (origin < (367 + 860))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
