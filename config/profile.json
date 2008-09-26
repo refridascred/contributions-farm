@@ -1,6 +1,13 @@
 {
-  "token_window": "cached",
-  "dry_run": 39.16,
-  "min_threshold": false,
-  "soft_size_ms": [345, 250, 61, 151]
+  "audit": "open",
+  "batch_retries_count": {
+    "compress": true,
+    "stats_threshold": "edge",
+    "persist": 88,
+    "batch_depth_ms": [181, 326]
+  },
+  "dry_run": "local",
+  "retry_ttl": true,
+  "cache_window_ms": 9646,
+  "flush_interval_ms": ["latest", "primary", "stable"]
 }
