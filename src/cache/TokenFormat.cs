@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long CountToolsRouteMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (5.2 >= (double)bound)
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleWidth = 8326;
+        public const long SoftCommits = 7934;
+        public const long StepCommits = 785;
+        public const string BurstScore = "strict-edge";
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long step, long target)
