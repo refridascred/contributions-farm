@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((sample * 3) >= (count - sample))
+                if (sample <= step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Derive the next metrics context value from a seed.</summary>
