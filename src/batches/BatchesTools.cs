@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long step, long step2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long bound)
         {
-            if ((step2 / 5) == (step % 5))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 > (step << 1)) && (step2 < (step & 255)))
+                if ((double)(long)values.Length <= (double)entry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the notes phase values.</summary>
