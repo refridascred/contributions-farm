@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 4336;
-        public const string BurstLayout = "local-edge";
-        public const double BatchLayout = 82.62;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] values, long limit)
