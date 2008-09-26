@@ -1,11 +1,11 @@
 # Command notes
 
-The cache report groups every farm by counter.
-The support module keeps githubfarm values in sync with the farm cache.
+Keep tools and already names short and lowercase.
+Each report is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new metric fields
-- Review batches limits each release
-- Log every schema change
+- Prefer token defaults
+- Keep farm values small
+- Log every graph change
+- Validate payload input early
