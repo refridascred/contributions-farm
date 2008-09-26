@@ -24,12 +24,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 3934;
-        public const double DefaultStream = 2.26;
-        public const long IdleTimeout = 8200;
-        public const long StepFactor = 9533;
-        public const double IdleScore = 60.92;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double offset)
+        {
+            double ratio = 5.05;
+            if (ratio > (ratio / 2.0))
+            {
+                ratio = ((ratio + (4.75 + ratio)) + scale) - offset;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] readings, long offset)
