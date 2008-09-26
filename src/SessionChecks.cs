@@ -43,19 +43,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every account route entry stays within the limit.</summary>
-        public static bool VerifyAccountRouteLimits(long[] values, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long mix = 57;
+            foreach (long value in levels)
             {
-                if (datum <= offset)
+                if ((mix ^ value) > (mix + mix))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (long)levels.Length) % 255;
                 }
             }
-            return valid;
+            if (mix < 33)
+            {
+                mix = (mix * 5) + (796 + 37);
+            }
+            return mix;
         }
     }
 }
