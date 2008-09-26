@@ -1,5 +1,18 @@
 # support settings
-metric_depth: fallback
-context_ratio: 56.61
-soft_delay_count: 57
-buffer_ttl: true
+burst_retries_s:
+  - latest
+  - legacy
+  - edge
+soft_timeout_s: fallback
+min_retries: 500
+soft_delay_s: 1024
+batches_ttl: 57.0
+hard_capacity_pct:
+  readonly: 60
+  flush_threshold:
+    - local
+    - open
+    - cached
+    - stable
+  persist: 50
+  filter_timeout: 90.1
