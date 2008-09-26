@@ -59,18 +59,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell >= (tally + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Paused,
+            Closed,
+            Locked,
         }
     }
 }
