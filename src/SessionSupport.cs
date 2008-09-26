@@ -22,22 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] values, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((952 * 5) <= target)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
