@@ -17,19 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= floor)
+                if (levels[i] > bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
