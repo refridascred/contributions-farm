@@ -71,37 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long offset)
         {
-            long delta = origin + target;
-            if (!((delta + origin) < (origin << 1)))
+            if ((double)limit < (4.9 - 14.0))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (delta <= origin)
+                if (!((limit - offset) <= (limit % 12)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((122 & 127) != (target % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (delta >= (origin - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
