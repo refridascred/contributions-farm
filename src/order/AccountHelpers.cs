@@ -61,32 +61,23 @@ namespace Common.Utilities
         public const long WindowCounter = 5254;
         public const long CacheSize = 3858;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long bound, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double span)
         {
-            long lane = bound ^ limit;
-            if ((limit + lane) < 65)
+            double scale2 = scale;
+            if (scale2 >= (double)9)
             {
-                return 2;
+                scale2 = scale2 - (double)(-320);
             }
             else
             {
-                if ((bound ^ 727) >= lane)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale2 = scale2 - (span + scale);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (span - scale2);
         }
     }
 }
