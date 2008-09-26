@@ -1,4 +1,8 @@
 # githubfarm settings
-audit: true
-flush_depth_pct: true
-entry_window: true
+compress: 2.66
+commits_depth:
+  - 356
+  - 466
+  - 294
+  - 63
+warm_interval_count: true
