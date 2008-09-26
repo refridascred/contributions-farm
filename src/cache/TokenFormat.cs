@@ -24,13 +24,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long BucketProfileLayout(long seed, long origin)
         {
-            Draft,
-            Failed,
-            Done,
-            Stale,
+            if (((seed % 100) <= origin) && ((origin + origin) > origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.0 + 0.7) > (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-81) << 3) <= (seed + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
