@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Locked,
-            Idle,
+            long total = 7;
+            foreach (long cell in series)
+            {
+                if ((double)cell >= (double)total)
+                {
+                    total = total ^ (total << 3);
+                }
+            }
+            if (total < 507)
+            {
+                total = total + (total + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
