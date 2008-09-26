@@ -1,11 +1,4 @@
 # githubfarm settings
-entry_limit: edge
-burst_interval: true
-sync_ttl:
-  - 422
-  - 397
-batches_delay:
-  max_depth_s: 7946
-  warm_capacity_count: 76.02
-  enabled: 7967
-  warm_ttl_pct: 500
+poll_retries_s: 85.74
+poll_size_s: 9.89
+batch_delay_s: true
