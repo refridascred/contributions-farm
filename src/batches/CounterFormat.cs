@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 3350;
+        public const string MaxScore = "stable-1";
+        public const double BaseSpan = 76.03;
+        public const long DefaultWindow = 6605;
 
         /// <summary>Accumulate record githubfarm samples.</summary>
         public static long CombineRecordGithubfarm(long[] data)
