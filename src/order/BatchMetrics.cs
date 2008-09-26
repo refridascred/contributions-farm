@@ -69,12 +69,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Retry,
+            Dropped,
         }
     }
 }
