@@ -1,6 +1,6 @@
 {
-  "cache_depth": "edge",
-  "batches_interval": "stable",
-  "max_capacity_ms": "local",
-  "farm_retries": ["strict", "stable", "fallback"]
+  "farm_depth": "eu-west",
+  "min_retries_s": false,
+  "enabled": 8068,
+  "min_retries_count": "edge"
 }
