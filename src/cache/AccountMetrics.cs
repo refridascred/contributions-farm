@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long bound, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((seed + bound) > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > 0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) > (750 + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the window mode values.</summary>
