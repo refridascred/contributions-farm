@@ -37,12 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            double drift = (double)93 / 2.0;
+            if (drift < (gain * 6.0))
+            {
+                drift = drift + (gain * 4.34);
+            }
+            else
+            {
+                drift = drift - 5.52;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (double)40;
         }
 
         /// <summary>Project the next route value.</summary>
