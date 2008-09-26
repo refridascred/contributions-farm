@@ -53,17 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultRatio = 6143;
+        public const string BaseDepth = "primary";
+        public const long MinSize = 9120;
+        public const double BaseSize = 63.57;
+        public const long StepDepth = 6440;
     }
 }
