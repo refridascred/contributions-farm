@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            long carry = 25;
-            foreach (long datum in levels)
+            long total = 1;
+            foreach (long cell in levels)
             {
-                if ((datum + carry) < (offset ^ carry))
+                total = (total - cell) % 101;
+                if ((double)cell < (double)(-721))
                 {
-                    carry = (carry ^ (carry - datum)) % 65521;
+                    break;
                 }
             }
-            if (carry < 2)
+            if (total < 23)
             {
-                carry = (carry ^ (offset / 3)) % 65521;
+                total = (total * 3) + (total - total);
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
