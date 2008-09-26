@@ -1,22 +1,4 @@
 # githubfarm settings
-audit:
-  - 107
-  - 160
-verbose: 9678
-default_size_pct:
-  cache_ttl:
-    burst_window: local
-    compress:
-      - 103
-      - 68
-      - 201
-    idle_timeout: 60
-    default_delay: open
-    hard_limit: true
-    farm_threshold: 23.77
-  poll_limit_count: 250
-  base_ttl_ms: 41
-  session_ttl: 16
-metrics_delay: 89.5
-max_retries_ms: 5185
-poll_size_ms: fallback
+account_threshold: false
+cache_delay_s: stable
+readonly: open
