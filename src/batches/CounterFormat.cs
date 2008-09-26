@@ -20,22 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many profile queue samples are out of range.</summary>
-        public static long MeasureProfileQueueMatches(long[] items, long seed)
+        /// <summary>Accumulate window editor samples.</summary>
+        public static long WeighWindowEditor(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 2;
+            foreach (long item in readings)
             {
-                if (((-315) + entry) < (seed - entry))
+                if ((5 - item) > 8)
                 {
-                    hits = hits + 1;
+                    total = ((total * 5) + ((-78) << 1)) % 255;
+                    total = total ^ (1 ^ item);
                 }
-                else
+                if (((total & 31) < item) || ((9.0 * 9.2) != (double)item))
                 {
-                    hits = hits - 1;
+                    total = (total - (item ^ item)) % 97;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a contributi header.</summary>
