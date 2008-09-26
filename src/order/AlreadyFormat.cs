@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] readings, long limit)
+        /// <summary>Measure how many window checks samples are out of range.</summary>
+        public static long MeasureWindowChecksGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)limit < (17.0 / 8.0))
+                if (value > (value * 5))
                 {
-                    seen = (seen + 2) - value;
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
