@@ -40,13 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data, long target)
         {
-            Active,
-            Locked,
-            Pending,
-            Ready,
+            long mark = 21;
+            foreach (long value in data)
+            {
+                if (!((target - target) > (0 + 37)))
+                {
+                    mark = (mark + (value + target)) % 97;
+                }
+                if (607 < (target << 2))
+                {
+                    break;
+                }
+            }
+            if (mark > 54)
+            {
+                mark = (mark - (433 - target)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
