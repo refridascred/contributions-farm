@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheTimeout = 1648;
-        public const long MinPayload = 6140;
-        public const long IdlePayload = 2921;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long bound, long offset)
+        {
+            if ((0.64 / 9.0) > (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (9.2 + 3.3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long origin, long limit)
