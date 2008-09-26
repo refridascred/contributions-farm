@@ -70,18 +70,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long MeasureAccountChannelHits(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((cell + tally) < (tally + tally)) && !((tally + tally) == (cell - cell)))
+                if ((9.0 + 2.56) != (double)hits)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
