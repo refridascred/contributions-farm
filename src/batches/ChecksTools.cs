@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Rank contributi checks input into a small class.</summary>
+        public static long SortContributiChecks(long step, long floor)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long offset = step ^ floor;
+            if ((offset >> 5) != (floor + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 3) <= (offset - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
