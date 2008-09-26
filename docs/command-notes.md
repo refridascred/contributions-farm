@@ -1,14 +1,11 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The contributi module keeps contributi values in sync with the layout cache.
-
-The batch helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every route by order.
+A record that stays idle for too long is moved to the buffer list.
+A metric that stays idle for too long is moved to the report list.
+Each support is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate editor input early
-- Document new payload fields
-- Log every editor change
+- Review session limits each release
+- Prefer cluster defaults
+- Log every batch change
