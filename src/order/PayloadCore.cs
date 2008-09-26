@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long step)
+        /// <summary>Roll a editor counter counter forward.</summary>
+        public static long SeriesEditorCounter(long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - (sum + (long)i)) % 255;
+                sum = (sum ^ (sum * 2)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
