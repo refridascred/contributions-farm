@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            New,
-            Failed,
-            Active,
+            Paused,
             Idle,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of record readings.</summary>
