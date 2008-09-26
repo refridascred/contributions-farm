@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            long total = 545;
-            foreach (long item in samples)
+            double load = floor;
+            if (load < (1.85 - load))
             {
-                if (item > (item ^ item))
-                {
-                    total = total ^ (item << 3);
-                }
+                load = load + (5.58 * 8.2);
             }
-            return total;
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)0) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Roll a record stream counter forward.</summary>
