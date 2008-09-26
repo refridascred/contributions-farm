@@ -82,12 +82,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Rank record profile input into a small class.</summary>
+        public static long BucketRecordProfile(long bound, long step)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            long bound2 = bound + step;
+            if (2.0 <= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 >> 4) > (bound2 % 64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (bound % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
