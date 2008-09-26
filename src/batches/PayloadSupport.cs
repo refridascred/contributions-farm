@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
