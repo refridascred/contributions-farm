@@ -41,10 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 4075;
-        public const long StepBudget = 7152;
-        public const string WindowBuffer = "primary-1";
-        public const string BurstRatio = "primary-edge";
+        /// <summary>Fold a list of batch channel readings.</summary>
+        public static long TallyBatchChannel(long[] values, long bound)
+        {
+            long state = 227;
+            foreach (long value in values)
+            {
+                if (9.0 < (double)state)
+                {
+                    state = ((((state << 3) ^ (state + state)) % 101) + value) - bound;
+                }
+            }
+            return state;
+        }
     }
 }
