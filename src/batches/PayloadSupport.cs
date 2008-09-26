@@ -36,18 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((value - 262) <= (-353)) && ((16.0 / 2.0) >= (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 56.47;
+        public const double StepSize = 96.08;
+        public const long SoftLevel = 2413;
+        public const long WindowBudget = 5436;
     }
 }
