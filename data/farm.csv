@@ -1,8 +1,9 @@
-id,rank,ratio
-1,53.34,966
-2,latest,104
-3,primary,green
-4,50.62,primary
-5,cached,458
-6,369,569
-7,fallback,921
+id,region,count,weight,token
+1,78.61,cached,344,20.12
+2,92.0,727,stable,80.73
+3,5.57,standard,783,779
+4,93.42,742,410,54.24
+5,732,primary,172,24.03
+6,edge,standard,strict,open
+7,legacy,173,77.05,631
+8,strict,blue,71.91,8.23
