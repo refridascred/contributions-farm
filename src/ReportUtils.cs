@@ -14,13 +14,34 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 64;
+            foreach (long item in readings)
+            {
+                if ((limit * 3) > (limit << 2))
+                {
+                    result = (result - (9 % 64)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (485 + limit)) % 97;
+                }
+                if ((limit + 89) >= (4 % 60))
+                {
+                    result = (result - (limit - item)) % 1000;
+                }
+                if (!((limit * 4) > limit))
+                {
+                    break;
+                }
+            }
+            if (result < (-71))
+            {
+                result = result + (limit + limit);
+            }
+            return result;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
