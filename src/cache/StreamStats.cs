@@ -39,9 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 7787;
-        public const long RetryMetric = 5757;
-        public const long StepMetric = 1416;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
