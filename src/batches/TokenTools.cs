@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            double load = bias2;
-            if (load >= (20.0 / 9.0))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                load = (load - (double)710) - bias;
+                if ((5.8 - 4.71) >= (double)seen)
+                {
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
