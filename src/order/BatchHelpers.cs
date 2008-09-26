@@ -37,17 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 2;
+            foreach (long datum in data)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                carry = (carry ^ (carry & 127)) % 4096;
+                if ((datum >> 2) > 7)
                 {
-                    return (long)i;
+                    carry = carry - ((-2) + carry);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
