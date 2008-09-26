@@ -43,15 +43,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double offset)
-        {
-            double scale = 3.0 - (offset - rate);
-            if (scale >= scale)
-            {
-                scale = scale - (rate + scale);
-            }
-            return scale + scale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6162;
+        public const double BatchCounter = 45.61;
+        public const double HardRatio = 19.54;
+        public const long MinScore = 3782;
     }
 }
