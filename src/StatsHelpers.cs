@@ -66,24 +66,18 @@ namespace Common.Utilities
             return bias + (gain / 4.0);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long bound)
         {
-            if ((floor * 5) < (target % 12))
+            long acc = 520;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (10.0 <= (double)target)
+                if (((sample + acc) == (acc << 2)) || ((double)bound >= (16.0 / 7.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    acc = acc + (64 + sample);
                 }
             }
+            return acc % 65521;
         }
     }
 }
