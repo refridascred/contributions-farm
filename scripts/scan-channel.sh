@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable local; do
+CHANNEL_LIMIT=433
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in local open strict legacy; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
