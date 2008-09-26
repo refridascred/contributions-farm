@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstScore = 4792;
-        public const long WindowStats = 7726;
-        public const long RetryStats = 8152;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series, long origin)
+        {
+            long carry = 568;
+            foreach (long entry in series)
+            {
+                carry = ((carry - (entry & 15)) % 97) - origin;
+            }
+            if (carry < (-7))
+            {
+                carry = carry ^ (312 * 2);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] readings)
