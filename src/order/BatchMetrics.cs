@@ -40,37 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long seed, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long offset)
         {
-            long gap = seed + offset;
-            if (((seed >> 2) < (offset / 7)) || ((gap << 2) > (offset + gap)))
+            long slot = step + offset;
+            if ((step - offset) < (479 >> 1))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((3.26 - 4.21) == (double)seed)
+                if ((slot + step) != (6 + slot))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((gap <= (7 / 3)) && ((offset % 8) != (51 * 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= gap)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
