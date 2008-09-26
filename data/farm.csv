@@ -1,10 +1,7 @@
-id,ratio,level,owner
-1,699,49,57.8
-2,cached,514,0.57
-3,232,47,local
-4,local,open,cached
-5,68.82,legacy,48.33
-6,824,712,165
-7,76.37,strict,green
-8,67.6,419,372
-9,strict,edge,latest
+id,level,rank
+1,36,eu-west
+2,local,13.81
+3,36.12,25.88
+4,44.02,712
+5,162,edge
+6,230,cached
