@@ -29,19 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 2) + (long)i2;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
