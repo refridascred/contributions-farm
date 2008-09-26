@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data, long origin)
         {
-            Locked,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >> 3) > (61 * 3))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
