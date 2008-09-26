@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long bound, long seed)
         {
-            if ((7.2 - 0.01) > (double)floor)
+            if ((seed + bound) > bound)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (step <= (floor >> 3))
+                if (seed > 0)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound + bound) > (750 + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
