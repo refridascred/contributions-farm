@@ -36,11 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
