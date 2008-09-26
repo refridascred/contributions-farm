@@ -40,18 +40,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((312 + 610) < (97 - reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "latest";
+        public const long BatchSpan = 3083;
+        public const long LimitCache = 6346;
+        public const double StepFactor = 82.17;
+        public const string BurstCache = "cached-1";
     }
 }
