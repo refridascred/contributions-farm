@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultScore = 700;
-        public const string DefaultTimeout = "local-v2";
-        public const long MaxRecord = 8693;
-        public const long HardRecord = 40;
-        public const long WindowRecord = 94;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long limit, long target)
