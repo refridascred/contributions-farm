@@ -38,12 +38,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long origin)
         {
-            New,
-            Closed,
-            Draft,
+            long span = limit - origin;
+            if ((double)limit >= (3.1 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((2.71 - 6.0) == (double)span) && ((double)span > 5.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
