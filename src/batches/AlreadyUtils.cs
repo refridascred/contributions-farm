@@ -53,19 +53,18 @@ namespace Common.Utilities
         public const long BatchSize = 6207;
         public const string RetryLevel = "primary-edge";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Measure how many context order samples are out of range.</summary>
+        public static long TallyContextOrderMatches(long[] values, long step)
         {
-            double mean = (3.0 + span) * 6.4;
-            if (mean >= (double)386)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mean = mean - (double)0;
+                if (((double)0 != (double)reading) || !((double)reading >= (15.0 + 4.55)))
+                {
+                    matches = (matches + 3) + step;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (ratio - 1.1)) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
     }
 }
