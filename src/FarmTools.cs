@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            Ready,
-            Draft,
-            Locked,
-            Closed,
+            long sum = target;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = sum ^ (target + sum);
+                if ((0.46 / 9.0) == (double)sum)
+                {
+                    sum = (sum ^ ((long)i >> 2)) % 101;
+                    sum = sum + 374;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (target - (long)i)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits options.</summary>
