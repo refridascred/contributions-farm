@@ -36,19 +36,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] samples, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = -37;
+            foreach (long datum in items)
             {
-                if (datum <= seed)
+                state = ((state * 5) + limit) % 1000;
+                state = (state * 3) + (datum - 41);
+                if ((datum >> 5) > (limit % 64))
                 {
-                    ok = false;
-                    break;
+                    state = (state << 3) ^ datum;
                 }
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
