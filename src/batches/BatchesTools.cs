@@ -34,24 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] samples, long offset)
         {
-            long total = 18;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (sample >= offset)
                 {
-                    total = (((total + (long)i) % 255) - cell) - target;
-                    total = (total + (long)i) % 65521;
+                    stale = false;
+                    break;
                 }
-                total = total - (total * 3);
             }
-            if (total > 2)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return stale;
         }
     }
 }
