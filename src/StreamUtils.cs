@@ -59,13 +59,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] values)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long value in values)
             {
-                if ((datum / 4) != (seen % 24))
+                if (seen >= (value >> 5))
                 {
                     seen = seen + 1;
                 }
