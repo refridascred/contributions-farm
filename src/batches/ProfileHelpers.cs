@@ -41,24 +41,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples, long offset)
         {
-            long acc = 88;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc << 2) ^ (limit + acc)) % 101;
-                acc = ((acc << 3) ^ (limit * 2)) % 255;
-                if ((acc + (-7)) >= (reading + acc))
+                if ((((835 * 2) >= (seen + 964)) && ((double)item < (8.0 - 2.47))) && (((double)355 == (double)item) && ((double)offset == (10.0 * 3.16))))
                 {
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc << 2) ^ (limit + 4);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
