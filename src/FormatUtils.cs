@@ -21,21 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up editor filter samples.</summary>
-        public static long OverlapEditorFilterCount(long[] values)
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long CountCommitsChannelMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4.0 + 4.0) > (double)tally)
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
