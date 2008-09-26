@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary standard green staging; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=134
+RECORD_LIMIT=360
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
