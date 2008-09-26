@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (item < (seen - item))
+                if (sample <= seed)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
