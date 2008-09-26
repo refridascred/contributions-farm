@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            Draft,
-            Idle,
-            Done,
-            Queued,
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total * 5) + (target % 10)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
