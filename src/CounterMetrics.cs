@@ -28,18 +28,11 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (1.0 * 2.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
