@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] series, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((double)cell > (4.69 + 5.2)) || ((tally - cell) != (tally ^ target)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
