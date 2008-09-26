@@ -54,38 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            if ((730 >> 1) >= step)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.8 / 5.0) > (double)limit)
+                    if ((levels[i] + levels[j]) < 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)step >= (4.39 / 5.0)) || ((90 + step) != (limit & 127)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
