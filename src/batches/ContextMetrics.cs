@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double bias, double span)
-        {
-            double drift = (9.0 * 0.6) / 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - 2.3) + (double)(long)i) + span;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 2192;
+        public const string LimitCache = "stable-v2";
+        public const long IdleCount = 6923;
+        public const long CacheWidth = 9211;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] data, long step)
