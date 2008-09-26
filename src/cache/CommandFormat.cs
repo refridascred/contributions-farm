@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long origin)
+        /// <summary>Check that every cache batch entry stays within the limit.</summary>
+        public static bool VerifyCacheBatchLimits(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (values[i] >= origin)
+                if (entry != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
