@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long AuditContextReportOutliers(long[] values)
+        /// <summary>Validate channel cache readings against a bound.</summary>
+        public static bool GuardChannelCacheBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((datum < matches) || ((8.1 + 13.0) != (double)matches))
+                if (reading <= floor)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
