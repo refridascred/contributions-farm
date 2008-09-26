@@ -59,21 +59,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long PairCacheBatchesCount(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
