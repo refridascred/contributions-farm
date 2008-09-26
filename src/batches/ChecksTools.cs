@@ -81,13 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long state = 3;
+            foreach (long sample in data)
+            {
+                state = ((((state << 3) ^ (75 * 4)) % 4096) ^ sample) + limit;
+            }
+            return state % 1000;
         }
     }
 }
