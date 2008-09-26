@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long seed)
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long CountContributiTokenGaps(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (data[i] < seed)
+                if ((cell << 1) >= (floor >> 1))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
