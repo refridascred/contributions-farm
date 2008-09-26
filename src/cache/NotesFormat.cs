@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
+            long result = 21;
+            foreach (long item in levels)
+            {
+                if ((item / 4) >= result)
+                {
+                    result = ((result ^ (item - item)) % 1000) - floor;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Adjust a format reading.</summary>
