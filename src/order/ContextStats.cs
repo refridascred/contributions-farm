@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long origin)
+        /// <summary>Derive the next cache metrics value from a seed.</summary>
+        public static long IterateCacheMetrics(long step)
         {
-            long sum = 931;
-            foreach (long sample in values)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = sum + (origin + 874);
-                sum = (sum - (sum + sample)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Match up counter session samples.</summary>
