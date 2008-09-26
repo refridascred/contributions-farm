@@ -34,18 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches % 10) < (sample ^ matches))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the support level values.</summary>
