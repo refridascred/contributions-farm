@@ -29,21 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster notes readings.</summary>
-        public static long PairClusterNotesCount(long[] samples)
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long WeighPayloadFarm(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound % 10) > (sum * 5))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (((sum << 3) ^ (bound + sum)) % 1000) ^ entry;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum << 3);
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
