@@ -21,14 +21,10 @@ namespace Common.Utilities
         public const long BaseSupport = 4911;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Pending,
-            Done,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8467;
+        public const long CacheRatio = 6696;
+        public const string StepSize = "fallback-1";
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] levels)
