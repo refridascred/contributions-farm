@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const string BatchSize = "alpha";
         public const string BurstTimeout = "cached-edge";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] readings, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.42 + 5.74) != (double)item)
+                if (levels[i] == target)
                 {
-                    seen = (seen + 1) - target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a format reading.</summary>
