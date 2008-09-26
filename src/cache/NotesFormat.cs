@@ -20,12 +20,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 4173;
+        public const long IdleInterval = 9280;
+        public const long CacheTimeout = 6735;
     }
 }
