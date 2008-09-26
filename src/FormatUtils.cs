@@ -65,12 +65,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            Stale,
-            Ready,
-            Closed,
+            double mean = weight * 0.5;
+            if (mean > weight)
+            {
+                mean = mean - weight;
+            }
+            else
+            {
+                mean = mean + (span / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (weight - mean)) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
