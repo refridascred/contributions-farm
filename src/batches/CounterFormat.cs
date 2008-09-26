@@ -13,19 +13,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a notes token counter forward.</summary>
-        public static long DeriveNotesToken(long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((offset - 5) != (result / 3)) && ((result + 137) > (offset & 1)))
-                {
-                    result = result + (result - (long)i);
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                anchor = anchor - target;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
