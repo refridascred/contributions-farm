@@ -26,18 +26,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] series, long bound)
+        /// <summary>Blend two commits checks measurements.</summary>
+        public static double ScaleCommitsChecks(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((bound > (bound << 2)) || ((value + value) < (hits >> 1))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double weight2 = weight;
+            return (weight2 - weight) + bias;
         }
     }
 }
