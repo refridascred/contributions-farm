@@ -1,8 +1,7 @@
 # support settings
-hard_size_pct: 4795
-default_limit: strict
-enabled: 92
-idle_size:
-  - legacy
-  - fallback
-  - blue
+soft_capacity_pct: 95.28
+readonly: false
+cache_interval_s: open
+burst_limit_ms: strict
+entry_ttl: 96.16
+cache_ratio_ms: staging
