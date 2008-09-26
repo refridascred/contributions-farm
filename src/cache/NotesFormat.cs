@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 86.62;
-        public const long BatchSize = 6170;
-        public const long MinNotes = 2484;
-        public const double DefaultCount = 97.28;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 56.71;
+        public const string StepLayout = "local-v2";
+        public const double BatchLayout = 41.31;
+        public const long SoftFactor = 7362;
+        public const long DefaultFactor = 8810;
 
         /// <summary>Count the order support entries that pass the check.</summary>
         public static long TallyOrderSupportGaps(long[] values, long bound)
