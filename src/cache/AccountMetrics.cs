@@ -34,25 +34,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long limit, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            long prev = limit - seed;
-            if (((seed % 16) < (prev % 8)) && ((prev + prev) <= (prev ^ 6)))
+            long score = 373;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed - limit) < 63) || ((seed & 127) != (seed ^ prev)))
+                if ((971 < (score - score)) || ((entry - score) >= score))
                 {
-                    return 5;
+                    score = (score - entry) % 1000;
                 }
-                else
+                if ((double)entry < (7.15 + 1.2))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Find the first cluster graph entry that matches the target.</summary>
