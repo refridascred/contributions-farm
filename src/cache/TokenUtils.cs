@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] readings)
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long CountSupportSessionMatches(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((count + 34) != (item % 7))
+                if (((1.63 * 1.1) != (double)matches) && !((matches << 3) >= (matches + matches)))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
