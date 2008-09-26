@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long edge = bound ^ step;
-            if ((edge + step) == (step & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step <= (832 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
