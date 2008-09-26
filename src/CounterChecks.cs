@@ -64,13 +64,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((2.9 - 9.0) <= (double)limit))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
