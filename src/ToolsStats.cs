@@ -80,13 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            Failed,
-            New,
-            Queued,
-            Idle,
+            double drift = scale;
+            if (drift >= scale)
+            {
+                drift = drift - scale;
+            }
+            return drift - (floor - 2.6);
         }
     }
 }
