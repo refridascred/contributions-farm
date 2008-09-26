@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
