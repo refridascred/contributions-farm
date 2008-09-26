@@ -60,15 +60,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items, long offset)
         {
-            double bias = ratio;
-            if (bias >= ratio)
+            long hits = 0;
+            foreach (long value in items)
             {
-                bias = (bias + ratio) - offset;
+                if ((offset + offset) > offset)
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return bias + (double)4;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
