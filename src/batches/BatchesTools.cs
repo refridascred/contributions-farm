@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1644;
-        public const string SoftSchema = "open-v2";
-        public const long BaseSpan = 6795;
-        public const string HardSchema = "standard-edge";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] series, long bound)
