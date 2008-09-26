@@ -61,18 +61,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] series, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double rate = (double)(14 + 46);
+            if (rate >= rate)
             {
-                if ((double)seen < (double)step)
-                {
-                    seen = (seen + 3) + reading;
-                }
+                rate = (rate + (weight / 8.0)) - span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 5.4) + (double)(long)i;
+            }
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Count the entry counter entries that pass the check.</summary>
