@@ -28,22 +28,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = 54;
-            foreach (long datum in readings)
-            {
-                if (carry >= seed)
-                {
-                    carry = (carry ^ (871 + datum)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + 27) % 255;
-                }
-            }
-            return carry;
+            Draft,
+            Locked,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
