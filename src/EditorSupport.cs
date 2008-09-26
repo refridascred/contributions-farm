@@ -56,19 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format payload entry stays within the limit.</summary>
-        public static bool GuardFormatPayloadBounds(long[] series, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
