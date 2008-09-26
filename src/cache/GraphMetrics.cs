@@ -40,13 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
