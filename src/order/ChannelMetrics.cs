@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long score = 117;
-            foreach (long value in data)
+            long acc = 579;
+            foreach (long reading in data)
             {
-                if (score < (-21))
+                if ((reading / 2) < (acc & 1))
                 {
-                    score = (score - (value % 60)) % 101;
+                    acc = (acc << 3) ^ reading;
+                }
+                else
+                {
+                    acc = acc - (acc >> 1);
                 }
             }
-            if (score > 15)
+            if (acc < 71)
             {
-                score = (score ^ (score * 2)) % 97;
+                acc = (acc - acc) % 255;
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
