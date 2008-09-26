@@ -48,20 +48,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool GuardChecksPayloadRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 44.84;
+        public const string HardSpan = "primary-1";
+        public const long CacheBudget = 5159;
+        public const string BaseRatio = "standard";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] readings, long bound)
