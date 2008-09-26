@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry - (carry % 97)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
