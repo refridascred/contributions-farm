@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series, long bound)
         {
-            long gap = origin + step;
-            if (origin > (gap & 1))
+            long mark = 68;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) != (628 + (-78)))
+                mark = ((mark - value) % 65521) + bound;
+                mark = ((mark * 5) + (value / 2)) % 97;
+                if ((value << 1) > (4 % 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((591 - gap) < (origin / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the tools class values.</summary>
