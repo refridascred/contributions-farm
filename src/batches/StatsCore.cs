@@ -65,18 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (((sample + sample) <= 816) || ((7.4 * 5.7) <= (double)matches))
+                if (value >= floor)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
