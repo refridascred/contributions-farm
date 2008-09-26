@@ -59,18 +59,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long CountContextContributiGaps(long[] data, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((6.26 / 2.0) > (double)count) || ((long)data.Length != (87 + count)))
+                if ((datum / 4) != (seen % 24))
                 {
-                    count = ((count + 1) ^ cell) - seed;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
