@@ -1,12 +1,16 @@
 # entry settings
-channel_capacity: 10.83
-hard_threshold_s: strict
-burst_window_ms:
-  batch_depth:
-    metric_depth: staging
-    idle_window_s: 19
-    farm_interval: stable
-    audit: latest
-    soft_threshold: 3188
-  poll_delay: 19.3
-  metric_delay: 19.6
+enabled: eu-west
+poll_limit_s: 100
+session_limit:
+  retry_capacity_ms: 91.8
+  batch_limit: 93.83
+  warm_ratio_count: standard
+  enabled:
+    - edge
+    - primary
+  schema_delay: 22.91
+poll_limit_ms:
+  - legacy
+  - stable
+audit: 8774
+burst_size: standard
