@@ -50,20 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits buffer value from a seed.</summary>
-        public static long RollCommitsBuffer(long seed)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((842 / 9) > (seed & 127)) || ((5.0 - 6.8) >= (double)seed))
-                {
-                    mix = mix - seed;
-                }
-                mix = ((mix * 3) + seed) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            double weight = (double)(5 << 1);
+            return (weight + (floor / 7.0)) + bias;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
