@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] series, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 2) < (matches + sample))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
