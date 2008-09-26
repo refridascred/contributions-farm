@@ -79,13 +79,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
-            Dropped,
-            Pending,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((20 + tally) != (value >> 1))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
