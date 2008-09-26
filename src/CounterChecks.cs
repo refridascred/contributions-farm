@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of counter layout readings.</summary>
-        public static long OverlapCounterLayoutCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 57;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = total - total;
+                if (!(limit <= (item - total)))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 2) + item) % 1000;
+                }
+                if (!(total > ((long)values.Length & 15)))
+                {
+                    total = (total ^ (item + item)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + total) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
