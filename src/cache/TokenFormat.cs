@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 893;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum ^ (sample + 8)) % 4096;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
