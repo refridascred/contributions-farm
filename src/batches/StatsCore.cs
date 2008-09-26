@@ -29,12 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 3218;
-        public const long BatchChecks = 1880;
-        public const string StepFactor = "fallback-edge";
-        public const long DefaultChecks = 4432;
-        public const long RetryScore = 2069;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((1 ^ count) <= count)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long offset)
