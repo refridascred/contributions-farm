@@ -27,16 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 5695;
+        public const long CacheProfile = 2047;
+        public const string MinBudget = "alpha-1";
+        public const string SoftProfile = "open";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] levels, long limit)
