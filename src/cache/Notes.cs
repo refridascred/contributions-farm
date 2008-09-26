@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((score + score) == (score * 4)))
-                {
-                    score = (score - (score - offset)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
