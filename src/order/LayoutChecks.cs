@@ -20,17 +20,13 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
