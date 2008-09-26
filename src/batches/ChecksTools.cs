@@ -33,32 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks graph value against two limits.</summary>
-        public static long SortChecksGraph(long floor, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long diff = floor ^ offset;
-            if ((floor + floor) < (offset + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset / 2) == (diff - floor)) || (floor >= (71 % 12)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff * 4) < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Adjust a channel counter reading.</summary>
