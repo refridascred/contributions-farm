@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mean + 20.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 7045;
-        public const long MinEditor = 2602;
-        public const double DefaultEditor = 22.85;
-        public const long HardDepth = 5048;
-        public const double BurstEditor = 90.63;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] series, long offset)
