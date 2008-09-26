@@ -22,10 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardFactor = 4996;
-        public const string HardStats = "staging-v2";
-        public const double SoftStats = 90.57;
+        /// <summary>Audit cluster context readings against a rule.</summary>
+        public static long TallyClusterContextMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length + 1) < (cell + 0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the metric checks series from a seed.</summary>
         public static long DeriveMetricChecks(long offset)
