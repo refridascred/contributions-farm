@@ -53,22 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] series, long limit)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum - datum) <= 387)
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
                 {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
