@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1088;
+        public const long BurstProfile = 1924;
+        public const long BatchProfile = 4311;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long origin)
