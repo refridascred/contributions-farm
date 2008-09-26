@@ -31,10 +31,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitScore = 8.15;
-        public const long MaxSpan = 8570;
-        public const long StepInterval = 7150;
-        public const double WindowCount = 48.77;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
