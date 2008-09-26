@@ -48,19 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics context value from a seed.</summary>
-        public static long SeriesMetricsContext(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            long carry = 34;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                carry = ((carry << 2) ^ (-3)) % 255;
+                if (((double)carry < 7.42) && ((floor * 2) >= 838))
                 {
-                    acc = (acc + (bound + bound)) + (long)i2;
+                    carry = carry + (sample ^ carry);
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
     }
 }
