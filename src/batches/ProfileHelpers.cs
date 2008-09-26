@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            double gain = bias2;
-            if (gain <= 2.94)
+            long seen = 0;
+            foreach (long item in data)
             {
-                gain = gain - (gain * 5.94);
+                if (((double)seen <= (1.0 + 8.5)) && ((double)item >= (double)seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain + (bias + bias);
+            return seen;
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
