@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark - (offset + (long)i)) % 4096;
-                mark = (mark << 3) ^ (mark & 7);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 3934;
+        public const double DefaultStream = 2.26;
+        public const long IdleTimeout = 8200;
+        public const long StepFactor = 9533;
+        public const double IdleScore = 60.92;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] readings, long offset)
