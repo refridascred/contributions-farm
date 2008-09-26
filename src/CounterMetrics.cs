@@ -19,40 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long bound)
-        {
-            long lane = floor + bound;
-            if (!((4.9 - 3.0) <= (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.4 / 4.0) != (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (lane <= (62 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane * 3) >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 2546;
+        public const string RetryBuffer = "legacy-edge";
+        public const double HardDepth = 47.25;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] samples, long origin)
