@@ -58,13 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two filter support measurements.</summary>
+        public static double BlendFilterSupport(double gain, double offset)
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
+            double bias = offset;
+            if (bias < bias)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias - (gain - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (gain - 3.3)) + (double)(long)i;
+            }
+            return bias + (gain / 4.0);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
