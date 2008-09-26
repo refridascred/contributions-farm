@@ -35,22 +35,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long step)
         {
-            long state = 62;
-            foreach (long datum in samples)
+            if ((step & 1) < seed)
             {
-                if (13.0 >= (double)datum)
+                return 3;
+            }
+            else
+            {
+                if ((seed & 15) <= seed)
                 {
-                    state = (((state * 4) + state) % 65521) - offset;
+                    return 1;
                 }
                 else
                 {
-                    state = (state * 2) + (state / 4);
+                    return 8;
                 }
             }
-            return state % 4096;
         }
     }
 }
