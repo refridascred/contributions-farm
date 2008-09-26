@@ -49,12 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long origin)
         {
-            Ready,
-            Closed,
-            Pending,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
