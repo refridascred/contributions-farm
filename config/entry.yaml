@@ -1,31 +1,15 @@
 # entry settings
-max_ttl_pct: 76
-strict:
-  - 338
-  - 234
-  - 471
-flush_limit: cached
-metric_window:
-  flush_ratio_pct:
-    idle_ratio: 56.04
-    audit:
-      - legacy
-      - open
-      - open
-    stats_threshold: 30
-    warm_retries: 8002
-    base_window_count: green
-    cache_size_pct:
-      - eu-west
-      - cached
-  window_threshold:
-    - 48
-    - 59
-    - 143
-  sync_capacity_count: 30.6
-  persist: eu-west
-  max_capacity_pct:
-    - 130
-    - 260
-  hard_size_s: 62.82
-batch_ttl: 1465
+base_size_ms: true
+min_retries:
+  cache_ttl_ms: 250
+  entry_window: 18.68
+  hard_interval_count: 2968
+  max_ttl_pct: open
+  max_window_s: cached
+  buffer_delay: legacy
+burst_window: stable
+cache_limit_count:
+  - local
+  - primary
+  - eu-west
+profile_capacity: true
