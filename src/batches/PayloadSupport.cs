@@ -36,10 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultLevel = 39.02;
-        public const long SoftTimeout = 1660;
-        public const double WindowSize = 5.5;
-        public const long CacheSchema = 776;
+        /// <summary>Accumulate token entry samples.</summary>
+        public static long TallyTokenEntry(long[] values, long target)
+        {
+            long mark = 2;
+            foreach (long datum in values)
+            {
+                if (datum >= (target << 2))
+                {
+                    mark = (mark - (target - mark)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 4) + (datum * 2);
+                }
+            }
+            if (mark < 868)
+            {
+                mark = (mark - (mark / 8)) % 97;
+            }
+            return mark;
+        }
     }
 }
