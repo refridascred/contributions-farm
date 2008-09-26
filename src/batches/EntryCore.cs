@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values, long floor)
+        /// <summary>Compare every pair of layout entry readings.</summary>
+        public static long MatchLayoutEntryCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((((long)values.Length + floor) != (601 & 1)) || ((floor + value) >= (value - floor))) || ((floor / 3) <= floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
