@@ -23,17 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a editor counter counter forward.</summary>
-        public static long SeriesEditorCounter(long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum - (sum + (long)i)) % 255;
-                sum = (sum ^ (sum * 2)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
