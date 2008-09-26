@@ -28,21 +28,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of token stream readings.</summary>
-        public static long CompareTokenStreamCount(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = floor ^ target;
+            if ((floor >> 3) != (prev + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((prev >> 4) >= (prev - prev)) || ((5 * 3) <= (target * 4)))
                 {
-                    if ((levels[i] + levels[j]) < 2)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 2) >= (843 << 1))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate schema format readings against a bound.</summary>
