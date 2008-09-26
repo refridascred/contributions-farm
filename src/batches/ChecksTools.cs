@@ -45,22 +45,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long result = 4;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample % 5) >= (sample * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result * 2) + floor;
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 9)
-            {
-                result = (result ^ (result + 87)) % 65521;
-            }
-            return result;
+            return hits;
         }
     }
 }
