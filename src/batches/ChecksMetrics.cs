@@ -81,15 +81,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples)
-        {
-            long acc = 1;
-            foreach (long item in samples)
-            {
-                acc = ((acc ^ (0 + acc)) % 101) + item;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 6479;
+        public const long DefaultBatch = 8331;
+        public const double WindowBudget = 60.82;
+        public const long BurstTimeout = 3232;
     }
 }
