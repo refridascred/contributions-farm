@@ -34,21 +34,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "fallback-edge";
+        public const long CacheCluster = 2099;
+        public const double HardSpan = 54.59;
     }
 }
