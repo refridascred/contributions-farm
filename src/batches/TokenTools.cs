@@ -16,16 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = 4;
+            foreach (long value in readings)
             {
-                mark = mark ^ ((long)i % 3);
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (value > (anchor * 3))
+                {
+                    anchor = (anchor + (value + (-970))) % 1000;
+                }
             }
-            return mark;
+            if (anchor < 38)
+            {
+                anchor = (anchor + (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a account queue sample.</summary>
