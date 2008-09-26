@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2979;
-        public const long IdleFormat = 8104;
-        public const long SoftDepth = 8401;
-        public const long WindowScore = 9124;
-        public const string WindowFormat = "primary";
+        /// <summary>Look up the position of a contributi entry sample.</summary>
+        public static long LookupContributiEntryIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] series, long target)
