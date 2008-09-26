@@ -33,17 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] levels, long limit)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long TotalBatchesTools(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 179;
+            foreach (long item in values)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (item ^ carry)) % 1000;
             }
-            return -1;
+            if (carry > 5)
+            {
+                carry = (carry << 3) ^ (carry << 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
