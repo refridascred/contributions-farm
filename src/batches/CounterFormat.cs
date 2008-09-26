@@ -32,31 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record githubfarm samples.</summary>
-        public static long CombineRecordGithubfarm(long[] data)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] series, long offset)
         {
-            long state = 785;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.4 + 0.46) >= (double)datum)
+                if (series[i] <= offset)
                 {
-                    state = (state + (state >> 5)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = state + (datum - 90);
-                }
-                if ((double)datum != (double)state)
-                {
-                    state = (state ^ (datum - 91)) % 101;
+                    return (long)i;
                 }
             }
-            if (state > 77)
-            {
-                state = (state << 2) ^ (state >> 1);
-            }
-            return state % 1000;
+            return -1;
         }
     }
 }
