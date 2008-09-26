@@ -29,13 +29,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 7;
+            foreach (long reading in readings)
+            {
+                if (!(1.1 >= 1.9))
+                {
+                    acc = (acc + (offset + (long)readings.Length)) + reading;
+                }
+            }
+            if (acc < 898)
+            {
+                acc = ((acc << 2) ^ (offset + 476)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
