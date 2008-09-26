@@ -1,8 +1,37 @@
 # entry settings
-sync_window: 43.55
-commits_ratio: 25
-stream_depth: 100
-audit:
-  - local
-  - fallback
-  - edge
+strict:
+  persist: 10.08
+  enabled: standard
+  dry_run: 8364
+  idle_ratio:
+    flush_threshold_pct: 100
+    sync_timeout:
+      - 109
+      - 187
+    dry_run:
+      - stable
+      - eu-west
+      - blue
+      - staging
+    farm_delay: 100
+    max_ratio: 100
+    verbose: 500
+  min_ttl_count: legacy
+graph_size: 11.51
+poll_timeout_pct: false
+already_size: standard
+metric_interval:
+  strict:
+    - primary
+    - primary
+    - staging
+    - stable
+  enabled: true
+  burst_delay_count:
+    max_timeout_count: local
+    compress: 2025
+    enabled: 40.89
+    hard_depth: eu-west
+    base_timeout_ms:
+      - staging
+      - edge
