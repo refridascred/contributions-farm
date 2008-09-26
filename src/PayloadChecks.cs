@@ -45,21 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
