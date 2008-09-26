@@ -33,11 +33,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultWidth = 3543;
-        public const long IdleContributi = 686;
-        public const string BaseContributi = "fallback";
-        public const long BatchContributi = 1100;
+        /// <summary>Rank command batch input into a small class.</summary>
+        public static long GradeCommandBatch(long origin, long step)
+        {
+            if ((step & 3) > step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) == (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin > (7.5 / 9.0)) || ((origin - 0) >= 363))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step % 24) >= (origin + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] values)
