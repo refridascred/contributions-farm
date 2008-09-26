@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two notes route measurements.</summary>
-        public static double BlendNotesRoute(double ratio, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            double drift = (ratio / 5.0) * 6.7;
-            if (drift >= (ratio - drift))
+            long acc = 144;
+            foreach (long sample in levels)
             {
-                drift = drift + drift;
+                if (((sample - 87) < (acc & 7)) || ((acc & 31) >= (2 >> 2)))
+                {
+                    acc = ((acc * 5) + (sample + sample)) % 1000;
+                }
+                acc = ((acc * 3) + sample) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (floor / 2.0)) - (double)(long)i;
-            }
-            return drift - drift;
+            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
