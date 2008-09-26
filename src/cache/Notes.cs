@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double drift = floor;
-            if (drift >= (double)47)
-            {
-                drift = drift + (drift / 7.0);
-            }
-            else
-            {
-                drift = drift + (rate - drift);
-            }
-            return drift - (rate / 2.0);
+            Queued,
+            Active,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the layout phase values.</summary>
