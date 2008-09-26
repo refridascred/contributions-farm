@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long floor)
+        /// <summary>Locate a route farm reading by value.</summary>
+        public static long FindRouteFarmIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + hits) < (74 >> 4))
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    hits = ((hits + 2) + reading) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a record schema value against two limits.</summary>
