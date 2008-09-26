@@ -73,18 +73,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long AuditOrderQueueHits(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((count - 0) <= (cell & 3))
+                if (item < origin)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
