@@ -30,31 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long limit)
         {
-            long score = 33;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((score + score) >= (score + 859)))
+                if (levels[i] == limit)
                 {
-                    score = (score * 5) + (score << 2);
-                    score = (score ^ (51 & 1)) % 101;
-                }
-                if (reading < (reading + score))
-                {
-                    score = score - (score << 3);
-                }
-                else
-                {
-                    score = (score + 1) % 4096;
-                }
-                if ((double)reading == (8.0 + 3.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
