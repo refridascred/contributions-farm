@@ -42,13 +42,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen > reading) && ((double)383 > (6.33 * 9.54)))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every format payload entry stays within the limit.</summary>
