@@ -54,12 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 9860;
-        public const long DefaultTimeout = 333;
-        public const long BatchFactor = 4914;
-        public const string MinCount = "local-1";
-        public const string CacheCount = "fallback-v2";
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchMatches(long[] readings)
