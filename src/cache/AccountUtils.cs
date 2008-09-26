@@ -19,24 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            if ((4.8 * 10.0) != (double)floor)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) > (2 ^ step))
+                if (9.2 >= (double)acc)
                 {
-                    return 5;
+                    continue;
                 }
                 else
                 {
-                    return 4;
+                    acc = acc + (acc - offset);
+                    acc = (acc ^ (acc + acc)) % 97;
                 }
+                acc = acc + ((long)i + acc);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
