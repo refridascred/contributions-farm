@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long BaseSupport = 4911;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] readings)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) < (176 & 255))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
