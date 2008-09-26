@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((97 + sample) == (sample + sample))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
