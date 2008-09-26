@@ -19,14 +19,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long bound)
         {
-            New,
-            Locked,
-            Draft,
-            Active,
-            Ready,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
