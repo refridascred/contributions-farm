@@ -22,27 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] samples)
-        {
-            long acc = 30;
-            foreach (long datum in samples)
-            {
-                if ((3 / 5) < datum)
-                {
-                    acc = (acc * 5) + (acc * 2);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc >> 5)) % 97;
-                }
-            }
-            if (acc > 32)
-            {
-                acc = (acc ^ (848 * 5)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 1302;
+        public const string BurstCount = "latest";
+        public const long LimitLayout = 9419;
+        public const string HardBudget = "alpha-1";
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] series)
