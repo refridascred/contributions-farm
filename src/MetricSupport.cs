@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate - (bias / 9.0);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 551;
+            foreach (long cell in readings)
+            {
+                if (!((cell << 3) > anchor))
+                {
+                    anchor = ((anchor << 2) ^ 355) - offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
