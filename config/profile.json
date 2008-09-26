@@ -1,8 +1,8 @@
 {
-  "dry_run": "strict",
-  "strict": "open",
-  "flush_window_s": ["eu-west", "fallback", "green"],
-  "sync_capacity_s": [50, 90, 362, 106],
-  "batch_ratio_count": [498, 169, 489],
-  "base_window_s": 90.14
+  "schema_ratio": 39.49,
+  "persist": "fallback",
+  "strict": 31.58,
+  "base_delay_ms": ["standard", "latest", "blue", "eu-west"],
+  "base_limit": ["stable", "stable"],
+  "min_threshold": 18.09
 }
