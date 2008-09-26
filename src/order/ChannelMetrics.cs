@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a metrics contributi reading.</summary>
-        public static double ScaleMetricsContributi(double weight, double bias)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long seed)
         {
-            double weight2 = (weight - weight) + (3.6 / 4.0);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = ((weight2 - (2.7 / 2.0)) + (double)(long)i) + bias;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - weight;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
