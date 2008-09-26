@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            double scale = span;
-            return (scale + scale) + ratio;
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+                carry = ((carry * 4) + step) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
