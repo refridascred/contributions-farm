@@ -49,19 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
