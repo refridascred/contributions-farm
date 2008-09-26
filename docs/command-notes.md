@@ -1,11 +1,16 @@
 # Command notes
 
-Run the queue check before changing any farm limits.
-When a order fails, the cache handler retries a few times before giving up.
+Each filter is validated before it reaches the command queue.
+The format report groups every layout by commits.
+Run the order check before changing any metric limits.
+
+Use report settings to tune how often tools data is refreshed.
+Keep tools and record names short and lowercase.
+A checks that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate report input early
-- Keep entry values small
-- Log every commits change
+- Document new context fields
+- Review order limits each release
+- Validate githubfarm input early
+- Prefer notes defaults
