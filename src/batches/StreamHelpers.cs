@@ -63,13 +63,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] levels, long floor)
         {
-            Pending,
-            Retry,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (floor > (339 * 3))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
