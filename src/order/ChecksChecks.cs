@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            Draft,
-            Paused,
-            Idle,
-            Active,
+            double ratio = offset;
+            if (ratio >= (double)3)
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (offset + offset);
         }
 
         /// <summary>Locate a already reading by value.</summary>
