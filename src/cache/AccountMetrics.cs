@@ -52,11 +52,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheInterval = 7543;
-        public const double LimitRoute = 9.72;
-        public const long BurstRoute = 7537;
-        public const long BaseRoute = 9391;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double scale, double offset)
