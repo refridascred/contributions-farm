@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double weight2 = bias;
-            if (weight2 <= (weight + 9.2))
-            {
-                weight2 = weight2 - (4.6 / 8.0);
-            }
-            return weight2 + bias;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
