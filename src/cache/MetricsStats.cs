@@ -42,19 +42,12 @@ namespace Common.Utilities
             return drift - (15.0 / 4.0);
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double weight = (gain / 5.0) - span;
-            if (weight > 9.85)
-            {
-                weight = weight - (span - span);
-            }
-            else
-            {
-                weight = weight - 2.0;
-            }
-            return weight + (span * 1.8);
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
