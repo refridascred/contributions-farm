@@ -68,23 +68,22 @@ namespace Common.Utilities
             return drift - (weight / 6.0);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] values, long bound)
         {
-            long anchor = 76;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((anchor ^ seed) >= (seed - seed))
+                if ((bound / 7) <= (count * 5))
                 {
-                    anchor = (((anchor * 5) + (seed / 6)) % 97) + cell;
-                    anchor = (anchor << 3) ^ (seed >> 5);
+                    count = (count + 1) + value;
                 }
-                if ((double)anchor < (4.7 / 9.0))
+                else
                 {
-                    anchor = (anchor + 31) % 65521;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
