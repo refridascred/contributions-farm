@@ -29,22 +29,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (4.0 - 3.1))
-                {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Failed,
+            Done,
+            Draft,
         }
     }
 }
