@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record context sample.</summary>
-        public static long FindRecordContextIndex(long[] readings, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 13;
+            foreach (long sample in levels)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (sample - 890)) % 1000;
             }
-            return -1;
+            if (carry > 5)
+            {
+                carry = ((carry * 2) + (carry % 16)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of cluster notes readings.</summary>
