@@ -21,20 +21,18 @@ namespace Common.Utilities
         public const long WindowStats = 7726;
         public const long RetryStats = 8152;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            long mark = 848;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark + entry) + target;
-                mark = ((mark << 3) ^ (mark * 2)) % 255;
+                if ((matches - 83) > 1)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            if (mark > 940)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
