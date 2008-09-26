@@ -14,11 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 980;
-        public const double BatchCommand = 98.08;
-        public const string MaxCommand = "local-v2";
-        public const string BurstCommand = "local-v2";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Dropped,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] levels, long bound)
