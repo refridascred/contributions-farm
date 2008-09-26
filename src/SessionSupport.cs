@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double drift = 6.0;
-            return (drift + offset) + bias;
+            Failed,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
