@@ -44,38 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings, long offset)
         {
-            if ((target - target) > (target - bound))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + (-328)) < (bound >> 1))
+                if ((8 % 7) < (offset + offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (bound ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target >> 2) > (target >> 4)) || ((double)bound == (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format summary.</summary>
