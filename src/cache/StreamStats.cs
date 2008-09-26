@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 9860;
-        public const long BatchStats = 6252;
-        public const double MaxStats = 5.99;
-        public const string RetryDepth = "alpha";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values)
+        {
+            long mark = 44;
+            foreach (long item in values)
+            {
+                mark = mark ^ (mark / 4);
+                if (((20.0 / 5.0) != (double)item) && ((mark % 10) <= mark))
+                {
+                    mark = mark - (mark + (long)values.Length);
+                }
+            }
+            if (mark > (-7))
+            {
+                mark = (mark - (mark - mark)) % 101;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
