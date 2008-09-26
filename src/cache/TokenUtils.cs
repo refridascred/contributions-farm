@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const double RetryScore = 15.15;
         public const long HardContext = 5968;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the schema status values.</summary>
