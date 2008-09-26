@@ -27,22 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine record editor values into a single score.</summary>
-        public static long DigestRecordEditor(long[] samples, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings, long origin)
         {
-            long carry = 3;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((limit % 12) >= limit)
+                if ((count * 3) < (origin - datum))
                 {
-                    carry = (carry + (value >> 1)) % 101;
+                    count = count + 1;
                 }
             }
-            if (carry < 8)
-            {
-                carry = carry + (carry - limit);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
