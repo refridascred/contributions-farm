@@ -1,38 +1,22 @@
 # githubfarm settings
-cache_ttl_count:
-  cache_threshold_ms: 7
-  cache_size_ms: 100
-  cache_retries:
-    - blue
-    - primary
-    - fallback
-    - fallback
-  verbose: staging
-  min_limit: 7888
-max_interval_pct:
-  dry_run: stable
-  strict: 1.68
-  default_delay_ms: 100
-  retry_delay_count: eu-west
-  retry_delay:
-    - 401
-    - 422
-    - 402
-cluster_size: 5791
-max_capacity: 4.48
-already_capacity:
-  min_delay_s:
-    - 326
-    - 116
-    - 427
-    - 257
-  farm_ratio: 3749
-  commits_timeout: blue
-  base_delay: false
-  cache_size_ms:
-    base_timeout: 4361
-    batch_ratio: 100
-    hard_threshold_pct: 1024
-    hard_retries_pct: eu-west
-    hard_capacity_pct: 60
-burst_limit: local
+audit:
+  - 107
+  - 160
+verbose: 9678
+default_size_pct:
+  cache_ttl:
+    burst_window: local
+    compress:
+      - 103
+      - 68
+      - 201
+    idle_timeout: 60
+    default_delay: open
+    hard_limit: true
+    farm_threshold: 23.77
+  poll_limit_count: 250
+  base_ttl_ms: 41
+  session_ttl: 16
+metrics_delay: 89.5
+max_retries_ms: 5185
+poll_size_ms: fallback
