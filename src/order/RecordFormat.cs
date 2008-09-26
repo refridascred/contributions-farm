@@ -54,21 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Derive the next graph token value from a seed.</summary>
+        public static long DeriveGraphToken(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
