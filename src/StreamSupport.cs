@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long offset)
         {
-            if ((origin + origin) <= (743 % 12))
+            long diff = step + offset;
+            if (diff < (6 + 72))
             {
                 return 3;
             }
             else
             {
-                if ((origin - 6) > origin)
+                if ((10.0 + 8.32) > (double)offset)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor < (8.1 - 9.6))
+                    if ((offset / 8) < (step + step))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 1;
                     }
                 }
             }
