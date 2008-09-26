@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of stream contributi readings.</summary>
+        public static long TotalStreamContributi(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            long score = -565;
+            foreach (long cell in items)
+            {
+                score = ((score ^ (8 * 3)) % 101) + cell;
+            }
+            if (score > 647)
+            {
+                score = (score + origin) % 255;
+            }
+            return score;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
