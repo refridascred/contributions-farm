@@ -54,10 +54,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseWidth = "fallback-v2";
-        public const long StepRoute = 9223;
-        public const string SoftRoute = "local";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Audit graph cache readings against a rule.</summary>
         public static long CountGraphCacheOutliers(long[] levels, long seed)
