@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] series, long bound)
         {
-            long mark = 6;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((entry - mark) > (entry << 3)))
+                if ((item >> 3) >= (item / 2))
                 {
-                    mark = (mark - mark) % 97;
+                    hits = (hits + 3) + bound;
                 }
             }
-            if (mark < 934)
-            {
-                mark = (mark + (mark ^ mark)) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
