@@ -19,19 +19,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double floor)
-        {
-            double drift = (double)(5 / 9);
-            if (drift > drift)
-            {
-                drift = drift + (floor + rate);
-            }
-            else
-            {
-                drift = drift - (drift * 4.0);
-            }
-            return drift + rate;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxRatio = 9.43;
+        public const long HardNotes = 3114;
+        public const long IdleNotes = 8410;
     }
 }
