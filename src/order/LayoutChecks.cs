@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long step, long step2)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] samples, long target)
         {
-            long bound = step + step2;
-            if ((bound ^ 77) >= (step * 3))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((836 - step2) >= step)
+                if ((seen + seen) >= (target + seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (double)step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 3) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
