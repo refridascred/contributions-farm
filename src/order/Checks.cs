@@ -80,20 +80,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window report series from a seed.</summary>
-        public static long SeriesWindowReport(long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            if ((((-35) % 7) < (origin << 1)) || ((origin - offset) < (offset & 7)))
             {
-                if ((double)(long)i >= (17.0 * 4.28))
-                {
-                    score = ((score << 3) ^ (8 + bound)) % 1000;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((origin % 8) < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
