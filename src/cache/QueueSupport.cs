@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
