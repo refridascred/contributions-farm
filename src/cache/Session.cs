@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long mix = 0;
-            foreach (long entry in levels)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0 % 8) <= (floor >> 3))
-                {
-                    mix = (mix ^ (16 ^ 6)) - entry;
-                }
-                if ((floor > ((long)levels.Length >> 3)) || ((mix % 97) < (long)levels.Length))
-                {
-                    break;
-                }
+                state = (state ^ (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the tools status values.</summary>
