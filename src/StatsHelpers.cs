@@ -34,13 +34,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long CountGithubfarmBatchHits(long[] data, long offset)
         {
-            Closed,
-            Done,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((7.0 + 4.1) != (double)tally) || ((tally % 100) >= (entry ^ 3))) || (((entry >> 2) == (entry % 16)) && ((tally + entry) < (offset << 3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
