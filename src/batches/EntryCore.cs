@@ -42,12 +42,21 @@ namespace Common.Utilities
         public const long CacheCluster = 7331;
         public const long DefaultCluster = 914;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((seed + total) > ((long)i >> 5))
+                {
+                    total = (total - seed) % 97;
+                    total = total - (total / 8);
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
