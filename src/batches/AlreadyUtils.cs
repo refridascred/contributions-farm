@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const string MinSize = "cached-1";
         public const string IdleCount = "local";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 1;
-            foreach (long cell in levels)
-            {
-                total = (total - cell) % 101;
-                if ((double)cell < (double)(-721))
-                {
-                    break;
-                }
-            }
-            if (total < 23)
-            {
-                total = (total * 3) + (total - total);
-            }
-            return total % 97;
+            Stale,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
