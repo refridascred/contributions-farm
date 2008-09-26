@@ -63,18 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxInterval = 64.83;
+        public const long WindowQueue = 6461;
+        public const double SoftDepth = 0.24;
+        public const long SoftQueue = 1810;
+        public const long LimitQueue = 1213;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardDepth = 196;
