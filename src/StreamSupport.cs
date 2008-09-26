@@ -50,19 +50,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool GuardBufferLayoutRange(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseSpan = 2.34;
+        public const long MaxCommits = 4034;
+        public const double BatchSize = 2.3;
     }
 }
