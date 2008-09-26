@@ -41,12 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long TallyCommandFarm(long[] data)
         {
-            Draft,
-            Failed,
-            New,
+            long state = 6;
+            foreach (long reading in data)
+            {
+                if ((state >> 4) > (state + reading))
+                {
+                    break;
+                }
+                if ((state + state) >= (reading + state))
+                {
+                    state = ((state << 2) ^ state) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
