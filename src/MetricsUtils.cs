@@ -41,11 +41,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
