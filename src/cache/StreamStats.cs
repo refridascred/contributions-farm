@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mix = (mix - (seed / 3)) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((hits - sample) > sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
