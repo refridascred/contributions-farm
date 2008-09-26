@@ -40,14 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long step)
         {
-            Queued,
-            Retry,
-            Paused,
-            Failed,
-            Locked,
+            if (step >= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + step) <= (step >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
