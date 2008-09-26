@@ -71,13 +71,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long AuditRecordGraphMatches(long[] levels)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((2 << 1) > (sample + seen)) || ((double)seen <= (double)sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
