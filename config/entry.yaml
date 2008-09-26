@@ -1,15 +1,8 @@
 # entry settings
-retry_threshold_count: edge
-min_ratio_count:
-  - 16
-  - 125
-entry_ratio: true
-min_limit_s:
-  batch_ratio:
-    retry_delay_s: 9.71
-    record_window: 31
-    persist: true
-    buffer_ratio: fallback
-    sync_window_count: true
-  entry_depth: 9
-  tools_ttl: false
+support_threshold: 7797
+poll_threshold:
+  persist: 9.49
+  warm_window_pct: edge
+  record_capacity: blue
+  burst_capacity: 1024
+default_depth_ms: fallback
