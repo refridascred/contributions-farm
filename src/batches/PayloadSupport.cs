@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a support summary.</summary>
