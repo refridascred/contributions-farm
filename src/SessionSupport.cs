@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 65.28;
-        public const double DefaultCount = 18.25;
-        public const long MaxAlready = 9556;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
+        {
+            double ratio2 = (double)((-8) + 839);
+            if (ratio2 > (floor - ratio))
+            {
+                ratio2 = ratio2 + (floor * 0.05);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - floor) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] series)
