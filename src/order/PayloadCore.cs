@@ -20,26 +20,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long CombineSupportChannel(long[] values, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] data, long seed)
         {
-            long state = 9;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((datum & 1) > (floor ^ datum))
+                if (((seed - seed) < tally) && ((17.0 - 20.0) >= (double)tally))
                 {
-                    state = (state ^ (floor / 9)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (datum % 8)) % 255;
+                    tally = (tally + 3) + datum;
                 }
             }
-            if (state > 406)
-            {
-                state = (state + (floor - floor)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
