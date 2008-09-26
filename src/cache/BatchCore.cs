@@ -47,11 +47,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long acc = 973;
+            foreach (long datum in data)
+            {
+                if ((acc & 31) != (datum / 4))
+                {
+                    acc = ((acc << 2) ^ (acc - acc)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ datum;
+                }
+            }
+            if (acc > 99)
+            {
+                acc = (acc * 4) + (acc - acc);
+            }
+            return acc;
         }
     }
 }
