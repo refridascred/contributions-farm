@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)tally < (1.63 * 16.0))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
