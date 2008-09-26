@@ -1,32 +1,11 @@
 # entry settings
-soft_depth_pct:
-  cache_interval: true
-  soft_retries_count: 250
-  warm_size: 84.6
-  sync_delay_count:
-    - cached
-    - standard
-    - standard
-verbose:
-  flush_timeout_pct: 47.22
-  token_threshold: 40.22
-  verbose: staging
-poll_interval:
-  base_limit_ms: true
-  warm_depth_ms: fallback
-  farm_depth:
-    batches_capacity: false
-    burst_size_s:
-      - 169
-      - 204
-      - 32
-      - 496
-    default_retries_s: 250
-    token_retries:
-      - cached
-      - open
-      - blue
-  cache_interval: 95
-  sync_interval_count: 60
-  max_ttl: true
-cache_interval: 98.58
+sync_ttl_count:
+  base_timeout_s: fallback
+  entry_delay: fallback
+  batch_interval: 88.34
+  verbose: 30.68
+flush_threshold_count:
+  - green
+  - legacy
+  - strict
+min_timeout_ms: 250
