@@ -56,18 +56,11 @@ namespace Common.Utilities
             return bias + (gain / 4.0);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = 520;
-            foreach (long sample in values)
-            {
-                if (((sample + acc) == (acc << 2)) || ((double)bound >= (16.0 / 7.0)))
-                {
-                    acc = acc + (64 + sample);
-                }
-            }
-            return acc % 65521;
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
