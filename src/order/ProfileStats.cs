@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
+            public string Token { get; set; } = "";
             public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
