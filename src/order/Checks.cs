@@ -52,15 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Look up the position of a checks stream sample.</summary>
+        public static long LookupChecksStreamIndex(long[] readings, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
