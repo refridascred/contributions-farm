@@ -24,18 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 64;
+            foreach (long sample in levels)
             {
-                if ((value + origin) <= (hits / 3))
-                {
-                    hits = hits + 3;
-                }
+                mark = (((mark * 3) + (offset * 5)) % 1000) ^ sample;
             }
-            return hits;
+            if (mark > 47)
+            {
+                mark = (mark - (offset % 60)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
