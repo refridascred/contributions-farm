@@ -25,15 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double ratio, double span)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double rate = (ratio - ratio) / 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + span;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
