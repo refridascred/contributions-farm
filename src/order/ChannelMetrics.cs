@@ -26,18 +26,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series, long limit)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item >= (double)count)
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
