@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Idle,
-            Locked,
-            Draft,
-            Ready,
-            Dropped,
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
