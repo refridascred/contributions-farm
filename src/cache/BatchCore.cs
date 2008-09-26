@@ -34,11 +34,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheCount = 4240;
-        public const double BurstScore = 59.52;
-        public const long StepCache = 2572;
-        public const long RetryWidth = 4267;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] readings)
