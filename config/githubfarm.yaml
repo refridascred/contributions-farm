@@ -1,15 +1,6 @@
 # githubfarm settings
-idle_threshold: 250
-verbose: 2262
-tools_ttl:
-  readonly: green
-  context_interval:
-    - 401
-    - 472
-  batches_depth: latest
-  contributi_capacity: legacy
-  flush_threshold_s: primary
-  metrics_limit: 20
-batch_timeout_count: green
-default_ratio_pct: latest
-cache_retries_s: 8042
+warm_retries_s: 19
+sync_limit_ms: 39.38
+strict: 753
+max_ttl_ms: true
+sync_size_s: 96.32
