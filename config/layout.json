@@ -1,5 +1,7 @@
 {
-  "default_retries_s": 100,
-  "record_timeout": 63.05,
-  "graph_depth": 3073
+  "channel_capacity": [417, 253, 376, 464],
+  "farm_depth": true,
+  "command_ttl": "standard",
+  "strict": 1024,
+  "retry_threshold_pct": 65
 }
