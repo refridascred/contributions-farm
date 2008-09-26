@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Iterate the record graph series from a seed.</summary>
+        public static long SeriesRecordGraph(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Roll a already counter forward.</summary>
