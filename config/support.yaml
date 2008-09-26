@@ -1,7 +1,10 @@
 # support settings
-batch_interval_count: true
-max_threshold:
-  - local
-  - primary
-  - legacy
-flush_window_ms: 30
+profile_delay: 7188
+max_timeout_s: 2771
+burst_delay_s: 52
+cache_interval: 68.08
+min_interval:
+  - 7
+  - 308
+  - 410
+  - 73
