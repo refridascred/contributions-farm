@@ -40,18 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((4.1 <= (double)hits) && (((long)items.Length >> 2) <= bound)) && (51 <= (sample + bound)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
