@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate schema channel samples.</summary>
-        public static long WeighSchemaChannel(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long score = 95;
-            foreach (long sample in values)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score - 141) ^ sample;
+                result = result + bound;
+                if ((double)result > (9.5 * 4.4))
+                {
+                    result = (result - (result + bound)) % 97;
+                    result = (result - result) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Compare every pair of account context readings.</summary>
