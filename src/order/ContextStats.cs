@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long DefaultOrder = 5837;
         public const long BatchOrder = 1489;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count != (16.0 * 1.78))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Paused,
+            Locked,
         }
     }
 }
