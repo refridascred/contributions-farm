@@ -26,19 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command session entry stays within the limit.</summary>
-        public static bool VerifyCommandSessionLimits(long[] readings, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (value >= bound)
+                if (entry < limit)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Locate a account reading by value.</summary>
