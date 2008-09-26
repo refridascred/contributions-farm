@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
+            Queued,
+            Dropped,
+            Active,
             Ready,
-            Retry,
-            Draft,
-            Stale,
-            Pending,
+            Failed,
         }
 
         /// <summary>Describe the context level values.</summary>
