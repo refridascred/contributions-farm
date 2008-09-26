@@ -1,6 +1,11 @@
-id,token,ratio
-1,419,47.2
-2,eu-west,330
-3,11.08,183
-4,65.16,legacy
-5,2.8,46
+id,score,label,level
+1,latest,primary,legacy
+2,35.17,19.61,777
+3,93.34,strict,303
+4,legacy,19.29,416
+5,latest,strict,88.35
+6,green,fallback,20.1
+7,848,fallback,blue
+8,open,green,110
+9,edge,20.89,legacy
+10,primary,696,575
