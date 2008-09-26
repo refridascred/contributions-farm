@@ -55,14 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Closed,
-            Locked,
+            long acc = 62;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (double)acc)
+                {
+                    acc = (acc - (reading - 79)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
