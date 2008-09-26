@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long CombineFarmContext(long[] levels)
-        {
-            long state = 16;
-            foreach (long cell in levels)
-            {
-                if ((cell + 655) == (state % 60))
-                {
-                    state = (state - (state - state)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 1941;
+        public const double MaxRatio = 73.32;
+        public const long RetryInterval = 1962;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] samples)
