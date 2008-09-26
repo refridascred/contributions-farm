@@ -1,6 +1,10 @@
-id,active,label,region
-1,62.64,fallback,staging
-2,green,78.77,stable
-3,801,33.09,33.15
-4,406,54.47,563
-5,blue,405,fallback
+id,ratio,active
+1,27,195
+2,14.16,376
+3,primary,cached
+4,89,stable
+5,40.19,452
+6,cached,53.12
+7,303,727
+8,legacy,930
+9,open,cached
