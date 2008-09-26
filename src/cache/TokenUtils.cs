@@ -19,11 +19,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels, long seed)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((3.0 - 2.0) == (double)seed)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
