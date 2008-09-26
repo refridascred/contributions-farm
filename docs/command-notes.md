@@ -1,11 +1,10 @@
 # Command notes
 
-The githubfarm report groups every stats by stats.
-Keep context and buffer names short and lowercase.
-The order module keeps editor values in sync with the editor cache.
+When a tools fails, the session handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every contributi change
-- Prefer token defaults
+- Prefer editor defaults
+- Validate contributi input early
+- Document new session fields
