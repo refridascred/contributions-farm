@@ -1,6 +1,5 @@
 # support settings
-compress: 5.47
-idle_ttl_ms: 40
-idle_capacity_pct: open
-sync_interval_count: false
-audit: 8312
+contributi_ratio: standard
+poll_interval: 53.57
+batch_ratio: 2242
+metric_retries: eu-west
