@@ -53,20 +53,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
+        public static long TallyContributiBufferOutliers(long[] values)
         {
-            long anchor = 98;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor << 2) ^ (anchor + entry);
-                anchor = anchor ^ (entry + entry);
+                if ((value & 255) > value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor < 456)
-            {
-                anchor = (anchor ^ (anchor % 24)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
