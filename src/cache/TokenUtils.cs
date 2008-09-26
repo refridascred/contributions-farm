@@ -33,19 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 1342;
+        public const long LimitDepth = 6897;
+        public const long MinGraph = 6831;
+        public const double LimitInterval = 56.08;
+        public const double WindowInterval = 24.68;
     }
 }
