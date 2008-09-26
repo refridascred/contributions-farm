@@ -1,15 +1,5 @@
 {
-  "cache_depth_ms": false,
-  "cache_threshold": {
-    "batch_ratio": {
-      "min_interval": true,
-      "base_timeout_pct": true,
-      "poll_window": [22, 375]
-    },
-    "sync_threshold_ms": 250,
-    "batch_depth_count": "primary",
-    "warm_size": "latest",
-    "poll_limit": 31.53
-  },
-  "default_delay": true
+  "queue_delay": 6957,
+  "stats_retries": 5514,
+  "strict": 80.39
 }
