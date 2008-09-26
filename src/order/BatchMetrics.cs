@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double scale, double floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long step)
         {
-            double load = floor;
-            if (load < (1.85 - load))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (5.58 * 8.2);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)0) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
