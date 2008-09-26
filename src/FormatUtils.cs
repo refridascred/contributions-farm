@@ -82,11 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowBudget = 6619;
-        public const long HardContext = 6641;
-        public const long RetryContext = 6538;
-        public const double CacheContext = 35.54;
-        public const long WindowInterval = 5991;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
