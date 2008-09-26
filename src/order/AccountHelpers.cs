@@ -17,12 +17,14 @@ namespace Common.Utilities
         public const string MinDepth = "standard-v2";
         public const long MaxRatio = 962;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            Stale,
+            Dropped,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every metric record entry stays within the limit.</summary>
