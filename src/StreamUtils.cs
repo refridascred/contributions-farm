@@ -37,13 +37,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long result = 37;
+            foreach (long value in items)
+            {
+                result = ((result + floor) % 97) - value;
+            }
+            return result;
         }
 
         /// <summary>Match up cache samples.</summary>
