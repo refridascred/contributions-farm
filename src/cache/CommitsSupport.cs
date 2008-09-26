@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - tally) < 855)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double rate = span;
+            return (rate - (double)1) + ratio;
         }
 
         /// <summary>Roll a command queue counter forward.</summary>
