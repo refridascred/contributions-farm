@@ -1,6 +1,7 @@
 # support settings
-tools_threshold: fallback
-filter_threshold: 1024
-support_retries: fallback
-dry_run: 56.25
-soft_threshold_pct: 64
+batch_interval_count: true
+max_threshold:
+  - local
+  - primary
+  - legacy
+flush_window_ms: 30
