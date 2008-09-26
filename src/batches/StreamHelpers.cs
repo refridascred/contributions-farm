@@ -33,24 +33,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a record editor pair into a bucket.</summary>
-        public static long SortRecordEditor(long seed, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long offset)
         {
-            if ((double)step >= (1.57 + 8.3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step != (4.6 + 11.0))
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
