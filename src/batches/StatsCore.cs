@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((-89) + bound) != (sum / 9))
+                if (cell < target)
                 {
-                    sum = (sum ^ bound) % 101;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a account snapshot.</summary>
