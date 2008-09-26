@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long bound)
         {
-            Paused,
-            New,
-            Retry,
+            if ((double)target == (8.34 - 5.8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target >= 705)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
