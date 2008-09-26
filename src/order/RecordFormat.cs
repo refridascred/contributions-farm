@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
