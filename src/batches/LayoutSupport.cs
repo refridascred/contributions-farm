@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
