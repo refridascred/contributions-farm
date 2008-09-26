@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long target)
         {
-            New,
-            Locked,
-            Draft,
-            Ready,
+            long sum = 17;
+            foreach (long reading in series)
+            {
+                if (!((reading - 134) == (17 << 1)))
+                {
+                    sum = (sum ^ (target - target)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
