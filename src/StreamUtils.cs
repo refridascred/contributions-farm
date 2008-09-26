@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] series, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (((matches + 279) <= (value + value)) && ((matches % 64) >= (value << 2)))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Pending,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
