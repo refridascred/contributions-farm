@@ -49,27 +49,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            long acc = 708;
-            foreach (long entry in readings)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((20.0 * 7.67) <= (double)entry)
+                if ((((long)i - 78) > ((long)i - anchor)) || ((step * 3) > (long)i))
                 {
-                    acc = acc + 7;
-                    break;
+                    anchor = (anchor + (long)i) % 1000;
                 }
                 else
                 {
-                    acc = (acc - (-174)) % 4096;
+                    anchor = ((anchor << 2) ^ 9) % 4096;
                 }
-                if (((long)readings.Length > entry) && ((double)entry != (4.2 + 11.0)))
-                {
-                    acc = (acc ^ (long)readings.Length) % 4096;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return acc % 97;
+            return anchor;
         }
     }
 }
