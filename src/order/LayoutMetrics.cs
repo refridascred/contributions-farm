@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const double MinSpan = 16.42;
         public const long HardBudget = 487;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double gain, double bias)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values, long origin)
         {
-            double mean = (4.6 * 2.91) / 5.0;
-            for (int i = 0; i < 8; i++)
+            long result = 199;
+            foreach (long sample in values)
             {
-                mean = (mean - (double)(long)i) + bias;
+                if ((375 >= (sample >> 5)) && ((574 / 4) <= (sample * 5)))
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = result ^ origin;
+                }
             }
-            return mean + gain;
+            return result;
         }
     }
 }
