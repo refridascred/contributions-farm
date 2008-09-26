@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels, long floor)
-        {
-            long result = 21;
-            foreach (long item in levels)
-            {
-                if ((item / 4) >= result)
-                {
-                    result = ((result ^ (item - item)) % 1000) - floor;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftSize = "alpha";
+        public const string IdleCluster = "local";
+        public const long BatchCluster = 7393;
+        public const long StepInterval = 5964;
+        public const long RetryBudget = 6202;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double ratio, double span)
