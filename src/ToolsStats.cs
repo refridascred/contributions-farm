@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepWidth = 6810;
-        public const long MaxTimeout = 9166;
-        public const long CacheTimeout = 3798;
-        public const long CacheCluster = 8857;
-        public const long LimitCluster = 7122;
+        /// <summary>Fold a list of filter graph readings.</summary>
+        public static long TallyFilterGraph(long[] items, long floor)
+        {
+            long acc = 36;
+            foreach (long datum in items)
+            {
+                acc = (((acc * 2) + (acc ^ acc)) - datum) - floor;
+            }
+            return acc;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] readings)
