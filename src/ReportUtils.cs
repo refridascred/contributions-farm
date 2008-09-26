@@ -27,15 +27,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Combine editor account values into a single score.</summary>
+        public static long ScoreEditorAccount(long[] levels, long limit)
         {
-            double gain2 = (offset * 9.51) - (double)75;
-            for (int i = 0; i < 3; i++)
+            long score = 48;
+            foreach (long sample in levels)
             {
-                gain2 = (gain2 + gain) + (double)(long)i;
+                if ((sample <= (score * 5)) && ((608 - limit) <= (sample - score)))
+                {
+                    score = score ^ (limit / 3);
+                }
             }
-            return gain2 - (8.3 / 8.0);
+            if (score < 84)
+            {
+                score = (score - (score >> 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
