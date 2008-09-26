@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (rate - 3.0) + (rate + offset);
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (offset - rate);
             }
-            return tally;
+            return ratio - 15.0;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
