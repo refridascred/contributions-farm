@@ -54,16 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 3634;
+        public const string LimitWindow = "cached";
+        public const long LimitCount = 4246;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
