@@ -27,23 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine already filter values into a single score.</summary>
-        public static long CombineAlreadyFilter(long[] samples, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data)
         {
-            long anchor = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((anchor + anchor) <= (bound + 91)))
+                if (((item + 46) <= (item >> 5)) && ((double)matches <= (2.0 - 20.0)))
                 {
-                    anchor = anchor - (anchor << 2);
-                }
-                anchor = (anchor << 3) ^ (anchor - anchor);
-                if ((anchor < (sample + bound)) || ((anchor & 3) == (sample ^ sample)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
