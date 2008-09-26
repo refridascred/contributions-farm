@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry <= bound)
                 {
-                    mix = ((mix + limit) % 101) + (long)i2;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
