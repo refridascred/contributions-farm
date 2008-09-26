@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
             public double Weight { get; set; }
-            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
