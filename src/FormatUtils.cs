@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((value + value) > (value * 4))
+                if (datum <= limit)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the graph level values.</summary>
