@@ -77,39 +77,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long bound, long floor)
-        {
-            long cur = bound ^ floor;
-            if ((floor + floor) <= (bound - 94))
-            {
-                return 2;
-            }
-            else
-            {
-                if (5.0 < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound & 1) == (cur >> 4)) && ((bound * 2) != (949 - 67)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.3 - 0.39) <= (double)cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 2535;
+        public const long BaseSize = 4681;
+        public const long BatchSpan = 8922;
     }
 }
