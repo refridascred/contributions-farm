@@ -1,8 +1,6 @@
-id,token,region
-1,16.08,519
-2,389,340
-3,590,eu-west
-4,30.47,998
-5,50,48.32
-6,106,stable
-7,992,48
+id,label,active
+1,251,blue
+2,26.89,19.37
+3,297,primary
+4,edge,9.77
+5,blue,staging
