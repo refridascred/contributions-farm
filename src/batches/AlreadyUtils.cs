@@ -36,30 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] samples, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long acc = 277;
-            foreach (long sample in samples)
+            long mix = 119;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if ((0.58 - 8.8) != (double)mix)
                 {
-                    acc = (acc + (acc - (long)i)) % 1000;
-                }
-                if (((acc / 6) == (acc * 3)) || ((sample * 4) < (408 ^ origin)))
-                {
-                    break;
-                }
-                if ((2.2 - 2.18) <= (double)acc)
-                {
-                    acc = (acc ^ (acc * 5)) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (origin + sample);
+                    mix = ((mix * 2) + (datum & 31)) % 101;
                 }
             }
-            return acc;
+            if (mix > 964)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank command format input into a small class.</summary>
