@@ -45,17 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks commits entry that matches the target.</summary>
-        public static long LocateChecksCommitsIndex(long[] readings, long bound)
+        /// <summary>Derive the next graph route value from a seed.</summary>
+        public static long IterateGraphRoute(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                if ((mix << 3) <= (16 - origin))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix << 1);
+                    continue;
                 }
+                mix = ((mix << 2) ^ ((long)i + 7)) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a payload graph value against two limits.</summary>
