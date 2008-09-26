@@ -1,13 +1,6 @@
 {
-  "batch_retries": "eu-west",
-  "soft_ratio": "green",
-  "format_limit": 49.79,
-  "retry_timeout_pct": "cached",
-  "sync_limit": {
-    "metrics_ratio": 57.79,
-    "batch_depth_s": "primary",
-    "support_depth": 9.21,
-    "compress": 60
-  },
-  "batch_capacity": 9067
+  "burst_window_ms": 1024,
+  "idle_interval_count": 30,
+  "soft_capacity_pct": [259, 392, 326, 474],
+  "verbose": "standard"
 }
