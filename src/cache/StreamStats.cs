@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
