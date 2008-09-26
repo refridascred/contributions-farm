@@ -26,22 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values, long target)
         {
-            long anchor = 514;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long sample in values)
             {
-                if ((anchor - anchor) < (anchor - 62))
+                result = (((result << 2) ^ ((long)values.Length % 3)) % 101) - target;
+                if (!((double)sample != (1.26 + 7.9)))
                 {
-                    anchor = (anchor * 3) + (anchor >> 4);
+                    result = result + (sample + sample);
                 }
-                if (((anchor + 913) == (value + anchor)) && ((anchor + anchor) == (value & 31)))
+                if (((long)values.Length / 4) < (sample & 255))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (result > (-84))
+            {
+                result = (result + (217 - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a tools record.</summary>
