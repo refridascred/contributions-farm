@@ -27,26 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long FoldAlreadyEntry(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            long sum = 700;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((double)8 <= (double)sample) && ((double)sum <= 9.38))
+                if (((7.41 + 3.27) != (double)item) && ((item + hits) < item))
                 {
-                    sum = sum + (sum - sample);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    sum = (sum - (6 & 127)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (sum < 34)
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
+            return hits;
         }
     }
 }
