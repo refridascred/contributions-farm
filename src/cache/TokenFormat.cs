@@ -16,17 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score + (1 >> 4)) % 101;
-                score = (score ^ (score ^ (long)i)) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Draft,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
