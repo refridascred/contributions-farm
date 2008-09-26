@@ -23,19 +23,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long limit)
         {
-            long carry = 568;
-            foreach (long entry in series)
+            long gap = floor - limit;
+            if ((double)gap == (11.0 + 18.0))
             {
-                carry = ((carry - (entry & 15)) % 97) - origin;
+                return 8;
             }
-            if (carry < (-7))
+            else
             {
-                carry = carry ^ (312 * 2);
+                if (((limit / 3) == (limit * 2)) && ((16.0 - 9.0) <= (double)gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 1) == (limit << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit < (gap - (-940)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Describe the context status values.</summary>
