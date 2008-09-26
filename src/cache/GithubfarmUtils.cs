@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepFactor = "open";
+        public const double WindowBatches = 51.86;
+        public const string IdleRatio = "stable";
+        public const string BurstBatches = "latest";
 
         /// <summary>Scale a filter contributi figure with a bias.</summary>
         public static double BlendFilterContributi(double rate, double bias)
