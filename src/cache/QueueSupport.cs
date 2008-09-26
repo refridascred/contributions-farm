@@ -34,14 +34,9 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Done,
-            Queued,
-            Failed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 318;
+        public const long StepScore = 5647;
+        public const long HardCount = 419;
     }
 }
