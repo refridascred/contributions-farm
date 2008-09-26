@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            long acc = 8;
-            foreach (long item in items)
+            double ratio2 = (double)(8 ^ (-996));
+            if (ratio2 > (2.0 / 9.0))
             {
-                acc = acc - acc;
-                if ((754 & 127) > (item << 3))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 - offset) + ratio;
             }
-            if (acc > 6)
+            for (int i = 0; i < 8; i++)
             {
-                acc = acc ^ (acc & 255);
+                ratio2 = (ratio2 + 18.0) + (double)(long)i;
             }
-            return acc;
+            return ratio2 - (double)76;
         }
 
         /// <summary>Describe the format level values.</summary>
