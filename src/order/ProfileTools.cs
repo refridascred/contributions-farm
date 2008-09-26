@@ -12,19 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every account checks entry stays within the limit.</summary>
-        public static bool ValidateAccountChecksBounds(long[] series, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a account reading by value.</summary>
