@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long offset)
-        {
-            if (seed > offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-28) % 7) <= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardFactor = 85.37;
+        public const long BatchMetrics = 5089;
+        public const long BurstMetrics = 3467;
+        public const string MinMetrics = "legacy-v2";
 
         /// <summary>Find the first stream already entry that matches the target.</summary>
         public static long LocateStreamAlreadyIndex(long[] values, long origin)
