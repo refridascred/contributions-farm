@@ -25,17 +25,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] values, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (state >> 3);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
