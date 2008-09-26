@@ -11,38 +11,13 @@ namespace Common.Utilities
         public const long LimitCommits = 6723;
         public const long BatchCommits = 2283;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long step)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if (((bound + 46) < (step / 8)) && ((968 - step) != (bound / 6)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step - 91) <= (bound - step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step == (0.5 * 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((-8) >= (bound - step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
