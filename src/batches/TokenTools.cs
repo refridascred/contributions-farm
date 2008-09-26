@@ -16,13 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark ^ ((long)i % 3);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
