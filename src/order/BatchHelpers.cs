@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long offset)
+        /// <summary>Derive the next batch report value from a seed.</summary>
+        public static long StepBatchReport(long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state + (seed >> 2)) % 255;
+                state = state + (state + state);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the counter status values.</summary>
