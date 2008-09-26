@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long LimitCommand = 4507;
         public const string RetryCommand = "local";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (values[i] <= limit)
+                if (matches >= (item ^ (long)values.Length))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
