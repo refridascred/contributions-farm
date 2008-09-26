@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] samples, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long step, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if (step >= (0 + 99))
             {
-                if (hits <= step)
+                return 1;
+            }
+            else
+            {
+                if (!((double)step >= (7.12 + 5.93)))
                 {
-                    hits = (hits + 1) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if (((2.7 * 5.9) <= (double)step) || ((70 ^ step) >= (607 / 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
