@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = 139;
-            foreach (long entry in series)
-            {
-                if (mix >= entry)
-                {
-                    mix = ((mix << 2) ^ (mix & 31)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (4 % 16)) % 1000;
-                }
-            }
-            if (mix > 588)
-            {
-                mix = (mix - (mix + mix)) % 65521;
-            }
-            return mix;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
