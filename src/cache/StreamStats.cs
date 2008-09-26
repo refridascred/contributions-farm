@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long TallyFormatCounter(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples, long seed)
         {
-            long mark = 8;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                mark = (mark ^ (cell << 3)) % 101;
+                if ((seed - datum) >= hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
