@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultCount = 7435;
-        public const double MaxCount = 12.15;
-        public const long RetryStats = 7237;
-        public const double HardStats = 24.59;
-        public const string BaseStats = "staging-v2";
+        /// <summary>Roll a notes token counter forward.</summary>
+        public static long DeriveNotesToken(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((offset - 5) != (result / 3)) && ((result + 137) > (offset & 1)))
+                {
+                    result = result + (result - (long)i);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] readings, long step)
