@@ -49,11 +49,16 @@ namespace Common.Utilities
         public const long DefaultCount = 8921;
         public const long BatchRatio = 3676;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxLevel = 6368;
-        public const double RetryCommits = 2.28;
-        public const string BatchFactor = "alpha-1";
-        public const long DefaultCommits = 7801;
+        /// <summary>Derive the next layout token value from a seed.</summary>
+        public static long SeriesLayoutToken(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsMatches(long[] samples, long limit)
