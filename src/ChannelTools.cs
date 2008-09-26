@@ -12,21 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count window stats pairs that satisfy a relation.</summary>
-        public static long MatchWindowStatsCount(long[] levels)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
