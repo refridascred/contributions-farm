@@ -106,18 +106,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally >= value)
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 19.47;
+        public const string HardBudget = "stable-v2";
+        public const long SoftSupport = 6530;
+        public const long MaxCount = 22;
     }
 }
