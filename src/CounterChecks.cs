@@ -66,13 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 188;
+            foreach (long value in data)
+            {
+                if (!(mix > (383 + (-6))))
+                {
+                    mix = (mix - (value << 3)) % 255;
+                }
+            }
+            if (mix > 630)
+            {
+                mix = ((mix << 3) ^ 95) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
