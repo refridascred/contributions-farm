@@ -1,7 +1,8 @@
 {
-  "burst_window": "local",
-  "enabled": 30,
-  "channel_size": ["latest", "fallback", "strict"],
-  "base_window": 94,
-  "compress": ["open", "local", "staging"]
+  "base_retries": 22,
+  "default_capacity_ms": 40,
+  "idle_size_pct": "legacy",
+  "account_interval": "eu-west",
+  "checks_interval": 62,
+  "sync_capacity": "strict"
 }
