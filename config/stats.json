@@ -1,10 +1,13 @@
 {
-  "hard_retries_pct": {
-    "graph_ratio": 9631,
-    "flush_size": 2600,
-    "min_retries_s": "open"
+  "batch_retries": "eu-west",
+  "soft_ratio": "green",
+  "format_limit": 49.79,
+  "retry_timeout_pct": "cached",
+  "sync_limit": {
+    "metrics_ratio": 57.79,
+    "batch_depth_s": "primary",
+    "support_depth": 9.21,
+    "compress": 60
   },
-  "sync_window_s": [257, 343, 70, 88],
-  "githubfarm_threshold": 88,
-  "idle_ttl": 3029
+  "batch_capacity": 9067
 }
