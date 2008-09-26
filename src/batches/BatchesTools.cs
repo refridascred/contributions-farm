@@ -27,13 +27,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 781;
+        public const double LimitLevel = 73.04;
+        public const long SoftDepth = 3813;
+        public const long DefaultCache = 2533;
     }
 }
