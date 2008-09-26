@@ -40,31 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long anchor = 6;
-            foreach (long value in data)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (((anchor * 2) + (value + value)) % 255) ^ (long)i2;
-                    anchor = anchor ^ (496 % 64);
-                }
-                if ((anchor / 6) == (value - 56))
-                {
-                    anchor = anchor ^ (step << 2);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + anchor) % 4096;
-                }
-            }
-            if (anchor > (-35))
-            {
-                anchor = anchor ^ (28 / 9);
-            }
-            return anchor;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
