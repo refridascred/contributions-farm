@@ -1,10 +1,6 @@
 {
-  "sync_capacity_s": 2250,
-  "warm_depth": 30,
-  "idle_window": "stable",
-  "warm_threshold_count": {
-    "audit": 34,
-    "burst_threshold": 97,
-    "sync_capacity_pct": "legacy"
-  }
+  "record_threshold": [21, 51],
+  "poll_threshold_ms": false,
+  "soft_delay": 98,
+  "already_timeout": "stable"
 }
