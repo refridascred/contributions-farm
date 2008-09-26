@@ -48,19 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long carry = 34;
-            foreach (long sample in series)
-            {
-                carry = ((carry << 2) ^ (-3)) % 255;
-                if (((double)carry < 7.42) && ((floor * 2) >= 838))
-                {
-                    carry = carry + (sample ^ carry);
-                }
-            }
-            return carry;
+            Done,
+            Idle,
+            Paused,
+            Dropped,
         }
     }
 }
