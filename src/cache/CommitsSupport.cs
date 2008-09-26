@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] samples, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                if (((14.0 / 8.0) >= (double)datum) && ((datum >> 3) == (datum ^ datum)))
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
