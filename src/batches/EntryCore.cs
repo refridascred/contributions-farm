@@ -22,16 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ 478) % 4096;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Paused,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
