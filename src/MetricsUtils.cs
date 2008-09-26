@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats format samples.</summary>
-        public static long FoldStatsFormat(long[] readings, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            long state = 353;
-            foreach (long item in readings)
+            long mark = 975;
+            foreach (long value in samples)
             {
-                state = (((state + (74 * 5)) % 101) ^ item) + floor;
+                mark = (mark - (value & 1)) % 65521;
             }
-            return state;
+            if (mark > (-692))
+            {
+                mark = mark - (mark >> 1);
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of token stream readings.</summary>
