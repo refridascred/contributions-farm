@@ -61,16 +61,10 @@ namespace Common.Utilities
             return mean - 7.06;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total ^ ((long)i << 2);
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSpan = 137;
+        public const long DefaultTimeout = 2277;
+        public const double BatchLevel = 88.2;
+        public const long SoftCount = 5567;
     }
 }
