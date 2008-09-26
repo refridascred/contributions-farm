@@ -20,17 +20,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] levels, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 636;
+            foreach (long value in values)
             {
-                if (levels[i] > bound)
+                if (!(value >= (value ^ value)))
                 {
-                    return (long)i;
+                    state = state - (value * 4);
+                }
+                else
+                {
+                    state = ((state * 5) + (0 + state)) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
