@@ -19,12 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            double scale = gain / 8.0;
+            if (scale <= bias)
+            {
+                scale = scale + 9.5;
+            }
+            return scale + (double)(-6);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
