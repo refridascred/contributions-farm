@@ -41,21 +41,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long TallyFormatCounter(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ (cell << 3)) % 101;
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Adjust a batches reading.</summary>
