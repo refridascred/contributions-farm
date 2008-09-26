@@ -44,23 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            double drift = (double)93 / 2.0;
-            if (drift < (gain * 6.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (gain * 4.34);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - 5.52;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (double)40;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
