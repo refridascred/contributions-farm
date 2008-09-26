@@ -25,19 +25,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] readings, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != origin)
+                long slot = (bound >> 4) << 1;
+                if (anchor <= ((long)i + slot))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ ((long)i + slot)) % 97;
                 }
+                anchor = ((anchor * 4) + (slot / 4)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
