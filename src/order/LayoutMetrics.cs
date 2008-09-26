@@ -14,14 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 8385;
+        public const double MinSpan = 16.42;
+        public const long HardBudget = 487;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double BlendMetric(double gain, double bias)
