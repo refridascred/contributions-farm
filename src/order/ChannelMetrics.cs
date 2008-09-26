@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                if ((9 <= reading) && ((double)reading <= 2.18))
-                {
-                    total = (total ^ reading) % 101;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
