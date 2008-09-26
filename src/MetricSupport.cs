@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many window cache samples are out of range.</summary>
+        public static long MeasureWindowCacheMatches(long[] levels, long bound)
         {
-            Synced,
-            Paused,
-            Stale,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((299 + 815) > (bound - bound))
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
