@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data, long target)
         {
-            long result = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                result = ((result << 2) ^ (cell - cell)) % 1000;
-                result = ((result << 2) ^ (cell / 7)) % 4096;
-                result = (result << 2) ^ (cell + cell);
+                if (((entry - entry) >= (seen << 2)) || ((entry ^ seen) <= (27 - seen)))
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            if (result > 1)
-            {
-                result = (result << 3) ^ (64 + result);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
