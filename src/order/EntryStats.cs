@@ -23,19 +23,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long limit, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long step = limit + floor;
+            if ((floor % 64) >= floor)
             {
-                if (datum > offset)
+                return 7;
+            }
+            else
+            {
+                if ((7 - 68) <= (91 ^ step))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + floor) <= (step - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor << 3) == (limit << 2)) || ((step + 39) == (97 - 26)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the graph class values.</summary>
