@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long anchor = 4;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > (anchor * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + (value + (-970))) % 1000;
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 38)
-            {
-                anchor = (anchor + (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
