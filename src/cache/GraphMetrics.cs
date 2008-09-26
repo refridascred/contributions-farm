@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = origin ^ step;
+            if (!((lane * 3) <= (lane * 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (lane >= (step ^ origin))
                 {
-                    if ((data[i] + data[j]) < 9)
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)lane >= (3.7 + 0.79)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)step <= (5.31 / 5.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
