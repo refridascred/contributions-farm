@@ -1,6 +1,14 @@
 # githubfarm settings
-min_retries_s: true
-enabled: 5209
-base_capacity_pct: 500
-default_interval_ms: eu-west
-hard_window: 3121
+default_delay_ms: false
+idle_capacity:
+  - stable
+  - legacy
+flush_timeout:
+  verbose: 67.24
+  readonly: false
+  audit: 83.82
+  compress: 37
+  default_depth_pct: 31.33
+soft_capacity: false
+base_capacity_pct: 49.65
+idle_ratio_count: true
