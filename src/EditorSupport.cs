@@ -76,21 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
