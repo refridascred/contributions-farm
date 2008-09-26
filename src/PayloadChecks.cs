@@ -45,15 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                score = score + (score - score);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score - (score << 2)) % 1000) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
