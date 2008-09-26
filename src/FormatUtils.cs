@@ -49,31 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a filter context pair into a bucket.</summary>
-        public static long BucketFilterContext(long floor, long origin)
+        /// <summary>Accumulate layout session samples.</summary>
+        public static long CombineLayoutSession(long[] values)
         {
-            if (886 < (origin + origin))
+            long anchor = 18;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((555 % 8) == (0 + floor))
+                if ((anchor + datum) < (anchor + anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (origin % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor ^ (anchor - anchor)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
