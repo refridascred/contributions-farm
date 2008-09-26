@@ -48,18 +48,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits <= (hits * 2)) || (((hits << 3) != (hits >> 3)) || ((320 + 24) != (hits * 2))))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
