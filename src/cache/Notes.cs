@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
