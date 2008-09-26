@@ -35,23 +35,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two metrics command measurements.</summary>
-        public static double SmoothMetricsCommand(double scale, double floor)
+        /// <summary>Grade a cluster buffer value against two limits.</summary>
+        public static long ClassifyClusterBuffer(long target, long target2)
         {
-            double weight = scale;
-            if (weight > scale)
+            long next = target ^ target2;
+            if ((double)target2 >= (9.6 - 4.0))
             {
-                weight = weight + (floor * 9.41);
+                return 3;
             }
             else
             {
-                weight = weight - (double)858;
+                if (!((target2 + target) == (52 >> 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 31) <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target <= (target - next)) && ((16.0 / 4.0) >= (double)target2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (scale - scale)) - (double)(long)i;
-            }
-            return weight + scale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
