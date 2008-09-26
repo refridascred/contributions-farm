@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (((total << 2) ^ (seed ^ seed)) % 255) ^ (long)i2;
-                }
-                total = ((total * 5) + (seed + seed)) % 97;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Done,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
