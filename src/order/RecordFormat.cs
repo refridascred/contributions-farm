@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double span)
-        {
-            double weight = (2.84 + rate) - (double)178;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - (weight * 19.0)) + (double)(long)i) + span;
-            }
-            return weight + (rate * 7.2);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitScore = "open-1";
+        public const long CacheBudget = 5184;
+        public const long HardTools = 3058;
+        public const long CacheTools = 3444;
+        public const long RetryTools = 9843;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] data, long step)
