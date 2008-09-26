@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long step2)
-        {
-            long lane = step + step2;
-            if (((lane + lane) <= (lane & 3)) && ((step2 << 1) >= 201))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step * 3) <= 7) && ((step & 15) <= (0 + lane)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 5537;
+        public const long MinAccount = 2142;
+        public const long BurstAccount = 5478;
+        public const string CacheAccount = "local-v2";
+        public const long LimitScore = 7639;
 
         /// <summary>Audit graph batches readings against a rule.</summary>
         public static long TallyGraphBatchesHits(long[] readings)
