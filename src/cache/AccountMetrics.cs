@@ -38,22 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long limit, long seed)
         {
-            long mix = -63;
-            foreach (long entry in samples)
+            long prev = limit - seed;
+            if (((seed % 16) < (prev % 8)) && ((prev + prev) <= (prev ^ 6)))
             {
-                if ((double)entry < (10.0 - 6.0))
+                return 4;
+            }
+            else
+            {
+                if (((seed - limit) < 63) || ((seed & 127) != (seed ^ prev)))
                 {
-                    mix = (mix ^ 17) % 97;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mix > 29)
-            {
-                mix = ((mix * 4) + (mix + mix)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Describe the account mode values.</summary>
