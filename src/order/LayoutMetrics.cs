@@ -28,18 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] values, long target)
+        /// <summary>Combine graph payload values into a single score.</summary>
+        public static long WeighGraphPayload(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 76;
+            foreach (long datum in items)
             {
-                if ((double)count <= (3.1 / 5.0))
+                if ((datum % 10) > (sum ^ datum))
                 {
-                    count = ((count + 3) + item) - target;
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+                if ((sum & 1) > (1 & 31))
+                {
+                    sum = (sum + (sum - datum)) % 255;
                 }
             }
-            return count;
+            return sum % 97;
         }
     }
 }
