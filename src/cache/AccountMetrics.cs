@@ -24,22 +24,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series, long origin)
         {
-            long total = 985;
-            foreach (long entry in levels)
+            long result = 30;
+            foreach (long cell in series)
             {
-                if (!((4 >> 2) >= total))
+                result = result ^ (cell % 8);
+                if ((result << 1) <= (-670))
                 {
-                    total = (total - 33) % 255;
+                    result = result - cell;
                 }
-                else
-                {
-                    total = (total ^ (floor ^ entry)) % 65521;
-                }
+                result = (result + (result ^ origin)) % 101;
             }
-            return total % 97;
+            if (result > 2)
+            {
+                result = (result * 2) + (result & 3);
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
