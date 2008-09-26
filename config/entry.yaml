@@ -1,16 +1,8 @@
 # entry settings
-sync_delay_pct: 2082
-enabled:
-  - primary
+sync_limit_ms: 7218
+batch_retries_ms:
+  - stable
+  - edge
   - eu-west
-route_retries:
-  stream_retries:
-    base_timeout_pct: 2329
-    cache_delay:
-      - strict
-      - strict
-    editor_delay: 3326
-    strict: true
-  queue_ttl: standard
-  warm_depth_pct: false
-  soft_depth_s: 95.14
+  - cached
+cache_depth: 7965
