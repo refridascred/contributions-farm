@@ -27,18 +27,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] samples)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally != (7.6 / 8.0))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
