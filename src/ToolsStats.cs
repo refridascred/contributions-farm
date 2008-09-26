@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long result = 857;
+            foreach (long item in levels)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + (item + item)) % 4096;
+                result = (result << 2) ^ (item / 8);
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Describe the payload phase values.</summary>
