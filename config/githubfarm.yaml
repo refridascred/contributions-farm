@@ -1,4 +1,13 @@
 # githubfarm settings
-entry_retries: green
-min_delay_s: strict
-enabled: 18
+hard_size_count:
+  burst_limit_pct: true
+  soft_retries_pct: legacy
+  counter_retries:
+    - primary
+    - eu-west
+sync_interval_count: 65.94
+already_timeout: eu-west
+record_interval: cached
+warm_size:
+  - green
+  - stable
