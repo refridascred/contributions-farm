@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Pending,
-            Locked,
-            Stale,
-            New,
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine window values into a single score.</summary>
