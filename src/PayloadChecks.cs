@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the layout profile entries that pass the check.</summary>
-        public static long AuditLayoutProfileGaps(long[] samples, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((entry / 4) <= 465) || ((30 - 7) <= bound))
+                if (entry < target)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
