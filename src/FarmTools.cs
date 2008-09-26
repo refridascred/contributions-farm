@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state << 2) ^ (seed % 24)) % 4096;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a commits options.</summary>
