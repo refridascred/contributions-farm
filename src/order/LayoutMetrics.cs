@@ -25,10 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 509;
-        public const string StepBatches = "cached-edge";
-        public const long LimitInterval = 5086;
-        public const long LimitScore = 2532;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "stable-v2";
+        public const long BaseTimeout = 848;
+        public const long HardCommand = 7834;
+        public const long WindowCommand = 3458;
+        public const long MinCommand = 8022;
     }
 }
