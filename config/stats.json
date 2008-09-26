@@ -1,5 +1,7 @@
 {
-  "warm_timeout": 60,
-  "batch_interval": 6599,
-  "strict": 849
+  "hard_capacity_s": 98,
+  "cache_interval_s": false,
+  "audit": "standard",
+  "min_limit_pct": 250,
+  "default_depth_s": 5.28
 }
