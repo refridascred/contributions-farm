@@ -30,10 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheRatio = "cached-1";
-        public const long BurstCount = 767;
-        public const string MinRatio = "local-edge";
-        public const double BurstBudget = 74.91;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((4.1 <= (double)hits) && (((long)items.Length >> 2) <= bound)) && (51 <= (sample + bound)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
