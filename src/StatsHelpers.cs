@@ -48,22 +48,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)hits <= 6.58))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultRatio = 58.42;
+        public const long DefaultSession = 1774;
+        public const string CacheScore = "alpha";
+        public const long IdleSession = 5628;
+        public const double MaxRatio = 24.32;
     }
 }
