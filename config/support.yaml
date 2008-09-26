@@ -1,9 +1,11 @@
 # support settings
-cluster_capacity:
-  commits_interval: eu-west
-  warm_size: 95
-  hard_delay: 500
-checks_delay: legacy
-sync_interval: primary
-cache_retries: 81.8
-batch_threshold: true
+compress:
+  - 385
+  - 32
+  - 455
+  - 254
+account_threshold: standard
+graph_size: 51.66
+min_timeout_count: 9266
+burst_retries_count: 85
+persist: true
