@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Compare every pair of layout window readings.</summary>
+        public static long OverlapLayoutWindowCount(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
