@@ -28,11 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5425;
-        public const string SoftQueue = "local";
-        public const double BurstInterval = 85.48;
-        public const long HardQueue = 3584;
-        public const long BaseBudget = 6358;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings)
+        {
+            long acc = 37;
+            foreach (long reading in readings)
+            {
+                acc = (acc ^ (acc + reading)) % 255;
+            }
+            if (acc < 82)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
+        }
     }
 }
