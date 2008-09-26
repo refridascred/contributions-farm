@@ -66,15 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double gain = offset;
-            if (gain <= 9.41)
-            {
-                gain = (gain - (offset * 9.18)) - scale;
-            }
-            return gain + (16.0 - gain);
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
