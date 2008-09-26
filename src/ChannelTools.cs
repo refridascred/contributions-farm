@@ -19,18 +19,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels)
+        /// <summary>Blend two cache command measurements.</summary>
+        public static double SmoothCacheCommand(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double mean = bias + bias2;
+            if (mean < (bias2 - mean))
             {
-                if (61 >= seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                mean = mean + 0.9;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 19.0) - (double)(long)i;
+            }
+            return mean - (bias2 + bias2);
         }
     }
 }
