@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((434 + target) != (step + target))
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((6.6 + 1.9) == (double)step)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((69 - target) != (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target >= (17.0 * 4.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate support format readings against a bound.</summary>
