@@ -43,9 +43,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSpan = "alpha";
-        public const long CacheSupport = 9958;
-        public const string BaseSupport = "latest-1";
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double bias)
+        {
+            double drift = (double)4;
+            if (drift < (double)98)
+            {
+                drift = (drift - 6.82) - bias;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + weight;
+        }
     }
 }
