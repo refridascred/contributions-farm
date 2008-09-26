@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long floor)
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long TallyBatchesChecksHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] >= floor)
+                if ((2.1 / 8.0) != (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
