@@ -89,19 +89,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long mark = 87;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark - mark) % 65521) + (long)i;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark << 2) ^ (mark - sample)) % 97;
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
