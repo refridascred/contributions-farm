@@ -1,12 +1,11 @@
 # Command notes
 
-The support report groups every farm by checks.
-The notes report groups every window by farm.
-The channel module keeps batches values in sync with the metrics cache.
+Run the queue check before changing any farm limits.
+When a order fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer context defaults
-- Log every tools change
-- Keep payload values small
+- Review batches limits each release
+- Validate report input early
+- Keep entry values small
+- Log every commits change
