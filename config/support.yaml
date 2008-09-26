@@ -1,19 +1,5 @@
 # support settings
-audit:
-  farm_ttl: 94
-  enabled:
-    - blue
-    - local
-    - latest
-    - staging
-  poll_threshold_ms: primary
-  metrics_threshold: 2
-record_size:
-  - fallback
-  - open
-  - eu-west
-readonly: 33
-token_window: 38.08
-soft_window:
-  - 235
-  - 190
+base_ratio: latest
+stream_limit: 45
+profile_capacity: 56.6
+soft_interval: strict
