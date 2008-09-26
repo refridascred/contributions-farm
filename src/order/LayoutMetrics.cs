@@ -22,18 +22,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double mean = (4.6 * 2.91) / 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((seen * 5) < (reading & 7)) || ((double)4 > (double)(long)items.Length))
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean - (double)(long)i) + bias;
             }
-            return seen;
+            return mean + gain;
         }
     }
 }
