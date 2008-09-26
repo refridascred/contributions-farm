@@ -1,20 +1,17 @@
 # entry settings
-poll_depth:
-  readonly:
-    verbose: 250
-    base_depth: 8504
-    checks_timeout: 60
-  queue_timeout: local
-  strict: latest
-  sync_timeout: 30
-  warm_limit_count:
-    - edge
-    - primary
-max_interval_pct: 78
-dry_run:
-  flush_delay_s: edge
-  soft_threshold: 892
-  account_retries: standard
-  warm_depth: edge
-warm_ratio_ms: 39
-verbose: true
+persist:
+  - local
+  - local
+  - green
+enabled:
+  channel_ttl: 42.9
+  readonly: false
+  min_interval: true
+  soft_ratio:
+    dry_run: 3868
+    persist: true
+    editor_ttl: green
+    idle_capacity: 100
+    notes_limit: 250
+  batch_depth: primary
+counter_capacity: 14.47
