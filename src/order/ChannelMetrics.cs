@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer layout input into a small class.</summary>
-        public static long GradeBufferLayout(long origin, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long floor)
         {
-            if (!((double)seed > (1.7 * 12.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed % 60) < seed) || ((origin * 5) < (seed * 4)))
+                if (samples[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
