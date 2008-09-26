@@ -1,10 +1,7 @@
 {
-  "readonly": "local",
-  "flush_timeout": 60,
-  "hard_timeout_ms": {
-    "warm_ttl_ms": [459, 295],
-    "burst_threshold_pct": ["eu-west", "legacy", "cached", "green"],
-    "poll_timeout_pct": ["blue", "latest", "fallback", "legacy"]
-  },
-  "max_window": 825
+  "queue_limit": 80.87,
+  "counter_depth": 7075,
+  "window_interval": 8.2,
+  "already_ttl": 30,
+  "hard_depth_ms": "green"
 }
