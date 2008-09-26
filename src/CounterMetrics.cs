@@ -19,10 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheRatio = 2245;
-        public const long MaxToken = 6747;
-        public const long CacheInterval = 6281;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] samples, long origin)
