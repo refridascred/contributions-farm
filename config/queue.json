@@ -1,5 +1,10 @@
 {
-  "graph_retries": 1243,
-  "payload_capacity": 73.8,
-  "burst_depth_ms": 48.1
+  "max_ttl": 82.31,
+  "retry_window": {
+    "token_retries": true,
+    "dry_run": [135, 159, 199, 488],
+    "default_ttl_ms": false
+  },
+  "enabled": true,
+  "cache_timeout_pct": "fallback"
 }
