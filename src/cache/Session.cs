@@ -54,10 +54,19 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "strict-1";
-        public const long LimitInterval = 221;
-        public const long StepAccount = 4307;
-        public const long SoftSize = 7204;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
