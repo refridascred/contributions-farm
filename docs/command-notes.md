@@ -1,10 +1,12 @@
 # Command notes
 
-Keep filter and commits names short and lowercase.
-Each editor is validated before it reaches the token queue.
+When a metrics fails, the channel handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
+The batch module keeps stream values in sync with the command cache.
 
 ## Guidelines
 
-- Log every format change
-- Document new route fields
-- Review cache limits each release
+- Document new contributi fields
+- Validate graph input early
+- Keep githubfarm values small
+- Log every already change
