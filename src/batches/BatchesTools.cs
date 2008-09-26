@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long bound)
+        /// <summary>Blend two context cache measurements.</summary>
+        public static double BlendContextCache(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double mean = (double)53 / 6.0;
+            if (mean > (double)7)
             {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - 16.0) - ratio;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean * 7.48)) - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
