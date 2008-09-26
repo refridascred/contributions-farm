@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
-        public static long PairEditorBatchCount(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)697 != (double)item)
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
