@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long AuditSchemaEntryGaps(long[] samples, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset < (offset << 2)) || !((double)offset >= (16.0 / 3.0)))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many contributi order samples are out of range.</summary>
