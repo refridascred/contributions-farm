@@ -41,13 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long seed)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long sum = -302;
+            foreach (long item in values)
+            {
+                sum = ((((sum << 3) ^ (sum + 8)) % 97) + item) + seed;
+            }
+            if (sum < 2)
+            {
+                sum = (sum + (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
