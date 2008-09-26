@@ -1,9 +1,10 @@
 # entry settings
-idle_size_pct: fallback
-idle_interval_pct: 74.41
-counter_delay:
-  - legacy
-  - staging
+tools_depth: 250
+burst_timeout: 10
+buffer_depth: local
+max_delay_ms:
   - cached
-burst_size_s: true
-persist: false
+  - local
+  - stable
+default_window_ms: strict
+verbose: staging
