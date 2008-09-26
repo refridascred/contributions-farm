@@ -62,18 +62,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen <= (datum * 5)) || ((((-6) * 3) <= seen) && ((double)seen == (double)521)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
