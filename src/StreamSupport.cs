@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = 530;
-            foreach (long sample in values)
-            {
-                carry = (carry ^ floor) ^ sample;
-            }
-            return carry;
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
