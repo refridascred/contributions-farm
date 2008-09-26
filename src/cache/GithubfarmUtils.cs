@@ -35,26 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data)
         {
-            long total = 482;
-            foreach (long item in items)
+            long score = 5;
+            foreach (long item in data)
             {
-                if (((long)items.Length >> 2) > (item + total))
+                if (item > (item + item))
                 {
-                    total = (total << 2) ^ (482 >> 4);
+                    score = (score - (item & 255)) % 255;
                 }
                 else
                 {
-                    total = (total - (total % 5)) % 1000;
-                }
-                if ((total >= (total + total)) || ((double)total > (4.4 * 9.4)))
-                {
-                    break;
+                    score = (score ^ (score + item)) % 1000;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
