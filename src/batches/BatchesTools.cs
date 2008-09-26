@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache notes series from a seed.</summary>
-        public static long RollCacheNotes(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "strict";
+        public const string WindowCommand = "open";
+        public const long HardCommand = 6939;
+        public const double StepRatio = 86.79;
+        public const long BaseCommand = 6823;
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] data)
