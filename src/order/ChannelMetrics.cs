@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] series, long target)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((entry + target) < matches) && (6 > (matches % 2)))
+                if (count >= 79)
                 {
-                    matches = matches + 3;
+                    count = (count + 1) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
