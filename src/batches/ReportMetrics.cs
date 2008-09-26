@@ -27,12 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a graph profile counter forward.</summary>
+        public static long DeriveGraphProfile(long target)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score - (score >> 5)) % 255;
+                score = ((score * 5) + target) % 1000;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
