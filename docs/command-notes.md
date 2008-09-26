@@ -1,10 +1,10 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-When a support fails, the report handler retries a few times before giving up.
+The schema module keeps layout values in sync with the profile cache.
+Run the order check before changing any format limits.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate metric input early
-- Review farm limits each release
+- Prefer contributi defaults
+- Review contributi limits each release
+- Keep already values small
