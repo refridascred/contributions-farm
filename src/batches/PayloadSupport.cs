@@ -36,9 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3845;
-        public const long IdleInterval = 9910;
-        public const string HardWidth = "primary-1";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Synced,
+            Paused,
+            Closed,
+            Stale,
+            Pending,
+        }
     }
 }
