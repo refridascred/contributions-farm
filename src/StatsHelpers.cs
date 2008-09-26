@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long bound)
+        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
+        public static bool GuardContributiCacheLimits(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (items[i] <= bound)
+                if (cell > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
