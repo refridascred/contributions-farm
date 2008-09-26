@@ -25,24 +25,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            if ((step & 1) < seed)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 15) <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
