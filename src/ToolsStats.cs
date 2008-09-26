@@ -24,18 +24,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long prev = bound + offset;
+            if ((bound * 5) < (offset + prev))
             {
-                if (((item & 63) <= (item & 1)) && ((seen * 4) >= 287))
+                return 5;
+            }
+            else
+            {
+                if ((3.55 * 6.97) < (double)bound)
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((prev >> 2) != (offset & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate checks filter readings against a bound.</summary>
