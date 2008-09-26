@@ -1,17 +1,13 @@
 {
-  "contributi_interval": ["blue", "standard", "local", "edge"],
-  "verbose": ["legacy", "green", "strict", "green"],
-  "burst_depth_ms": ["stable", "stable", "cached"],
-  "burst_depth": {
-    "compress": ["staging", "eu-west"],
-    "min_depth": "primary",
-    "cache_ratio_pct": true,
-    "entry_interval": false,
-    "retry_retries_pct": {
-      "flush_delay": 648,
-      "graph_window": "fallback",
-      "batch_ttl_pct": "legacy",
-      "base_ratio": "standard"
-    }
-  }
+  "queue_ratio": 42.25,
+  "hard_interval": [469, 37, 310, 90],
+  "schema_capacity": "green",
+  "strict": {
+    "batch_threshold": ["green", "standard", "legacy", "open"],
+    "commits_capacity": 1024,
+    "cache_timeout": 30,
+    "batch_interval_ms": 17.02,
+    "dry_run": true
+  },
+  "dry_run": "standard"
 }
