@@ -29,11 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] series, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches - matches) < ((long)series.Length + (long)series.Length))
+                {
+                    matches = ((matches + 3) - entry) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
