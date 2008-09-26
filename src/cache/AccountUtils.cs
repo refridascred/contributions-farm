@@ -35,14 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples, long bound)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Ready,
-            Closed,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (4.0 - 3.1))
+                {
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
