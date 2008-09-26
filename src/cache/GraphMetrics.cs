@@ -40,12 +40,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitDepth = 11.59;
-        public const long HardCache = 2886;
-        public const string StepWidth = "fallback";
-        public const string CacheSize = "fallback";
-        public const long BurstCache = 9375;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepSpan = 844;
