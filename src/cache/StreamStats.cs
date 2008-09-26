@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long WeighReportCache(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long origin)
         {
-            long mix = 86;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((entry >> 2) <= mix)
+                if (value != origin)
                 {
-                    mix = mix ^ mix;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Adjust a batches reading.</summary>
