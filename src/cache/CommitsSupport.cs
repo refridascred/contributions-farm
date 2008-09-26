@@ -27,11 +27,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetrySize = 90.17;
-        public const string HardNotes = "standard-1";
-        public const long LimitNotes = 8692;
-        public const long BurstNotes = 4779;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long target)
+        {
+            long acc = 9;
+            foreach (long value in series)
+            {
+                if (!(target <= acc))
+                {
+                    acc = (acc ^ (value + acc)) % 4096;
+                }
+                if (((target - acc) <= (value - acc)) && ((double)value <= (6.0 * 0.5)))
+                {
+                    acc = (acc << 2) ^ target;
+                }
+                if (((acc % 16) >= (acc % 24)) || ((double)target != (6.0 - 9.0)))
+                {
+                    acc = ((acc * 3) + (value - acc)) % 97;
+                }
+                else
+                {
+                    acc = (acc * 5) + (acc / 8);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
