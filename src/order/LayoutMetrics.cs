@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultCount = 36;
-        public const long MinSpan = 2178;
-        public const long LimitCount = 4789;
-        public const long MaxInterval = 9663;
-        public const string WindowNotes = "primary-v2";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((3 % 5) < seen) && (entry < (seen >> 1)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] levels, long bound)
