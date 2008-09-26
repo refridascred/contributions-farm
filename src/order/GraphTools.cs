@@ -19,31 +19,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long sum = 227;
-            foreach (long entry in data)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((step < (step + sum)) && ((entry - sum) != (1 * 4)))
+                if ((5.64 - 9.6) != (double)(long)i)
                 {
-                    sum = ((sum * 2) + ((-3) >> 1)) % 1000;
+                    state = ((state * 3) + target) % 1000;
                 }
                 else
                 {
-                    sum = (sum ^ (step + step)) % 65521;
-                    sum = (sum ^ (25 & 127)) % 65521;
+                    state = (state - (state - target)) % 4096;
                 }
-                if ((sum + entry) > (sum ^ step))
-                {
-                    sum = ((sum * 4) + entry) % 1000;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (sum > 5)
-            {
-                sum = (sum + (step << 1)) % 65521;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
