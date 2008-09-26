@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseTimeout = 6099;
-        public const long MaxSpan = 1944;
-        public const string CacheLevel = "local-1";
-        public const string MinDepth = "standard-v2";
-        public const long MaxRatio = 962;
+        /// <summary>Fold a list of editor payload readings.</summary>
+        public static long CombineEditorPayload(long[] levels, long floor)
+        {
+            long state = 1;
+            foreach (long datum in levels)
+            {
+                if (floor <= (state / 4))
+                {
+                    state = ((state - (floor * 5)) % 101) - datum;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
