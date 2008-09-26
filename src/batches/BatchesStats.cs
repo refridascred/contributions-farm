@@ -61,15 +61,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 5090;
+        public const long StepBudget = 2267;
+        public const long SoftFactor = 6555;
+        public const long LimitCommits = 2336;
+        public const long HardBudget = 4826;
     }
 }
