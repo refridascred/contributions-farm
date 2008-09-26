@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const string CacheAccount = "local-v2";
         public const long LimitScore = 7639;
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long TallyGraphBatchesHits(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((double)bound != (7.7 / 5.0))
             {
-                if ((double)seen < (20.0 - 3.9))
+                return 7;
+            }
+            else
+            {
+                if ((9.0 * 0.02) < (double)bound)
                 {
-                    seen = (seen + 3) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    if (origin > (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin ^ 876) >= (origin % 12))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
