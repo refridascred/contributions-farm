@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            double scale = ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (ratio + floor);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
