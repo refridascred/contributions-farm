@@ -63,10 +63,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "legacy-v2";
-        public const double StepLevel = 30.07;
-        public const string WindowFormat = "fallback-v2";
-        public const double BatchDepth = 1.92;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Queued,
+            Dropped,
+            Ready,
+            Active,
+            Failed,
+        }
     }
 }
