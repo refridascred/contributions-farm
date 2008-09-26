@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context layout figure with a bias.</summary>
-        public static double ScaleContextLayout(double ratio, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double bias2 = 7.3;
-            return (bias2 - bias) + ratio;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
