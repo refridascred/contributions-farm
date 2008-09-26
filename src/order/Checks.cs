@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the metric commits entries that pass the check.</summary>
-        public static long AuditMetricCommitsOutliers(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = 0;
+            foreach (long cell in readings)
             {
-                if (!((cell + cell) != (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result << 2) ^ (cell - cell)) % 1000;
+                result = ((result << 2) ^ (cell / 7)) % 4096;
+                result = (result << 2) ^ (cell + cell);
             }
-            return hits;
+            if (result > 1)
+            {
+                result = (result << 3) ^ (64 + result);
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
