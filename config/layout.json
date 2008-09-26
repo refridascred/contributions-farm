@@ -1,8 +1,5 @@
 {
-  "dry_run": "standard",
-  "retry_capacity": 5651,
-  "soft_interval_ms": "latest",
-  "batch_ttl": false,
-  "cache_window_ms": "latest",
-  "support_ratio": 250
+  "hard_size": 1024,
+  "format_capacity": 19.79,
+  "retry_limit_pct": "primary"
 }
