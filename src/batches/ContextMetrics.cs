@@ -37,13 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data, long floor)
         {
-            Failed,
-            Pending,
-            Locked,
-            Queued,
+            long anchor = 900;
+            foreach (long cell in data)
+            {
+                if ((cell + floor) >= (cell & 7))
+                {
+                    anchor = (anchor * 3) + (cell + (long)data.Length);
+                }
+            }
+            if (anchor < 354)
+            {
+                anchor = ((anchor << 3) ^ (floor / 6)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit tools command readings against a rule.</summary>
