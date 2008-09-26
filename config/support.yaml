@@ -1,5 +1,8 @@
 # support settings
-contributi_ratio: standard
-poll_interval: 53.57
-batch_ratio: 2242
-metric_retries: eu-west
+hard_size_pct: 4795
+default_limit: strict
+enabled: 92
+idle_size:
+  - legacy
+  - fallback
+  - blue
