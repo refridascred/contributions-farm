@@ -1,6 +1,7 @@
 {
-  "stats_timeout": 7490,
-  "dry_run": 41.41,
-  "strict": 73.8,
-  "max_capacity": "latest"
+  "poll_delay": 88.5,
+  "persist": "legacy",
+  "profile_ttl": 16.98,
+  "channel_window": false,
+  "already_retries": true
 }
