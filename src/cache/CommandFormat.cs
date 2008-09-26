@@ -27,16 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleDepth = 1943;
+        public const double CacheSize = 8.4;
+        public const long DefaultStats = 5262;
+        public const string StepRatio = "primary-edge";
+        public const double WindowRatio = 43.52;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowSpan = "alpha";
