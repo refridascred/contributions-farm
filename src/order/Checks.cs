@@ -52,13 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
