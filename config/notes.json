@@ -1,9 +1,7 @@
 {
-  "audit": {
-    "burst_capacity_s": "open",
-    "sync_interval": false,
-    "editor_window": 8883
-  },
-  "readonly": 36,
-  "idle_depth_pct": [395, 343]
+  "verbose": "open",
+  "flush_limit_pct": true,
+  "enabled": "stable",
+  "buffer_threshold": 28,
+  "base_threshold_s": true
 }
