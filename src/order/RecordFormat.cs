@@ -43,15 +43,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph token value from a seed.</summary>
-        public static long DeriveGraphToken(long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (!(state > (step >> 2)))
+                {
+                    state = ((state << 2) ^ (step >> 4)) % 101;
+                }
+                if ((1 % 60) > (long)i)
+                {
+                    state = (state + (state * 2)) % 255;
+                }
+                else
+                {
+                    state = (state - step) % 101;
+                }
+                state = (state ^ (step + 378)) % 65521;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
     }
 }
