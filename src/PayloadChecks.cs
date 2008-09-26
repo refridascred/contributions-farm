@@ -52,18 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Check that every report stream entry stays within the limit.</summary>
+        public static bool CheckReportStreamRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (!(811 < ((-34) - cell)))
+                if (reading != seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
