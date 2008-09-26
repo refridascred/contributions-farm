@@ -71,10 +71,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 19.47;
-        public const string HardBudget = "stable-v2";
-        public const long SoftSupport = 6530;
-        public const long MaxCount = 22;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum * 2) + (5 << 3);
+                if (!((57 - sum) >= (step & 7)))
+                {
+                    sum = (sum + (long)i) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 4) + (step - sum);
+                    sum = ((sum * 2) + step) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
