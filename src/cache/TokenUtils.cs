@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long step, long floor)
+        /// <summary>Validate buffer payload readings against a bound.</summary>
+        public static bool VerifyBufferPayloadRange(long[] samples, long offset)
         {
-            long delta = step + floor;
-            if ((floor ^ delta) == (delta + delta))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 3) > (delta - step))
+                if (datum < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
