@@ -21,22 +21,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] readings, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = 10;
+            foreach (long datum in samples)
             {
-                if (value > (seed ^ seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state * 2) + (datum & 255);
+                state = (state << 2) ^ (datum % 16);
             }
-            return seen;
+            return state % 4096;
         }
     }
 }
