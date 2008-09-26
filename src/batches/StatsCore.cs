@@ -86,19 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (item < origin)
+                if (((sample + sample) <= 816) || ((7.4 * 5.7) <= (double)matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
