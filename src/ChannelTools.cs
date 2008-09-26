@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const double IdleAlready = 74.78;
         public const long MinAlready = 7931;
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long FoldMetricFilter(long[] values, long origin)
+        /// <summary>Digest a series of support report entries.</summary>
+        public static long WeighSupportReport(long[] items)
         {
-            long mix = 119;
-            foreach (long cell in values)
+            long mix = 860;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 7; i++)
+                if ((double)mix <= (7.69 + 4.0))
                 {
-                    mix = ((((mix * 2) + (1 % 10)) % 1000) - (long)i) - origin;
+                    mix = mix ^ (40 + reading);
                 }
-                mix = ((mix << 2) ^ cell) % 1000;
             }
-            return mix % 4096;
+            if (mix > 41)
+            {
+                mix = (mix - (-9)) % 97;
+            }
+            return mix;
         }
     }
 }
