@@ -1,20 +1,32 @@
 # entry settings
-soft_delay_pct:
-  burst_interval: 500
-  editor_limit: local
-  verbose: 120
-  soft_timeout_pct: false
-  burst_limit_count: 82.43
-  compress:
-    poll_size_count: false
-    retry_retries_ms: eu-west
-    cluster_depth: 250
-    min_capacity:
-      - 317
-      - 411
-      - 19
-      - 195
-    batch_delay_pct: false
-    sync_depth_s: 8130
-enabled: latest
-audit: fallback
+soft_depth_pct:
+  cache_interval: true
+  soft_retries_count: 250
+  warm_size: 84.6
+  sync_delay_count:
+    - cached
+    - standard
+    - standard
+verbose:
+  flush_timeout_pct: 47.22
+  token_threshold: 40.22
+  verbose: staging
+poll_interval:
+  base_limit_ms: true
+  warm_depth_ms: fallback
+  farm_depth:
+    batches_capacity: false
+    burst_size_s:
+      - 169
+      - 204
+      - 32
+      - 496
+    default_retries_s: 250
+    token_retries:
+      - cached
+      - open
+      - blue
+  cache_interval: 95
+  sync_interval_count: 60
+  max_ttl: true
+cache_interval: 98.58
