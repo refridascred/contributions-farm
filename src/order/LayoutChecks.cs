@@ -43,20 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long seed)
-        {
-            long sum = -302;
-            foreach (long item in values)
-            {
-                sum = ((((sum << 3) ^ (sum + 8)) % 97) + item) + seed;
-            }
-            if (sum < 2)
-            {
-                sum = (sum + (sum - sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "cached-edge";
+        public const long WindowBudget = 5454;
+        public const long SoftProfile = 2293;
+        public const long RetryProfile = 6350;
+        public const string StepInterval = "strict";
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long origin)
