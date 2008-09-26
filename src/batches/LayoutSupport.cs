@@ -22,32 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items, long step)
         {
-            long bound = origin - limit;
-            if (!((origin + limit) > limit))
+            long sum = 11;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit == (double)bound) && (730 > (origin - bound)))
+                if (step < sample)
                 {
-                    return 7;
+                    sum = sum ^ (21 - step);
                 }
                 else
                 {
-                    if ((origin - 108) != (limit - 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum ^ (step >> 1)) % 1000;
                 }
             }
+            if (sum > 0)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a order reading.</summary>
