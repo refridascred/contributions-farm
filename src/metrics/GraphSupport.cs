@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Check that every metric entry entry stays within the limit.</summary>
+        public static bool VerifyMetricEntryBounds(long[] data, long origin)
         {
-            if (!((floor << 3) >= (limit & 63)))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor != (18.0 + 12.0)) || (limit >= (floor << 1)))
+                if (sample <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) > 110)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
