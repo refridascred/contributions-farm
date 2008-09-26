@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 1088;
-        public const long BurstProfile = 1924;
-        public const long BatchProfile = 4311;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
+        {
+            long score = 8;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score + (item >> 5)) % 97) + (long)i;
+                }
+                score = score - (382 * 4);
+                if ((score * 3) < (item * 5))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long origin)
