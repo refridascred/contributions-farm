@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long carry = 123;
-            foreach (long reading in data)
-            {
-                if (carry <= (reading + carry))
-                {
-                    carry = (carry * 4) + (step / 4);
-                }
-            }
-            return carry % 65521;
+            Done,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the farm level values.</summary>
