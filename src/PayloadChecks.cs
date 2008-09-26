@@ -66,20 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 33;
-            foreach (long value in series)
-            {
-                mix = (mix - (value - mix)) % 1000;
-                mix = (mix - (seed << 2)) % 97;
-            }
-            if (mix > (-66))
-            {
-                mix = ((mix * 3) + (mix + 30)) % 65521;
-            }
-            return mix;
+            Draft,
+            Queued,
+            Stale,
+            Ready,
         }
     }
 }
