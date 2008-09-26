@@ -34,15 +34,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long reading in readings)
             {
-                if ((((entry / 3) >= ((long)levels.Length - 876)) || ((limit - 804) == (seen << 1))) && ((10.0 * 2.3) <= (double)entry))
+                if ((312 + 610) < (97 - reading))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
