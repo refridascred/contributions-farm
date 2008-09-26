@@ -36,18 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long edge = bound - step;
+            if ((39 >= step) || (bound > edge))
             {
-                if ((seed - datum) >= hits)
+                return 7;
+            }
+            else
+            {
+                if ((bound < (bound & 1)) || ((95 & 255) < edge))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((edge <= (59 * 2)) && (bound > (step & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
