@@ -24,30 +24,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
         {
-            long mix = 789;
-            foreach (long reading in values)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((mix & 63) < (reading % 8)) && ((double)mix < (6.7 / 5.0))))
+                if (!(((step >> 1) == (result ^ 5)) || ((step + result) > 9)))
                 {
-                    mix = (mix + 74) % 255;
+                    result = (result * 3) + 33;
+                    result = result ^ (result ^ result);
                 }
-                if (mix <= (reading << 3))
-                {
-                    mix = (mix << 2) ^ 7;
-                }
-                else
-                {
-                    mix = (mix + reading) % 65521;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mix < 30)
-            {
-                mix = (mix + (mix + 98)) % 101;
-            }
-            return mix % 4096;
+            return result;
         }
     }
 }
