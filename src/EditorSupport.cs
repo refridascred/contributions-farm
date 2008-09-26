@@ -42,39 +42,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long cur = seed + bound;
-            if (cur < (cur >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.17 * 4.7) != (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed - cur) <= seed) && (573 < (cur + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + cur) != (bound % 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
