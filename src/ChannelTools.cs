@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] samples, long seed)
+        /// <summary>Audit batches window readings against a rule.</summary>
+        public static long CountBatchesWindowGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum > seed)
+                if ((((hits ^ cell) <= 799) && ((hits - cell) > hits)) || ((double)hits == (double)cell))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
