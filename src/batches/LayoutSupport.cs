@@ -25,10 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 69.79;
-        public const long BurstTimeout = 6959;
-        public const string BurstOrder = "strict-edge";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Failed,
+            Dropped,
+            Done,
+            New,
+        }
 
         /// <summary>Fold a list of window batch readings.</summary>
         public static long CombineWindowBatch(long[] levels)
