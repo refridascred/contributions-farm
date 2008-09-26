@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = bound ^ step;
+            if ((edge + step) == (step & 31))
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (step <= (832 >> 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
