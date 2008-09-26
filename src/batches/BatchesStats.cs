@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double gain = (double)(425 - (-379));
+            if (gain <= (double)878)
             {
-                if ((tally + value) < tally)
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain + bias) + span;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 13.0) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
