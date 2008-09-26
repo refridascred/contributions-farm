@@ -85,26 +85,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] readings, long seed)
         {
-            long mix = 1;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((mix & 1) == (29 - mix))
+                if ((-67) <= (seed % 8))
                 {
-                    mix = (mix + (8 - cell)) % 1000;
-                }
-                else
-                {
-                    mix = mix + step;
+                    hits = (hits + 3) - sample;
                 }
             }
-            if (mix > 709)
-            {
-                mix = mix ^ (mix / 3);
-            }
-            return mix;
+            return hits;
         }
     }
 }
