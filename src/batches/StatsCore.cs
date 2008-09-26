@@ -66,11 +66,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Grade a commits tools value against two limits.</summary>
+        public static long ClassifyCommitsTools(long limit, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            if (((751 * 5) <= limit) || ((1.8 + 2.9) != (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.9 + 8.9) >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
