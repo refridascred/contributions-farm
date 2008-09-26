@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "local-1";
-        public const long MinScore = 7394;
-        public const double SoftStats = 53.54;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix - mix) % 65521) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] readings, long origin)
