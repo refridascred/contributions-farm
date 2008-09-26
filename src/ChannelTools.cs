@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (7.3 <= (double)seen)
-                {
-                    seen = ((seen + 3) + value) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardTimeout = 139;
+        public const long RetryBudget = 7945;
+        public const long MinRecord = 3896;
+        public const long CacheWidth = 287;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] series, long seed)
