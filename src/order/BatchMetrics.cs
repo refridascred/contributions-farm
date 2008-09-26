@@ -28,25 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series, long seed)
         {
-            long slot = step + offset;
-            if ((step - offset) < (479 >> 1))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot + step) != (6 + slot))
+                if ((matches + matches) > sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
