@@ -1,8 +1,7 @@
-id,active,token,count
-1,225,fallback,778
-2,62.09,54.68,390
-3,45.1,785,local
-4,40.68,684,73.19
-5,legacy,80.69,729
-6,open,primary,10
-7,180,365,92.25
+id,rank,label,weight
+1,979,919,176
+2,23,staging,448
+3,654,428,274
+4,178,68.63,776
+5,3.08,35.69,green
+6,strict,local,567
