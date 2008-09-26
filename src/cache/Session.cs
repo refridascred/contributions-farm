@@ -35,40 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster buffer value against two limits.</summary>
-        public static long ClassifyClusterBuffer(long target, long target2)
-        {
-            long next = target ^ target2;
-            if ((double)target2 >= (9.6 - 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((target2 + target) == (52 >> 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 31) <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target <= (target - next)) && ((16.0 / 4.0) >= (double)target2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowScore = "stable-1";
+        public const long LimitWindow = 2398;
+        public const long StepWindow = 4656;
+        public const long LimitLevel = 658;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] samples)
