@@ -1,16 +1,24 @@
 # entry settings
-retry_retries_s:
-  max_threshold_pct: green
-  batch_size_ms: stable
-  max_interval_s:
-    readonly: 58
-    farm_window: standard
-    idle_limit_s: eu-west
-    hard_threshold_s: 98.01
-    warm_ratio_s: 500
-  enabled: fallback
-  warm_size_count: 46.48
-  readonly: legacy
-editor_delay: 1024
-soft_ttl: 22.69
-audit: 9418
+soft_threshold_s:
+  burst_threshold_ms: 69.7
+  verbose: 85.41
+  base_timeout_ms: 58.41
+  base_depth_ms: 100
+  sync_ratio:
+    - green
+    - standard
+    - blue
+  token_interval:
+    - staging
+    - open
+retry_window_count:
+  - 450
+  - 213
+poll_timeout_s:
+  - 170
+  - 244
+audit:
+  - 485
+  - 458
+  - 427
+  - 83
