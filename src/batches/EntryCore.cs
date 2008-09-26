@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (value > (hits + value))
+                if (entry > bound)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
