@@ -39,12 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            Pending,
-            Ready,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
