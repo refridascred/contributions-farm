@@ -46,20 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - (mark + limit)) % 255;
-                if (((mark << 2) <= (mark + limit)) && (limit > (long)i))
-                {
-                    mark = (mark << 2) ^ (limit / 9);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                score = (score + ((long)i + floor)) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
