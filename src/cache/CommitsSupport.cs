@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const string DefaultBudget = "open-edge";
         public const string WindowEditor = "cached-1";
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 9841;
+        public const long HardCount = 6761;
+        public const long MinAlready = 480;
+        public const double CacheScore = 1.72;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] series, long target)
