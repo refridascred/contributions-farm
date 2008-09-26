@@ -24,25 +24,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long origin)
         {
-            long bound = seed - floor;
-            if ((bound + 5) < bound)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - floor) < bound)
+                if (entry != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
