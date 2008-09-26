@@ -80,12 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long limit)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
