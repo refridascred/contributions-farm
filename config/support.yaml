@@ -1,12 +1,6 @@
 # support settings
-strict:
-  - 132
-  - 287
-  - 91
-enabled: false
-idle_delay_pct: standard
-layout_ratio:
-  poll_ratio_s: 100
-  burst_size: strict
-  min_depth_s: eu-west
-  audit: 85
+format_window: legacy
+editor_threshold: false
+enabled: 48
+schema_ratio: true
+readonly: 30
