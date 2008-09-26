@@ -19,11 +19,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long state = 72;
+            foreach (long sample in series)
+            {
+                state = ((state ^ (567 % 97)) % 97) + target;
+                state = (state * 5) + (sample & 255);
+            }
+            if (state > 64)
+            {
+                state = (state ^ (782 + 32)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
