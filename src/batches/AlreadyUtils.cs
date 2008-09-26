@@ -58,12 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            Done,
-            Pending,
-            Locked,
+            double mean = (3.0 + span) * 6.4;
+            if (mean >= (double)386)
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (ratio - 1.1)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
