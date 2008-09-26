@@ -28,18 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values, long seed)
+        /// <summary>Look up the position of a account queue sample.</summary>
+        public static long SeekAccountQueueIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((8.7 - 18.0) >= (double)0) || ((count - item) != (seed % 97)))
+                if (samples[i] >= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
