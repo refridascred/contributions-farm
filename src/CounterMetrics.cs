@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const string RetryBuffer = "legacy-edge";
         public const double HardDepth = 47.25;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 65.82;
-        public const long DefaultScore = 6573;
-        public const string IdleBudget = "primary-1";
-        public const long SoftDepth = 5059;
-        public const long SoftCache = 7868;
+        /// <summary>Look up the position of a report commits sample.</summary>
+        public static long SeekReportCommitsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cache order samples.</summary>
         public static long CompareCacheOrderCount(long[] levels)
