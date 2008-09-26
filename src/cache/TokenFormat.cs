@@ -30,22 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!(entry > (entry % 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
