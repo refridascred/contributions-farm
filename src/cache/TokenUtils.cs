@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double load = (double)(-8) - (offset / 5.0);
-            if (load <= load)
-            {
-                load = (load - (16.0 / 8.0)) + scale;
-            }
-            return load - 15.0;
+            Draft,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
