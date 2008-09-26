@@ -81,18 +81,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] items, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (cell + cell))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
