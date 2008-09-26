@@ -42,19 +42,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] readings)
         {
-            double rate = (double)(14 + 46);
-            if (rate >= rate)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                rate = (rate + (weight / 8.0)) - span;
+                if ((double)cell >= 0.9)
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + 5.4) + (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
