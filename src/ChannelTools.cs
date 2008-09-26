@@ -19,19 +19,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two cache command measurements.</summary>
-        public static double SmoothCacheCommand(double bias, double bias2)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long limit)
         {
-            double mean = bias + bias2;
-            if (mean < (bias2 - mean))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + 0.9;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 19.0) - (double)(long)i;
-            }
-            return mean - (bias2 + bias2);
+            return -1;
         }
     }
 }
