@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double weight = (2.84 + rate) - (double)178;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight - (weight * 19.0)) + (double)(long)i) + span;
+            }
+            return weight + (rate * 7.2);
         }
 
         /// <summary>Hold a counter snapshot.</summary>
