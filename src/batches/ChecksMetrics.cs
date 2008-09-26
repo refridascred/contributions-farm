@@ -51,18 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count + item) > (item % 7))
-                {
-                    count = count + 3;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
