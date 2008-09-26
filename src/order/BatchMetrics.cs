@@ -19,25 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long offset = seed - floor;
-            if ((floor + floor) < offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed > (seed ^ offset)) && ((double)seed <= (4.0 / 9.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Rank format input into a small class.</summary>
