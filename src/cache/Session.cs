@@ -13,14 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Paused,
-            Locked,
-            Dropped,
-            Done,
-            Synced,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
