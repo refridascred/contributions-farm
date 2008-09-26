@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate format batches samples.</summary>
+        public static long TotalFormatBatches(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long anchor = 321;
+            foreach (long datum in levels)
+            {
+                if (((-8) > (datum + datum)) && ((1 ^ 852) <= (datum / 6)))
+                {
+                    anchor = (anchor * 5) + (datum / 6);
+                    anchor = (anchor + (datum - 21)) % 65521;
+                }
+                if ((anchor >> 1) <= (72 & 63))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (datum - datum)) % 255;
+                }
+                if (((floor / 4) >= (anchor + floor)) && (floor < anchor))
+                {
+                    anchor = ((anchor * 4) + (245 >> 5)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (floor + anchor)) % 1000;
+                }
+            }
+            if (anchor < 88)
+            {
+                anchor = (anchor << 3) ^ (floor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch header.</summary>
