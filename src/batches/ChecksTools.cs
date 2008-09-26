@@ -13,19 +13,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long step)
-        {
-            long score = 58;
-            foreach (long datum in readings)
-            {
-                if ((289 < (step % 60)) && ((score ^ datum) < (long)readings.Length))
-                {
-                    score = score - (step + step);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchCount = 16.9;
+        public const string BaseChecks = "stable-v2";
+        public const long RetryChecks = 1390;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] readings)
