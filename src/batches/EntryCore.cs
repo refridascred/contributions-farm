@@ -19,10 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6752;
-        public const double MaxBudget = 25.55;
-        public const double MinLevel = 9.08;
+        /// <summary>Grade a stats order value against two limits.</summary>
+        public static long RankStatsOrder(long floor, long origin)
+        {
+            if ((origin + floor) <= (origin & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor <= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseTimeout = 6475;
