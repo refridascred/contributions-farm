@@ -24,19 +24,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long mix = 789;
+            foreach (long reading in values)
             {
-                if (value >= target)
+                if (!(((mix & 63) < (reading % 8)) && ((double)mix < (6.7 / 5.0))))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + 74) % 255;
+                }
+                if (mix <= (reading << 3))
+                {
+                    mix = (mix << 2) ^ 7;
+                }
+                else
+                {
+                    mix = (mix + reading) % 65521;
                 }
             }
-            return valid;
+            if (mix < 30)
+            {
+                mix = (mix + (mix + 98)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
