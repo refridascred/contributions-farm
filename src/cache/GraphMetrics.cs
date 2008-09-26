@@ -40,11 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
+            public string Size { get; set; } = "";
             public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
