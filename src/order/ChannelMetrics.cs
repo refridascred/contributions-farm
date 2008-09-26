@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Adjust a metrics contributi reading.</summary>
+        public static double ScaleMetricsContributi(double weight, double bias)
         {
-            Retry,
-            Stale,
-            New,
-            Failed,
+            double weight2 = (weight - weight) + (3.6 / 4.0);
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = ((weight2 - (2.7 / 2.0)) + (double)(long)i) + bias;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Hold a stream entry.</summary>
