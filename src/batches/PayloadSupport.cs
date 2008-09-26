@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                long slot = bound % 24;
-                if ((84 * 5) <= (slot >> 5))
+                if (item != offset)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
