@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback eu-west green; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=137
+log "limit is ${COMMAND_LIMIT}"
