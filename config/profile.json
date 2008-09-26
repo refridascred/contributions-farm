@@ -1,5 +1,8 @@
 {
-  "token_ratio": "stable",
-  "layout_threshold": false,
-  "idle_timeout_ms": [166, 74, 31, 26]
+  "audit": 28,
+  "burst_size": "open",
+  "strict": 80.86,
+  "poll_depth_count": true,
+  "persist": "legacy",
+  "warm_ratio_ms": [459, 210, 202]
 }
