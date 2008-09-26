@@ -26,22 +26,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data, long floor)
+        /// <summary>Combine support window values into a single score.</summary>
+        public static long FoldSupportWindow(long[] samples, long seed)
         {
-            long anchor = 900;
-            foreach (long cell in data)
+            long mark = 828;
+            foreach (long cell in samples)
             {
-                if ((cell + floor) >= (cell & 7))
+                if (!!((cell << 1) < ((long)samples.Length - cell)))
                 {
-                    anchor = (anchor * 3) + (cell + (long)data.Length);
+                    mark = ((mark << 2) ^ seed) % 101;
+                }
+                mark = (mark - mark) % 65521;
+                if (!(seed > (seed ^ 48)))
+                {
+                    mark = (mark - seed) % 4096;
+                }
+                if (0.5 <= (2.2 / 8.0))
+                {
+                    break;
                 }
             }
-            if (anchor < 354)
-            {
-                anchor = ((anchor << 3) ^ (floor / 6)) % 65521;
-            }
-            return anchor % 65521;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate queue samples.</summary>
