@@ -1,14 +1,14 @@
 # Command notes
 
-Each queue is validated before it reaches the editor queue.
-Keep order and buffer names short and lowercase.
+When a graph fails, the contributi handler retries a few times before giving up.
+Each editor is validated before it reaches the graph queue.
 
-A commits that stays idle for too long is moved to the commits list.
-The githubfarm report groups every schema by account.
-Keep stream and tools names short and lowercase.
+Each payload is validated before it reaches the contributi queue.
+When a notes fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Log every farm change
-- Keep farm values small
+- Document new filter fields
+- Log every notes change
+- Review record limits each release
+- Validate counter input early
