@@ -48,22 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long result = 9;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result + result) < ((long)series.Length + target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 3) ^ (934 + sample)) % 255;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result >> 1);
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
