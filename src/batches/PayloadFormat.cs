@@ -46,25 +46,18 @@ namespace Common.Utilities
         public const long IdleReport = 1349;
         public const double StepReport = 32.42;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long origin, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long bound)
         {
-            long prev = origin + bound;
-            if ((prev % 24) <= ((-5) - prev))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 12) <= (origin + 301))
+                if ((reading >> 1) >= ((-5) * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 2) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a buffer window reading.</summary>
