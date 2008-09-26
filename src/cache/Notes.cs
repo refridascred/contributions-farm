@@ -20,21 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two record measurements.</summary>
