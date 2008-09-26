@@ -26,27 +26,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long target)
         {
-            long mix = 9;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (mix ^ item);
-                if (mix <= (item - item))
+                if ((values[i] == target) && ((values[i] % 5) == 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + item)) % 4096;
-                }
-                if ((9.98 - 0.75) == (double)item)
-                {
-                    mix = mix ^ (2 * 2);
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
