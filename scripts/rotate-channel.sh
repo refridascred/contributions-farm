@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue; do
+for item in stable edge; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=45
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
