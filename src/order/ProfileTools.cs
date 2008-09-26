@@ -29,22 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload farm samples.</summary>
-        public static long WeighPayloadFarm(long[] values, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            double rate = weight;
+            if (rate > weight)
             {
-                if ((bound % 10) > (sum * 5))
-                {
-                    sum = (((sum << 3) ^ (bound + sum)) % 1000) ^ entry;
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum << 3);
-                }
+                rate = (rate + (0.6 + weight)) + bias;
             }
-            return sum % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)189) + (double)(long)i;
+            }
+            return rate - 6.14;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
