@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long CountGraphStatsGaps(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 58;
+            foreach (long datum in readings)
             {
-                if ((2.08 / 4.0) <= (double)value)
+                if ((289 < (step % 60)) && ((score ^ datum) < (long)readings.Length))
                 {
-                    matches = matches + 3;
+                    score = score - (step + step);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of order entries.</summary>
