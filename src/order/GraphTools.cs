@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long CountWindowCommandHits(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((matches & 1) > entry) || ((entry - 111) <= (matches >> 2)))
+                result = (result + (result - limit)) % 1000;
+                if ((double)limit <= (double)result)
                 {
-                    matches = matches + 2;
+                    result = result ^ result;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
