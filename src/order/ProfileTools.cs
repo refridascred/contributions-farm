@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Failed,
-            Queued,
-            Stale,
-            Synced,
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
