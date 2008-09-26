@@ -1,5 +1,4 @@
 # githubfarm settings
-entry_capacity: 34
-stream_window: 79.69
-compress: 84
-warm_ratio_s: eu-west
+graph_ttl: 48
+flush_retries_ms: green
+max_timeout_count: 4016
