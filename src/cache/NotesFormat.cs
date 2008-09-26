@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + (state >> 4)) % 255) - item;
             }
-            return seen;
+            if (state > 5)
+            {
+                state = ((state << 3) ^ (state - state)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the record state values.</summary>
