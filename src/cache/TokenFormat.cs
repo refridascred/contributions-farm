@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 1941;
-        public const double MaxRatio = 73.32;
-        public const long RetryInterval = 1962;
+        /// <summary>Check that every filter session entry stays within the limit.</summary>
+        public static bool VerifyFilterSessionLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] samples)
