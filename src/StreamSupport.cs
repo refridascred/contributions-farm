@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples, long target)
+        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
+        public static long TallyGithubfarmTokenGaps(long[] values, long step)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long item in values)
             {
-                if ((cell >> 3) >= target)
+                if (!((13.0 / 5.0) != (double)item))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - step;
                 }
             }
             return count;
