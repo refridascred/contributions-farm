@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Idle,
-            Ready,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 86.62;
+        public const long BatchSize = 6170;
+        public const long MinNotes = 2484;
+        public const double DefaultCount = 97.28;
 
         /// <summary>Measure how many support schema samples are out of range.</summary>
         public static long MeasureSupportSchemaGaps(long[] data, long step)
