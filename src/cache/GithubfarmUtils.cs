@@ -26,18 +26,16 @@ namespace Common.Utilities
         public const long CacheRatio = 6696;
         public const string StepSize = "fallback-1";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((88 * 5) >= (hits + hits)))
-                {
-                    hits = (hits + 1) - reading;
-                }
+                result = (result ^ (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
