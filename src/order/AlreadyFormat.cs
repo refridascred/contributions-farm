@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long gap = floor - limit;
-            if ((double)gap == (11.0 + 18.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit / 3) == (limit * 2)) && ((16.0 - 9.0) <= (double)gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 1) == (limit << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit < (gap - (-940)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of context readings.</summary>
