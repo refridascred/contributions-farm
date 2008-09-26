@@ -15,13 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Idle,
-            Ready,
-            Dropped,
-            Retry,
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
