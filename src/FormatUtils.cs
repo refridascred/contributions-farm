@@ -82,18 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] items, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((matches * 3) >= (sample - matches))
+                if (item <= origin)
                 {
-                    matches = (matches + 2) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
