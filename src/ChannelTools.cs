@@ -29,15 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 812;
-            foreach (long entry in samples)
-            {
-                total = (total + step) ^ entry;
-            }
-            return total % 4096;
+            Pending,
+            New,
+            Synced,
+            Idle,
         }
     }
 }
