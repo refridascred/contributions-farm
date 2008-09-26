@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsGaps(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 2;
+            foreach (long reading in values)
             {
-                if ((datum / 4) > 856)
+                if ((reading & 1) >= (reading & 31))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor * 2) + (reading << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + 4;
                 }
             }
-            return matches;
+            if (anchor < 133)
+            {
+                anchor = (anchor << 2) ^ (anchor % 8);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
