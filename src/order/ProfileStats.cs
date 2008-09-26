@@ -45,19 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter window figure with a bias.</summary>
-        public static double ProjectFilterWindow(double gain, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long target)
         {
-            double gain2 = gain / 2.0;
-            if (gain2 < (gain2 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + gain2;
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (floor + floor);
-            }
-            return gain2 - (floor * 2.99);
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
