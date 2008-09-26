@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Active,
+            Queued,
+            Retry,
+            Paused,
             Failed,
-            Idle,
+            Locked,
         }
 
         /// <summary>Check that every buffer layout entry stays within the limit.</summary>
