@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report payload readings against a rule.</summary>
-        public static long TallyReportPayloadGaps(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)hits <= 6.2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) - value;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
