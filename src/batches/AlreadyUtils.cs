@@ -32,15 +32,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Project the next contributi value.</summary>
