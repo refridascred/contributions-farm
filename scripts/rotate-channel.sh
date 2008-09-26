@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=265
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
