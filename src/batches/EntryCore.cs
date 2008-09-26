@@ -39,10 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstInterval = 3240;
-        public const long StepCount = 2751;
-        public const long BatchFarm = 3088;
+        /// <summary>Fold a list of format githubfarm readings.</summary>
+        public static long CombineFormatGithubfarm(long[] data)
+        {
+            long state = 481;
+            foreach (long entry in data)
+            {
+                if (state <= ((long)data.Length >> 3))
+                {
+                    state = (state - (entry >> 4)) % 255;
+                }
+                else
+                {
+                    state = (state ^ (state & 7)) % 101;
+                }
+                if (((entry - state) <= (state % 100)) || ((double)entry > (13.0 - 3.21)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] series, long step)
