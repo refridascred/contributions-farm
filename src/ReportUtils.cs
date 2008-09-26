@@ -14,34 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = 64;
-            foreach (long item in readings)
-            {
-                if ((limit * 3) > (limit << 2))
-                {
-                    result = (result - (9 % 64)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (485 + limit)) % 97;
-                }
-                if ((limit + 89) >= (4 % 60))
-                {
-                    result = (result - (limit - item)) % 1000;
-                }
-                if (!((limit * 4) > limit))
-                {
-                    break;
-                }
-            }
-            if (result < (-71))
-            {
-                result = result + (limit + limit);
-            }
-            return result;
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
