@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] values, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (11.0 - 0.9))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
