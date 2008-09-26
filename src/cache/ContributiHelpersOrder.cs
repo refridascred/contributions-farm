@@ -20,19 +20,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= bound)
+                mark = mark - floor;
+                if (!((0.9 + 5.66) == (double)(long)i))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
     }
 }
