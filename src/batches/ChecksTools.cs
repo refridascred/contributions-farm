@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const long LimitSpan = 1395;
         public const long BurstRatio = 3700;
 
-        /// <summary>Adjust a channel counter reading.</summary>
-        public static double BlendChannelCounter(double gain, double span)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            double gain2 = (gain * 9.1) / 2.0;
-            if (gain2 >= 6.1)
+            double bias2 = 6.2;
+            if (bias2 < gain)
             {
-                gain2 = gain2 + (span + span);
+                bias2 = (bias2 - (gain - bias2)) + bias;
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - gain2;
+            return bias2 - (bias2 - 1.4);
         }
     }
 }
