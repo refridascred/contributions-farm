@@ -14,10 +14,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 8385;
-        public const double MinSpan = 16.42;
-        public const long HardBudget = 487;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long bound)
+        {
+            if ((seed >> 1) == (seed % 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed << 2) > 59) || (bound > (bound - 138)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ScaleQueue(double gain, double span)
