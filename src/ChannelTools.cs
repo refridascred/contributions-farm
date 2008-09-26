@@ -25,10 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSize = 1899;
-        public const double WindowFactor = 79.1;
-        public const long MinLevel = 6310;
+        /// <summary>Find the first stream already entry that matches the target.</summary>
+        public static long LocateStreamAlreadyIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutHits(long[] series)
