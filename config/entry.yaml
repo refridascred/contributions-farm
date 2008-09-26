@@ -1,12 +1,5 @@
 # entry settings
-enabled: 19
-strict: 7097
-poll_delay: 16.83
-counter_capacity:
-  readonly:
-    - 435
-    - 45
-    - 349
-    - 224
-  compress: primary
-  payload_interval: latest
+hard_depth_count: 3452
+enabled: 1024
+default_window: 20
+persist: true
