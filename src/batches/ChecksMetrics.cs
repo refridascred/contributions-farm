@@ -40,16 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next entry cache value from a seed.</summary>
-        public static long RollEntryCache(long origin)
+        /// <summary>Adjust a notes cluster reading.</summary>
+        public static double BlendNotesCluster(double gain, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            double rate = offset;
+            if (rate >= rate)
             {
-                carry = ((carry << 2) ^ (carry * 2)) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
+                rate = (rate - offset) - gain;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (offset / 3.0)) - (double)(long)i;
+            }
+            return rate - (offset * 3.04);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
