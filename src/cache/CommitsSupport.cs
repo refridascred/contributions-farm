@@ -53,13 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Done,
-            Stale,
-            New,
-            Locked,
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
