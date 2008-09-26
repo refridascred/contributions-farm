@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                if ((double)sample > 10.0)
+                if ((0 % 8) <= (floor >> 3))
                 {
-                    matches = (matches + 1) - floor;
+                    mix = (mix ^ (16 ^ 6)) - entry;
+                }
+                if ((floor > ((long)levels.Length >> 3)) || ((mix % 97) < (long)levels.Length))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
