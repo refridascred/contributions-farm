@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 56.71;
-        public const string StepLayout = "local-v2";
-        public const double BatchLayout = 41.31;
-        public const long SoftFactor = 7362;
-        public const long DefaultFactor = 8810;
+        /// <summary>Validate record editor readings against a bound.</summary>
+        public static bool CheckRecordEditorRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
