@@ -1,12 +1,19 @@
 {
-  "flush_ratio_count": "fallback",
-  "hard_window_pct": [382, 180, 24, 104],
-  "hard_delay_count": {
-    "retry_delay_ms": 96,
-    "token_ttl": 9708,
-    "burst_retries_count": "eu-west",
-    "hard_size": 67.57
+  "payload_ttl": 60,
+  "compress": {
+    "min_retries_s": {
+      "flush_depth_ms": 60,
+      "retry_interval_ms": 5557,
+      "soft_delay_s": 12.07,
+      "max_capacity": ["open", "green"],
+      "account_limit": 55.25,
+      "channel_ratio": true
+    },
+    "sync_threshold_pct": "blue",
+    "persist": true
   },
-  "base_capacity": false,
-  "verbose": false
+  "route_threshold": 500,
+  "warm_limit_s": "strict",
+  "verbose": 4.1,
+  "hard_timeout_pct": "green"
 }
