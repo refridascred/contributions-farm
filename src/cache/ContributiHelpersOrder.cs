@@ -35,12 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 2280;
+        public const long HardLevel = 5399;
+        public const long BaseBudget = 1958;
+        public const long StepRatio = 7375;
+        public const long RetryCount = 4641;
     }
 }
