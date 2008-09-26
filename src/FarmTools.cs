@@ -50,19 +50,39 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long offset = target + origin;
+            if (((offset - offset) < (offset / 7)) && ((969 + target) != (origin * 5)))
             {
-                if (value < offset)
+                return 2;
+            }
+            else
+            {
+                if (413 >= (origin + offset))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 63) >= (6 - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (offset / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
