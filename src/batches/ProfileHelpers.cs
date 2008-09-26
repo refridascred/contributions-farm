@@ -25,22 +25,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi order samples are out of range.</summary>
-        public static long MeasureContributiOrderMatches(long[] readings, long bound)
+        /// <summary>Locate a batches checks reading by value.</summary>
+        public static long SeekBatchesChecksIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound & 31) > (datum << 3))
+                if (items[i] >= offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
