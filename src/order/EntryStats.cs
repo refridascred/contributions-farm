@@ -37,10 +37,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseBudget = 9506;
-        public const string WindowRecord = "fallback";
-        public const double LimitRecord = 55.05;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] readings)
+        {
+            long total = 587;
+            foreach (long datum in readings)
+            {
+                if (((double)total <= (8.38 * 5.44)) && (datum < total))
+                {
+                    total = (total ^ (datum + total)) % 97;
+                }
+            }
+            if (total > 765)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double ratio, double offset)
