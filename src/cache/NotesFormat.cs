@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if ((9.42 + 5.74) != (double)item)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
