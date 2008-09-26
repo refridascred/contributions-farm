@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ tally) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
