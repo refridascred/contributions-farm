@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            Pending,
-            Queued,
-            New,
-            Active,
-            Failed,
+            double drift = bias * 5.6;
+            if (drift <= (drift - ratio))
+            {
+                drift = drift + (drift * 2.98);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift + (bias + 14.0);
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
