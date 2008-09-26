@@ -42,24 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload graph value against two limits.</summary>
-        public static long GradePayloadGraph(long floor, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if (!((11.0 - 8.6) < (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target > (target % 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            New,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every command batch entry stays within the limit.</summary>
