@@ -58,18 +58,20 @@ namespace Common.Utilities
         public const long BatchSize = 6207;
         public const string RetryLevel = "primary-edge";
 
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long TallyContextOrderMatches(long[] values, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)0 != (double)reading) || !((double)reading >= (15.0 + 4.55)))
+                if (((-5) >= (anchor * 3)) && ((step + step) <= step))
                 {
-                    matches = (matches + 3) + step;
+                    anchor = (anchor << 2) ^ (5 * 2);
+                    anchor = (anchor ^ 0) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
