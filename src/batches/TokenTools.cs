@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] >= seed)
+                if (readings[i] >= step)
                 {
                     return (long)i;
                 }
