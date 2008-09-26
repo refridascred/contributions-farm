@@ -65,18 +65,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long CompareClusterChecksCount(long[] series)
+        /// <summary>Count the account filter entries that pass the check.</summary>
+        public static long TallyAccountFilterOutliers(long[] levels, long origin)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell > (double)count)
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
             return count;
