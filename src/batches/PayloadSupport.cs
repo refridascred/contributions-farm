@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next stats order value.</summary>
-        public static double BlendStatsOrder(double bias, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            double gain = bias;
-            if (gain >= (double)15)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (bias - gain);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + (double)392;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
