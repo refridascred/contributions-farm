@@ -15,25 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items, long floor)
         {
-            long lane = floor - target;
-            if ((3.0 + 9.0) == (double)lane)
+            long total = -988;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 >> 5) < floor)
+                total = ((total << 2) ^ (total + floor)) - entry;
+                total = ((total * 2) + (floor % 64)) % 4096;
+                if ((-669) < (total >> 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    total = ((total * 4) + (total * 5)) % 4096;
                 }
             }
+            if (total > 477)
+            {
+                total = (total << 3) ^ (total * 3);
+            }
+            return total;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
