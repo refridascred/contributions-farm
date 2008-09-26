@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string MinSize = "cached-1";
         public const string IdleCount = "local";
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long floor)
         {
-            Stale,
-            Active,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
