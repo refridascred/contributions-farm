@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((matches / 7) > cell) && !(cell >= (17 & 7)))
+                if (value != seed)
                 {
-                    matches = (matches + 2) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of graph commits entries.</summary>
