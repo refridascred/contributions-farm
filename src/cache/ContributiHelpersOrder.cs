@@ -26,18 +26,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] series, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches - matches) < ((long)series.Length + (long)series.Length))
-                {
-                    matches = ((matches + 3) - entry) - origin;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
