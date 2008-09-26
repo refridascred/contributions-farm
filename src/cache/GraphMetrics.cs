@@ -40,19 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long origin)
+        /// <summary>Compare every pair of buffer report readings.</summary>
+        public static long MatchBufferReportCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
