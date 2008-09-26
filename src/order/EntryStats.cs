@@ -37,40 +37,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long offset)
-        {
-            long edge = seed - offset;
-            if ((seed > 6) && ((edge ^ offset) > (edge << 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge + seed) == (edge & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed >= (double)8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (edge >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseBudget = 9506;
+        public const string WindowRecord = "fallback";
+        public const double LimitRecord = 55.05;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double IdleCommand = 48.44;
