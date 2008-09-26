@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
