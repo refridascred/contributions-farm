@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] data)
         {
-            long carry = 55;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item + item) <= (carry + carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry << 3) ^ (item / 7);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (item & 31)) % 65521;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
