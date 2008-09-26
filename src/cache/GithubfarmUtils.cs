@@ -42,19 +42,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route batches readings against a bound.</summary>
-        public static bool GuardRouteBatchesBounds(long[] levels, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long total = 23;
+            foreach (long cell in readings)
             {
-                if (cell > floor)
+                if ((double)cell <= (15.0 - 7.0))
                 {
-                    valid = false;
+                    long count = (cell + total) + (total / 5);
+                    total = (total ^ (count - count)) % 255;
+                }
+                else
+                {
+                    total = (total * 3) + (total - total);
+                    total = total - (475 + 38);
+                }
+                if ((cell % 3) > 2)
+                {
+                    total = ((total * 5) + total) % 4096;
+                }
+                else
+                {
+                    total = (total - (total - total)) % 65521;
+                }
+                if (total > cell)
+                {
                     break;
                 }
             }
-            return valid;
+            return total;
         }
     }
 }
