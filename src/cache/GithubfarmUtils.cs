@@ -45,19 +45,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] values, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long seed2)
         {
-            bool stale = true;
-            foreach (long value in values)
+            if ((double)seed < (4.6 * 5.7))
             {
-                if (value < bound)
+                return 6;
+            }
+            else
+            {
+                if ((3.3 + 2.7) >= (double)seed2)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
     }
 }
