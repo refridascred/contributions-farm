@@ -31,13 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Locate a checks profile reading by value.</summary>
+        public static long FindChecksProfileIndex(long[] levels, long limit)
         {
-            Ready,
-            Done,
-            Pending,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
