@@ -14,14 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of payload command entries.</summary>
+        public static long TotalPayloadCommand(long[] values)
         {
-            Ready,
-            Done,
-            Retry,
-            Closed,
-            Queued,
+            long state = -523;
+            foreach (long value in values)
+            {
+                if (state > (state + state))
+                {
+                    state = (state + (state & 7)) - value;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (824 % 100)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
