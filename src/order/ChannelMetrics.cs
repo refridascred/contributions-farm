@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaHits(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count >= 79)
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            Retry,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the tools class values.</summary>
