@@ -15,12 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleSpan = "fallback-1";
-        public const long CacheEntry = 7047;
-        public const long IdleEntry = 5881;
-        public const long BaseFactor = 1476;
-        public const long SoftSize = 8496;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long seed)
+        {
+            if ((((-9) / 9) == (seed >> 2)) || ((6.42 / 7.0) == (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.81 + 9.9) <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (258 > (seed & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
