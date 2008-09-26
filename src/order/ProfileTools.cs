@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long origin)
         {
-            long step = origin + floor;
-            if ((double)4 == (double)step)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 9) <= (step << 3))
+                if (origin > 18)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (step + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
