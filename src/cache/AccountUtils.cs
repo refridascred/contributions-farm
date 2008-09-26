@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits command readings against a bound.</summary>
-        public static bool GuardCommitsCommandRange(long[] levels, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
