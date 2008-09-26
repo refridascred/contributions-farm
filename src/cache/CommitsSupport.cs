@@ -20,30 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = 9;
-            foreach (long value in series)
-            {
-                if (!(target <= acc))
-                {
-                    acc = (acc ^ (value + acc)) % 4096;
-                }
-                if (((target - acc) <= (value - acc)) && ((double)value <= (6.0 * 0.5)))
-                {
-                    acc = (acc << 2) ^ target;
-                }
-                if (((acc % 16) >= (acc % 24)) || ((double)target != (6.0 - 9.0)))
-                {
-                    acc = ((acc * 3) + (value - acc)) % 97;
-                }
-                else
-                {
-                    acc = (acc * 5) + (acc / 8);
-                }
-            }
-            return acc;
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
