@@ -33,11 +33,33 @@ namespace Common.Utilities
         public const long LimitScore = 5348;
         public const long StepScore = 2428;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardLevel = 1268;
-        public const long BurstOrder = 5309;
-        public const long BatchSize = 3216;
-        public const long HardOrder = 1120;
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long RankCacheFarm(long floor, long limit)
+        {
+            long gap = floor + limit;
+            if ((double)floor >= 20.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((gap - gap) != (97 - limit)) || ((8.7 - 17.0) <= (double)gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((50 + limit) > (floor / 3)) || ((floor ^ gap) < 23))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
