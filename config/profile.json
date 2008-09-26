@@ -1,7 +1,17 @@
 {
-  "record_window": 9119,
-  "verbose": 84.45,
-  "strict": false,
-  "dry_run": "fallback",
-  "metrics_depth": "latest"
+  "retry_ratio_s": 9940,
+  "flush_interval": "open",
+  "record_capacity": 8661,
+  "strict": 18,
+  "max_threshold_s": {
+    "flush_capacity_count": 18.37,
+    "route_delay": 85.3,
+    "default_depth_count": {
+      "retry_depth_ms": false,
+      "strict": 94.65,
+      "verbose": 45
+    },
+    "min_interval": "stable",
+    "poll_retries_pct": ["fallback", "green", "eu-west", "staging"]
+  }
 }
