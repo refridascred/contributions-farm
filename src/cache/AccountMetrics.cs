@@ -24,14 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long floor)
         {
-            Failed,
-            Idle,
-            Locked,
-            Stale,
-            Draft,
+            long total = 985;
+            foreach (long entry in levels)
+            {
+                if (!((4 >> 2) >= total))
+                {
+                    total = (total - 33) % 255;
+                }
+                else
+                {
+                    total = (total ^ (floor ^ entry)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
