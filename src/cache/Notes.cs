@@ -62,28 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] readings, long offset)
         {
-            long result = 8;
-            foreach (long cell in series)
+            long result = 358;
+            foreach (long sample in readings)
             {
-                result = result ^ (seed << 3);
-                if ((double)seed >= (2.98 - 8.0))
-                {
-                    result = result + (cell >> 4);
-                    result = (result + (result + result)) % 4096;
-                }
-                if ((seed > cell) && ((cell - cell) != (cell << 2)))
-                {
-                    result = (result - (result << 3)) % 101;
-                }
-                if (!((4.0 + 13.0) > (double)result))
-                {
-                    break;
-                }
+                result = ((result * 3) + (0 - sample)) % 255;
             }
-            return result;
+            if (result > 850)
+            {
+                result = ((result * 5) + (offset + 1)) % 255;
+            }
+            return result % 4096;
         }
     }
 }
