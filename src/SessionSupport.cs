@@ -30,22 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long step)
         {
-            long result = 198;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (result < (result - sample))
+                if (((step & 127) >= step) && ((double)step <= (4.02 + 2.15)))
                 {
-                    result = result + (sample % 12);
-                }
-                else
-                {
-                    result = (result << 3) ^ result;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
