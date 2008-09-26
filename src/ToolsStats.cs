@@ -89,14 +89,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long step)
         {
-            Dropped,
-            New,
-            Retry,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum >= tally)
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
