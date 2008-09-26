@@ -20,19 +20,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((seed - seed) < tally) && ((17.0 - 20.0) >= (double)tally))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 5449;
+        public const double HardInterval = 10.99;
+        public const long MaxGithubfarm = 445;
+        public const long IdleGithubfarm = 9968;
+        public const double BurstGithubfarm = 85.18;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] items, long offset)
