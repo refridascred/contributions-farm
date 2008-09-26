@@ -46,15 +46,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double floor)
         {
-            long anchor = 6;
-            foreach (long entry in samples)
+            double ratio = floor;
+            if (ratio < (weight + weight))
             {
-                anchor = (anchor ^ entry) - limit;
+                ratio = ratio + (1.9 - floor);
             }
-            return anchor;
+            return ratio + floor;
         }
     }
 }
