@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Stale,
-            Pending,
-            Failed,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a command options.</summary>
