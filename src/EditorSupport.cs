@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const long HardRecord = 40;
         public const long WindowRecord = 94;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (((limit + target) > target) || ((target - 798) != (limit + (-731))))
             {
-                if (!((82 / 4) != (tally * 3)))
+                return 7;
+            }
+            else
+            {
+                if ((330 + target) < (limit + limit))
                 {
-                    tally = (tally + 1) + value;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) <= (limit ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
