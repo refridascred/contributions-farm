@@ -54,18 +54,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] levels, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double ratio = bias / 2.0;
+            if (ratio > (scale + scale))
             {
-                if ((matches / 7) >= matches)
-                {
-                    matches = ((matches + 1) + item) + seed;
-                }
+                ratio = ratio - bias;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (double)277;
+            }
+            return ratio + ratio;
         }
     }
 }
