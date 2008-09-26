@@ -16,23 +16,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (offset >= (offset + item))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1226;
+        public const long MinTimeout = 7295;
+        public const double BaseBudget = 27.67;
+        public const string BurstProfile = "local-edge";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long DigestCommand(long[] data, long floor)
