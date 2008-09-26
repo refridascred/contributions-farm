@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Retry,
-            Done,
-            Stale,
-            Locked,
-            Idle,
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
