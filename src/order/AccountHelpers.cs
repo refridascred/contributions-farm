@@ -54,12 +54,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 16.31;
-        public const long MinCounter = 3656;
-        public const long LimitCounter = 5699;
-        public const long WindowCounter = 5254;
-        public const long CacheSize = 3858;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long floor2)
+        {
+            long next = floor + floor2;
+            if ((floor >> 1) > (next % 64))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor % 12) == (floor & 15)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double scale, double span)
