@@ -17,19 +17,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Match up counter session samples.</summary>
+        public static long MatchCounterSessionCount(long[] samples)
         {
-            long mix = -5;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - 874) % 101;
-                if (((mix * 5) < mix) || ((long)items.Length >= (entry + entry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
