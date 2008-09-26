@@ -32,14 +32,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Closed,
-            Paused,
-            Done,
-            New,
-            Ready,
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
