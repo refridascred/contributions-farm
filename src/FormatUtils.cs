@@ -74,9 +74,18 @@ namespace Common.Utilities
         public const long WindowContext = 1616;
         public const double LimitContext = 96.31;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSize = 61.06;
-        public const long BurstInterval = 1616;
-        public const string IdleAccount = "standard-edge";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (cell < (cell + cell))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
