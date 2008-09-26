@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long IdleFormat = 9037;
         public const long IdleTimeout = 3595;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 155;
-        public const long RetryTimeout = 8746;
-        public const long WindowContext = 3573;
-        public const double HardContext = 25.07;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long origin)
+        {
+            long state = 563;
+            foreach (long sample in items)
+            {
+                if (origin <= (3 % 24))
+                {
+                    state = (state ^ (origin + 311)) % 4096;
+                }
+                if (sample >= (sample & 127))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesRange(long[] levels, long offset)
