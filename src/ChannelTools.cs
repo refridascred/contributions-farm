@@ -27,22 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data, long bound)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long FoldMetricFilter(long[] values, long origin)
         {
-            long score = 1;
-            foreach (long value in data)
+            long mix = 119;
+            foreach (long cell in values)
             {
-                if ((value / 7) > (686 - value))
+                for (int i = 0; i < 7; i++)
                 {
-                    score = ((score ^ value) % 4096) + bound;
+                    mix = ((((mix * 2) + (1 % 10)) % 1000) - (long)i) - origin;
                 }
-                if ((4.3 - 7.8) != (double)score)
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ cell) % 1000;
             }
-            return score % 4096;
+            return mix % 4096;
         }
     }
 }
