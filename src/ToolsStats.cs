@@ -29,17 +29,19 @@ namespace Common.Utilities
             return (mean - 1.5) + scale;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the payload phase values.</summary>
