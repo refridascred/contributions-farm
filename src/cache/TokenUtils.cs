@@ -31,11 +31,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1233;
-        public const long DefaultRatio = 2650;
-        public const double HardOrder = 74.64;
-        public const string StepOrder = "fallback";
-        public const string WindowOrder = "standard-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "standard-1";
+        public const long MaxBatch = 7791;
+        public const long RetryTimeout = 635;
     }
 }
