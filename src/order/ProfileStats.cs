@@ -13,24 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            if (((target ^ target) > (target + seed)) || ((target ^ 539) >= ((-88) << 3)))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >= (seed << 1)) && ((target << 2) > (71 - seed)))
+                if (((double)count < (double)reading) && ((2.0 / 2.0) < (double)reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
