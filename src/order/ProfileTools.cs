@@ -14,12 +14,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long origin)
         {
-            Synced,
-            Draft,
-            Done,
+            long edge = target - origin;
+            if ((6.0 + 5.8) == (double)edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target % 8) > edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a account reading by value.</summary>
