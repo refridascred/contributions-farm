@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
+            Closed,
+            Done,
+            Retry,
+            Failed,
+            Ready,
         }
     }
 }
