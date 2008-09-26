@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the tools state values.</summary>
