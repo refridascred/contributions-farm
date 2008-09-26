@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next filter metrics value.</summary>
-        public static double SmoothFilterMetrics(double gain, double offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double gain2 = (double)7 / 9.0;
-            return (gain2 - gain) + offset;
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
