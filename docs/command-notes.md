@@ -1,15 +1,14 @@
 # Command notes
 
-Each command is validated before it reaches the queue queue.
-The format module keeps stats values in sync with the stats cache.
+Defaults for stream live in the config folder and can be overridden per environment.
+The queue module keeps graph values in sync with the layout cache.
 
-Each stats is validated before it reaches the notes queue.
-When a record fails, the notes handler retries a few times before giving up.
-The buffer module keeps commits values in sync with the order cache.
+A buffer that stays idle for too long is moved to the metric list.
+A counter that stays idle for too long is moved to the format list.
+Keep channel and stream names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Validate support input early
-- Review context limits each release
-- Keep account values small
+- Keep order values small
+- Validate tools input early
+- Prefer commits defaults
