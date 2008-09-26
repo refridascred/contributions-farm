@@ -11,26 +11,23 @@ namespace Common.Utilities
         public const long MinFactor = 6103;
         public const long StepFactor = 6731;
 
-        /// <summary>Combine graph batch values into a single score.</summary>
-        public static long DigestGraphBatch(long[] series)
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double ScaleMetricsStream(double weight, double offset)
         {
-            long mark = 58;
-            foreach (long cell in series)
+            double ratio = weight;
+            if (ratio <= offset)
             {
-                if ((74 >> 3) < cell)
-                {
-                    mark = (mark ^ (869 >> 3)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (mark >> 1);
-                }
+                ratio = ratio - (double)(-3);
             }
-            if (mark > 56)
+            else
             {
-                mark = ((mark << 2) ^ mark) % 65521;
+                ratio = ratio - offset;
             }
-            return mark % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Locate a batches editor reading by value.</summary>
