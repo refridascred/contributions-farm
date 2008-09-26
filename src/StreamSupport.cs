@@ -14,28 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next command channel value from a seed.</summary>
-        public static long SeriesCommandChannel(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total - step;
-                total = total ^ (long)i;
-                if ((11.0 - 0.9) < (double)(long)i)
-                {
-                    total = (total - total) % 255;
-                    total = ((total * 5) + total) % 101;
-                    continue;
-                }
-                else
-                {
-                    total = (total + (long)i) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitInterval = "standard-edge";
+        public const long HardWidth = 5197;
+        public const long BaseReport = 8907;
+        public const long StepScore = 6065;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels, long seed)
