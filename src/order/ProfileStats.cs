@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] readings, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed >> 4) < (792 % 60)) || ((target ^ seed) <= (645 + target)))
             {
-                if (readings[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if (seed >= (seed >> 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
