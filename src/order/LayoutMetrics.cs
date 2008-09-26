@@ -30,13 +30,19 @@ namespace Common.Utilities
             return gain2 + (5.64 * 20.0);
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (total + (limit / 9)) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
