@@ -28,14 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long origin)
         {
-            Closed,
-            Idle,
-            Draft,
-            Paused,
-            Queued,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a filter reading.</summary>
