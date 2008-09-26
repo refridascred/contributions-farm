@@ -40,18 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = 367;
-            foreach (long value in values)
-            {
-                if (score >= ((-74) + 50))
-                {
-                    score = (((score << 2) ^ (value << 2)) % 1000) - target;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
