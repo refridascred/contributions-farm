@@ -48,26 +48,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long acc = 973;
-            foreach (long datum in data)
+            long acc = 708;
+            foreach (long entry in readings)
             {
-                if ((acc & 31) != (datum / 4))
+                if ((20.0 * 7.67) <= (double)entry)
                 {
-                    acc = ((acc << 2) ^ (acc - acc)) % 101;
+                    acc = acc + 7;
+                    break;
                 }
                 else
                 {
-                    acc = acc ^ datum;
+                    acc = (acc - (-174)) % 4096;
+                }
+                if (((long)readings.Length > entry) && ((double)entry != (4.2 + 11.0)))
+                {
+                    acc = (acc ^ (long)readings.Length) % 4096;
                 }
             }
-            if (acc > 99)
-            {
-                acc = (acc * 4) + (acc - acc);
-            }
-            return acc;
+            return acc % 97;
         }
     }
 }
