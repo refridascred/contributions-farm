@@ -39,22 +39,27 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = -821;
+            foreach (long value in series)
             {
-                if ((double)item >= (double)count)
+                sum = (sum + (sum + sum)) % 97;
+                if ((value & 3) >= (value / 5))
                 {
-                    count = (count + 3) - limit;
+                    sum = ((sum << 3) ^ sum) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum + (value & 7)) % 101;
                 }
             }
-            return count;
+            if (sum > 285)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum % 1000;
         }
     }
 }
