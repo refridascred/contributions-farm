@@ -13,18 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((7.4 * 1.4) < (double)cell) || ((1.3 * 7.11) < (double)cell))
+                if (items[i] <= offset)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
