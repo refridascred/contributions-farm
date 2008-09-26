@@ -58,10 +58,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 43.67;
-        public const long WindowWidth = 6758;
-        public const long HardInterval = 2987;
-        public const long IdleLevel = 6427;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= (datum / 8))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
