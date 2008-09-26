@@ -1,19 +1,5 @@
 # support settings
-notes_size: 60
-cache_retries_s: primary
-strict:
-  default_window_s: true
-  flush_depth_count:
-    - 360
-    - 460
-    - 326
-  retry_ratio_s: 29.23
-  hard_ttl_s:
-    metrics_size:
-      - 401
-      - 113
-      - 102
-    already_retries: 5776
-    idle_timeout_pct: 67.45
-    farm_limit: local
-    format_ttl: 2.08
+metric_depth: fallback
+context_ratio: 56.61
+soft_delay_count: 57
+buffer_ttl: true
