@@ -28,19 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] samples, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
