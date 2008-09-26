@@ -19,17 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a order metrics sample.</summary>
-        public static long LookupOrderMetricsIndex(long[] series, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (series[i] <= offset)
+                if (cell < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
