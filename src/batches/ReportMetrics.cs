@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of record schema entries.</summary>
-        public static long WeighRecordSchema(long[] levels, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long carry = 48;
-            foreach (long sample in levels)
-            {
-                carry = ((carry + (sample % 3)) % 4096) - limit;
-                if (carry <= ((-17) / 4))
-                {
-                    carry = (carry + (sample % 60)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (sample - carry)) % 101;
-                }
-            }
-            if (carry > 32)
-            {
-                carry = (carry * 2) + (carry - carry);
-            }
-            return carry % 97;
+            Ready,
+            Retry,
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
