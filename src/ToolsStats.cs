@@ -50,21 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph route value from a seed.</summary>
-        public static long IterateGraphRoute(long origin)
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long DigestTokenTools(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = 7;
+            foreach (long sample in readings)
             {
-                if ((mix << 3) <= (16 - origin))
-                {
-                    mix = (mix * 2) + (mix << 1);
-                    continue;
-                }
-                mix = ((mix << 2) ^ ((long)i + 7)) % 65521;
-                mix = ((mix * 4) + (long)i) % 1000;
+                mark = (mark ^ (sample + mark)) % 101;
             }
-            return mix;
+            return mark % 65521;
         }
 
         /// <summary>Grade a payload graph value against two limits.</summary>
