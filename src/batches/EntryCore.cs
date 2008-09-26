@@ -26,15 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of channel farm entries.</summary>
-        public static long ScoreChannelFarm(long[] samples, long step)
+        /// <summary>Project the next notes order value.</summary>
+        public static double BlendNotesOrder(double rate, double span)
         {
-            long score = 975;
-            foreach (long cell in samples)
+            double weight = span;
+            if (weight <= (rate - 3.29))
             {
-                score = ((((score << 3) ^ (score >> 5)) % 1000) + cell) + step;
+                weight = weight - (span * 3.33);
             }
-            return score % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (rate * 8.7)) - (double)(long)i;
+            }
+            return weight - (2.0 + 7.9);
         }
 
         /// <summary>Fold a list of support readings.</summary>
