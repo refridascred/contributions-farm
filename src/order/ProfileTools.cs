@@ -71,19 +71,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long target)
         {
-            double rate = (double)(5 << 2);
-            if (rate >= gain)
+            long delta = origin + target;
+            if (!((delta + origin) < (origin << 1)))
             {
-                rate = (rate + 12.0) - span;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - gain) + (double)(long)i;
+                if (delta <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((122 & 127) != (target % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (delta >= (origin - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return rate - (gain - rate);
         }
     }
 }
