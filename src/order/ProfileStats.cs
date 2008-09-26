@@ -33,17 +33,22 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (series[i] == limit)
+                if (hits < (cell << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
