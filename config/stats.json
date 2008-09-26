@@ -1,7 +1,5 @@
 {
-  "poll_delay": 88.5,
-  "persist": "legacy",
-  "profile_ttl": 16.98,
-  "channel_window": false,
-  "already_retries": true
+  "warm_timeout": 60,
+  "batch_interval": 6599,
+  "strict": 849
 }
