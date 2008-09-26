@@ -1,8 +1,7 @@
 {
-  "warm_ratio_count": 76,
-  "batches_delay": 9968,
-  "enabled": true,
-  "min_depth": "local",
-  "verbose": 45.54,
-  "dry_run": "cached"
+  "record_timeout": 100,
+  "session_ratio": "latest",
+  "dry_run": 60,
+  "audit": "local",
+  "default_ratio_count": "stable"
 }
