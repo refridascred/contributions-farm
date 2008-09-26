@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "local";
-        public const string IdleSession = "fallback-1";
-        public const long IdleCount = 9854;
-        public const double CacheSession = 65.64;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long limit)
+        {
+            if (!((double)limit != (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > 3.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] data, long step)
