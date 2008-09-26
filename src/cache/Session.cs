@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the tools status values.</summary>
