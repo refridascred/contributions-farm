@@ -29,22 +29,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] series)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits + hits) >= (hits + item))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
