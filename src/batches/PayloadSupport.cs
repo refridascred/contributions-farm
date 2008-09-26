@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long CountChannelBatchMatches(long[] series)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) != ((long)series.Length + 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
