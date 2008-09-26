@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long target)
         {
-            long state = 7;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                state = ((state - (state >> 5)) % 255) - value;
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state > 9)
-            {
-                state = (state - ((-592) << 3)) % 65521;
-            }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
