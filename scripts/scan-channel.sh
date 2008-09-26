@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=78
-log "limit is ${CHANNEL_LIMIT}"
+for item in open primary standard legacy; do
+    log "checking ${item}"
+done
