@@ -41,11 +41,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Check that every account format entry stays within the limit.</summary>
+        public static bool ValidateAccountFormatBounds(long[] samples, long floor)
         {
-            double ratio = (bias / 2.0) * 4.7;
-            return ratio - weight;
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
