@@ -24,18 +24,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((step >= (step + item)) && ((double)step != (double)218))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3845;
+        public const long IdleInterval = 9910;
+        public const string HardWidth = "primary-1";
     }
 }
