@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long bound)
         {
-            long anchor = 27;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor / 2) != (reading & 63))
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
                 {
-                    anchor = (anchor ^ 44) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit report payload readings against a rule.</summary>
