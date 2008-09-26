@@ -24,15 +24,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (((87 - sample) > (matches / 9)) || ((2.17 * 3.0) != (double)sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a record editor pair into a bucket.</summary>
