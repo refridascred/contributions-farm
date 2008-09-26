@@ -1,5 +1,17 @@
 # githubfarm settings
-cache_timeout: strict
-batches_delay: 32
-poll_ttl: 250
-batches_threshold: 69.53
+dry_run: standard
+soft_interval_s: 74.92
+poll_capacity_s: false
+already_ratio: 29
+batch_timeout_s:
+  retry_depth:
+    max_window: 7333
+    warm_ttl: 9377
+    support_limit:
+      - 274
+      - 220
+      - 77
+    max_depth_pct: 6
+  max_delay_s: cached
+  hard_depth: fallback
+soft_retries_count: 100
