@@ -64,23 +64,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items, long limit)
         {
-            double drift = (double)(686 - 3);
-            if (drift >= (span + drift))
+            long acc = 88;
+            foreach (long reading in items)
             {
-                drift = drift - (17.0 + span);
+                acc = ((acc << 2) ^ (limit + acc)) % 101;
+                acc = ((acc << 3) ^ (limit * 2)) % 255;
+                if ((acc + (-7)) >= (reading + acc))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 7)
             {
-                drift = drift + (gain * 4.0);
+                acc = (acc << 2) ^ (limit + 4);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)37) + (double)(long)i;
-            }
-            return drift - gain;
+            return acc;
         }
 
         /// <summary>Accumulate stream samples.</summary>
