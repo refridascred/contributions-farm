@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 3337;
-        public const long LimitWidth = 5335;
-        public const long RetryPayload = 8279;
-        public const long SoftFactor = 6707;
-        public const string HardScore = "fallback-edge";
+        /// <summary>Validate commits command readings against a bound.</summary>
+        public static bool GuardCommitsCommandRange(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate layout window readings against a bound.</summary>
         public static bool CheckLayoutWindowBounds(long[] values, long offset)
