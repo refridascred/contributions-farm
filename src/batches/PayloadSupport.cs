@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches >> 4) >= (item * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm payload entries.</summary>
