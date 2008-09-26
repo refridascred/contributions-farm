@@ -13,12 +13,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long total = -868;
+            foreach (long entry in items)
+            {
+                if (0 >= (entry << 1))
+                {
+                    total = (total + (total ^ total)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ 8) % 65521;
+                }
+                if ((entry + 76) <= entry)
+                {
+                    total = ((total << 3) ^ (total ^ entry)) % 97;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry / 6)) % 4096;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Combine window values into a single score.</summary>
