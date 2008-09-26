@@ -27,14 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            Paused,
-            New,
-            Stale,
-            Ready,
-            Dropped,
+            long anchor = 514;
+            foreach (long value in readings)
+            {
+                if ((anchor - anchor) < (anchor - 62))
+                {
+                    anchor = (anchor * 3) + (anchor >> 4);
+                }
+                if (((anchor + 913) == (value + anchor)) && ((anchor + anchor) == (value & 31)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools record.</summary>
