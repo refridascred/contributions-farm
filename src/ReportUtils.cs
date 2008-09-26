@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] samples, long limit)
         {
-            long result = 37;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((result - result) > (cell + result))
+                if (item < limit)
                 {
-                    result = (result * 3) + (result >> 2);
+                    found = false;
+                    break;
                 }
-                result = result - (result % 7);
             }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Describe the commits kind values.</summary>
