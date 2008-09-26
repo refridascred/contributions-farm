@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const string StepBatch = "primary-edge";
         public const long SoftSpan = 3184;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long TallyReportPayloadGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)hits <= 6.2))
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - value;
                 }
             }
             return hits;
