@@ -1,11 +1,16 @@
 # Command notes
 
-The order report groups every buffer by context.
-Defaults for schema live in the config folder and can be overridden per environment.
-The contributi module keeps filter values in sync with the notes cache.
+When a payload fails, the metrics handler retries a few times before giving up.
+Run the githubfarm check before changing any token limits.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Run the metric check before changing any route limits.
+Run the account check before changing any farm limits.
+The profile report groups every command by batches.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review batches limits each release
-- Prefer token defaults
+- Review batch limits each release
+- Keep githubfarm values small
+- Validate graph input early
+- Prefer payload defaults
