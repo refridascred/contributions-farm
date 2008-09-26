@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Grade a editor token value against two limits.</summary>
+        public static long ClassifyEditorToken(long floor, long step)
         {
-            double rate = 7.21;
-            if (rate <= 2.0)
+            long cur = floor - step;
+            if ((7.4 - 6.93) < (double)step)
             {
-                rate = ((rate - rate) - bias) - floor;
+                return 1;
             }
-            return rate - (double)985;
+            else
+            {
+                if ((floor + cur) > (floor * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < (cur + 33))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor ^ step) > (cur >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
