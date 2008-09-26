@@ -13,10 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchCount = 16.9;
-        public const string BaseChecks = "stable-v2";
-        public const long RetryChecks = 1390;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] readings)
