@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route stats entries that pass the check.</summary>
-        public static long CountRouteStatsMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((offset - cell) > ((long)data.Length - cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseInterval = 5156;
+        public const long BaseDepth = 7901;
+        public const long IdleReport = 1349;
+        public const double StepReport = 32.42;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long origin, long bound)
