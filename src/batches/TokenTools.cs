@@ -16,38 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long offset, long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((double)offset >= 3.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset >> 1) >= (floor - offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + 938) >= (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 8) <= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
