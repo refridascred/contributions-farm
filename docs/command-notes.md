@@ -1,10 +1,12 @@
 # Command notes
 
-The session module keeps batch values in sync with the graph cache.
-A command that stays idle for too long is moved to the token list.
+The support report groups every farm by checks.
+The notes report groups every window by farm.
+The channel module keeps batches values in sync with the metrics cache.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Log every graph change
-- Validate editor input early
+- Document new command fields
+- Prefer context defaults
+- Log every tools change
+- Keep payload values small
