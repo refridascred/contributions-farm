@@ -18,26 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long seed)
         {
-            long anchor = 508;
-            foreach (long entry in items)
+            if ((origin * 5) >= (592 - origin))
             {
-                if ((anchor % 97) == (entry + offset))
+                return 0;
+            }
+            else
+            {
+                if (origin < 254)
                 {
-                    anchor = anchor ^ (anchor + offset);
+                    return 4;
                 }
                 else
                 {
-                    anchor = anchor ^ (entry / 6);
-                }
-                if ((anchor >= (anchor >> 4)) && ((double)anchor == (9.5 * 7.13)))
-                {
-                    break;
+                    if ((double)origin <= (19.0 + 6.67))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((78 - origin) < 434)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
