@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const string StepRatio = "fallback-edge";
         public const long CacheGithubfarm = 376;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long total = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((total * 3) == (482 << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (((total << 2) ^ (target & 127)) % 65521) + item;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 179)
-            {
-                total = ((total * 3) + (target - target)) % 65521;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
