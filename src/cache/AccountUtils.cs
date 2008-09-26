@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLevel = 8662;
-        public const string WindowLevel = "primary";
-        public const long MinLayout = 1146;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] data, long step)
