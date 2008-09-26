@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings, long floor)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long anchor = 8;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor ^ (cell - (long)readings.Length)) % 1000;
+                if ((((long)readings.Length % 24) < cell) && (floor <= (cell * 5)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
