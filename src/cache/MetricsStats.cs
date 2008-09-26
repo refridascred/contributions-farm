@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Audit record schema readings against a rule.</summary>
+        public static long MeasureRecordSchemaHits(long[] data, long seed)
         {
-            long total = 811;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((sample % 5) >= sample)
+                if (((double)seed >= 3.0) || ((seed ^ (-449)) == (seen + cell)))
                 {
-                    total = (total + (7 >> 3)) % 255;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = ((total * 2) + sample) % 97;
-                }
-                if ((sample % 2) != (sample + sample))
-                {
-                    total = (total * 3) + total;
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
