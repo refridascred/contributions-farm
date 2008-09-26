@@ -15,19 +15,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long offset = origin + seed;
+            if (origin >= offset)
             {
-                if (value >= step)
+                return 8;
+            }
+            else
+            {
+                if (seed >= (40 + origin))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 4) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(origin >= (offset & 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
