@@ -69,11 +69,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long limit, long step)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            if ((limit ^ 7) >= (step & 15))
+            {
+                return 7;
+            }
+            else
+            {
+                if (449 > (limit / 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit & 127) >= (83 / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
