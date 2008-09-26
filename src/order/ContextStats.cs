@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long DefaultOrder = 5837;
         public const long BatchOrder = 1489;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxTimeout = 7931;
-        public const long MinSession = 4481;
-        public const long IdleSession = 1893;
-        public const double BatchSession = 67.4;
-        public const long BaseSession = 2714;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count != (16.0 * 1.78))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
+        }
     }
 }
