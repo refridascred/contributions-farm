@@ -1,5 +1,5 @@
 # entry settings
-idle_size: true
-session_retries: fallback
-retry_capacity_count: 54
-warm_limit_count: edge
+persist: staging
+poll_ratio_pct: fallback
+retry_timeout_ms: local
+base_retries: false
