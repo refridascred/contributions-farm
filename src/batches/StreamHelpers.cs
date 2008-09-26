@@ -31,12 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a record editor pair into a bucket.</summary>
+        public static long SortRecordEditor(long seed, long step)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            if ((double)step >= (1.57 + 8.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step != (4.6 + 11.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
