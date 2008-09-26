@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const string DefaultTimeout = "latest";
         public const long BaseScore = 6177;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (matches < (9 ^ matches))
+                if ((datum + 52) > (91 + datum))
                 {
-                    matches = (matches + 1) - value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a batch stats.</summary>
