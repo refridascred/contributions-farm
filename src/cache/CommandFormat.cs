@@ -61,19 +61,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long result = 99;
+            foreach (long item in levels)
             {
-                if (entry > step)
+                if ((result << 1) <= (result >> 4))
                 {
-                    flag = false;
+                    result = (result ^ (item + result)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (item * 4);
+                }
+                if ((floor + result) == (item >> 4))
+                {
                     break;
                 }
             }
-            return flag;
+            return result % 65521;
         }
     }
 }
