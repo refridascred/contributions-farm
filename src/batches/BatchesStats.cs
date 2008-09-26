@@ -20,18 +20,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings, long origin)
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long TallyGraphBatchesHits(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((count * 3) < (origin - datum))
+                if ((double)seen < (20.0 - 3.9))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the channel counter entries that pass the check.</summary>
