@@ -55,10 +55,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 1844;
-        public const double BaseGraph = 0.86;
-        public const long LimitGraph = 1300;
-        public const long StepGraph = 3695;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
