@@ -99,19 +99,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every command batch entry stays within the limit.</summary>
-        public static bool VerifyCommandBatchRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFactor = 68.84;
+        public const long MaxFormat = 8;
+        public const double BurstSpan = 35.91;
+        public const double BaseFormat = 62.8;
+        public const double BatchRatio = 72.59;
     }
 }
