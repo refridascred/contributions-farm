@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the support stream entries that pass the check.</summary>
+        public static long AuditSupportStreamHits(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum << 2) <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
