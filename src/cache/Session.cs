@@ -19,32 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long gap = floor + origin;
-            if ((origin / 2) <= (3 + gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap * 3) < gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (gap <= 23)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Rank checks context input into a small class.</summary>
