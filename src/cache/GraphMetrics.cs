@@ -69,11 +69,12 @@ namespace Common.Utilities
         public const long SoftQueue = 1810;
         public const long LimitQueue = 1213;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardDepth = 196;
-        public const string MaxLevel = "legacy-edge";
-        public const long BurstSize = 8017;
-        public const long IdleTimeout = 1660;
-        public const long BaseCommand = 157;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
