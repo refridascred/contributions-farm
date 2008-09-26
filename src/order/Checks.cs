@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] readings, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long target, long seed)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long gap = target + seed;
+            if ((target / 3) > (target ^ seed))
             {
-                if (cell < limit)
+                return 6;
+            }
+            else
+            {
+                if (((gap & 7) < seed) || (17.0 > (3.6 / 4.0)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((656 - gap) == (gap - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
