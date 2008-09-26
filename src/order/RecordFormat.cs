@@ -30,12 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 2634;
-        public const long HardEntry = 6934;
-        public const long BurstRatio = 9311;
-        public const string StepEntry = "cached-1";
-        public const double MinWidth = 70.77;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] data, long seed)
