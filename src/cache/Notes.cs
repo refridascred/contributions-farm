@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two githubfarm metric measurements.</summary>
-        public static double AdjustGithubfarmMetric(double gain, double span)
-        {
-            double scale = span;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + (double)80) - (double)(long)i) - gain;
-            }
-            return scale + (double)87;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "stable-edge";
+        public const long MinCluster = 9732;
+        public const double StepDepth = 45.22;
+        public const long BurstCluster = 2057;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] readings)
