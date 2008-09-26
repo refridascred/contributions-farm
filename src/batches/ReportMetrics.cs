@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine route session values into a single score.</summary>
-        public static long FoldRouteSession(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long seed)
         {
-            long mark = 465;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mark = ((mark * 5) + origin) % 101;
-                if ((9.05 + 7.54) <= (double)mark)
+                if (datum >= seed)
                 {
-                    break;
-                }
-                if ((3 - value) < (value << 3))
-                {
-                    mark = (mark + (origin + mark)) % 101;
-                }
-                if ((value - origin) > (value << 2))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
