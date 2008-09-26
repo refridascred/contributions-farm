@@ -42,11 +42,19 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long target)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
