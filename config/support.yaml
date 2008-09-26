@@ -1,9 +1,12 @@
 # support settings
-warm_delay: strict
-max_interval: false
-default_capacity: true
-enabled:
-  - 216
-  - 356
-base_window: 10
-cache_delay_s: 31
+strict:
+  - 132
+  - 287
+  - 91
+enabled: false
+idle_delay_pct: standard
+layout_ratio:
+  poll_ratio_s: 100
+  burst_size: strict
+  min_depth_s: eu-west
+  audit: 85
