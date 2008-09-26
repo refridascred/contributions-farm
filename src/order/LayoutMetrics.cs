@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
-        public static long SeriesChecksGithubfarm(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state + state) > (state / 3))
-                {
-                    state = (state - ((long)i + target)) % 65521;
-                    state = (state << 3) ^ (target % 7);
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
