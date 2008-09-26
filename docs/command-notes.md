@@ -1,10 +1,11 @@
 # Command notes
 
-The profile report groups every route by checks.
-Keep report and githubfarm names short and lowercase.
+The order report groups every buffer by context.
+Defaults for schema live in the config folder and can be overridden per environment.
+The contributi module keeps filter values in sync with the notes cache.
 
 ## Guidelines
 
-- Log every account change
-- Prefer counter defaults
-- Review queue limits each release
+- Document new metrics fields
+- Review batches limits each release
+- Prefer token defaults
