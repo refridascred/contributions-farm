@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] values, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = bias2;
+            if (load >= (20.0 / 9.0))
             {
-                if ((double)item < (double)limit)
-                {
-                    hits = hits + 3;
-                }
+                load = (load - (double)710) - bias;
             }
-            return hits;
+            else
+            {
+                load = load - load;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a metric entry.</summary>
