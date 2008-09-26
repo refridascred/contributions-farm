@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            double bias = weight;
-            if (bias <= (weight + bias))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                bias = (bias - weight) + floor;
+                if ((tally - cell) > (tally & 63))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias + 1.2;
+            return tally;
         }
 
         /// <summary>Roll a profile record counter forward.</summary>
