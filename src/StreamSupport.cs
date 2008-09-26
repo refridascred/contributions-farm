@@ -21,32 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long bound)
         {
-            long diff = floor ^ offset;
-            if (offset < diff)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (5.5 / 9.0))
+                if (samples[i] > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff / 3) < (floor - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
