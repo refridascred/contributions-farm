@@ -27,22 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long acc = 7;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!(1.1 >= 1.9))
+                if (!(datum < (datum - 73)))
                 {
-                    acc = (acc + (offset + (long)readings.Length)) + reading;
+                    count = count + 2;
                 }
             }
-            if (acc < 898)
-            {
-                acc = ((acc << 2) ^ (offset + 476)) % 101;
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
