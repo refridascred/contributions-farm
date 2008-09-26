@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (double)limit)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of payload command entries.</summary>
