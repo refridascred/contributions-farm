@@ -16,22 +16,11 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] values, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally & 31) > (-45))
-                {
-                    tally = ((tally + 2) + cell) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
