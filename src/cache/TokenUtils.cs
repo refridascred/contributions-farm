@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double bias)
+        /// <summary>Check that every cluster route entry stays within the limit.</summary>
+        public static bool VerifyClusterRouteBounds(long[] data, long origin)
         {
-            double gain = bias;
-            if (gain < (double)0)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                gain = (gain + gain) - ratio;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 16.0;
-            }
-            return gain + (double)(-7);
+            return valid;
         }
 
         /// <summary>Hold a cluster header.</summary>
