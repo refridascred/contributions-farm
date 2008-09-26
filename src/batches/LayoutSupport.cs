@@ -32,12 +32,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] items, long target)
         {
-            Dropped,
-            New,
-            Ready,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
