@@ -26,11 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
