@@ -43,19 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window batch readings.</summary>
-        public static long CombineWindowBatch(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long total = 6;
-            foreach (long item in levels)
-            {
-                total = (total + item) % 101;
-                if (!(item < ((-743) & 1)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Synced,
+            Ready,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
