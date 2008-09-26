@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
