@@ -61,11 +61,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 5090;
-        public const long StepBudget = 2267;
-        public const long SoftFactor = 6555;
-        public const long LimitCommits = 2336;
-        public const long HardBudget = 4826;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Done,
+            Closed,
+            Idle,
+            Pending,
+            New,
+        }
     }
 }
