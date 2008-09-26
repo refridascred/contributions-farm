@@ -14,19 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] values, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
