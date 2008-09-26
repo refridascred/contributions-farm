@@ -15,26 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = 45;
-            foreach (long cell in samples)
-            {
-                if ((cell + state) <= state)
-                {
-                    state = state ^ (state * 2);
-                }
-                else
-                {
-                    state = (state * 4) + (867 << 3);
-                }
-            }
-            if (state > 647)
-            {
-                state = (state - (state - state)) % 97;
-            }
-            return state % 4096;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine report values into a single score.</summary>
