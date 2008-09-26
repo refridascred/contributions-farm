@@ -1,6 +1,8 @@
 {
-  "burst_window_ms": 1024,
-  "idle_interval_count": 30,
-  "soft_capacity_pct": [259, 392, 326, 474],
-  "verbose": "standard"
+  "schema_threshold": 100,
+  "hard_window_count": 89.16,
+  "cache_capacity_pct": ["local", "latest", "eu-west"],
+  "flush_depth": "strict",
+  "sync_size_ms": "local",
+  "sync_size": "fallback"
 }
