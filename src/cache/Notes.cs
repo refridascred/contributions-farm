@@ -20,19 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long origin)
+        /// <summary>Classify a layout editor pair into a bucket.</summary>
+        public static long ClassifyLayoutEditor(long origin, long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long bound = origin ^ target;
+            if (bound >= (target ^ bound))
             {
-                if (datum != origin)
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound >= (0.1 * 0.38)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (86 * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine context values into a single score.</summary>
