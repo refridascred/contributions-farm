@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = 21;
-            foreach (long value in data)
-            {
-                if (!((target - target) > (0 + 37)))
-                {
-                    mark = (mark + (value + target)) % 97;
-                }
-                if (607 < (target << 2))
-                {
-                    break;
-                }
-            }
-            if (mark > 54)
-            {
-                mark = (mark - (433 - target)) % 101;
-            }
-            return mark % 97;
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
