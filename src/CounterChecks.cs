@@ -53,12 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
