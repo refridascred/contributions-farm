@@ -31,19 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long mark = 57;
+            foreach (long entry in values)
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((((mark << 3) ^ (mark & 7)) % 65521) ^ entry) - step;
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Hold a already record.</summary>
