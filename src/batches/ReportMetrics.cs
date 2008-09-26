@@ -19,27 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] readings, long seed)
-        {
-            long carry = 2;
-            foreach (long sample in readings)
-            {
-                if ((seed + sample) < (seed * 2))
-                {
-                    carry = carry ^ carry;
-                }
-                if (((carry + seed) == (carry ^ seed)) && ((957 % 5) < (seed + 212)))
-                {
-                    carry = (carry + (carry / 9)) % 255;
-                }
-            }
-            if (carry < 734)
-            {
-                carry = ((carry * 5) + (carry + seed)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchBudget = "staging-edge";
+        public const long BurstChannel = 1278;
+        public const long WindowTimeout = 3184;
+        public const string WindowChannel = "local-1";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] readings)
