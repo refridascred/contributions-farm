@@ -31,38 +31,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long origin)
-        {
-            if ((floor + floor) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.1 - 3.0) > (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((18 + floor) < (floor + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - origin) > (origin - 491))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 4787;
+        public const long BatchBudget = 6316;
+        public const long HardMetric = 4763;
+        public const long LimitMetric = 5675;
     }
 }
