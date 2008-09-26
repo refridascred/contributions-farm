@@ -39,27 +39,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = -821;
-            foreach (long value in series)
-            {
-                sum = (sum + (sum + sum)) % 97;
-                if ((value & 3) >= (value / 5))
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (value & 7)) % 101;
-                }
-            }
-            if (sum > 285)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum % 1000;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
