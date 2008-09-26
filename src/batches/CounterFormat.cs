@@ -13,14 +13,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Derive the next graph counter value from a seed.</summary>
+        public static long StepGraphCounter(long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = anchor - target;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
             return anchor;
         }
