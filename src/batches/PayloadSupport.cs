@@ -36,10 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 56.47;
-        public const double StepSize = 96.08;
-        public const long SoftLevel = 2413;
-        public const long WindowBudget = 5436;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
