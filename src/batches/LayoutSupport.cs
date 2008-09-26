@@ -47,19 +47,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double bias)
-        {
-            double ratio = bias / 2.0;
-            if (ratio > (scale + scale))
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - (double)277;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 43.67;
+        public const long WindowWidth = 6758;
+        public const long HardInterval = 2987;
+        public const long IdleLevel = 6427;
     }
 }
