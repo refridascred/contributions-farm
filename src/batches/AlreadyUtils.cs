@@ -53,10 +53,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardBudget = 91.76;
-        public const long BatchSize = 6207;
-        public const string RetryLevel = "primary-edge";
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long step)
