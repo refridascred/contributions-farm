@@ -43,11 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftTimeout = 74.82;
-        public const long SoftEditor = 5648;
-        public const long DefaultCount = 8921;
-        public const long BatchRatio = 3676;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Ready,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Derive the next entry cache value from a seed.</summary>
         public static long RollEntryCache(long origin)
