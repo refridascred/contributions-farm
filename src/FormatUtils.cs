@@ -102,24 +102,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(origin >= (origin >> 2)))
-                {
-                    score = (score + score) % 97;
-                    score = score ^ (long)i;
-                }
-                if ((origin - origin) > ((long)i & 255))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 2681;
+        public const long LimitAccount = 3042;
+        public const long BaseCount = 5473;
     }
 }
