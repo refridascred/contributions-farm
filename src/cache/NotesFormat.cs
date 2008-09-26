@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of editor counter readings.</summary>
-        public static long ScoreEditorCounter(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long score = 43;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score > 68) && ((2.9 - 5.09) <= (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 3) ^ (1 / 8)) % 1000;
-                }
-                else
-                {
-                    score = (score - ((-593) - score)) % 4096;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
