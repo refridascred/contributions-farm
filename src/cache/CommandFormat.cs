@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long LimitCommand = 4507;
         public const string RetryCommand = "local";
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 85;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + (floor >> 3)) % 101) ^ reading;
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
