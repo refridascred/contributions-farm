@@ -1,24 +1,9 @@
 {
-  "sync_limit_s": [340, 382],
-  "verbose": 8389,
-  "max_interval": {
-    "notes_retries": {
-      "max_timeout_count": 1024,
-      "compress": "stable",
-      "cache_window": false,
-      "stream_ratio": false
-    },
-    "batch_capacity": [304, 84],
-    "window_limit": 3149,
-    "window_delay": [7, 48, 199],
-    "idle_interval_ms": 89.37
-  },
-  "idle_threshold": 1890,
-  "persist": {
-    "metric_ttl": [94, 98],
-    "sync_size_pct": 45,
-    "batch_timeout_pct": 43,
-    "flush_retries_ms": "blue"
-  },
-  "burst_interval_ms": "stable"
+  "sync_capacity_pct": true,
+  "verbose": 68,
+  "report_limit": {
+    "batches_ratio": [234, 445, 316, 249],
+    "payload_depth": 74.12,
+    "hard_delay_ms": true
+  }
 }
