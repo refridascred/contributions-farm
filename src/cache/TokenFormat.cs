@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long CombineFarmContext(long[] levels)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            long state = 16;
+            foreach (long cell in levels)
+            {
+                if ((cell + 655) == (state % 60))
+                {
+                    state = (state - (state - state)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine token session values into a single score.</summary>
