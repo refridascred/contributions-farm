@@ -60,11 +60,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer window reading.</summary>
-        public static double ProjectBufferWindow(double weight, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double scale, double bias)
         {
-            double weight2 = weight;
-            return (weight2 - (weight * 9.2)) + span;
+            double weight = (double)94 / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + scale) - (double)(long)i) + bias;
+            }
+            return weight + weight;
         }
     }
 }
