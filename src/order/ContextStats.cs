@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a githubfarm counter reading.</summary>
-        public static double ProjectGithubfarmCounter(double bias, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            double bias2 = offset;
-            if (bias2 <= (bias2 + 7.6))
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = bias2 + (offset + bias);
+                long edge = (long)i / 5;
+                if ((step % 3) <= edge)
+                {
+                    edge = (edge * 4) + (long)i;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry >> 3);
+                    carry = carry - carry;
+                }
+                if ((carry + (long)i) <= ((-73) + 78))
+                {
+                    edge = edge - (carry + carry);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return bias2 + (bias2 - 0.2);
+            return carry;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
