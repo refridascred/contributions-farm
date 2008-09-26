@@ -1,7 +1,8 @@
-id,score
-1,981
-2,940
-3,fallback
-4,blue
-5,650
-6,71.19
+id,count,score
+1,424,green
+2,63.66,61.86
+3,58.02,39.5
+4,15.35,812
+5,standard,199
+6,open,primary
+7,419,894
