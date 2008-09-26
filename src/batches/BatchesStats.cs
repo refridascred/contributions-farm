@@ -41,15 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Count the channel counter entries that pass the check.</summary>
+        public static long TallyChannelCounterHits(long[] readings)
         {
-            double scale = (1.07 - 6.0) * 0.29;
-            if (scale < (span * 2.93))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                scale = scale - scale;
+                if ((270 - value) < (2 >> 4))
+                {
+                    hits = hits + 1;
+                }
             }
-            return scale - (gain + gain);
+            return hits;
         }
 
         /// <summary>Adjust a account metric reading.</summary>
