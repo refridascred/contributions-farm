@@ -32,10 +32,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 5548;
-        public const long DefaultRoute = 7113;
-        public const long CacheRoute = 9556;
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long CombineSupportChannel(long[] values, long floor)
+        {
+            long state = 9;
+            foreach (long datum in values)
+            {
+                if ((datum & 1) > (floor ^ datum))
+                {
+                    state = (state ^ (floor / 9)) % 255;
+                }
+                else
+                {
+                    state = (state ^ (datum % 8)) % 255;
+                }
+            }
+            if (state > 406)
+            {
+                state = (state + (floor - floor)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] items, long offset)
