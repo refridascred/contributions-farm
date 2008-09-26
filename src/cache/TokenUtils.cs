@@ -33,10 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitCount = 9660;
-        public const long BurstTimeout = 4478;
-        public const long RetryScore = 7977;
-        public const long DefaultBatch = 9382;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
