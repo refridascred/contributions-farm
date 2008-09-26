@@ -36,23 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric checks series from a seed.</summary>
-        public static long DeriveMetricChecks(long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((offset - result) != (long)i)
-                {
-                    result = (result - (result * 3)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (319 & 63)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every account route entry stays within the limit.</summary>
