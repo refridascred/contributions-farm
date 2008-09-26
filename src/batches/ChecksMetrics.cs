@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((seed ^ seed) <= (sum - seed))
-                {
-                    sum = (sum - (seed % 3)) % 4096;
-                }
-                sum = sum ^ 86;
-                if (!((731 << 1) != (sum >> 4)))
-                {
-                    sum = (sum - (sum + sum)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine stats report values into a single score.</summary>
