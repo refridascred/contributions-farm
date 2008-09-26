@@ -19,18 +19,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.0 - 2.0) == (double)seed)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Project the next order value.</summary>
