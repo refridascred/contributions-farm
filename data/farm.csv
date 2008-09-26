@@ -1,6 +1,6 @@
-id,weight,level,label
-1,open,61.24,400
-2,718,19,402
-3,local,green,67.11
-4,983,legacy,cached
-5,989,79.36,67.65
+id,score,region,state
+1,blue,local,759
+2,cached,783,47.93
+3,strict,398,636
+4,119,799,edge
+5,87.41,21.15,929
