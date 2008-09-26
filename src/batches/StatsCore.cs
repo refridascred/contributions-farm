@@ -38,11 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 5760;
-        public const long BatchLayout = 6851;
-        public const long DefaultFactor = 2640;
-        public const string LimitLayout = "standard";
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheSpan = "staging";
