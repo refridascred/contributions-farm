@@ -43,38 +43,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long seed)
+        /// <summary>Count record support pairs that satisfy a relation.</summary>
+        public static long PairRecordSupportCount(long[] data)
         {
-            if (7 < origin)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-3) / 6) != (seed + 11)) || (seed <= (seed - origin)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 5) >= (origin / 7))
+                    if ((data[i] - data[j]) < 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (4.0 > (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
