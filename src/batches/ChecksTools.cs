@@ -13,26 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double offset)
         {
-            long state = -86;
-            foreach (long value in levels)
+            double bias = gain;
+            if (bias < offset)
             {
-                if (((state >> 1) < (state & 15)) || ((double)(-2) == (double)value))
-                {
-                    state = (state ^ (value << 3)) % 255;
-                }
-                else
-                {
-                    state = (state - (value + 393)) % 1000;
-                }
+                bias = bias + (3.1 / 7.0);
             }
-            if (state > (-4))
+            else
             {
-                state = state - (state << 2);
+                bias = bias + gain;
             }
-            return state % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Describe the tools level values.</summary>
