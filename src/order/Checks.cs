@@ -36,13 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Done,
-            Retry,
-            Pending,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (offset + (long)i)) % 4096;
+                mark = (mark << 3) ^ (mark & 7);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
