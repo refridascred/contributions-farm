@@ -1,19 +1,10 @@
 {
-  "counter_capacity": "primary",
-  "retry_capacity_count": "legacy",
-  "idle_delay": "legacy",
-  "min_limit_count": {
-    "dry_run": "latest",
-    "cache_delay": 81.84,
-    "cache_retries_s": 6703,
-    "batches_interval": 5700,
-    "verbose": {
-      "dry_run": ["primary", "staging"],
-      "retry_depth_pct": "open",
-      "batch_capacity_s": 395,
-      "min_delay_ms": false
-    }
+  "hard_retries_pct": {
+    "graph_ratio": 9631,
+    "flush_size": 2600,
+    "min_retries_s": "open"
   },
-  "strict": 1024,
-  "burst_timeout": [183, 124, 415, 183]
+  "sync_window_s": [257, 343, 70, 88],
+  "githubfarm_threshold": 88,
+  "idle_ttl": 3029
 }
