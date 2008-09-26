@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (((total * 5) + (target % 10)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 4512;
+        public const long WindowBudget = 2978;
+        public const long BurstRatio = 4760;
+        public const long CacheNotes = 9458;
+        public const string MinBudget = "alpha-v2";
     }
 }
