@@ -32,17 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command queue counter forward.</summary>
-        public static long IterateCommandQueue(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry + (origin & 7)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxRatio = "fallback-v2";
+        public const string HardSchema = "legacy";
+        public const long IdleScore = 5533;
+        public const long LimitCount = 621;
+        public const long IdleSchema = 3444;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
