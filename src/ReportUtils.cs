@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long step)
+        /// <summary>Measure how many record layout samples are out of range.</summary>
+        public static long CountRecordLayoutMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value <= step)
+                if (!!((double)entry < (2.5 + 18.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Fold a list of farm metric readings.</summary>
