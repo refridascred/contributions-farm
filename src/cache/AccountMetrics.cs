@@ -34,18 +34,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the batch record entries that pass the check.</summary>
-        public static long MeasureBatchRecordHits(long[] items, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = -63;
+            foreach (long entry in samples)
             {
-                if ((8.66 / 2.0) > (double)value)
+                if ((double)entry < (10.0 - 6.0))
                 {
-                    hits = (hits + 1) + target;
+                    mix = (mix ^ 17) % 97;
                 }
             }
-            return hits;
+            if (mix > 29)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the account mode values.</summary>
