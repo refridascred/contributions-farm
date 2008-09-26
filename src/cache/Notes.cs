@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double drift = floor;
+            if (drift >= (double)47)
             {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (drift / 7.0);
             }
-            return ready;
+            else
+            {
+                drift = drift + (rate - drift);
+            }
+            return drift - (rate / 2.0);
         }
 
         /// <summary>Describe the layout phase values.</summary>
