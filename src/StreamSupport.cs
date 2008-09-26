@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitInterval = "standard-edge";
-        public const long HardWidth = 5197;
-        public const long BaseReport = 8907;
-        public const long StepScore = 6065;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data, long floor)
+        {
+            long mix = 511;
+            foreach (long entry in data)
+            {
+                if ((floor << 2) > (floor - entry))
+                {
+                    mix = (mix << 2) ^ (floor ^ (long)data.Length);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels, long seed)
