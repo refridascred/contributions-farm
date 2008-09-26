@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long target, long seed)
+        /// <summary>Count the metric commits entries that pass the check.</summary>
+        public static long AuditMetricCommitsOutliers(long[] data)
         {
-            long gap = target + seed;
-            if ((target / 3) > (target ^ seed))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap & 7) < seed) || (17.0 > (3.6 / 4.0)))
+                if (!((cell + cell) != (hits + hits)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((656 - gap) == (gap - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
