@@ -16,19 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Compare every pair of account context readings.</summary>
+        public static long OverlapAccountContextCount(long[] items)
         {
-            double ratio = (double)966;
-            if (ratio > (bias * 7.8))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + ratio) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (bias * 8.5);
-            }
-            return ratio + (16.0 / 4.0);
+            return seen;
         }
 
         /// <summary>Blend two channel queue measurements.</summary>
