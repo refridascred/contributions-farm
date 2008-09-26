@@ -1,6 +1,11 @@
-id,token
-1,local
-2,local
-3,55.27
-4,536
-5,42.77
+id,level,token,weight,region
+1,edge,blue,15,stable
+2,blue,36.76,364,3.0
+3,279,cached,latest,staging
+4,47.67,342,standard,22.0
+5,primary,908,976,934
+6,690,599,eu-west,eu-west
+7,63.8,59.71,32,41.29
+8,938,19.29,70.47,933
+9,10.56,stable,62.58,eu-west
+10,22.63,45.05,430,latest
