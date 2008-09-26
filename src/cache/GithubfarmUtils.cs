@@ -21,10 +21,26 @@ namespace Common.Utilities
         public const long BaseSupport = 4911;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8467;
-        public const long CacheRatio = 6696;
-        public const string StepSize = "fallback-1";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long floor)
+        {
+            long bound = seed - floor;
+            if ((bound + 5) < bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - floor) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Validate route batches readings against a bound.</summary>
         public static bool GuardRouteBatchesBounds(long[] levels, long floor)
