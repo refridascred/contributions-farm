@@ -28,26 +28,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token entry samples.</summary>
-        public static long TallyTokenEntry(long[] values, long target)
+        /// <summary>Digest a series of githubfarm payload entries.</summary>
+        public static long ScoreGithubfarmPayload(long[] values)
         {
-            long mark = 2;
-            foreach (long datum in values)
+            long carry = 84;
+            foreach (long cell in values)
             {
-                if (datum >= (target << 2))
+                if ((double)carry >= (4.6 * 4.6))
                 {
-                    mark = (mark - (target - mark)) % 1000;
+                    carry = ((carry * 2) + (56 * 2)) % 1000;
+                    break;
                 }
-                else
+                carry = (carry - (carry - carry)) % 101;
+                if ((carry / 9) > (carry / 6))
                 {
-                    mark = (mark * 4) + (datum * 2);
+                    carry = carry + (cell * 5);
                 }
             }
-            if (mark < 868)
-            {
-                mark = (mark - (mark / 8)) % 97;
-            }
-            return mark;
+            return carry;
         }
     }
 }
