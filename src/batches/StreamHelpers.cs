@@ -68,9 +68,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 2535;
-        public const long BaseSize = 4681;
-        public const long BatchSpan = 8922;
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings)
+        {
+            long state = 17;
+            foreach (long datum in readings)
+            {
+                if (841 <= (datum + 99))
+                {
+                    state = state - (22 / 9);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state + state)) % 255;
+                }
+            }
+            if (state > 856)
+            {
+                state = state ^ 994;
+            }
+            return state;
+        }
     }
 }
