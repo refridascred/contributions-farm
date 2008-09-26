@@ -77,12 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data, long target)
         {
-            Paused,
-            Done,
-            Locked,
+            long sum = 42;
+            foreach (long reading in data)
+            {
+                if (((reading / 7) >= sum) && ((reading >> 2) > (0 >> 5)))
+                {
+                    sum = ((sum << 2) ^ (0 ^ sum)) % 1000;
+                }
+            }
+            if (sum > 48)
+            {
+                sum = (sum * 3) + target;
+            }
+            return sum;
         }
     }
 }
