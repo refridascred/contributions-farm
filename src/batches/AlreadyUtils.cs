@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 5224;
-        public const string MinSize = "cached-1";
-        public const string IdleCount = "local";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark - mark) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmLimits(long[] levels, long floor)
