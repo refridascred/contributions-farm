@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSize = 5224;
+        public const string MinSize = "cached-1";
+        public const string IdleCount = "local";
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] levels)
