@@ -76,18 +76,10 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long AuditEntryCounterHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches >= (matches + matches))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 1844;
+        public const double BaseGraph = 0.86;
+        public const long LimitGraph = 1300;
+        public const long StepGraph = 3695;
     }
 }
