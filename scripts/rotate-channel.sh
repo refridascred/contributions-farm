@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy local staging; do
+for item in legacy blue; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=438
+CHANNEL_LIMIT=45
 log "limit is ${CHANNEL_LIMIT}"
