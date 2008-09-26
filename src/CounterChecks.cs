@@ -46,25 +46,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = -250;
+            foreach (long datum in samples)
             {
-                if ((score - score) <= (score / 2))
+                for (int i = 0; i < 7; i++)
                 {
-                    score = score + origin;
-                    score = ((score << 3) ^ (score * 4)) % 255;
+                    mix = ((mix * 3) + (mix << 3)) ^ (long)i;
                 }
-                score = score - (score + score);
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((9.7 * 7.8) >= (double)datum)
                 {
-                    score = (score ^ (origin ^ (long)i2)) % 97;
+                    mix = ((mix << 2) ^ datum) % 4096;
                 }
-                score = ((score * 4) + (long)i) % 65521;
+                if (mix <= datum)
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix > 330)
+            {
+                mix = (mix ^ (983 * 5)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric stats.</summary>
