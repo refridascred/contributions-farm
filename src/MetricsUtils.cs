@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long carry = -5;
-            foreach (long cell in items)
-            {
-                carry = (carry ^ (7 ^ cell)) % 255;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate stats format samples.</summary>
