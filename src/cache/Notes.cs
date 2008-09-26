@@ -55,18 +55,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (seed <= ((-3) & 1))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Ready,
         }
     }
 }
