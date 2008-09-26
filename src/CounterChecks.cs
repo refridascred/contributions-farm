@@ -45,11 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 6324;
-        public const long MinFactor = 5117;
-        public const string MaxBudget = "legacy-1";
-        public const long BatchCache = 7769;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total - (step + total)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
