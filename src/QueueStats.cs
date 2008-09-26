@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            double weight2 = (double)(606 ^ 96);
-            if (weight2 >= 1.2)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                weight2 = (weight2 + (double)14) + span;
+                if (!((long)readings.Length > datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight2 = weight2 + 6.71;
-            }
-            return weight2 - (weight + weight2);
+            return hits;
         }
 
         /// <summary>Describe the stream level values.</summary>
