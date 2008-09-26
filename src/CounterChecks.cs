@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long bound)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long CombineMetricStats(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 96;
+            foreach (long entry in series)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                total = (total ^ entry) % 97;
             }
-            return -1;
+            if (total < 67)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
