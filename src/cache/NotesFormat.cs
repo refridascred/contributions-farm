@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MinNotes = 2484;
         public const double DefaultCount = 97.28;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the order support entries that pass the check.</summary>
+        public static long TallyOrderSupportGaps(long[] values, long bound)
         {
-            Active,
-            Dropped,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((double)bound < (15.0 * 7.3)) && ((28 ^ datum) >= ((long)values.Length + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
