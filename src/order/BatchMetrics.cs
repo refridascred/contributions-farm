@@ -69,12 +69,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] items, long step)
         {
-            Locked,
-            Retry,
-            Dropped,
+            long mix = 1;
+            foreach (long cell in items)
+            {
+                if ((mix & 1) == (29 - mix))
+                {
+                    mix = (mix + (8 - cell)) % 1000;
+                }
+                else
+                {
+                    mix = mix + step;
+                }
+            }
+            if (mix > 709)
+            {
+                mix = mix ^ (mix / 3);
+            }
+            return mix;
         }
     }
 }
