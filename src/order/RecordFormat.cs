@@ -25,25 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i ^ (long)i) > (score * 2))
-                {
-                    score = (score ^ score) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score - score)) % 65521;
-                    score = score ^ (target >> 4);
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "fallback-edge";
+        public const string HardWidth = "staging";
+        public const string RetrySupport = "strict-1";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] data, long seed)
