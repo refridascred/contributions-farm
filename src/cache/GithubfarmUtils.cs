@@ -16,10 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 2150;
-        public const long BaseSupport = 4911;
-        public const string BatchSpan = "primary-edge";
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long seed, long floor)
