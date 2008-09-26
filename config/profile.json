@@ -1,13 +1,6 @@
 {
-  "poll_interval": {
-    "max_ttl_s": "legacy",
-    "default_ratio_count": "legacy",
-    "editor_depth": "local",
-    "sync_window_ms": 29.64
-  },
-  "sync_capacity_s": 1623,
-  "channel_ttl": 65.94,
-  "retry_limit_pct": "fallback",
-  "idle_depth_pct": false,
-  "idle_threshold_ms": 9890
+  "token_window": "cached",
+  "dry_run": 39.16,
+  "min_threshold": false,
+  "soft_size_ms": [345, 250, 61, 151]
 }
