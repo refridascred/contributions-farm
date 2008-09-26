@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next stats notes value.</summary>
-        public static double ScaleStatsNotes(double bias, double floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double load = 6.13;
-            if (load > (double)1)
-            {
-                load = load + (floor / 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (1.6 - bias)) - (double)(long)i;
-            }
-            return load - bias;
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
