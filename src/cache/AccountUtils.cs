@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Check that every report route entry stays within the limit.</summary>
+        public static bool CheckReportRouteBounds(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
