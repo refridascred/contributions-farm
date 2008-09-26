@@ -67,12 +67,13 @@ namespace Common.Utilities
         public const long MaxStats = 6866;
         public const long HardStats = 7234;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            New,
-            Synced,
-            Done,
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
