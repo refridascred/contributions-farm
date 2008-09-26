@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long offset)
         {
-            Paused,
-            Done,
-            Locked,
-            Failed,
-            Ready,
+            if (seed > offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-28) % 7) <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
