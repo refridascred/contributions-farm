@@ -68,21 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -1;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark * 4) + mark) % 101) ^ datum;
             }
-            return hits;
+            return mark;
         }
     }
 }
