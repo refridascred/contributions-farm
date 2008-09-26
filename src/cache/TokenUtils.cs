@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] readings)
         {
-            Ready,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + 34) != (item % 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next order value.</summary>
