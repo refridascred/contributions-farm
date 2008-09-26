@@ -27,23 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mix = 476;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix ^ item) % 255) + (long)i;
-                }
-                mix = (mix << 2) ^ mix;
-            }
-            if (mix < 3)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            Paused,
+            Done,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Define support limits and defaults.</summary>
