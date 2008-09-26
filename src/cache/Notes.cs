@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double StepDepth = 45.22;
         public const long BurstCluster = 2057;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (step < cell)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = hits + 2;
+                    result = (result * 2) + (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
