@@ -39,22 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] levels, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 882;
+            foreach (long value in readings)
             {
-                if ((step ^ value) == (value & 127))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ (score >> 1)) % 4096;
+                score = score - (score - value);
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Hold a window stats.</summary>
