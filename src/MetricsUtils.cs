@@ -48,32 +48,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank record profile input into a small class.</summary>
-        public static long BucketRecordProfile(long bound, long step)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long bound2 = bound + step;
-            if (2.0 <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 >> 4) > (bound2 % 64))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (bound % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
