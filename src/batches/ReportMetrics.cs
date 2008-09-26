@@ -38,11 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
