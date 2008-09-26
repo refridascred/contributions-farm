@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a commits cache counter forward.</summary>
-        public static long IterateCommitsCache(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum ^ ((long)i % 3);
-                sum = ((sum << 2) ^ (185 - sum)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleSpan = "fallback-1";
+        public const long CacheEntry = 7047;
+        public const long IdleEntry = 5881;
+        public const long BaseFactor = 1476;
+        public const long SoftSize = 8496;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
