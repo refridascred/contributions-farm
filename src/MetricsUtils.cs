@@ -41,17 +41,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (bias / 2.0) * 4.7;
+            return ratio - weight;
         }
     }
 }
