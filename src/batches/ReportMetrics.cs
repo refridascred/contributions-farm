@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long seed)
+        /// <summary>Combine route session values into a single score.</summary>
+        public static long FoldRouteSession(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 465;
+            foreach (long value in series)
             {
-                if (cell > seed)
+                mark = ((mark * 5) + origin) % 101;
+                if ((9.05 + 7.54) <= (double)mark)
                 {
-                    valid = false;
+                    break;
+                }
+                if ((3 - value) < (value << 3))
+                {
+                    mark = (mark + (origin + mark)) % 101;
+                }
+                if ((value - origin) > (value << 2))
+                {
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
