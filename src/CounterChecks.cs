@@ -33,32 +33,19 @@ namespace Common.Utilities
         public const long LimitScore = 5348;
         public const long StepScore = 2428;
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long RankCacheFarm(long floor, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long bound)
         {
-            long gap = floor + limit;
-            if ((double)floor >= 20.0)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((gap - gap) != (97 - limit)) || ((8.7 - 17.0) <= (double)gap))
+                if (reading != bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((50 + limit) > (floor / 3)) || ((floor ^ gap) < 23))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the token status values.</summary>
