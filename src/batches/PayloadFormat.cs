@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Measure how many report route samples are out of range.</summary>
+        public static long MeasureReportRouteOutliers(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((seen + reading) < (seen + seen))
+                if ((bound << 2) > hits)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a checks profile reading by value.</summary>
