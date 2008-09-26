@@ -15,18 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long anchor = 551;
-            foreach (long cell in readings)
-            {
-                if (!((cell << 3) > anchor))
-                {
-                    anchor = ((anchor << 2) ^ 355) - offset;
-                }
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
