@@ -1,10 +1,11 @@
 {
-  "soft_depth_pct": "blue",
-  "min_depth": 18.34,
-  "support_ratio": {
-    "readonly": 13.45,
-    "cache_depth": 11.49,
-    "sync_retries": "fallback"
+  "channel_size": true,
+  "audit": "edge",
+  "persist": [6, 107, 476, 407],
+  "route_limit": {
+    "batch_retries_count": 32.45,
+    "default_depth_count": "eu-west",
+    "default_interval_ms": 4447
   },
-  "batch_depth_count": 24
+  "record_ratio": "eu-west"
 }
