@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two context cache measurements.</summary>
-        public static double BlendContextCache(double ratio, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            double mean = (double)53 / 6.0;
-            if (mean > (double)7)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mean = (mean - 16.0) - ratio;
+                if (count < 5)
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean * 7.48)) - (double)(long)i;
-            }
-            return mean + floor;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
