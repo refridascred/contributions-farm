@@ -68,12 +68,28 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series, long seed)
         {
-            Failed,
-            Closed,
-            Ready,
+            long result = 8;
+            foreach (long cell in series)
+            {
+                result = result ^ (seed << 3);
+                if ((double)seed >= (2.98 - 8.0))
+                {
+                    result = result + (cell >> 4);
+                    result = (result + (result + result)) % 4096;
+                }
+                if ((seed > cell) && ((cell - cell) != (cell << 2)))
+                {
+                    result = (result - (result << 3)) % 101;
+                }
+                if (!((4.0 + 13.0) > (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
