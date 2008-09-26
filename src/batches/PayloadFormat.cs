@@ -22,38 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long bound, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] readings, long step)
         {
-            if ((9.0 + 0.72) <= (double)limit)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 7) > (limit + limit))
+                if (cell > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound >= (14.0 * 1.91)) && ((bound >> 2) > (6 + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((15.0 * 6.19) != (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
