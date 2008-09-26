@@ -33,22 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] samples, long seed)
         {
-            long mix = 36;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((value & 63) <= mix)
+                if (datum <= seed)
                 {
-                    mix = ((mix * 5) + (value / 9)) % 4096;
-                }
-                if ((1.0 + 1.3) >= (double)value)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
