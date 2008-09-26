@@ -36,12 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next graph route value from a seed.</summary>
