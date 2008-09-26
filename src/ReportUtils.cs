@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Find the first order checks entry that matches the target.</summary>
+        public static long LocateOrderChecksIndex(long[] series, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (7 + (long)i)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((series[i] > target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
