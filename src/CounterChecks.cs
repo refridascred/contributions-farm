@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] data, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double drift = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.29 - 2.7) > (double)seen)
-                {
-                    seen = ((seen + 3) + datum) - bound;
-                }
+                drift = (drift - (double)(long)i) + ratio;
             }
-            return seen;
+            return drift + (double)802;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
