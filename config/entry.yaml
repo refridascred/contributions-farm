@@ -1,37 +1,16 @@
 # entry settings
-strict:
-  persist: 10.08
-  enabled: standard
-  dry_run: 8364
-  idle_ratio:
-    flush_threshold_pct: 100
-    sync_timeout:
-      - 109
-      - 187
-    dry_run:
-      - stable
-      - eu-west
-      - blue
-      - staging
-    farm_delay: 100
-    max_ratio: 100
-    verbose: 500
-  min_ttl_count: legacy
-graph_size: 11.51
-poll_timeout_pct: false
-already_size: standard
-metric_interval:
-  strict:
-    - primary
-    - primary
-    - staging
-    - stable
-  enabled: true
-  burst_delay_count:
-    max_timeout_count: local
-    compress: 2025
-    enabled: 40.89
-    hard_depth: eu-west
-    base_timeout_ms:
-      - staging
-      - edge
+retry_retries_s:
+  max_threshold_pct: green
+  batch_size_ms: stable
+  max_interval_s:
+    readonly: 58
+    farm_window: standard
+    idle_limit_s: eu-west
+    hard_threshold_s: 98.01
+    warm_ratio_s: 500
+  enabled: fallback
+  warm_size_count: 46.48
+  readonly: legacy
+editor_delay: 1024
+soft_ttl: 22.69
+audit: 9418
