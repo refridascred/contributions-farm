@@ -44,19 +44,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] data, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((target - target) > (target - bound))
             {
-                if (reading <= target)
+                return 8;
+            }
+            else
+            {
+                if ((bound + (-328)) < (bound >> 1))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (target >= (bound ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target >> 2) > (target >> 4)) || ((double)bound == (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
