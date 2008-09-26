@@ -1,11 +1,6 @@
-id,token,weight,owner
-1,strict,345,713
-2,121,815,fallback
-3,strict,363,920
-4,63.19,strict,16.94
-5,fallback,863,67.37
-6,865,845,132
-7,fallback,52.31,staging
-8,standard,96.94,96.06
-9,15.2,967,40.6
-10,50.18,eu-west,strict
+id,weight,level,label
+1,open,61.24,400
+2,718,19,402
+3,local,green,67.11
+4,983,legacy,cached
+5,989,79.36,67.65
