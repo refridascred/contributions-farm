@@ -57,32 +57,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long delta = limit + seed;
-            if ((delta + 2) == (seed >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 3) == (510 % 16))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Closed,
+            Draft,
+            Paused,
         }
     }
 }
