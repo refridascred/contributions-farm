@@ -48,17 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (samples[i] <= offset)
+                if ((value % 100) <= (count + 5))
                 {
-                    return (long)i;
+                    count = (count + 3) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
