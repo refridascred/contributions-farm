@@ -1,11 +1,11 @@
 # Batch notes
 
-A commits that stays idle for too long is moved to the editor list.
-The editor report groups every batch by profile.
-Run the channel check before changing any profile limits.
+Each route is validated before it reaches the command queue.
+The payload module keeps route values in sync with the farm cache.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate command input early
-- Review route limits each release
+- Keep queue values small
+- Review graph limits each release
+- Log every booking change
+- Validate counter input early
