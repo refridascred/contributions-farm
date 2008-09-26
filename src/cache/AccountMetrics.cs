@@ -34,13 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the batch record entries that pass the check.</summary>
+        public static long MeasureBatchRecordHits(long[] items, long target)
         {
-            Retry,
-            Idle,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((8.66 / 2.0) > (double)value)
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account mode values.</summary>
