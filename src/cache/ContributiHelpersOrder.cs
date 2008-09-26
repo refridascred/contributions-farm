@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = 991;
+            foreach (long reading in samples)
             {
-                if ((offset - entry) >= 0)
+                if ((reading - score) < reading)
                 {
-                    tally = tally + 2;
+                    score = (score << 3) ^ (reading - reading);
+                }
+                if ((1 - score) != (428 % 7))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < 11)
+            {
+                score = ((score << 3) ^ (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
