@@ -30,14 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Locked,
-            Synced,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 69.79;
+        public const long BurstTimeout = 6959;
+        public const string BurstOrder = "strict-edge";
 
         /// <summary>Fold a list of window batch readings.</summary>
         public static long CombineWindowBatch(long[] levels)
