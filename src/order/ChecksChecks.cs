@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardWidth = 1133;
-        public const long IdleRatio = 1446;
-        public const long WindowCount = 9435;
-        public const long WindowInterval = 9597;
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long MeasureCacheFilterHits(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((limit - limit) <= limit)
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
