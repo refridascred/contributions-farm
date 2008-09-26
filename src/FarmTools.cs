@@ -16,15 +16,32 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long target)
         {
-            long state = 326;
-            foreach (long item in readings)
+            long delta = seed ^ target;
+            if ((delta / 9) < (target + target))
             {
-                state = (((state << 3) ^ floor) % 101) + item;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)target > (double)delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
