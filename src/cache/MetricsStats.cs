@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ (3 / 4)) - reading) + target;
             }
-            return matches;
+            if (carry > 63)
+            {
+                carry = (carry - (carry << 1)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
