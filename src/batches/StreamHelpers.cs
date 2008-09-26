@@ -24,18 +24,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((87 - sample) > (matches / 9)) || ((2.17 * 3.0) != (double)sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Classify a record editor pair into a bucket.</summary>
