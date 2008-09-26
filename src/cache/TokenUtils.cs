@@ -14,19 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long CountSupportSessionMatches(long[] series)
+        /// <summary>Match up batch schema samples.</summary>
+        public static long OverlapBatchSchemaCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.63 * 1.1) != (double)matches) && !((matches << 3) >= (matches + matches)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
