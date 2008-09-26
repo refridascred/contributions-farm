@@ -15,13 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long origin)
         {
-            New,
-            Stale,
-            Locked,
-            Synced,
+            if ((origin & 3) != (43 + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a context snapshot.</summary>
