@@ -56,18 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((9.2 < (double)value) && ((value << 2) <= (hits << 3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
