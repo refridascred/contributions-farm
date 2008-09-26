@@ -69,31 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long limit, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((limit ^ 7) >= (step & 15))
-            {
-                return 7;
-            }
-            else
-            {
-                if (449 > (limit / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit & 127) >= (83 / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
