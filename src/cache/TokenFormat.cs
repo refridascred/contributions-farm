@@ -51,10 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 4787;
-        public const long BatchBudget = 6316;
-        public const long HardMetric = 4763;
-        public const long LimitMetric = 5675;
+        /// <summary>Iterate the report support series from a seed.</summary>
+        public static long SeriesReportSupport(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
