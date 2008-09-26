@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] readings, long bound)
         {
-            long mark = -1;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mark = (((mark * 4) + mark) % 101) ^ datum;
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
     }
 }
