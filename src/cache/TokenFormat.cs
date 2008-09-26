@@ -28,19 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two session schema measurements.</summary>
-        public static double SmoothSessionSchema(double rate, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] values, long step)
         {
-            double scale = 8.1;
-            if (scale > 0.2)
+            bool valid = true;
+            foreach (long item in values)
             {
-                scale = ((scale + (double)43) + rate) - floor;
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - 2.8;
-            }
-            return scale + scale;
+            return valid;
         }
     }
 }
