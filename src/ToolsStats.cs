@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long CacheCluster = 8857;
         public const long LimitCluster = 7122;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            double mean = floor;
-            return (mean - 1.5) + scale;
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((item & 63) <= (item & 1)) && ((seen * 4) >= 287))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
