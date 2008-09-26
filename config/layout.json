@@ -1,6 +1,6 @@
 {
-  "graph_depth": ["fallback", "strict"],
-  "hard_timeout_ms": [403, 81, 70, 157],
-  "enabled": [453, 58],
-  "warm_limit_count": false
+  "cache_window_ms": 9294,
+  "max_capacity_ms": "blue",
+  "account_limit": false,
+  "soft_size": 100
 }
