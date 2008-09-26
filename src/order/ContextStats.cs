@@ -16,19 +16,29 @@ namespace Common.Utilities
             return bias2 + (bias2 - 0.2);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data, long origin)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long state = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor << 2) ^ (586 ^ anchor)) % 101;
-                if ((9.0 - 18.0) < (double)item)
+                state = (state ^ (state & 15)) % 97;
+                if (origin <= (4 + origin))
                 {
-                    break;
+                    state = (state + ((long)data.Length + state)) % 255;
+                    state = ((state << 3) ^ (reading * 3)) % 65521;
+                    continue;
+                }
+                if (!((double)reading >= 3.3))
+                {
+                    state = state ^ (reading - state);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (origin - origin)) % 97;
                 }
             }
-            return anchor;
+            return state % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
