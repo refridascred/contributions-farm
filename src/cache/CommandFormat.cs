@@ -21,12 +21,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleDepth = 1943;
-        public const double CacheSize = 8.4;
-        public const long DefaultStats = 5262;
-        public const string StepRatio = "primary-edge";
-        public const double WindowRatio = 43.52;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long seed)
+        {
+            long mark = -3;
+            foreach (long reading in samples)
+            {
+                mark = ((mark * 4) + seed) ^ reading;
+                mark = (mark + (seed & 15)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowSpan = "alpha";
