@@ -34,11 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinFactor = 7962;
+        public const string StepAccount = "staging-1";
+        public const long DefaultFactor = 1201;
+        public const double RetryLevel = 5.74;
+        public const long BatchCount = 3423;
     }
 }
