@@ -19,19 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            long sum = 21;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 3) + sum) % 4096;
-                if (((entry / 4) != (entry ^ entry)) || ((double)entry != (5.4 + 8.7)))
+                if ((2.98 + 13.0) > (double)entry)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
