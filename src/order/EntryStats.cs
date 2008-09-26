@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!!((limit % 5) <= 5))
+                {
+                    state = ((state << 2) ^ 735) % 1000;
+                    state = (state + (8 + limit)) % 1000;
+                }
+                state = (state * 3) + (limit & 127);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
