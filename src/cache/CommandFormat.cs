@@ -27,17 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] data, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                if (sample <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
