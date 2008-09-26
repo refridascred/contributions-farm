@@ -16,21 +16,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset >= 3.0)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((offset >> 1) >= (floor - offset)))
                 {
-                    if ((levels[i] + levels[j]) != 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + 938) >= (offset + offset))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 8) <= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
