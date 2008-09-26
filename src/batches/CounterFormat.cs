@@ -13,16 +13,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double floor)
-        {
-            double load = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (floor - floor)) + (double)(long)i;
-            }
-            return load + (floor + floor);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultCount = 7435;
+        public const double MaxCount = 12.15;
+        public const long RetryStats = 7237;
+        public const double HardStats = 24.59;
+        public const string BaseStats = "staging-v2";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] readings, long step)
