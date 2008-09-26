@@ -82,38 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long limit)
+        /// <summary>Iterate the order payload series from a seed.</summary>
+        public static long StepOrderPayload(long floor)
         {
-            if ((floor + floor) < (floor - (-8)))
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((96 <= (floor * 3)) || (limit >= (194 >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit % 5) < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor <= limit) && ((floor << 1) <= (floor % 64)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
