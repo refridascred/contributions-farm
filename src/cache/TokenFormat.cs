@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long sum = 893;
-            foreach (long sample in items)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (sum ^ (sample + 8)) % 4096;
+                if (((double)sum > (double)(long)i) || ((12.0 + 6.0) <= (double)sum))
+                {
+                    sum = (sum * 5) + ((long)i * 4);
+                }
+                else
+                {
+                    sum = sum ^ (bound & 15);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
             return sum;
         }
