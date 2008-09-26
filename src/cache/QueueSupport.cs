@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data, long limit)
+        /// <summary>Look up the position of a record counter sample.</summary>
+        public static long LookupRecordCounterIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit - (long)data.Length) >= (reading + count)))
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine already entry values into a single score.</summary>
