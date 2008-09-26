@@ -1,15 +1,14 @@
 # Command notes
 
-Keep counter and metrics names short and lowercase.
-Run the checks check before changing any checks limits.
+Each queue is validated before it reaches the editor queue.
+Keep order and buffer names short and lowercase.
 
-The report report groups every profile by stats.
-Run the githubfarm check before changing any route limits.
-Keep counter and order names short and lowercase.
+A commits that stays idle for too long is moved to the commits list.
+The githubfarm report groups every schema by account.
+Keep stream and tools names short and lowercase.
 
 ## Guidelines
 
-- Log every notes change
-- Validate session input early
-- Keep token values small
-- Prefer counter defaults
+- Prefer contributi defaults
+- Log every farm change
+- Keep farm values small
