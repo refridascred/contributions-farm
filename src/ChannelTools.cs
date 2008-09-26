@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            New,
-            Pending,
-            Draft,
-            Queued,
-            Failed,
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
