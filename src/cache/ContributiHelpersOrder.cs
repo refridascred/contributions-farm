@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultTimeout = 8340;
+        public const long LimitChannel = 146;
+        public const long SoftChannel = 5362;
+        public const string RetryChannel = "fallback-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLevel = 22.18;
