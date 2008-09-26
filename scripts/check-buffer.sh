@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=389
+BUFFER_LIMIT=88
 log "limit is ${BUFFER_LIMIT}"
 
-for item in green standard primary; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
