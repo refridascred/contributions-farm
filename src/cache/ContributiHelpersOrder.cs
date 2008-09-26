@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Failed,
-            New,
-            Pending,
-            Synced,
-            Closed,
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
