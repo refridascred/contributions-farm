@@ -31,24 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long step, long step2)
+        /// <summary>Blend two channel queue measurements.</summary>
+        public static double ScaleChannelQueue(double gain, double floor)
         {
-            if (((double)step != (5.0 / 3.0)) && ((2.4 * 3.9) <= (double)step))
+            double drift = (double)846 + (floor / 2.0);
+            if (drift > 5.91)
             {
-                return 5;
+                drift = drift - (gain * 7.02);
             }
-            else
-            {
-                if (step2 < (2 - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return drift + (drift * 3.4);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
