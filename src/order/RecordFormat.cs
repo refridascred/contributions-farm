@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long CacheTools = 3444;
         public const long RetryTools = 9843;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Locate a batch filter reading by value.</summary>
+        public static long LookupBatchFilterIndex(long[] series, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
