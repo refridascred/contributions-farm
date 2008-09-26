@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double scale = bias / 7.0;
-            if (scale > scale)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            return scale - (double)1;
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a entry record.</summary>
