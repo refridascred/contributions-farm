@@ -31,25 +31,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long limit)
-        {
-            long bound = origin + limit;
-            if (((-449) ^ bound) < limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > 15.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitCount = 9660;
+        public const long BurstTimeout = 4478;
+        public const long RetryScore = 7977;
+        public const long DefaultBatch = 9382;
     }
 }
