@@ -85,20 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Audit context metrics readings against a rule.</summary>
+        public static long MeasureContextMetricsGaps(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (0.8 > (double)mix)
+                if (matches < (value - matches))
                 {
-                    mix = mix ^ ((long)i + bound);
-                    break;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
     }
 }
