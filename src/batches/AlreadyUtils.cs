@@ -32,19 +32,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] samples, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != offset)
+                if (values[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
