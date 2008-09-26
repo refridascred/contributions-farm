@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string DefaultBudget = "open-edge";
         public const string WindowEditor = "cached-1";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Draft,
-            Done,
-            Ready,
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
