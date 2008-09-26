@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] data, long target)
         {
-            Dropped,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((73 + target) >= (value ^ target))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a record counter sample.</summary>
