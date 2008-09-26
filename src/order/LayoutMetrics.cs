@@ -28,11 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "stable-v2";
-        public const long BaseTimeout = 848;
-        public const long HardCommand = 7834;
-        public const long WindowCommand = 3458;
-        public const long MinCommand = 8022;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)count <= (3.1 / 5.0))
+                {
+                    count = ((count + 3) + item) - target;
+                }
+            }
+            return count;
+        }
     }
 }
