@@ -61,12 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] data, long target)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((((double)cell <= (11.0 + 6.2)) || ((double)target > (9.0 - 16.0))) && !((tally / 8) == (cell % 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
