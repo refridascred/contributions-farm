@@ -1,5 +1,8 @@
 {
-  "record_timeout": true,
-  "verbose": "standard",
-  "flush_interval_count": "local"
+  "strict": [88, 146, 229],
+  "schema_window": 85.28,
+  "audit": 96,
+  "stream_ratio": "eu-west",
+  "sync_timeout_count": 14.88,
+  "compress": "cached"
 }
