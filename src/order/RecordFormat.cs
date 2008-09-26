@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a counter snapshot.</summary>
