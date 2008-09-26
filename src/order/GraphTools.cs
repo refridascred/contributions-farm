@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Accumulate schema channel samples.</summary>
+        public static long WeighSchemaChannel(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long score = 95;
+            foreach (long sample in values)
             {
-                result = (result + (result - limit)) % 1000;
-                if ((double)limit <= (double)result)
-                {
-                    result = result ^ result;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                score = (score - 141) ^ sample;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
