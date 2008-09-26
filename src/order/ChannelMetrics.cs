@@ -24,15 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a route contributi figure with a bias.</summary>
-        public static double ScaleRouteContributi(double rate, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long origin)
         {
-            double bias = (double)(6 & 15);
-            if (bias >= (double)42)
+            long hits = 0;
+            foreach (long value in values)
             {
-                bias = (bias + rate) + span;
+                if ((value + origin) <= (hits / 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return bias + rate;
+            return hits;
         }
     }
 }
