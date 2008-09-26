@@ -32,25 +32,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long diff = seed - offset;
-            if (6.0 < (double)offset)
+            double scale = 3.0 - (offset - rate);
+            if (scale >= scale)
             {
-                return 8;
+                scale = scale - (rate + scale);
             }
-            else
-            {
-                if ((diff <= (seed / 6)) || (71 >= (offset << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return scale + scale;
         }
     }
 }
