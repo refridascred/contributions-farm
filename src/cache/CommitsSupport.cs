@@ -37,22 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long ScoreQueueMetrics(long[] samples)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mark = 487;
-            foreach (long reading in samples)
-            {
-                if (((reading - reading) <= (mark % 2)) && ((mark & 63) < (reading & 31)))
-                {
-                    mark = ((mark << 3) ^ (reading / 3)) % 97;
-                }
-                if (4.91 > (double)reading)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
