@@ -16,21 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter session samples.</summary>
-        public static long MatchCounterSessionCount(long[] samples)
+        /// <summary>Validate already layout readings against a bound.</summary>
+        public static bool ValidateAlreadyLayoutLimits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != step)
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
