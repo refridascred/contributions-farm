@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank entry session input into a small class.</summary>
+        public static long ClassifyEntrySession(long step, long floor)
         {
-            Queued,
-            Dropped,
-            Active,
-            Ready,
-            Failed,
+            long cur = step - floor;
+            if (step > (55 + cur))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.0 < (double)floor) && (0.99 >= (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.0 - 7.0) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < cur)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context level values.</summary>
