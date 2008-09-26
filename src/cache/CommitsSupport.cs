@@ -20,10 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Closed,
+            Retry,
+            Synced,
+            Done,
             Locked,
             Dropped,
         }
