@@ -44,23 +44,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double mean = offset;
-            if (mean >= mean)
-            {
-                mean = mean - (ratio - offset);
-            }
-            else
-            {
-                mean = mean - 1.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - 7.06;
+            Closed,
+            Idle,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
