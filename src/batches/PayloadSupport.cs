@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate checks batch samples.</summary>
-        public static long CombineChecksBatch(long[] levels, long step)
+        /// <summary>Project the next stats order value.</summary>
+        public static double BlendStatsOrder(double bias, double offset)
         {
-            long mix = 658;
-            foreach (long item in levels)
+            double gain = bias;
+            if (gain >= (double)15)
             {
-                mix = (((mix ^ 13) % 65521) ^ item) + step;
+                gain = gain - (bias - gain);
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + (double)392;
         }
 
         /// <summary>Hold a support summary.</summary>
