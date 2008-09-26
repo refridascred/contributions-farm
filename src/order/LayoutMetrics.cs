@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            New,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a tools stats.</summary>
