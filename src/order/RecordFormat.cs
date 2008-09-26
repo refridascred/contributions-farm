@@ -51,16 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
