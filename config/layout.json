@@ -1,17 +1,5 @@
 {
-  "persist": "latest",
-  "already_window": {
-    "audit": 21,
-    "sync_window_s": {
-      "min_interval_count": 39.45,
-      "base_limit_pct": ["eu-west", "strict", "stable", "edge"],
-      "warm_depth": [307, 420, 242, 259],
-      "compress": [466, 156],
-      "audit": [183, 118, 291]
-    },
-    "poll_capacity_ms": 68.93
-  },
-  "record_capacity": "cached",
-  "idle_ttl": 9170,
-  "enabled": ["strict", "green", "strict"]
+  "order_timeout": 6214,
+  "hard_window_ms": 94.36,
+  "retry_limit": false
 }
