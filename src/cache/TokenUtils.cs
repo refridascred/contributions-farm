@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] values, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            double load = (double)(-8) - (offset / 5.0);
+            if (load <= load)
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (16.0 / 8.0)) + scale;
             }
-            return found;
+            return load - 15.0;
         }
 
         /// <summary>Adjust a token reading.</summary>
