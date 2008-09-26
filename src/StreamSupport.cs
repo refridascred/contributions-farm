@@ -20,24 +20,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if (step >= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) <= (step >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
