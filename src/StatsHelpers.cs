@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor + (anchor ^ (long)i)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4997;
+        public const long WindowRecord = 5751;
+        public const string StepScore = "legacy";
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
         public static long CountGithubfarmBatchHits(long[] data, long offset)
