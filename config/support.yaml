@@ -1,36 +1,18 @@
 # support settings
-compress:
-  session_delay: blue
-  batch_depth:
-    readonly: standard
-    soft_threshold_s: standard
-    soft_interval_s:
-      - 245
-      - 317
-    audit: false
-    filter_ttl: false
-    base_size_pct: cached
-  warm_depth_s:
-    min_window_pct: 61
-    soft_delay_count:
-      - standard
-      - standard
-    warm_delay_ms: 3727
-  counter_limit:
-    max_ttl_s: true
-    soft_threshold_s: edge
-    entry_depth: 83.8
-    max_limit_ms: 49.34
-    base_threshold: true
-    warm_delay_ms: standard
-verbose: 43.94
-poll_threshold_s:
-  command_ratio: 4
-  strict: strict
-  compress: 30
-  warm_delay_ms: blue
-sync_retries_s:
-  - blue
-  - green
-  - open
-sync_timeout_ms: true
+base_size: 91.46
+counter_interval: 100
+hard_capacity_pct:
+  max_capacity_s: edge
+  account_depth:
+    - primary
+    - green
+    - blue
+    - green
+  hard_ttl: eu-west
+  stream_depth: true
+command_ttl: 50
+max_ttl: edge
+batch_retries_ms:
+  retry_window_s: strict
+  min_capacity_pct: false
+  support_interval: false
