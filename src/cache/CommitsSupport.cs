@@ -46,11 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Failed,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
