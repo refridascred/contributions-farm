@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 65.28;
+        public const double DefaultCount = 18.25;
+        public const long MaxAlready = 9556;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] series)
