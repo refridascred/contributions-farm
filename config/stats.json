@@ -1,5 +1,6 @@
 {
-  "verbose": 12.54,
-  "max_depth_count": 24.2,
-  "base_interval": "legacy"
+  "stats_timeout": 7490,
+  "dry_run": 41.41,
+  "strict": 73.8,
+  "max_capacity": "latest"
 }
