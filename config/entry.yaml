@@ -1,10 +1,21 @@
 # entry settings
-tools_depth: 250
-burst_timeout: 10
-buffer_depth: local
-max_delay_ms:
-  - cached
-  - local
-  - stable
-default_window_ms: strict
-verbose: staging
+min_retries_pct:
+  account_capacity: true
+  cache_window:
+    batch_limit:
+      - latest
+      - strict
+    payload_size: legacy
+    burst_size: open
+  min_size_count:
+    - 352
+    - 384
+  metric_limit:
+    min_window_s: 31.28
+    report_interval: 500
+    audit: 6665
+  dry_run: true
+  payload_threshold: 250
+persist: green
+verbose: true
+soft_ttl_count: 77.21
