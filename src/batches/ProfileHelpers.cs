@@ -64,39 +64,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long step = seed ^ bound;
-            if (!((0 / 8) < seed))
+            long result = 857;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + 454) < (bound >> 5))
+                if (((double)result > (8.15 - 1.8)) && ((7.3 + 12.0) < (double)result))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed == (double)bound) || ((18.0 / 6.0) == (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = (result ^ (item + result)) % 101;
                 }
             }
+            if (result > 10)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Accumulate stream samples.</summary>
