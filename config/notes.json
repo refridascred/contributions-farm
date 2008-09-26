@@ -1,8 +1,6 @@
 {
-  "warm_threshold_s": false,
-  "metrics_delay": "standard",
-  "persist": "standard",
-  "token_retries": ["blue", "latest", "cached"],
-  "metrics_size": 30,
-  "retry_capacity": 4134
+  "strict": 2791,
+  "route_ttl": "latest",
+  "default_ratio_count": "legacy",
+  "retry_delay_ms": false
 }
