@@ -22,12 +22,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long CountClusterReportOutliers(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!(((matches + reading) > matches) && ((double)reading <= (5.86 * 8.3))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel entry.</summary>
