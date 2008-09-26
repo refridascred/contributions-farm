@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            if ((target >> 4) <= (origin + target))
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 3) > origin)
+                if ((5.2 < (9.46 * 6.2)) && ((0 / 9) < (score + 921)))
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
