@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4061;
-        public const long MaxFactor = 5608;
-        public const long BurstSpan = 1296;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 5425;
