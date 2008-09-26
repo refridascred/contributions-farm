@@ -19,21 +19,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Roll a record stream counter forward.</summary>
+        public static long DeriveRecordStream(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((anchor % 3) == (63 + origin)) || ((13.0 * 11.0) != (double)anchor))
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ (anchor - origin);
                 }
+                anchor = ((anchor * 2) + anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Iterate the contributi layout series from a seed.</summary>
