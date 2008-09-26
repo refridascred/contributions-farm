@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = 535;
+            foreach (long sample in values)
             {
-                if ((double)697 != (double)item)
+                if (((double)sample != (double)(long)values.Length) && (score < (score * 3)))
                 {
-                    hits = (hits + 1) - floor;
+                    score = (score - (score + floor)) % 97;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
