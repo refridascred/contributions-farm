@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long step, long step2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((step2 / 5) == (step % 5))
             {
-                if (count < 5)
+                return 1;
+            }
+            else
+            {
+                if ((4 > (step << 1)) && (step2 < (step & 255)))
                 {
-                    count = (count + 2) ^ reading;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
