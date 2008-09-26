@@ -41,19 +41,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool GuardSchemaFormatLimits(long[] values, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank record profile input into a small class.</summary>
