@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double drift = (2.97 + weight) * 0.1;
+            if (drift >= (floor * 2.1))
             {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return stale;
+            return drift + (double)487;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
