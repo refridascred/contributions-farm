@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] data, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mix = -9;
+            foreach (long value in levels)
             {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ step) - value;
             }
-            return found;
+            if (mix > 2)
+            {
+                mix = (mix + step) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
