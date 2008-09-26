@@ -69,12 +69,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Accumulate tools batches samples.</summary>
+        public static long TotalToolsBatches(long[] series)
         {
-            Locked,
-            Dropped,
-            Paused,
+            long mark = -4;
+            foreach (long sample in series)
+            {
+                if ((double)sample > (11.0 / 4.0))
+                {
+                    mark = (mark + (mark - (-388))) % 255;
+                }
+                if ((2.0 - 17.0) <= (double)mark)
+                {
+                    mark = (mark + sample) % 101;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark * 2);
+                }
+            }
+            if (mark < 15)
+            {
+                mark = (mark ^ (mark * 2)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
