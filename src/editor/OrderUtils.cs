@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (34 <= count)
+                if (seen <= (item % 12))
                 {
-                    count = ((count + 3) + cell) - seed;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
