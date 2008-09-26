@@ -1,8 +1,15 @@
 # entry settings
-sync_limit_ms: 7218
-batch_retries_ms:
-  - stable
-  - edge
-  - eu-west
-  - cached
-cache_depth: 7965
+dry_run:
+  - latest
+  - local
+  - open
+  - staging
+channel_ratio: cached
+enabled: legacy
+default_capacity_pct: 7686
+verbose: 60
+format_size:
+  - 280
+  - 3
+  - 118
+  - 491
