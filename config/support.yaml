@@ -1,8 +1,19 @@
 # support settings
-commits_limit: 1024
-burst_delay: 7400
-base_limit_ms: 28.16
-dry_run:
-  - 12
-  - 269
-  - 184
+notes_size: 60
+cache_retries_s: primary
+strict:
+  default_window_s: true
+  flush_depth_count:
+    - 360
+    - 460
+    - 326
+  retry_ratio_s: 29.23
+  hard_ttl_s:
+    metrics_size:
+      - 401
+      - 113
+      - 102
+    already_retries: 5776
+    idle_timeout_pct: 67.45
+    farm_limit: local
+    format_ttl: 2.08
