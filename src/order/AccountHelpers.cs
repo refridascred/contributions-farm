@@ -61,13 +61,11 @@ namespace Common.Utilities
         public const string MinCount = "local-1";
         public const string CacheCount = "fallback-v2";
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            double load = span;
+            return load - (0.8 + bias);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
