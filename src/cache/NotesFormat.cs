@@ -20,19 +20,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double ratio, double span)
         {
-            double load = ratio - (double)69;
-            if (load <= (double)4)
+            double rate = (ratio - ratio) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                load = load + (offset * 4.91);
+                rate = (rate + rate) + (double)(long)i;
             }
-            else
-            {
-                load = load + (offset * 1.76);
-            }
-            return load + (load + ratio);
+            return rate + span;
         }
     }
 }
