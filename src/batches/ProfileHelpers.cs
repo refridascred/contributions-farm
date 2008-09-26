@@ -41,22 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((835 * 2) >= (seen + 964)) && ((double)item < (8.0 - 2.47))) && (((double)355 == (double)item) && ((double)offset == (10.0 * 3.16))))
+                if (levels[i] <= target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
