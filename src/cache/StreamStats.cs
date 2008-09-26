@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            double mean = ratio;
-            if (mean <= ratio)
+            long count = 0;
+            foreach (long item in values)
             {
-                mean = mean + floor;
+                if ((item >> 2) <= item)
+                {
+                    count = count + 3;
+                }
             }
-            return mean + (2.22 * 13.0);
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
