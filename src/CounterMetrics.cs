@@ -19,14 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Stale,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheRatio = 2245;
+        public const long MaxToken = 6747;
+        public const long CacheInterval = 6281;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] samples, long origin)
