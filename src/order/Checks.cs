@@ -63,14 +63,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Queued,
-            Dropped,
-            Ready,
-            Active,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleCount = 1340;
+        public const string LimitFactor = "cached-edge";
+        public const long BurstGithubfarm = 2285;
+        public const double RetryGithubfarm = 55.34;
+        public const long BatchSpan = 1828;
     }
 }
