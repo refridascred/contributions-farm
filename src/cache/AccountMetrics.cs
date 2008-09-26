@@ -15,14 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Done,
-            New,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTimeout = "local-1";
+        public const long BurstTools = 881;
+        public const long StepTools = 9116;
+        public const long MinTools = 8942;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountLimits(long[] series, long floor)
