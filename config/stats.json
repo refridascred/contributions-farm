@@ -1,29 +1,7 @@
 {
-  "audit": {
-    "readonly": 34.42,
-    "buffer_threshold": 46,
-    "base_size": {
-      "sync_size_count": [180, 470, 266, 6],
-      "batch_limit_pct": false,
-      "route_threshold": 3433,
-      "persist": "fallback",
-      "verbose": 60
-    },
-    "burst_depth_pct": false
-  },
-  "cache_window_count": false,
-  "idle_delay_s": "stable",
-  "batch_ratio_ms": true,
-  "compress": {
-    "min_size_count": "stable",
-    "flush_window": 45,
-    "soft_interval": {
-      "warm_ttl": true,
-      "hard_ttl": false,
-      "format_size": 500,
-      "hard_depth_ms": ["latest", "fallback", "green"],
-      "readonly": 250
-    }
-  },
-  "order_size": "primary"
+  "retry_threshold": false,
+  "retry_limit": true,
+  "readonly": 12,
+  "notes_retries": true,
+  "dry_run": "eu-west"
 }
