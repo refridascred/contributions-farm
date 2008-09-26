@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long MeasureCacheFilterHits(long[] levels, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((limit - limit) <= limit)
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            Stale,
+            Failed,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Blend two format measurements.</summary>
