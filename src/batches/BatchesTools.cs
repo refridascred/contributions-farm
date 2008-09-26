@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long BaseSpan = 6795;
         public const string HardSchema = "standard-edge";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Queued,
-            Pending,
-            Closed,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "standard-v2";
+        public const long CacheWidth = 501;
+        public const double HardCluster = 1.65;
+        public const long BaseBudget = 9632;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LookupSupportIndex(long[] data, long floor)
