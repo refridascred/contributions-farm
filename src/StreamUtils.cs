@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long origin)
         {
-            Queued,
-            Dropped,
-            New,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((origin + item) <= item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
