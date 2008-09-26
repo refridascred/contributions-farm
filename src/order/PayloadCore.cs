@@ -35,15 +35,22 @@ namespace Common.Utilities
         public const long DefaultRoute = 7113;
         public const long CacheRoute = 9556;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((entry ^ entry) > matches)
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
