@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats format samples.</summary>
