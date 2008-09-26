@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every report entry entry stays within the limit.</summary>
-        public static bool CheckReportEntryLimits(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstWidth = 6238;
+        public const long BaseInterval = 276;
+        public const long WindowBuffer = 2404;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
