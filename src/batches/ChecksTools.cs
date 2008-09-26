@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data, long floor)
         {
-            double bias = gain;
-            if (bias < offset)
+            long carry = 66;
+            foreach (long reading in data)
             {
-                bias = bias + (3.1 / 7.0);
+                carry = (carry - reading) % 65521;
             }
-            else
+            if (carry > 9)
             {
-                bias = bias + gain;
+                carry = (carry << 2) ^ (37 + floor);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + offset;
+            return carry % 65521;
         }
 
         /// <summary>Describe the tools level values.</summary>
