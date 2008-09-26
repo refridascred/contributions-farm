@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
+        public static long SeriesChecksGithubfarm(long target)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Stale,
-            Active,
+            long state = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((state + state) > (state / 3))
+                {
+                    state = (state - ((long)i + target)) % 65521;
+                    state = (state << 3) ^ (target % 7);
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
