@@ -1,19 +1,5 @@
 {
-  "farm_limit": {
-    "idle_depth": 2162,
-    "checks_retries": "green",
-    "filter_depth": 79.78,
-    "enabled": 100,
-    "default_depth_pct": "edge",
-    "default_timeout_ms": "latest"
-  },
-  "verbose": {
-    "soft_depth": false,
-    "warm_threshold_count": ["local", "staging"],
-    "enabled": 60
-  },
-  "githubfarm_window": 87.12,
-  "max_interval": 60,
-  "soft_retries_s": "blue",
-  "checks_timeout": false
+  "verbose": 12.54,
+  "max_depth_count": 24.2,
+  "base_interval": "legacy"
 }
