@@ -42,11 +42,22 @@ namespace Common.Utilities
             return drift + (drift * 3.4);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "cached-edge";
-        public const long MaxBudget = 3406;
-        public const double MinTimeout = 41.03;
-        public const long HardChecks = 7252;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenRange(long[] series, long origin)
