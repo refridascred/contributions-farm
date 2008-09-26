@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] levels, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                if (seed <= (755 >> 4))
+                if (((double)mark < 0.4) || ((double)sample == (double)688))
                 {
-                    hits = (hits + 1) + cell;
+                    mark = (mark ^ sample) % 255;
                 }
             }
-            return hits;
+            if (mark > 825)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
