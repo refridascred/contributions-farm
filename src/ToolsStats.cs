@@ -15,26 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long step)
-        {
-            long slot = bound ^ step;
-            if (!((step + bound) == (slot + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot / 7) < slot)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepWidth = 6810;
+        public const long MaxTimeout = 9166;
+        public const long CacheTimeout = 3798;
+        public const long CacheCluster = 8857;
+        public const long LimitCluster = 7122;
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double scale, double floor)
