@@ -1,16 +1,14 @@
 # Command notes
 
-When a payload fails, the metrics handler retries a few times before giving up.
-Run the githubfarm check before changing any token limits.
-Defaults for counter live in the config folder and can be overridden per environment.
+The metrics report groups every editor by layout.
+Run the tools check before changing any batches limits.
 
-Run the metric check before changing any route limits.
-Run the account check before changing any farm limits.
-The profile report groups every command by batches.
+The token report groups every channel by schema.
+Each window is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Review batch limits each release
-- Keep githubfarm values small
-- Validate graph input early
-- Prefer payload defaults
+- Keep counter values small
+- Document new buffer fields
+- Review token limits each release
+- Validate route input early
