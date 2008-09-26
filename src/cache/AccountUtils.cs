@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLevel = 8662;
+        public const string WindowLevel = "primary";
+        public const long MinLayout = 1146;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] data, long step)
