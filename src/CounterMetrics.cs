@@ -24,19 +24,16 @@ namespace Common.Utilities
         public const string RetryBuffer = "legacy-edge";
         public const double HardDepth = 47.25;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long score = 60;
+            foreach (long sample in values)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score ^ 81) - sample) - floor;
+                score = (score ^ (score - score)) % 255;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Match up cache order samples.</summary>
