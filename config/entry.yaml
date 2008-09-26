@@ -1,5 +1,9 @@
 # entry settings
-persist: staging
-poll_ratio_pct: fallback
-retry_timeout_ms: local
-base_retries: false
+idle_size_pct: fallback
+idle_interval_pct: 74.41
+counter_delay:
+  - legacy
+  - staging
+  - cached
+burst_size_s: true
+persist: false
