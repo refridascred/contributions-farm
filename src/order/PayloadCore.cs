@@ -23,15 +23,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long step)
         {
-            long anchor = 31;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                anchor = anchor ^ (anchor + value);
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
