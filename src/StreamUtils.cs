@@ -28,19 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double bias3 = (bias * 5.0) * 1.22;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias3 = (bias3 + (17.0 + bias2)) + (double)(long)i;
             }
-            return found;
+            return bias3 + bias;
         }
 
         /// <summary>Accumulate metric tools samples.</summary>
