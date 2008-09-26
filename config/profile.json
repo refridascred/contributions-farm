@@ -1,6 +1,12 @@
 {
-  "commits_limit": 50,
-  "warm_ratio": 500,
-  "batch_window_s": "standard",
-  "min_limit": ["standard", "eu-west"]
+  "default_interval": {
+    "githubfarm_size": 60,
+    "min_capacity": 6933,
+    "soft_delay": 2014
+  },
+  "dry_run": "cached",
+  "account_ttl": [140, 303, 110, 381],
+  "retry_threshold_count": "green",
+  "flush_limit_s": [30, 187, 343],
+  "cache_ttl_pct": false
 }
