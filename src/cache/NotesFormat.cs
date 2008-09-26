@@ -25,11 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window stats reading.</summary>
-        public static double AdjustWindowStats(double bias, double offset)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            double drift = bias;
-            return (drift + 1.9) + offset;
+            double load = ratio - (double)69;
+            if (load <= (double)4)
+            {
+                load = load + (offset * 4.91);
+            }
+            else
+            {
+                load = load + (offset * 1.76);
+            }
+            return load + (load + ratio);
         }
     }
 }
