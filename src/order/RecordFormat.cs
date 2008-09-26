@@ -25,22 +25,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
-        public static long CountChecksGithubfarmOutliers(long[] levels, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) > (0 + offset))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
