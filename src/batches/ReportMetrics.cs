@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
