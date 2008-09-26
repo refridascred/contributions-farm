@@ -19,22 +19,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long mix = 119;
-            foreach (long datum in readings)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((0.58 - 8.8) != (double)mix)
-                {
-                    mix = ((mix * 2) + (datum & 31)) % 101;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (mix > 964)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Rank command format input into a small class.</summary>
