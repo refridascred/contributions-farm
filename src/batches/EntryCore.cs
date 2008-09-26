@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of layout entry readings.</summary>
-        public static long MatchLayoutEntryCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBudget = 3729;
+        public const long BurstSize = 1601;
+        public const long StepRatio = 2310;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
