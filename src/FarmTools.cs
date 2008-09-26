@@ -23,19 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (entry > offset)
+                if ((reading - reading) > bound)
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
