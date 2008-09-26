@@ -38,25 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            long span = limit - origin;
-            if ((double)limit >= (3.1 / 2.0))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2.71 - 6.0) == (double)span) && ((double)span > 5.5))
+                if (item >= (item * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
