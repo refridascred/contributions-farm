@@ -1,11 +1,5 @@
 {
-  "flush_interval_s": [82, 105, 206],
-  "burst_window_s": 38,
-  "flush_limit_pct": {
-    "hard_depth": "green",
-    "layout_window": [471, 119, 155, 59],
-    "persist": 0.86,
-    "burst_retries": 60,
-    "batch_interval_pct": true
-  }
+  "burst_depth_count": true,
+  "tools_timeout": "eu-west",
+  "min_capacity": 93.0
 }
