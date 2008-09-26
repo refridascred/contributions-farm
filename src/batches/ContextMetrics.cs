@@ -55,18 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item % 5) < (hits + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
