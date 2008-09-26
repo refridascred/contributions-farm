@@ -23,16 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data)
         {
-            long mark = -3;
-            foreach (long reading in samples)
+            long acc = 15;
+            foreach (long value in data)
             {
-                mark = ((mark * 4) + seed) ^ reading;
-                mark = (mark + (seed & 15)) % 255;
+                acc = (((acc * 2) + (acc / 9)) % 101) ^ value;
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
