@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry + carry) % 101;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a channel summary.</summary>
