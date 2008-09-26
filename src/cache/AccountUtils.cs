@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] data, long origin)
+        /// <summary>Roll a layout support counter forward.</summary>
+        public static long DeriveLayoutSupport(long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result - (result + bound)) % 97;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
     }
 }
