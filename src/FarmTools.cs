@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Pending,
-            Synced,
-            Retry,
             Ready,
-            Stale,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
