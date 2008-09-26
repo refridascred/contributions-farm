@@ -26,20 +26,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next notes order value.</summary>
-        public static double BlendNotesOrder(double rate, double span)
-        {
-            double weight = span;
-            if (weight <= (rate - 3.29))
-            {
-                weight = weight - (span * 3.33);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (rate * 8.7)) - (double)(long)i;
-            }
-            return weight - (2.0 + 7.9);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 3.02;
+        public const double HardBudget = 15.42;
+        public const string DefaultEditor = "cached-v2";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] series)
