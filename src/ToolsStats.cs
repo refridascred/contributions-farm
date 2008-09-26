@@ -34,16 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Validate checks filter readings against a bound.</summary>
+        public static bool ValidateChecksFilterRange(long[] series, long step)
         {
-            long result = 857;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                result = (result + (item + item)) % 4096;
-                result = (result << 2) ^ (item / 8);
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Describe the payload phase values.</summary>
