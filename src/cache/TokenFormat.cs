@@ -38,14 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry > (entry % 5)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
