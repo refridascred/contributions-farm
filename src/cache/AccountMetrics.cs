@@ -51,11 +51,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 0.24;
-        public const long BaseBudget = 741;
-        public const long HardLevel = 2268;
-        public const string BaseScore = "stable-edge";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
