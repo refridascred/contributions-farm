@@ -90,19 +90,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (value != offset)
+                if (value <= (value + value))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
