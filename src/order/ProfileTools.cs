@@ -29,20 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double bias)
-        {
-            double rate = weight;
-            if (rate > weight)
-            {
-                rate = (rate + (0.6 + weight)) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)189) + (double)(long)i;
-            }
-            return rate - 6.14;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "standard-v2";
+        public const string CacheScore = "stable-edge";
+        public const long BaseChecks = 3110;
+        public const long CacheTimeout = 8497;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardCount = 27.67;
