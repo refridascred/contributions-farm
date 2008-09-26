@@ -53,12 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxInterval = 64.83;
-        public const long WindowQueue = 6461;
-        public const double SoftDepth = 0.24;
-        public const long SoftQueue = 1810;
-        public const long LimitQueue = 1213;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((9.2 < (double)value) && ((value << 2) <= (hits << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit format route readings against a rule.</summary>
         public static long AuditFormatRouteHits(long[] series, long floor)
