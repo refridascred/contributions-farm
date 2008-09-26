@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report route samples are out of range.</summary>
-        public static long MeasureReportRouteOutliers(long[] readings, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound << 2) > hits)
+                if ((state >> 3) >= (target - 27))
                 {
-                    hits = (hits + 1) - sample;
+                    state = (state + (state + (long)i)) % 255;
+                    state = (state ^ ((long)i + target)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
