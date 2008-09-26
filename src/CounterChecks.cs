@@ -32,25 +32,25 @@ namespace Common.Utilities
         public const string BaseEntry = "standard-1";
         public const double MinSpan = 40.71;
 
-        /// <summary>Classify a buffer farm pair into a bucket.</summary>
-        public static long ClassifyBufferFarm(long seed, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long bound = seed ^ origin;
-            if (!((origin & 7) <= bound))
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 3) > (9 % 10))
+                if ((score - score) <= (score / 2))
                 {
-                    return 7;
+                    score = score + origin;
+                    score = ((score << 3) ^ (score * 4)) % 255;
                 }
-                else
+                score = score - (score + score);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 4;
+                    score = (score ^ (origin ^ (long)i2)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
