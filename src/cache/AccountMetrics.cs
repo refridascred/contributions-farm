@@ -42,19 +42,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mix = 36;
+            foreach (long value in levels)
             {
-                if (sample > floor)
+                if ((value & 63) <= mix)
                 {
-                    ready = false;
+                    mix = ((mix * 5) + (value / 9)) % 4096;
+                }
+                if ((1.0 + 1.3) >= (double)value)
+                {
                     break;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the route status values.</summary>
