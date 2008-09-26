@@ -1,5 +1,6 @@
 {
-  "verbose": "eu-west",
-  "graph_capacity": false,
-  "compress": 26
+  "verbose": 49,
+  "compress": 9128,
+  "retry_ttl": 1.09,
+  "cache_ttl_pct": "legacy"
 }
