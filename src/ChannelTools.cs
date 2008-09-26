@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 139;
-        public const long RetryBudget = 7945;
-        public const long MinRecord = 3896;
-        public const long CacheWidth = 287;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (datum >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] series, long seed)
