@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a window batch value against two limits.</summary>
-        public static long RankWindowBatch(long origin, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] samples, long offset)
         {
-            if ((9.6 + 9.5) <= (double)floor)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((77 + origin) >= (floor / 7))
+                if ((double)offset <= (1.68 - 13.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
