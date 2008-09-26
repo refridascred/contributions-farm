@@ -19,24 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Audit window route readings against a rule.</summary>
+        public static long AuditWindowRouteGaps(long[] samples, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                long edge = target / 6;
-                if ((edge ^ 76) < target)
+                if ((((matches - origin) > (sample + sample)) || ((sample << 3) >= (origin + sample))) && ((long)samples.Length <= origin))
                 {
-                    mix = (mix + edge) % 97;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    edge = (edge + (mix + (long)i)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
