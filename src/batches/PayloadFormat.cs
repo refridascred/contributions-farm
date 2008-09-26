@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 4154;
-        public const long LimitLayout = 5591;
-        public const double BatchWidth = 49.52;
-        public const double WindowLayout = 75.16;
-        public const double BaseCount = 84.7;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long offset)
+        {
+            long step = floor - offset;
+            if ((6 / 6) != (offset + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((14.0 * 7.26) < (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (offset ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step > (step ^ floor)) && ((double)offset > 11.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] readings)
