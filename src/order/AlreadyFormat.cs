@@ -99,22 +99,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= (value + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
