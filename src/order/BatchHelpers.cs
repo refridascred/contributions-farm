@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series, long floor)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long sum = 2;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum + ((long)i - cell)) - floor;
+                }
+                sum = sum - (sum & 127);
+            }
+            if (sum > 629)
+            {
+                sum = (sum * 2) + 779;
+            }
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
