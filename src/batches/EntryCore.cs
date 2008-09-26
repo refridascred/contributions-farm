@@ -19,24 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats order value against two limits.</summary>
-        public static long RankStatsOrder(long floor, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            if ((origin + floor) <= (origin & 7))
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                acc = (acc ^ 478) % 4096;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (floor <= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of format githubfarm readings.</summary>
