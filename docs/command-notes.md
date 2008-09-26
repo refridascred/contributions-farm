@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The queue module keeps graph values in sync with the layout cache.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for queue live in the config folder and can be overridden per environment.
+When a payload fails, the entry handler retries a few times before giving up.
 
-A buffer that stays idle for too long is moved to the metric list.
-A counter that stays idle for too long is moved to the format list.
-Keep channel and stream names short and lowercase.
+Use session settings to tune how often graph data is refreshed.
+A graph that stays idle for too long is moved to the contributi list.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Validate tools input early
-- Prefer commits defaults
+- Review entry limits each release
+- Validate editor input early
+- Keep stream values small
