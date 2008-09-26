@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((3.44 / 8.0) < (double)count)
+                if ((value + value) > (value * 4))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
