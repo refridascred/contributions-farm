@@ -36,13 +36,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            Failed,
-            New,
-            Draft,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a batches reading.</summary>
