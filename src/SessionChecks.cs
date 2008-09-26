@@ -36,19 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
