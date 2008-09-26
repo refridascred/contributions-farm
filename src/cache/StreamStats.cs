@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record schema value against two limits.</summary>
-        public static long BucketRecordSchema(long step, long bound)
-        {
-            if (((bound - bound) == (bound / 5)) || ((step * 2) != (step >> 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (bound % 16))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 9860;
+        public const long BatchStats = 6252;
+        public const double MaxStats = 5.99;
+        public const string RetryDepth = "alpha";
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
