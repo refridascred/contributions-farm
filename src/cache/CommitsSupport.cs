@@ -78,12 +78,19 @@ namespace Common.Utilities
             return drift - (weight / 6.0);
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long seed)
         {
-            Idle,
-            Dropped,
-            Synced,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
