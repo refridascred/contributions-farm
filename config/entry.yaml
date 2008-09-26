@@ -1,5 +1,4 @@
 # entry settings
-hard_depth_count: 3452
-enabled: 1024
-default_window: 20
-persist: true
+readonly: 30
+strict: primary
+warm_ratio_s: false
