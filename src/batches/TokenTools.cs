@@ -34,9 +34,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "fallback-edge";
-        public const long CacheCluster = 2099;
-        public const double HardSpan = 54.59;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (3.5 < (double)(long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (origin - 773)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
