@@ -45,12 +45,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Blend two cache stats measurements.</summary>
+        public static double ScaleCacheStats(double bias, double bias2)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            double drift = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift + 0.9) - (double)(long)i) - bias2;
+            }
+            return drift + (drift - drift);
         }
     }
 }
