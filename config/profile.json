@@ -1,6 +1,10 @@
 {
-  "layout_timeout": 500,
-  "batch_timeout": "primary",
-  "batch_ttl_ms": 100,
-  "compress": 3855
+  "context_capacity": 30,
+  "editor_retries": "stable",
+  "sync_timeout": {
+    "cache_delay_pct": "cached",
+    "cache_retries": [409, 466, 107, 212],
+    "retry_capacity_s": ["standard", "blue"],
+    "soft_delay_pct": 92.63
+  }
 }
