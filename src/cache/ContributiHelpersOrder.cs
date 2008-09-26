@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Project the next stats notes value.</summary>
+        public static double ScaleStatsNotes(double bias, double floor)
         {
-            Closed,
-            Dropped,
-            Active,
-            Synced,
+            double load = 6.13;
+            if (load > (double)1)
+            {
+                load = load + (floor / 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (1.6 - bias)) - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
