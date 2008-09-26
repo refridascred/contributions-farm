@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long CacheRatio = 6696;
         public const string StepSize = "fallback-1";
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Validate route batches readings against a bound.</summary>
+        public static bool GuardRouteBatchesBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (samples[i] <= target)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
