@@ -1,18 +1,19 @@
 # support settings
-base_size: 91.46
-counter_interval: 100
-hard_capacity_pct:
-  max_capacity_s: edge
-  account_depth:
-    - primary
-    - green
-    - blue
-    - green
-  hard_ttl: eu-west
-  stream_depth: true
-command_ttl: 50
-max_ttl: edge
-batch_retries_ms:
-  retry_window_s: strict
-  min_capacity_pct: false
-  support_interval: false
+cluster_limit: false
+burst_size_count:
+  min_size: true
+  cache_threshold_pct: eu-west
+  window_interval: open
+  filter_retries:
+    - stable
+    - stable
+    - latest
+  cache_threshold: true
+hard_ttl: 16
+max_ratio_pct: 6
+notes_delay: eu-west
+githubfarm_ttl:
+  - strict
+  - strict
+  - cached
+  - eu-west
