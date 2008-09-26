@@ -22,12 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Find the first githubfarm batches entry that matches the target.</summary>
+        public static long SeekGithubfarmBatchesIndex(long[] values, long seed)
         {
-            Dropped,
-            Closed,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
