@@ -48,18 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            long mark = 50;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                if (90 < mark)
+                if (((double)(-3) <= (double)seen) || (((sample & 63) <= seen) || ((sample - sample) > (sample / 7))))
                 {
-                    mark = mark ^ (sample + mark);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
