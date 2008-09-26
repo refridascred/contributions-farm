@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] data, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((73 + target) >= (value ^ target))
+                if (entry > (hits - seed))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
