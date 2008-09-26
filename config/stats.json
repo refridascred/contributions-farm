@@ -1,8 +1,10 @@
 {
-  "metrics_depth": false,
-  "compress": 5053,
-  "readonly": ["latest", "stable"],
-  "burst_depth_pct": 3438,
-  "poll_ttl_count": 30,
-  "warm_limit": 30
+  "readonly": "local",
+  "flush_timeout": 60,
+  "hard_timeout_ms": {
+    "warm_ttl_ms": [459, 295],
+    "burst_threshold_pct": ["eu-west", "legacy", "cached", "green"],
+    "poll_timeout_pct": ["blue", "latest", "fallback", "legacy"]
+  },
+  "max_window": 825
 }
