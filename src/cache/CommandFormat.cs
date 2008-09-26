@@ -27,19 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
