@@ -54,21 +54,17 @@ namespace Common.Utilities
             return bias + 1.2;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Roll a profile record counter forward.</summary>
+        public static long SeriesProfileRecord(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total ^ (offset ^ offset);
+                total = ((total * 2) + (offset % 5)) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
