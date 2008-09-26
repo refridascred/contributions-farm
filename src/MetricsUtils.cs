@@ -16,31 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long floor2)
+        /// <summary>Accumulate stats format samples.</summary>
+        public static long FoldStatsFormat(long[] readings, long floor)
         {
-            if ((floor2 >= (floor2 + floor)) || (5 < (floor & 255)))
+            long state = 353;
+            foreach (long item in readings)
             {
-                return 2;
+                state = (((state + (74 * 5)) % 101) ^ item) + floor;
             }
-            else
-            {
-                if ((floor << 3) > (floor2 >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + floor2) <= floor) || ((floor & 7) < (floor + floor2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate report profile samples.</summary>
