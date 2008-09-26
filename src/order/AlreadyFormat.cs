@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = 7;
-            foreach (long cell in series)
-            {
-                if ((double)cell >= (double)total)
-                {
-                    total = total ^ (total << 3);
-                }
-            }
-            if (total < 507)
-            {
-                total = total + (total + total);
-            }
-            return total % 1000;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
