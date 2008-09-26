@@ -36,19 +36,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - 93) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
