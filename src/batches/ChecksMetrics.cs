@@ -48,18 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats channel readings against a rule.</summary>
-        public static long CountStatsChannelHits(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] items, long bound)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long datum in items)
             {
-                if ((double)datum > 3.75)
+                if (bound <= (bound >> 1))
                 {
-                    count = count + 2;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
