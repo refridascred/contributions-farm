@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double weight, double offset)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long CountChannelBatchMatches(long[] series)
         {
-            double ratio = (weight - offset) - weight;
-            if (ratio > (7.15 - offset))
+            long matches = 0;
+            foreach (long value in series)
             {
-                ratio = ratio + 2.8;
+                if ((value + value) != ((long)series.Length + 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 17.0) + (double)(long)i;
-            }
-            return ratio - weight;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
