@@ -60,9 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "open-1";
-        public const long CacheSpan = 7973;
-        public const double RetryScore = 55.1;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (item < (seen - item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
