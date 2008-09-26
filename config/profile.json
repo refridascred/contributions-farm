@@ -1,6 +1,15 @@
 {
-  "strict": "stable",
-  "session_window": 70.65,
-  "default_depth_ms": 29.44,
-  "base_ttl_ms": 500
+  "idle_timeout": ["local", "open", "latest"],
+  "min_size": {
+    "batches_window": false,
+    "warm_ratio_ms": ["staging", "local", "standard"],
+    "soft_delay_pct": 64.29,
+    "persist": 250,
+    "format_size": "latest",
+    "idle_delay_count": 67
+  },
+  "readonly": false,
+  "enabled": [117, 268],
+  "burst_depth": "staging",
+  "sync_delay_s": "latest"
 }
