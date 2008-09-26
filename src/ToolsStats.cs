@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 79.82;
-        public const double SoftSpan = 43.13;
-        public const double BatchDepth = 85.66;
-        public const long RetryCount = 7746;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            New,
+            Draft,
+            Done,
+            Queued,
+            Active,
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
