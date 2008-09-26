@@ -42,10 +42,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "strict-v2";
-        public const long LimitWidth = 9972;
-        public const long MaxProfile = 7072;
-        public const string BaseBudget = "stable-v2";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
