@@ -41,21 +41,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record support pairs that satisfy a relation.</summary>
-        public static long PairRecordSupportCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSpan = 4075;
+        public const long StepBudget = 7152;
+        public const string WindowBuffer = "primary-1";
+        public const string BurstRatio = "primary-edge";
     }
 }
