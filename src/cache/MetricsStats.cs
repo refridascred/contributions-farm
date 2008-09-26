@@ -48,12 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            Queued,
+            Retry,
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
