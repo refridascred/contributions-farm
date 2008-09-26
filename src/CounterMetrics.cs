@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            double gain = 6.7;
-            if (gain > gain)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                gain = (gain + (offset * 20.0)) - ratio;
+                if ((double)entry <= (1.0 * 2.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain - (offset + gain);
+            return seen;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
