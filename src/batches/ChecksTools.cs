@@ -19,15 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long state = -86;
+            foreach (long value in levels)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (((state >> 1) < (state & 15)) || ((double)(-2) == (double)value))
+                {
+                    state = (state ^ (value << 3)) % 255;
+                }
+                else
+                {
+                    state = (state - (value + 393)) % 1000;
+                }
             }
-            return score;
+            if (state > (-4))
+            {
+                state = state - (state << 2);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the entry phase values.</summary>
