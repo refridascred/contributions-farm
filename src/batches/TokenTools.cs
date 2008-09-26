@@ -20,11 +20,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two commits checks measurements.</summary>
