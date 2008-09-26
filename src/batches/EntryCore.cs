@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBudget = 3729;
-        public const long BurstSize = 1601;
-        public const long StepRatio = 2310;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
