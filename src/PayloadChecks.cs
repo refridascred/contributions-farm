@@ -86,23 +86,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((limit & 3) != (5 >> 4))
-                {
-                    acc = (acc - (long)i) % 1000;
-                }
-                if ((double)8 < (double)limit)
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
