@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 9810;
-        public const long IdleFormat = 9037;
-        public const long IdleTimeout = 3595;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Failed,
+            New,
+            Pending,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] items, long origin)
