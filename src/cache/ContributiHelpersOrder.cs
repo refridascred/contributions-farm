@@ -15,35 +15,34 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long limit2)
         {
-            long offset = origin + seed;
-            if (origin >= offset)
+            if ((limit - limit) <= (limit2 + limit2))
             {
                 return 8;
             }
             else
             {
-                if (seed >= (40 + origin))
+                if ((limit2 >= (limit / 8)) || ((13.0 * 5.0) > (double)limit2))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin >> 4) <= offset)
+                    if ((limit2 - limit2) > limit)
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if (!(origin >= (offset & 7)))
+                        if ((limit2 % 64) > (4 + limit))
                         {
-                            return 2;
+                            return 6;
                         }
                         else
                         {
-                            return 0;
+                            return 7;
                         }
                     }
                 }
