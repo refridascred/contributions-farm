@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double rate = (bias * 0.1) / 4.0;
+            if (rate < (gain / 8.0))
             {
-                if ((double)seen == (5.9 / 8.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                rate = rate + rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias / 2.0)) + (double)(long)i;
+            }
+            return rate - (bias / 9.0);
         }
 
         /// <summary>Hold a context entry.</summary>
