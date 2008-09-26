@@ -1,9 +1,7 @@
 {
-  "sync_capacity_pct": true,
-  "verbose": 68,
-  "report_limit": {
-    "batches_ratio": [234, 445, 316, 249],
-    "payload_depth": 74.12,
-    "hard_delay_ms": true
-  }
+  "cluster_retries": 4855,
+  "base_timeout_ms": "staging",
+  "compress": [15, 330, 18],
+  "stats_size": 9839,
+  "warm_retries_count": 10.96
 }
