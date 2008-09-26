@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSpan = 1446;
-        public const long HardOrder = 9366;
-        public const long LimitScore = 2178;
-        public const long WindowRatio = 9239;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long carry = -5;
+            foreach (long cell in items)
+            {
+                carry = (carry ^ (7 ^ cell)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long floor, long floor2)
