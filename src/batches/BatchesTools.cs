@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const double StepRatio = 86.79;
         public const long BaseCommand = 6823;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSpan = 854;
+        public const long IdleBudget = 954;
+        public const long CacheLevel = 4976;
+        public const long BatchStats = 3311;
+        public const string RetryStats = "cached-v2";
     }
 }
