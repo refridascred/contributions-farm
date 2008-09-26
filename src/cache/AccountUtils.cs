@@ -19,14 +19,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long limit)
         {
-            Paused,
-            Failed,
-            Stale,
-            Idle,
-            Draft,
+            if (bound <= (bound + 786))
+            {
+                return 4;
+            }
+            else
+            {
+                if (843 >= (limit / 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
