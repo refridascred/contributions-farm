@@ -1,11 +1,14 @@
 # Batch notes
 
-Each route is validated before it reaches the command queue.
-The payload module keeps route values in sync with the farm cache.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use session settings to tune how often already data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+
+Keep counter and route names short and lowercase.
+Each metric is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Review graph limits each release
-- Log every booking change
-- Validate counter input early
+- Keep channel values small
+- Prefer metric defaults
+- Document new channel fields
