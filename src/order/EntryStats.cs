@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long step)
         {
-            Closed,
-            Stale,
-            Ready,
+            long delta = target ^ step;
+            if ((target << 1) <= (target + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (delta >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
