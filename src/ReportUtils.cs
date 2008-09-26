@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of farm metric readings.</summary>
+        public static long CombineFarmMetric(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            long result = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 3) == (datum / 9))
+                {
+                    result = (result + (datum ^ result)) % 97;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of report readings.</summary>
