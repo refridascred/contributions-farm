@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            Ready,
-            Closed,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen > item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
