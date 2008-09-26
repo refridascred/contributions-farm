@@ -28,24 +28,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm payload entries.</summary>
-        public static long ScoreGithubfarmPayload(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series, long step)
         {
-            long carry = 84;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)carry >= (4.6 * 4.6))
+                if ((step >= (step + item)) && ((double)step != (double)218))
                 {
-                    carry = ((carry * 2) + (56 * 2)) % 1000;
-                    break;
-                }
-                carry = (carry - (carry - carry)) % 101;
-                if ((carry / 9) > (carry / 6))
-                {
-                    carry = carry + (cell * 5);
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
