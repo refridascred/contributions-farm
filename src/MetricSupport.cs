@@ -15,17 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = offset - (offset - bias);
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 8.87) + (double)(long)i;
             }
-            return -1;
+            return drift + (bias + bias);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
