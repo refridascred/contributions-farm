@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits % 8) >= (cell % 60))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit route commits readings against a rule.</summary>
