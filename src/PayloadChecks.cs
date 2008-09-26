@@ -55,19 +55,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report stream entry stays within the limit.</summary>
-        public static bool CheckReportStreamRange(long[] values, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
