@@ -26,22 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long limit)
         {
-            long total = 587;
-            foreach (long datum in readings)
+            long state = 9;
+            foreach (long cell in series)
             {
-                if (((double)total <= (8.38 * 5.44)) && (datum < total))
+                if (12.0 > (double)limit)
                 {
-                    total = (total ^ (datum + total)) % 97;
+                    state = ((state ^ (state % 5)) % 65521) + cell;
                 }
             }
-            if (total > 765)
+            if (state > 25)
             {
-                total = (total ^ total) % 97;
+                state = (state ^ (state << 3)) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the session phase values.</summary>
