@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 1) < (tally * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
