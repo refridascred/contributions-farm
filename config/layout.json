@@ -1,14 +1,8 @@
 {
-  "burst_ratio": 76.75,
-  "idle_window": 8,
-  "idle_retries": true,
-  "contributi_threshold": 60,
-  "persist": {
-    "retry_delay_pct": 3,
-    "max_delay_pct": "primary",
-    "filter_threshold": "fallback",
-    "stats_delay": [244, 31, 310, 230],
-    "profile_threshold": [385, 425, 173, 153]
-  },
-  "max_limit_pct": 1024
+  "stats_ttl": false,
+  "cache_size_s": [302, 106, 47],
+  "idle_capacity_count": ["green", "blue"],
+  "max_limit_ms": "local",
+  "sync_capacity_s": [416, 163, 134],
+  "support_capacity": "edge"
 }
