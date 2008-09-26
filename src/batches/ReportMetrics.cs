@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the schema batch entries that pass the check.</summary>
+        public static long MeasureSchemaBatchGaps(long[] series)
         {
-            Stale,
-            Closed,
-            New,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((2.16 * 6.21) >= (double)sample)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
