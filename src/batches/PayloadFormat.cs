@@ -40,21 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long origin, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            if ((origin << 2) >= floor)
             {
-                if ((state >> 3) >= (target - 27))
-                {
-                    state = (state + (state + (long)i)) % 255;
-                    state = (state ^ ((long)i + target)) % 1000;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (((322 & 1) < (floor * 3)) && ((origin % 5) <= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(700 > (floor << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
