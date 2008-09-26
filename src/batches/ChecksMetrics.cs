@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            Pending,
-            Ready,
-            Idle,
-            Done,
+            long acc = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (acc + (acc << 2)) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine stats report values into a single score.</summary>
