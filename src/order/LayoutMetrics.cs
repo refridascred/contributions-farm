@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long MaxInterval = 9663;
         public const string WindowNotes = "primary-v2";
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double offset)
-        {
-            double load = (double)9;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (offset * 2.2)) - (double)(long)i;
-            }
-            return load + rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySpan = 52.14;
+        public const long MaxBudget = 4197;
+        public const string StepChecks = "cached";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long bound, long origin)
