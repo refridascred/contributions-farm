@@ -30,11 +30,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double bias, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double drift = 1.0;
-            return ((drift + 5.0) + bias) + span;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
