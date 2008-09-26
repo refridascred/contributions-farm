@@ -25,22 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order already samples are out of range.</summary>
-        public static long AuditOrderAlreadyMatches(long[] samples)
+        /// <summary>Combine stats report values into a single score.</summary>
+        public static long ScoreStatsReport(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 0;
+            foreach (long datum in series)
             {
-                if ((cell + cell) >= (count ^ 11))
+                if ((datum & 7) < datum)
                 {
-                    count = count + 1;
+                    total = (total - (datum - total)) % 97;
                 }
-                else
+                if ((datum + total) <= (total * 4))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
