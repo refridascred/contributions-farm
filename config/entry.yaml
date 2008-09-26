@@ -1,8 +1,4 @@
 # entry settings
-flush_retries_ms: 60
-verbose:
-  - 154
-  - 154
-  - 419
-  - 110
-batch_depth_s: 53.27
+command_interval: staging
+enabled: false
+metric_window: 92.88
