@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long seed)
         {
-            long mix = 461;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ (step & 127)) + cell;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
