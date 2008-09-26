@@ -1,9 +1,8 @@
-id,count,label
-1,613,167
-2,legacy,643
-3,blue,124
-4,local,344
-5,local,796
-6,714,55.54
-7,75.48,669
-8,legacy,282
+id,level,ratio,state,active
+1,632,545,88.32,53
+2,30.49,staging,47.12,981
+3,708,818,edge,643
+4,legacy,82.15,50.59,standard
+5,609,staging,871,305
+6,cached,blue,470,544
+7,green,56.77,857,eu-west
