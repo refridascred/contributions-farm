@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const double MinTimeout = 41.03;
         public const long HardChecks = 7252;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
