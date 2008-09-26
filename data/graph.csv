@@ -1,7 +1,7 @@
-id,owner,label,active
-1,358,63.29,staging
-2,667,17.74,blue
-3,88.0,10.27,359
-4,85.12,94,primary
-5,4.45,eu-west,staging
-6,73.15,587,678
+id,region,label,active
+1,667,strict,local
+2,144,54.9,290
+3,318,strict,2.48
+4,blue,545,staging
+5,primary,400,513
+6,strict,591,edge
