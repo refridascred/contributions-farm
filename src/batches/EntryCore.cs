@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] levels, long step)
         {
-            double drift = bias * 5.6;
-            if (drift <= (drift - ratio))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                drift = drift + (drift * 2.98);
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift + (bias + 14.0);
+            return stale;
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
