@@ -32,15 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mark = -41;
-            foreach (long sample in samples)
-            {
-                mark = ((mark - (9 << 2)) ^ sample) - limit;
-            }
-            return mark;
+            Done,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Blend two filter support measurements.</summary>
