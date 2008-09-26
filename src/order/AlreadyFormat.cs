@@ -38,18 +38,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches - 83) > 1)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
