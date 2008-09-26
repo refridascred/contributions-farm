@@ -20,24 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long bound, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            if ((0.64 / 9.0) > (double)bound)
+            double rate = bias - (double)40;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                rate = (rate - floor) - (double)(long)i;
             }
-            else
-            {
-                if ((double)offset == (9.2 + 3.3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return rate - rate;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
