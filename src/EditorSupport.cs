@@ -54,19 +54,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Rank farm session input into a small class.</summary>
+        public static long BucketFarmSession(long target, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long cur = target - seed;
+            if (((double)seed != (1.3 - 1.76)) && ((cur / 8) > (seed / 2)))
             {
-                if ((target ^ target) != (long)i)
-                {
-                    result = (result << 2) ^ (long)i;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (target >= (seed - cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
