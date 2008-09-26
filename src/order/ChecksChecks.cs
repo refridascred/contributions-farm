@@ -28,24 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank notes checks input into a small class.</summary>
-        public static long RankNotesChecks(long target, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] items, long step)
         {
-            if (!((target % 97) >= (limit / 8)))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 2) == (890 * 5))
+                if (sample < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
