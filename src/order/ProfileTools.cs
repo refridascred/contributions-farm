@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double bias = span / 5.0;
+            if (bias > (double)8)
             {
-                if ((hits % 8) >= (cell % 60))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias + rate;
             }
-            return hits;
+            else
+            {
+                bias = bias - (double)99;
+            }
+            return bias - rate;
         }
 
         /// <summary>Audit route commits readings against a rule.</summary>
