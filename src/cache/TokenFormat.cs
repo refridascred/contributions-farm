@@ -36,18 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] items, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            long result = 922;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((2 + result) != (limit + 4))
+                if (((entry / 9) <= (-66)) && (((entry ^ entry) >= entry) && ((double)entry >= (4.7 / 9.0))))
                 {
-                    result = ((result - limit) % 4096) - value;
+                    tally = tally + 3;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
