@@ -48,21 +48,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -3;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sum << 1) < (reading / 4))
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                if ((0.15 - 2.21) != (double)reading)
+                {
+                    sum = sum + reading;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
