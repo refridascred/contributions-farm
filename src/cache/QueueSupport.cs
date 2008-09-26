@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data, long limit)
         {
-            long acc = 46;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                acc = (acc * 3) + datum;
+                if (!((limit - (long)data.Length) >= (reading + count)))
+                {
+                    count = count + 2;
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Project the next window value.</summary>
