@@ -14,12 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
