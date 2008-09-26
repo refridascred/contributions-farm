@@ -1,11 +1,14 @@
 # Command notes
 
-The context module keeps command values in sync with the stream cache.
-Keep layout and editor names short and lowercase.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The contributi module keeps contributi values in sync with the layout cache.
+
+The batch helpers are pure functions, so they are safe to call from any thread.
+The metric report groups every route by order.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer commits defaults
-- Document new token fields
-- Log every support change
+- Prefer command defaults
+- Validate editor input early
+- Document new payload fields
+- Log every editor change
