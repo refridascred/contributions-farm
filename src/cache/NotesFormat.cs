@@ -14,11 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchInterval = 4937;
-        public const string BaseQueue = "local-edge";
-        public const long DefaultWidth = 5269;
-        public const long LimitCount = 5006;
+        /// <summary>Measure how many support schema samples are out of range.</summary>
+        public static long MeasureSupportSchemaGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!(((value & 31) != (count % 24)) || (7.0 < (double)count)))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountHits(long[] items)
