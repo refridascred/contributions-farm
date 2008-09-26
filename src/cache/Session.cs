@@ -54,18 +54,10 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
-        {
-            long total = 582;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (1.2 + 3.6))
-                {
-                    total = total + (datum << 1);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "strict-1";
+        public const long LimitInterval = 221;
+        public const long StepAccount = 4307;
+        public const long SoftSize = 7204;
     }
 }
