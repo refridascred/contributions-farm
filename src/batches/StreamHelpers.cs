@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 8) >= ((long)levels.Length - 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
