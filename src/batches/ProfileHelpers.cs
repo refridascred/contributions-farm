@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            Active,
-            Locked,
-            Idle,
-            Draft,
+            double gain = bias2;
+            if (gain <= 2.94)
+            {
+                gain = gain - (gain * 5.94);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain + (bias + bias);
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
