@@ -29,14 +29,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            Stale,
-            New,
-            Failed,
-            Done,
-            Draft,
+            double scale = 5.99 / 6.0;
+            if (scale < (double)6)
+            {
+                scale = (scale - (scale + gain)) + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 1.4) + (double)(long)i;
+            }
+            return scale - 3.3;
         }
     }
 }
