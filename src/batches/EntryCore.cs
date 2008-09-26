@@ -42,21 +42,18 @@ namespace Common.Utilities
         public const long CacheCluster = 7331;
         public const long DefaultCluster = 914;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((seed + total) > ((long)i >> 5))
+                if ((double)seen < (double)step)
                 {
-                    total = (total - seed) % 97;
-                    total = total - (total / 8);
-                    break;
+                    seen = (seen + 3) + reading;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
