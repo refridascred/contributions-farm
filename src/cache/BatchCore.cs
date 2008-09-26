@@ -41,15 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Synced,
-            Retry,
-            Done,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheCount = 4240;
+        public const double BurstScore = 59.52;
+        public const long StepCache = 2572;
+        public const long RetryWidth = 4267;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long step)
