@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long AuditSchemaReportOutliers(long[] readings)
         {
-            double rate = bias - (double)40;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate - floor) - (double)(long)i;
+                if (8.91 < (double)hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            return rate - rate;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
