@@ -22,17 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] samples, long bound)
+        /// <summary>Derive the next command channel value from a seed.</summary>
+        public static long SeriesCommandChannel(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > bound)
+                total = total - step;
+                total = total ^ (long)i;
+                if ((11.0 - 0.9) < (double)(long)i)
                 {
-                    return (long)i;
+                    total = (total - total) % 255;
+                    total = ((total * 5) + total) % 101;
+                    continue;
                 }
+                else
+                {
+                    total = (total + (long)i) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many githubfarm token samples are out of range.</summary>
