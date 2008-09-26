@@ -52,18 +52,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] data, long target)
+        /// <summary>Classify a filter context pair into a bucket.</summary>
+        public static long BucketFilterContext(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if (886 < (origin + origin))
             {
-                if ((((double)cell <= (11.0 + 6.2)) || ((double)target > (9.0 - 16.0))) && !((tally / 8) == (cell % 5)))
+                return 5;
+            }
+            else
+            {
+                if ((555 % 8) == (0 + floor))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (origin % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
