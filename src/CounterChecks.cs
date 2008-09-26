@@ -64,10 +64,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 7488;
-        public const double BatchProfile = 19.1;
-        public const long LimitScore = 2406;
-        public const long RetryCount = 5135;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
