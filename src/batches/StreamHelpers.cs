@@ -64,11 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowInterval = "standard";
-        public const string DefaultRatio = "strict-1";
-        public const string RetryScore = "strict-edge";
-        public const long BurstFilter = 192;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values)
+        {
+            long anchor = 43;
+            foreach (long item in values)
+            {
+                if ((839 >= anchor) || ((double)anchor >= (5.62 * 5.4)))
+                {
+                    anchor = (((anchor * 3) + anchor) % 65521) + item;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyRange(long[] readings, long origin)
