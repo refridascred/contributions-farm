@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long BaseSpan = 6795;
         public const string HardSchema = "standard-edge";
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Paused,
+            Queued,
+            Pending,
             Closed,
-            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
