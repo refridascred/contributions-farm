@@ -44,18 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series, long seed)
         {
-            long count = 0;
+            long acc = 844;
             foreach (long value in series)
             {
-                if (!(5 <= (count ^ value)) || ((value + value) >= (value / 8)))
+                if (((seed - 961) < (acc + seed)) || ((double)83 != (double)seed))
                 {
-                    count = count + 1;
+                    acc = ((acc * 5) + (acc + (long)series.Length)) + value;
+                }
+                if (99 < (acc >> 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
