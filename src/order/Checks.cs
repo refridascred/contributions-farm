@@ -78,11 +78,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleCount = 1340;
-        public const string LimitFactor = "cached-edge";
-        public const long BurstGithubfarm = 2285;
-        public const double RetryGithubfarm = 55.34;
-        public const long BatchSpan = 1828;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items)
+        {
+            long state = 60;
+            foreach (long reading in items)
+            {
+                state = state - reading;
+                state = ((state * 5) + reading) % 255;
+            }
+            return state;
+        }
     }
 }
