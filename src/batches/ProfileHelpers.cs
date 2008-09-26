@@ -104,25 +104,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long limit)
         {
-            long prev = bound + origin;
-            if ((75 & 31) < (prev % 8))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin + prev) > origin) || (bound < (65 & 31)))
+                if (tally >= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 1) - limit;
                 }
             }
+            return tally;
         }
     }
 }
