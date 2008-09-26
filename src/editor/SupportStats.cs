@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCount = 2937;
-        public const long BaseCommits = 3024;
-        public const long IdleCommits = 5282;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((tally + tally) > (tally << 2)) && ((tally <= (tally << 3)) || ((1 << 3) <= (tally * 2))))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
