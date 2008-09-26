@@ -51,27 +51,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long total = 14;
-            foreach (long cell in items)
-            {
-                total = ((total * 2) + (total - cell)) % 4096;
-                if ((double)total >= (double)cell)
-                {
-                    total = total + (cell << 2);
-                }
-                else
-                {
-                    total = (total + (total - cell)) % 1000;
-                }
-            }
-            if (total < 918)
-            {
-                total = ((total << 2) ^ (total + total)) % 1000;
-            }
-            return total;
+            New,
+            Idle,
+            Failed,
         }
     }
 }
