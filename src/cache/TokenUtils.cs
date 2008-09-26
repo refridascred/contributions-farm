@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            Locked,
-            Failed,
-            Pending,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
