@@ -46,23 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + 52) > (91 + datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "cached-edge";
+        public const long MaxBudget = 3406;
+        public const double MinTimeout = 41.03;
+        public const long HardChecks = 7252;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
