@@ -1,5 +1,7 @@
 {
-  "metrics_timeout": 36,
-  "default_ratio_s": "stable",
-  "report_size": "green"
+  "readonly": 8791,
+  "hard_retries": "stable",
+  "editor_timeout": 46.21,
+  "hard_window": ["stable", "cached"],
+  "warm_window": "blue"
 }
