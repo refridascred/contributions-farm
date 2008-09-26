@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 3266;
+        public const double RetryBudget = 80.83;
+        public const long MaxChecks = 1117;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long floor, long limit)
