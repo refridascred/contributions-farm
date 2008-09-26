@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels)
         {
-            double load = (double)7 + bias;
-            if (load <= load)
+            long acc = 72;
+            foreach (long value in levels)
             {
-                load = load + (floor + 4.28);
+                if (!((acc / 9) <= (acc + acc)))
+                {
+                    acc = acc ^ (value & 255);
+                }
             }
-            return load + bias;
+            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
