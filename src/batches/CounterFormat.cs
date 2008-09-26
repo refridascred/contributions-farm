@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a schema entry reading.</summary>
-        public static double AdjustSchemaEntry(double ratio, double span)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double mean = (double)(7 - 288);
-            if (mean >= ratio)
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 5.3) + (double)(long)i;
-            }
-            return mean + 20.0;
+            Draft,
+            New,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the checks phase values.</summary>
