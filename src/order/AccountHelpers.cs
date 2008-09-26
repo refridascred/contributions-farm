@@ -51,13 +51,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long bound, long limit)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long lane = bound ^ limit;
+            if ((limit + lane) < 65)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ 727) >= lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
