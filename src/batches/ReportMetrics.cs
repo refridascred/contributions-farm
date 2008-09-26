@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long carry = -2;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin << 3) <= carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ origin) ^ datum;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Roll a commits cache counter forward.</summary>
