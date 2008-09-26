@@ -1,15 +1,23 @@
 # entry settings
-dry_run:
-  - latest
-  - local
-  - open
-  - staging
-channel_ratio: cached
-enabled: legacy
-default_capacity_pct: 7686
-verbose: 60
-format_size:
-  - 280
-  - 3
-  - 118
-  - 491
+readonly: 75.57
+retry_ttl_s: 67
+sync_ratio_ms: green
+idle_ttl_pct:
+  min_limit_count: 7292
+  cache_threshold:
+    - standard
+    - staging
+    - standard
+    - primary
+  poll_timeout:
+    default_interval_s:
+      - 483
+      - 387
+      - 425
+      - 342
+    hard_capacity: false
+    cache_delay_s: 48
+    compress: 37.03
+    warm_capacity: 10
+    audit: blue
+stream_ttl: 60
