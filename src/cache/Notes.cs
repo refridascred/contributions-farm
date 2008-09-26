@@ -46,32 +46,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a session layout value against two limits.</summary>
-        public static long BucketSessionLayout(long origin, long bound)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long slot = origin ^ bound;
-            if ((slot + slot) >= (origin - slot))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.9 + 7.69) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)origin == (double)9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two cache stats measurements.</summary>
