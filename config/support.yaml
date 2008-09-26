@@ -1,13 +1,28 @@
 # support settings
-readonly:
-  - green
-  - fallback
+verbose: true
+hard_timeout:
+  - legacy
   - primary
   - legacy
-notes_window: false
-cache_capacity_s: 19.99
-burst_ratio: strict
-base_size:
-  - 161
-  - 418
-sync_threshold: 61.66
+  - open
+channel_interval:
+  - 42
+  - 465
+  - 326
+  - 222
+burst_window_pct:
+  min_interval: true
+  poll_size:
+    dry_run: false
+    verbose: 3143
+    cache_depth_ms:
+      - edge
+      - standard
+      - standard
+      - cached
+    order_threshold: 1024
+    poll_depth_s: false
+    checks_limit: 250
+  graph_depth: 83.52
+poll_capacity_count: standard
+flush_retries: true
