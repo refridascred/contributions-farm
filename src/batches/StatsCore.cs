@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Done,
-            Active,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5760;
+        public const long BatchLayout = 6851;
+        public const long DefaultFactor = 2640;
+        public const string LimitLayout = "standard";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheSpan = "staging";
