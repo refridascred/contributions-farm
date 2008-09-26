@@ -25,17 +25,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a batches checks reading by value.</summary>
-        public static long SeekBatchesChecksIndex(long[] items, long offset)
+        /// <summary>Check that every command session entry stays within the limit.</summary>
+        public static bool VerifyCommandSessionLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (items[i] >= offset)
+                if (value >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
