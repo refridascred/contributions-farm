@@ -37,15 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long limit)
         {
-            long result = 37;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                result = ((result + floor) % 97) - value;
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Match up cache samples.</summary>
