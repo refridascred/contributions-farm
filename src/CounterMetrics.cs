@@ -42,10 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6162;
-        public const double BatchCounter = 45.61;
-        public const double HardRatio = 19.54;
-        public const long MinScore = 3782;
+        /// <summary>Match up cache order samples.</summary>
+        public static long CompareCacheOrderCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
