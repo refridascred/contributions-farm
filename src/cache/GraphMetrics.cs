@@ -63,31 +63,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long origin, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long limit)
         {
-            if ((double)origin > (double)seed)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) != (origin & 15))
+                if (samples[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin > (2.0 + 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
