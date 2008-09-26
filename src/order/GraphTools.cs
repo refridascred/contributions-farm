@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream contributi readings.</summary>
-        public static long TotalStreamContributi(long[] items, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            long score = -565;
-            foreach (long cell in items)
+            double ratio = (double)966;
+            if (ratio > (bias * 7.8))
             {
-                score = ((score ^ (8 * 3)) % 101) + cell;
+                ratio = (ratio + ratio) - offset;
             }
-            if (score > 647)
+            else
             {
-                score = (score + origin) % 255;
+                ratio = ratio + (bias * 8.5);
             }
-            return score;
+            return ratio + (16.0 / 4.0);
         }
 
         /// <summary>Blend two channel queue measurements.</summary>
