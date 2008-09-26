@@ -50,16 +50,12 @@ namespace Common.Utilities
         public const long RetryProfile = 6350;
         public const string StepInterval = "strict";
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepDepth = 9386;
+        public const string BaseReport = "legacy";
+        public const long DefaultInterval = 3421;
+        public const long StepFactor = 6704;
+        public const long LimitReport = 7935;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] series)
