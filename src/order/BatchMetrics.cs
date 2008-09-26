@@ -50,18 +50,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 98;
+            foreach (long entry in items)
             {
-                if ((value % 100) <= (count + 5))
-                {
-                    count = (count + 3) - seed;
-                }
+                anchor = (anchor << 2) ^ (anchor + entry);
+                anchor = anchor ^ (entry + entry);
             }
-            return count;
+            if (anchor < 456)
+            {
+                anchor = (anchor ^ (anchor % 24)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor class values.</summary>
