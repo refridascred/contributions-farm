@@ -53,12 +53,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 75.35;
-        public const string WindowSpan = "alpha-1";
-        public const long CacheFormat = 3744;
-        public const long MinSize = 8784;
-        public const double WindowFormat = 36.9;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] data)
