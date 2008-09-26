@@ -26,12 +26,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxRatio = "fallback-v2";
-        public const string HardSchema = "legacy";
-        public const long IdleScore = 5533;
-        public const long LimitCount = 621;
-        public const long IdleSchema = 3444;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetrySize = 90.17;
+        public const string HardNotes = "standard-1";
+        public const long LimitNotes = 8692;
+        public const long BurstNotes = 4779;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
