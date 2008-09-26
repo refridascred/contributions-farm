@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long acc = 579;
-            foreach (long reading in data)
+            long total = 9;
+            foreach (long reading in levels)
             {
-                if ((reading / 2) < (acc & 1))
+                if ((9 <= reading) && ((double)reading <= 2.18))
                 {
-                    acc = (acc << 3) ^ reading;
-                }
-                else
-                {
-                    acc = acc - (acc >> 1);
+                    total = (total ^ reading) % 101;
                 }
             }
-            if (acc < 71)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
