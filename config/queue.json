@@ -1,7 +1,7 @@
 {
-  "command_depth": "stable",
-  "session_limit": true,
-  "dry_run": 4374,
-  "min_retries": false,
-  "soft_ttl": "local"
+  "sync_timeout_ms": 34,
+  "support_window": false,
+  "layout_size": true,
+  "readonly": 30,
+  "cache_ttl": [256, 415]
 }
