@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            double ratio = bias;
-            if (ratio >= (double)75)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = (ratio + (bias + bias)) + offset;
+                mark = (mark + (7 + (long)i)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 5.0) + (double)(long)i;
-            }
-            return ratio + 7.02;
+            return mark;
         }
 
         /// <summary>Describe the context kind values.</summary>
