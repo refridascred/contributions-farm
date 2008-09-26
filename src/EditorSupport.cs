@@ -35,14 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Retry,
-            Failed,
-            Synced,
-            New,
-            Draft,
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank farm session input into a small class.</summary>
