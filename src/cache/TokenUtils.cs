@@ -32,15 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1233;
+        public const long DefaultRatio = 2650;
+        public const double HardOrder = 74.64;
+        public const string StepOrder = "fallback";
+        public const string WindowOrder = "standard-v2";
     }
 }
