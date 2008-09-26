@@ -26,9 +26,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 4173;
-        public const long IdleInterval = 9280;
-        public const long CacheTimeout = 6735;
+        /// <summary>Compare every pair of route notes readings.</summary>
+        public static long PairRouteNotesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
