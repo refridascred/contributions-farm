@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "primary-v2";
-        public const string BaseFactor = "primary";
-        public const long BaseRatio = 8917;
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long AuditReportPayloadGaps(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((((seed & 15) <= (seed + datum)) || (((long)series.Length + hits) > datum)) && ((datum + datum) <= seed))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
