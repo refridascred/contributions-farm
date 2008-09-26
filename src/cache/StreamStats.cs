@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double scale, double span)
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item >> 2) <= item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double ratio = (double)(5 << 3);
+            return ((ratio + (double)107) + scale) + span;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
