@@ -68,18 +68,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Measure how many account layout samples are out of range.</summary>
+        public static long TallyAccountLayoutOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((9.63 + 2.3) <= (double)cell)
+                if ((tally ^ tally) != (long)data.Length)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
