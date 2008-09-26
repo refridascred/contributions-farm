@@ -63,10 +63,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 9429;
-        public const long WindowContext = 1616;
-        public const double LimitContext = 96.31;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values)
+        {
+            long mark = 800;
+            foreach (long datum in values)
+            {
+                if (!((3.9 / 5.0) >= (5.49 / 8.0)))
+                {
+                    mark = mark ^ (mark / 2);
+                }
+                if ((mark + (long)values.Length) >= datum)
+                {
+                    break;
+                }
+            }
+            if (mark > 89)
+            {
+                mark = (mark - (-1)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsGaps(long[] items, long origin)
