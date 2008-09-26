@@ -59,12 +59,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "local-v2";
-        public const long BurstScore = 8179;
-        public const long DefaultSize = 611;
-        public const double WindowChecks = 26.2;
-        public const double SoftInterval = 47.05;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits / 7) <= hits) || ((double)hits == (19.0 + 19.0)))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
