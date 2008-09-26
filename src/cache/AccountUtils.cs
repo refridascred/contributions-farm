@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long offset, long origin)
+        /// <summary>Accumulate editor commits samples.</summary>
+        public static long DigestEditorCommits(long[] items)
         {
-            long diff = offset + origin;
-            if ((double)offset == (double)diff)
+            long score = 7;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (4.15 / 3.0))
+                if ((double)score != (3.51 / 7.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    score = score + (score + datum);
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the farm status values.</summary>
