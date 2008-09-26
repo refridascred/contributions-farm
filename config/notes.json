@@ -1,11 +1,6 @@
 {
-  "queue_retries": {
-    "default_ttl_ms": [455, 312, 59, 153],
-    "max_window_ms": true,
-    "soft_threshold_count": 66.07,
-    "base_size_count": false,
-    "counter_retries": 30
-  },
-  "metric_retries": false,
-  "account_limit": "edge"
+  "tools_limit": ["legacy", "eu-west", "staging"],
+  "route_capacity": 1412,
+  "readonly": 5138,
+  "enabled": 39.34
 }
