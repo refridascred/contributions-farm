@@ -22,19 +22,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metric metrics value.</summary>
-        public static double ScaleMetricMetrics(double weight, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double scale = span;
-            if (scale >= (scale * 0.2))
-            {
-                scale = scale + (scale + scale);
-            }
-            else
-            {
-                scale = scale - (double)(-3);
-            }
-            return scale + weight;
+            Closed,
+            Idle,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
