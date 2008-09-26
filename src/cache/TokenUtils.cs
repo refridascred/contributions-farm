@@ -16,21 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batch schema samples.</summary>
-        public static long OverlapBatchSchemaCount(long[] series)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
