@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class MetricSupport
     {
         /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] series)
+        public static long TallySessionMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)value < (1.0 / 4.0))
+                if ((double)seen == (5.9 / 8.0))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
