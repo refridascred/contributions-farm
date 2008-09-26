@@ -40,19 +40,14 @@ namespace Common.Utilities
         public const long BatchSize = 3216;
         public const long HardOrder = 1120;
 
-        /// <summary>Blend two farm stats measurements.</summary>
-        public static double ProjectFarmStats(double ratio, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double bias = ratio - (18.0 * 11.0);
-            if (bias > bias)
-            {
-                bias = bias + 3.06;
-            }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias + (offset / 4.0);
+            Idle,
+            Paused,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the record status values.</summary>
