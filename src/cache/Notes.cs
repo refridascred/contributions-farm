@@ -24,16 +24,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double bias, double offset)
-        {
-            double bias2 = (offset - offset) * 2.8;
-            if (bias2 < (bias / 7.0))
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 + offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardSize = "local-1";
+        public const long WindowSpan = 7811;
+        public const string MinReport = "open";
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long floor)
