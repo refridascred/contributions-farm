@@ -39,13 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Pending,
+            Ready,
+            Done,
         }
     }
 }
