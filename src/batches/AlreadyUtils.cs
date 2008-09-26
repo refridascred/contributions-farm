@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 25;
+            foreach (long datum in levels)
+            {
+                if ((datum + carry) < (offset ^ carry))
+                {
+                    carry = (carry ^ (carry - datum)) % 65521;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry ^ (offset / 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
