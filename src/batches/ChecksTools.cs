@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate record buffer readings against a bound.</summary>
-        public static bool CheckRecordBufferBounds(long[] series, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sample >= target)
+                if (hits < (datum / 7))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
