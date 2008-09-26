@@ -12,9 +12,5 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=332
+CHANNEL_LIMIT=245
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west open blue; do
-    log "checking ${item}"
-done
