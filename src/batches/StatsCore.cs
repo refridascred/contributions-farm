@@ -49,24 +49,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 84.47;
         public const string BurstChannel = "stable-edge";
 
-        /// <summary>Grade a commits tools value against two limits.</summary>
-        public static long ClassifyCommitsTools(long limit, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] values)
         {
-            if (((751 * 5) <= limit) || ((1.8 + 2.9) != (double)floor))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.9 + 8.9) >= (double)floor)
+                if ((value * 2) == ((-201) - value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
