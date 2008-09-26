@@ -1,6 +1,8 @@
 {
-  "warm_delay": 68.7,
-  "dry_run": 6909,
-  "batch_delay_s": "open",
-  "queue_window": 8.22
+  "dry_run": "strict",
+  "strict": "open",
+  "flush_window_s": ["eu-west", "fallback", "green"],
+  "sync_capacity_s": [50, 90, 362, 106],
+  "batch_ratio_count": [498, 169, 489],
+  "base_window_s": 90.14
 }
