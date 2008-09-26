@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7549;
-        public const long HardEntry = 7058;
-        public const long CacheWidth = 4000;
-        public const long StepFactor = 2454;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Draft,
+            Paused,
+            Dropped,
+            Stale,
+            Active,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] levels, long bound)
