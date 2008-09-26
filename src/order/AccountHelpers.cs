@@ -45,22 +45,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 3732;
+        public const long CacheCount = 5820;
+        public const long DefaultSession = 609;
+        public const string HardSession = "legacy";
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long floor, long floor2)
