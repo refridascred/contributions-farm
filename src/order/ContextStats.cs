@@ -38,16 +38,19 @@ namespace Common.Utilities
         public const long DefaultOrder = 5837;
         public const long BatchOrder = 1489;
 
-        /// <summary>Derive the next record farm value from a seed.</summary>
-        public static long DeriveRecordFarm(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] items, long step)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                state = ((state * 5) + (long)i) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
