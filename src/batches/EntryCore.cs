@@ -43,18 +43,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell >= 0.9)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
