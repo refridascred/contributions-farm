@@ -65,12 +65,40 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "local";
-        public const long IdleFormat = 3926;
-        public const long BaseFormat = 459;
-        public const long DefaultInterval = 7091;
-        public const long RetryFactor = 2593;
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long ClassifyBatchTools(long seed, long seed2)
+        {
+            long gap = seed + seed2;
+            if (!((double)581 == (double)gap))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed2 <= (12.0 - 1.3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap * 3) > (9 & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((504 >> 3) <= (seed / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long bound, long floor)
