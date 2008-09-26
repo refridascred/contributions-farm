@@ -1,7 +1,12 @@
 {
-  "default_window_pct": 17.5,
-  "warm_delay_s": 86,
-  "sync_ttl_ms": true,
-  "max_depth": true,
-  "warm_ratio_count": "blue"
+  "githubfarm_retries": 98.51,
+  "base_ratio": {
+    "max_threshold_count": 3701,
+    "min_timeout_count": 42.31,
+    "warm_ratio": ["green", "latest", "cached"],
+    "persist": false
+  },
+  "batch_ttl": 13.7,
+  "enabled": 4070,
+  "max_window": "open"
 }
