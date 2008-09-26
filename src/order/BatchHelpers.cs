@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string LimitSpan = "legacy-edge";
         public const double LimitGraph = 80.05;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data)
-        {
-            long carry = 2;
-            foreach (long datum in data)
-            {
-                carry = (carry ^ (carry & 127)) % 4096;
-                if ((datum >> 2) > 7)
-                {
-                    carry = carry - ((-2) + carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 67.76;
+        public const long DefaultFactor = 4323;
+        public const string WindowFormat = "alpha-v2";
+        public const long MaxFactor = 5694;
+        public const string BatchRatio = "latest";
     }
 }
