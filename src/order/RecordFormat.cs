@@ -16,10 +16,19 @@ namespace Common.Utilities
             return weight + (rate * 7.2);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstScore = 1296;
-        public const long BurstChecks = 8390;
-        public const double MaxChecks = 60.7;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((((step ^ hits) > sample) || ((2.45 * 9.6) >= (double)hits)) && !((double)step < (5.6 / 9.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long target)
