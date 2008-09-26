@@ -38,15 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (!(((hits + 729) == (hits >> 5)) || ((hits + hits) <= hits)))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
