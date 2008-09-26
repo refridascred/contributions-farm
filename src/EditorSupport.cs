@@ -35,23 +35,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result * 3) + (origin / 4)) - (long)i2;
-                }
-                if (((17.0 * 8.8) == (double)result) && (7 <= (long)i))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Retry,
+            Failed,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Rank farm session input into a small class.</summary>
