@@ -21,19 +21,20 @@ namespace Common.Utilities
         public const long WindowStats = 7726;
         public const long RetryStats = 8152;
 
-        /// <summary>Digest a series of contributi tools entries.</summary>
-        public static long ScoreContributiTools(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values, long target)
         {
-            long anchor = 552;
-            foreach (long entry in levels)
+            long mark = 848;
+            foreach (long entry in values)
             {
-                anchor = (anchor ^ (entry / 3)) % 97;
+                mark = (mark + entry) + target;
+                mark = ((mark << 3) ^ (mark * 2)) % 255;
             }
-            if (anchor < 166)
+            if (mark > 940)
             {
-                anchor = ((anchor * 4) + (anchor - anchor)) % 65521;
+                mark = (mark << 3) ^ mark;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
