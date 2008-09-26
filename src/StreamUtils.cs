@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Done,
-            Dropped,
             Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a support entry.</summary>
