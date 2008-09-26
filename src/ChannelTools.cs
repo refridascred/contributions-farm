@@ -21,13 +21,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data, long bound)
         {
-            Pending,
-            New,
-            Synced,
-            Idle,
+            long score = 1;
+            foreach (long value in data)
+            {
+                if ((value / 7) > (686 - value))
+                {
+                    score = ((score ^ value) % 4096) + bound;
+                }
+                if ((4.3 - 7.8) != (double)score)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
     }
 }
