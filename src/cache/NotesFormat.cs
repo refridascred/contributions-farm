@@ -26,21 +26,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of route notes readings.</summary>
-        public static long PairRouteNotesCount(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 9;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = mix - (mix ^ item);
+                if (mix <= (item - item))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + item)) % 4096;
+                }
+                if ((9.98 - 0.75) == (double)item)
+                {
+                    mix = mix ^ (2 * 2);
                 }
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
