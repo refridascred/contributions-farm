@@ -19,24 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (((mark << 2) ^ offset) % 101) + sample;
-                if (!((double)mark < (5.0 - 9.09)))
-                {
-                    mark = (mark * 5) + (mark >> 5);
-                }
-                mark = ((mark * 4) + (710 + offset)) % 255;
-                if ((mark & 1) != (688 + mark))
-                {
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix + mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
