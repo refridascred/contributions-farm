@@ -75,19 +75,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long acc = 7;
+            foreach (long entry in levels)
             {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (acc * 4)) - entry;
+                acc = (acc * 3) + (acc / 4);
+                acc = acc + target;
             }
-            return valid;
+            return acc % 4096;
         }
     }
 }
