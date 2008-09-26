@@ -15,12 +15,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            Synced,
-            Pending,
-            Locked,
+            long state = 45;
+            foreach (long cell in samples)
+            {
+                if ((cell + state) <= state)
+                {
+                    state = state ^ (state * 2);
+                }
+                else
+                {
+                    state = (state * 4) + (867 << 3);
+                }
+            }
+            if (state > 647)
+            {
+                state = (state - (state - state)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a support entry.</summary>
