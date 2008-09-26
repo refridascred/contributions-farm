@@ -70,20 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((-5) >= (anchor * 3)) && ((step + step) <= step))
-                {
-                    anchor = (anchor << 2) ^ (5 * 2);
-                    anchor = (anchor ^ 0) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
