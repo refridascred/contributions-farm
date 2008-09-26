@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Active,
-            Dropped,
-            Ready,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultCount = 36;
+        public const long MinSpan = 2178;
+        public const long LimitCount = 4789;
+        public const long MaxInterval = 9663;
+        public const string WindowNotes = "primary-v2";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double rate, double offset)
