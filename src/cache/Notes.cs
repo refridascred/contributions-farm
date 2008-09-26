@@ -62,19 +62,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] readings, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = 358;
-            foreach (long sample in readings)
-            {
-                result = ((result * 3) + (0 - sample)) % 255;
-            }
-            if (result > 850)
-            {
-                result = ((result * 5) + (offset + 1)) % 255;
-            }
-            return result % 4096;
+            Idle,
+            Stale,
+            Failed,
+            Pending,
         }
     }
 }
