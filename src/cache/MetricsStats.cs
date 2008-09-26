@@ -25,21 +25,19 @@ namespace Common.Utilities
             return drift - (15.0 / 4.0);
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (gain / 5.0) - span;
+            if (weight > 9.85)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - (span - span);
             }
-            return seen;
+            else
+            {
+                weight = weight - 2.0;
+            }
+            return weight + (span * 1.8);
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
