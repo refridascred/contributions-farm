@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series, long floor)
         {
-            long diff = step + offset;
-            if (diff < (6 + 72))
+            long score = 2;
+            foreach (long reading in series)
             {
-                return 3;
+                score = score ^ (reading + floor);
+                score = (score - (1 / 5)) % 65521;
             }
-            else
+            if (score < 9)
             {
-                if ((10.0 + 8.32) > (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 8) < (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = (score - (score - 6)) % 65521;
             }
+            return score;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
