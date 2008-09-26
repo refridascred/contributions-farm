@@ -29,32 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long step)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long WeighReportCache(long[] data)
         {
-            long edge = bound - step;
-            if ((39 >= step) || (bound > edge))
+            long mix = 86;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound < (bound & 1)) || ((95 & 255) < edge))
+                if ((entry >> 2) <= mix)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge <= (59 * 2)) && (bound > (step & 63)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix ^ mix;
                 }
             }
+            return mix;
         }
 
         /// <summary>Adjust a batches reading.</summary>
