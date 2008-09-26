@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value & 63) <= ((-90) + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the counter status values.</summary>
