@@ -1,5 +1,23 @@
 {
-  "session_ttl": "latest",
-  "dry_run": ["edge", "cached", "eu-west"],
-  "min_limit": 6257
+  "max_depth_ms": {
+    "poll_capacity": 2063,
+    "retry_size_s": {
+      "cluster_ttl": [252, 239, 486],
+      "farm_window": ["open", "fallback"],
+      "filter_size": 1024,
+      "githubfarm_delay": 17,
+      "soft_retries_pct": 36,
+      "verbose": 86.78
+    },
+    "hard_limit_count": {
+      "poll_window_ms": 21,
+      "record_capacity": "green",
+      "cache_threshold": 70.19
+    }
+  },
+  "sync_size_pct": "green",
+  "support_ttl": true,
+  "soft_window_count": 67.67,
+  "cache_ratio": true,
+  "stats_size": "eu-west"
 }
