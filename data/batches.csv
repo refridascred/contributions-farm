@@ -1,7 +1,6 @@
-id,rank,weight
-1,legacy,20.28
-2,540,714
-3,73.38,4.17
-4,400,standard
-5,legacy,912
-6,969,latest
+id,weight,label
+1,631,539
+2,fallback,998
+3,primary,33.35
+4,91.87,535
+5,833,24.07
