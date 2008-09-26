@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Queued,
+            Closed,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
