@@ -48,19 +48,15 @@ namespace Common.Utilities
         public const double HardCount = 7.41;
         public const long WindowMetric = 8427;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double bias)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            double load = ratio;
-            if (load >= load)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load + ratio) + bias;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)6;
-            }
-            return load - ratio;
+            return total;
         }
     }
 }
