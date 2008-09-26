@@ -21,18 +21,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long CountCommitsChannelMatches(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            if ((offset << 3) >= (offset + bound))
             {
-                if ((4.0 + 4.0) > (double)tally)
+                return 3;
+            }
+            else
+            {
+                if (bound >= (offset >> 5))
                 {
-                    tally = (tally + 3) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset ^ bound) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound ^ offset) > ((-5) ^ bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
