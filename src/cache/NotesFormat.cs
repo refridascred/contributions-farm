@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long limit, long bound)
+        /// <summary>Fold a list of editor counter readings.</summary>
+        public static long ScoreEditorCounter(long[] series)
         {
-            long edge = limit ^ bound;
-            if (((7 + bound) > (limit & 255)) || ((limit << 2) > (limit / 5)))
+            long score = 43;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit < (edge / 2)) || ((double)limit < 10.0))
+                if ((score > 68) && ((2.9 - 5.09) <= (double)entry))
                 {
-                    return 7;
+                    score = ((score << 3) ^ (1 / 8)) % 1000;
                 }
                 else
                 {
-                    if ((9 < (limit ^ edge)) && ((limit - 375) <= edge))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound > (19.0 / 4.0)) && (edge > limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = (score - ((-593) - score)) % 4096;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Accumulate cache samples.</summary>
