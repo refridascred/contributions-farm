@@ -46,22 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 57;
-            foreach (long value in levels)
-            {
-                if ((mix ^ value) > (mix + mix))
-                {
-                    mix = (mix ^ (long)levels.Length) % 255;
-                }
-            }
-            if (mix < 33)
-            {
-                mix = (mix * 5) + (796 + 37);
-            }
-            return mix;
+            Paused,
+            Synced,
+            Ready,
+            Active,
+            Draft,
         }
     }
 }
