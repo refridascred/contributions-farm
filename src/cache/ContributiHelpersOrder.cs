@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultTimeout = 8340;
-        public const long LimitChannel = 146;
-        public const long SoftChannel = 5362;
-        public const string RetryChannel = "fallback-edge";
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
+        {
+            long state = 7;
+            foreach (long value in data)
+            {
+                state = ((state - (state >> 5)) % 255) - value;
+            }
+            if (state > 9)
+            {
+                state = (state - ((-592) << 3)) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double gain, double bias)
