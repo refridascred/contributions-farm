@@ -25,18 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Adjust a window stats reading.</summary>
+        public static double AdjustWindowStats(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((9 <= sample) && (((sample >> 4) > (hits - 785)) && (93 <= sample)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = bias;
+            return (drift + 1.9) + offset;
         }
     }
 }
