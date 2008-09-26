@@ -58,22 +58,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long sum = 2;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)cell != (9.0 + 2.9))
+                if (cell >= (tally + cell))
                 {
-                    sum = sum - (cell & 127);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum * 4);
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
