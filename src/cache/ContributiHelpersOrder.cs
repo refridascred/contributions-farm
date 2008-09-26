@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (reading < target)
+                if ((offset - entry) >= 0)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
