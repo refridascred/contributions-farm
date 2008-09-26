@@ -68,18 +68,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many account layout samples are out of range.</summary>
-        public static long TallyAccountLayoutOutliers(long[] data)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally ^ tally) != (long)data.Length)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Queued,
+            New,
         }
     }
 }
