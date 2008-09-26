@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
-        public static bool GuardContributiCacheLimits(long[] samples, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
