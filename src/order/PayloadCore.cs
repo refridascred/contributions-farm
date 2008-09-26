@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            Queued,
+            New,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
