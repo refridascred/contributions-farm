@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const double LimitQueue = 73.9;
         public const string WindowQueue = "open-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((-2) >= (hits * 3)) && (((bound / 5) < (bound - 4)) && ((bound + value) <= (bound / 4))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
