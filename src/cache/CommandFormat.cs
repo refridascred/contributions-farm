@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long LimitCommand = 4507;
         public const string RetryCommand = "local";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] values, long limit)
         {
-            long state = 85;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + (floor >> 3)) % 101) ^ reading;
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
