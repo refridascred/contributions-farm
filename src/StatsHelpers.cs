@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score ^ ((long)i * 4);
-                score = (score << 2) ^ (long)i;
-                score = ((score * 5) + (long)i) % 4093;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
