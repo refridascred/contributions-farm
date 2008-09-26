@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support stream entries that pass the check.</summary>
-        public static long AuditSupportStreamHits(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((datum << 2) <= seen))
+                if ((((entry * 4) < offset) || (251 > (matches ^ entry))) && ((7.3 * 0.5) <= (double)offset))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
