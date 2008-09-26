@@ -33,10 +33,13 @@ namespace Common.Utilities
         public const string MinBudget = "alpha-1";
         public const string SoftProfile = "open";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxFactor = 6786;
-        public const string BurstInterval = "strict-1";
-        public const long CacheSpan = 2068;
-        public const double LimitDepth = 35.38;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Draft,
+            Idle,
+            Done,
+            Queued,
+        }
     }
 }
