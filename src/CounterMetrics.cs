@@ -19,15 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long bound)
         {
-            double scale = gain / 8.0;
-            if (scale <= bias)
+            long lane = floor + bound;
+            if (!((4.9 - 3.0) <= (double)bound))
             {
-                scale = scale + 9.5;
+                return 4;
             }
-            return scale + (double)(-6);
+            else
+            {
+                if ((3.4 / 4.0) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (lane <= (62 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane * 3) >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
