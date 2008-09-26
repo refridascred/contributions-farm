@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ratio + 7.02;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
