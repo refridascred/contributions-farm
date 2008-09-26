@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > (hits + value))
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
