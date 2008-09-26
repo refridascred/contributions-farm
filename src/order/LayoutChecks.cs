@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] samples, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double scale = bias / 7.0;
+            if (scale > scale)
             {
-                if ((seen + seen) >= (target + seen))
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                scale = scale - bias;
             }
-            return seen;
+            else
+            {
+                scale = scale - gain;
+            }
+            return scale - (double)1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
