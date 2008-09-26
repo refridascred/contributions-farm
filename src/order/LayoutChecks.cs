@@ -22,22 +22,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long CountClusterReportOutliers(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((matches + reading) > matches) && ((double)reading <= (5.86 * 8.3))))
+                if (((long)i % 5) >= (offset & 3))
                 {
-                    matches = matches + 3;
+                    state = ((state << 3) ^ (offset % 12)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state << 3) ^ offset) % 65521;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a channel entry.</summary>
