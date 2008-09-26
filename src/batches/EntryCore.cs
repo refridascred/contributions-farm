@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] levels, long step)
+        /// <summary>Scale a context layout figure with a bias.</summary>
+        public static double ScaleContextLayout(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias2 = 7.3;
+            return (bias2 - bias) + ratio;
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
