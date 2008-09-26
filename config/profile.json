@@ -1,8 +1,8 @@
 {
-  "audit": 28,
-  "burst_size": "open",
-  "strict": 80.86,
-  "poll_depth_count": true,
-  "persist": "legacy",
-  "warm_ratio_ms": [459, 210, 202]
+  "batch_depth_pct": 10.92,
+  "tools_timeout": false,
+  "warm_delay_s": "green",
+  "hard_size": 15.36,
+  "already_retries": 7592,
+  "format_ttl": 1024
 }
