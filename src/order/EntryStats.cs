@@ -57,14 +57,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            Closed,
-            Idle,
-            New,
-            Failed,
-            Synced,
+            long total = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((offset + offset) < (total - (long)i))
+                {
+                    total = ((total * 5) + offset) % 255;
+                }
+                if (offset > (total / 9))
+                {
+                    total = total ^ (total >> 5);
+                }
+                else
+                {
+                    total = total + offset;
+                    total = (total ^ (total * 5)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
