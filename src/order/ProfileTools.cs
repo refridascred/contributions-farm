@@ -52,18 +52,32 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Audit route commits readings against a rule.</summary>
-        public static long CountRouteCommitsHits(long[] data, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long lane = floor - seed;
+            if ((6 + floor) >= (94 ^ seed))
             {
-                if ((seen > (sample ^ 49)) && ((step + (long)data.Length) >= step))
+                return 2;
+            }
+            else
+            {
+                if (((lane << 3) != (seed % 16)) && ((lane + (-86)) <= (floor >> 3)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!((512 << 1) >= floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
