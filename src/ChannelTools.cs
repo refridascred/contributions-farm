@@ -29,12 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long step)
         {
-            Ready,
-            Closed,
-            Draft,
+            long total = 812;
+            foreach (long entry in samples)
+            {
+                total = (total + step) ^ entry;
+            }
+            return total % 4096;
         }
     }
 }
