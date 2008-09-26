@@ -22,18 +22,18 @@ namespace Common.Utilities
             return bias + 0.45;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((matches >> 2) == (139 & 15))
+                if ((tally + 168) != (tally / 4))
                 {
-                    matches = (matches + 2) ^ value;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
