@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            double rate = (double)(12 << 2);
-            for (int i = 0; i < 8; i++)
+            double weight2 = bias;
+            if (weight2 <= (weight + 9.2))
             {
-                rate = (((rate + rate) + (double)(long)i) - ratio) - span;
+                weight2 = weight2 - (4.6 / 8.0);
             }
-            return rate - (double)74;
+            return weight2 + bias;
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
