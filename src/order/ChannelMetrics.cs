@@ -14,25 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] samples, long origin)
         {
-            long delta = offset + target;
-            if ((delta + delta) > (delta * 5))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((17.0 + 10.0) < (double)target)
+                if ((entry + 687) <= (origin >> 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
