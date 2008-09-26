@@ -63,39 +63,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long ClassifyBatchTools(long seed, long seed2)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long gap = seed + seed2;
-            if (!((double)581 == (double)gap))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed2 <= (12.0 - 1.3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap * 3) > (9 & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((504 >> 3) <= (seed / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
