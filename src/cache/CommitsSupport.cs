@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 88.58;
-        public const long SoftInterval = 3090;
-        public const string BurstTimeout = "alpha";
-        public const string WindowBudget = "primary-edge";
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long bound)
+        {
+            if ((target + bound) <= (30 / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= (-558))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ target) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] readings)
