@@ -1,11 +1,10 @@
 {
-  "support_retries": {
-    "warm_retries_ms": false,
-    "order_delay": 6.11,
-    "soft_delay_count": [174, 312],
-    "flush_retries_s": [322, 201, 419, 278]
-  },
-  "burst_ttl_count": "local",
-  "hard_threshold": 8276,
-  "burst_size": 4904
+  "burst_interval": 95.08,
+  "strict": false,
+  "batch_depth_s": 5750,
+  "sync_ttl": {
+    "metrics_ratio": 8623,
+    "warm_interval": false,
+    "hard_ttl_ms": ["local", "standard"]
+  }
 }
