@@ -101,20 +101,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema counter series from a seed.</summary>
-        public static long RollSchemaCounter(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((limit - limit) <= (52 - result)))
-                {
-                    result = (result * 4) + result;
-                    result = (result * 2) + (result / 3);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultSpan = 24.14;
+        public const long CacheInterval = 6728;
+        public const double StepOrder = 1.62;
+        public const long IdleOrder = 2844;
+        public const double SoftOrder = 69.8;
     }
 }
