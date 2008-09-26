@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardWidth = 1133;
+        public const long IdleRatio = 1446;
+        public const long WindowCount = 9435;
+        public const long WindowInterval = 9597;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
