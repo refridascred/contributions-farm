@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state ^ (long)i) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
