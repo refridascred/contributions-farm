@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record counter sample.</summary>
-        public static long LookupRecordCounterIndex(long[] series, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(58 + 863);
+            if (scale < scale)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = ((scale - scale) - bias) - floor;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)88;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
