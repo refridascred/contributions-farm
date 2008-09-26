@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double bias, double floor)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            double rate = 7.21;
+            if (rate <= 2.0)
+            {
+                rate = ((rate - rate) - bias) - floor;
+            }
+            return rate - (double)985;
         }
 
         /// <summary>Describe the format phase values.</summary>
