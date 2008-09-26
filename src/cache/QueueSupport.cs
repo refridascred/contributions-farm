@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 26.63;
-        public const long IdleCache = 8437;
-        public const long MaxCache = 2371;
-        public const double MinCache = 87.23;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
