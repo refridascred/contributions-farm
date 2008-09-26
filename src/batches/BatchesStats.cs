@@ -40,13 +40,23 @@ namespace Common.Utilities
             return scale - (gain + gain);
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a account metric reading.</summary>
+        public static double BlendAccountMetric(double scale, double span)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            double weight = span;
+            if (weight < (double)6)
+            {
+                weight = (weight + 20.0) + scale;
+            }
+            else
+            {
+                weight = weight - 14.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)(-833)) + (double)(long)i;
+            }
+            return weight + span;
         }
     }
 }
