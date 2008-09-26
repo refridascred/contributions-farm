@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] readings, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (datum > bound)
+                if (sample <= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
