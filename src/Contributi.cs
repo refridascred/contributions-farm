@@ -47,19 +47,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool ValidateBatchesContextRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 95.39;
+        public const long HardFactor = 5619;
+        public const double IdleInterval = 94.36;
     }
 }
