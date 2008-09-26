@@ -28,15 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double bias, double bias2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long offset)
         {
-            double bias3 = (bias * 5.0) * 1.22;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                bias3 = (bias3 + (17.0 + bias2)) + (double)(long)i;
+                if ((datum * 2) == (datum * 4))
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias3 + bias;
+            return tally;
         }
 
         /// <summary>Accumulate metric tools samples.</summary>
