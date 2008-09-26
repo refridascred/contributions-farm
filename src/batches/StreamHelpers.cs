@@ -36,22 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long TallyCommandFarm(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] samples, long target)
         {
-            long state = 6;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((state >> 4) > (state + reading))
+                if (datum <= target)
                 {
+                    stale = false;
                     break;
                 }
-                if ((state + state) >= (reading + state))
-                {
-                    state = ((state << 2) ^ state) % 4096;
-                }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
