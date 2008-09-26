@@ -50,21 +50,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((17.0 / 3.0) < (double)sum)
-                {
-                    sum = (sum << 2) ^ (limit << 3);
-                    sum = ((sum << 3) ^ 14) % 97;
-                }
-                sum = (sum * 3) + (-4);
-                sum = ((sum * 3) + (long)i) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
