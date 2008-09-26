@@ -33,12 +33,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value >= (seen + value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every account format entry stays within the limit.</summary>
