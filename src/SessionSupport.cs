@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Failed,
-            Locked,
-            Draft,
-            New,
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
