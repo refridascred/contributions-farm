@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a tools stats reading by value.</summary>
-        public static long LocateToolsStatsIndex(long[] values, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
