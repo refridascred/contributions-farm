@@ -1,18 +1,10 @@
 # entry settings
-base_limit_count: 19.54
-hard_window_pct: 25.35
-buffer_ttl: 63.37
-flush_ttl_ms: latest
-counter_capacity:
-  strict:
-    - 151
-    - 265
-    - 353
-    - 297
-  compress: 20.33
-  persist:
-    - open
-    - blue
-    - latest
-    - staging
-strict: 98.16
+sync_retries_s:
+  - primary
+  - eu-west
+  - blue
+retry_timeout_pct: cached
+warm_ttl_s: 30
+enabled: false
+readonly: 81.9
+audit: edge
