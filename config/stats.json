@@ -1,7 +1,5 @@
 {
-  "queue_limit": 80.87,
-  "counter_depth": 7075,
-  "window_interval": 8.2,
-  "already_ttl": 30,
-  "hard_depth_ms": "green"
+  "cache_capacity": ["local", "strict", "eu-west", "blue"],
+  "soft_ttl_count": 60,
+  "soft_ttl_pct": 1024
 }
