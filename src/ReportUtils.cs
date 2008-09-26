@@ -27,17 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ mark) % 101;
-                mark = ((mark << 3) ^ (mark % 2)) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
