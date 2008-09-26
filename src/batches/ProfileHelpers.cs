@@ -41,12 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long target)
+        /// <summary>Find the first queue batch entry that matches the target.</summary>
+        public static long SeekQueueBatchIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= target)
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
