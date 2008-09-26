@@ -1,24 +1,17 @@
 # entry settings
-soft_threshold_s:
-  burst_threshold_ms: 69.7
-  verbose: 85.41
-  base_timeout_ms: 58.41
-  base_depth_ms: 100
-  sync_ratio:
-    - green
-    - standard
-    - blue
-  token_interval:
-    - staging
-    - open
-retry_window_count:
-  - 450
-  - 213
-poll_timeout_s:
-  - 170
-  - 244
-audit:
-  - 485
-  - 458
-  - 427
-  - 83
+enabled: 87.34
+min_ratio_s:
+  flush_threshold_count: 57.21
+  burst_capacity_count: primary
+  metric_threshold: false
+  flush_depth_s: false
+  burst_window:
+    persist: 84
+    default_retries_s: staging
+    flush_limit_s: open
+  batch_limit_pct: staging
+batch_interval:
+  - staging
+  - local
+  - staging
+burst_retries_count: primary
