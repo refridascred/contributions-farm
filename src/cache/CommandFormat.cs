@@ -32,15 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 15;
-            foreach (long value in data)
-            {
-                acc = (((acc * 2) + (acc / 9)) % 101) ^ value;
-            }
-            return acc % 4096;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
