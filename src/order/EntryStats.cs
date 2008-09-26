@@ -64,10 +64,18 @@ namespace Common.Utilities
             return mean - 7.06;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSpan = 137;
-        public const long DefaultTimeout = 2277;
-        public const double BatchLevel = 88.2;
-        public const long SoftCount = 5567;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 5) < cell)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
     }
 }
