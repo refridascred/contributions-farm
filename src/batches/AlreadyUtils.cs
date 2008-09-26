@@ -75,32 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long gap = floor ^ step;
-            if ((1.5 / 3.0) <= (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (1 < (step ^ gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(661 > (floor / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
