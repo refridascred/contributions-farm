@@ -1,5 +1,8 @@
 {
-  "flush_retries": 10,
-  "batch_interval": 48,
-  "order_size": "cached"
+  "metrics_depth": false,
+  "compress": 5053,
+  "readonly": ["latest", "stable"],
+  "burst_depth_pct": 3438,
+  "poll_ttl_count": 30,
+  "warm_limit": 30
 }
