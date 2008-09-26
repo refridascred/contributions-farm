@@ -40,22 +40,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long bound)
         {
-            long carry = 17;
-            foreach (long datum in values)
+            long step = seed ^ bound;
+            if (!((0 / 8) < seed))
             {
-                if ((double)carry >= (3.11 + 9.71))
+                return 2;
+            }
+            else
+            {
+                if ((seed + 454) < (bound >> 5))
                 {
-                    carry = ((carry + (24 / 2)) % 1000) ^ datum;
+                    return 6;
                 }
                 else
                 {
-                    carry = carry + carry;
+                    if (step < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed == (double)bound) || ((18.0 / 6.0) == (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
