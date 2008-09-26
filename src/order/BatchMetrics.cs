@@ -34,18 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long AuditBatchEditorGaps(long[] readings)
+        /// <summary>Iterate the contributi layout series from a seed.</summary>
+        public static long StepContributiLayout(long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (count < (369 ^ datum))
+                state = (state * 2) + state;
+                if (!(state <= (state * 5)))
                 {
-                    count = count + 2;
+                    state = state - (state & 31);
                 }
+                else
+                {
+                    state = state ^ (state * 5);
+                }
+                state = (state ^ ((long)i >> 2)) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
