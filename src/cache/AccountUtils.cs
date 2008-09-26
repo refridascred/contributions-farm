@@ -35,19 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout window readings against a bound.</summary>
-        public static bool CheckLayoutWindowBounds(long[] values, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (sample >= offset)
+                if (datum < offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
