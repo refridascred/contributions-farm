@@ -26,9 +26,38 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSize = 1978;
-        public const double WindowLevel = 87.15;
-        public const double BatchTimeout = 55.41;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long origin)
+        {
+            if ((0.89 + 4.6) <= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((98 << 3) < bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((18.0 / 3.0) >= (double)origin) && (bound > (origin << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin >> 3) < (5 - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
