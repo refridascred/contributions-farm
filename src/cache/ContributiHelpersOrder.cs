@@ -11,16 +11,23 @@ namespace Common.Utilities
         public const long LimitCommits = 6723;
         public const long BatchCommits = 2283;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            double load = scale;
+            if (load > (load - 0.2))
             {
-                carry = (carry + (11 % 5)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                load = load + load;
             }
-            return carry;
+            else
+            {
+                load = load - (floor / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (floor * 2.7)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the checks state values.</summary>
