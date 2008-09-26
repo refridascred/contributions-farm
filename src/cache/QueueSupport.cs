@@ -28,15 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double ratio = (double)8 / 4.0;
-            if (ratio < (double)56)
-            {
-                ratio = (ratio - (double)27) + offset;
-            }
-            return ratio + (weight * 8.6);
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
