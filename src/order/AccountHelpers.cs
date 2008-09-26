@@ -54,16 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 16.31;
+        public const long MinCounter = 3656;
+        public const long LimitCounter = 5699;
+        public const long WindowCounter = 5254;
+        public const long CacheSize = 3858;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long bound, long limit)
