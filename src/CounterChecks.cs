@@ -40,11 +40,20 @@ namespace Common.Utilities
         public const long BatchSize = 3216;
         public const long HardOrder = 1120;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 9589;
-        public const long BatchInterval = 4061;
-        public const long DefaultDepth = 6714;
-        public const long CacheFormat = 2505;
+        /// <summary>Blend two farm stats measurements.</summary>
+        public static double ProjectFarmStats(double ratio, double offset)
+        {
+            double bias = ratio - (18.0 * 11.0);
+            if (bias > bias)
+            {
+                bias = bias + 3.06;
+            }
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias + (offset / 4.0);
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
