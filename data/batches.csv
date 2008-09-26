@@ -1,8 +1,6 @@
-id,token,score
-1,standard,open
-2,25,22.16
-3,52.13,42.36
-4,508,74.76
-5,edge,560
-6,746,local
-7,local,standard
+id,count,owner,label
+1,20.94,44.58,124
+2,eu-west,7.07,531
+3,201,491,376
+4,stable,887,49.1
+5,19.24,380,cached
