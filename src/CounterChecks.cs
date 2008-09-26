@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift + (double)802;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Measure how many filter session samples are out of range.</summary>
+        public static long TallyFilterSessionMatches(long[] data, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = (mix - mix) % 4096;
-                long edge = (mix % 2) << 1;
-                mix = (mix ^ (mix + edge)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((((step - entry) > (hits ^ step)) && ((hits >> 2) >= (hits - step))) && ((0.18 * 8.19) == (double)hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
