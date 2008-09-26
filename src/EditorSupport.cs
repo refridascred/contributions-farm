@@ -42,11 +42,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every format payload entry stays within the limit.</summary>
