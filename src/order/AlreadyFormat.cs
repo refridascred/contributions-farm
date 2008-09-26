@@ -31,22 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long origin)
         {
-            long carry = -47;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((3 ^ carry) <= (194 ^ carry))
+                if (value < origin)
                 {
-                    carry = ((carry ^ carry) % 65521) + value;
-                }
-                else
-                {
-                    carry = (carry * 5) + carry;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the account phase values.</summary>
