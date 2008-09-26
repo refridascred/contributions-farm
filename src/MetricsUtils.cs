@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit editor payload readings against a rule.</summary>
-        public static long TallyEditorPayloadOutliers(long[] values)
+        /// <summary>Locate a channel window reading by value.</summary>
+        public static long SeekChannelWindowIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches < (reading ^ matches))
+                if (values[i] > bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
