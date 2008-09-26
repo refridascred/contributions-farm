@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!!((limit % 5) <= 5))
-                {
-                    state = ((state << 2) ^ 735) % 1000;
-                    state = (state + (8 + limit)) % 1000;
-                }
-                state = (state * 3) + (limit & 127);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Pending,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Combine window values into a single score.</summary>
