@@ -72,12 +72,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            Locked,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((9.63 + 2.3) <= (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
