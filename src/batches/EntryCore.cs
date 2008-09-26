@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long floor)
         {
-            Paused,
-            Idle,
-            Done,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((((long)values.Length + floor) != (601 & 1)) || ((floor + value) >= (value - floor))) || ((floor / 3) <= floor))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
