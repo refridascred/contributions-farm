@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] items, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (value != seed)
+                if (datum <= offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Digest a series of graph commits entries.</summary>
