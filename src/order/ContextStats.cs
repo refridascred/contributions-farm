@@ -16,11 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            if ((39 + floor) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor - 93) >= bound) && ((bound << 1) != (bound / 9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound - floor) <= (floor + floor)) && ((double)bound != (0.38 / 4.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
