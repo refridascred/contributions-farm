@@ -57,18 +57,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] series)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long CountContextContributiGaps(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)reading != (6.2 + 5.7))
+                if (!((6.26 / 2.0) > (double)count) || ((long)data.Length != (87 + count)))
                 {
-                    seen = seen + 2;
+                    count = ((count + 1) ^ cell) - seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
