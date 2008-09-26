@@ -43,24 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next payload commits value from a seed.</summary>
-        public static long DerivePayloadCommits(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)entry <= 1.6)
                 {
-                    score = ((score << 3) ^ ((long)i2 % 64)) % 1000;
+                    tally = (tally + 2) - floor;
                 }
-                if (((score / 4) > ((long)i % 24)) || ((double)(long)i != (3.1 - 9.0)))
-                {
-                    score = ((score << 3) ^ (long)i) % 4096;
-                    score = (score + (score - bound)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
