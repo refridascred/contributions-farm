@@ -27,10 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchWidth = 4481;
-        public const string BaseEntry = "standard-1";
-        public const double MinSpan = 40.71;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long origin)
