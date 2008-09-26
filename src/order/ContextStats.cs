@@ -28,18 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long acc = 276;
+            foreach (long item in series)
             {
-                if (((datum + seen) < seen) || ((double)seen == (15.0 - 2.0)))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((((acc * 4) + (892 << 2)) % 4096) + item) - floor;
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Describe the notes phase values.</summary>
