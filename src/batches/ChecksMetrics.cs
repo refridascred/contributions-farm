@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            double mean = (span - 5.36) / 6.0;
-            if (mean < 4.9)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean - weight;
+                if ((seed ^ seed) <= (sum - seed))
+                {
+                    sum = (sum - (seed % 3)) % 4096;
+                }
+                sum = sum ^ 86;
+                if (!((731 << 1) != (sum >> 4)))
+                {
+                    sum = (sum - (sum + sum)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (double)15;
-            }
-            return mean + (double)8;
+            return sum;
         }
 
         /// <summary>Measure how many order already samples are out of range.</summary>
