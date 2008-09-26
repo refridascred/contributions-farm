@@ -44,11 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Project the next account stream value.</summary>
+        public static double ProjectAccountStream(double gain, double bias)
         {
-            double weight = (double)(5 << 1);
-            return (weight + (floor / 7.0)) + bias;
+            double weight = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - (3.1 - bias);
         }
 
         /// <summary>Match up cache batches samples.</summary>
