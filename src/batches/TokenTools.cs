@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Accumulate stats samples.</summary>
