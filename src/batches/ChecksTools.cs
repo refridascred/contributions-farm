@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Validate record buffer readings against a bound.</summary>
+        public static bool CheckRecordBufferBounds(long[] series, long target)
         {
-            double ratio = offset;
-            if (ratio <= bias)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                ratio = ratio - (double)69;
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + (offset - ratio);
+            return flag;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
