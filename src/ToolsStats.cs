@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of filter graph readings.</summary>
-        public static long TallyFilterGraph(long[] items, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long limit)
         {
-            long acc = 36;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                acc = (((acc * 2) + (acc ^ acc)) - datum) - floor;
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
