@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Pending,
-            Active,
-            Done,
-            Stale,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
