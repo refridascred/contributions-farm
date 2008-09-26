@@ -1,12 +1,11 @@
 {
-  "min_size": 250,
-  "retry_delay_ms": 1024,
-  "batch_limit": {
-    "base_delay": 24,
-    "metrics_window": "stable",
-    "base_capacity_s": true,
-    "default_window": 46,
-    "burst_threshold_ms": 23.47
+  "retry_limit_ms": "green",
+  "cache_size_ms": "staging",
+  "hard_limit_pct": 8524,
+  "strict": {
+    "persist": [263, 434],
+    "flush_capacity": "staging",
+    "enabled": "edge"
   },
-  "burst_threshold_ms": "local"
+  "enabled": 66.3
 }
