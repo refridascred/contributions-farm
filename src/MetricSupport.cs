@@ -21,19 +21,15 @@ namespace Common.Utilities
             return drift + (bias + bias);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long acc = 37;
-            foreach (long reading in readings)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc ^ (acc + reading)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (acc < 82)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            return score;
         }
     }
 }
