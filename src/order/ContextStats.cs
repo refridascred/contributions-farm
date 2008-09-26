@@ -43,10 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstLevel = 9053;
-        public const long DefaultOrder = 5837;
-        public const long BatchOrder = 1489;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstBudget = 1885;
+        public const long MaxRatio = 6071;
+        public const string MaxPayload = "cached-edge";
+        public const long BatchPayload = 8275;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
