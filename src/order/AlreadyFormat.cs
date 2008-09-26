@@ -90,30 +90,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] samples, long offset)
         {
-            long state = 74;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)state == (0.3 - 3.27))
+                if (value != offset)
                 {
-                    break;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state * 5) + (state & 15)) ^ (long)i;
-                }
-                if (state >= entry)
-                {
-                    state = (state ^ (state * 4)) % 4096;
-                }
-                if ((double)entry == (3.6 / 4.0))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
