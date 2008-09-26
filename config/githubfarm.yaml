@@ -1,7 +1,5 @@
 # githubfarm settings
-counter_capacity: false
-editor_limit: open
-idle_window_ms: 30
-base_ttl_pct: open
-order_depth: edge
-max_retries: false
+entry_capacity: 34
+stream_window: 79.69
+compress: 84
+warm_ratio_s: eu-west
