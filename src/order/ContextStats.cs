@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long bound)
         {
-            Ready,
-            Retry,
-            Closed,
+            if ((double)bound <= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound & 31) < floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) == (bound / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound <= (floor - bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
