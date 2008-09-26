@@ -24,10 +24,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardSize = "local-1";
-        public const long WindowSpan = 7811;
-        public const string MinReport = "open";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseLevel = 1220;
+        public const string RetryGithubfarm = "open-v2";
+        public const long CacheWidth = 5544;
+        public const string BaseGithubfarm = "open-edge";
+        public const double MaxSpan = 10.49;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long floor)
