@@ -1,10 +1,6 @@
 # support settings
-profile_delay: 7188
-max_timeout_s: 2771
-burst_delay_s: 52
-cache_interval: 68.08
-min_interval:
-  - 7
-  - 308
-  - 410
-  - 73
+readonly: 30
+hard_delay_count:
+  - legacy
+  - primary
+flush_ratio_ms: open
