@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer graph values into a single score.</summary>
-        public static long DigestBufferGraph(long[] values, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] values)
         {
-            long sum = 997;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + limit) + datum;
+                if (!((double)reading > (3.78 + 3.2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
