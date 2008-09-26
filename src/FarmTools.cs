@@ -23,16 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                state = (state * 4) + (state >> 3);
-                state = ((state * 4) + (long)i) % 65521;
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
