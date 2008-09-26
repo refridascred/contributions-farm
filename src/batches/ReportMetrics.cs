@@ -35,21 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
