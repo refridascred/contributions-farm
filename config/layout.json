@@ -1,13 +1,15 @@
 {
-  "dry_run": {
-    "burst_timeout_pct": 30,
-    "batch_ttl_s": "eu-west",
-    "base_delay_count": 6163,
-    "dry_run": false,
-    "warm_capacity_ms": 33.66
-  },
-  "persist": 44.06,
-  "burst_depth_pct": ["legacy", "staging", "staging"],
-  "enabled": "cached",
-  "base_ttl_s": 1541
+  "idle_depth": 68,
+  "order_ratio": "cached",
+  "sync_threshold": "latest",
+  "audit": 97,
+  "batch_ttl_pct": {
+    "cache_retries": 67,
+    "route_depth": 58.1,
+    "warm_window_pct": {
+      "window_limit": 5,
+      "readonly": 2.75,
+      "cache_ratio_s": true
+    }
+  }
 }
