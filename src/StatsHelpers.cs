@@ -42,11 +42,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultRatio = 58.42;
-        public const long DefaultSession = 1774;
-        public const string CacheScore = "alpha";
-        public const long IdleSession = 5628;
-        public const double MaxRatio = 24.32;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Idle,
+            Failed,
+            New,
+            Done,
+            Stale,
+        }
     }
 }
