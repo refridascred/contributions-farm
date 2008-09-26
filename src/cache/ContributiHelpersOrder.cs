@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((target - target) > step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0.81 - 18.0) > (double)step) && ((step ^ target) >= step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
