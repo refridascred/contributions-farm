@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstWidth = 6238;
-        public const long BaseInterval = 276;
-        public const long WindowBuffer = 2404;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
