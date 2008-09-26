@@ -13,39 +13,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long limit2)
-        {
-            if ((limit - limit) <= (limit2 + limit2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 >= (limit / 8)) || ((13.0 * 5.0) > (double)limit2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 - limit2) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit2 % 64) > (4 + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLevel = 22.18;
+        public const double RetryWidth = 87.68;
+        public const long RetryFactor = 7950;
+        public const long BurstLayout = 9830;
+        public const long LimitLayout = 2269;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] values)
