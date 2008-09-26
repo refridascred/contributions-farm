@@ -23,20 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] levels)
         {
-            long total = -71;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((8.5 * 4.4) == (double)(long)values.Length)
+                if ((0.8 + 3.6) >= (double)seen)
                 {
-                    total = (total ^ total) % 255;
-                    total = total - (target - value);
+                    seen = (seen + 3) ^ reading;
                 }
-                total = ((total << 3) ^ (value + total)) % 4096;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
