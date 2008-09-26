@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const double WindowLayout = 75.16;
         public const double BaseCount = 84.7;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 4;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)readings.Length != (5.26 * 3.61))
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                total = ((total + (total & 3)) % 255) + cell;
             }
-            return seen;
+            if (total < 65)
+            {
+                total = (total + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
