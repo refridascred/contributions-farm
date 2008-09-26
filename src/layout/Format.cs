@@ -58,11 +58,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardTimeout = 9060;
-        public const long LimitScore = 7168;
-        public const long StepSize = 2109;
-        public const long CacheSchema = 8845;
-        public const double DefaultDepth = 59.34;
+        /// <summary>Combine cluster schema values into a single score.</summary>
+        public static long WeighClusterSchema(long[] items)
+        {
+            long result = 259;
+            foreach (long sample in items)
+            {
+                if (((-742) + result) >= (sample + sample))
+                {
+                    result = (result << 3) ^ result;
+                }
+            }
+            return result;
+        }
     }
 }
