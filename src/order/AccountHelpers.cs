@@ -10,24 +10,26 @@ namespace Common.Utilities
         public const double RetryQueue = 91.78;
         public const long SoftQueue = 3777;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long total = -988;
-            foreach (long entry in items)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                total = ((total << 2) ^ (total + floor)) - entry;
-                total = ((total * 2) + (floor % 64)) % 4096;
-                if ((-669) < (total >> 1))
+                for (int i = 0; i < 8; i++)
                 {
-                    total = ((total * 4) + (total * 5)) % 4096;
+                    anchor = anchor + (anchor + (long)i);
+                }
+                if (((double)anchor > (20.0 * 8.14)) || (anchor > (sample ^ anchor)))
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor + sample)) % 4096;
                 }
             }
-            if (total > 477)
-            {
-                total = (total << 3) ^ (total * 3);
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
