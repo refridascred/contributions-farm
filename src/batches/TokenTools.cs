@@ -36,23 +36,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long span = target ^ seed;
+            if ((seed > (target ^ target)) && (target > (-30)))
             {
-                if (3.5 < (double)(long)i)
+                return 6;
+            }
+            else
+            {
+                if ((seed - target) == (target + 811))
                 {
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (origin - 773)) % 1000;
+                    if (((span >> 4) <= (span * 5)) || ((span & 1) > 213))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (span <= target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
         }
     }
 }
