@@ -69,38 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order cluster pair into a bucket.</summary>
-        public static long SortOrderCluster(long floor, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((step - step) > step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (4.9 * 15.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (floor - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step * 5) > (floor + step)) || ((double)floor < 2.57))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
