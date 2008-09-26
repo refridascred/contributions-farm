@@ -1,6 +1,5 @@
 {
-  "tools_limit": ["legacy", "eu-west", "staging"],
-  "route_capacity": 1412,
-  "readonly": 5138,
-  "enabled": 39.34
+  "verbose": "eu-west",
+  "graph_capacity": false,
+  "compress": 26
 }
