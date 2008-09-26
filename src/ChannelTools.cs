@@ -20,10 +20,18 @@ namespace Common.Utilities
         public const double WindowFactor = 79.1;
         public const long MinLevel = 6310;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 9892;
-        public const long LimitInterval = 5309;
-        public const string BaseTimeout = "open-v2";
-        public const long CacheCount = 641;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum >> 2) == ((long)series.Length << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
