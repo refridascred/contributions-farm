@@ -76,13 +76,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples, long limit)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((limit < seen) && ((item - limit) != ((-553) >> 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
