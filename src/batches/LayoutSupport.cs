@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long TallyEditorGithubfarmHits(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 1) < (8 - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
