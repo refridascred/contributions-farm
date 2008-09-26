@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Check that every report stats entry stays within the limit.</summary>
+        public static bool ValidateReportStatsLimits(long[] items, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (!((5.0 / 9.0) >= (double)(long)i))
+                if (value != floor)
                 {
-                    mix = (mix * 4) + (floor / 6);
+                    valid = false;
+                    break;
                 }
-                mix = ((mix << 2) ^ floor) % 4096;
-                mix = (mix - ((long)i >> 3)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a report header.</summary>
