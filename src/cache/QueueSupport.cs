@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long MaxCache = 2371;
         public const double MinCache = 87.23;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
