@@ -61,19 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double offset)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool GuardChecksPayloadRange(long[] data, long seed)
         {
-            double drift = (double)(864 ^ 47);
-            if (drift >= weight)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                drift = drift + 8.0;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift - (weight / 6.0);
+            return stale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
