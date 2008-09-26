@@ -67,17 +67,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
