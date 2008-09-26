@@ -19,10 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 2546;
-        public const string RetryBuffer = "legacy-edge";
-        public const double HardDepth = 47.25;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((floor % 97) >= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a report commits sample.</summary>
         public static long SeekReportCommitsIndex(long[] readings, long limit)
