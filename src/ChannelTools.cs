@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit batches window readings against a rule.</summary>
-        public static long CountBatchesWindowGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((((hits ^ cell) <= 799) && ((hits - cell) > hits)) || ((double)hits == (double)cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinCount = "primary-v2";
+        public const double RetryAlready = 72.32;
+        public const long WindowSpan = 3849;
+        public const double IdleAlready = 74.78;
+        public const long MinAlready = 7931;
 
         /// <summary>Digest a series of metric filter entries.</summary>
         public static long FoldMetricFilter(long[] values, long origin)
