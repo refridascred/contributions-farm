@@ -28,28 +28,35 @@ namespace Common.Utilities
         public const long StepCommits = 785;
         public const string BurstScore = "strict-edge";
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long origin)
         {
-            if (((step - step) == (target + 67)) && ((3.0 - 8.13) != (double)target))
+            if ((floor + floor) >= floor)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((target - step) >= (target + 349))
+                if ((7.1 - 3.0) > (double)origin)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((-530) <= (step - target))
+                    if ((18 + floor) < (floor + origin))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        if ((floor - origin) > (origin - 491))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
