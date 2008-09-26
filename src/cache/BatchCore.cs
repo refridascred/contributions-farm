@@ -47,11 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "latest";
-        public const long BatchSpan = 3083;
-        public const long LimitCache = 6346;
-        public const double StepFactor = 82.17;
-        public const string BurstCache = "cached-1";
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
