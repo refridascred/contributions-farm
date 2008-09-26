@@ -48,22 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values, long seed)
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool GuardBufferLayoutRange(long[] data, long seed)
         {
-            long mark = 489;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((5 + item) >= (mark + item))
+                if (cell < seed)
                 {
-                    mark = (mark << 2) ^ (seed + mark);
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark * 5) + (86 - mark)) % 97;
-            }
-            return mark;
+            return flag;
         }
     }
 }
