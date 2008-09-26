@@ -42,18 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] readings, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches > (matches >> 2))
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
                 {
-                    matches = ((matches + 3) + value) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
