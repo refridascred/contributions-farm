@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-edge";
         public const long BatchPayload = 8275;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Retry,
+            Active,
+            Queued,
             Dropped,
-            Paused,
-            Locked,
         }
     }
 }
