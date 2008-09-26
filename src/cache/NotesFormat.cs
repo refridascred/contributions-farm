@@ -23,14 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Paused,
-            Closed,
-            Done,
-            Ready,
+            Active,
+            Locked,
             Pending,
+            Ready,
         }
 
         /// <summary>Hold a window snapshot.</summary>
