@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already layout readings against a bound.</summary>
-        public static bool ValidateAlreadyLayoutLimits(long[] series, long step)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
