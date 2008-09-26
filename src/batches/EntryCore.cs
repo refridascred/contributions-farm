@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 3.02;
-        public const double HardBudget = 15.42;
-        public const string DefaultEditor = "cached-v2";
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long AuditPayloadBatchesOutliers(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((target << 3) > (seen << 2))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] series)
