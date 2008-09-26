@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            Failed,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the farm level values.</summary>
