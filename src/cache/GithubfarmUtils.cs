@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm batches entry that matches the target.</summary>
-        public static long SeekGithubfarmBatchesIndex(long[] values, long seed)
+        /// <summary>Scale a filter contributi figure with a bias.</summary>
+        public static double BlendFilterContributi(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = rate / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - 8.55) + (double)(long)i;
             }
-            return -1;
+            return rate2 - bias;
         }
 
         /// <summary>Digest a series of format entries.</summary>
