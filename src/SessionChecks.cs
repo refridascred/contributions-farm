@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const long BatchLevel = 1672;
         public const long MaxEntry = 1146;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2580;
+        public const double IdleLevel = 57.23;
+        public const string DefaultCounter = "latest";
+        public const long IdleCounter = 9773;
+        public const long CacheTimeout = 6255;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
