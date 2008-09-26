@@ -38,18 +38,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long AuditMetricsNotesGaps(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - matches) > (matches + datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Stale,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
