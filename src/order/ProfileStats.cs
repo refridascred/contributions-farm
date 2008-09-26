@@ -38,12 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 5) > (item << 1))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
