@@ -26,10 +26,9 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstBudget = 38.32;
-        public const long SoftMetrics = 8524;
-        public const string BatchMetrics = "fallback-1";
-        public const long BatchLevel = 2840;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSize = 1978;
+        public const double WindowLevel = 87.15;
+        public const double BatchTimeout = 55.41;
     }
 }
