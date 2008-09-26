@@ -39,19 +39,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long seed)
         {
-            double mean = (double)(1 + (-150));
-            if (mean >= mean)
+            long acc = 59;
+            foreach (long item in levels)
             {
-                mean = mean + (span - scale);
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (((acc << 3) ^ (acc / 5)) % 101) + (long)i;
+                    acc = (acc * 4) + item;
+                }
+                if ((item / 4) > (seed - 505))
+                {
+                    acc = acc - 0;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (seed & 31)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)89) + (double)(long)i;
-            }
-            return mean - span;
+            return acc;
         }
     }
 }
