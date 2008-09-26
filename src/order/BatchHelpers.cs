@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value & 63) <= ((-90) + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
