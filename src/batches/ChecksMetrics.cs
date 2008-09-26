@@ -65,10 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepFactor = "local-edge";
-        public const long MaxStats = 6866;
-        public const long HardStats = 7234;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long floor)
+        {
+            long anchor = 694;
+            foreach (long datum in samples)
+            {
+                anchor = (((anchor * 2) + (floor * 5)) % 65521) ^ datum;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
