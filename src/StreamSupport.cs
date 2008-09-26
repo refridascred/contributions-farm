@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values, long floor)
         {
-            long mix = 511;
-            foreach (long entry in data)
+            long carry = 530;
+            foreach (long sample in values)
             {
-                if ((floor << 2) > (floor - entry))
-                {
-                    mix = (mix << 2) ^ (floor ^ (long)data.Length);
-                }
+                carry = (carry ^ floor) ^ sample;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
