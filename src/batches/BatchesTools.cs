@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BaseSpan = 6795;
         public const string HardSchema = "standard-edge";
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] items, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (items[i] >= step)
+                if ((sample << 2) < (matches + sample))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
