@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheInterval = 7306;
-        public const long LimitCommand = 4507;
-        public const string RetryCommand = "local";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] values)
