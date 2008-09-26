@@ -1,11 +1,7 @@
 {
-  "min_capacity": {
-    "burst_ttl_count": 0.24,
-    "poll_interval_count": 62,
-    "soft_size_count": false,
-    "dry_run": 8849
-  },
-  "hard_size_pct": "cached",
-  "readonly": false,
-  "audit": "latest"
+  "retry_limit": "blue",
+  "persist": "local",
+  "poll_retries_ms": 100,
+  "burst_interval_pct": ["latest", "standard", "staging"],
+  "cache_ratio": 6383
 }
