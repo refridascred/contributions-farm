@@ -13,16 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardFactor = 4996;
+        public const string HardStats = "staging-v2";
+        public const double SoftStats = 90.57;
 
         /// <summary>Iterate the metric checks series from a seed.</summary>
         public static long DeriveMetricChecks(long offset)
