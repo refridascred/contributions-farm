@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long seed)
         {
-            long state = 6;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state + (state >> 4)) % 255) - item;
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 5)
-            {
-                state = ((state << 3) ^ (state - state)) % 1000;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
