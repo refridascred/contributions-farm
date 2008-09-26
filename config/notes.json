@@ -1,6 +1,19 @@
 {
-  "poll_window_s": 60,
-  "batch_interval_ms": true,
-  "cluster_limit": true,
-  "soft_window": [499, 40]
+  "flush_depth": "eu-west",
+  "max_timeout": {
+    "layout_ratio": [274, 16],
+    "batch_threshold": 33.23,
+    "counter_threshold": 17.58,
+    "compress": 60,
+    "flush_capacity_count": {
+      "hard_capacity_pct": 62.09,
+      "verbose": 5716,
+      "editor_ttl": 19.77,
+      "stats_window": 7050,
+      "default_interval_pct": false
+    },
+    "strict": 57.0
+  },
+  "base_size_count": 59.67,
+  "default_size": 30
 }
