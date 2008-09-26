@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((5.2 < (9.46 * 6.2)) && ((0 / 9) < (score + 921)))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
