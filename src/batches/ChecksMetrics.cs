@@ -49,16 +49,11 @@ namespace Common.Utilities
         public const long DefaultCount = 8921;
         public const long BatchRatio = 3676;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long floor)
-        {
-            long anchor = 694;
-            foreach (long datum in samples)
-            {
-                anchor = (((anchor * 2) + (floor * 5)) % 65521) ^ datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxLevel = 6368;
+        public const double RetryCommits = 2.28;
+        public const string BatchFactor = "alpha-1";
+        public const long DefaultCommits = 7801;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsMatches(long[] samples, long limit)
