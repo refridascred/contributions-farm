@@ -41,17 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Audit cluster record readings against a rule.</summary>
