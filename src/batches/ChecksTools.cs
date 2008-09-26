@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally >= (tally + cell)) || ((cell + tally) < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
