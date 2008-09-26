@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the record graph series from a seed.</summary>
-        public static long SeriesRecordGraph(long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a already counter forward.</summary>
