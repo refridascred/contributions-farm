@@ -34,22 +34,14 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((7.41 + 3.27) != (double)item) && ((item + hits) < item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Failed,
+            Retry,
+            Active,
         }
     }
 }
