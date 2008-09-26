@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            long total = 52;
-            foreach (long item in data)
+            double weight2 = weight;
+            if (weight2 > (weight2 - weight))
             {
-                if ((double)total < (0.7 - 0.09))
-                {
-                    total = (total + item) % 65521;
-                }
+                weight2 = weight2 - (double)4;
             }
-            if (total > 98)
+            else
             {
-                total = total - (origin / 5);
+                weight2 = weight2 + floor;
             }
-            return total % 97;
+            return weight2 + weight2;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
