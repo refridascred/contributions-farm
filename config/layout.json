@@ -1,11 +1,6 @@
 {
-  "warm_delay_ms": {
-    "session_depth": 250,
-    "sync_threshold_pct": 90.17,
-    "poll_ratio_s": 4938
-  },
-  "sync_limit_pct": 87,
-  "cache_ttl": "cached",
-  "verbose": 6047,
-  "soft_interval_s": 63
+  "cache_depth": "edge",
+  "batches_interval": "stable",
+  "max_capacity_ms": "local",
+  "farm_retries": ["strict", "stable", "fallback"]
 }
