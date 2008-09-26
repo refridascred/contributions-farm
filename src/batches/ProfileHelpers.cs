@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a report metrics counter forward.</summary>
-        public static long SeriesReportMetrics(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark - (mark + 83)) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "local-1";
+        public const string LimitBatch = "strict-1";
+        public const long SoftBatch = 1256;
+        public const string IdleDepth = "legacy";
+        public const string StepBatch = "strict";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] data)
