@@ -40,18 +40,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits <= (hits * 2)) || (((hits << 3) != (hits >> 3)) || ((320 + 24) != (hits * 2))))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
             return hits;
