@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
