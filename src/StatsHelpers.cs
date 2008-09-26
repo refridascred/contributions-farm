@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
