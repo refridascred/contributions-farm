@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const string WindowBudget = "primary-edge";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (value <= step)
+                if ((entry - tally) < 855)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count the channel tools entries that pass the check.</summary>
