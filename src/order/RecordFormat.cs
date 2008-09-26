@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitScore = "open-1";
-        public const long CacheBudget = 5184;
-        public const long HardTools = 3058;
-        public const long CacheTools = 3444;
-        public const long RetryTools = 9843;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Locate a batch filter reading by value.</summary>
         public static long LookupBatchFilterIndex(long[] series, long bound)
