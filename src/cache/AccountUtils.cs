@@ -34,10 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 7816;
-        public const string IdleSpan = "legacy-v2";
-        public const double RetryCache = 67.52;
-        public const string LimitWidth = "legacy-1";
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool CheckLayoutWindowBounds(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
