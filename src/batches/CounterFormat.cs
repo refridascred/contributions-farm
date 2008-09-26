@@ -31,21 +31,18 @@ namespace Common.Utilities
             return load + (floor + floor);
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
+        public static long CountEditorGithubfarmMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)count == (2.2 - 17.0)))
                 {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
