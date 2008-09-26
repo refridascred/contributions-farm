@@ -32,19 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
