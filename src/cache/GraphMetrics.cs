@@ -40,20 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitDepth = 11.59;
+        public const long HardCache = 2886;
+        public const string StepWidth = "fallback";
+        public const string CacheSize = "fallback";
+        public const long BurstCache = 9375;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] data, long floor)
