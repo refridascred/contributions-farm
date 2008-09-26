@@ -29,18 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((5.1 - 16.0) <= (double)seen)
-                {
-                    seen = ((seen + 1) + datum) + floor;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
