@@ -59,12 +59,17 @@ namespace Common.Utilities
         public const double MinTimeout = 41.03;
         public const long HardChecks = 7252;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] data, long target)
         {
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
