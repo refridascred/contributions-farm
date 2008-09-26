@@ -1,14 +1,14 @@
 # githubfarm settings
-default_delay_ms: false
-idle_capacity:
-  - stable
-  - legacy
-flush_timeout:
-  verbose: 67.24
-  readonly: false
-  audit: 83.82
-  compress: 37
-  default_depth_pct: 31.33
-soft_capacity: false
-base_capacity_pct: 49.65
-idle_ratio_count: true
+flush_retries: false
+burst_threshold_count:
+  order_threshold: open
+  batch_window: 100
+  idle_ttl_ms: 2248
+  burst_threshold_ms: 60
+  cache_limit: standard
+  strict: 78.79
+warm_interval_s: 15.3
+audit: true
+base_ratio_pct:
+  - local
+  - cached
