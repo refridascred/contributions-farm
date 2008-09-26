@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] readings, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (24 < (entry + hits))
+                if ((matches + cell) >= (cell / 7))
                 {
-                    hits = (hits + 2) + offset;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
