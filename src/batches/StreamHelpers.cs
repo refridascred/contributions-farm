@@ -55,14 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            Done,
-            Ready,
-            Queued,
-            Idle,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cluster record readings against a rule.</summary>
