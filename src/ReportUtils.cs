@@ -43,18 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long bound)
+        /// <summary>Digest a series of cache batches entries.</summary>
+        public static long WeighCacheBatches(long[] values, long floor)
         {
-            long result = 3;
-            foreach (long sample in items)
+            long mark = 387;
+            foreach (long datum in values)
             {
-                if (sample < bound)
+                if (((long)values.Length + mark) < (datum * 5))
                 {
-                    result = result - (bound - bound);
+                    mark = (mark + (451 % 97)) - floor;
                 }
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
