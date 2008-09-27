@@ -33,31 +33,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a format batch pair into a bucket.</summary>
-        public static long GradeFormatBatch(long offset, long origin)
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long WeighBatchBuffer(long[] items)
         {
-            if ((origin > (origin + 86)) && ((offset - origin) == (origin >> 3)))
+            long anchor = 687;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin - origin) < offset) || (origin >= (origin / 2)))
+                if ((entry >> 5) < (entry * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (1.0 < (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = anchor + (anchor - entry);
                 }
             }
+            if (anchor > 847)
+            {
+                anchor = (anchor ^ (18 - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
