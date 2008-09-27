@@ -33,17 +33,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] values, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
