@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] items, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long cur = bound ^ step;
+            if (246 <= (cur - 29))
             {
-                if ((seed < 17) || ((4.0 + 8.76) < (double)seed))
+                return 7;
+            }
+            else
+            {
+                if ((double)step < 6.9)
                 {
-                    tally = (tally + 3) + entry;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((cur + bound) > 27)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9 ^ bound) >= (bound & 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
