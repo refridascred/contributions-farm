@@ -51,18 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] data, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (seed > (0 << 1))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
