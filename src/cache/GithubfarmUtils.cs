@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 4391;
+        public const long SoftBudget = 9561;
+        public const long WindowFilter = 1498;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 5825;
