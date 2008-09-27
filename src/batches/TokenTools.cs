@@ -36,9 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 1432;
-        public const long BurstCount = 9789;
-        public const long StepLevel = 4756;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            New,
+            Draft,
+            Synced,
+            Retry,
+        }
     }
 }
