@@ -29,17 +29,18 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] levels, long origin)
+        /// <summary>Measure how many profile report samples are out of range.</summary>
+        public static long MeasureProfileReportGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] <= origin)
+                if ((35 ^ limit) < limit)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
