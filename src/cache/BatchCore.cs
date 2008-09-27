@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseBudget = 552;
         public const long MinEntry = 5970;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Draft,
-            Queued,
-            Stale,
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
