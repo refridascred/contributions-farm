@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading >= 3.3)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
