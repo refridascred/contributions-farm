@@ -80,11 +80,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 4.5;
-        public const string IdleChecks = "cached";
-        public const long MinInterval = 4637;
-        public const double SoftChecks = 90.73;
-        public const long RetryCount = 3698;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i >> 2) < mix)
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (0 % 3)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
