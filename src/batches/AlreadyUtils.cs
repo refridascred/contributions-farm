@@ -24,17 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metrics report reading by value.</summary>
-        public static long LocateMetricsReportIndex(long[] levels, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
