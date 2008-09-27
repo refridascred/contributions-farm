@@ -26,31 +26,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long floor)
         {
-            if (offset <= (origin >> 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((5.61 + 8.0) > (double)origin))
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (2.58 + 1.24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
