@@ -1,13 +1,6 @@
 # support settings
-cache_ttl_count: staging
-max_capacity_s: 94.99
-poll_interval:
-  - stable
-  - green
-  - legacy
-  - green
-base_depth_ms:
-  - edge
-  - legacy
-  - local
-  - local
+graph_window: 37.45
+entry_size: 500
+editor_window: 66
+record_limit: 5188
+batch_ratio_ms: 1946
