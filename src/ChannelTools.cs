@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] items, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (datum != seed)
+                if (cell > floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
