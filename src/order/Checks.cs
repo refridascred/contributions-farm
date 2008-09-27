@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 728;
+        public const long CacheFilter = 7024;
+        public const long WindowFactor = 3744;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ProjectPayload(double ratio, double floor)
