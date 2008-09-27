@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary standard blue local; do
+for item in blue local; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=268
-log "limit is ${BUFFER_LIMIT}"
