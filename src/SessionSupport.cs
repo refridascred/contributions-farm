@@ -20,24 +20,15 @@ namespace Common.Utilities
             return scale + (gain / 5.0);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
         {
-            if (!((double)seed < 13.0))
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset << 1) < offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a stream entry.</summary>
