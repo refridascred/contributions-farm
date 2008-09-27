@@ -22,28 +22,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            if ((offset >= (offset + 505)) && ((offset * 3) >= offset))
+            long next = bound - seed;
+            if ((double)seed <= (double)bound)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((limit * 3) != (70 * 3))
+                if (!((double)seed >= (5.9 - 3.4)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((19.0 * 8.95) >= (double)offset)
+                    if ((1.0 > (double)bound) || (945 > (seed - 947)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        if (((seed << 1) <= seed) || ((next * 4) != (seed + next)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
