@@ -85,17 +85,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((9.6 + 2.02) != (double)step))
             {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((3 - step) >= floor) && ((450 + floor) != (floor ^ step)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 + 13.0) < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
