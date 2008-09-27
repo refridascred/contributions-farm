@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] items, long bound)
         {
-            long sum = 17;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (!((reading - 134) == (17 << 1)))
+                if (entry != bound)
                 {
-                    sum = (sum ^ (target - target)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
