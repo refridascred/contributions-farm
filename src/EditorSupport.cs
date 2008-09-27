@@ -45,19 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two payload stream measurements.</summary>
-        public static double AdjustPayloadStream(double bias, double span)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double bias2 = bias;
-            if (bias2 <= (bias + bias2))
-            {
-                bias2 = bias2 - span;
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + (9.0 - 1.6);
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
