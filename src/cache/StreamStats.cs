@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            double mean = weight;
-            if (mean < mean)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mean = mean + mean;
+                if (728 > (matches % 24))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            else
-            {
-                mean = mean + (7.25 * 4.64);
-            }
-            return mean + (offset - weight);
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
