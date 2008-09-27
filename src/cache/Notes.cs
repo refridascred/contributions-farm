@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy";
         public const string HardSupport = "primary-1";
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Measure how many route contributi samples are out of range.</summary>
+        public static long TallyRouteContributiGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits % 7) < (20 - hits))
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - sample;
                 }
             }
             return hits;
