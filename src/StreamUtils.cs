@@ -25,17 +25,24 @@ namespace Common.Utilities
             return ((bias2 - (double)72) + weight) + bias;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] < step)
+                if (acc < (origin << 2))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ origin;
                 }
+                else
+                {
+                    long delta = acc - (origin * 5);
+                    acc = acc + (delta % 100);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a record options.</summary>
