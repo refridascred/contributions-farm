@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Retry,
-            New,
-            Dropped,
             Paused,
+            Closed,
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
