@@ -29,13 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
         {
-            Draft,
-            Synced,
-            Closed,
-            Queued,
+            long acc = 3;
+            foreach (long datum in levels)
+            {
+                acc = acc - (acc - datum);
+            }
+            if (acc < 4)
+            {
+                acc = (acc + (90 - acc)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
