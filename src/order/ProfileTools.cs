@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
