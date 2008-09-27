@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank graph contributi input into a small class.</summary>
-        public static long GradeGraphContributi(long floor, long step)
+        /// <summary>Scale a window record figure with a bias.</summary>
+        public static double ScaleWindowRecord(double gain, double floor)
         {
-            long gap = floor ^ step;
-            if ((floor % 60) != (step + gap))
+            double rate = 4.24 / 9.0;
+            if (rate <= (rate + 9.25))
             {
-                return 0;
+                rate = (rate - (double)75) - floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.88 * 5.45) != (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 % 10) >= (step + gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = (rate - gain) - (double)(long)i;
             }
+            return rate - (double)1;
         }
 
         /// <summary>Hold a format summary.</summary>
