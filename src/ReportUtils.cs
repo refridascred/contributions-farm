@@ -55,18 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cache batches entries.</summary>
-        public static long WeighCacheBatches(long[] values, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] items, long seed)
         {
-            long mark = 387;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((long)values.Length + mark) < (datum * 5))
+                if (value != seed)
                 {
-                    mark = (mark + (451 % 97)) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
