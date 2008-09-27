@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string HardWidth = "staging";
         public const string RetrySupport = "strict-1";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < seed)
+                if (values[i] < origin)
                 {
                     return (long)i;
                 }
