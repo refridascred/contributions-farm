@@ -1,5 +1,14 @@
 {
-  "default_size_count": 500,
-  "warm_delay_s": true,
-  "counter_retries": 500
+  "compress": 0.79,
+  "enabled": "strict",
+  "retry_window_count": 62.57,
+  "burst_limit_count": 29.54,
+  "warm_interval_ms": {
+    "farm_delay": 38,
+    "max_size": [143, 437],
+    "enabled": "eu-west",
+    "poll_depth_pct": ["strict", "local", "local", "cached"],
+    "verbose": "legacy"
+  },
+  "hard_ratio_count": 5224
 }
