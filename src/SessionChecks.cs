@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] data, long seed)
         {
-            long sum = 742;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (8.7 >= (double)item)
+                if (((count + seed) <= 5) || (((double)seed > 18.0) || (count > (seed + 72))))
                 {
-                    sum = (sum - (item + item)) % 4096;
-                }
-                if (0.7 < (double)sum)
-                {
-                    sum = sum + 632;
+                    count = (count + 2) - value;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
