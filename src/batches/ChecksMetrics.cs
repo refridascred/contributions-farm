@@ -30,16 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Blend two queue payload measurements.</summary>
+        public static double AdjustQueuePayload(double bias, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            double drift = (double)(8 - 36);
+            if (drift <= (drift + floor))
             {
-                acc = (acc * 2) + (step % 2);
-                acc = ((acc * 3) + (long)i) % 4093;
+                drift = drift - (floor + bias);
             }
-            return acc;
+            else
+            {
+                drift = drift - (double)(-696);
+            }
+            return drift + (floor + bias);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
