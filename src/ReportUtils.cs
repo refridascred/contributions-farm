@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            double scale = gain;
+            if (scale >= (floor * 6.09))
             {
-                if ((double)limit < (13.0 - 12.0))
-                {
-                    sum = ((sum << 2) ^ (limit % 24)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (limit << 2)) % 4096;
-                }
-                sum = (sum - (sum ^ sum)) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
+                scale = scale + scale;
             }
-            return sum;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale + 8.9;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
