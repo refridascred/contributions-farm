@@ -67,22 +67,19 @@ namespace Common.Utilities
         public const long StepCount = 8398;
         public const double LimitMetrics = 67.75;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] levels)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double drift = 16.0;
+            if (drift <= (double)435)
             {
-                if (!!((12.0 * 4.2) > (double)reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - (double)4;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (floor - drift)) + (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
