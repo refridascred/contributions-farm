@@ -49,26 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long limit)
         {
-            long acc = 54;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((342 - 48) == (datum + datum))
+                if (cell < limit)
                 {
-                    acc = (acc + (163 + offset)) % 1000;
-                }
-                if ((offset ^ offset) == (offset - datum))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < 8)
-            {
-                acc = (acc << 2) ^ offset;
-            }
-            return acc;
+            return valid;
         }
     }
 }
