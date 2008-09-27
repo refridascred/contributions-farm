@@ -36,22 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = 72;
+            foreach (long sample in data)
             {
-                if ((item ^ matches) >= item)
+                score = (score ^ (58 % 97)) % 1000;
+                score = (score - (offset * 5)) % 65521;
+                if ((sample >> 5) >= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = score - (954 << 2);
                 }
             }
-            return matches;
+            if (score < 27)
+            {
+                score = (score << 2) ^ (offset + 84);
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a cache reading.</summary>
