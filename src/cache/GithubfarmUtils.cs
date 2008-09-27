@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (count <= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 3293;
+        public const long MinTimeout = 4263;
+        public const long DefaultPayload = 8647;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] series, long target)
