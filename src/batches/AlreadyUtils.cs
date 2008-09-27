@@ -22,24 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi notes pair into a bucket.</summary>
-        public static long ClassifyContributiNotes(long floor, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            if (((floor << 1) >= 46) && ((origin % 3) < (37 + 64)))
+            long total = 8;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((20.0 / 2.0) == (double)floor)
+                if ((entry << 2) != (entry & 63))
                 {
-                    return 2;
+                    total = total + (4 << 3);
                 }
                 else
                 {
-                    return 4;
+                    total = (total << 3) ^ (total + entry);
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Blend two stats measurements.</summary>
