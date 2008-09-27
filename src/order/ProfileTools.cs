@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long seed)
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long ScoreCounterStream(long[] series)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long anchor = -509;
+            foreach (long item in series)
             {
-                if (datum != seed)
+                if ((double)6 != (double)item)
                 {
-                    found = false;
+                    anchor = anchor - (item % 100);
+                }
+                if ((724 + item) <= anchor)
+                {
                     break;
                 }
             }
-            return found;
+            return anchor % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
