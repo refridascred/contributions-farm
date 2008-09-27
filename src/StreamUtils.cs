@@ -74,10 +74,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowScore = 3366;
-        public const double SoftLevel = 7.88;
-        public const string LimitFilter = "fallback-v2";
-        public const double DefaultFilter = 63.66;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Paused,
+            Retry,
+            Done,
+            Stale,
+        }
     }
 }
