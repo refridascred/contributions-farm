@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] items, long step)
         {
-            long sum = -5;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((cell ^ 4) <= (sum + cell))
+                if (sample > step)
                 {
-                    sum = (sum ^ (cell & 255)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum ^ 295) % 97;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
