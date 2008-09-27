@@ -57,21 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 558;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - floor) - item;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
