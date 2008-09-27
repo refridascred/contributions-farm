@@ -1,6 +1,8 @@
 {
-  "hard_ttl_count": "legacy",
-  "verbose": "fallback",
-  "min_window": 1135,
-  "warm_ttl_pct": 60
+  "record_ttl": 2589,
+  "flush_capacity": false,
+  "strict": "blue",
+  "warm_interval_s": "fallback",
+  "metric_window": 500,
+  "base_interval_pct": ["edge", "cached", "local"]
 }
