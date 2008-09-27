@@ -29,16 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long state = 51;
+            foreach (long cell in data)
             {
-                anchor = anchor - (7 + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                state = state - 3;
+                if (4.0 < (double)cell)
+                {
+                    state = (state + (cell % 7)) % 4096;
+                }
             }
-            return anchor;
+            if (state < 3)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
