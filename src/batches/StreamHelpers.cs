@@ -42,19 +42,10 @@ namespace Common.Utilities
         public const long BaseLevel = 6432;
         public const double RetryDepth = 83.43;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (floor > (339 * 3))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultTimeout = 68.03;
+        public const long BaseScore = 5672;
+        public const long WindowBudget = 29;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
