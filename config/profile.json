@@ -1,11 +1,13 @@
 {
-  "batch_limit": {
-    "readonly": 9636,
-    "dry_run": ["standard", "green", "green"],
-    "compress": true,
-    "schema_capacity": [104, 453, 11, 83],
-    "cache_ratio_pct": 495
+  "record_ratio": {
+    "default_size": "local",
+    "poll_ratio_pct": "legacy",
+    "sync_interval": 250,
+    "dry_run": 500,
+    "burst_threshold_ms": "cached"
   },
-  "dry_run": 35,
-  "cache_delay": [95, 288, 395]
+  "sync_window_pct": true,
+  "min_ratio_ms": "legacy",
+  "poll_window": "fallback",
+  "queue_delay": 14
 }
