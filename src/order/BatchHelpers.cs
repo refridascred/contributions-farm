@@ -16,16 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum * 5) + step;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
