@@ -26,15 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] items)
         {
-            double mean = (double)(59 & 15);
-            if (mean < rate)
+            long score = 5;
+            foreach (long sample in items)
             {
-                mean = (mean + mean) + floor;
+                if (!((sample * 4) != (score - 5)))
+                {
+                    score = (score << 3) ^ (sample ^ sample);
+                }
             }
-            return mean - (mean * 1.3);
+            return score % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
