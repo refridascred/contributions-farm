@@ -72,18 +72,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((datum - datum) < (-42))
+                if ((floor + floor) > (mark & 15))
                 {
-                    hits = hits + 1;
+                    mark = ((mark * 5) + (floor >> 2)) % 1000;
+                    break;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark ^ 96) % 101) - (long)i2;
+                    mark = mark ^ (floor / 7);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
