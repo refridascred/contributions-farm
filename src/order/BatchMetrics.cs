@@ -73,18 +73,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long target)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long FoldFormatReport(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long total = 9;
+            foreach (long item in samples)
             {
-                if ((1.9 - 5.5) == (double)target)
+                if ((double)total < 3.26)
                 {
-                    matches = (matches + 3) + datum;
+                    break;
                 }
+                total = ((total * 2) + (total << 2)) - item;
             }
-            return matches;
+            return total;
         }
     }
 }
