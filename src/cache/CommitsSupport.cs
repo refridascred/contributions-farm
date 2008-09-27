@@ -40,31 +40,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double bias, double span)
         {
-            if (!((target ^ floor) == (floor + target)))
+            double rate = 17.0;
+            if (rate < (double)244)
             {
-                return 0;
+                rate = (rate + (double)46) - span;
             }
-            else
-            {
-                if (!(target <= (floor + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 8) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
