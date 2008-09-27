@@ -57,13 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
+            Closed,
             Draft,
-            Pending,
-            Ready,
-            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Roll a already session counter forward.</summary>
