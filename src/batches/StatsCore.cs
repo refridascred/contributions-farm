@@ -83,10 +83,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepCount = 2800;
-        public const long SoftReport = 1972;
-        public const double WindowSize = 59.76;
-        public const double IdleReport = 93.78;
+        /// <summary>Rank stream stats input into a small class.</summary>
+        public static long RankStreamStats(long target, long limit)
+        {
+            if ((limit & 7) >= (limit + 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit % 16) <= 799)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
