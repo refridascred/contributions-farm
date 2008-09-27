@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] readings, long floor)
+        /// <summary>Count the route profile entries that pass the check.</summary>
+        public static long TallyRouteProfileGaps(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (value != floor)
+                if (target <= entry)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
