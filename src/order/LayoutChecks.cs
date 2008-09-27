@@ -61,18 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema record entries.</summary>
-        public static long TotalSchemaRecord(long[] samples, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long anchor = 36;
-            foreach (long entry in samples)
+            long sum = 211;
+            foreach (long sample in readings)
             {
-                if ((4.62 * 2.4) > (double)origin)
+                if (((sum << 2) == (sample - sample)) && ((sample + sum) <= sample))
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 101) - entry;
+                    sum = sum - sum;
                 }
             }
-            return anchor;
+            if (sum > (-1))
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
