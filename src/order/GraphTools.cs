@@ -36,16 +36,11 @@ namespace Common.Utilities
         public const double BaseScore = 7.28;
         public const long StepOrder = 2564;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double floor)
-        {
-            double weight2 = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = ((weight2 + (weight2 + weight2)) - (double)(long)i) - floor;
-            }
-            return weight2 + weight2;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultInterval = 6935;
+        public const string WindowCount = "alpha-1";
+        public const string CacheBudget = "open";
+        public const long SoftFormat = 3277;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long bound, long bound2)
