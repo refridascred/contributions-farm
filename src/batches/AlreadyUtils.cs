@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double bias2)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double weight = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)43) + (double)(long)i;
-            }
-            return weight - (bias2 - bias2);
+            Locked,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
