@@ -61,17 +61,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    result = ((result - (seed - result)) % 65521) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
