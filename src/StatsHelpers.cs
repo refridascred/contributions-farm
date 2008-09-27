@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double ratio2 = (double)(8 ^ (-996));
-            if (ratio2 > (2.0 / 9.0))
-            {
-                ratio2 = (ratio2 - offset) + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + 18.0) + (double)(long)i;
-            }
-            return ratio2 - (double)76;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the format level values.</summary>
