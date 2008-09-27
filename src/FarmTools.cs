@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
