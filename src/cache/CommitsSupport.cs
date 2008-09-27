@@ -67,19 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 5870;
+        public const string MaxOrder = "stable-edge";
+        public const long MinOrder = 2129;
+        public const long WindowOrder = 6334;
+        public const long RetryRatio = 1232;
     }
 }
