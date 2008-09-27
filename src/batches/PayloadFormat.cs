@@ -40,18 +40,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] series, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((datum ^ 238) > datum)
+                if ((2 - hits) < (sample * 4))
                 {
-                    matches = (matches + 3) + origin;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
