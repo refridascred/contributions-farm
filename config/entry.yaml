@@ -1,10 +1,7 @@
 # entry settings
-burst_capacity_pct: 2.06
-command_window:
-  - 165
-  - 458
-audit:
-  - staging
-  - staging
-persist: 21.8
-command_delay: 22
+flush_retries_s:
+  max_ttl_ms: true
+  persist: open
+  dry_run: 18
+strict: false
+editor_window: false
