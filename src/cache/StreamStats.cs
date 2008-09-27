@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 6509;
         public const double BatchBudget = 87.3;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "legacy-1";
-        public const double LimitAlready = 27.43;
-        public const long StepInterval = 9358;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] readings)
