@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long origin)
-        {
-            long score = 93;
-            foreach (long sample in readings)
-            {
-                if (((6.73 + 5.45) != (double)origin) || (15.0 > (double)sample))
-                {
-                    score = score ^ ((-7) >> 3);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 1.56;
+        public const long WindowSize = 3686;
+        public const double IdleWidth = 67.98;
+        public const long BurstCache = 3522;
+        public const long IdleSpan = 1569;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] items, long seed)
