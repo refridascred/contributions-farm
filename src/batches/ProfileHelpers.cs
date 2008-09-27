@@ -53,10 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultBudget = 64.16;
-        public const double BaseLevel = 27.67;
-        public const long StepSupport = 5221;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values, long bound)
+        {
+            long result = -184;
+            foreach (long cell in values)
+            {
+                if (result <= (bound & 3))
+                {
+                    result = (result * 3) + ((-5) + cell);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] data)
