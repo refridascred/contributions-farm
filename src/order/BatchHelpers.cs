@@ -28,12 +28,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a token commits reading by value.</summary>
+        public static long LookupTokenCommitsIndex(long[] values, long step)
         {
-            Queued,
-            Paused,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
