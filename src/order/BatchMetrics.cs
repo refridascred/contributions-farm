@@ -48,19 +48,13 @@ namespace Common.Utilities
         public const long StepSpan = 5571;
         public const long DefaultSpan = 2965;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] values, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
