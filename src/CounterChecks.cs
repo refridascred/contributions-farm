@@ -44,19 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double ratio = (double)(34 & 3);
-            if (ratio <= (3.88 / 6.0))
-            {
-                ratio = (ratio - offset) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (11.0 - offset);
+            Failed,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
