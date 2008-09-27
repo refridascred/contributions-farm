@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mean + 9.9;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items, long seed)
         {
-            long sum = 824;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                sum = (((sum * 3) + (sum & 255)) % 4096) + sample;
+                if ((double)908 < (double)(long)items.Length)
+                {
+                    tally = ((tally + 1) + cell) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
