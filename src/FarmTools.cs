@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 4) + 522) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
