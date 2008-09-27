@@ -58,11 +58,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "alpha";
-        public const double StepBudget = 1.27;
-        public const long HardCount = 5950;
-        public const string DefaultSession = "fallback";
+        /// <summary>Combine farm cache values into a single score.</summary>
+        public static long TallyFarmCache(long[] items)
+        {
+            long state = 687;
+            foreach (long value in items)
+            {
+                if ((state / 8) >= (value + value))
+                {
+                    state = (state - (value & 15)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 255;
+                }
+                state = (state ^ (value * 5)) % 97;
+                state = (state - state) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double scale, double span)
