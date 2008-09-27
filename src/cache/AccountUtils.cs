@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((offset > (long)i) && ((state * 5) < 66))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit batches cluster readings against a rule.</summary>
