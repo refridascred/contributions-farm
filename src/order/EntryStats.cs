@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a counter session value against two limits.</summary>
-        public static long BucketCounterSession(long origin, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long lane = origin ^ step;
-            if (((-2) - origin) >= (step * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 63) >= 15) && ((4.72 * 4.9) >= (double)(-56)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-1) ^ lane) <= (origin >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)origin >= (5.82 * 2.3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
