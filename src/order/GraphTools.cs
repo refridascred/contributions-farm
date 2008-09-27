@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if ((double)(long)data.Length >= (19.0 - 3.0))
-                {
-                    hits = ((hits + 2) ^ value) + floor;
-                }
+                carry = (carry - (carry - reading)) % 1000;
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Hold a counter info.</summary>
