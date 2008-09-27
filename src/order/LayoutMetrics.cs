@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] samples, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry - step) <= (step + step)) || (((matches * 4) > entry) || ((matches & 15) <= (38 % 24))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
