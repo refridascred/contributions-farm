@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count cache farm pairs that satisfy a relation.</summary>
-        public static long PairCacheFarmCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 93;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((6.73 + 5.45) != (double)origin) || (15.0 > (double)sample))
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ ((-7) >> 3);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
