@@ -70,11 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Locked,
+            Synced,
+            Pending,
         }
     }
 }
