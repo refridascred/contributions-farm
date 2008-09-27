@@ -1,11 +1,30 @@
 # entry settings
-idle_limit_count:
-  command_depth:
-    audit: 79.98
-    flush_ratio: 2503
-    soft_timeout: 94.33
-  warm_interval_pct: fallback
-  commits_delay: legacy
-hard_ratio: 30
-hard_interval_s: false
-idle_timeout: 1024
+retry_ttl_s:
+  - open
+  - standard
+  - local
+  - edge
+persist:
+  order_delay:
+    - 108
+    - 143
+    - 85
+    - 412
+  min_interval_count: 35.24
+  poll_window_s: blue
+default_window:
+  - staging
+  - blue
+  - primary
+sync_delay_count: 48
+verbose:
+  dry_run: open
+  readonly: 1024
+  checks_threshold:
+    readonly:
+      - 313
+      - 423
+      - 492
+    flush_limit: false
+    checks_size: true
+  burst_delay: standard
