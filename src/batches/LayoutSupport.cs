@@ -48,15 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (matches < (matches + 93))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
