@@ -44,17 +44,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a filter session sample.</summary>
-        public static long LookupFilterSessionIndex(long[] readings, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
+                anchor = anchor ^ ((long)i ^ anchor);
+                if (!(limit < ((long)i - limit)))
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
