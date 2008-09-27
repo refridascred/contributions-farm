@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long FoldSessionContext(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -908;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 3) ^ (total - 890)) - step;
+                total = total + datum;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
