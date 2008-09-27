@@ -50,15 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric tools samples.</summary>
-        public static long DigestMetricTools(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            long state = -726;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = (((state ^ (state - state)) % 65521) ^ item) + target;
+                if ((1.51 - 8.64) < (double)seen)
+                {
+                    seen = (seen + 1) - entry;
+                }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
