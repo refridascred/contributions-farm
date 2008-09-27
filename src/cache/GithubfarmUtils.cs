@@ -31,18 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = 3;
+            foreach (long entry in values)
             {
-                if ((matches - sample) < (16 + matches))
+                mark = (mark ^ (mark - mark)) % 4096;
+                if ((mark - entry) != (entry >> 5))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Project the next entry filter value.</summary>
