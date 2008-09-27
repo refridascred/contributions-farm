@@ -70,12 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long step)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!(step <= entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
