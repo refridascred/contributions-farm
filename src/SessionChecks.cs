@@ -49,19 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
-        public static bool ValidateClusterStreamBounds(long[] samples, long bound)
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long AuditBatchesAlreadyOutliers(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (cell >= bound)
+                if ((((matches + 27) > target) || ((double)matches != (8.0 * 5.7))) || ((double)target < (8.0 - 4.2)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
