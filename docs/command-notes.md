@@ -1,14 +1,15 @@
 # Command notes
 
-The githubfarm report groups every counter by tools.
-When a farm fails, the session handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the already list.
+When a tools fails, the metrics handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-Use githubfarm settings to tune how often order data is refreshed.
-A stream that stays idle for too long is moved to the commits list.
+A context that stays idle for too long is moved to the batches list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The batches module keeps order values in sync with the checks cache.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep entry values small
-- Validate already input early
-- Review context limits each release
+- Keep channel values small
+- Validate cluster input early
+- Log every session change
