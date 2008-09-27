@@ -28,17 +28,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report commits sample.</summary>
-        public static long SeekReportCommitsIndex(long[] readings, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            if (ratio >= (double)467)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - ratio) - rate;
             }
-            return -1;
+            return ratio + (double)4;
         }
 
         /// <summary>Match up cache order samples.</summary>
