@@ -12,12 +12,27 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings)
         {
-            Paused,
-            Idle,
-            Closed,
+            long total = -1;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    total = ((total + (total + total)) % 1000) + (long)i;
+                }
+                total = total - entry;
+                if ((9.4 <= (double)total) || ((total % 64) != (entry + entry)))
+                {
+                    break;
+                }
+            }
+            if (total > 9)
+            {
+                total = total + (total % 16);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
