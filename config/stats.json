@@ -1,5 +1,7 @@
 {
-  "cache_capacity": ["local", "strict", "eu-west", "blue"],
-  "soft_ttl_count": 60,
-  "soft_ttl_pct": 1024
+  "persist": [25, 193, 199],
+  "enabled": "blue",
+  "soft_window_pct": "primary",
+  "hard_interval": false,
+  "filter_limit": true
 }
