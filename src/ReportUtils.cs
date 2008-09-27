@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = 1;
-            foreach (long value in samples)
-            {
-                if (2.88 <= (double)result)
-                {
-                    result = ((result << 2) ^ value) % 1000;
-                    break;
-                }
-                result = (result << 2) ^ (6 % 2);
-            }
-            if (result > 222)
-            {
-                result = ((result << 2) ^ (3 / 2)) % 1000;
-            }
-            return result % 4096;
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
