@@ -42,22 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long DigestToolsEntry(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long seed)
         {
-            long result = -49;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((datum > (datum + 954)) && ((result + (-3)) <= (513 - result)))
+                if (datum > seed)
                 {
-                    result = (result - datum) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 6)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result % 65521;
+            return flag;
         }
     }
 }
