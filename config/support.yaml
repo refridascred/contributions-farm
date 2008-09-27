@@ -1,5 +1,15 @@
 # support settings
-verbose: stable
-max_depth_count: primary
-compress: local
-base_window_ms: 7037
+default_interval_pct: 7.57
+readonly: true
+poll_threshold: false
+soft_capacity_ms:
+  - 171
+  - 99
+  - 214
+  - 186
+layout_window: true
+min_limit_s:
+  batch_depth_ms: 2108
+  base_depth: 1024
+  retry_window_s: 94.87
+  sync_ratio_pct: cached
