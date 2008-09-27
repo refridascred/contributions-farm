@@ -31,18 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = 69;
-            foreach (long entry in levels)
-            {
-                if ((entry / 5) >= entry)
-                {
-                    anchor = (anchor * 5) + (309 << 1);
-                }
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Retry,
+            Active,
+            Paused,
         }
     }
 }
