@@ -1,23 +1,4 @@
 # support settings
-compress: staging
-already_timeout: 30
-base_capacity_ms: true
-warm_limit_count: 500
-queue_threshold:
-  max_size_count: cached
-  hard_window_ms: false
-  base_size_pct:
-    buffer_ttl: cached
-    sync_ratio_pct:
-      - latest
-      - local
-      - stable
-      - primary
-    queue_capacity: 20.84
-    retry_capacity: open
-    poll_limit_ms: 500
-    commits_limit: latest
-  min_delay_s: 86.81
-  flush_timeout_s: 250
-  already_ratio: 90.24
-channel_ttl: blue
+compress: 34.57
+max_retries: true
+hard_timeout_ms: 32
