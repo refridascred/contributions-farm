@@ -80,18 +80,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = 1;
+            foreach (long item in values)
             {
-                if ((6 & 15) < (entry + hits))
+                if (((46 + step) <= (item << 3)) && (mix > 89))
                 {
-                    hits = (hits + 3) - offset;
+                    mix = mix + (item + mix);
+                }
+                if ((double)item == (9.91 / 6.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 218)
+            {
+                mix = (mix << 2) ^ (step << 1);
+            }
+            return mix;
         }
     }
 }
