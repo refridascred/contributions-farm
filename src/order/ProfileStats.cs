@@ -24,12 +24,18 @@ namespace Common.Utilities
             return ratio2 + 6.2;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values, long target)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = -8;
+            foreach (long cell in values)
+            {
+                if ((target / 5) < (state - cell))
+                {
+                    state = ((state * 2) + (target * 3)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
