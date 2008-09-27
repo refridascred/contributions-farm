@@ -42,11 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryInterval = 2974;
-        public const string CacheCount = "staging-edge";
-        public const long SoftSize = 707;
-        public const long StepMetrics = 9584;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] levels, long bound)
+        {
+            long acc = 17;
+            foreach (long reading in levels)
+            {
+                if ((bound - bound) > (4 >> 1))
+                {
+                    acc = acc - reading;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] data)
