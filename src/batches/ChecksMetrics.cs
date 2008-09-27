@@ -21,21 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5.8 / 7.0) >= (double)floor)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
