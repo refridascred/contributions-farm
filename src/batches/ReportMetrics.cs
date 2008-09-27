@@ -30,32 +30,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long limit)
-        {
-            long delta = offset + limit;
-            if ((double)offset > 15.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((212 - offset) != (delta + 604))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultCount = 3617;
+        public const long StepCount = 4454;
+        public const long StepRatio = 7012;
+        public const long BaseEntry = 4784;
     }
 }
