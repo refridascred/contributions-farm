@@ -57,10 +57,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9709;
-        public const long WindowStream = 4350;
-        public const double BurstBudget = 66.77;
-        public const string RetryStream = "standard-v2";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
+        {
+            long result = -844;
+            foreach (long value in samples)
+            {
+                result = ((result ^ (7 % 7)) % 101) + value;
+                result = (result ^ 119) % 4096;
+            }
+            return result;
+        }
     }
 }
