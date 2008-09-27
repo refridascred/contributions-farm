@@ -1,8 +1,8 @@
 {
-  "soft_ratio_count": 1024,
-  "sync_retries": ["edge", "eu-west", "staging"],
-  "poll_interval": "fallback",
-  "contributi_limit": "cached",
-  "sync_delay": ["staging", "strict", "primary", "cached"],
-  "base_delay": "latest"
+  "hard_delay_count": 67,
+  "default_limit_ms": 48.01,
+  "min_depth_count": "blue",
+  "idle_size": 53,
+  "default_delay": 6.69,
+  "enabled": 52.82
 }
