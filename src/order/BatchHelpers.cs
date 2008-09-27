@@ -28,11 +28,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
