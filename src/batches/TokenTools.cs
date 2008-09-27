@@ -18,14 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Pending,
-            Queued,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4976;
+        public const long BurstFarm = 2601;
+        public const long MinFarm = 4892;
+        public const string IdleFarm = "staging-edge";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorLimits(long[] series, long origin)
