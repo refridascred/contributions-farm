@@ -16,21 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples, long origin)
-        {
-            long result = 57;
-            foreach (long entry in samples)
-            {
-                result = result - (origin * 3);
-                result = ((result * 4) + (168 % 64)) % 65521;
-                if (origin >= entry)
-                {
-                    result = ((result * 2) + (entry << 1)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepRatio = 75.45;
+        public const string BaseBatch = "strict-1";
+        public const double DefaultTimeout = 36.77;
+        public const long LimitBatch = 1064;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
