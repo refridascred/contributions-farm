@@ -36,15 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            double weight2 = 2.13;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight2 = (((weight2 + (3.4 - weight2)) + (double)(long)i) - weight) - floor;
+                if ((item ^ matches) >= item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight2 - weight2;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
