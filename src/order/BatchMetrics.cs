@@ -34,11 +34,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 53.24;
-        public const long MinTimeout = 8692;
-        public const long HardBuffer = 2658;
-        public const string BaseSize = "staging-edge";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Fold a list of metric contributi readings.</summary>
         public static long DigestMetricContributi(long[] items)
