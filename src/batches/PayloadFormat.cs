@@ -33,38 +33,18 @@ namespace Common.Utilities
         public const long IdleCluster = 4399;
         public const double DefaultSpan = 5.32;
 
-        /// <summary>Classify a buffer context pair into a bucket.</summary>
-        public static long ClassifyBufferContext(long step, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] series, long origin)
         {
-            if (!((0.32 + 10.0) == (double)seed))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (step < (seed - seed))
+                if ((datum ^ 238) > datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (0.94 >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (step % 12))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 3) + origin;
                 }
             }
+            return matches;
         }
     }
 }
