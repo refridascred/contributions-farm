@@ -54,10 +54,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "strict-v2";
-        public const string BaseBudget = "cached-edge";
-        public const double CacheTimeout = 9.26;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxLevel = 6060;
+        public const long IdleFilter = 4221;
+        public const long BurstLevel = 5945;
+        public const long WindowDepth = 2262;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
