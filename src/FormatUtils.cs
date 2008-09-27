@@ -81,26 +81,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Look up the position of a cache already sample.</summary>
+        public static long SeekCacheAlreadyIndex(long[] levels, long target)
         {
-            long mark = 800;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((3.9 / 5.0) >= (5.49 / 8.0)))
+                if (levels[i] == target)
                 {
-                    mark = mark ^ (mark / 2);
-                }
-                if ((mark + (long)values.Length) >= datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 89)
-            {
-                mark = (mark - (-1)) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next schema notes value from a seed.</summary>
