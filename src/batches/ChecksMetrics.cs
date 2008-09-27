@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long CountAccountPayloadMatches(long[] values, long seed)
         {
-            Pending,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits > seed)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
