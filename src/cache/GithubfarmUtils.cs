@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 4391;
-        public const long SoftBudget = 9561;
-        public const long WindowFilter = 1498;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleFactor = 3089;
+        public const long BatchSession = 9205;
+        public const long LimitSession = 6743;
+        public const double RetryCount = 6.09;
+        public const long BatchRatio = 342;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 5825;
