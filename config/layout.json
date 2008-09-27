@@ -1,8 +1,13 @@
 {
-  "hard_delay_count": 67,
-  "default_limit_ms": 48.01,
-  "min_depth_count": "blue",
-  "idle_size": 53,
-  "default_delay": 6.69,
-  "enabled": 52.82
+  "strict": 36,
+  "warm_timeout": false,
+  "payload_interval": 1024,
+  "verbose": "open",
+  "poll_retries": 7923,
+  "readonly": {
+    "flush_depth": "eu-west",
+    "warm_ttl": 273,
+    "idle_capacity_pct": [490, 467],
+    "retry_threshold_count": [83, 207, 208]
+  }
 }
