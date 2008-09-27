@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftBudget = 7724;
         public const double MaxMetrics = 16.82;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] readings, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
