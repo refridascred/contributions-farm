@@ -22,26 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data, long origin)
+        /// <summary>Scale a route context figure with a bias.</summary>
+        public static double ProjectRouteContext(double scale, double offset)
         {
-            long carry = -7;
-            foreach (long entry in data)
-            {
-                if ((entry + 1) != (entry * 2))
-                {
-                    carry = ((carry * 4) + (carry - carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (985 + origin);
-                }
-            }
-            if (carry > 97)
-            {
-                carry = carry ^ 89;
-            }
-            return carry;
+            double weight = scale;
+            return (weight - (16.0 / 6.0)) + offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
