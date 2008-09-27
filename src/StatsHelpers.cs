@@ -24,12 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long CompareGraphTokenCount(long[] series)
         {
-            Done,
-            Idle,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
