@@ -27,38 +27,17 @@ namespace Common.Utilities
         public const string MaxCount = "stable";
         public const long HardDepth = 2796;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long seed)
         {
-            if ((36 & 31) > (offset * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + offset) >= (463 % 64))
+                if (series[i] <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 7) >= (809 % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(offset <= (limit + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
