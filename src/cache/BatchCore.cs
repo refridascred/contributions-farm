@@ -20,38 +20,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long floor2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long bound)
         {
-            if ((933 & 255) < (floor % 3))
+            long score = 77;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8 ^ floor) != (floor2 / 9))
+                score = (((score * 2) + (315 / 4)) % 1000) + datum;
+                if ((69 - 821) < (score << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor >= (floor2 + 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)floor < 8.4) && ((floor >> 2) < 640))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score < 958)
+            {
+                score = (score + (bound ^ bound)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of contributi editor readings.</summary>
