@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardTimeout = 4262;
+        public const long IdleCluster = 2145;
+        public const long BatchCluster = 7494;
+        public const string HardCluster = "primary-edge";
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
