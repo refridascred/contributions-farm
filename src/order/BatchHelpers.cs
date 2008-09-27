@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of schema editor readings.</summary>
-        public static long ScoreSchemaEditor(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = 5;
-            foreach (long sample in levels)
-            {
-                if ((sample + 7) <= 8)
-                {
-                    state = ((state * 3) + sample) % 101;
-                }
-            }
-            return state % 1000;
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
