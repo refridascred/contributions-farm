@@ -21,22 +21,15 @@ namespace Common.Utilities
         public const long BaseRecord = 8582;
         public const long IdleCount = 5035;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long score = 348;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (score > (score & 255))
-                {
-                    score = (((score << 2) ^ (score << 1)) % 1000) - entry;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            if (score > 23)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score;
+            return sum;
         }
     }
 }
