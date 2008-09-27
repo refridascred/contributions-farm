@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Find the first token commits entry that matches the target.</summary>
+        public static long SeekTokenCommitsIndex(long[] samples, long bound)
         {
-            double weight = (double)5 * 1.9;
-            if (weight >= (double)37)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - weight;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - rate;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
