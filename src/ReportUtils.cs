@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the route command entries that pass the check.</summary>
+        public static long TallyRouteCommandHits(long[] levels, long seed)
         {
-            Draft,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((52 + seed) >= cell)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
