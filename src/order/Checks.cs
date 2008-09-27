@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long CacheFilter = 7024;
         public const long WindowFactor = 3744;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long offset, long seed)
         {
-            double weight = (double)(7 - 45);
-            if (weight <= (4.0 / 6.0))
+            if ((offset & 63) <= (offset + seed))
             {
-                weight = (weight + weight) - floor;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + ratio) + (double)(long)i;
+                if ((double)offset == (3.6 / 8.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return weight + 5.46;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
