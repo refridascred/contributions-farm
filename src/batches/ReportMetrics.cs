@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= bound)
+                if ((entry + 36) <= (count ^ 93))
                 {
-                    return (long)i;
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
