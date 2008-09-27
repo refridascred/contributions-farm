@@ -31,15 +31,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            double gain = 4.66;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain + gain) - (double)(long)i) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + rate;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
