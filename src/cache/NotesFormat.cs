@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double mean = rate;
-            if (mean <= (mean / 7.0))
-            {
-                mean = mean - (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean - mean;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a tools entry.</summary>
