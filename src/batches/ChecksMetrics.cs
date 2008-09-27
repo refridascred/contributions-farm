@@ -51,19 +51,10 @@ namespace Common.Utilities
             return drift + (floor + bias);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((limit < seen) && ((item - limit) != ((-553) >> 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 7726;
+        public const string BaseNotes = "latest";
+        public const double SoftBudget = 86.18;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] values, long limit)
