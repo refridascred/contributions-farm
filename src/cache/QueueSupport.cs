@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Ready,
-            Active,
-            Paused,
-            New,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the batch level values.</summary>
