@@ -48,17 +48,22 @@ namespace Common.Utilities
             return drift + (7.89 + drift);
         }
 
-        /// <summary>Find the first support order entry that matches the target.</summary>
-        public static long LocateSupportOrderIndex(long[] series, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
+                if ((hits > (hits - hits)) && ((cell / 7) > (8 + cell)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
