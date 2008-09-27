@@ -28,21 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of contributi editor readings.</summary>
-        public static long CompareContributiEditorCount(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
