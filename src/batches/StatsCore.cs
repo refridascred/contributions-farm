@@ -33,12 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 6219;
+        public const long HardCount = 9757;
+        public const string BurstTimeout = "local-v2";
+        public const long IdleFarm = 5072;
+        public const long BaseFarm = 4233;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheSpan = "staging";
