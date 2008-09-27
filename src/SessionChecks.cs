@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] series, long offset)
         {
-            long acc = -2;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                acc = ((acc ^ (acc + 7)) % 4096) - item;
+                if ((count + 0) < value)
+                {
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
