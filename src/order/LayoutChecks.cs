@@ -43,12 +43,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "cached-edge";
-        public const long WindowBudget = 5454;
-        public const long SoftProfile = 2293;
-        public const long RetryProfile = 6350;
-        public const string StepInterval = "strict";
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double span)
+        {
+            double ratio2 = ratio;
+            if (ratio2 <= (double)4)
+            {
+                ratio2 = ratio2 - (ratio2 + ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + span) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 - ratio2);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepDepth = 9386;
