@@ -54,10 +54,16 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 4142;
-        public const double LimitDepth = 37.22;
-        public const long MaxScore = 2418;
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean > 0.9)
+            {
+                mean = mean + (bias / 6.0);
+            }
+            return mean + (double)64;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long floor)
