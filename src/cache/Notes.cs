@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            long acc = 177;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = (((acc << 2) ^ (sample & 63)) % 97) - target;
+                if ((double)datum <= 9.7)
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
