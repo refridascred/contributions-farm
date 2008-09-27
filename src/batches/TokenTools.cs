@@ -30,19 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload profile readings against a bound.</summary>
-        public static bool ValidatePayloadProfileRange(long[] items, long bound)
+        /// <summary>Count the stats metric entries that pass the check.</summary>
+        public static long MeasureStatsMetricMatches(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (cell != bound)
+                if (value > (count + offset))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
