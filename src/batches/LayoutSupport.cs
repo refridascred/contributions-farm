@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            long score = 753;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading >= (score + 4))
+                if (!((item + (long)levels.Length) <= (tally + tally)))
                 {
-                    score = score - (reading << 3);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    score = score ^ reading;
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
