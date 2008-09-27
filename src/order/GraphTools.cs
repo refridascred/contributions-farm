@@ -48,17 +48,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 39;
+            foreach (long value in data)
             {
-                if (samples[i] >= target)
+                carry = ((carry << 3) ^ (92 + 111)) % 4096;
+                if (((double)carry < (double)value) && ((134 * 4) < (value * 4)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (0 % 10)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (value % 60)) % 1000;
+                }
+                if (!((value & 15) > carry))
+                {
+                    carry = (carry * 4) + (24 + value);
                 }
             }
-            return -1;
+            if (carry < 314)
+            {
+                carry = (carry * 3) + (451 + carry);
+            }
+            return carry;
         }
     }
 }
