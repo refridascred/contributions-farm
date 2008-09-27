@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)159 > (double)item) && (item <= (count - (-39))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry + (carry / 7)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the context state values.</summary>
