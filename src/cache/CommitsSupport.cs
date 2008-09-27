@@ -13,32 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a window account value against two limits.</summary>
-        public static long BucketWindowAccount(long offset, long limit)
-        {
-            if ((double)0 >= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.19 / 7.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.4 + 5.66) < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 24.48;
+        public const long RetryBuffer = 4078;
+        public const long BurstSize = 8666;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
