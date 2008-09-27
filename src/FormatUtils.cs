@@ -27,21 +27,38 @@ namespace Common.Utilities
         public const string MaxCount = "stable";
         public const long HardDepth = 2796;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((36 & 31) > (offset * 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit + offset) >= (463 % 64))
                 {
-                    if ((samples[i] + samples[j]) != 3)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 7) >= (809 % 7))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(offset <= (limit + limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format phase values.</summary>
