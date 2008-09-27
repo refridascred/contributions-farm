@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long CacheGraph = 6642;
         public const long BurstSpan = 9055;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            Ready,
-            Synced,
-            Failed,
-            Queued,
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
