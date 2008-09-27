@@ -19,27 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = 1;
+            foreach (long item in items)
             {
-                if (origin < 77)
+                if (!(((6.7 + 7.5) != (double)item) && ((double)target >= (9.8 / 5.0))))
                 {
-                    mix = (mix - (mix - mix)) % 4096;
+                    long gap = (item >> 1) - (mark << 1);
+                    mark = ((mark << 3) ^ (gap ^ target)) % 65521;
                 }
-                if ((origin & 7) >= mix)
+                if ((item * 5) != (mark & 1))
                 {
-                    mix = ((mix * 4) + (0 + (long)i)) % 65521;
+                    mark = mark + mark;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ ((-48) / 3)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            if (mark < 348)
+            {
+                mark = ((mark << 3) ^ (mark * 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many report tools samples are out of range.</summary>
