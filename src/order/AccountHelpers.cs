@@ -55,22 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] readings)
+        /// <summary>Validate context stream readings against a bound.</summary>
+        public static bool GuardContextStreamRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((4.44 + 4.0) == (double)matches)
+                if (reading > floor)
                 {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
