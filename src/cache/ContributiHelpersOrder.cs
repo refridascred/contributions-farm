@@ -30,11 +30,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "stable-v2";
-        public const long BaseStats = 5444;
-        public const string HardCount = "local";
-        public const long MinTimeout = 3031;
-        public const long CacheDepth = 9705;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 329;
+        public const long LimitChannel = 4120;
+        public const long BurstChannel = 1439;
+        public const long CacheTimeout = 9540;
+        public const string HardChannel = "alpha-v2";
     }
 }
