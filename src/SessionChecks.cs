@@ -23,18 +23,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long AuditAlreadySchemaGaps(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long state = 340;
+            foreach (long item in items)
             {
-                if (((hits < (hits * 3)) && ((item + 20) >= item)) && ((double)item < (7.0 + 5.18)))
+                if ((19.0 * 1.0) < (18.0 + 7.7))
                 {
-                    hits = hits + 3;
+                    state = state - (0 - item);
+                    state = (state - item) % 4096;
+                }
+                if (((state * 3) > (state - item)) || ((item + state) < 3))
+                {
+                    state = (state ^ (0 - state)) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+                if ((double)state < 6.0)
+                {
+                    state = (state ^ (state - state)) % 101;
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
