@@ -1,7 +1,9 @@
 # entry settings
-metric_delay: 35
-burst_delay_pct: false
-poll_ratio_ms:
-  hard_capacity_pct: edge
-  max_timeout_s: 79
-  burst_ratio: true
+audit: open
+min_capacity_s: 22
+cache_ratio_pct: 60
+verbose: false
+retry_depth_pct:
+  - primary
+  - primary
+dry_run: false
