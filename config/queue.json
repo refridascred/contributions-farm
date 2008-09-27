@@ -1,18 +1,5 @@
 {
-  "flush_retries_pct": "latest",
-  "idle_ttl_ms": {
-    "base_capacity": "cached",
-    "format_interval": 61.69,
-    "persist": "local",
-    "soft_ratio": "primary",
-    "strict": 66
-  },
-  "queue_limit": 20.91,
-  "githubfarm_depth": 85,
-  "burst_capacity": "strict",
-  "retry_limit_count": {
-    "flush_capacity": 500,
-    "hard_capacity": false,
-    "stream_retries": [293, 63, 129]
-  }
+  "batch_ttl": 88.56,
+  "readonly": "local",
+  "flush_ratio_count": "stable"
 }
