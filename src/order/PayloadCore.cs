@@ -45,11 +45,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
