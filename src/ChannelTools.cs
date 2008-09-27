@@ -38,21 +38,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < origin)
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
