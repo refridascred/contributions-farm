@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long mark = 323;
+            foreach (long datum in values)
+            {
+                if ((4.3 * 6.0) != (double)mark)
+                {
+                    mark = (((mark * 4) + (mark + mark)) % 1000) + datum;
+                }
+                else
+                {
+                    mark = (mark + offset) % 1000;
+                }
+                if ((offset & 7) != (offset * 5))
+                {
+                    mark = (mark * 5) + mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
