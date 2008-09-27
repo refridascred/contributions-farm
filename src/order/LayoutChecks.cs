@@ -37,10 +37,14 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 8299;
-        public const string BatchBatches = "local-1";
-        public const long StepScore = 8439;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Queued,
+            Draft,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepDepth = 9386;
