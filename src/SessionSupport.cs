@@ -26,31 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long step)
-        {
-            if (step <= (origin + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step / 5) <= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) <= (origin + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryCount = 1.5;
+        public const double HardEditor = 90.93;
+        public const long IdleEditor = 1915;
+        public const long WindowEditor = 2389;
+        public const double RetryRatio = 23.91;
     }
 }
