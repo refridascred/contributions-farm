@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long MinCommand = 7556;
         public const long BaseSize = 213;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 8178;
+        public const string MaxLevel = "strict";
+        public const string WindowFactor = "open";
+        public const double RetryGraph = 72.06;
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double gain, double bias)
