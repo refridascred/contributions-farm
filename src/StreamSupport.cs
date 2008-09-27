@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
