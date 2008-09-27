@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long CountSessionStreamGaps(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((sample % 7) <= matches)
+                if (!(tally <= (value * 3)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
