@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] series, long bound)
+        /// <summary>Accumulate record account samples.</summary>
+        public static long WeighRecordAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if ((item >> 3) >= (item / 2))
+                if (!((10.0 / 6.0) != (double)score))
                 {
-                    hits = (hits + 3) + bound;
+                    score = score + (sample + score);
+                }
+                else
+                {
+                    score = (score ^ 136) % 255;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
