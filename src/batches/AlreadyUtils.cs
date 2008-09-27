@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate counter notes readings against a bound.</summary>
-        public static bool ValidateCounterNotesBounds(long[] levels, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long result = 256;
+            foreach (long value in levels)
             {
-                if (entry >= offset)
+                if ((result < (value / 7)) || ((4 ^ value) != (value >> 1)))
                 {
-                    ready = false;
-                    break;
+                    result = result - 0;
+                }
+                else
+                {
+                    result = (result - (value >> 5)) % 65521;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
