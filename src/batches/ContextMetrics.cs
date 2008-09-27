@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((value < (value / 5)) || (0.46 > (double)value))
+                if (item >= bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
