@@ -41,28 +41,28 @@ namespace Common.Utilities
         public const long MaxSpan = 9077;
         public const string DefaultFarm = "stable-1";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long bound, long origin)
         {
-            if (((9.5 + 6.08) <= (double)origin) && (7.7 > (double)target))
+            if (((bound - origin) <= (origin << 3)) || ((origin * 4) <= (origin + bound)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((double)target <= 16.0)
+                if ((double)bound == (2.7 - 7.12))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin - origin) > target)
+                    if ((bound & 15) != (bound & 3))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 6;
                     }
                 }
             }
