@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseBudget = 552;
         public const long MinEntry = 5970;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
