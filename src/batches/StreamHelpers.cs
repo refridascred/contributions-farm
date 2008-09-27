@@ -53,20 +53,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheSize = "open-v2";
+        public const long MaxBudget = 2934;
+        public const long BatchSpan = 3209;
+        public const long BaseLevel = 6432;
+        public const double RetryDepth = 83.43;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorOutliers(long[] levels, long floor)
