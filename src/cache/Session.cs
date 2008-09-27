@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] items)
         {
-            Active,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (sample + 398))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of contributi record readings.</summary>
