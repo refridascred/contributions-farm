@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long sum = 945;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item * 3) <= (item + sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (((sum << 3) ^ sum) % 101) + limit;
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = (sum - (sum + sum)) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
