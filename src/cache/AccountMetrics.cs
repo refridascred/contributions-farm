@@ -70,13 +70,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Look up the position of a tools metrics sample.</summary>
+        public static long LookupToolsMetricsIndex(long[] series, long bound)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
