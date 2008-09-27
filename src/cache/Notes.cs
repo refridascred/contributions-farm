@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate batches buffer readings against a bound.</summary>
+        public static bool GuardBatchesBufferRange(long[] items, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the graph status values.</summary>
