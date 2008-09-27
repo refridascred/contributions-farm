@@ -54,23 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] series, long seed)
         {
-            long state = 8;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((origin + 24) <= (origin * 3))
+                if ((value & 15) >= 324)
                 {
-                    state = ((state << 2) ^ (datum + state)) % 255;
+                    seen = (seen + 2) + seed;
                 }
-                else
-                {
-                    state = (state - (state * 3)) % 65521;
-                }
-                state = (state - (66 << 1)) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
