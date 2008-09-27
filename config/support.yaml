@@ -1,28 +1,5 @@
 # support settings
-cache_ratio_count: 53
-dry_run:
-  route_window:
-    persist: 86.77
-    metric_timeout: 30
-    default_window: 42.53
-    filter_retries: 59.47
-    max_threshold_pct: 30
-  idle_delay_ms: 88.05
-  commits_capacity: local
-  persist:
-    - 206
-    - 156
-    - 495
-  strict:
-    dry_run: 90
-    support_retries:
-      - 418
-      - 108
-      - 137
-      - 421
-    support_limit: open
-warm_limit_ms:
-  - 45
-  - 215
-  - 20
-poll_depth_ms: 1024
+batches_retries: edge
+default_retries_pct: 55.31
+audit: 68.83
+max_limit_ms: false
