@@ -1,11 +1,17 @@
 {
-  "commits_retries": 500,
-  "warm_threshold_pct": 1024,
-  "base_capacity_ms": 63.73,
-  "audit": {
-    "flush_ratio_count": "legacy",
-    "batches_window": "open",
-    "enabled": 44,
-    "cache_timeout": false
+  "sync_timeout_count": false,
+  "session_depth": 1985,
+  "default_window_ms": 12.44,
+  "stats_threshold": {
+    "warm_threshold": "open",
+    "hard_depth": false,
+    "notes_ratio": 63.72,
+    "dry_run": "eu-west",
+    "metrics_window": {
+      "token_size": 1024,
+      "default_window_count": [173, 49, 180],
+      "max_ratio": 500,
+      "filter_ttl": 9846
+    }
   }
 }
