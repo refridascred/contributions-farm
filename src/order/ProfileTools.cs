@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] values, long offset)
         {
-            double bias = (double)(-823) - scale;
-            if (bias > (double)(-2))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                bias = (bias + 0.97) - floor;
+                if (offset <= (499 - sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias + scale;
+            return tally;
         }
 
         /// <summary>Measure how many profile report samples are out of range.</summary>
