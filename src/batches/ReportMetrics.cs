@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] samples, long step)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long TallyMetricsBufferHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((entry + 36) <= (count ^ 93))
+                if (!(hits >= (item + hits)))
                 {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
