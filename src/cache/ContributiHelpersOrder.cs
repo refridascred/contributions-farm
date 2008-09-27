@@ -22,39 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long next = bound - seed;
-            if ((double)seed <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed >= (5.9 - 3.4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.0 > (double)bound) || (945 > (seed - 947)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed << 1) <= seed) || ((next * 4) != (seed + next)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
