@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 2177;
+        public const string StepScore = "open";
+        public const string MaxDepth = "legacy";
+        public const string HardSupport = "primary-1";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] items)
