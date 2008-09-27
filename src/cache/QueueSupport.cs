@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] samples, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > (hits - seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
