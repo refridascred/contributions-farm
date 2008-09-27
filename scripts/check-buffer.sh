@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge blue open; do
+for item in eu-west local latest standard; do
     log "checking ${item}"
 done
-
-mode="${1:-open}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
 
 count=0
 while [ "${count}" -lt 7 ]; do
