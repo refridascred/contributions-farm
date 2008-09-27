@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Score { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
             public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
