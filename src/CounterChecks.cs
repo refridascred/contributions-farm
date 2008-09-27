@@ -28,21 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (carry >= (51 & 31))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 4) + item) % 1000;
+                }
+                if (item >= carry)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
