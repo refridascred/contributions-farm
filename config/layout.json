@@ -1,5 +1,8 @@
 {
-  "batch_limit_s": 93.85,
-  "burst_window": true,
-  "dry_run": 83
+  "hard_ttl_s": "edge",
+  "idle_retries_s": 7203,
+  "flush_delay_s": "edge",
+  "readonly": 3,
+  "retry_capacity_count": false,
+  "idle_interval_pct": [50, 196, 9, 435]
 }
