@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            if (0.42 > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((6.0 + 10.0) <= (double)bound) && ((bound / 8) < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
