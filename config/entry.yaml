@@ -1,4 +1,5 @@
 # entry settings
-commits_window: 44.53
-poll_interval_ms: 6399
-audit: 29.16
+min_retries: false
+min_timeout_s: 28
+metrics_window: true
+cache_limit_s: false
