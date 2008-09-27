@@ -1,5 +1,5 @@
 {
-  "warm_size_count": "staging",
-  "batch_depth_pct": 27,
-  "flush_delay": "edge"
+  "default_window_s": "latest",
+  "graph_depth": "eu-west",
+  "commits_depth": false
 }
