@@ -1,9 +1,23 @@
 # support settings
-batch_ratio_count: false
-default_window_pct: latest
-base_limit: fallback
-hard_delay_count: false
-format_capacity:
-  - 67
-  - 124
-  - 40
+readonly:
+  idle_ttl_ms: 65.47
+  min_capacity_ms: 66
+  cache_capacity: false
+  audit:
+    - green
+    - fallback
+    - legacy
+  poll_ratio: false
+soft_threshold:
+  flush_limit_ms: 19
+  enabled:
+    enabled: false
+    tools_capacity: 635
+    default_interval: 1024
+    base_ratio_s: 382
+    githubfarm_limit: false
+    audit: 98
+  max_window: staging
+enabled: false
+audit: 85
+default_depth: 49
