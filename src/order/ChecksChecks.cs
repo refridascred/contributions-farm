@@ -24,19 +24,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long origin)
         {
-            double rate = (double)(856 / 3);
-            if (rate <= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate + 12.0) - span;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)3) + (double)(long)i;
-            }
-            return rate + (bias / 5.0);
+            return -1;
         }
     }
 }
