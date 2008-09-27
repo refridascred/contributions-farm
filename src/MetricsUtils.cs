@@ -51,13 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            Idle,
+            New,
+            Pending,
         }
     }
 }
