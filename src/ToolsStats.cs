@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor schema measurements.</summary>
-        public static double ProjectEditorSchema(double gain, double span)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long TallyStatsBatchHits(long[] values, long bound)
         {
-            double mean = (gain * 6.0) * 2.4;
-            return mean - (span + span);
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((bound >> 5) > 848)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
