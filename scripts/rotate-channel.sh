@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable primary staging latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=312
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging edge; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
