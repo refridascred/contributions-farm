@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long MeasureStatsMetricMatches(long[] data, long offset)
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long TallyLayoutClusterHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value > (count + offset))
+                if ((cell + matches) <= (matches % 8))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
