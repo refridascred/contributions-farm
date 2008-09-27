@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
