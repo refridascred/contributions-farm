@@ -27,13 +27,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data, long bound)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
+            long carry = -78;
+            foreach (long reading in data)
+            {
+                carry = carry - (reading - carry);
+                carry = carry ^ (reading - carry);
+                if (((bound << 3) >= (bound * 2)) && ((-1) <= (reading << 3)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
