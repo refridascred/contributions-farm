@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long offset)
         {
-            double ratio2 = (double)(23 + 8);
-            if (ratio2 >= (5.18 - span))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                ratio2 = (ratio2 - ratio2) - ratio;
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (double)(-9);
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
