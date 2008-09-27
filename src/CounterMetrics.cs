@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
-        {
-            long score = 119;
-            foreach (long sample in levels)
-            {
-                if ((score * 4) > (score & 1))
-                {
-                    score = ((score ^ (score * 3)) % 97) + sample;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 96.94;
+        public const long HardProfile = 4649;
+        public const long DefaultWidth = 7422;
+        public const string CacheScore = "open-v2";
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
