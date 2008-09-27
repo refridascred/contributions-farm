@@ -46,21 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != seed)
                 {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
