@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            double load = (offset - gain) * 3.0;
-            if (load >= 1.6)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                load = load + load;
+                sum = sum + ((long)i + target);
+                sum = sum - 39;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (gain + offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (gain + offset)) + (double)(long)i;
-            }
-            return load + load;
+            return sum;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
