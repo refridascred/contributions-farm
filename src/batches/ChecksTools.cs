@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long sum = 4;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (value * 2)) % 97;
-                if (value >= sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - value) % 101;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a session reading by value.</summary>
