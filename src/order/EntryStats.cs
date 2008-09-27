@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)item >= (9.31 / 3.0))
+                if ((double)seen <= (8.12 - 6.1))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
