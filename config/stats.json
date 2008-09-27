@@ -1,8 +1,7 @@
 {
-  "record_ttl": 2589,
-  "flush_capacity": false,
-  "strict": "blue",
-  "warm_interval_s": "fallback",
-  "metric_window": 500,
-  "base_interval_pct": ["edge", "cached", "local"]
+  "hard_interval_pct": [52, 332],
+  "cache_delay_s": 100,
+  "burst_threshold_ms": [339, 418],
+  "verbose": "fallback",
+  "window_threshold": false
 }
