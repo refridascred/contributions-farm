@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long StepLayout = 8710;
         public const double DefaultLayout = 27.34;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
