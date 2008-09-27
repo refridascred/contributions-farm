@@ -1,29 +1,10 @@
 # entry settings
-persist: 97.84
-payload_ratio: cached
-record_depth: stable
-burst_size_count:
-  min_retries_pct:
-    account_interval: fallback
-    compress:
-      - green
-      - edge
-      - eu-west
-    persist:
-      - fallback
-      - legacy
-      - staging
-    notes_capacity: 23
-    order_threshold:
-      - 153
-      - 103
-  cache_ratio_pct: 500
-  soft_ttl: 7613
-  strict: open
-  checks_retries: cached
-sync_depth_s: standard
-dry_run:
-  batch_threshold: primary
-  soft_ratio_count: 85.02
-  flush_size_pct: 26.56
-  checks_timeout: 1024
+flush_interval_s: standard
+session_threshold: latest
+profile_window:
+  base_threshold_ms: eu-west
+  idle_ttl_ms: 27
+  command_threshold: 3610
+  flush_capacity_count: 6.98
+strict: stable
+default_window_s: eu-west
