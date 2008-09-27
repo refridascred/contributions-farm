@@ -24,18 +24,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < hits)
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of session entries.</summary>
