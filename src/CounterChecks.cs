@@ -48,19 +48,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long floor)
         {
-            long acc = 445;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 4) + (acc ^ reading)) % 255;
+                if ((double)count >= 14.0)
+                {
+                    count = ((count + 3) + cell) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < 54)
-            {
-                acc = (acc + (target % 10)) % 1000;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
