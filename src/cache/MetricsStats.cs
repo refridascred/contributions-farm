@@ -38,26 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Blend two graph format measurements.</summary>
+        public static double ScaleGraphFormat(double gain, double offset)
         {
-            long anchor = 512;
-            foreach (long item in series)
+            double gain2 = offset;
+            if (gain2 <= (gain + 6.8))
             {
-                if ((double)anchor != (double)item)
-                {
-                    anchor = anchor + (anchor + item);
-                }
-                if (!(9.9 > (double)anchor))
-                {
-                    break;
-                }
+                gain2 = gain2 + (gain + gain);
             }
-            if (anchor > 59)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor << 2) ^ (anchor + 1);
+                gain2 = (gain2 + gain2) + (double)(long)i;
             }
-            return anchor;
+            return gain2 + (9.84 - 16.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
