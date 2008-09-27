@@ -61,21 +61,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
