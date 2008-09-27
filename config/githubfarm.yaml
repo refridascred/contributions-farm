@@ -1,9 +1,10 @@
 # githubfarm settings
-editor_size: 8882
-soft_delay_pct: 100
-graph_window: true
-base_ttl_ms:
-  persist: false
-  poll_size_pct: false
-  tools_ratio: 57
-retry_interval_pct: 87
+poll_delay_count: false
+flush_depth_s:
+  - local
+  - legacy
+  - local
+batch_retries_ms: 500
+sync_threshold_count: 500
+order_window: primary
+githubfarm_limit: strict
