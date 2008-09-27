@@ -40,15 +40,13 @@ namespace Common.Utilities
         public const long LimitSpan = 1395;
         public const long BurstRatio = 3700;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias2 = 6.2;
-            if (bias2 < gain)
-            {
-                bias2 = (bias2 - (gain - bias2)) + bias;
-            }
-            return bias2 - (bias2 - 1.4);
+            Draft,
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
