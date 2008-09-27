@@ -1,31 +1,21 @@
 # githubfarm settings
-payload_threshold: legacy
-warm_ratio_count: primary
-sync_ratio_count: false
-warm_delay_count:
-  flush_limit_pct: false
-  compress:
-    hard_ratio_count: 30
-    dry_run: 500
-    retry_limit: 58.58
-    enabled:
-      - open
-      - staging
-    contributi_ttl: false
-  warm_retries_s:
-    soft_timeout:
-      - 360
-      - 398
-      - 276
-    default_limit:
-      - 432
-      - 365
-      - 130
-      - 319
-    base_size: 11.94
-  metric_delay: stable
-  cache_timeout_pct: local
-flush_size:
-  - latest
-  - staging
-  - local
+base_retries_s:
+  verbose:
+    - cached
+    - open
+  payload_depth:
+    compress: edge
+    context_threshold:
+      - legacy
+      - strict
+      - local
+    sync_size_ms: 30
+  window_window: 90
+  warm_threshold_pct:
+    - fallback
+    - eu-west
+    - fallback
+  compress: 1
+warm_limit_ms: open
+batch_window_ms: fallback
+notes_threshold: standard
