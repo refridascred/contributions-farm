@@ -37,23 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two filter support measurements.</summary>
-        public static double BlendFilterSupport(double gain, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            double bias = offset;
-            if (bias < bias)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (gain - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (gain - 3.3)) + (double)(long)i;
-            }
-            return bias + (gain / 4.0);
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
