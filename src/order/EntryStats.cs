@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Grade a counter session value against two limits.</summary>
+        public static long BucketCounterSession(long origin, long step)
         {
-            long total = 94;
-            foreach (long entry in items)
+            long lane = origin ^ step;
+            if (((-2) - origin) >= (step * 5))
             {
-                if ((72 <= total) || (((long)items.Length + entry) > total))
+                return 8;
+            }
+            else
+            {
+                if (((origin & 63) >= 15) && ((4.72 * 4.9) >= (double)(-56)))
                 {
-                    total = ((total * 2) + (entry - 68)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ (total << 3)) % 101;
+                    if (((-1) ^ lane) <= (origin >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)origin >= (5.82 * 2.3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
