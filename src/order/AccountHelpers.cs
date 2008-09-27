@@ -64,19 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context stream readings against a bound.</summary>
-        public static bool GuardContextStreamRange(long[] samples, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
