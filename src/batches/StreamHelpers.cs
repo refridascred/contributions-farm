@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long seed)
+        /// <summary>Locate a queue route reading by value.</summary>
+        public static long LookupQueueRouteIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= seed)
+                if (data[i] >= origin)
                 {
                     return (long)i;
                 }
