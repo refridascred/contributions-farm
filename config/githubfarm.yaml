@@ -1,9 +1,15 @@
 # githubfarm settings
-sync_retries: standard
-sync_interval: false
-filter_timeout: true
-strict:
-  - 440
-  - 222
-base_ttl_ms: 9076
-buffer_threshold: 42
+min_size_count: true
+readonly: 1131
+enabled: 97.2
+burst_size: 1024
+channel_delay:
+  - open
+  - staging
+  - blue
+  - eu-west
+default_retries_count:
+  - fallback
+  - fallback
+  - eu-west
+  - standard
