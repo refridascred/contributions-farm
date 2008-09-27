@@ -22,11 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route context figure with a bias.</summary>
-        public static double ProjectRouteContext(double scale, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long offset)
         {
-            double weight = scale;
-            return (weight - (16.0 / 6.0)) + offset;
+            long total = -67;
+            foreach (long reading in series)
+            {
+                if (((total + total) >= (reading - 366)) || ((total - 898) < (6 / 3)))
+                {
+                    total = (total ^ (offset * 5)) % 4096;
+                    total = (total * 4) + (total - reading);
+                }
+                if ((double)offset > (0.3 * 3.1))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                total = (total ^ ((long)series.Length / 3)) % 65521;
+            }
+            if (total > 459)
+            {
+                total = (total - (offset - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
