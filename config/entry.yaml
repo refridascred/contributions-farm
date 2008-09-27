@@ -1,30 +1,9 @@
 # entry settings
-retry_ttl_s:
-  - open
-  - standard
-  - local
-  - edge
-persist:
-  order_delay:
-    - 108
-    - 143
-    - 85
-    - 412
-  min_interval_count: 35.24
-  poll_window_s: blue
-default_window:
-  - staging
-  - blue
-  - primary
-sync_delay_count: 48
-verbose:
-  dry_run: open
-  readonly: 1024
-  checks_threshold:
-    readonly:
-      - 313
-      - 423
-      - 492
-    flush_limit: false
-    checks_size: true
-  burst_delay: standard
+max_timeout_pct: standard
+verbose: 22.47
+batches_interval:
+  - 43
+  - 55
+  - 177
+  - 50
+warm_ratio_pct: 500
