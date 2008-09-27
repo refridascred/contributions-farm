@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long score = -179;
-            foreach (long cell in values)
-            {
-                if (((2 + 3) != (score + 9)) || ((double)origin < 8.0))
-                {
-                    score = score + (97 + (long)values.Length);
-                }
-                else
-                {
-                    score = score ^ (origin + origin);
-                }
-                if ((12.0 + 2.77) == (double)cell)
-                {
-                    break;
-                }
-            }
-            if (score > 0)
-            {
-                score = ((score << 2) ^ origin) % 97;
-            }
-            return score % 4096;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
