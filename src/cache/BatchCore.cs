@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] series, long bound)
         {
-            double weight2 = weight;
-            if (weight2 > (weight2 - weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - (double)4;
+                if ((series[i] == bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + floor;
-            }
-            return weight2 + weight2;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
