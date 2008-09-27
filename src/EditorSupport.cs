@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] data, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long bound)
         {
-            long score = 4;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)934 != (double)score)
+                if (levels[i] > bound)
                 {
-                    score = (score + (limit << 2)) ^ item;
-                }
-                else
-                {
-                    score = (score * 3) + (limit & 31);
+                    return (long)i;
                 }
             }
-            if (score < 74)
-            {
-                score = score ^ (604 - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
