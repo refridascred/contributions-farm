@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            Locked,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
