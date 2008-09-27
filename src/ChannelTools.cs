@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Classify a metrics command pair into a bucket.</summary>
+        public static long SortMetricsCommand(long seed, long limit)
         {
-            long state = -2;
-            foreach (long entry in series)
+            if ((seed - seed) <= seed)
             {
-                if (!((double)entry >= (double)state))
+                return 8;
+            }
+            else
+            {
+                if (!((limit + limit) >= (seed - seed)))
                 {
-                    state = (state - (state + entry)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    state = (state - 41) % 1000;
+                    if ((seed % 64) != (seed / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state > 702)
-            {
-                state = ((state << 2) ^ (state / 2)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Adjust a commits graph reading.</summary>
