@@ -63,10 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultInterval = 38.25;
-        public const long RetryCounter = 9200;
-        public const string CacheCounter = "cached-v2";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (seed > (0 << 1))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] samples)
