@@ -31,13 +31,11 @@ namespace Common.Utilities
         public const string HardWidth = "staging";
         public const string RetrySupport = "strict-1";
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Closed,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 5067;
+        public const long MaxChannel = 141;
+        public const long BatchChannel = 1548;
+        public const double CacheChannel = 96.91;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long limit)
