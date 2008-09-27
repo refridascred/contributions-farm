@@ -56,21 +56,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long step = (sum + sum) - (sum / 3);
+                if (((double)step <= (9.0 + 0.54)) || ((step + (long)i) < sum))
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    step = (step - sum) % 101;
                 }
+                else
+                {
+                    sum = (sum << 3) ^ (long)i;
+                }
+                if (!((bound + step) == (sum * 2)))
+                {
+                    sum = sum - step;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
