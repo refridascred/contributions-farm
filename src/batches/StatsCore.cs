@@ -16,21 +16,17 @@ namespace Common.Utilities
             return mean - (double)331;
         }
 
-        /// <summary>Compare every pair of metrics commits readings.</summary>
-        public static long OverlapMetricsCommitsCount(long[] data)
+        /// <summary>Look up the position of a order githubfarm sample.</summary>
+        public static long LookupOrderGithubfarmIndex(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < origin)
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
