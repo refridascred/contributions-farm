@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 59.55;
-        public const string MinScore = "strict";
-        public const double LimitGraph = 42.7;
-        public const double LimitInterval = 69.3;
-        public const long BurstGraph = 5464;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((39 % 5) >= (tally ^ value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] samples)
