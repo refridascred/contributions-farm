@@ -63,22 +63,19 @@ namespace Common.Utilities
         public const string BaseNotes = "latest";
         public const double SoftBudget = 86.18;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((long)values.Length != (23 & 1))
+                if (entry != target)
                 {
-                    count = ((count + 1) + cell) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
