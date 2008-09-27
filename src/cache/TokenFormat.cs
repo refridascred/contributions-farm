@@ -37,17 +37,26 @@ namespace Common.Utilities
             return weight2 - (5.0 * 1.34);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 54;
+            foreach (long datum in readings)
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                if ((342 - 48) == (datum + datum))
                 {
-                    return (long)i;
+                    acc = (acc + (163 + offset)) % 1000;
+                }
+                if ((offset ^ offset) == (offset - datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc << 2) ^ offset;
+            }
+            return acc;
         }
     }
 }
