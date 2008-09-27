@@ -46,18 +46,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels, long seed)
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long AuditAlreadyEntryHits(long[] samples)
         {
-            long total = -966;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((252 - total) < total)
+                if (matches <= (matches + 56))
                 {
-                    total = (((total << 3) ^ (seed * 5)) % 97) ^ sample;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
