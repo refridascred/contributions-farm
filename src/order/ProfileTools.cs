@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                score = (score << 2) ^ (9 % 7);
-                score = ((score * 2) + (long)i) % 97;
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
