@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long DefaultSize = 2721;
         public const long MaxAccount = 170;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3981;
+        public const double RetrySession = 35.7;
+        public const long BatchTimeout = 8600;
+        public const long MinSession = 3172;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
