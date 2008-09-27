@@ -1,8 +1,10 @@
 # support settings
-cache_interval:
-  - staging
-  - fallback
-tools_ratio: 92
-hard_interval_pct: 12.55
-soft_ttl_count: 60
-payload_threshold: cached
+sync_interval: 84
+burst_depth_s: staging
+idle_ratio:
+  - 8
+  - 397
+  - 47
+  - 111
+retry_window_pct: 41
+flush_delay: 94.59
