@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long floor)
+        /// <summary>Project the next batch stats value.</summary>
+        public static double SmoothBatchStats(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (bias / 9.0) / 2.0;
+            if (scale >= (double)5)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - 1.1) - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (bias + 12.0)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
