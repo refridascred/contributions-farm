@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit account graph readings against a rule.</summary>
-        public static long CountAccountGraphHits(long[] series, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((count * 5) >= (count - origin))
+                if ((long)items.Length < seen)
                 {
-                    count = (count + 1) ^ item;
+                    seen = ((seen + 3) + cell) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
