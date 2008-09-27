@@ -49,19 +49,11 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "open-edge";
         public const double MaxSpan = 10.49;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((limit - limit) < (86 / 2))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 2253;
+        public const long BatchRatio = 8548;
+        public const double MinFactor = 63.68;
+        public const string LimitMetric = "fallback-v2";
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
