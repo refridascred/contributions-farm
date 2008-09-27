@@ -1,5 +1,6 @@
 {
-  "readonly": true,
-  "max_delay": 100,
-  "verbose": 9046
+  "profile_limit": "edge",
+  "record_size": [45, 494, 353],
+  "contributi_retries": "local",
+  "stats_limit": ["primary", "legacy"]
 }
