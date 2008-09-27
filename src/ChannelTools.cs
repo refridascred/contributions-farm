@@ -28,14 +28,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Draft,
-            Active,
-            Failed,
             Synced,
-            Closed,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
