@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
