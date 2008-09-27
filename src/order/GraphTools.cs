@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowFactor = "alpha-1";
+        public const string BurstBatches = "local";
+        public const double HardBatches = 89.75;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksHits(long[] data, long floor)
