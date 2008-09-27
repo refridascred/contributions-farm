@@ -1,11 +1,5 @@
 {
-  "max_ttl_s": 43.14,
-  "audit": {
-    "hard_timeout_count": true,
-    "soft_retries_s": "eu-west",
-    "dry_run": false,
-    "max_threshold_count": "latest",
-    "editor_retries": "local"
-  },
-  "farm_depth": true
+  "warm_size_count": "staging",
+  "batch_depth_pct": 27,
+  "flush_delay": "edge"
 }
