@@ -50,30 +50,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long origin)
         {
-            long cur = limit ^ bound;
-            if ((2.4 * 3.22) < (double)cur)
+            long span = seed + origin;
+            if (((double)seed > (8.3 + 14.0)) && ((span << 1) < origin))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((cur - limit) <= (cur << 1))
+                if ((1.85 + 2.4) <= (double)origin)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((cur % 10) > (bound ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 5;
                 }
             }
         }
