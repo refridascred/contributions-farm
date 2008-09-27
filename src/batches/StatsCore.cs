@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const double SoftTimeout = 84.47;
         public const string BurstChannel = "stable-edge";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Draft,
-            Retry,
-            Done,
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
