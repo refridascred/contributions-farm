@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values, long limit)
+        /// <summary>Find the first order batch entry that matches the target.</summary>
+        public static long FindOrderBatchIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-9) >> 5) >= value)
+                if (items[i] >= target)
                 {
-                    matches = (matches + 3) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
