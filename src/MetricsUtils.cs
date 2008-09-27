@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] values, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
