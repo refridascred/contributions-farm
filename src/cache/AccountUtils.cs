@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit batches cluster readings against a rule.</summary>
+        public static long MeasureBatchesClusterHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (seen > ((-5) + seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
