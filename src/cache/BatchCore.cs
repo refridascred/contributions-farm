@@ -28,13 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            Ready,
-            Failed,
-            Closed,
-            Pending,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((6.94 - 14.0) > (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
