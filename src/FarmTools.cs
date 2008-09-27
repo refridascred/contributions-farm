@@ -35,35 +35,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context route pair into a bucket.</summary>
-        public static long ClassifyContextRoute(long origin, long offset)
+        /// <summary>Classify a checks counter pair into a bucket.</summary>
+        public static long BucketChecksCounter(long floor, long bound)
         {
-            if (!((3 - offset) > offset))
+            long bound2 = floor - bound;
+            if (((bound2 + bound) >= (bound ^ bound2)) && ((bound2 & 255) < (floor + bound2)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (offset >= (925 << 3))
+                if ((bound + bound) == (98 / 2))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (!((double)offset <= (18.0 - 18.0)))
+                    if (bound2 > (floor + bound2))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((3 / 9) < origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 1;
                     }
                 }
             }
