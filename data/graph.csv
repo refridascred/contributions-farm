@@ -1,9 +1,7 @@
-id,ratio,label,level,active
-1,692,open,57.63,55.2
-2,stable,572,38,edge
-3,80.46,blue,76.66,88.89
-4,176,local,stable,90.34
-5,893,strict,cached,283
-6,856,70.97,30.84,137
-7,943,350,blue,fallback
-8,19.3,37.52,17.81,48.79
+id,level,rank
+1,staging,816
+2,32.28,169
+3,29.22,923
+4,878,48.25
+5,709,cached
+6,11.32,standard
