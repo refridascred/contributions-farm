@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Measure how many notes editor samples are out of range.</summary>
+        public static long CountNotesEditorHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sample - 36) != (8 % 8))
+                if (5.4 > (double)reading)
                 {
-                    count = count + 2;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
