@@ -22,13 +22,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
