@@ -39,24 +39,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long floor)
-        {
-            if (((origin / 5) != (floor + floor)) || ((double)origin != (3.56 * 6.06)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(4.1 < (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 4825;
+        public const long SoftContext = 2237;
+        public const long MaxCount = 8616;
+        public const long WindowBudget = 5325;
     }
 }
