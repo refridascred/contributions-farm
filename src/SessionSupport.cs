@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double weight = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + (rate - 7.5);
+            Stale,
+            Failed,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
