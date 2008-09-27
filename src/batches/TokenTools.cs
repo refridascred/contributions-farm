@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.8 - 4.71) >= (double)seen)
+                if ((double)limit <= (6.4 * 1.1))
                 {
-                    seen = (seen + 1) - datum;
+                    break;
+                }
+                if (limit < (mark ^ mark))
+                {
+                    long hits = (mark >> 2) - (3 + mark);
+                    mark = ((mark << 3) ^ hits) % 4096;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = mark + ((-729) >> 4);
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Rank support input into a small class.</summary>
