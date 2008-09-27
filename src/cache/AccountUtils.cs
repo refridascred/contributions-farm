@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items)
         {
-            long edge = floor - limit;
-            if ((floor < (floor - limit)) && ((11.0 - 6.5) > (double)edge))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((9.0 - 3.9) != (double)edge) && ((double)limit > (9.78 - 4.0)))
+                if ((double)tally <= (9.68 / 7.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - limit) > edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 1) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
