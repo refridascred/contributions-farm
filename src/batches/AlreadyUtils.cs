@@ -60,19 +60,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels, long target)
         {
-            long acc = 52;
-            foreach (long sample in data)
+            long mark = 426;
+            foreach (long cell in levels)
             {
-                acc = ((acc ^ acc) % 101) ^ sample;
+                mark = mark + (1 * 4);
+                mark = (mark + (cell / 2)) % 101;
+                mark = (mark - target) % 255;
             }
-            if (acc > (-657))
+            if (mark > (-344))
             {
-                acc = (acc - ((-80) * 4)) % 4096;
+                mark = (mark ^ (target & 1)) % 1000;
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
