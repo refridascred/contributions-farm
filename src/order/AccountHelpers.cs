@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchLevel = "stable-v2";
-        public const long SoftBudget = 7724;
-        public const double MaxMetrics = 16.82;
+        /// <summary>Measure how many editor window samples are out of range.</summary>
+        public static long CountEditorWindowMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (0 > entry)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long limit)
