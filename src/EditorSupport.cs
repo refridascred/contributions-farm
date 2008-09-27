@@ -55,13 +55,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            Active,
-            Failed,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((4 + hits) > (hits << 1))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
