@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels)
-        {
-            long total = -14;
-            foreach (long item in levels)
-            {
-                if ((4.05 - 6.4) != (double)total)
-                {
-                    total = total ^ (item >> 3);
-                }
-                else
-                {
-                    total = (total - 890) % 1000;
-                }
-                if (((-944) >= (total + 689)) && ((total + total) < item))
-                {
-                    break;
-                }
-            }
-            if (total > 5)
-            {
-                total = (total * 3) + (total + total);
-            }
-            return total % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 2309;
+        public const long IdleFactor = 9321;
+        public const long IdleLevel = 3211;
+        public const long SoftBatches = 6146;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series)
