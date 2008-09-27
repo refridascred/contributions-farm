@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 5537;
-        public const long MinAccount = 2142;
-        public const long BurstAccount = 5478;
-        public const string CacheAccount = "local-v2";
-        public const long LimitScore = 7639;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6638;
+        public const string CacheToken = "standard-1";
+        public const long MaxToken = 3305;
+        public const string SoftTimeout = "primary-edge";
+        public const string WindowDepth = "cached-1";
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long GradeCommits(long bound, long origin)
