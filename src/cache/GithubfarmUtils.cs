@@ -19,14 +19,16 @@ namespace Common.Utilities
         public const long DefaultWidth = 6669;
         public const long IdleScore = 5125;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
+        public static long StepGithubfarmContributi(long seed)
         {
-            Failed,
-            Pending,
-            Idle,
-            Paused,
-            Draft,
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark + (seed << 3)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Project the next layout value.</summary>
