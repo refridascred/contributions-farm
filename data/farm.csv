@@ -1,6 +1,8 @@
-id,count,level,state,ratio
-1,64.05,329,981,881
-2,495,209,strict,70.28
-3,13.97,41.73,875,green
-4,37.08,233,staging,65.29
-5,eu-west,664,29.26,primary
+id,ratio,weight
+1,793,580
+2,60.27,4.14
+3,0.12,edge
+4,963,64.06
+5,legacy,12.69
+6,primary,blue
+7,fallback,31.5
