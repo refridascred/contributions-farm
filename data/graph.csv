@@ -1,9 +1,8 @@
-id,score,ratio,weight,count
-1,177,101,98.43,staging
-2,22.22,782,standard,stable
-3,cached,strict,406,legacy
-4,primary,9.93,green,latest
-5,stable,54.46,standard,73.47
-6,fallback,835,63.57,standard
-7,169,82.1,782,25.29
-8,latest,open,11,strict
+id,region,score,ratio,label
+1,legacy,fallback,786,35.99
+2,cached,primary,213,42.59
+3,edge,66.25,27.49,59.92
+4,901,2.84,601,285
+5,legacy,201,842,70.32
+6,628,786,96.3,96.05
+7,38.15,55.33,511,746
