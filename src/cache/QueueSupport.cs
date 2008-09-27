@@ -23,20 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = 1;
-            foreach (long item in series)
-            {
-                mark = (mark - (32 << 2)) % 97;
-                mark = (mark ^ (item & 7)) % 65521;
-            }
-            if (mark > 34)
-            {
-                mark = (mark + (mark + mark)) % 4096;
-            }
-            return mark % 97;
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
