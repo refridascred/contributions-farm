@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session support readings against a rule.</summary>
-        public static long AuditSessionSupportGaps(long[] readings, long seed)
+        /// <summary>Validate metric format readings against a bound.</summary>
+        public static bool ValidateMetricFormatLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (((((-549) + (-43)) >= datum) || (seed < (seen & 255))) || ((datum % 24) > datum))
+                if (entry < offset)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the record state values.</summary>
