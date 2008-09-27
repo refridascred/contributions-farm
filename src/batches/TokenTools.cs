@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up metrics buffer samples.</summary>
-        public static long CompareMetricsBufferCount(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 945;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item * 3) <= (item + sum))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum << 3) ^ sum) % 101) + limit;
                 }
+                sum = (sum - (sum + sum)) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
