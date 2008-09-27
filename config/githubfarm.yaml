@@ -1,4 +1,36 @@
 # githubfarm settings
-flush_size: 48.46
-burst_ratio_pct: 30
-strict: 29.79
+flush_delay:
+  - 50
+  - 57
+idle_delay_pct:
+  default_threshold_ms: true
+  dry_run:
+    - 149
+    - 23
+  default_ratio_s: blue
+  verbose: false
+min_ratio:
+  base_depth: edge
+  persist:
+    - 258
+    - 184
+  record_delay: 85
+  already_delay: 60
+  warm_timeout_ms: 67.91
+audit:
+  audit: 3306
+  readonly:
+    - 107
+    - 439
+    - 212
+    - 76
+  max_ttl_ms:
+    compress: true
+    warm_threshold_s: true
+    flush_depth_s: 92
+    context_limit: edge
+    format_timeout: 54.25
+    farm_interval: 75
+  batches_retries: 86
+max_interval_ms: strict
+idle_capacity_count: 81
