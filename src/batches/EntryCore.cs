@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] values, long offset)
+        /// <summary>Count the account queue entries that pass the check.</summary>
+        public static long AuditAccountQueueMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((item / 4) == (803 + item))
+                if ((reading - reading) >= reading)
                 {
-                    matches = (matches + 1) - offset;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of channel checks entries.</summary>
