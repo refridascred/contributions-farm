@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            Dropped,
-            Locked,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
