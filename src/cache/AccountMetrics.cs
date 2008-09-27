@@ -55,27 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long result = -9;
-            foreach (long entry in values)
-            {
-                if ((result - entry) > result)
-                {
-                    result = ((result * 3) + (result & 255)) % 1000;
-                }
-                result = (result + 1) % 255;
-                if (result <= (entry / 7))
-                {
-                    break;
-                }
-            }
-            if (result > 73)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
