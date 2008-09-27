@@ -54,23 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                carry = (carry + (reading + reading)) % 101;
-                if (((-200) ^ reading) != (81 ^ reading))
+                if ((value << 3) > value)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
