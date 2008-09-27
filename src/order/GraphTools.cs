@@ -60,18 +60,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] samples, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((value >= (seen + value)) && (seen < value)))
+                if (!((reading >> 1) > 14))
                 {
-                    seen = (seen + 3) + seed;
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
