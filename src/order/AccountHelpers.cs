@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long SoftBudget = 7724;
         public const double MaxMetrics = 16.82;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            New,
-            Pending,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score - (long)i;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
