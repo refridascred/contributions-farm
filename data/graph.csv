@@ -1,7 +1,6 @@
-id,level,rank
-1,staging,816
-2,32.28,169
-3,29.22,923
-4,878,48.25
-5,709,cached
-6,11.32,standard
+id,region,ratio,score
+1,34.77,57.0,491
+2,627,54,114
+3,72.12,83.53,98.25
+4,green,blue,278
+5,green,271,standard
