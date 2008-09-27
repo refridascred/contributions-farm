@@ -14,12 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] values)
         {
-            Pending,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)hits < 3.67)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
