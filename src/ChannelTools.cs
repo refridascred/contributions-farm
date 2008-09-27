@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Active,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
