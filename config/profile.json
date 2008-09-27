@@ -1,5 +1,16 @@
 {
-  "compress": 1024,
-  "hard_delay_pct": true,
-  "burst_threshold_ms": "staging"
+  "hard_size_ms": "stable",
+  "context_window": [125, 13, 197, 383],
+  "cache_limit": "edge",
+  "max_ratio_ms": ["open", "blue"],
+  "farm_interval": 3826,
+  "sync_capacity_pct": {
+    "idle_ttl_ms": 72.4,
+    "soft_threshold_pct": 44,
+    "default_ratio": {
+      "idle_timeout": ["eu-west", "local", "fallback", "cached"],
+      "cache_delay_pct": ["standard", "strict"],
+      "soft_window": 60
+    }
+  }
 }
