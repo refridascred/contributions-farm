@@ -55,11 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Adjust a stream session reading.</summary>
+        public static double AdjustStreamSession(double weight, double floor)
         {
-            double gain = (double)(585 % 97);
-            return ((gain + gain) + ratio) + bias;
+            double weight2 = weight;
+            return (weight2 + weight2) + floor;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
