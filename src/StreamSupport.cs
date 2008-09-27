@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long RetryMetric = 8629;
         public const double MinWidth = 7.44;
 
-        /// <summary>Locate a layout profile reading by value.</summary>
-        public static long SeekLayoutProfileIndex(long[] values, long limit)
+        /// <summary>Adjust a profile githubfarm reading.</summary>
+        public static double BlendProfileGithubfarm(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = rate;
+            if (scale < (double)303)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)80) + bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale / 7.0)) + (double)(long)i;
+            }
+            return scale - 0.23;
         }
     }
 }
