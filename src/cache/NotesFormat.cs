@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] values, long seed)
         {
-            Done,
-            Draft,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seed > (9.84 * 6.4))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record snapshot.</summary>
