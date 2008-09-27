@@ -1,6 +1,8 @@
 {
-  "route_threshold": 100,
-  "base_ratio_ms": 6719,
-  "readonly": "primary",
-  "hard_retries_pct": 30
+  "hard_ratio_count": false,
+  "audit": "primary",
+  "format_timeout": false,
+  "idle_threshold": false,
+  "sync_limit_pct": "blue",
+  "order_timeout": true
 }
