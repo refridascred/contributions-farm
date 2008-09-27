@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] items, long seed)
         {
-            long mark = 591;
-            foreach (long sample in readings)
+            long acc = -8;
+            foreach (long entry in items)
             {
-                if ((mark - mark) > sample)
+                if (!(entry >= (entry - seed)))
                 {
-                    mark = (mark + (278 * 3)) % 65521;
+                    acc = (acc << 3) ^ (entry ^ acc);
+                }
+                if ((entry >> 5) < seed)
+                {
+                    acc = (acc - (seed / 2)) % 255;
                 }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
