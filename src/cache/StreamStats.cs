@@ -49,20 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long limit)
         {
-            long sum = 8;
-            foreach (long item in data)
+            long acc = 0;
+            foreach (long datum in series)
             {
-                sum = sum - item;
-                if (((sum & 31) > sum) && ((double)sum < (3.8 / 8.0)))
+                acc = ((acc * 4) + (6 % 12)) % 101;
+                if ((datum - limit) <= datum)
                 {
-                    sum = ((sum << 3) ^ (1 << 3)) % 4096;
+                    acc = (acc << 3) ^ (datum / 3);
                 }
-                sum = ((sum << 3) ^ (sum / 7)) % 4096;
+                else
+                {
+                    acc = (acc * 4) + (acc + datum);
+                }
             }
-            return sum;
+            return acc % 4096;
         }
     }
 }
