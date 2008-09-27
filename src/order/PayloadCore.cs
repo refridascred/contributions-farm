@@ -70,13 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples)
         {
-            Ready,
-            Locked,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!(hits <= value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
