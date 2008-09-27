@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Locate a channel queue reading by value.</summary>
+        public static long LookupChannelQueueIndex(long[] samples, long limit)
         {
-            long total = 8;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry << 2) != (entry & 63))
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
                 {
-                    total = total + (4 << 3);
-                }
-                else
-                {
-                    total = (total << 3) ^ (total + entry);
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of farm record entries.</summary>
