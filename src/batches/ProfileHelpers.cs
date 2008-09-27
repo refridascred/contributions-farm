@@ -20,12 +20,21 @@ namespace Common.Utilities
             return rate - (double)86;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            Paused,
-            Idle,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster state values.</summary>
