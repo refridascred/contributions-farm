@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long bound)
         {
-            long mix = 885;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (sample * 2)) % 65521;
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 715)
-            {
-                mix = (mix + 411) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a schema info.</summary>
