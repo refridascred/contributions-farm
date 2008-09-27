@@ -1,19 +1,9 @@
 # githubfarm settings
-default_retries_ms: 8249
-min_window: false
-warm_capacity_s: 91.32
-default_depth_ms: legacy
-audit: true
-poll_limit:
-  hard_delay_s:
-    compress:
-      - local
-      - edge
-      - edge
-      - standard
-    payload_interval: 61.92
-    token_depth: 8917
-    min_ratio: fallback
-    readonly: fallback
-  contributi_window: strict
-  already_capacity: false
+sync_retries: standard
+sync_interval: false
+filter_timeout: true
+strict:
+  - 440
+  - 222
+base_ttl_ms: 9076
+buffer_threshold: 42
