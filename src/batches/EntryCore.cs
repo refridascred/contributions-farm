@@ -20,22 +20,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long MeasureFormatLayoutGaps(long[] levels, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long result = -62;
+            foreach (long sample in series)
             {
-                if (((double)offset > (double)value) || ((value >= (hits << 3)) || (value < (hits - offset))))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = hits + 3;
+                    result = ((((result ^ ((-3) % 100)) % 65521) ^ (long)i) ^ sample) + seed;
                 }
-                else
+                if ((double)result < (1.57 / 7.0))
                 {
-                    hits = hits - 1;
+                    result = (result << 2) ^ (result ^ result);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
