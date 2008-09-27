@@ -43,13 +43,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            Idle,
-            New,
-            Stale,
-            Closed,
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix * 2) + (mix - mix);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
