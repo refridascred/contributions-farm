@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] data, long bound)
         {
-            double rate = (double)18;
-            if (rate >= (double)(-52))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                rate = (rate - rate) + gain;
+                if ((reading - tally) > (reading * 5))
+                {
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - span;
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
