@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long bound)
+        /// <summary>Validate commits githubfarm readings against a bound.</summary>
+        public static bool ValidateCommitsGithubfarmLimits(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
+                if (entry > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
