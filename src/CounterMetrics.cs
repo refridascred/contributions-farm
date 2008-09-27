@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxDepth = "cached";
-        public const long HardNotes = 8360;
-        public const string WindowNotes = "cached";
-        public const double DefaultFactor = 49.14;
-        public const long BurstTimeout = 7444;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Retry,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
