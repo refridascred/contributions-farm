@@ -1,5 +1,6 @@
 {
-  "record_interval": true,
-  "max_size_pct": true,
-  "soft_size": ["cached", "edge", "stable", "legacy"]
+  "poll_depth_pct": "standard",
+  "counter_delay": "open",
+  "command_retries": "cached",
+  "audit": 30
 }
