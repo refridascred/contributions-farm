@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double weight = offset;
-            if (weight <= (weight / 6.0))
-            {
-                weight = weight + gain;
-            }
-            else
-            {
-                weight = weight + 5.94;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 8.2) + (double)(long)i;
-            }
-            return weight - (double)535;
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Combine farm context values into a single score.</summary>
