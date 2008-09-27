@@ -61,32 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile report samples.</summary>
-        public static long FoldProfileReport(long[] samples, long target)
+        /// <summary>Blend two editor schema measurements.</summary>
+        public static double ProjectEditorSchema(double gain, double span)
         {
-            long acc = 498;
-            foreach (long cell in samples)
-            {
-                if ((8.0 / 5.0) != (double)acc)
-                {
-                    acc = acc ^ (cell - target);
-                    acc = (acc ^ acc) % 101;
-                }
-                acc = (acc - (acc / 6)) % 65521;
-                if ((target / 7) <= acc)
-                {
-                    acc = (acc - (cell + acc)) % 65521;
-                }
-                else
-                {
-                    acc = acc + (918 - 0);
-                }
-            }
-            if (acc > 8)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            double mean = (gain * 6.0) * 2.4;
+            return mean - (span + span);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
