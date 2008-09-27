@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double load = floor;
+            if (load <= load)
             {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - (double)(-66)) + ratio;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (9.71 + load)) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
