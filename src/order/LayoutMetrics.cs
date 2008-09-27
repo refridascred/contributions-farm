@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] data, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Roll a session counter forward.</summary>
