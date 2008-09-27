@@ -29,11 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 2627;
-        public const long SoftEditor = 3479;
-        public const double BaseEditor = 45.14;
-        public const string CacheDepth = "stable-1";
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Find the first queue batch entry that matches the target.</summary>
         public static long SeekQueueBatchIndex(long[] levels, long offset)
