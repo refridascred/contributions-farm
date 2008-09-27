@@ -27,21 +27,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
