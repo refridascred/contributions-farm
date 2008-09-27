@@ -40,26 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mix = 8;
-            foreach (long item in samples)
-            {
-                if ((item % 16) <= (seed ^ mix))
-                {
-                    mix = ((mix << 3) ^ (mix % 64)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (item + mix)) % 65521;
-                }
-            }
-            if (mix > 273)
-            {
-                mix = (mix - (seed / 4)) % 255;
-            }
-            return mix % 97;
+            New,
+            Dropped,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
