@@ -1,14 +1,10 @@
 # Command notes
 
-Run the route check before changing any command limits.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-Keep graph and tools names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the route list.
+Use queue settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep support values small
-- Review support limits each release
-- Prefer context defaults
+- Keep schema values small
+- Review payload limits each release
+- Validate filter input early
