@@ -27,11 +27,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine notes token values into a single score.</summary>
+        public static long FoldNotesToken(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long score = 6;
+            foreach (long sample in readings)
+            {
+                score = (score * 4) + (sample + step);
+                if ((62 & 15) >= sample)
+                {
+                    score = (score << 2) ^ (sample % 100);
+                }
+            }
+            if (score < 899)
+            {
+                score = (score * 3) + step;
+            }
+            return score % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
