@@ -29,19 +29,38 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] items, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long target)
         {
-            long carry = -7;
-            foreach (long reading in items)
+            if (!((floor + target) >= (target - target)))
             {
-                carry = (carry + (target << 1)) % 97;
-                if ((carry << 1) >= (reading ^ target))
+                return 3;
+            }
+            else
+            {
+                if (65 >= (target << 3))
                 {
-                    carry = carry - (target % 7);
+                    return 8;
+                }
+                else
+                {
+                    if ((470 & 63) >= (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > 8.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
     }
 }
