@@ -1,10 +1,5 @@
 # githubfarm settings
-poll_delay_count: false
-flush_depth_s:
-  - local
-  - legacy
-  - local
-batch_retries_ms: 500
-sync_threshold_count: 500
-order_window: primary
-githubfarm_limit: strict
+default_size_count: 98
+batch_timeout_pct: 25
+warm_delay: 23
+tools_timeout: standard
