@@ -51,11 +51,24 @@ namespace Common.Utilities
         public const long RetryTools = 6753;
         public const long DefaultTools = 5143;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long target, long step)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            if ((9.8 * 1.29) == (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step << 2) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
