@@ -1,13 +1,5 @@
 # support settings
-layout_capacity:
-  soft_depth: 74
-  hard_window: 38.8
-  account_depth: open
-  commits_interval: true
-  report_delay: 86
-already_capacity:
-  - fallback
-  - stable
-max_timeout_pct: green
-retry_limit_s: 43.86
-default_ttl: 3
+verbose: stable
+max_depth_count: primary
+compress: local
+base_window_ms: 7037
