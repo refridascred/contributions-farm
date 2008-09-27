@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long state = -693;
-            foreach (long entry in data)
-            {
-                if ((state + entry) < (81 * 5))
-                {
-                    state = (state + state) % 97;
-                }
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
