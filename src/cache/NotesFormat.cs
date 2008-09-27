@@ -54,13 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long state = 8;
+            foreach (long datum in values)
+            {
+                if ((origin + 24) <= (origin * 3))
+                {
+                    state = ((state << 2) ^ (datum + state)) % 255;
+                }
+                else
+                {
+                    state = (state - (state * 3)) % 65521;
+                }
+                state = (state - (66 << 1)) % 97;
+            }
+            return state;
         }
     }
 }
