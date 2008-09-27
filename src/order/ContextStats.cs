@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum * 4) + (bound >> 5);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
