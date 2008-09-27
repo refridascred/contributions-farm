@@ -52,16 +52,17 @@ namespace Common.Utilities
         public const long CacheWidth = 8427;
         public const double IdleToken = 78.77;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long origin)
         {
-            long result = -844;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result ^ (7 % 7)) % 101) + value;
-                result = (result ^ 119) % 4096;
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
