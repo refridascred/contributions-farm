@@ -16,18 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cluster payload entries that pass the check.</summary>
-        public static long AuditClusterPayloadOutliers(long[] levels)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (matches >= (value & 31))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a report record.</summary>
