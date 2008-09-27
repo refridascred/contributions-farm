@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Accumulate batch session samples.</summary>
+        public static long CombineBatchSession(long[] values, long offset)
         {
-            long mark = 94;
-            foreach (long cell in samples)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                if ((mark % 24) == (mark ^ mark))
+                if (!((double)mark != (double)offset))
                 {
-                    mark = (mark + (mark ^ mark)) % 97;
+                    mark = mark - mark;
                 }
-                if ((6 <= (cell * 4)) && ((mark + 0) == (mark * 3)))
+                if (mark > (sample - mark))
                 {
                     break;
                 }
             }
-            if (mark > 45)
-            {
-                mark = mark ^ (mark / 7);
-            }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
