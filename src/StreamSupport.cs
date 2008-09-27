@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 776;
+            foreach (long datum in values)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (datum + datum)) % 4096;
+                carry = (carry - (step / 4)) % 97;
             }
-            return -1;
+            if (carry < 91)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema info.</summary>
