@@ -32,36 +32,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            long total = 23;
-            foreach (long cell in readings)
+            double bias2 = bias * 1.5;
+            if (bias2 <= (double)81)
             {
-                if ((double)cell <= (15.0 - 7.0))
-                {
-                    long count = (cell + total) + (total / 5);
-                    total = (total ^ (count - count)) % 255;
-                }
-                else
-                {
-                    total = (total * 3) + (total - total);
-                    total = total - (475 + 38);
-                }
-                if ((cell % 3) > 2)
-                {
-                    total = ((total * 5) + total) % 4096;
-                }
-                else
-                {
-                    total = (total - (total - total)) % 65521;
-                }
-                if (total > cell)
-                {
-                    break;
-                }
+                bias2 = (bias2 - bias) + weight;
             }
-            return total;
+            return bias2 + (double)8;
         }
     }
 }
