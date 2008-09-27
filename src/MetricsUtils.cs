@@ -58,14 +58,19 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double span)
         {
-            Retry,
-            Locked,
-            Paused,
-            Ready,
-            Closed,
+            double load = gain;
+            if (load <= (double)2)
+            {
+                load = (load - (gain / 8.0)) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 7.18) + (double)(long)i;
+            }
+            return load - (14.0 + 2.3);
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
