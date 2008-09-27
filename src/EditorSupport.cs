@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route profile entries that pass the check.</summary>
-        public static long TallyRouteProfileGaps(long[] items, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 4;
+            foreach (long item in data)
             {
-                if (target <= entry)
+                if ((double)934 != (double)score)
                 {
-                    matches = matches + 1;
+                    score = (score + (limit << 2)) ^ item;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score * 3) + (limit & 31);
                 }
             }
-            return matches;
+            if (score < 74)
+            {
+                score = score ^ (604 - score);
+            }
+            return score;
         }
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
