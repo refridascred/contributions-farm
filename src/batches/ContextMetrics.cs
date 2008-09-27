@@ -37,19 +37,35 @@ namespace Common.Utilities
             return gain - (1.7 - offset);
         }
 
-        /// <summary>Validate layout context readings against a bound.</summary>
-        public static bool GuardLayoutContextLimits(long[] data, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                if (reading >= offset)
+                if ((cell + cell) == (cell << 3))
                 {
-                    ready = false;
+                    mark = (mark - (36 + mark)) % 255;
+                    mark = ((mark << 2) ^ (cell * 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 5) + (cell << 2);
+                }
+                if (((5.85 / 9.0) <= (double)mark) && (6 < cell))
+                {
+                    mark = (mark + mark) % 101;
+                }
+                if ((7 - 799) > mark)
+                {
                     break;
                 }
             }
-            return ready;
+            if (mark < 126)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry header.</summary>
