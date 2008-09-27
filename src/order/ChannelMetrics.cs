@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Draft,
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)(long)i > (2.38 - 2.6))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+                mark = (mark - ((long)i - mark)) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
