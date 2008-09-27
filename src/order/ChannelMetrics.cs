@@ -20,13 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseFactor = 3200;
+        public const long StepCommits = 955;
+        public const string HardCommits = "standard";
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool VerifyBatchOrderLimits(long[] items, long seed)
