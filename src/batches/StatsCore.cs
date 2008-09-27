@@ -73,19 +73,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] values, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (cell > floor)
+                if (sample <= bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
