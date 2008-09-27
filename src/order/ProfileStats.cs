@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 < (double)9)
+            {
+                ratio2 = ratio2 + (ratio * 2.87);
+            }
+            else
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + 6.32) + (double)(long)i;
+            }
+            return ratio2 + 6.2;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
