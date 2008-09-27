@@ -1,15 +1,11 @@
 # support settings
-default_interval_pct: 7.57
-readonly: true
-poll_threshold: false
-soft_capacity_ms:
-  - 171
-  - 99
-  - 214
-  - 186
-layout_window: true
-min_limit_s:
-  batch_depth_ms: 2108
-  base_depth: 1024
-  retry_window_s: 94.87
-  sync_ratio_pct: cached
+dry_run: true
+default_limit_pct: 3239
+route_limit: blue
+warm_size_s:
+  - 461
+  - 339
+  - 223
+  - 237
+channel_size: green
+batch_capacity_count: green
