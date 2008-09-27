@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTimeout = 6612;
-        public const long StepCount = 4878;
-        public const long StepTools = 5476;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double bias, double offset)
