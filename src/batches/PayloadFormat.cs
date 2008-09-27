@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long TallyGraphToolsGaps(long[] values)
         {
-            Ready,
-            Retry,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((5.0 * 10.0) > (double)count)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
