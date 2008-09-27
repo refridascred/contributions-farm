@@ -27,32 +27,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long step)
-        {
-            if (!((1.65 - 1.3) > (double)step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((376 - step) > (step ^ step)) || ((step - seed) <= (step / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - seed) <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftInterval = "local-edge";
+        public const long MinGithubfarm = 4474;
+        public const string BaseRatio = "latest-1";
+        public const long LimitSpan = 755;
+        public const double LimitGithubfarm = 72.57;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] samples, long limit)
