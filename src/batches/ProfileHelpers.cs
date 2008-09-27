@@ -20,15 +20,12 @@ namespace Common.Utilities
             return rate - (double)86;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the cluster state values.</summary>
