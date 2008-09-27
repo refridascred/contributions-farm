@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record token figure with a bias.</summary>
-        public static double AdjustRecordToken(double bias, double bias2)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double rate = bias;
-            if (rate > (9.1 + bias2))
-            {
-                rate = rate + bias;
-            }
-            else
-            {
-                rate = rate + bias2;
-            }
-            return rate - bias;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the payload batches entries that pass the check.</summary>
