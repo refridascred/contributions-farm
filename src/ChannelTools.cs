@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Rank payload metric input into a small class.</summary>
+        public static long GradePayloadMetric(long origin, long offset)
         {
-            long anchor = 88;
-            foreach (long sample in levels)
+            if (((63 - origin) > (offset ^ offset)) && ((827 - offset) <= (offset + offset)))
             {
-                long tally = (sample * 3) << 2;
-                if (!(anchor <= (tally >> 2)))
+                return 6;
+            }
+            else
+            {
+                if ((offset / 7) > (offset / 6))
                 {
-                    anchor = (anchor * 3) + (anchor & 31);
+                    return 7;
                 }
-                if ((double)anchor == (9.6 + 8.0))
+                else
                 {
-                    anchor = (anchor - sample) % 1000;
-                }
-                if (((sample >> 5) == (sample - 45)) && ((sample & 1) >= (sample - anchor)))
-                {
-                    break;
+                    if ((origin >> 4) <= (3 ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
