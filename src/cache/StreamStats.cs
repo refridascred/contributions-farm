@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (728 > (matches % 24))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
