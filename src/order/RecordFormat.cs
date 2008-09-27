@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long BaseLevel = 3161;
         public const long MaxAccount = 5415;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > target)
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Find the first notes window entry that matches the target.</summary>
