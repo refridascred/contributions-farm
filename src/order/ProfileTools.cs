@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] values, long offset)
+        /// <summary>Validate account tools readings against a bound.</summary>
+        public static bool CheckAccountToolsRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (offset <= (499 - sample))
+                if (cell >= bound)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
