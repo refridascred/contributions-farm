@@ -1,6 +1,8 @@
 {
-  "sync_retries_count": "latest",
-  "strict": "strict",
-  "base_timeout_count": ["blue", "eu-west", "local", "local"],
-  "min_limit_pct": "stable"
+  "soft_ratio_count": 1024,
+  "sync_retries": ["edge", "eu-west", "staging"],
+  "poll_interval": "fallback",
+  "contributi_limit": "cached",
+  "sync_delay": ["staging", "strict", "primary", "cached"],
+  "base_delay": "latest"
 }
