@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string SoftLevel = "primary";
         public const long BurstInterval = 1310;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
