@@ -14,11 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 9099;
-        public const long RetryScore = 6861;
-        public const string DefaultTimeout = "fallback-edge";
-        public const double MaxCount = 71.78;
+        /// <summary>Blend two contributi queue measurements.</summary>
+        public static double ProjectContributiQueue(double rate, double bias)
+        {
+            double load = (double)(39 % 3);
+            if (load < 3.0)
+            {
+                load = (load - (double)128) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (rate / 2.0)) + (double)(long)i;
+            }
+            return load - (double)68;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
