@@ -14,10 +14,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 9278;
-        public const long IdleNotes = 2911;
-        public const string LimitNotes = "stable-1";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Queued,
+            Done,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueRange(long[] series, long bound)
