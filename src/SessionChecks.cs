@@ -43,19 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum > seed)
+                if (((floor - floor) >= (reading ^ matches)) && ((matches - reading) >= floor))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
