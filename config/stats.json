@@ -1,6 +1,7 @@
 {
-  "graph_window": 51.96,
-  "verbose": false,
-  "entry_delay": 30,
-  "format_capacity": true
+  "compress": 7068,
+  "warm_window_pct": "standard",
+  "max_timeout_count": "strict",
+  "verbose": "latest",
+  "default_retries_count": ["blue", "strict", "eu-west", "standard"]
 }
