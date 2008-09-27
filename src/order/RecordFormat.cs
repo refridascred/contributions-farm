@@ -34,22 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((cell ^ 811) < (seen / 3))
+                if (sample >= limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
