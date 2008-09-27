@@ -40,17 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum - (sum + sum)) % 255;
-                sum = ((sum * 3) + (bound - bound)) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
