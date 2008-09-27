@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double load = floor;
-            return (load - (floor - 5.8)) + bias;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
