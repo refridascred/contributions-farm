@@ -60,24 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm cache values into a single score.</summary>
-        public static long TallyFarmCache(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] readings)
         {
-            long state = 687;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((state / 8) >= (value + value))
+                if ((4.44 + 4.0) == (double)matches)
                 {
-                    state = (state - (value & 15)) % 65521;
+                    matches = (matches + 2) - reading;
                 }
                 else
                 {
-                    state = ((state * 4) + state) % 255;
+                    matches = matches - 1;
                 }
-                state = (state ^ (value * 5)) % 97;
-                state = (state - state) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
