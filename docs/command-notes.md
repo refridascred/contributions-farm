@@ -1,11 +1,10 @@
 # Command notes
 
-A format that stays idle for too long is moved to the token list.
-A profile that stays idle for too long is moved to the editor list.
-A command that stays idle for too long is moved to the queue list.
+Each order is validated before it reaches the profile queue.
+The context module keeps support values in sync with the stream cache.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every account change
-- Document new context fields
+- Keep farm values small
+- Validate support input early
+- Log every farm change
