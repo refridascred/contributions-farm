@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((reading - tally) > (reading * 5))
+                if (entry > target)
                 {
-                    tally = (tally + 1) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
