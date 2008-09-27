@@ -14,17 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -24;
+            foreach (long cell in levels)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                if ((carry ^ 0) <= (360 + cell))
                 {
-                    return (long)i;
+                    carry = (carry ^ (cell & 255)) - target;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
