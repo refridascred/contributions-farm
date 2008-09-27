@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph format measurements.</summary>
-        public static double ScaleGraphFormat(double gain, double offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            double gain2 = offset;
-            if (gain2 <= (gain + 6.8))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 + (gain + gain);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (9.84 - 16.0);
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
