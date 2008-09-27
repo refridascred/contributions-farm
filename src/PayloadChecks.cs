@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 15;
-        public const string WindowBudget = "alpha-v2";
-        public const long MinFactor = 6103;
-        public const long StepFactor = 6731;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            Draft,
+            Pending,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Project the next metrics stream value.</summary>
         public static double ScaleMetricsStream(double weight, double offset)
