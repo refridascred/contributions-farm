@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
     green)
         log "fast path"
@@ -22,5 +22,6 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=102
-log "limit is ${RECORD_LIMIT}"
+for item in latest fallback standard; do
+    log "checking ${item}"
+done
