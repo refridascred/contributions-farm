@@ -15,18 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long total = 4;
-            foreach (long datum in samples)
-            {
-                if ((datum + total) < (datum + datum))
-                {
-                    total = (total - (total << 1)) % 4096;
-                }
-            }
-            return total % 97;
+            Retry,
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
