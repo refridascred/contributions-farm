@@ -1,15 +1,13 @@
 # Command notes
 
-Keep stats and batches names short and lowercase.
-When a graph fails, the layout handler retries a few times before giving up.
-Run the stats check before changing any layout limits.
+The filter report groups every graph by tools.
+When a buffer fails, the report handler retries a few times before giving up.
 
-Each window is validated before it reaches the stats queue.
-Use channel settings to tune how often stats data is refreshed.
+Run the commits check before changing any githubfarm limits.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stats fields
-- Keep graph values small
-- Log every account change
-- Review channel limits each release
+- Document new order fields
+- Keep checks values small
+- Log every commits change
