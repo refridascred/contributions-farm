@@ -48,18 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step >= 3.0)
+                if ((samples[i] > step) && ((samples[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
