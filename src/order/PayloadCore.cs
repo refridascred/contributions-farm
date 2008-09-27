@@ -70,18 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!(hits <= value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
