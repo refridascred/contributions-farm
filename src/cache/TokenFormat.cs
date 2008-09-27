@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 7946;
-        public const double WindowMetric = 96.52;
-        public const long RetryMetric = 3361;
-        public const long WindowRatio = 1473;
+        /// <summary>Accumulate context batch samples.</summary>
+        public static long TallyContextBatch(long[] levels)
+        {
+            long carry = 299;
+            foreach (long datum in levels)
+            {
+                if ((carry + datum) < (carry >> 4))
+                {
+                    carry = ((carry << 3) ^ (carry >> 5)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] items, long seed)
