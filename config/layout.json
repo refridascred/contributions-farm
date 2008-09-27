@@ -1,13 +1,15 @@
 {
-  "soft_limit": "eu-west",
-  "soft_capacity_pct": {
-    "idle_size_ms": "legacy",
-    "max_capacity_s": "primary",
-    "dry_run": true,
-    "persist": ["strict", "open", "strict", "fallback"],
-    "githubfarm_capacity": 1525,
-    "sync_capacity_ms": "standard"
+  "batch_size_s": "staging",
+  "base_depth_ms": true,
+  "flush_capacity_count": {
+    "session_capacity": false,
+    "burst_threshold_count": 22,
+    "flush_delay_ms": {
+      "checks_window": "blue",
+      "notes_depth": "fallback",
+      "persist": 92
+    }
   },
-  "default_threshold_count": false,
-  "counter_limit": 4.11
+  "idle_threshold_count": 9542,
+  "default_interval": "fallback"
 }
