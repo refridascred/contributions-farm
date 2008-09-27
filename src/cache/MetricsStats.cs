@@ -50,19 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] items, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (sample <= origin)
+                if ((591 - floor) != (matches % 16))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
