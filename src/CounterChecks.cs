@@ -76,11 +76,12 @@ namespace Common.Utilities
         public const long MinContext = 7791;
         public const string HardContext = "legacy-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardScore = 4835;
-        public const long RetryScore = 1990;
-        public const double IdleAccount = 66.42;
-        public const long BaseAccount = 8395;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardBudget = 4.3;
+        public const long StepSize = 8026;
+        public const double RetryInterval = 24.21;
+        public const double HardTimeout = 93.46;
+        public const double RetryWidth = 11.19;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long FindRecordIndex(long[] levels, long target)
