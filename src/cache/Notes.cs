@@ -47,16 +47,18 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "open-edge";
         public const double MaxSpan = 10.49;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                score = (score + ((long)i + floor)) % 101;
-                score = ((score * 5) + (long)i) % 4093;
+                if ((limit - limit) < (86 / 2))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
