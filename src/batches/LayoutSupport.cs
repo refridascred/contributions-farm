@@ -83,9 +83,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheScore = 3792;
-        public const long HardDepth = 9669;
-        public const long MaxSpan = 3008;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 7) > (849 & 3))
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
