@@ -1,27 +1,14 @@
 # entry settings
-verbose: stable
-readonly:
-  - open
-  - local
-  - strict
-  - eu-west
-account_size:
-  - staging
-  - blue
-  - edge
+verbose: 364
+enabled: 3353
+flush_interval: stable
+min_threshold_s:
   - latest
-githubfarm_ratio:
-  session_timeout: primary
-  burst_window_ms: legacy
-  audit: 60
-  max_interval_ms: blue
-  cache_limit: 250
-  strict:
-    commits_timeout: true
-    soft_depth: standard
-    retry_ttl_s: 4754
-    batch_depth: 500
-    base_window_pct: 76.84
-    retry_window_pct: 84.58
-audit: 9720
-profile_retries: strict
+  - open
+  - blue
+  - cached
+idle_ratio:
+  - 186
+  - 319
+  - 37
+flush_capacity_count: 100
