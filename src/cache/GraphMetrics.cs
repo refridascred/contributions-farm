@@ -16,18 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long TotalChannelAlready(long[] items, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples, long origin)
         {
-            long score = 42;
-            foreach (long value in items)
+            long result = 57;
+            foreach (long entry in samples)
             {
-                if (origin >= (value - 202))
+                result = result - (origin * 3);
+                result = ((result * 4) + (168 % 64)) % 65521;
+                if (origin >= entry)
                 {
-                    score = score - (origin & 255);
+                    result = ((result * 2) + (entry << 1)) % 101;
                 }
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Hold a tools record.</summary>
