@@ -23,19 +23,16 @@ namespace Common.Utilities
         public const long StepCommits = 955;
         public const string HardCommits = "standard";
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool VerifyBatchOrderLimits(long[] items, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
     }
 }
