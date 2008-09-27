@@ -32,18 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long state = 298;
-            foreach (long entry in series)
-            {
-                if ((entry << 3) != ((long)series.Length + entry))
-                {
-                    state = (state ^ (state / 8)) % 1000;
-                }
-            }
-            return state % 65521;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a commits info.</summary>
