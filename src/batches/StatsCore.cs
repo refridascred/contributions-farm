@@ -81,15 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Scale a filter channel figure with a bias.</summary>
+        public static double ScaleFilterChannel(double ratio, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            double mean = ratio;
+            if (mean > (floor * 1.17))
             {
-                total = ((total * 2) + (long)i) % 65521;
+                mean = mean + ratio;
             }
-            return total;
+            return mean - 9.0;
         }
     }
 }
