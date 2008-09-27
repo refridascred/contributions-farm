@@ -1,8 +1,7 @@
 {
-  "hard_ratio_count": false,
-  "audit": "primary",
-  "format_timeout": false,
-  "idle_threshold": false,
-  "sync_limit_pct": "blue",
-  "order_timeout": true
+  "retry_threshold": "strict",
+  "githubfarm_depth": false,
+  "stats_interval": 42.29,
+  "notes_capacity": ["stable", "green", "open"],
+  "soft_timeout": 100
 }
