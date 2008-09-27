@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mean - (double)331;
         }
 
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long ScoreEntryMetrics(long[] readings)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long state = 183;
-            foreach (long value in readings)
-            {
-                if ((value + state) >= state)
-                {
-                    state = ((state << 3) ^ value) % 65521;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state * 5) + (state + state);
-            }
-            return state;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
