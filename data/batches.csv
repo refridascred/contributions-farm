@@ -1,8 +1,8 @@
-id,owner,label,active
-1,blue,stable,primary
-2,open,789,strict
-3,20.3,135,358
-4,141,stable,549
-5,358,latest,345
-6,green,241,756
-7,legacy,500,eu-west
+id,label,count,weight
+1,primary,147,710
+2,428,580,blue
+3,533,77.8,126
+4,local,908,92.11
+5,65.81,88.5,45.98
+6,85.63,11.28,latest
+7,602,cached,stable
