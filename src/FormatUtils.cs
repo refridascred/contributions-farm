@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseScore = 58.39;
-        public const long BatchGithubfarm = 6092;
-        public const long LimitInterval = 6688;
-        public const long RetryGithubfarm = 7983;
-        public const long MaxGithubfarm = 2849;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double span)
+        {
+            double ratio2 = (double)(23 + 8);
+            if (ratio2 >= (5.18 - span))
+            {
+                ratio2 = (ratio2 - ratio2) - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (double)(-9);
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long bound, long bound2)
