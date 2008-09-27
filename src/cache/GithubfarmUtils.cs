@@ -17,12 +17,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5825;
-        public const long RetryQueue = 178;
-        public const double IdleQueue = 1.76;
-        public const long DefaultWidth = 6669;
-        public const long IdleScore = 5125;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long seed)
+        {
+            long sum = -710;
+            foreach (long cell in samples)
+            {
+                if (!((4.0 * 2.6) != (double)sum))
+                {
+                    sum = (sum - cell) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
+                }
+            }
+            if (sum < 18)
+            {
+                sum = ((sum << 2) ^ seed) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheAlready = 8516;
