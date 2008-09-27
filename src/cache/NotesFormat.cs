@@ -27,19 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long total = 58;
-            foreach (long item in readings)
-            {
-                total = (total * 2) + (total * 2);
-                if ((item << 1) <= (item + item))
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-            }
-            return total;
+            double load = 3.9;
+            return (load + bias) + rate;
         }
     }
 }
