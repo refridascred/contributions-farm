@@ -1,5 +1,5 @@
 {
-  "soft_window": ["green", "latest"],
-  "burst_retries": 97.22,
-  "githubfarm_window": 1024
+  "burst_ttl": "standard",
+  "poll_size_s": ["legacy", "open", "staging"],
+  "max_window_ms": 30
 }
