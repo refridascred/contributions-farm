@@ -20,20 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score <= (score >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 3) ^ score) % 101;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score * 4) + (score % 16);
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
