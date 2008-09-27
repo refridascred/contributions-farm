@@ -30,13 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] levels, long bound)
         {
-            Failed,
-            Active,
-            Queued,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
