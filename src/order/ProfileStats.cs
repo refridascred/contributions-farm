@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum - ((long)i2 * 4);
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
