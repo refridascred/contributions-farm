@@ -84,18 +84,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] readings, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((-67) <= (seed % 8))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
