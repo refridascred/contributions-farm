@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            double drift = offset;
-            if (drift < weight)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (offset - drift);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (weight * 1.0)) + (double)(long)i;
-            }
-            return drift - (weight / 6.0);
+            return seen;
         }
 
         /// <summary>Iterate the commits buffer series from a seed.</summary>
