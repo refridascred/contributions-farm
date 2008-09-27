@@ -27,18 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] values, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) == (bound >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Stale,
+            Closed,
+            New,
+            Retry,
         }
     }
 }
