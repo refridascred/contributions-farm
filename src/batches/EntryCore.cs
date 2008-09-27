@@ -29,18 +29,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long AuditPayloadBatchesOutliers(long[] samples, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target << 3) > (seen << 2))
+                if (samples[i] > bound)
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
