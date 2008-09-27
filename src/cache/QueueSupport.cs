@@ -19,21 +19,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - (32 << 2)) % 97;
+                mark = (mark ^ (item & 7)) % 65521;
             }
-            return seen;
+            if (mark > 34)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
