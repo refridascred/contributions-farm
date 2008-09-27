@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] values, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((limit <= (hits << 1)) || ((double)hits <= (double)limit))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
