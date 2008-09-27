@@ -42,12 +42,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstWidth = 83.06;
-        public const long HardWidth = 745;
-        public const string SoftFormat = "staging-1";
-        public const string HardFormat = "alpha-edge";
-        public const string IdleFormat = "stable";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitBudget = 92.52;
+        public const double WindowCache = 72.9;
+        public const long StepSpan = 5571;
+        public const long DefaultSpan = 2965;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] values, long step)
