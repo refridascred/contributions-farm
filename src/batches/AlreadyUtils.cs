@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const double BatchSize = 93.08;
         public const string BatchWindow = "stable-v2";
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (carry / 7)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
