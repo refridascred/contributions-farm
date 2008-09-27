@@ -51,31 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long carry = 39;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 3) ^ (92 + 111)) % 4096;
-                if (((double)carry < (double)value) && ((134 * 4) < (value * 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (0 % 10)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (value % 60)) % 1000;
-                }
-                if (!((value & 15) > carry))
-                {
-                    carry = (carry * 4) + (24 + value);
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 314)
-            {
-                carry = (carry * 3) + (451 + carry);
-            }
-            return carry;
+            return tally;
         }
     }
 }
