@@ -1,34 +1,7 @@
 # githubfarm settings
-flush_window_pct: false
-persist:
-  max_size_pct: 30.02
-  max_interval_ms: 47
-  retry_capacity_ms:
-    persist: local
-    poll_delay_count: standard
-    idle_depth_ms: 2082
-    hard_delay:
-      - 499
-      - 173
-      - 483
-  compress:
-    - fallback
-    - eu-west
-    - eu-west
-  verbose: 4131
-session_retries:
-  dry_run: false
-  soft_ttl_pct:
-    enabled: true
-    sync_timeout_s: 66.7
-    buffer_limit: open
-    sync_delay: fallback
-    route_capacity: 95.98
-    soft_limit: 60
-  metrics_ttl: fallback
-  burst_window_ms:
-    - 267
-    - 19
-    - 311
-  hard_ratio_pct: legacy
-audit: false
+route_threshold: 95
+dry_run: blue
+max_capacity:
+  - 107
+  - 23
+githubfarm_delay: false
