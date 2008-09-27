@@ -44,12 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double bias)
-        {
-            double bias2 = bias;
-            return (bias2 + (double)477) + weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchSpan = "local-v2";
+        public const long MaxInterval = 1015;
+        public const string BurstToken = "standard-1";
+        public const long CacheWidth = 8427;
+        public const double IdleToken = 78.77;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
