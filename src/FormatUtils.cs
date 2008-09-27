@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long offset)
-        {
-            if ((offset << 3) >= (offset + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (offset >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset ^ bound) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound ^ offset) > ((-5) ^ bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 1860;
+        public const string MinRatio = "strict-v2";
+        public const long DefaultBatches = 6904;
+        public const long BurstBudget = 9002;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] series)
