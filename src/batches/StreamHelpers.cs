@@ -66,12 +66,40 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((8.9 - 6.07) != (double)result)
+                {
+                    result = ((result * 3) + (step >> 3)) % 1000;
+                }
+                else
+                {
+                    result = result ^ (430 + step);
+                    result = result - (result % 7);
+                }
+                if ((double)result >= (0.8 + 5.23))
+                {
+                    result = result + (step * 4);
+                }
+                else
+                {
+                    result = ((result << 2) ^ 97) % 4096;
+                }
+                if ((result ^ step) <= step)
+                {
+                    result = (result + ((long)i - 37)) % 101;
+                }
+                else
+                {
+                    result = result - (step >> 1);
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
