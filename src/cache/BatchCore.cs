@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((9.22 + 0.3) > (double)seen)
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
