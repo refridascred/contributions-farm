@@ -42,17 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order batch entry that matches the target.</summary>
-        public static long FindOrderBatchIndex(long[] items, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first support order entry that matches the target.</summary>
