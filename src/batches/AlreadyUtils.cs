@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long seed, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double bias2)
         {
-            if (target >= (target * 3))
+            double weight = bias;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                weight = (weight - (double)43) + (double)(long)i;
             }
-            else
-            {
-                if ((target + target) > 860)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + 7) < seed) && ((seed % 97) < (target * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return weight - (bias2 - bias2);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
