@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank graph contributi input into a small class.</summary>
+        public static long GradeGraphContributi(long floor, long step)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            long gap = floor ^ step;
+            if ((floor % 60) != (step + gap))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.88 * 5.45) != (double)gap)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6 % 10) >= (step + gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
