@@ -65,19 +65,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples, long origin)
         {
-            long total = 23;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = ((total ^ origin) % 97) + item;
+                if (!((5.4 + 5.1) <= (double)entry))
+                {
+                    tally = (tally + 3) - origin;
+                }
             }
-            if (total < (-563))
-            {
-                total = total - (total ^ origin);
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
