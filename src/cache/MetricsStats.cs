@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)value > (9.81 - 12.0))
+                if (!((seen / 3) < cell))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
