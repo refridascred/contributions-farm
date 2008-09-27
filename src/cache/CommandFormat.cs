@@ -52,15 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] items, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
