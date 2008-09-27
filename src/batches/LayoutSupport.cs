@@ -43,26 +43,39 @@ namespace Common.Utilities
         public const long SoftInterval = 8871;
         public const long MinDepth = 9230;
 
-        /// <summary>Accumulate record format samples.</summary>
-        public static long DigestRecordFormat(long[] items, long seed)
+        /// <summary>Classify a format report pair into a bucket.</summary>
+        public static long RankFormatReport(long offset, long origin)
         {
-            long mark = 54;
-            foreach (long datum in items)
+            long diff = offset + origin;
+            if (3 > (origin + diff))
             {
-                if (((datum - mark) > (seed / 8)) || ((1.56 + 20.0) < (double)seed))
+                return 5;
+            }
+            else
+            {
+                if ((offset * 4) <= (origin + offset))
                 {
-                    mark = mark - (seed / 6);
+                    return 8;
                 }
                 else
                 {
-                    mark = ((mark * 4) + (datum + mark)) % 255;
+                    if (784 >= (origin + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin <= 2.16) || ((diff + offset) < (offset >> 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark > (-89))
-            {
-                mark = mark ^ (seed - mark);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
