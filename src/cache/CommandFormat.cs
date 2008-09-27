@@ -50,19 +50,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            double drift = (double)(69 + (-4));
-            if (drift > 17.0)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift - span) - ratio;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + 5.75;
-            }
-            return drift - (10.0 / 7.0);
+            return result;
         }
     }
 }
