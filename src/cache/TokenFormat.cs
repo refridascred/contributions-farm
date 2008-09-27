@@ -49,19 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long limit)
+        /// <summary>Accumulate token layout samples.</summary>
+        public static long TallyTokenLayout(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long carry = 61;
+            foreach (long datum in data)
             {
-                if (cell < limit)
+                if (!((double)datum != (0.72 - 3.0)))
                 {
-                    valid = false;
+                    carry = (carry * 2) + carry;
+                    carry = (carry - (datum + carry)) % 4096;
+                }
+                carry = (carry - (datum + datum)) % 65521;
+                if ((7 ^ datum) >= ((-1) >> 1))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
     }
 }
