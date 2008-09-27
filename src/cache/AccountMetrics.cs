@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5469;
-        public const long BaseBudget = 729;
-        public const double MinSpan = 61.63;
-        public const long CacheEditor = 5418;
-        public const long BatchBudget = 3439;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] values)
