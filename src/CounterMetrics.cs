@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((seed << 2) <= (matches + (-9)))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
