@@ -30,10 +30,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultCount = 3617;
-        public const long StepCount = 4454;
-        public const long StepRatio = 7012;
-        public const long BaseEntry = 4784;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((0 >= (floor >> 2)) && (((long)i + sum) <= ((long)i ^ floor))))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
