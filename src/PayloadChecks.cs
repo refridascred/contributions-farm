@@ -15,23 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double ScaleMetricsStream(double weight, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double ratio = weight;
-            if (ratio <= offset)
-            {
-                ratio = ratio - (double)(-3);
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + weight;
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
