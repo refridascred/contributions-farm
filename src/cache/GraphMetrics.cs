@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mix = 18;
-            foreach (long value in items)
-            {
-                mix = ((mix << 2) ^ (46 * 3)) % 1000;
-                if (!((double)value == (14.0 / 5.0)))
-                {
-                    mix = mix ^ (mix - mix);
-                }
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
