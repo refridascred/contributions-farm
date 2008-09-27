@@ -43,18 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items, long floor)
+        /// <summary>Combine session route values into a single score.</summary>
+        public static long TotalSessionRoute(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = 49;
+            foreach (long datum in series)
             {
-                if (((floor - floor) >= (reading ^ matches)) && ((matches - reading) >= floor))
-                {
-                    matches = matches + 2;
-                }
+                mix = (((mix ^ mix) % 101) ^ datum) + offset;
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
