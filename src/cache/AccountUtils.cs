@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches cluster readings against a rule.</summary>
-        public static long MeasureBatchesClusterHits(long[] samples)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen > ((-5) + seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            double load = floor;
+            return (load - (floor - 5.8)) + bias;
         }
 
         /// <summary>Define window limits and defaults.</summary>
