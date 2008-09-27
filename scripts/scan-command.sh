@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local primary blue eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
