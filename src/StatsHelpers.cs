@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long floor, long floor2)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            if ((18.0 + 5.01) <= (double)floor2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor + floor2) < floor) && ((floor2 * 3) != (floor2 + 22)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
