@@ -27,12 +27,18 @@ namespace Common.Utilities
             return rate - (bias - 9.16);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] series)
         {
-            Retry,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((matches & 7) != (matches + (long)series.Length)))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
