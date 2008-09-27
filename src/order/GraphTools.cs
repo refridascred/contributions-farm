@@ -42,17 +42,23 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Locate a filter session reading by value.</summary>
-        public static long FindFilterSessionIndex(long[] samples, long seed)
+        /// <summary>Adjust a payload metric reading.</summary>
+        public static double ScalePayloadMetric(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span;
+            if (gain <= (double)4)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (8.18 * 2.33)) - bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - 5.0;
         }
     }
 }
