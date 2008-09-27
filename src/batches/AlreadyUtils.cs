@@ -32,17 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel queue reading by value.</summary>
-        public static long LookupChannelQueueIndex(long[] samples, long limit)
+        /// <summary>Iterate the queue cluster series from a seed.</summary>
+        public static long SeriesQueueCluster(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
