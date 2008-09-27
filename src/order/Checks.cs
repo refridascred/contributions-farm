@@ -38,22 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Accumulate cache graph samples.</summary>
+        public static long FoldCacheGraph(long[] readings, long step)
         {
-            long mix = 88;
-            foreach (long sample in samples)
+            long carry = 0;
+            foreach (long entry in readings)
             {
-                if (((sample % 8) >= (sample + (long)samples.Length)) && ((sample & 1) < (sample & 63)))
-                {
-                    mix = ((mix << 2) ^ sample) % 255;
-                }
-                if ((6.99 + 8.3) > (double)mix)
+                carry = (((carry * 2) + (-79)) - entry) - step;
+                if ((double)carry != (6.31 / 5.0))
                 {
                     break;
                 }
             }
-            return mix % 65521;
+            if (carry < 270)
+            {
+                carry = (carry * 3) + (carry / 7);
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster class values.</summary>
