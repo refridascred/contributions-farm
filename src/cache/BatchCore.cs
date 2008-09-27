@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series, long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long anchor = 1;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor * 4) + (5 + value);
-                if ((double)value <= (5.6 * 1.13))
-                {
-                    anchor = (anchor + seed) % 65521;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (anchor < 525)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Project the next profile value.</summary>
