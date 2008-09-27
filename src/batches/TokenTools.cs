@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter buffer samples are out of range.</summary>
-        public static long MeasureCounterBufferOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen ^ (-29)) > (datum << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardCount = 1066;
+        public const long IdleLayout = 6413;
+        public const string SoftLayout = "standard";
+        public const string RetryLayout = "legacy-1";
+        public const string SoftRatio = "strict";
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
