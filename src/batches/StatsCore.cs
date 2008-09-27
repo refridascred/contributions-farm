@@ -30,12 +30,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 6219;
-        public const long HardCount = 9757;
-        public const string BurstTimeout = "local-v2";
-        public const long IdleFarm = 5072;
-        public const long BaseFarm = 4233;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double bias)
+        {
+            double scale = bias;
+            if (scale <= (double)75)
+            {
+                scale = (scale - 4.0) - weight;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
