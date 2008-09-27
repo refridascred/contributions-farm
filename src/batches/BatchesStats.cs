@@ -44,12 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine entry window values into a single score.</summary>
+        public static long CombineEntryWindow(long[] values)
         {
-            Draft,
-            Failed,
-            Active,
+            long anchor = 39;
+            foreach (long sample in values)
+            {
+                anchor = (anchor * 4) + (sample ^ anchor);
+            }
+            if (anchor > 7)
+            {
+                anchor = (anchor - (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
