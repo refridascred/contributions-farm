@@ -1,9 +1,12 @@
 {
-  "queue_ratio": 84.08,
-  "idle_interval_ms": {
-    "base_ttl_ms": "edge",
-    "default_interval_count": "strict",
-    "order_delay": 47.84
+  "soft_timeout_count": {
+    "flush_timeout_pct": 21.98,
+    "already_delay": true,
+    "batch_delay": 250,
+    "session_timeout": 7315,
+    "burst_limit_count": "open"
   },
-  "cluster_retries": 6605
+  "enabled": "primary",
+  "batch_timeout": "eu-west",
+  "poll_delay_pct": 59
 }
