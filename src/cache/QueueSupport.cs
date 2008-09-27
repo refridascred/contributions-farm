@@ -28,19 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] series, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long mark = 2;
+            foreach (long sample in items)
             {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark + (mark * 3)) % 1000) - sample) - target;
             }
-            return flag;
+            return mark;
         }
     }
 }
