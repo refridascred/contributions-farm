@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 3135;
-        public const double LimitGraph = 86.91;
-        public const long BurstBudget = 6419;
-        public const long CacheGraph = 6642;
-        public const long BurstSpan = 9055;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryFactor = 5535;
+        public const long RetryInterval = 6390;
+        public const long MinEntry = 7832;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long bound)
