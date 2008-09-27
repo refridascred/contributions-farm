@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long CountAccountGraphHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((tally % 8) >= tally)
+                if ((count * 5) >= (count - origin))
                 {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
