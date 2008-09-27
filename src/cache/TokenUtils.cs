@@ -20,17 +20,23 @@ namespace Common.Utilities
         public const double DefaultCount = 36.2;
         public const long DefaultMetric = 1365;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -6;
+            foreach (long sample in samples)
             {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                if ((sample / 7) < (186 >> 4))
                 {
-                    return (long)i;
+                    anchor = anchor + sample;
+                    anchor = (anchor + (sample + sample)) % 255;
+                }
+                if ((sample >> 2) <= (sample << 3))
+                {
+                    anchor = ((anchor * 3) + sample) % 97;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
