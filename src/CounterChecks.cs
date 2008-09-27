@@ -57,17 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] levels, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] == bound)
+                if ((7.87 * 6.3) == (double)floor)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
