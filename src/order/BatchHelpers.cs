@@ -16,13 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long mark = -830;
+            foreach (long cell in values)
+            {
+                mark = (mark << 3) ^ (cell + cell);
+                mark = ((mark << 3) ^ mark) % 65521;
+                if ((49 + cell) >= mark)
+                {
+                    mark = (mark ^ (cell + cell)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark ^ cell)) % 255;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up account samples.</summary>
