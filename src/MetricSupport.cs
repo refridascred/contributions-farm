@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long DigestGithubfarmToken(long[] items)
+        /// <summary>Match up report batch samples.</summary>
+        public static long PairReportBatchCount(long[] readings)
         {
-            long anchor = 2;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 2) + (anchor * 2);
-                if (((value - 36) != (value + anchor)) || (anchor < (anchor & 7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (anchor - value)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + 8) % 97;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
