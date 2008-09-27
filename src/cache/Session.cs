@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Fold a list of contributi record readings.</summary>
