@@ -44,18 +44,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] samples, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((591 - floor) != (matches % 16))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            double bias2 = bias;
+            return (bias2 + (double)477) + weight;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
