@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long target)
         {
-            long total = 232;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (total > (origin / 7))
+                if (item != target)
                 {
-                    total = ((total + (total % 7)) % 255) - datum;
-                    continue;
+                    found = false;
+                    break;
                 }
-                total = total ^ (326 * 2);
             }
-            return total;
+            return found;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
