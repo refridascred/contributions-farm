@@ -73,18 +73,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits > (4.52 * 9.2))
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
                 {
-                    hits = ((hits + 2) ^ entry) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
