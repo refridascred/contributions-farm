@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit channel already readings against a rule.</summary>
-        public static long CountChannelAlreadyGaps(long[] series, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value != (11.0 * 0.92))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) - step;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank editor buffer input into a small class.</summary>
