@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long origin)
         {
-            long mark = -42;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)mark >= (12.0 / 8.0)))
+                if ((double)cell == (2.9 * 2.32))
                 {
-                    mark = (mark - (origin + item)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark + item);
+                    count = (count + 3) - origin;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
