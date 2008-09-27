@@ -40,26 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values, long limit)
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long MeasureStatsChannelGaps(long[] levels, long limit)
         {
-            long sum = 1;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((double)limit != (5.33 + 8.0)) || ((value - sum) <= (limit + value)))
+                if (((long)levels.Length > (count ^ limit)) || (((double)limit != (double)9) || ((97 & 3) < (value << 3))))
                 {
-                    sum = sum + 63;
+                    count = count + 2;
                 }
-                if ((sum % 24) < sum)
+                else
                 {
-                    sum = (sum - sum) % 4096;
-                }
-                if (((sum / 8) <= (37 ^ 7)) && (value > (limit - 3)))
-                {
-                    sum = sum ^ (sum + value);
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of layout commits readings.</summary>
