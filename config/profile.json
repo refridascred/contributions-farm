@@ -1,8 +1,8 @@
 {
-  "schema_ratio": 39.49,
-  "persist": "fallback",
-  "strict": 31.58,
-  "base_delay_ms": ["standard", "latest", "blue", "eu-west"],
-  "base_limit": ["stable", "stable"],
-  "min_threshold": 18.09
+  "batch_limit": [276, 103, 154, 148],
+  "cache_capacity_count": 31,
+  "dry_run": 5686,
+  "readonly": 100,
+  "commits_ttl": 60,
+  "burst_ratio": 100
 }
