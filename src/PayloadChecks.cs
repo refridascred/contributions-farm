@@ -43,19 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream contributi readings against a bound.</summary>
-        public static bool VerifyStreamContributiLimits(long[] data, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
