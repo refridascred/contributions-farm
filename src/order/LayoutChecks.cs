@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Stale,
-            Done,
-            Active,
-            Ready,
-            Idle,
+            Queued,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a entry record.</summary>
