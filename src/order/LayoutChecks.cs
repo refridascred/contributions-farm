@@ -62,12 +62,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepDepth = 9386;
-        public const string BaseReport = "legacy";
-        public const long DefaultInterval = 3421;
-        public const long StepFactor = 6704;
-        public const long LimitReport = 7935;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double floor)
+        {
+            double load = floor;
+            if (load > (load + floor))
+            {
+                load = load + (double)1;
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (floor / 6.0)) - (double)(long)i;
+            }
+            return load - 1.76;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] series)
