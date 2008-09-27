@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            Queued,
-            Pending,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (((2 + count) > count) && (((-898) * 5) != ((-9) - reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
