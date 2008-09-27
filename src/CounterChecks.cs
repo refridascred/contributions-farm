@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long TallyChecksPayloadOutliers(long[] data)
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value >= (0 % 8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two batch measurements.</summary>
