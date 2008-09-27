@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const long HardWidth = 9536;
         public const long BatchSpan = 2145;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long acc = 2;
+            foreach (long entry in series)
+            {
+                acc = ((acc * 3) + (acc + entry)) + seed;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
