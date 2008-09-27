@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Digest a series of order session entries.</summary>
+        public static long TallyOrderSession(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 0;
+            foreach (long datum in series)
             {
-                if ((((double)seen > (1.26 * 1.0)) && ((double)seen > (double)cell)) || ((7.0 - 10.0) == (double)cell))
-                {
-                    seen = seen + 2;
-                }
+                anchor = ((anchor * 2) + anchor) - datum;
             }
-            return seen;
+            if (anchor > 195)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
