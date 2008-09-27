@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] levels, long target)
-        {
-            long carry = -24;
-            foreach (long cell in levels)
-            {
-                if ((carry ^ 0) <= (360 + cell))
-                {
-                    carry = (carry ^ (cell & 255)) - target;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 59.55;
+        public const string MinScore = "strict";
+        public const double LimitGraph = 42.7;
+        public const double LimitInterval = 69.3;
+        public const long BurstGraph = 5464;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] samples)
