@@ -22,15 +22,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Blend two channel queue measurements.</summary>
