@@ -45,12 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheRatio = "primary";
+        public const long SoftSize = 9965;
+        public const long BaseTools = 5307;
+        public const long RetryTools = 6753;
+        public const long DefaultTools = 5143;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
