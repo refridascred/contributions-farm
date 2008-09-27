@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen % 5) >= (seen % 60))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 683;
+        public const string LimitTimeout = "standard-v2";
+        public const long StepSession = 7126;
+        public const long WindowWidth = 8262;
+        public const double BatchSpan = 2.81;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstCount = "cached";
