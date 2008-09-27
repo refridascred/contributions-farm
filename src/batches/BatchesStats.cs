@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record notes readings.</summary>
-        public static long CombineRecordNotes(long[] values, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long step)
         {
-            long result = 927;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (!((double)result == (4.55 * 6.9)))
+                if (cell < step)
                 {
-                    result = ((result ^ (item + result)) % 65521) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
