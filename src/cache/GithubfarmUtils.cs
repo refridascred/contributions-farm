@@ -17,19 +17,14 @@ namespace Common.Utilities
         public const long DefaultWidth = 6669;
         public const long IdleScore = 5125;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Project the next layout value.</summary>
