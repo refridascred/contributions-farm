@@ -38,10 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchSize = 7938;
-        public const double SoftReport = 89.04;
-        public const long BatchReport = 2856;
+        /// <summary>Check that every notes window entry stays within the limit.</summary>
+        public static bool CheckNotesWindowLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] values)
