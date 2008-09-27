@@ -1,6 +1,10 @@
 {
-  "dry_run": 7993,
-  "max_window_count": 51,
-  "poll_ratio": 7537,
-  "readonly": ["eu-west", "primary"]
+  "warm_limit_s": "latest",
+  "max_timeout": "staging",
+  "retry_size": {
+    "retry_interval_ms": "cached",
+    "burst_depth": 100,
+    "burst_ratio_count": "green",
+    "hard_size": true
+  }
 }
