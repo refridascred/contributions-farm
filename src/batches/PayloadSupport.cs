@@ -25,14 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Pending,
-            Retry,
+            long sum = 0;
+            foreach (long item in levels)
+            {
+                sum = ((sum - (0 / 4)) % 97) + item;
+            }
+            return sum;
         }
     }
 }
