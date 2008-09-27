@@ -1,13 +1,14 @@
 # support settings
-flush_interval_s:
-  batch_ratio_pct:
-    - blue
-    - local
-    - legacy
-    - fallback
-  metric_window: green
-  strict: 33
-hard_capacity: 250
-verbose: 77.66
-burst_retries_count: 6005
-dry_run: staging
+readonly:
+  - open
+  - local
+  - open
+  - local
+hard_ttl: green
+poll_threshold: 5670
+session_capacity:
+  - eu-west
+  - stable
+  - green
+max_size_pct: true
+burst_threshold_s: primary
