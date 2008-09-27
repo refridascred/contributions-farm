@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const long CacheRoute = 8117;
         public const long DefaultRoute = 9392;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (samples[i] >= step)
+                if ((count / 6) >= (value & 127))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stats batch samples are out of range.</summary>
