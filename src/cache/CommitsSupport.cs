@@ -20,14 +20,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Find the first report stats entry that matches the target.</summary>
+        public static long LocateReportStatsIndex(long[] data, long target)
         {
-            Retry,
-            Synced,
-            Done,
-            Locked,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
