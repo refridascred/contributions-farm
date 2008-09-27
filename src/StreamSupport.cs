@@ -28,18 +28,32 @@ namespace Common.Utilities
         public const long RetryMetric = 8629;
         public const double MinWidth = 7.44;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long next = seed + seed2;
+            if (!(next > seed))
             {
-                if ((item & 15) <= (item + item))
+                return 5;
+            }
+            else
+            {
+                if ((7 - seed) > (next << 2))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed2 < 19.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
