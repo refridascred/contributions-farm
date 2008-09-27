@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 5788;
-        public const long BaseDepth = 5979;
-        public const string SoftRatio = "open-1";
-        public const long LimitWidth = 9976;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] readings, long target)
+        {
+            long acc = 1;
+            foreach (long sample in readings)
+            {
+                acc = (acc << 2) ^ (sample + target);
+            }
+            if (acc > 37)
+            {
+                acc = ((acc << 3) ^ (target >> 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxSpan = 1094;
