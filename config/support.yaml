@@ -1,10 +1,9 @@
 # support settings
-sync_interval: 84
-burst_depth_s: staging
-idle_ratio:
-  - 8
-  - 397
-  - 47
-  - 111
-retry_window_pct: 41
-flush_delay: 94.59
+soft_ttl_pct:
+  - local
+  - blue
+strict: edge
+hard_ttl_count: 19.84
+min_window_ms: 8709
+retry_retries: 20.19
+verbose: false
