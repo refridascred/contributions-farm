@@ -23,18 +23,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi record readings.</summary>
-        public static long WeighContributiRecord(long[] items, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples, long origin)
         {
-            long anchor = 968;
-            foreach (long datum in items)
+            long sum = 36;
+            foreach (long entry in samples)
             {
-                if ((offset ^ offset) < 5)
+                if ((sum ^ 198) == (11 >> 3))
                 {
-                    anchor = (anchor - offset) + datum;
+                    continue;
+                }
+                if ((47 / 2) > (entry << 2))
+                {
+                    sum = (sum ^ (entry << 2)) - origin;
                 }
             }
-            return anchor % 1000;
+            if (sum > 660)
+            {
+                sum = (sum << 2) ^ ((-57) + sum);
+            }
+            return sum;
         }
 
         /// <summary>Blend two contributi metrics measurements.</summary>
