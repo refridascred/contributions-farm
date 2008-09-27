@@ -37,12 +37,13 @@ namespace Common.Utilities
         public const long IdleFarm = 5072;
         public const long BaseFarm = 4233;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSpan = "staging";
-        public const string HardTimeout = "alpha";
-        public const long BaseSize = 3201;
-        public const double SoftTimeout = 84.47;
-        public const string BurstChannel = "stable-edge";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Idle,
+            Dropped,
+            New,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] values, long step)
