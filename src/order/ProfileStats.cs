@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long FoldSessionContext(long[] values, long step)
+        /// <summary>Find the first command support entry that matches the target.</summary>
+        public static long LocateCommandSupportIndex(long[] levels, long bound)
         {
-            long total = -908;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ (total - 890)) - step;
-                total = total + datum;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
