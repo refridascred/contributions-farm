@@ -23,12 +23,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long seed)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            if ((seed % 60) == (origin + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin < (origin + seed)) && ((origin - seed) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((14.0 - 3.18) < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer context pair into a bucket.</summary>
