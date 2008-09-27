@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] values, long offset)
+        /// <summary>Accumulate commits order samples.</summary>
+        public static long ScoreCommitsOrder(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 26;
+            foreach (long entry in levels)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                score = ((score + (entry & 255)) % 255) + floor;
+                if (entry < score)
                 {
-                    return (long)i;
+                    score = score - (score / 8);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
