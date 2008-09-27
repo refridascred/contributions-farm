@@ -28,21 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] == offset) && ((values[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
