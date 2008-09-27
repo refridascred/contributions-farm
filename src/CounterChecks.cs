@@ -19,15 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long bound)
+        /// <summary>Rank editor buffer input into a small class.</summary>
+        public static long RankEditorBuffer(long target, long origin)
         {
-            long mark = 2;
-            foreach (long entry in readings)
+            long gap = target - origin;
+            if (!((double)gap > 2.19))
             {
-                mark = (((mark - ((long)readings.Length >> 5)) % 255) - entry) - bound;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (!(gap >= (gap >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap & 1) > (target * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 12) < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
