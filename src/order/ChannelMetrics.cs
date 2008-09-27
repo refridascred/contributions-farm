@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = 53;
+            foreach (long cell in values)
+            {
+                anchor = anchor - (cell + cell);
+                if (((cell & 1) <= (44 << 2)) && ((0 - anchor) < (anchor - anchor)))
+                {
+                    anchor = (anchor * 5) + (anchor % 60);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes options.</summary>
