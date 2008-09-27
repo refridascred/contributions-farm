@@ -60,15 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] levels, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((946 << 2) >= value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - bound;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
