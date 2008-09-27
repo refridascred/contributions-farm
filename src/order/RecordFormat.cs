@@ -31,26 +31,22 @@ namespace Common.Utilities
         public const string HardWidth = "staging";
         public const string RetrySupport = "strict-1";
 
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long TotalReportSchema(long[] readings, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long result = 35;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((408 << 3) <= (origin * 2))
+                if ((count >> 1) < ((long)items.Length & 3))
                 {
-                    result = ((result * 2) + (long)readings.Length) + value;
+                    count = (count + 1) + value;
                 }
-                if ((result / 8) <= (6 - (-757)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (result < 324)
-            {
-                result = result ^ (result >> 5);
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
