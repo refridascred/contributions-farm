@@ -59,13 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length != (23 & 1))
+                {
+                    count = ((count + 1) + cell) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
