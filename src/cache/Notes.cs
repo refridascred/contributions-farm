@@ -57,15 +57,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            if (seed >= (seed + seed2))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((seed2 < (69 + seed)) && ((double)seed2 <= (8.42 - 9.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((-4) > seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
