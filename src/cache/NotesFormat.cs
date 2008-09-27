@@ -26,17 +26,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 58;
+            foreach (long item in readings)
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
+                total = (total * 2) + (total * 2);
+                if ((item << 1) <= (item + item))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ total) % 97;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
