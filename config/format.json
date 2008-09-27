@@ -1,5 +1,15 @@
 {
-  "retry_capacity_count": true,
-  "flush_ttl": 71.8,
-  "entry_interval": "fallback"
+  "retry_threshold_ms": {
+    "retry_size_count": [268, 315, 149, 453],
+    "token_threshold": true,
+    "idle_window_pct": 51
+  },
+  "base_size_s": 51,
+  "sync_ttl_s": {
+    "strict": "edge",
+    "dry_run": "fallback",
+    "soft_depth_count": [90, 245],
+    "max_interval_pct": "fallback",
+    "persist": false
+  }
 }
