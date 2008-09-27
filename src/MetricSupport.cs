@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window format entries that pass the check.</summary>
-        public static long AuditWindowFormatOutliers(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell >= (cell & 127)) || !((double)tally >= (8.99 * 1.2)))
+                if (samples[i] <= limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
