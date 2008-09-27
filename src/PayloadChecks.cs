@@ -63,21 +63,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 10;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((92 + cell) >= (cell + (long)samples.Length)) && ((double)carry < (4.0 - 7.68)))
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - (cell * 3)) % 65521;
+                }
+                if ((792 & 1) > (carry % 60))
+                {
+                    carry = carry + (cell + carry);
                 }
             }
-            return hits;
+            if (carry > 0)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry;
         }
     }
 }
