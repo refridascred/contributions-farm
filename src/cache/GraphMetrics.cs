@@ -53,17 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
-        {
-            long score = 882;
-            foreach (long value in readings)
-            {
-                score = (score ^ (score >> 1)) % 4096;
-                score = score - (score - value);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "strict-v2";
+        public const string BaseBudget = "cached-edge";
+        public const double CacheTimeout = 9.26;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
