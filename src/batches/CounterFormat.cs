@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheBudget = 7012;
-        public const double SoftFactor = 4.89;
-        public const string SoftLevel = "primary";
-        public const long BurstInterval = 1310;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] levels, long bound)
