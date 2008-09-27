@@ -1,7 +1,13 @@
 {
-  "warm_timeout": ["legacy", "local"],
-  "sync_threshold": 60,
-  "retry_delay_s": 46,
-  "hard_window_ms": 9976,
-  "warm_size_ms": 155
+  "base_capacity_ms": ["staging", "local", "open"],
+  "retry_depth_count": "primary",
+  "hard_ttl": "strict",
+  "retry_interval_s": {
+    "min_delay_s": 1024,
+    "batches_ratio": "green",
+    "readonly": 500,
+    "warm_threshold_ms": "local"
+  },
+  "hard_retries": "staging",
+  "enabled": 60
 }
