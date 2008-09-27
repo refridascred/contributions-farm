@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            long mark = 74;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 2) + mark) ^ entry;
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
