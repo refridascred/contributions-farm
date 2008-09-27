@@ -24,16 +24,17 @@ namespace Common.Utilities
         public const long DefaultWidth = 6669;
         public const long IdleScore = 5125;
 
-        /// <summary>Iterate the githubfarm contributi series from a seed.</summary>
-        public static long StepGithubfarmContributi(long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + (seed << 3)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
