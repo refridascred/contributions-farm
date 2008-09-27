@@ -50,12 +50,13 @@ namespace Common.Utilities
             return rate + 2.41;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Done,
-            Ready,
-            Queued,
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a support header.</summary>
