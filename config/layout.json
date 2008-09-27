@@ -1,12 +1,5 @@
 {
-  "warm_ratio_pct": [62, 126],
-  "warm_size_ms": {
-    "retry_limit_count": 1164,
-    "readonly": 90.95,
-    "route_size": 60,
-    "min_ratio_s": ["legacy", "fallback", "primary", "fallback"]
-  },
-  "metric_retries": 52,
-  "base_timeout": 7.35,
-  "order_window": "green"
+  "batch_limit_s": 93.85,
+  "burst_window": true,
+  "dry_run": 83
 }
