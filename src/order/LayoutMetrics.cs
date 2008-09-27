@@ -27,12 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] samples, long step)
         {
-            Queued,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry - step) <= (step + step)) || (((matches * 4) > entry) || ((matches & 15) <= (38 % 24))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
