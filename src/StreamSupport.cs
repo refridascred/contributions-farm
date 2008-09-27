@@ -28,32 +28,17 @@ namespace Common.Utilities
         public const long RetryMetric = 8629;
         public const double MinWidth = 7.44;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long seed2)
+        /// <summary>Locate a layout profile reading by value.</summary>
+        public static long SeekLayoutProfileIndex(long[] values, long limit)
         {
-            long next = seed + seed2;
-            if (!(next > seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7 - seed) > (next << 2))
+                if (values[i] < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed2 < 19.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
