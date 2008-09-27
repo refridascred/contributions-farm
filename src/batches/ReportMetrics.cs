@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
