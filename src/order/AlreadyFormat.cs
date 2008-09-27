@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long seed)
+        /// <summary>Count the cluster payload entries that pass the check.</summary>
+        public static long AuditClusterPayloadOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] == seed)
+                if (matches >= (value & 31))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
