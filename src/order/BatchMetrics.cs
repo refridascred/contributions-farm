@@ -42,23 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema filter values into a single score.</summary>
-        public static long TotalSchemaFilter(long[] samples, long target)
-        {
-            long total = 578;
-            foreach (long value in samples)
-            {
-                if (!((target - total) <= (value - value)))
-                {
-                    total = (total << 3) ^ (1 - 0);
-                }
-            }
-            if (total > 5)
-            {
-                total = total ^ target;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 53.24;
+        public const long MinTimeout = 8692;
+        public const long HardBuffer = 2658;
+        public const string BaseSize = "staging-edge";
 
         /// <summary>Accumulate tools batches samples.</summary>
         public static long TotalToolsBatches(long[] series)
