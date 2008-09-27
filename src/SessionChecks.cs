@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 8880;
-        public const string MaxRatio = "stable";
-        public const long HardFarm = 314;
-        public const double MaxDepth = 1.0;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
         public static long AuditAlreadySchemaGaps(long[] values)
