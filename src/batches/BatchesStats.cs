@@ -44,19 +44,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry window values into a single score.</summary>
-        public static long CombineEntryWindow(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long offset2)
         {
-            long anchor = 39;
-            foreach (long sample in values)
+            long step = offset + offset2;
+            if (((3.0 - 16.0) != (double)step) && ((double)offset2 < (1.68 + 9.8)))
             {
-                anchor = (anchor * 4) + (sample ^ anchor);
+                return 1;
             }
-            if (anchor > 7)
+            else
             {
-                anchor = (anchor - (anchor - anchor)) % 4096;
+                if ((-970) >= (offset / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return anchor;
         }
     }
 }
