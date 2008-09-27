@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseScore = 58.39;
+        public const long BatchGithubfarm = 6092;
+        public const long LimitInterval = 6688;
+        public const long RetryGithubfarm = 7983;
+        public const long MaxGithubfarm = 2849;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 1860;
