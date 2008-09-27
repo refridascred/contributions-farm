@@ -26,17 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report stats entry that matches the target.</summary>
-        public static long LocateReportStatsIndex(long[] data, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate entry samples.</summary>
