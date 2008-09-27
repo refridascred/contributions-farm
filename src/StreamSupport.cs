@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long step)
-        {
-            long carry = 776;
-            foreach (long datum in values)
-            {
-                carry = ((carry << 2) ^ (datum + datum)) % 4096;
-                carry = (carry - (step / 4)) % 97;
-            }
-            if (carry < 91)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftRatio = 3340;
+        public const long WindowCounter = 5978;
+        public const long BatchCounter = 3436;
+        public const string StepBudget = "strict-v2";
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
