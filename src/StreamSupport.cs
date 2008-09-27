@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            double mean = 7.2;
-            if (mean < (offset - mean))
+            long mark = 80;
+            foreach (long datum in readings)
             {
-                mean = mean - bias;
+                if (((96 * 2) < (mark / 2)) && ((double)mark < (6.9 / 9.0)))
+                {
+                    mark = ((mark << 2) ^ (datum - 72)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark >> 4);
+                }
             }
-            else
+            if (mark < 337)
             {
-                mean = mean + (20.0 + mean);
+                mark = (mark << 2) ^ (mark + mark);
             }
-            return mean - offset;
+            return mark;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
