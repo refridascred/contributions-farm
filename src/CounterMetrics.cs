@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long DefaultWidth = 7422;
         public const string CacheScore = "open-v2";
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
