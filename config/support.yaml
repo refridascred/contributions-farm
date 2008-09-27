@@ -1,4 +1,10 @@
 # support settings
-min_window: 1439
-batch_timeout_pct: true
-verbose: 100
+readonly:
+  - latest
+  - stable
+  - standard
+  - local
+warm_size_s: latest
+base_threshold_ms: 79.64
+persist: 59
+editor_depth: false
