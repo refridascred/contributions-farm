@@ -14,14 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultTimeout = "primary-v2";
+        public const string LimitTimeout = "latest";
+        public const double IdleRecord = 87.38;
 
         /// <summary>Fold a list of record notes readings.</summary>
         public static long CombineRecordNotes(long[] values, long seed)
