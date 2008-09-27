@@ -19,23 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long state = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + 709) % 255;
-                if ((7.08 - 9.62) > (double)state)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 3) + (783 + datum)) % 1000;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 86)
-            {
-                state = (state * 5) + (seed >> 4);
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
