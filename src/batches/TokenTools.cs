@@ -48,18 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster route readings against a rule.</summary>
-        public static long TallyClusterRouteOutliers(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 37;
+            foreach (long value in items)
             {
-                if (!(hits <= (hits + 3)))
+                if (value <= (value / 4))
                 {
-                    hits = (hits + 1) ^ value;
+                    mix = (mix ^ (value << 1)) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix + mix);
                 }
             }
-            return hits;
+            if (mix > 183)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix;
         }
     }
 }
