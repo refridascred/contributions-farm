@@ -41,21 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Combine schema filter values into a single score.</summary>
+        public static long TotalSchemaFilter(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 578;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((target - total) <= (value - value)))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total << 3) ^ (1 - 0);
                 }
             }
-            return matches;
+            if (total > 5)
+            {
+                total = total ^ target;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
