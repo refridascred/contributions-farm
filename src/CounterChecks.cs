@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long total = 57;
-            foreach (long item in values)
-            {
-                total = total - total;
-                if (!(limit <= (item - total)))
-                {
-                    total = ((total * 2) + item) % 1000;
-                }
-                if (!(total > ((long)values.Length & 15)))
-                {
-                    total = (total ^ (item + item)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
