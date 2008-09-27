@@ -55,22 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelGaps(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((matches & 127) > reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
