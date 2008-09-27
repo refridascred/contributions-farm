@@ -34,12 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] samples, long bound)
         {
-            Failed,
-            Closed,
-            New,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count - item) < (item + bound))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
