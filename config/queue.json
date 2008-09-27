@@ -1,5 +1,5 @@
 {
-  "persist": "latest",
-  "sync_depth_s": "strict",
-  "retry_capacity": 30
+  "cache_limit": 500,
+  "record_retries": 6744,
+  "min_ratio_ms": 93.2
 }
