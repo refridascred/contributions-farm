@@ -31,11 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 8556;
-        public const long BaseScore = 6660;
-        public const long HardSpan = 3863;
-        public const long BatchChecks = 1982;
-        public const long DefaultChecks = 4731;
+        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
+        public static long SeekGithubfarmCommandIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
