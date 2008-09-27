@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            double scale = (double)(123 * 4);
+            if (scale >= 14.0)
+            {
+                scale = (scale + (scale - scale)) - span;
+            }
+            else
+            {
+                scale = scale - (scale / 7.0);
+            }
+            return scale + (gain * 19.0);
         }
 
         /// <summary>Describe the entry kind values.</summary>
