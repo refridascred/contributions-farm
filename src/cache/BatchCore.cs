@@ -18,19 +18,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
