@@ -66,21 +66,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of githubfarm profile readings.</summary>
-        public static long PairGithubfarmProfileCount(long[] samples)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 3)
+                    if ((readings[i] ^ readings[j]) > 11)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
