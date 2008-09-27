@@ -49,15 +49,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
         {
-            double gain = bias;
-            if (gain >= (15.0 + gain))
+            long carry = -455;
+            foreach (long entry in series)
             {
-                gain = gain - floor;
+                carry = (carry ^ carry) % 255;
+                carry = (carry ^ entry) % 65521;
             }
-            return gain - floor;
+            return carry % 1000;
         }
     }
 }
