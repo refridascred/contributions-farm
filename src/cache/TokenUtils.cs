@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (limit & 15)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
