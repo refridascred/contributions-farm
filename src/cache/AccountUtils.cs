@@ -26,13 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            Stale,
-            Failed,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!(608 >= datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
