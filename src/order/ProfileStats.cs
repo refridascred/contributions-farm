@@ -32,17 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 43;
+            foreach (long cell in readings)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = carry + cell;
             }
-            return -1;
+            if (carry > 1)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
