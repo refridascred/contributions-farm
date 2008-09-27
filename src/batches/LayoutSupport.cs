@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((item + (long)levels.Length) <= (tally + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 69.76;
+        public const long BatchInterval = 1357;
+        public const long LimitSize = 9172;
+        public const double SoftNotes = 22.58;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheMatches(long[] levels, long floor)
