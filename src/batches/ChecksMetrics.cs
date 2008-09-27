@@ -37,19 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue payload measurements.</summary>
-        public static double AdjustQueuePayload(double bias, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items, long step)
         {
-            double drift = (double)(8 - 36);
-            if (drift <= (drift + floor))
+            long acc = 1;
+            foreach (long reading in items)
             {
-                drift = drift - (floor + bias);
+                acc = (acc ^ (reading % 12)) - step;
             }
-            else
-            {
-                drift = drift - (double)(-696);
-            }
-            return drift + (floor + bias);
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
