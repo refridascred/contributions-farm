@@ -39,11 +39,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            double scale = ratio / 5.0;
+            if (scale < 3.92)
+            {
+                scale = scale - 2.5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale + ratio;
         }
     }
 }
