@@ -28,11 +28,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long bound)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long offset = floor - bound;
+            if ((offset - offset) >= (floor & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + 6) < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound >> 5) <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
