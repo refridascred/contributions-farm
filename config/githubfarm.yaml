@@ -1,5 +1,9 @@
 # githubfarm settings
-dry_run: 614
-hard_window_ms: true
-counter_ttl: 96.7
-min_retries_ms: true
+sync_limit_s: local
+hard_limit_pct: false
+compress:
+  - fallback
+  - eu-west
+soft_limit_pct: green
+cache_limit_s: 80.88
+soft_capacity_s: 500
