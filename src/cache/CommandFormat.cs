@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = 581;
-            foreach (long datum in samples)
-            {
-                score = ((score + (datum - datum)) % 255) - floor;
-            }
-            return score % 97;
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
