@@ -35,11 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double bias)
-        {
-            double mean = gain;
-            return (mean + (double)8) + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 7567;
+        public const long MaxChecks = 2057;
+        public const long HardChecks = 1252;
+        public const long IdleChecks = 4157;
     }
 }
