@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 1.56;
-        public const long WindowSize = 3686;
-        public const double IdleWidth = 67.98;
-        public const long BurstCache = 3522;
-        public const long IdleSpan = 1569;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] items, long seed)
