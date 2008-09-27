@@ -56,17 +56,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a window session reading by value.</summary>
-        public static long FindWindowSessionIndex(long[] levels, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
