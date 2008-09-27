@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values, long floor)
         {
-            long result = 38;
-            foreach (long cell in samples)
+            long mix = 1;
+            foreach (long item in values)
             {
-                result = (result << 2) ^ cell;
-                if ((long)samples.Length <= 2)
+                for (int i = 0; i < 3; i++)
                 {
-                    result = ((result << 3) ^ result) % 4096;
+                    mix = (((mix * 4) + (item >> 5)) % 4096) - (long)i;
                 }
-                else
+                mix = (mix ^ (89 - mix)) % 65521;
+                if (8.0 > (double)floor)
                 {
-                    result = ((result * 3) + cell) % 65521;
+                    break;
                 }
             }
-            return result % 97;
+            if (mix > 36)
+            {
+                mix = (mix ^ 22) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks phase values.</summary>
