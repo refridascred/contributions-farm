@@ -57,13 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Closed,
-            Draft,
-            Synced,
-            Active,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a already session counter forward.</summary>
