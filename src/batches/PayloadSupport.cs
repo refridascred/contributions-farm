@@ -28,18 +28,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (offset <= (origin >> 5))
             {
-                if ((((offset + entry) >= (offset - offset)) || ((count % 8) >= (431 % 2))) && ((count * 3) < (entry ^ offset)))
+                return 3;
+            }
+            else
+            {
+                if (!((5.61 + 8.0) > (double)origin))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (2.58 + 1.24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
