@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(23 - 293);
+            if (mean < (double)98)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean + offset);
             }
-            return -1;
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)87) + (double)(long)i;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
