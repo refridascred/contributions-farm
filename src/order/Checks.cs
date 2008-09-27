@@ -38,23 +38,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache graph samples.</summary>
-        public static long FoldCacheGraph(long[] readings, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long carry = 0;
-            foreach (long entry in readings)
+            long anchor = 520;
+            foreach (long datum in items)
             {
-                carry = (((carry * 2) + (-79)) - entry) - step;
-                if ((double)carry != (6.31 / 5.0))
+                if (((datum + anchor) != (anchor >> 2)) && ((18 + anchor) >= (anchor << 3)))
+                {
+                    anchor = ((anchor << 3) ^ datum) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                if ((anchor * 3) != (anchor + datum))
                 {
                     break;
                 }
             }
-            if (carry < 270)
-            {
-                carry = (carry * 3) + (carry / 7);
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a stream stats.</summary>
