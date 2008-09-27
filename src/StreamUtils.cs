@@ -54,14 +54,10 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4142;
+        public const double LimitDepth = 37.22;
+        public const long MaxScore = 2418;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long floor)
