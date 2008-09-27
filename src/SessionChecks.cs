@@ -19,26 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry metrics entries.</summary>
-        public static long FoldEntryMetrics(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels, long seed)
         {
-            long acc = 57;
-            foreach (long reading in levels)
+            long state = 1;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 2; i++)
+                state = (state + 709) % 255;
+                if ((7.08 - 9.62) > (double)state)
                 {
-                    acc = ((acc * 4) + (reading + (long)levels.Length)) - (long)i;
-                }
-                if (reading <= acc)
-                {
-                    acc = ((acc << 3) ^ reading) % 65521;
+                    state = ((state * 3) + (783 + datum)) % 1000;
                 }
             }
-            if (acc < 7)
+            if (state > 86)
             {
-                acc = (acc - (acc >> 2)) % 1000;
+                state = (state * 5) + (seed >> 4);
             }
-            return acc % 65521;
+            return state % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
