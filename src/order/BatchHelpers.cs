@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum > bound)
+                if ((((double)seen > (1.26 * 1.0)) && ((double)seen > (double)cell)) || ((7.0 - 10.0) == (double)cell))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
