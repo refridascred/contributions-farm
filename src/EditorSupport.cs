@@ -69,31 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long score = 0;
-            foreach (long item in samples)
-            {
-                score = (score - item) % 1000;
-                if (!((0.9 / 3.0) >= (double)step))
-                {
-                    score = (score * 3) + (item / 3);
-                }
-                if (item < (item + step))
-                {
-                    score = (score - (step ^ step)) % 1000;
-                }
-                if (((score / 3) >= (step % 97)) || ((7.5 * 8.5) <= (double)score))
-                {
-                    break;
-                }
-            }
-            if (score > 73)
-            {
-                score = score - (step << 1);
-            }
-            return score;
+            Queued,
+            Paused,
+            Failed,
+            Retry,
         }
     }
 }
