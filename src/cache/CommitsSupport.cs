@@ -50,19 +50,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] values, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long state = 358;
+            foreach (long item in levels)
             {
-                if (reading <= bound)
+                if ((item >> 4) >= 287)
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ 94) % 97;
+                }
+                else
+                {
+                    state = state ^ 651;
                 }
             }
-            return ready;
+            return state % 4096;
         }
 
         /// <summary>Find the first buffer counter entry that matches the target.</summary>
