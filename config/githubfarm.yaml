@@ -1,39 +1,4 @@
 # githubfarm settings
-readonly:
-  idle_retries_count: eu-west
-  max_interval_count: 96
-  flush_capacity: 27.15
-  strict: 2517
-  max_retries_s: 100
-  default_capacity_ms:
-    cache_depth_s: 46
-    batch_ratio_count: 500
-    burst_limit_ms: 1024
-    compress: stable
-channel_threshold:
-  max_capacity_ms:
-    record_interval: standard
-    flush_interval: 19.27
-    format_ttl: cached
-  min_depth_pct: blue
-  editor_ttl:
-    hard_capacity_ms: 83.46
-    hard_depth: 84.02
-    batches_interval: 33.15
-  commits_limit: 19.33
-  readonly:
-    - local
-    - primary
-  tools_retries: 100
-dry_run:
-  sync_timeout_ms: 60
-  readonly: 49.26
-  strict:
-    account_window: 4130
-    persist: cached
-    checks_ratio: cached
-    warm_ratio_ms: 100
-    notes_interval: 98.78
-  batch_window: standard
-  base_interval: false
-  githubfarm_capacity: 61.32
+hard_interval: true
+sync_window_pct: 54.66
+compress: 21
