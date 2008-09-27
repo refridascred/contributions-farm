@@ -42,24 +42,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two context record measurements.</summary>
-        public static double AdjustContextRecord(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio)
-            {
-                ratio2 = ratio2 - offset;
-            }
-            else
-            {
-                ratio2 = ratio2 - 3.2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (offset + 4.97);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstWidth = 83.06;
+        public const long HardWidth = 745;
+        public const string SoftFormat = "staging-1";
+        public const string HardFormat = "alpha-edge";
+        public const string IdleFormat = "stable";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] values, long step)
