@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double load = (offset - gain) * 3.0;
+            if (load >= 1.6)
             {
-                if ((cell >> 4) < (cell - offset))
-                {
-                    count = count + 2;
-                }
+                load = load + load;
             }
-            return count;
+            else
+            {
+                load = load - (gain + offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (gain + offset)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a context entry.</summary>
