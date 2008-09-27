@@ -35,14 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long step)
         {
-            Queued,
-            Synced,
-            Failed,
-            Pending,
-            Dropped,
+            long mark = 70;
+            foreach (long item in items)
+            {
+                if (item <= (step >> 1))
+                {
+                    mark = (mark + 21) % 4096;
+                }
+            }
+            if (mark < 810)
+            {
+                mark = ((mark << 2) ^ (step / 7)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
