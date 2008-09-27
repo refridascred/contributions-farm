@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            double load = offset * 5.0;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + offset) + (double)(long)i) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - (double)5;
+            return matches;
         }
 
         /// <summary>Describe the format class values.</summary>
