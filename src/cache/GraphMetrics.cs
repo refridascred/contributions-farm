@@ -43,31 +43,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank layout batch input into a small class.</summary>
-        public static long SortLayoutBatch(long offset, long offset2)
-        {
-            if ((double)offset2 <= (0.93 / 7.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 4) >= (offset >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset2 >= (double)2) && ((9 % 60) <= (3 + offset2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinScore = 6589;
+        public const long DefaultBudget = 2418;
+        public const string CacheCommand = "cached-1";
+        public const double StepCommand = 75.44;
+        public const double DefaultFactor = 61.29;
     }
 }
