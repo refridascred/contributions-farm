@@ -41,9 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftFactor = "fallback-v2";
-        public const long StepCounter = 1516;
-        public const string BurstCounter = "latest-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((-44) >= (item & 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
