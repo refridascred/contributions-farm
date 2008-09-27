@@ -37,9 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3882;
-        public const string IdleBatches = "standard-1";
-        public const long RetryBatches = 9290;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchSize = 77.82;
+        public const long MinSpan = 6857;
+        public const double BatchSpan = 85.21;
+        public const double HardGithubfarm = 84.5;
     }
 }
