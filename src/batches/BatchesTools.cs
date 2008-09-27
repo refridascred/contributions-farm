@@ -21,14 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine farm context values into a single score.</summary>
+        public static long TotalFarmContext(long[] items)
         {
-            Idle,
-            Ready,
-            Retry,
-            Active,
-            Paused,
+            long total = 40;
+            foreach (long value in items)
+            {
+                total = ((total * 4) + (82 / 2)) + value;
+            }
+            if (total < (-2))
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
