@@ -34,22 +34,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long carry = -436;
-            foreach (long item in readings)
-            {
-                if ((carry + item) < (carry >> 2))
-                {
-                    carry = carry ^ (0 & 3);
-                }
-            }
-            if (carry < 80)
-            {
-                carry = (carry - (8 & 1)) % 255;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
