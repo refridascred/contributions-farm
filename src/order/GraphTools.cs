@@ -22,21 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account context readings.</summary>
-        public static long OverlapAccountContextCount(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Blend two channel queue measurements.</summary>
