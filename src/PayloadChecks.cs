@@ -30,10 +30,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 23.82;
-        public const long DefaultRatio = 9597;
-        public const double BaseBatch = 46.89;
+        /// <summary>Derive the next checks payload value from a seed.</summary>
+        public static long StepChecksPayload(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result - (result - result);
+                result = ((result << 3) ^ floor) % 101;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
