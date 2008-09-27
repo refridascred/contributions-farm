@@ -63,13 +63,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Dropped,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultInterval = 38.25;
+        public const long RetryCounter = 9200;
+        public const string CacheCounter = "cached-v2";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] samples)
