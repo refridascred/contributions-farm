@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 7893;
-        public const double BaseBudget = 98.09;
-        public const string CacheChecks = "stable";
-        public const long IdleRatio = 8892;
-        public const long MinSize = 9658;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((double)159 > (double)item) && (item <= (count - (-39))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
