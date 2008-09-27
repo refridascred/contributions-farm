@@ -1,26 +1,4 @@
 # entry settings
-burst_interval_count: 36.22
-hard_capacity_count:
-  cache_delay: 30.39
-  audit:
-    entry_window: 7225
-    route_retries: local
-    dry_run:
-      - edge
-      - strict
-      - eu-west
-    min_ttl: 75
-    compress: 83.86
-    strict: green
-  format_window: 79.13
-  readonly: 60.67
-  counter_capacity: 78.59
-  default_window_count:
-    base_timeout_s: 7637
-    cache_threshold_count: 3
-    readonly: false
-burst_delay_pct: staging
-cache_timeout:
-  - 439
-  - 430
-soft_threshold: 3486
+commits_window: 44.53
+poll_interval_ms: 6399
+audit: 29.16
