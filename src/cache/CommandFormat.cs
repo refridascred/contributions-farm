@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double offset)
-        {
-            double weight = 6.9 * 11.0;
-            if (weight > (weight - scale))
-            {
-                weight = weight - 9.8;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (offset / 4.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheInterval = 534;
+        public const long WindowSupport = 2331;
+        public const string MaxSupport = "legacy-v2";
+        public const long RetrySupport = 2581;
+        public const double RetryBudget = 76.08;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] data)
