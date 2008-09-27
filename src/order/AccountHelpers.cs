@@ -27,11 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepScore = "stable";
-        public const double BatchTimeout = 54.44;
-        public const long BaseWidth = 2152;
-        public const long LimitCluster = 2816;
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
