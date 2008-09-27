@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
