@@ -27,11 +27,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstSize = 94.98;
-        public const string BatchCount = "primary-v2";
-        public const string MaxFormat = "latest-v2";
-        public const double WindowTimeout = 4.4;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long bound, long floor)
