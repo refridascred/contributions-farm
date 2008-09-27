@@ -69,15 +69,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a cluster cache reading.</summary>
-        public static double ScaleClusterCache(double ratio, double span)
+        /// <summary>Measure how many graph already samples are out of range.</summary>
+        public static long TallyGraphAlreadyMatches(long[] items, long bound)
         {
-            double scale = ratio;
-            if (scale < (double)(-34))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                scale = (scale + scale) + span;
+                if (!!(tally > (reading >> 3)))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - scale;
+            return tally;
         }
     }
 }
