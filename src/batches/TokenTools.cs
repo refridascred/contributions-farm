@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardCount = 1066;
-        public const long IdleLayout = 6413;
-        public const string SoftLayout = "standard";
-        public const string RetryLayout = "legacy-1";
-        public const string SoftRatio = "strict";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                long diff = target;
+                acc = (acc - (diff + target)) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
