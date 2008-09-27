@@ -55,14 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            Pending,
-            New,
-            Ready,
-            Idle,
-            Closed,
+            double rate = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) - bias;
+            }
+            return rate + (double)5;
         }
     }
 }
