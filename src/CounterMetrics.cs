@@ -42,12 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultCount = 724;
+        public const double LimitWindow = 57.86;
+        public const long LimitSize = 9201;
+        public const string SoftDepth = "open-1";
+        public const double BaseFactor = 42.39;
     }
 }
