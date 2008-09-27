@@ -28,15 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((19 << 2) <= seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
