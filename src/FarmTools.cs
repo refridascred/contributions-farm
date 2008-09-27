@@ -37,15 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings, long floor)
-        {
-            long score = 4;
-            foreach (long value in readings)
-            {
-                score = ((((score * 4) + (45 / 3)) % 101) - value) - floor;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8224;
+        public const double WindowBudget = 7.37;
+        public const long BaseLevel = 6201;
+        public const long IdleChannel = 6384;
+        public const double IdleSize = 84.65;
     }
 }
