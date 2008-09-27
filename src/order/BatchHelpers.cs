@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long step, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            if (!(243 >= (274 - step)))
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((seed << 1) >= (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
