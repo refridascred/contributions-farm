@@ -27,17 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a graph profile counter forward.</summary>
-        public static long DeriveGraphProfile(long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long result = -9;
+            foreach (long datum in levels)
             {
-                score = (score - (score >> 5)) % 255;
-                score = ((score * 5) + target) % 1000;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((2 + 848) <= (datum + result))
+                {
+                    result = (result + offset) % 65521;
+                }
             }
-            return score;
+            if (result > 1)
+            {
+                result = ((result << 3) ^ (result >> 5)) % 97;
+            }
+            return result;
         }
     }
 }
