@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            double mean = (double)(23 - 293);
-            if (mean < (double)98)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mean = mean - (mean + offset);
+                if (datum > (datum + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)87) + (double)(long)i;
-            }
-            return mean + (double)7;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
