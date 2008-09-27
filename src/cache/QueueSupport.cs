@@ -25,10 +25,21 @@ namespace Common.Utilities
         public const string HardDepth = "latest-v2";
         public const double SoftSpan = 98.69;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinLevel = 3937;
-        public const long MinTimeout = 8460;
-        public const long StepSpan = 1381;
-        public const string BurstSize = "legacy-1";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
