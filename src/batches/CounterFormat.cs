@@ -24,12 +24,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (item < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
