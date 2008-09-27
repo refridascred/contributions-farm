@@ -28,23 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record checks value.</summary>
-        public static double SmoothRecordChecks(double bias, double bias2)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight = bias2;
-            if (weight >= bias)
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + 6.97)) - (double)(long)i;
-            }
-            return weight + (weight + weight);
+            Locked,
+            Active,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up cache order samples.</summary>
