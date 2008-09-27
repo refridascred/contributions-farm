@@ -41,32 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks counter pair into a bucket.</summary>
-        public static long BucketChecksCounter(long floor, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long bound2 = floor - bound;
-            if (((bound2 + bound) >= (bound ^ bound2)) && ((bound2 & 255) < (floor + bound2)))
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) == (98 / 2))
+                if ((total % 8) == (long)i)
                 {
-                    return 0;
+                    total = total ^ (total + (long)i);
                 }
-                else
-                {
-                    if (bound2 > (floor + bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
