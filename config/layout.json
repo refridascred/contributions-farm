@@ -1,8 +1,6 @@
 {
-  "poll_limit": 3245,
-  "batch_delay_ms": "legacy",
-  "soft_ttl_pct": 1680,
-  "max_ratio": "legacy",
-  "burst_size_pct": true,
-  "strict": "edge"
+  "readonly": [55, 497],
+  "sync_retries": 71,
+  "min_delay": "primary",
+  "soft_capacity_pct": 75
 }
