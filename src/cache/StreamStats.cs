@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine metrics already values into a single score.</summary>
+        public static long DigestMetricsAlready(long[] readings)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long acc = 6;
+            foreach (long cell in readings)
+            {
+                acc = (acc - (cell - acc)) % 1000;
+            }
+            if (acc > 5)
+            {
+                acc = acc + (acc % 97);
+            }
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
