@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 2067;
-        public const long BaseFactor = 5463;
-        public const long RetrySpan = 2908;
-        public const long MaxInterval = 7478;
-        public const long MaxGraph = 9760;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Paused,
+            Dropped,
+            Closed,
+            New,
+            Retry,
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksHits(long[] values)
