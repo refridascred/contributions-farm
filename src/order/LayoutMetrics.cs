@@ -34,39 +34,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            long step = limit + origin;
-            if (step <= (201 - limit))
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + limit) <= (origin + step))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 8;
+                    score = ((score * 3) + ((long)i + target)) ^ (long)i2;
+                    score = (score - (score >> 5)) % 101;
                 }
-                else
+                score = (score - (long)i) % 101;
+                if ((target + (long)i) == (target - score))
                 {
-                    if (((17.0 * 6.25) >= (double)step) || ((origin - limit) < origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (6.11 / 6.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score * 5) + ((long)i << 3);
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
