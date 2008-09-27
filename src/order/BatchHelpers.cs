@@ -19,25 +19,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long WeighCommandQueue(long[] items, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long carry = 67;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry ^ (885 + (long)i)) % 65521) - cell;
-                    carry = carry + (long)i;
-                }
-                if ((carry + 917) > seed)
-                {
-                    carry = (carry * 2) + carry;
-                    carry = (carry ^ (seed / 8)) % 255;
-                }
-                carry = (carry - (8 + 514)) % 97;
-            }
-            return carry % 1000;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
