@@ -30,21 +30,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + (double)(long)i;
             }
-            return hits;
+            return scale - (ratio + floor);
         }
 
         /// <summary>Combine format values into a single score.</summary>
