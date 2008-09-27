@@ -74,15 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter channel figure with a bias.</summary>
-        public static double ScaleFilterChannel(double ratio, double floor)
-        {
-            double mean = ratio;
-            if (mean > (floor * 1.17))
-            {
-                mean = mean + ratio;
-            }
-            return mean - 9.0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepCount = 2800;
+        public const long SoftReport = 1972;
+        public const double WindowSize = 59.76;
+        public const double IdleReport = 93.78;
     }
 }
