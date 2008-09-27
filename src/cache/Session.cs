@@ -23,26 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long origin)
         {
-            long sum = 36;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((sum ^ 198) == (11 >> 3))
+                if (seen <= 1)
                 {
-                    continue;
-                }
-                if ((47 / 2) > (entry << 2))
-                {
-                    sum = (sum ^ (entry << 2)) - origin;
+                    seen = ((seen + 3) + reading) - origin;
                 }
             }
-            if (sum > 660)
-            {
-                sum = (sum << 2) ^ ((-57) + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two contributi metrics measurements.</summary>
