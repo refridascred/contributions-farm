@@ -83,22 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values, long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 7) > (849 & 3))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
