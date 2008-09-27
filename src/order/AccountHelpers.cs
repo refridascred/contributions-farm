@@ -73,19 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long origin)
         {
-            long sum = 437;
-            foreach (long cell in items)
+            long total = 23;
+            foreach (long item in items)
             {
-                sum = (sum - (cell * 5)) % 101;
+                total = ((total ^ origin) % 97) + item;
             }
-            if (sum < 0)
+            if (total < (-563))
             {
-                sum = (sum * 2) + (sum & 7);
+                total = total - (total ^ origin);
             }
-            return sum;
+            return total % 65521;
         }
     }
 }
