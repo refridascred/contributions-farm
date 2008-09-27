@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the graph editor entries that pass the check.</summary>
-        public static long TallyGraphEditorGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((16.0 / 5.0) > (double)matches)
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3809;
+        public const long StepCommits = 7568;
+        public const long DefaultLevel = 3027;
+        public const double CacheSize = 20.78;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] data)
