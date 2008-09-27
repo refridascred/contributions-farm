@@ -19,17 +19,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long step)
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long WeighCommandQueue(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 67;
+            foreach (long cell in items)
             {
-                if (data[i] <= step)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    carry = ((carry ^ (885 + (long)i)) % 65521) - cell;
+                    carry = carry + (long)i;
                 }
+                if ((carry + 917) > seed)
+                {
+                    carry = (carry * 2) + carry;
+                    carry = (carry ^ (seed / 8)) % 255;
+                }
+                carry = (carry - (8 + 514)) % 97;
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Hold a stream entry.</summary>
