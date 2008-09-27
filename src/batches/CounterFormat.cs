@@ -28,17 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] series, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
