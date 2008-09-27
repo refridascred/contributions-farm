@@ -19,24 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long TallyCounterBatches(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if (((long)i + score) != (limit ^ (long)i))
-                {
-                    score = score ^ (9 + (long)i);
-                }
-                else
-                {
-                    score = (score ^ score) % 97;
-                    score = (score - (68 + 0)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                mix = (mix + (mix % 5)) - cell;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
