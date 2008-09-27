@@ -37,15 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
