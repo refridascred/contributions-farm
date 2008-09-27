@@ -52,11 +52,16 @@ namespace Common.Utilities
         public const double WindowBudget = 41.77;
         public const string LimitCount = "primary";
 
-        /// <summary>Adjust a stream session reading.</summary>
-        public static double AdjustStreamSession(double weight, double floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            double weight2 = weight;
-            return (weight2 + weight2) + floor;
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result * 4) + ((long)i / 4);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up checks samples.</summary>
