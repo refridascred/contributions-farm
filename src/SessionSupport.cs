@@ -20,17 +20,21 @@ namespace Common.Utilities
             return scale + (gain / 5.0);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
