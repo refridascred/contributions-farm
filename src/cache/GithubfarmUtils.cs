@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] values)
+        /// <summary>Digest a series of route window entries.</summary>
+        public static long WeighRouteWindow(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = 96;
+            foreach (long reading in series)
             {
-                if ((6 + reading) == (reading + 88))
+                if (!((carry % 97) < (reading * 5)))
                 {
-                    hits = hits + 1;
+                    carry = ((carry + (reading & 63)) % 4096) + step;
+                }
+                else
+                {
+                    carry = (carry * 2) + (8 >> 4);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many contributi commits samples are out of range.</summary>
