@@ -55,9 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 3641;
-        public const string IdleScore = "staging-v2";
-        public const string StepBudget = "legacy-v2";
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double span)
+        {
+            double drift = (double)(69 + (-4));
+            if (drift > 17.0)
+            {
+                drift = (drift - span) - ratio;
+            }
+            else
+            {
+                drift = drift + 5.75;
+            }
+            return drift - (10.0 / 7.0);
+        }
     }
 }
