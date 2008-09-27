@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long prev = limit + floor;
-            if ((prev < (floor % 10)) || ((prev ^ limit) < (limit % 60)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((prev * 3) >= floor) || ((floor / 7) >= (limit - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 8) < (344 >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Draft,
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Match up graph samples.</summary>
