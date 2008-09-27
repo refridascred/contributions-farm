@@ -38,24 +38,25 @@ namespace Common.Utilities
             return bias + (rate / 2.0);
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Rank command githubfarm input into a small class.</summary>
+        public static long GradeCommandGithubfarm(long bound, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            long prev = bound + step;
+            if ((6.81 * 5.7) < (double)step)
             {
-                if (acc < (origin << 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (3.31 - 2.6))
                 {
-                    acc = (acc << 2) ^ origin;
+                    return 4;
                 }
                 else
                 {
-                    long delta = acc - (origin * 5);
-                    acc = acc + (delta % 100);
+                    return 1;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
         }
 
         /// <summary>Describe the editor state values.</summary>
