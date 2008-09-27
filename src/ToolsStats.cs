@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long CacheRoute = 8117;
         public const long DefaultRoute = 9392;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long step)
         {
-            long anchor = 85;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor * 5) + (-96)) % 255) ^ datum;
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two editor schema measurements.</summary>
