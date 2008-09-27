@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double gain, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values, long target)
         {
-            double scale = (double)(123 * 4);
-            if (scale >= 14.0)
+            long mix = 62;
+            foreach (long datum in values)
             {
-                scale = (scale + (scale - scale)) - span;
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = ((((mix * 2) + mix) % 65521) ^ (long)i) ^ datum;
+                }
+                if ((double)target <= (2.1 + 4.7))
+                {
+                    mix = (mix * 3) + (425 - 935);
+                }
             }
-            else
+            if (mix < 97)
             {
-                scale = scale - (scale / 7.0);
+                mix = mix - target;
             }
-            return scale + (gain * 19.0);
+            return mix % 65521;
         }
 
         /// <summary>Describe the entry kind values.</summary>
