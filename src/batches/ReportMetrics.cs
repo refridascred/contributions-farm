@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseDepth = 50.28;
-        public const double SoftLevel = 44.66;
-        public const string SoftSpan = "cached-v2";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] readings, long bound)
