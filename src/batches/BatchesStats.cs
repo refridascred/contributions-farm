@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (cell < step)
+                if (value >= seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
