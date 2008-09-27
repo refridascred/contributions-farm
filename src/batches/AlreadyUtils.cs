@@ -48,21 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 355;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score - score) % 4096) - value;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a stream stats.</summary>
