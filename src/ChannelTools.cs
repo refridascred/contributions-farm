@@ -19,16 +19,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long limit, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long cur = limit ^ bound;
+            if ((2.4 * 3.22) < (double)cur)
             {
-                carry = carry ^ (bound - 7);
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((cur - limit) <= (cur << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur % 10) > (bound ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
