@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Count commits command pairs that satisfy a relation.</summary>
+        public static long PairCommitsCommandCount(long[] data)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - (acc - datum);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 4)
-            {
-                acc = (acc + (90 - acc)) % 97;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
