@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6638;
-        public const string CacheToken = "standard-1";
-        public const long MaxToken = 3305;
-        public const string SoftTimeout = "primary-edge";
-        public const string WindowDepth = "cached-1";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Retry,
+            Locked,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long GradeCommits(long bound, long origin)
