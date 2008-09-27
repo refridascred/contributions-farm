@@ -68,13 +68,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] levels, long limit)
         {
-            Locked,
-            Idle,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a cache token reading by value.</summary>
