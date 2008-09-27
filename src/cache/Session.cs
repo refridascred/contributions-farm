@@ -39,15 +39,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two contributi metrics measurements.</summary>
-        public static double AdjustContributiMetrics(double scale, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long floor)
         {
-            double rate = scale;
-            for (int i = 0; i < 4; i++)
+            if (((origin / 5) != (floor + floor)) || ((double)origin != (3.56 * 6.06)))
             {
-                rate = (rate + (span - span)) + (double)(long)i;
+                return 6;
             }
-            return rate + (double)11;
+            else
+            {
+                if (!(4.1 < (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
