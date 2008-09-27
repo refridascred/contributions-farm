@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Active,
-            Paused,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheBudget = 7012;
+        public const double SoftFactor = 4.89;
+        public const string SoftLevel = "primary";
+        public const long BurstInterval = 1310;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] samples, long step)
