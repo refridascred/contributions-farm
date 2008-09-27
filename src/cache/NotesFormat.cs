@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            double weight = offset;
-            if (weight <= ratio)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - 1.81;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
