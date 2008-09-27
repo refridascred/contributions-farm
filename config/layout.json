@@ -1,5 +1,5 @@
 {
-  "dry_run": 6468,
-  "entry_delay": "stable",
-  "filter_window": 66.08
+  "retry_size_ms": "fallback",
+  "strict": 96.37,
+  "verbose": "standard"
 }
