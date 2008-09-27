@@ -1,8 +1,13 @@
 # githubfarm settings
-audit: 8304
-checks_ttl:
-  - blue
-  - eu-west
-  - standard
-  - fallback
-flush_interval_pct: 59.5
+metric_threshold: 9041
+token_capacity: 5961
+buffer_depth:
+  - 263
+  - 131
+  - 428
+  - 70
+graph_depth:
+  - primary
+  - cached
+  - primary
+  - staging
