@@ -1,14 +1,5 @@
 # entry settings
-verbose: 364
-enabled: 3353
-flush_interval: stable
-min_threshold_s:
-  - latest
-  - open
-  - blue
-  - cached
-idle_ratio:
-  - 186
-  - 319
-  - 37
-flush_capacity_count: 100
+commits_depth: cached
+compress: true
+dry_run: 43.12
+command_interval: 63.27
