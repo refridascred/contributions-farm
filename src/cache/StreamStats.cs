@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1999;
+        public const double MaxChannel = 19.29;
+        public const long RetryTimeout = 6509;
+        public const double BatchBudget = 87.3;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MaxAlready = "legacy-1";
