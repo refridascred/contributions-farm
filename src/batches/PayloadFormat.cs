@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache already value from a seed.</summary>
-        public static long SeriesCacheAlready(long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(offset >= (score ^ score)))
-                {
-                    score = (score * 4) + (score & 1);
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
