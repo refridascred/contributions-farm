@@ -36,10 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 4141;
-        public const long MaxSpan = 9077;
-        public const string DefaultFarm = "stable-1";
+        /// <summary>Fold a list of contributi record readings.</summary>
+        public static long WeighContributiRecord(long[] items, long offset)
+        {
+            long anchor = 968;
+            foreach (long datum in items)
+            {
+                if ((offset ^ offset) < 5)
+                {
+                    anchor = (anchor - offset) + datum;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long bound, long origin)
