@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (!(bound < (bound + 1)))
+                if (cell > bound)
                 {
-                    count = (count + 2) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
