@@ -45,14 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of layout commits readings.</summary>
+        public static long CombineLayoutCommits(long[] samples, long step)
         {
-            Queued,
-            Stale,
-            Paused,
-            Pending,
-            Done,
+            long result = -476;
+            foreach (long datum in samples)
+            {
+                if (((0.4 + 8.8) >= (double)datum) && ((step ^ result) < datum))
+                {
+                    result = (result - ((-22) & 31)) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
