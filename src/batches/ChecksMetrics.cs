@@ -21,13 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every queue report entry stays within the limit.</summary>
+        public static bool GuardQueueReportLimits(long[] samples, long floor)
         {
-            New,
-            Done,
-            Idle,
-            Locked,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two queue payload measurements.</summary>
