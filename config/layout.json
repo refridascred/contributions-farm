@@ -1,19 +1,12 @@
 {
-  "soft_interval_ms": 20.38,
-  "metric_retries": {
-    "burst_limit_pct": 80,
-    "enabled": 9879,
-    "readonly": "primary",
-    "min_delay": {
-      "readonly": ["latest", "eu-west"],
-      "soft_retries_pct": 6368,
-      "burst_retries_count": true,
-      "min_depth_s": "strict",
-      "format_ttl": "local",
-      "cluster_threshold": ["eu-west", "fallback", "legacy", "blue"]
-    },
-    "cluster_depth": 26
+  "warm_ratio_pct": [62, 126],
+  "warm_size_ms": {
+    "retry_limit_count": 1164,
+    "readonly": 90.95,
+    "route_size": 60,
+    "min_ratio_s": ["legacy", "fallback", "primary", "fallback"]
   },
-  "already_delay": 500,
-  "burst_depth_ms": 76.33
+  "metric_retries": 52,
+  "base_timeout": 7.35,
+  "order_window": "green"
 }
