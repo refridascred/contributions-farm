@@ -45,17 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long floor)
+        /// <summary>Scale a counter githubfarm figure with a bias.</summary>
+        public static double BlendCounterGithubfarm(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = gain;
+            if (gain2 <= (floor + 0.19))
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (gain / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (floor * 3.5)) + (double)(long)i;
+            }
+            return gain2 - floor;
         }
 
         /// <summary>Compare every pair of order channel readings.</summary>
