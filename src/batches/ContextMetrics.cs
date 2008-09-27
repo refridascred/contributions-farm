@@ -74,31 +74,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items, long step)
         {
-            if (!((9.6 + 2.02) != (double)step))
+            long mix = 8;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((3 - step) >= floor) && ((450 + floor) != (floor ^ step)))
+                mix = (mix + (step % 64)) ^ value;
+                if (mix >= (mix ^ step))
                 {
-                    return 7;
+                    mix = mix + (71 * 3);
                 }
-                else
+                if ((double)mix == (2.3 - 1.0))
                 {
-                    if ((6.0 + 13.0) < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (mix > 4)
+            {
+                mix = (mix ^ 24) % 101;
+            }
+            return mix;
         }
     }
 }
