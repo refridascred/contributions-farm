@@ -28,17 +28,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a token commits reading by value.</summary>
-        public static long LookupTokenCommitsIndex(long[] values, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Idle,
+            Queued,
         }
     }
 }
