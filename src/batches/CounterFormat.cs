@@ -27,14 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Idle,
-            Stale,
-            Closed,
-            New,
-            Retry,
+            Draft,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
