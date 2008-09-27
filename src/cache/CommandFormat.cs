@@ -57,17 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support commits sample.</summary>
-        public static long LocateSupportCommitsIndex(long[] data, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 3) ^ floor;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
