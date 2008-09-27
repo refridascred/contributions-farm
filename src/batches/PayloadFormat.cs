@@ -33,15 +33,38 @@ namespace Common.Utilities
         public const double HardPayload = 78.34;
         public const string RetryRatio = "fallback-1";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Classify a buffer context pair into a bucket.</summary>
+        public static long ClassifyBufferContext(long step, long seed)
         {
-            double mean = (double)(0 * 4);
-            if (mean > rate)
+            if (!((0.32 + 10.0) == (double)seed))
             {
-                mean = (mean - mean) - bias;
+                return 2;
             }
-            return mean + rate;
+            else
+            {
+                if (step < (seed - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0.94 >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (step % 12))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
