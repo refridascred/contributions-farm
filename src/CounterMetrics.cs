@@ -28,22 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] series, long seed)
+        /// <summary>Project the next record checks value.</summary>
+        public static double SmoothRecordChecks(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double weight = bias2;
+            if (weight >= bias)
             {
-                if ((count - count) <= (3 - reading))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - weight;
             }
-            return count;
+            else
+            {
+                weight = weight + bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight + 6.97)) - (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
 
         /// <summary>Match up cache order samples.</summary>
