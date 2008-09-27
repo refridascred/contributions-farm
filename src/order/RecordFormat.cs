@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 84.32;
-        public const long MaxTimeout = 7443;
-        public const long RetryInterval = 5520;
-        public const long DefaultGithubfarm = 5298;
+        /// <summary>Measure how many record context samples are out of range.</summary>
+        public static long TallyRecordContextHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + 236) > (sample - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileMatches(long[] levels, long step)
