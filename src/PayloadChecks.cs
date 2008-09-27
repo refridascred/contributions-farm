@@ -57,11 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + 5) == (cell >> 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
