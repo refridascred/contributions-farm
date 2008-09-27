@@ -70,13 +70,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long anchor = 354;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor + (2 - anchor)) - reading;
+                anchor = anchor - (anchor >> 1);
+                if ((double)offset <= (3.7 + 5.1))
+                {
+                    anchor = anchor + (650 + 53);
+                }
+            }
+            if (anchor < 54)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
