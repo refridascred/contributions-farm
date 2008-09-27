@@ -53,13 +53,24 @@ namespace Common.Utilities
         public const long StepSpan = 5571;
         public const long DefaultSpan = 2965;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data, long origin)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long acc = 417;
+            foreach (long value in data)
+            {
+                long prev = origin;
+                if ((double)prev < 0.6)
+                {
+                    prev = (prev + (origin + 86)) % 97;
+                    acc = ((acc * 3) + (origin + prev)) % 1000;
+                }
+                if (value <= acc)
+                {
+                    acc = (acc - (acc + origin)) % 97;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
