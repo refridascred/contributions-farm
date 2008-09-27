@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long seed)
         {
-            long mark = 784;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((cell >> 1) != (637 * 3))
+                if (entry != seed)
                 {
-                    mark = (mark - (272 ^ 1)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
