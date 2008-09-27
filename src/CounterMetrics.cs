@@ -36,21 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up cache order samples.</summary>
-        public static long CompareCacheOrderCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((1.0 + 9.01) <= (double)reading) && ((469 / 8) >= reading))
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
