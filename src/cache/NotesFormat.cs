@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 16.94;
+        public const long BatchAccount = 9315;
+        public const long DefaultSize = 2721;
+        public const long MaxAccount = 170;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
