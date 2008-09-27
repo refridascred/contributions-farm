@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits < 3.67)
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    hits = (hits + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi record readings.</summary>
