@@ -1,4 +1,5 @@
 # githubfarm settings
-warm_depth_s: 11.72
-retry_limit: true
-flush_ttl_s: legacy
+dry_run: 614
+hard_window_ms: true
+counter_ttl: 96.7
+min_retries_ms: true
