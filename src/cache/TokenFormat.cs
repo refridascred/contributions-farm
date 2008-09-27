@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long AuditBatchGithubfarmOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value << 1) > (hits / 3))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) - origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
