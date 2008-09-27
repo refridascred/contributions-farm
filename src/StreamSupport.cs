@@ -24,38 +24,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            if (!((floor + target) >= (target - target)))
+            double weight = (double)(492 >> 4);
+            if (weight < weight)
             {
-                return 3;
+                weight = (weight + (3.5 * 1.11)) + floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (65 >= (target << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((470 & 63) >= (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor > 8.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = (weight + weight) + (double)(long)i;
             }
+            return weight + gain;
         }
     }
 }
