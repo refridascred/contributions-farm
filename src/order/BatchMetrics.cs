@@ -15,13 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Retry,
-            Idle,
-            New,
             Active,
+            Stale,
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
