@@ -1,5 +1,6 @@
 {
-  "batch_ttl_ms": 3746,
-  "warm_retries_ms": 52.73,
-  "burst_interval_ms": [490, 234, 371, 311]
+  "soft_window_s": [117, 108],
+  "session_interval": 60,
+  "max_delay": 10,
+  "dry_run": "stable"
 }
