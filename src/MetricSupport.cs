@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepWidth = 5970;
-        public const string StepScore = "strict-v2";
-        public const long RetryGraph = 2261;
-        public const long LimitGraph = 1133;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Stale,
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double AdjustContext(double bias, double floor)
