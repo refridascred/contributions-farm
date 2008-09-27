@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleTimeout = "stable";
-        public const long HardMetric = 2148;
-        public const string IdleMetric = "open-v2";
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Pending,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] levels, long floor)
