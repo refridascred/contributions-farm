@@ -1,8 +1,9 @@
 {
-  "verbose": 69.39,
-  "poll_depth_s": [474, 162, 498],
-  "route_ttl": 49.96,
-  "flush_timeout": "fallback",
-  "command_ratio": "strict",
-  "batch_window": 60
+  "buffer_timeout": {
+    "poll_limit": "cached",
+    "support_retries": ["fallback", "cached"],
+    "readonly": "blue"
+  },
+  "soft_ratio_ms": "fallback",
+  "sync_threshold_pct": "stable"
 }
