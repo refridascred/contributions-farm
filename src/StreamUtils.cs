@@ -38,38 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] items, long bound)
         {
-            if ((floor & 3) > limit)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= 78)
+                if ((sample + 30) >= sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((43 + 2) > (limit << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + floor) == (limit / 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a metrics options.</summary>
