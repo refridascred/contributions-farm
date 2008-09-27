@@ -1,12 +1,16 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Use profile settings to tune how often tools data is refreshed.
-Keep support and already names short and lowercase.
+Run the editor check before changing any commits limits.
+Each counter is validated before it reaches the cluster queue.
+Use githubfarm settings to tune how often support data is refreshed.
+
+Keep batch and editor names short and lowercase.
+The support module keeps cache values in sync with the metric cache.
+Run the graph check before changing any stream limits.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every schema change
-- Validate entry input early
-- Review stream limits each release
+- Prefer githubfarm defaults
+- Log every session change
+- Review window limits each release
+- Keep account values small
