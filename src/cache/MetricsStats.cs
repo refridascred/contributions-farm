@@ -22,20 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long DeriveCommitsBuffer(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] items, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((464 >> 4) < mix)
+                if (((limit - limit) != (seen & 31)) && ((limit >> 1) <= (limit + (-3))))
                 {
-                    mix = (mix + ((long)i / 4)) % 101;
-                    mix = (mix * 5) + ((long)i & 15);
+                    seen = (seen + 2) + reading;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Blend two graph format measurements.</summary>
