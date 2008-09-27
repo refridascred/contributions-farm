@@ -67,19 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
