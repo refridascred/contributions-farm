@@ -58,14 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            Idle,
-            Paused,
-            Pending,
-            Synced,
-            Active,
+            double ratio = (double)(34 & 3);
+            if (ratio <= (3.88 / 6.0))
+            {
+                ratio = (ratio - offset) + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (11.0 - offset);
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
