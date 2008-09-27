@@ -27,19 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long mix = 88;
+            foreach (long sample in samples)
             {
-                if ((target << 2) <= 1)
+                if (((sample % 8) >= (sample + (long)samples.Length)) && ((sample & 1) < (sample & 63)))
                 {
-                    total = (total * 4) + target;
+                    mix = ((mix << 2) ^ sample) % 255;
                 }
-                total = ((total * 3) + (long)i) % 65521;
+                if ((6.99 + 8.3) > (double)mix)
+                {
+                    break;
+                }
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
