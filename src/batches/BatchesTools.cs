@@ -33,31 +33,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
-        {
-            long carry = 12;
-            foreach (long item in series)
-            {
-                if ((double)carry <= (9.8 + 7.0))
-                {
-                    break;
-                }
-                else
-                {
-                    long hits = (long)series.Length;
-                    carry = (carry - hits) % 65521;
-                }
-                if ((787 - carry) > (carry - carry))
-                {
-                    carry = ((carry << 3) ^ (item & 15)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + item) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 41;
+        public const double MaxTimeout = 71.93;
+        public const long WindowSchema = 6175;
     }
 }
