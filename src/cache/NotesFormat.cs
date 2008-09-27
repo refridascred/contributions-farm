@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            Stale,
-            Failed,
-            Active,
+            double mean = rate;
+            if (mean <= (mean / 7.0))
+            {
+                mean = mean - (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the route mode values.</summary>
