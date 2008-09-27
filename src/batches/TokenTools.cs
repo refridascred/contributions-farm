@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            double load = gain;
-            if (load > 7.41)
+            double bias = (double)5 * 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                load = load + 5.77;
+                bias = ((bias - span) + (double)(long)i) - ratio;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - (span / 4.0);
+            return bias - bias;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
