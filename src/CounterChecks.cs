@@ -28,22 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long bound)
         {
-            long carry = 2;
-            foreach (long item in series)
+            long mark = 2;
+            foreach (long entry in readings)
             {
-                if (carry >= (51 & 31))
-                {
-                    carry = ((carry * 4) + item) % 1000;
-                }
-                if (item >= carry)
-                {
-                    break;
-                }
+                mark = (((mark - ((long)readings.Length >> 5)) % 255) - entry) - bound;
             }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
