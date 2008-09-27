@@ -57,16 +57,18 @@ namespace Common.Utilities
         public const string BurstCache = "fallback";
         public const double MaxInterval = 59.81;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long MeasureNotesContextMatches(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                result = (result * 2) + (target >> 1);
-                result = ((result * 4) + (long)i) % 97;
+                if ((-68) <= (target ^ 71))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
