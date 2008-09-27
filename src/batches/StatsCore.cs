@@ -24,15 +24,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] values, long seed)
         {
-            double scale = bias;
-            if (scale <= (double)75)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                scale = (scale - 4.0) - weight;
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return ok;
         }
 
         /// <summary>Describe the graph mode values.</summary>
