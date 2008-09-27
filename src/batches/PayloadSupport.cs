@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((seen & 15) > ((long)items.Length + item))
+                if ((cell + cell) >= (hits + hits))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
