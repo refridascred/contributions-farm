@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long floor2)
-        {
-            if ((floor + floor2) < (floor / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor <= (floor2 >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 1.51;
+        public const double WindowStream = 37.46;
+        public const string BatchCount = "stable";
+        public const long SoftFactor = 7655;
+        public const long DefaultSpan = 6529;
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
         public static bool CheckNotesWindowLimits(long[] series, long offset)
