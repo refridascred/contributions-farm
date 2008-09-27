@@ -1,11 +1,12 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-A buffer that stays idle for too long is moved to the checks list.
-When a batch fails, the profile handler retries a few times before giving up.
+When a commits fails, the editor handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every layout by command.
 
 ## Guidelines
 
-- Validate schema input early
-- Log every support change
-- Document new report fields
+- Document new editor fields
+- Review stream limits each release
+- Keep channel values small
+- Log every stats change
