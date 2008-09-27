@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseFactor = 3200;
-        public const long StepCommits = 955;
-        public const string HardCommits = "standard";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxWidth = 4208;
+        public const string RetryEditor = "strict";
+        public const double StepEditor = 58.53;
+        public const string WindowWidth = "cached-edge";
+        public const long BaseSpan = 597;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long offset)
