@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Project the next stats stream value.</summary>
+        public static double SmoothStatsStream(double scale, double offset)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            double bias = (4.0 + offset) * 6.92;
+            if (bias >= scale)
+            {
+                bias = bias + (double)319;
+            }
+            return bias + (bias - scale);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
