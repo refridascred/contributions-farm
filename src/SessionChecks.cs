@@ -23,19 +23,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool ValidateChannelCommitsBounds(long[] series, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if (1 > offset)
             {
-                if (cell <= origin)
+                return 5;
+            }
+            else
+            {
+                if (offset < (237 - target))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (target > (337 % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
