@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const string SoftRatio = "open-1";
         public const long LimitWidth = 9976;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSpan = 1094;
+        public const long MinCommand = 7556;
+        public const long BaseSize = 213;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] series, long seed)
