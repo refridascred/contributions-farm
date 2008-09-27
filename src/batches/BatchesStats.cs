@@ -14,38 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] levels, long floor)
         {
-            if ((double)bound != (7.7 / 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 * 0.02) < (double)bound)
+                if (levels[i] >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin ^ 876) >= (origin % 12))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
