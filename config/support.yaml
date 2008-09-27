@@ -1,4 +1,15 @@
 # support settings
-compress: 34.57
-max_retries: true
-hard_timeout_ms: 32
+base_depth_ms:
+  cache_depth_s: 71.14
+  contributi_window: standard
+  strict: 5596
+  hard_ttl_s: stable
+  sync_delay: false
+  cache_size: legacy
+enabled: 44
+hard_ratio:
+  - 424
+  - 226
+  - 410
+  - 288
+flush_capacity_ms: 9127
