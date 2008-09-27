@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 2309;
-        public const long IdleFactor = 9321;
-        public const long IdleLevel = 3211;
-        public const long SoftBatches = 6146;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double rate, double offset)
+        {
+            double mean = offset * 1.1;
+            if (mean > mean)
+            {
+                mean = mean - rate;
+            }
+            return mean + 9.9;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series)
