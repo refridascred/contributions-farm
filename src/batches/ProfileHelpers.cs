@@ -57,17 +57,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first queue batch entry that matches the target.</summary>
-        public static long SeekQueueBatchIndex(long[] levels, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] >= offset)
+                if (((10.0 + 3.0) >= (double)matches) || ((double)matches <= (18.0 - 3.8)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + datum) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
