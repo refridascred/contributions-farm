@@ -42,21 +42,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = ratio;
+            if (load <= (load - 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + (load / 3.0)) - span;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + (load / 8.0);
         }
     }
 }
