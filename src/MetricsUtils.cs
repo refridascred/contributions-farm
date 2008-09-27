@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long CacheBudget = 5865;
         public const long BurstScore = 1435;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Scale a filter already figure with a bias.</summary>
+        public static double SmoothFilterAlready(double ratio, double floor)
         {
-            Pending,
-            Draft,
-            Stale,
-            Ready,
+            double ratio2 = (double)(98 << 2);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (((ratio2 - (double)238) + (double)(long)i) + ratio) + floor;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
