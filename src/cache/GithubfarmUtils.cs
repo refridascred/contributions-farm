@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (value != target)
+                if (cell != target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the stats status values.</summary>
