@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long TallyContributiCommitsMatches(long[] data)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)8 >= (5.01 * 19.0))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
