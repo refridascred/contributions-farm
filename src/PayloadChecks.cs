@@ -58,18 +58,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((cell + 5) == (cell >> 2))
+                if ((hits << 1) < (hits / 3))
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 3) ^ datum) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
