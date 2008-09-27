@@ -52,10 +52,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 29.46;
-        public const double SoftToken = 90.17;
-        public const double CacheToken = 75.1;
-        public const long MinToken = 8173;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 152;
+        public const long BaseDepth = 8820;
+        public const string HardBudget = "stable-v2";
     }
 }
