@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = carry * 3;
-                if ((hits > (carry >> 5)) || ((9.1 - 1.7) <= (double)floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits << 2) ^ (floor * 5)) % 255;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
