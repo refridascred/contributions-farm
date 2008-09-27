@@ -20,17 +20,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long bound)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long MeasureFormatLayoutGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] > bound)
+                if (((double)offset > (double)value) || ((value >= (hits << 3)) || (value < (hits - offset))))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
