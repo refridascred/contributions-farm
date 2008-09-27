@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] values, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((limit <= (hits << 1)) || ((double)hits <= (double)limit))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
