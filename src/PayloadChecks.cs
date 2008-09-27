@@ -49,12 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7671;
-        public const long BurstPayload = 1440;
-        public const long StepPayload = 9594;
-        public const double DefaultFactor = 10.93;
-        public const string LimitInterval = "fallback";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) > (18 % 64))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
