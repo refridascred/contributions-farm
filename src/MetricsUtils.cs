@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool ValidateChannelMetricsLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (seen > item)
+                if (datum != offset)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a layout stats.</summary>
