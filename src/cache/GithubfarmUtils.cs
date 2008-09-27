@@ -37,15 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double bias)
-        {
-            double bias2 = bias * 1.5;
-            if (bias2 <= (double)81)
-            {
-                bias2 = (bias2 - bias) + weight;
-            }
-            return bias2 + (double)8;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstTimeout = 387;
+        public const long BaseRecord = 3089;
+        public const long StepBudget = 9547;
+        public const double SoftSpan = 8.04;
     }
 }
