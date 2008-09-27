@@ -1,12 +1,5 @@
 {
-  "metrics_depth": {
-    "soft_timeout_count": "green",
-    "token_interval": "staging",
-    "tools_window": true,
-    "sync_limit_pct": 83.25,
-    "readonly": "cached",
-    "profile_depth": "legacy"
-  },
-  "default_window_s": false,
-  "idle_size": "staging"
+  "persist": "latest",
+  "sync_depth_s": "strict",
+  "retry_capacity": 30
 }
