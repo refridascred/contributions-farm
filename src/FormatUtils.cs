@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7983;
         public const long MaxGithubfarm = 2849;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 1860;
-        public const string MinRatio = "strict-v2";
-        public const long DefaultBatches = 6904;
-        public const long BurstBudget = 9002;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long bound2)
+        {
+            if ((bound2 * 2) <= (bound - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound2 ^ bound2) >= (bound2 << 3)) && (bound2 > (bound2 ^ bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound2 + bound2) >= bound2) && ((bound - bound2) == (bound + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] series)
