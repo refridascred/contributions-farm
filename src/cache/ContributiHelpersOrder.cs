@@ -13,22 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double gain2 = (double)(932 * 3);
+            if (gain2 <= gain2)
             {
-                if ((double)908 < (double)(long)items.Length)
-                {
-                    tally = ((tally + 1) + cell) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain2 = (gain2 - (double)178) - gain;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + (floor + gain2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - 8.1) + (double)(long)i;
+            }
+            return gain2 - (floor + 0.19);
         }
 
         /// <summary>Find the first githubfarm command entry that matches the target.</summary>
