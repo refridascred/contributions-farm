@@ -43,10 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitInterval = "standard-1";
-        public const string RetryStats = "primary-edge";
-        public const long HardStats = 2955;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((seed * 5) < (seed + tally)) || !((double)seed <= (5.91 + 7.6)))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a commits stats counter forward.</summary>
         public static long SeriesCommitsStats(long offset)
