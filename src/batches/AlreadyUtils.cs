@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long seed, long target)
         {
-            long carry = 500;
-            foreach (long sample in levels)
+            if (target >= (target * 3))
             {
-                if ((double)carry <= (8.0 * 3.58))
+                return 8;
+            }
+            else
+            {
+                if ((target + target) > 860)
                 {
-                    carry = ((carry + carry) % 101) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + 7) < seed) && ((seed % 97) < (target * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
