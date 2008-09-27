@@ -27,18 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] samples, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target >= 24)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + item;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
