@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowFactor = "alpha-1";
-        public const string BurstBatches = "local";
-        public const double HardBatches = 89.75;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double floor)
+        {
+            double rate = 7.0;
+            if (rate <= ratio)
+            {
+                rate = rate + rate;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksHits(long[] data, long floor)
