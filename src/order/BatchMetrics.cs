@@ -33,13 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry & 127) <= (entry << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
