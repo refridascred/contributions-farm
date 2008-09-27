@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a batches account figure with a bias.</summary>
-        public static double BlendBatchesAccount(double weight, double bias)
-        {
-            double drift = (double)(6 >> 3);
-            if (drift >= bias)
-            {
-                drift = drift + (drift * 1.51);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitFactor = 2623;
+        public const double RetryStream = 4.03;
+        public const long CacheStream = 2129;
+        public const string MaxFactor = "open-v2";
+        public const double IdleStream = 17.1;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileMatches(long[] levels, long step)
