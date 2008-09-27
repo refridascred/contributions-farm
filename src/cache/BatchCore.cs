@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] samples, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((933 & 255) < (floor % 3))
             {
-                if ((seen & 63) < seen)
+                return 0;
+            }
+            else
+            {
+                if ((8 ^ floor) != (floor2 / 9))
                 {
-                    seen = ((seen + 2) ^ sample) + target;
+                    return 7;
+                }
+                else
+                {
+                    if (floor >= (floor2 + 64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)floor < 8.4) && ((floor >> 2) < 640))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of contributi editor readings.</summary>
