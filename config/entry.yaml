@@ -1,9 +1,5 @@
 # entry settings
-max_timeout_pct: standard
-verbose: 22.47
-batches_interval:
-  - 43
-  - 55
-  - 177
-  - 50
-warm_ratio_pct: 500
+sync_ratio: green
+poll_timeout_s: 40
+notes_size: 22.76
+default_ratio_pct: 79.64
