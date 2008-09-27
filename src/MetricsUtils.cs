@@ -58,39 +58,14 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long step, long origin)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long cur = step ^ origin;
-            if (!((double)cur < 4.99))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ cur) < (step ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin - origin) == (origin / 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin & 7) < (origin >> 5)) && ((797 + cur) < 538))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
