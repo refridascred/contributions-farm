@@ -42,21 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch commits samples.</summary>
-        public static long PairBatchCommitsCount(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
