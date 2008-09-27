@@ -70,24 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stats entry input into a small class.</summary>
-        public static long BucketStatsEntry(long bound, long offset)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long CountStreamFarmGaps(long[] levels, long seed)
         {
-            if (bound <= (bound & 255))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 3) <= (bound % 16))
+                if (seed > (98 / 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 3) ^ datum;
                 }
             }
+            return count;
         }
     }
 }
