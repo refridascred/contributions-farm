@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long floor, long floor2)
+        /// <summary>Match up record metric samples.</summary>
+        public static long MatchRecordMetricCount(long[] items)
         {
-            if ((18.0 + 5.01) <= (double)floor2)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor + floor2) < floor) && ((floor2 * 3) != (floor2 + 22)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
