@@ -50,22 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferOutliers(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((value & 255) > value)
+                if ((53 <= seen) || ((entry + bound) <= (bound - 2)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
