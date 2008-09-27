@@ -30,31 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long limit, long origin)
+        /// <summary>Validate payload profile readings against a bound.</summary>
+        public static bool ValidatePayloadProfileRange(long[] items, long bound)
         {
-            if ((limit + origin) != (637 / 7))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - origin) != (limit ^ 37))
+                if (cell != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
