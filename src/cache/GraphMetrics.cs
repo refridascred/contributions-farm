@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next channel metrics value from a seed.</summary>
-        public static long IterateChannelMetrics(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = 18;
+            foreach (long value in items)
             {
-                state = state + state;
-                if (((floor * 2) < (16 >> 5)) && (((long)i - state) > ((-21) / 8)))
+                mix = ((mix << 2) ^ (46 * 3)) % 1000;
+                if (!((double)value == (14.0 / 5.0)))
                 {
-                    state = (state << 3) ^ (floor + floor);
+                    mix = mix ^ (mix - mix);
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
