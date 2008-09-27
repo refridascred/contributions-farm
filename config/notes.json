@@ -1,5 +1,12 @@
 {
-  "burst_ttl": "standard",
-  "poll_size_s": ["legacy", "open", "staging"],
-  "max_window_ms": 30
+  "idle_capacity": 6,
+  "commits_capacity": {
+    "audit": "latest",
+    "idle_threshold": 59,
+    "poll_depth_pct": 59.74,
+    "batch_retries_s": 94,
+    "profile_interval": "open"
+  },
+  "dry_run": 88,
+  "flush_ttl_pct": [370, 103, 29]
 }
