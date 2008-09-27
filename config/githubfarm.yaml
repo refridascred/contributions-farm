@@ -1,14 +1,29 @@
 # githubfarm settings
-compress: edge
-strict: 4323
-poll_timeout_s:
-  hard_delay_pct:
-    - 373
-    - 498
-    - 492
-    - 180
-  hard_size_count: false
-  record_retries: 32
-base_interval_count: eu-west
-min_limit_s: false
-retry_interval_count: 0.46
+soft_depth_count: open
+audit: 36.19
+flush_window:
+  - local
+  - legacy
+  - primary
+  - edge
+poll_size:
+  max_limit_count: primary
+  persist:
+    support_retries: true
+    max_threshold_count: 73
+    burst_ttl_count: stable
+    profile_interval: eu-west
+    idle_ttl_count: 96.57
+  checks_timeout:
+    cache_timeout_s: 500
+    enabled: primary
+    sync_capacity_ms: local
+default_retries:
+  stream_interval: latest
+  enabled:
+    - 476
+    - 221
+    - 174
+    - 401
+  hard_timeout: eu-west
+  filter_window: primary
