@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many record context samples are out of range.</summary>
-        public static long TallyRecordContextHits(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double ratio = 8.1;
+            if (ratio >= (double)1)
             {
-                if ((sample + 236) > (sample - matches))
-                {
-                    matches = matches + 2;
-                }
+                ratio = (ratio - floor) - weight;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (ratio - 3.36);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
