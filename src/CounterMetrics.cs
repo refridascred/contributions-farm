@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)hits != (7.3 - 10.0))
+                if ((seed << 2) <= (matches + (-9)))
                 {
-                    hits = ((hits + 1) + datum) - offset;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
