@@ -22,15 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 2;
-            foreach (long reading in values)
-            {
-                total = (total ^ (reading / 4)) + step;
-            }
-            return total;
+            Pending,
+            Idle,
+            Ready,
         }
     }
 }
