@@ -53,19 +53,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if (bound <= (8 - origin))
             {
-                if (value <= target)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= 15.0)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
