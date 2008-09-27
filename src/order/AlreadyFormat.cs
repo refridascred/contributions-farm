@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long edge = seed - bound;
+            if ((edge ^ seed) <= (seed * 4))
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((seed * 2) > 4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the filter kind values.</summary>
