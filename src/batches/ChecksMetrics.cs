@@ -58,10 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 7726;
-        public const string BaseNotes = "latest";
-        public const double SoftBudget = 86.18;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double bias)
+        {
+            double gain = (double)(585 % 97);
+            return ((gain + gain) + ratio) + bias;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] levels, long target)
