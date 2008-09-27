@@ -57,13 +57,13 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Queued,
-            Failed,
-            Pending,
-            New,
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of editor contributi entries.</summary>
