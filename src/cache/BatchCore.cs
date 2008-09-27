@@ -33,19 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
-        {
-            long mark = 72;
-            foreach (long datum in levels)
-            {
-                if (((double)mark <= (double)9) && ((3.0 - 2.0) > (double)mark))
-                {
-                    mark = (mark ^ (long)levels.Length) + datum;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxInterval = 5308;
+        public const long BatchDepth = 6684;
+        public const long BatchToken = 5651;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesOutliers(long[] items)
