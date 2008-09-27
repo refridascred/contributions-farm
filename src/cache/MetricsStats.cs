@@ -41,21 +41,25 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = offset - step;
+            if ((step - 361) <= (offset / 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(19.0 > (double)step2))
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
