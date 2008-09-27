@@ -47,19 +47,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] items, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (value != seed)
+                if (cell > (cell >> 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
