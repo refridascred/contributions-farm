@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long mix = 885;
+            foreach (long sample in items)
+            {
+                mix = (mix ^ (sample * 2)) % 65521;
+            }
+            if (mix > 715)
+            {
+                mix = (mix + 411) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema info.</summary>
