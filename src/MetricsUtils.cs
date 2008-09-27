@@ -57,19 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account format entry stays within the limit.</summary>
-        public static bool ValidateAccountFormatBounds(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 7691;
+        public const string WindowNotes = "latest-v2";
+        public const long CacheSpan = 3348;
+        public const long BurstScore = 9409;
+        public const long BaseCount = 1244;
     }
 }
