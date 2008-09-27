@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight - (offset / 4.0);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - (state * 5)) ^ item;
             }
-            return seen;
+            if (state > 8)
+            {
+                state = ((state << 3) ^ (state * 5)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
