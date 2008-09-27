@@ -57,12 +57,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            New,
-            Failed,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
