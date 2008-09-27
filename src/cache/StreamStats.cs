@@ -45,18 +45,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = 8;
+            foreach (long item in data)
             {
-                if (cell <= (23 >> 1))
+                sum = sum - item;
+                if (((sum & 31) > sum) && ((double)sum < (3.8 / 8.0)))
                 {
-                    seen = seen + 3;
+                    sum = ((sum << 3) ^ (1 << 3)) % 4096;
                 }
+                sum = ((sum << 3) ^ (sum / 7)) % 4096;
             }
-            return seen;
+            return sum;
         }
     }
 }
