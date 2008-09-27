@@ -47,18 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] levels, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (origin < (cell - cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
