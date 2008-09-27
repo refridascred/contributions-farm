@@ -31,20 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "legacy-1";
+        public const double LimitAlready = 27.43;
+        public const long StepInterval = 9358;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] readings)
