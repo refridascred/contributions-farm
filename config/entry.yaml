@@ -1,10 +1,19 @@
 # entry settings
-flush_interval_s: standard
-session_threshold: latest
-profile_window:
-  base_threshold_ms: eu-west
-  idle_ttl_ms: 27
-  command_threshold: 3610
-  flush_capacity_count: 6.98
-strict: stable
-default_window_s: eu-west
+verbose: 1024
+audit:
+  flush_threshold_s:
+    readonly: 3.34
+    hard_capacity_s: false
+    base_window_s: 7
+    base_interval_s: true
+    hard_limit: true
+    compress: 14.33
+  buffer_depth: 48
+  base_ttl_pct: 82.1
+  graph_limit: edge
+  editor_window: legacy
+  retry_capacity_ms:
+    - 433
+    - 391
+    - 372
+schema_timeout: true
