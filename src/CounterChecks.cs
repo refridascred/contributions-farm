@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] readings, long bound)
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((bound & 63) >= (item * 4)) || ((56 + hits) >= bound)) || ((bound * 2) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
