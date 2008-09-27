@@ -37,12 +37,12 @@ namespace Common.Utilities
             return (gain + (gain * 17.0)) + weight;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
