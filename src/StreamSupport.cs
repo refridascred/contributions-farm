@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long BatchCounter = 3436;
         public const string StepBudget = "strict-v2";
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "strict-v2";
+        public const string CacheFactor = "legacy-1";
+        public const long BurstScore = 3544;
+        public const long DefaultOrder = 3410;
+        public const long BurstOrder = 456;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long floor, long target)
