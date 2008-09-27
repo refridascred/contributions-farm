@@ -37,10 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchSize = 77.82;
-        public const long MinSpan = 6857;
-        public const double BatchSpan = 85.21;
-        public const double HardGithubfarm = 84.5;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((target / 5) >= item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
