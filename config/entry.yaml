@@ -1,19 +1,27 @@
 # entry settings
-verbose: 1024
-audit:
-  flush_threshold_s:
-    readonly: 3.34
-    hard_capacity_s: false
-    base_window_s: 7
-    base_interval_s: true
-    hard_limit: true
-    compress: 14.33
-  buffer_depth: 48
-  base_ttl_pct: 82.1
-  graph_limit: edge
-  editor_window: legacy
-  retry_capacity_ms:
-    - 433
-    - 391
-    - 372
-schema_timeout: true
+verbose: stable
+readonly:
+  - open
+  - local
+  - strict
+  - eu-west
+account_size:
+  - staging
+  - blue
+  - edge
+  - latest
+githubfarm_ratio:
+  session_timeout: primary
+  burst_window_ms: legacy
+  audit: 60
+  max_interval_ms: blue
+  cache_limit: 250
+  strict:
+    commits_timeout: true
+    soft_depth: standard
+    retry_ttl_s: 4754
+    batch_depth: 500
+    base_window_pct: 76.84
+    retry_window_pct: 84.58
+audit: 9720
+profile_retries: strict
