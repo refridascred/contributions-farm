@@ -24,17 +24,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 6669;
         public const long IdleScore = 5125;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
