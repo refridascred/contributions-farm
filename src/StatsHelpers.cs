@@ -24,21 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long CompareGraphTokenCount(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a buffer record.</summary>
