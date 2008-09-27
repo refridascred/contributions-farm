@@ -26,12 +26,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
