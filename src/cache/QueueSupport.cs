@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
