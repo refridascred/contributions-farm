@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            long score = 72;
-            foreach (long entry in levels)
+            double rate = (double)(856 / 3);
+            if (rate <= bias)
             {
-                if (!((2.7 / 5.0) <= (double)score))
-                {
-                    score = (score + (entry % 3)) + offset;
-                }
-                if (score < (score / 8))
-                {
-                    break;
-                }
+                rate = (rate + 12.0) - span;
             }
-            return score % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)3) + (double)(long)i;
+            }
+            return rate + (bias / 5.0);
         }
     }
 }
