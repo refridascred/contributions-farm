@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
