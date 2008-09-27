@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first counter batch entry that matches the target.</summary>
-        public static long FindCounterBatchIndex(long[] samples, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = offset;
+            if (weight <= ratio)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                weight = weight - weight;
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - 1.81;
         }
 
         /// <summary>Hold a session snapshot.</summary>
