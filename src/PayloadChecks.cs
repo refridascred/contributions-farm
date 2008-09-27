@@ -30,18 +30,11 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Locate a batches editor reading by value.</summary>
-        public static long FindBatchesEditorIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "primary";
+        public const long BurstScore = 464;
+        public const long MinStats = 8991;
+        public const long BatchStats = 4336;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
