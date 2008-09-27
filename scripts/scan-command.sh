@@ -12,8 +12,6 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+for item in latest legacy eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
