@@ -52,19 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double bias2)
-        {
-            double rate = 1.2;
-            if (rate >= bias2)
-            {
-                rate = rate + (double)8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (11.0 - rate)) - (double)(long)i;
-            }
-            return rate - (bias * 18.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 29.46;
+        public const double SoftToken = 90.17;
+        public const double CacheToken = 75.1;
+        public const long MinToken = 8173;
     }
 }
