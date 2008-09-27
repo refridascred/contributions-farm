@@ -34,10 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepSpan = 90.4;
-        public const long BaseLevel = 3161;
-        public const long MaxAccount = 5415;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ 811) < (seen / 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheFactor = 94;
