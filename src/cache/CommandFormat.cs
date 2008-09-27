@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long TallyBatchesChecksHits(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double weight = 6.9 * 11.0;
+            if (weight > (weight - scale))
             {
-                if ((2.1 / 8.0) != (double)matches)
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight - 9.8;
             }
-            return matches;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (offset / 4.0);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
