@@ -1,10 +1,22 @@
 {
-  "cluster_ttl": [230, 146, 224, 446],
-  "commits_delay": "latest",
-  "base_threshold": {
-    "min_threshold": 95,
-    "base_capacity": 2917,
-    "readonly": true
+  "audit": [426, 100, 26, 55],
+  "retry_ttl": {
+    "min_depth_s": ["stable", "latest", "primary"],
+    "flush_interval_pct": {
+      "session_interval": "strict",
+      "default_timeout_count": 1.07,
+      "burst_depth": false,
+      "min_interval_s": false
+    },
+    "default_timeout": 100,
+    "entry_retries": [473, 178, 489, 70]
   },
-  "retry_delay": 83.47
+  "githubfarm_ratio": false,
+  "default_size_pct": {
+    "already_ttl": [53, 200, 250, 78],
+    "flush_capacity_ms": "edge",
+    "enabled": true,
+    "burst_window_ms": 500
+  },
+  "readonly": [127, 254]
 }
