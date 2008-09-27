@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8706;
+        public const string LimitLevel = "latest-edge";
+        public const double MinSpan = 6.08;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
