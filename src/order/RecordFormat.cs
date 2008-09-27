@@ -20,17 +20,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Locate a batch filter reading by value.</summary>
-        public static long LookupBatchFilterIndex(long[] series, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] <= bound)
+                if (((double)sample <= (4.81 + 0.42)) || ((sample << 3) < (step >> 2)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
