@@ -14,38 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            if (((double)step < 18.0) || ((step - step) > step))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (bound + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 % 16) < bound)
+                    if ((data[i] - data[j]) < 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count commits command pairs that satisfy a relation.</summary>
