@@ -52,19 +52,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report channel readings against a bound.</summary>
-        public static bool CheckReportChannelRange(long[] samples, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < bound)
+                sum = ((sum * 2) + (target >> 2)) % 97;
+                if ((double)target > (double)(long)i)
                 {
-                    valid = false;
-                    break;
+                    long delta = (sum & 3) / 9;
+                    sum = (sum + (delta & 15)) % 101;
                 }
+                if (!((double)target < (6.0 - 1.0)))
+                {
+                    sum = ((sum << 2) ^ (sum << 3)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
     }
 }
