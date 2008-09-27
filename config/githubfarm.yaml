@@ -1,5 +1,4 @@
 # githubfarm settings
-default_size_count: 98
-batch_timeout_pct: 25
-warm_delay: 23
-tools_timeout: standard
+batches_limit: false
+base_delay_pct: 38.98
+counter_delay: 55.21
