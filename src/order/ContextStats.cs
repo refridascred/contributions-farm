@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long offset)
         {
-            if ((double)bound <= (double)floor)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 31) < floor)
+                if (cell <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) == (bound / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound <= (floor - bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stream summary.</summary>
