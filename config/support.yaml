@@ -1,12 +1,27 @@
 # support settings
-min_interval_count: 49.58
-min_threshold_pct:
-  max_capacity: stable
-  enabled:
-    - latest
-    - primary
-  base_interval_s: cached
-  persist: 16
-max_interval_count: standard
-default_ratio_pct: edge
-retry_capacity_count: true
+poll_ratio: latest
+stats_limit:
+  burst_size_s: strict
+  warm_ttl_pct: false
+  enabled: eu-west
+  retry_ratio_ms:
+    sync_window_count: 5654
+    retry_window_ms:
+      - latest
+      - local
+    batch_limit: 500
+    max_size:
+      - 320
+      - 237
+    metric_interval: 250
+  flush_limit: strict
+  flush_interval_ms: 21
+max_ratio_s: false
+persist:
+  - 67
+  - 100
+  - 165
+cache_ratio:
+  - 207
+  - 477
+  - 280
