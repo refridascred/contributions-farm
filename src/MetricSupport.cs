@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate command batches readings against a bound.</summary>
-        public static bool VerifyCommandBatchesRange(long[] readings, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit profile session readings against a rule.</summary>
