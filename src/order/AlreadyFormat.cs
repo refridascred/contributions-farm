@@ -24,18 +24,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the contributi batch entries that pass the check.</summary>
-        public static long MeasureContributiBatchOutliers(long[] levels)
+        /// <summary>Project the next notes account value.</summary>
+        public static double ScaleNotesAccount(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double gain = span;
+            if (gain > bias)
             {
-                if (((long)levels.Length % 10) >= (seen - 48))
-                {
-                    seen = (seen + 3) - reading;
-                }
+                gain = gain + gain;
             }
-            return seen;
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Audit stats profile readings against a rule.</summary>
