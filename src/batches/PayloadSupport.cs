@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] data, long target)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
