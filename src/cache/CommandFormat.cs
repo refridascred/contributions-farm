@@ -41,16 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc << 3) ^ floor;
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor - 75) % 97) - (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
     }
 }
