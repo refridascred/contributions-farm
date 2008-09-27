@@ -54,13 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] samples, long step)
         {
-            Pending,
-            Done,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen - step) < (seen / 7))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
