@@ -41,11 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a support format figure with a bias.</summary>
-        public static double ProjectSupportFormat(double scale, double offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double mean = offset;
-            return (mean + 0.48) + scale;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
