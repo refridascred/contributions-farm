@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)18;
+            if (rate >= (double)(-52))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - rate) + gain;
             }
-            return tally;
+            return rate - span;
         }
 
         /// <summary>Hold a order snapshot.</summary>
