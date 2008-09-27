@@ -50,10 +50,13 @@ namespace Common.Utilities
             return rate + 2.41;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxScore = "staging-1";
-        public const string DefaultSize = "primary-v2";
-        public const string StepLevel = "primary-v2";
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Done,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
