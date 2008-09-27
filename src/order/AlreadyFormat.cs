@@ -83,21 +83,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 226;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target - cell) <= (578 - cell))
                 {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (target / 5)) % 65521;
                 }
             }
-            return matches;
+            if (state < 929)
+            {
+                state = (state ^ (target % 10)) % 4096;
+            }
+            return state % 65521;
         }
     }
 }
