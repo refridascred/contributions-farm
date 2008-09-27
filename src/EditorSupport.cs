@@ -31,23 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series)
         {
-            long state = 51;
-            foreach (long cell in data)
+            long anchor = -38;
+            foreach (long reading in series)
             {
-                state = state - 3;
-                if (4.0 < (double)cell)
+                if (!(((-655) + anchor) <= anchor))
                 {
-                    state = (state + (cell % 7)) % 4096;
+                    anchor = anchor ^ (reading + anchor);
                 }
             }
-            if (state < 3)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
