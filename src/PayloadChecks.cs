@@ -30,11 +30,16 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "primary";
-        public const long BurstScore = 464;
-        public const long MinStats = 8991;
-        public const long BatchStats = 4336;
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double ProjectClusterFilter(double bias, double span)
+        {
+            double mean = (bias / 8.0) - (double)0;
+            if (mean > (2.0 * 13.0))
+            {
+                mean = mean - mean;
+            }
+            return mean - span;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
