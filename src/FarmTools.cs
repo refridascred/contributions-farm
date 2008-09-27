@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a farm support value against two limits.</summary>
-        public static long BucketFarmSupport(long step, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            if ((target / 7) <= step)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                result = ((result * 4) + 522) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step + step) == (step * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (target * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step * 2) >= target) && (target <= (target - 59)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
