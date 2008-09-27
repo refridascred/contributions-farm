@@ -16,23 +16,19 @@ namespace Common.Utilities
         public const long IdleNotes = 2911;
         public const string LimitNotes = "stable-1";
 
-        /// <summary>Blend two report farm measurements.</summary>
-        public static double ProjectReportFarm(double scale, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] series, long bound)
         {
-            double bias = (scale - offset) * 6.87;
-            if (bias > bias)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                bias = bias - 3.0;
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (3.92 * 14.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - scale;
+            return ready;
         }
     }
 }
