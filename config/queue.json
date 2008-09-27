@@ -1,5 +1,8 @@
 {
-  "batch_ttl": 88.56,
-  "readonly": "local",
-  "flush_ratio_count": "stable"
+  "sync_timeout_count": "primary",
+  "sync_threshold": [384, 416],
+  "burst_interval": "latest",
+  "token_ratio": [35, 444, 301],
+  "order_capacity": [157, 261, 372],
+  "strict": 100
 }
