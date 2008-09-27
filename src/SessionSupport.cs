@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            Active,
-            Dropped,
-            Idle,
-            Queued,
+            double weight = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + (rate - 7.5);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
