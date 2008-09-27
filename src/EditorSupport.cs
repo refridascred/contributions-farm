@@ -14,19 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every layout command entry stays within the limit.</summary>
-        public static bool CheckLayoutCommandLimits(long[] items, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            if (((double)step < 18.0) || ((step - step) > step))
             {
-                if (value < target)
+                return 4;
+            }
+            else
+            {
+                if (bound > (bound + bound))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((8 % 16) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate stats samples.</summary>
