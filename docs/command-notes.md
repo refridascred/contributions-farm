@@ -1,10 +1,10 @@
 # Command notes
 
-When a channel fails, the profile handler retries a few times before giving up.
-A counter that stays idle for too long is moved to the commits list.
+The command helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep format values small
-- Validate metrics input early
-- Prefer session defaults
+- Log every format change
+- Document new profile fields
+- Validate schema input early
