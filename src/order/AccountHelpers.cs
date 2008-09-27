@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every checks metric entry stays within the limit.</summary>
-        public static bool ValidateChecksMetricBounds(long[] readings, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (item >= limit)
+                if (item != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the cluster level values.</summary>
