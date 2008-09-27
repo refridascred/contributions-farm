@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (5 <= (36 + target))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
