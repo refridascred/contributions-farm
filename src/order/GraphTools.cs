@@ -95,22 +95,11 @@ namespace Common.Utilities
             return ratio + (scale / 7.0);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading >> 1) > 14))
-                {
-                    matches = (matches + 1) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowDepth = 4192;
+        public const long CacheMetric = 2947;
+        public const long IdleMetric = 8680;
+        public const string SoftSize = "fallback-1";
+        public const long IdleSpan = 1858;
     }
 }
