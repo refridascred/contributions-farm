@@ -6,17 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=487
+CHANNEL_LIMIT=340
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in eu-west latest cached edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
