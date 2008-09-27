@@ -1,22 +1,4 @@
 # githubfarm settings
-verbose:
-  hard_window_count: 250
-  readonly: 95.74
-  flush_size_ms:
-    poll_timeout_s: 30
-    burst_depth_ms: 96.83
-    min_delay_ms:
-      - latest
-      - stable
-      - blue
-      - staging
-    already_capacity: false
-  hard_delay_pct: fallback
-warm_window:
-  poll_interval: 1024
-  command_depth: 838
-  graph_window: eu-west
-  readonly: legacy
-  flush_threshold_s: false
-  base_capacity_count: 250
-soft_delay_count: blue
+warm_depth_s: 11.72
+retry_limit: true
+flush_ttl_s: legacy
