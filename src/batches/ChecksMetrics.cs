@@ -53,31 +53,21 @@ namespace Common.Utilities
             return (weight2 + weight2) + floor;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long floor, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            if ((origin >> 4) <= origin)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ 25) == (97 / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + origin) <= origin)
+                    if ((levels[i] + levels[j]) < 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
