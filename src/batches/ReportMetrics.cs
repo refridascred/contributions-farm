@@ -30,19 +30,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] levels, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((0 >= (floor >> 2)) && (((long)i + sum) <= ((long)i ^ floor))))
+                if (levels[i] >= target)
                 {
-                    sum = (sum << 2) ^ sum;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
