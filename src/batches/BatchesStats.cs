@@ -37,30 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next editor report value from a seed.</summary>
-        public static long IterateEditorReport(long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((147 + (long)i) != (limit & 15)))
-                {
-                    acc = (acc - (long)i) % 97;
-                    break;
-                }
-                if ((acc / 8) != (limit % 10))
-                {
-                    long gap = (805 ^ (long)i) + limit;
-                    acc = (acc << 3) ^ gap;
-                }
-                else
-                {
-                    long count = limit;
-                    acc = (acc - (count + 854)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Failed,
+            Active,
         }
     }
 }
