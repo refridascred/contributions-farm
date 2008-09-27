@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] readings, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long limit)
         {
-            long acc = 1;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                acc = (acc << 2) ^ (sample + target);
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc > 37)
-            {
-                acc = ((acc << 3) ^ (target >> 2)) % 255;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
