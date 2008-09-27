@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 7422;
         public const string CacheScore = "open-v2";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxDepth = "cached";
+        public const long HardNotes = 8360;
+        public const string WindowNotes = "cached";
+        public const double DefaultFactor = 49.14;
+        public const long BurstTimeout = 7444;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
