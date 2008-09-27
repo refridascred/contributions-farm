@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitFactor = 2623;
-        public const double RetryStream = 4.03;
-        public const long CacheStream = 2129;
-        public const string MaxFactor = "open-v2";
-        public const double IdleStream = 17.1;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 84.32;
+        public const long MaxTimeout = 7443;
+        public const long RetryInterval = 5520;
+        public const long DefaultGithubfarm = 5298;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileMatches(long[] levels, long step)
