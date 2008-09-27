@@ -53,19 +53,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] levels, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long sum = 75;
+            foreach (long value in samples)
             {
-                if (entry > limit)
+                if ((sum ^ value) < sum)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (long)samples.Length) % 65521;
+                }
+                else
+                {
+                    sum = sum - (value - value);
                 }
             }
-            return stale;
+            if (sum < 736)
+            {
+                sum = (sum + (sum / 6)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
