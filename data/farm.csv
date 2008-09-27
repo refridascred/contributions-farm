@@ -1,7 +1,9 @@
-id,token,ratio
-1,421,legacy
-2,blue,619
-3,16.26,402
-4,open,977
-5,edge,667
-6,fallback,85.17
+id,state,rank
+1,cached,96.59
+2,215,strict
+3,latest,882
+4,304,11.42
+5,692,eu-west
+6,27.17,796
+7,981,28.4
+8,686,794
