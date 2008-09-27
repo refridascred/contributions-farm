@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const string MaxCount = "stable";
         public const long HardDepth = 2796;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)state == (7.0 * 11.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state + 37) % 1000) + cell;
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
