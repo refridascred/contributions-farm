@@ -35,19 +35,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long step, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if (!((double)limit >= 19.0))
             {
-                if (cell < floor)
+                return 0;
+            }
+            else
+            {
+                if ((((-82) + limit) <= (step + limit)) || ((limit - 329) < (limit & 7)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
