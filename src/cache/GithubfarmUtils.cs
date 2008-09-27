@@ -23,12 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Ready,
-            Locked,
-            Active,
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
