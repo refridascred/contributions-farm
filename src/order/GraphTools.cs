@@ -25,13 +25,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long offset)
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            if ((bound ^ offset) == (offset >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) >= (offset << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)bound < (7.9 - 10.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(bound < (bound + offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits cluster readings.</summary>
