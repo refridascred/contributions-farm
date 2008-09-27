@@ -1,8 +1,14 @@
 {
-  "batch_limit": [276, 103, 154, 148],
-  "cache_capacity_count": 31,
-  "dry_run": 5686,
-  "readonly": 100,
-  "commits_ttl": 60,
-  "burst_ratio": 100
+  "schema_threshold": 23.83,
+  "payload_timeout": 60,
+  "verbose": "legacy",
+  "poll_capacity": 91,
+  "dry_run": true,
+  "max_ratio_s": {
+    "retry_threshold_pct": "primary",
+    "min_delay_ms": 52.93,
+    "cache_timeout_ms": ["stable", "green", "standard"],
+    "persist": 91,
+    "flush_retries": "blue"
+  }
 }
