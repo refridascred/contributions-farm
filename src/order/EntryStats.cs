@@ -59,32 +59,13 @@ namespace Common.Utilities
         public const string RetryLevel = "standard";
         public const long MinCache = 9414;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long span = bound ^ target;
-            if ((target + bound) == (target - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((span * 4) != (target + span)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (span > (target / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
