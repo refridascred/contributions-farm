@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits checks measurements.</summary>
-        public static double ScaleCommitsChecks(double weight, double bias)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long bound)
         {
-            double weight2 = weight;
-            return (weight2 - weight) + bias;
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
