@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const string DefaultBudget = "open-edge";
         public const string WindowEditor = "cached-1";
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            Ready,
-            Synced,
-            New,
+            long bound2 = target - bound;
+            if ((66 + bound2) <= (target & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 + bound2) != ((-814) * 4)) && ((7.0 + 7.0) > (8.0 / 3.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first report stats entry that matches the target.</summary>
