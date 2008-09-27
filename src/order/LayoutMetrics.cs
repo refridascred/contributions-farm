@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Count the report route entries that pass the check.</summary>
+        public static long TallyReportRouteGaps(long[] items, long limit)
         {
-            long sum = 692;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum << 3) ^ (695 - 88)) + value;
+                if ((limit >= reading) && (((limit - reading) <= (limit + limit)) || ((43 - (long)items.Length) < (reading + reading))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum < 8)
-            {
-                sum = sum - (sum << 3);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
