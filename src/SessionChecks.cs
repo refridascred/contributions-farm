@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] series, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count + 0) < value)
-                {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
