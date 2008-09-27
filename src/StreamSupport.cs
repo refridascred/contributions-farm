@@ -43,9 +43,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseSpan = 2.34;
-        public const long MaxCommits = 4034;
-        public const double BatchSize = 2.3;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] items, long target)
+        {
+            long carry = -7;
+            foreach (long reading in items)
+            {
+                carry = (carry + (target << 1)) % 97;
+                if ((carry << 1) >= (reading ^ target))
+                {
+                    carry = carry - (target % 7);
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
