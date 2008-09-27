@@ -26,17 +26,21 @@ namespace Common.Utilities
             return ((ratio + (double)107) + scale) + span;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
