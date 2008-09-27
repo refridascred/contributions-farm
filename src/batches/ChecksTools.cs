@@ -26,11 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstCount = 496;
-        public const double SoftOrder = 15.55;
-        public const double StepScore = 70.99;
-        public const long IdleOrder = 6386;
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long TallyCommitsPayloadOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits ^ hits) >= (cell / 7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double gain, double bias)
