@@ -1,5 +1,17 @@
 # support settings
-batches_retries: edge
-default_retries_pct: 55.31
-audit: 68.83
-max_limit_ms: false
+poll_capacity: 63.81
+schema_capacity:
+  default_timeout_pct: open
+  min_ratio:
+    - 303
+    - 305
+    - 245
+    - 20
+  persist:
+    poll_delay_ms: 27
+    soft_capacity_pct: 47
+    warm_window: true
+    warm_capacity_s: standard
+  readonly: 1024
+  support_limit: local
+idle_interval_ms: 30
