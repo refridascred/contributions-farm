@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((13.0 * 7.0) <= (double)origin)
             {
-                if (items[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((origin + bound) < (bound / 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((4.8 / 8.0) >= (double)origin) || ((14.0 * 10.0) == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (double)79)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
