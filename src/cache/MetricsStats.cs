@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] items, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double scale = bias;
+            if (scale > bias)
             {
-                if (((limit - limit) != (seen & 31)) && ((limit >> 1) <= (limit + (-3))))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                scale = scale + ratio;
             }
-            return seen;
+            else
+            {
+                scale = scale + (6.0 + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (bias / 8.0)) + (double)(long)i;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
