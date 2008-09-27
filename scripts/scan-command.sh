@@ -17,7 +17,11 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in edge local; do
+    log "checking ${item}"
+done
