@@ -19,16 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 4096;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (((long)i + score) != (limit ^ (long)i))
+                {
+                    score = score ^ (9 + (long)i);
+                }
+                else
+                {
+                    score = (score ^ score) % 97;
+                    score = (score - (68 + 0)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
