@@ -68,17 +68,19 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Look up the position of a cache already sample.</summary>
-        public static long SeekCacheAlreadyIndex(long[] levels, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (levels[i] == target)
+                if (item < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
