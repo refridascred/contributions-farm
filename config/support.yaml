@@ -1,31 +1,13 @@
 # support settings
-cache_depth_ms:
-  - 372
-  - 131
-max_size:
-  sync_size: standard
-  cache_depth_s:
-    - 89
-    - 250
-    - 445
-  queue_delay:
-    notes_ratio: 60.54
-    readonly: false
-    cache_limit_s: 30
-  payload_ttl: 0.54
-  profile_window:
-    readonly: 53
-    max_threshold: 48.75
-    record_depth: 100
-    soft_retries_count:
-      - legacy
-      - open
-      - legacy
-      - open
-    warm_ratio_pct: 80.1
-    max_size_count: edge
-  warm_timeout_s: edge
-default_retries: strict
-flush_window_s: 9204
-layout_depth: 18.21
-audit: false
+flush_interval_s:
+  batch_ratio_pct:
+    - blue
+    - local
+    - legacy
+    - fallback
+  metric_window: green
+  strict: 33
+hard_capacity: 250
+verbose: 77.66
+burst_retries_count: 6005
+dry_run: staging
