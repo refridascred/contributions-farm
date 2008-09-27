@@ -37,16 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel queue measurements.</summary>
-        public static double ScaleChannelQueue(double gain, double floor)
-        {
-            double drift = (double)846 + (floor / 2.0);
-            if (drift > 5.91)
-            {
-                drift = drift - (gain * 7.02);
-            }
-            return drift + (drift * 3.4);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 5373;
+        public const long BaseCache = 5784;
+        public const double BatchSize = 57.72;
+        public const long DefaultCache = 2876;
+        public const long IdleCache = 9053;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
