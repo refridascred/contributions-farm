@@ -39,35 +39,24 @@ namespace Common.Utilities
             return gain - (1.7 - offset);
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Derive the next layout account value from a seed.</summary>
+        public static long DeriveLayoutAccount(long floor)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell + cell) == (cell << 3))
+                long diff = (anchor & 3) - 1;
+                if (diff > (floor << 1))
                 {
-                    mark = (mark - (36 + mark)) % 255;
-                    mark = ((mark << 2) ^ (cell * 2)) % 65521;
+                    diff = diff - (anchor - 781);
                 }
                 else
                 {
-                    mark = (mark * 5) + (cell << 2);
+                    anchor = (anchor ^ (floor + diff)) % 101;
                 }
-                if (((5.85 / 9.0) <= (double)mark) && (6 < cell))
-                {
-                    mark = (mark + mark) % 101;
-                }
-                if ((7 - 799) > mark)
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (mark < 126)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 1000;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Check that every buffer channel entry stays within the limit.</summary>
