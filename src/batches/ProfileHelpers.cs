@@ -36,22 +36,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((10.0 + 3.0) >= (double)matches) || ((double)matches <= (18.0 - 3.8)))
+                if ((step + score) < (score / 6))
                 {
-                    matches = ((matches + 1) + datum) + seed;
+                    score = score ^ (step + 5);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score - score) % 101;
+                score = score ^ (step / 7);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a stream header.</summary>
