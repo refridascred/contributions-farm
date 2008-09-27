@@ -63,26 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long carry = 10;
-            foreach (long cell in samples)
-            {
-                if (((92 + cell) >= (cell + (long)samples.Length)) && ((double)carry < (4.0 - 7.68)))
-                {
-                    carry = (carry - (cell * 3)) % 65521;
-                }
-                if ((792 & 1) > (carry % 60))
-                {
-                    carry = carry + (cell + carry);
-                }
-            }
-            if (carry > 0)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
