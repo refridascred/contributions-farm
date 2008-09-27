@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long seed)
+        /// <summary>Audit session support readings against a rule.</summary>
+        public static long AuditSessionSupportGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                if (((((-549) + (-43)) >= datum) || (seed < (seen & 255))) || ((datum % 24) > datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the record state values.</summary>
