@@ -23,15 +23,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double weight, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double ratio = weight;
-            if (ratio < (8.57 - offset))
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - (14.0 / 4.0);
+            Retry,
+            Queued,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
