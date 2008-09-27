@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            double rate = span;
-            if (rate >= (scale - rate))
+            long count = 0;
+            foreach (long sample in series)
             {
-                rate = rate + scale;
+                if ((sample - 36) != (8 % 8))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (span + scale)) + (double)(long)i;
-            }
-            return rate - scale;
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
