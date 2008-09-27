@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Match up metrics buffer samples.</summary>
+        public static long CompareMetricsBufferCount(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit <= (6.4 * 1.1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (limit < (mark ^ mark))
-                {
-                    long hits = (mark >> 2) - (3 + mark);
-                    mark = ((mark << 3) ^ hits) % 4096;
-                    break;
-                }
-                else
-                {
-                    mark = mark + ((-729) >> 4);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the stats metric entries that pass the check.</summary>
