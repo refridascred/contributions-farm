@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < floor)
+                if (values[i] <= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a route stats.</summary>
