@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            double load = offset * 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + offset) + (double)(long)i) - ratio;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
