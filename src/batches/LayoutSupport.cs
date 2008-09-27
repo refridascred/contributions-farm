@@ -43,38 +43,26 @@ namespace Common.Utilities
         public const long SoftInterval = 8871;
         public const long MinDepth = 9230;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long seed)
+        /// <summary>Accumulate record format samples.</summary>
+        public static long DigestRecordFormat(long[] items, long seed)
         {
-            if (seed > limit)
+            long mark = 54;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(seed > (limit ^ 79)))
+                if (((datum - mark) > (seed / 8)) || ((1.56 + 20.0) < (double)seed))
                 {
-                    return 3;
+                    mark = mark - (seed / 6);
                 }
                 else
                 {
-                    if ((9 - 737) > (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark * 4) + (datum + mark)) % 255;
                 }
             }
+            if (mark > (-89))
+            {
+                mark = mark ^ (seed - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
