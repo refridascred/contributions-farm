@@ -28,17 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -7;
+            foreach (long reading in samples)
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                if (reading > (reading ^ reading))
                 {
-                    return (long)i;
+                    mix = (mix - (mix ^ reading)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix ^ mix)) % 97;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Adjust a editor reading.</summary>
