@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double span)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Active,
+            double gain = span + (span / 6.0);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 7.0) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Project the next context value.</summary>
