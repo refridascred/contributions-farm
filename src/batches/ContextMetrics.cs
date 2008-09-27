@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double gain = bias * 13.0;
+            if (gain > (gain / 2.0))
             {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - (double)844;
             }
-            return stale;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (gain + 1.2)) + (double)(long)i;
+            }
+            return gain - (1.7 - offset);
         }
 
         /// <summary>Match up commits samples.</summary>
