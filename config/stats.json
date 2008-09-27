@@ -1,6 +1,11 @@
 {
-  "record_interval": 10,
-  "route_retries": 1024,
-  "batch_depth_pct": 62.87,
-  "strict": false
+  "sync_size_ms": false,
+  "tools_size": 39.51,
+  "metric_depth": {
+    "sync_threshold": "standard",
+    "burst_delay_pct": "local",
+    "cache_capacity": true,
+    "persist": "primary",
+    "sync_ttl": 30
+  }
 }
