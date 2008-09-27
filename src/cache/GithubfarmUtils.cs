@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long MinTimeout = 4263;
         public const long DefaultPayload = 8647;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] series, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a format snapshot.</summary>
