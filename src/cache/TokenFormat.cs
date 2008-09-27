@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 7946;
+        public const double WindowMetric = 96.52;
+        public const long RetryMetric = 3361;
+        public const long WindowRatio = 1473;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] data)
