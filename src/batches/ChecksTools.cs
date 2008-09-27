@@ -21,18 +21,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many commits payload samples are out of range.</summary>
-        public static long TallyCommitsPayloadOutliers(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double mean = (double)(96 + 27);
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits ^ hits) >= (cell / 7))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean - (mean + span)) + (double)(long)i) - rate;
             }
-            return hits;
+            return mean - 1.8;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
