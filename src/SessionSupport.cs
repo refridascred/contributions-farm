@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale + (gain / 5.0);
         }
 
-        /// <summary>Find the first metric notes entry that matches the target.</summary>
-        public static long LocateMetricNotesIndex(long[] data, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > bound)
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
