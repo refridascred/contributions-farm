@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long bound)
+        /// <summary>Match up command editor samples.</summary>
+        public static long MatchCommandEditorCount(long[] samples)
         {
-            long result = 189;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 << 3) > (bound + result))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 5) + ((-235) % 7)) - entry;
-                }
-                if (!((result >> 3) != (result - 175)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
