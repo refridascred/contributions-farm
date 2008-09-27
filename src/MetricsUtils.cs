@@ -43,15 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = 444;
-            foreach (long item in items)
-            {
-                sum = (((sum * 5) + sum) % 101) ^ item;
-            }
-            return sum;
+            Synced,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
