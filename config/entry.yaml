@@ -1,16 +1,6 @@
 # entry settings
-order_window:
-  retry_size: strict
-  poll_threshold: local
-  stream_retries: latest
-  metrics_capacity:
-    - legacy
-    - staging
-    - open
-batch_ttl_ms: 74.4
-counter_size:
-  - 310
-  - 378
-  - 90
-  - 325
-cluster_delay: standard
+compress: strict
+batch_delay_s: staging
+cache_ttl: 30
+poll_window_count: local
+base_ratio: false
