@@ -28,32 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long offset = floor - bound;
-            if ((offset - offset) >= (floor & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 6) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound >> 5) <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
