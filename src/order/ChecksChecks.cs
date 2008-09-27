@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Project the next profile filter value.</summary>
+        public static double ProjectProfileFilter(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = offset * 8.1;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + 2.89) + (double)(long)i;
             }
-            return seen;
+            return gain - rate;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
