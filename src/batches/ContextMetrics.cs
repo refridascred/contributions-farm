@@ -54,16 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] items, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long total = 849;
-            foreach (long item in items)
-            {
-                total = (total - (floor - floor)) % 1000;
-                total = (total ^ (item - (-859))) % 97;
-            }
-            return total % 1000;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
