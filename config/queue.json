@@ -1,14 +1,7 @@
 {
-  "compress": 0.79,
-  "enabled": "strict",
-  "retry_window_count": 62.57,
-  "burst_limit_count": 29.54,
-  "warm_interval_ms": {
-    "farm_delay": 38,
-    "max_size": [143, 437],
-    "enabled": "eu-west",
-    "poll_depth_pct": ["strict", "local", "local", "cached"],
-    "verbose": "legacy"
-  },
-  "hard_ratio_count": 5224
+  "sync_capacity_pct": [449, 150],
+  "sync_window": 41.99,
+  "idle_ratio": ["edge", "primary", "eu-west", "open"],
+  "default_interval_pct": 54,
+  "metrics_interval": 25.21
 }
