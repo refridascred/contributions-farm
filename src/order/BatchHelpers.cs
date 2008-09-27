@@ -13,19 +13,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] series, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum * 5) + step;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Match up account samples.</summary>
