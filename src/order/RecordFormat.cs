@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const long BaseLevel = 3161;
         public const long MaxAccount = 5415;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long mix = 9;
+            foreach (long cell in readings)
             {
-                if (cell > target)
+                if ((cell + mix) > (mix % 16))
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ mix;
                 }
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Find the first notes window entry that matches the target.</summary>
