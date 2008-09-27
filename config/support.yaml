@@ -1,8 +1,5 @@
 # support settings
-order_ttl: strict
-readonly: blue
-persist: cached
-audit: false
-account_interval:
-  - 425
-  - 167
+retry_capacity_count: 1349
+persist: 80
+default_window_count: true
+base_depth_s: 95.49
