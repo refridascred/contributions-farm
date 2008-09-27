@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate record account samples.</summary>
-        public static long WeighRecordAccount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data, long target)
         {
-            long score = 8;
-            foreach (long sample in items)
+            long carry = 529;
+            foreach (long value in data)
             {
-                if (!((10.0 / 6.0) != (double)score))
+                if ((double)value == (0.2 + 6.0))
                 {
-                    score = score + (sample + score);
-                }
-                else
-                {
-                    score = (score ^ 136) % 255;
+                    carry = ((carry * 5) + (3 << 1)) - target;
                 }
             }
-            return score;
+            return carry % 65521;
         }
 
         /// <summary>Project the next graph value.</summary>
