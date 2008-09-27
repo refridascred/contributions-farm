@@ -1,17 +1,5 @@
 {
-  "strict": "staging",
-  "sync_timeout_ms": {
-    "default_threshold_count": 3333,
-    "retry_delay_s": 4825,
-    "batch_interval_ms": [102, 34]
-  },
-  "batch_ttl_count": [319, 435],
-  "burst_interval_ms": "primary",
-  "flush_ratio_pct": {
-    "batch_delay": 65,
-    "audit": "green",
-    "readonly": 51,
-    "hard_threshold_count": 66,
-    "metrics_size": ["legacy", "primary"]
-  }
+  "dry_run": 6468,
+  "entry_delay": "stable",
+  "filter_window": 66.08
 }
