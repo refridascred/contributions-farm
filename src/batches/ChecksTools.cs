@@ -15,21 +15,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Classify a context queue pair into a bucket.</summary>
+        public static long GradeContextQueue(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((limit + limit) <= (466 - offset)) || (limit < (offset - offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((7.5 + 7.0) < (double)offset)
                 {
-                    if ((series[i] ^ series[j]) == 17)
+                    return 1;
+                }
+                else
+                {
+                    if (9 <= (limit + limit))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit >= 765)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
