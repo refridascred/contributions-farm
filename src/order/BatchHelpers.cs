@@ -25,24 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = -830;
-            foreach (long cell in values)
-            {
-                mark = (mark << 3) ^ (cell + cell);
-                mark = ((mark << 3) ^ mark) % 65521;
-                if ((49 + cell) >= mark)
-                {
-                    mark = (mark ^ (cell + cell)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark ^ cell)) % 255;
-                }
-            }
-            return mark % 1000;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
