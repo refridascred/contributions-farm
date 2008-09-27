@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long seed)
         {
-            if (bound < (limit ^ 342))
+            long carry = 179;
+            foreach (long item in levels)
             {
-                return 6;
+                carry = ((carry - (9 << 3)) - item) + seed;
+                carry = ((carry * 2) + 8) % 65521;
             }
-            else
+            if (carry < 15)
             {
-                if ((4.51 * 2.2) < (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 5) > (9 ^ 970))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = ((carry << 2) ^ (carry + carry)) % 65521;
             }
+            return carry % 97;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
