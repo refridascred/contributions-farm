@@ -44,19 +44,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool VerifyMetricCommitsBounds(long[] readings, long bound)
+        /// <summary>Look up the position of a filter session sample.</summary>
+        public static long LookupFilterSessionIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= bound)
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
