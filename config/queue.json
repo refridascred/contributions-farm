@@ -1,8 +1,15 @@
 {
-  "poll_limit": false,
-  "poll_ttl": 30,
-  "min_threshold": "fallback",
-  "base_depth_ms": 21,
-  "default_depth_ms": false,
-  "hard_limit_count": "primary"
+  "poll_threshold_count": [476, 242, 385, 396],
+  "flush_capacity": "staging",
+  "compress": true,
+  "max_threshold_pct": 89,
+  "enabled": {
+    "readonly": 44,
+    "profile_depth": 250,
+    "flush_threshold_pct": "standard",
+    "sync_timeout_s": true,
+    "token_timeout": 69.68,
+    "flush_interval_ms": ["primary", "blue", "primary"]
+  },
+  "cache_capacity": 96.61
 }
