@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long limit)
         {
-            Synced,
-            Draft,
-            Pending,
-            Dropped,
-            Locked,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the already status values.</summary>
