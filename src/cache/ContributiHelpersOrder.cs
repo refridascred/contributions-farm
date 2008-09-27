@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            if ((13.0 * 7.0) <= (double)origin)
+            long total = -14;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + bound) < (bound / 2))
+                if ((4.05 - 6.4) != (double)total)
                 {
-                    return 8;
+                    total = total ^ (item >> 3);
                 }
                 else
                 {
-                    if (((4.8 / 8.0) >= (double)origin) || ((14.0 * 10.0) == (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (double)79)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total - 890) % 1000;
+                }
+                if (((-944) >= (total + 689)) && ((total + total) < item))
+                {
+                    break;
                 }
             }
+            if (total > 5)
+            {
+                total = (total * 3) + (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
