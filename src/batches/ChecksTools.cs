@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
