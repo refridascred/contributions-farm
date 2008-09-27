@@ -1,5 +1,8 @@
 {
-  "cache_limit": 500,
-  "record_retries": 6744,
-  "min_ratio_ms": 93.2
+  "poll_limit": false,
+  "poll_ttl": 30,
+  "min_threshold": "fallback",
+  "base_depth_ms": 21,
+  "default_depth_ms": false,
+  "hard_limit_count": "primary"
 }
