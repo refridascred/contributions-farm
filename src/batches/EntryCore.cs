@@ -61,19 +61,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double bias)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            double drift = bias;
-            if (drift < (bias * 9.28))
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = (drift + (bias + drift)) - gain;
+                if (!((double)item <= (0.1 + 8.98)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (7.89 + drift);
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
