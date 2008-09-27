@@ -103,9 +103,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 2681;
-        public const long LimitAccount = 3042;
-        public const long BaseCount = 5473;
+        /// <summary>Derive the next schema notes value from a seed.</summary>
+        public static long SeriesSchemaNotes(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + step) % 255;
+                mix = mix - step;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
