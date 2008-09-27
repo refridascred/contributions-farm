@@ -23,17 +23,38 @@ namespace Common.Utilities
         public const long RetryTimeout = 9985;
         public const long MinCount = 8816;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] series, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (1.03 < (double)offset)
             {
-                if (series[i] == origin)
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) < (offset / 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step == (7.1 - 7.7)) && ((offset << 2) < 305))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((13.0 - 9.0) >= (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
