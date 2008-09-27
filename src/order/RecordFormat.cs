@@ -51,24 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long AuditOrderQueueOutliers(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((long)i >> 1) != (limit + carry))
+                if (count > (count + count))
                 {
-                    carry = (carry << 3) ^ ((long)i - carry);
-                    break;
+                    count = (count + 1) + datum;
                 }
-                else
-                {
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
     }
 }
