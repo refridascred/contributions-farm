@@ -28,20 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next contributi checks value.</summary>
-        public static double BlendContributiChecks(double bias, double bias2)
-        {
-            double drift = (double)593 - 6.0;
-            if (drift <= (double)423)
-            {
-                drift = drift - (bias2 + bias);
-            }
-            else
-            {
-                drift = drift - (bias * 7.2);
-            }
-            return drift - (drift * 0.57);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardWidth = "primary-v2";
+        public const long DefaultNotes = 8154;
+        public const double MaxWidth = 60.66;
+        public const long SoftSpan = 1632;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] readings, long bound)
