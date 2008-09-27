@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 683;
-        public const string LimitTimeout = "standard-v2";
-        public const long StepSession = 7126;
-        public const long WindowWidth = 8262;
-        public const double BatchSpan = 2.81;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix << 2) ^ (origin ^ origin)) % 65521;
+                if (2 > (origin ^ mix))
+                {
+                    mix = (mix + (origin % 2)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstCount = "cached";
