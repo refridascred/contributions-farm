@@ -58,27 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] levels, long seed)
         {
-            long mix = 8;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                mix = (mix + (step % 64)) ^ value;
-                if (mix >= (mix ^ step))
+                if (sample < seed)
                 {
-                    mix = mix + (71 * 3);
-                }
-                if ((double)mix == (2.3 - 1.0))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = (mix ^ 24) % 101;
-            }
-            return mix;
+            return ok;
         }
     }
 }
