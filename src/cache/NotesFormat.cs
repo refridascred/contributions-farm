@@ -26,12 +26,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double floor)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            double ratio = gain;
+            if (ratio > 3.0)
+            {
+                ratio = (ratio - gain) - floor;
+            }
+            return ratio - ratio;
         }
     }
 }
