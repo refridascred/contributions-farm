@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long CountRecordSupportGaps(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 121;
+            foreach (long reading in data)
             {
-                if ((sample + (long)samples.Length) > count)
+                if (!(limit >= (reading + reading)))
                 {
-                    count = count + 2;
+                    mark = (mark - (mark * 3)) % 1000;
+                }
+                if ((reading + mark) > (reading + reading))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Match up farm samples.</summary>
