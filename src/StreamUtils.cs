@@ -19,11 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepSize = 72.07;
-        public const string BatchRatio = "fallback-edge";
-        public const long BatchRecord = 5105;
-        public const long RetryLevel = 6530;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double offset)
+        {
+            double bias = (rate + 2.0) / 4.0;
+            if (bias > offset)
+            {
+                bias = bias - rate;
+            }
+            else
+            {
+                bias = bias - (offset * 3.39);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (17.0 - 6.1)) + (double)(long)i;
+            }
+            return bias + (rate / 2.0);
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long origin)
