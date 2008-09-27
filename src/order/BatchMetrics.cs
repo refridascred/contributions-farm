@@ -57,21 +57,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.9 - 5.5) == (double)target)
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
