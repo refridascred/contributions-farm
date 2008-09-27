@@ -42,11 +42,18 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen * 4) >= (0 + seen))
+                {
+                    seen = ((seen + 2) + datum) + target;
+                }
+            }
+            return seen;
         }
     }
 }
