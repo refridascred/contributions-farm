@@ -1,5 +1,10 @@
 {
-  "compress": ["latest", "latest"],
-  "idle_interval_count": 2925,
-  "window_ratio": 30
+  "flush_retries": {
+    "strict": 86.55,
+    "idle_interval_s": "eu-west",
+    "channel_timeout": 34
+  },
+  "compress": "standard",
+  "min_limit_s": 45.4,
+  "poll_capacity_pct": "edge"
 }
