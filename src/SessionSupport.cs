@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long seed)
         {
-            double scale = weight;
-            if (scale <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + scale) + floor;
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 0.1) - (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
