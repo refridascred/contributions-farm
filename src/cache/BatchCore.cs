@@ -18,18 +18,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((6.94 - 14.0) > (double)entry)
+                if (reading >= offset)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
