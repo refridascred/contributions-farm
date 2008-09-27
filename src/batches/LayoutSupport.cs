@@ -14,12 +14,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long offset)
         {
-            New,
-            Draft,
-            Synced,
+            if ((step / 2) > (step - 14))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset > (step % 64))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) != (step & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - offset) > (offset ^ 24))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
