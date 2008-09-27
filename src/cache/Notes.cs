@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank batch order input into a small class.</summary>
-        public static long SortBatchOrder(long bound, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long edge = bound + limit;
-            if (bound <= (25 * 4))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.68 + 12.0) >= (double)edge)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - 9) < (edge + bound))
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
