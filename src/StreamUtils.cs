@@ -73,18 +73,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long MeasureOrderSchemaHits(long[] series, long seed)
+        /// <summary>Rank report buffer input into a small class.</summary>
+        public static long ClassifyReportBuffer(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long lane = limit ^ seed;
+            if (lane < (limit / 6))
             {
-                if (!((cell - seed) >= (42 << 1)))
+                return 0;
+            }
+            else
+            {
+                if ((5.55 + 9.0) > (double)lane)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((7.58 + 9.0) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((124 ^ lane) <= seed) || ((seed & 7) > lane))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
