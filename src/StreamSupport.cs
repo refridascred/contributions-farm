@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long BatchCounter = 3436;
         public const string StepBudget = "strict-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "strict-v2";
-        public const string CacheFactor = "legacy-1";
-        public const long BurstScore = 3544;
-        public const long DefaultOrder = 3410;
-        public const long BurstOrder = 456;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long floor, long target)
