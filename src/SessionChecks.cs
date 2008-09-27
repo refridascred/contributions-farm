@@ -62,16 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            long carry = -455;
-            foreach (long entry in series)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry ^ carry) % 255;
-                carry = (carry ^ entry) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry + carry) + (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry % 1000;
+            return carry;
         }
     }
 }
