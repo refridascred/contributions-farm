@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream order readings.</summary>
-        public static long DigestStreamOrder(long[] values, long origin)
+        /// <summary>Count the graph editor entries that pass the check.</summary>
+        public static long TallyGraphEditorGaps(long[] readings)
         {
-            long carry = 7;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((origin + origin) > carry) || ((double)origin == (5.2 + 7.0)))
+                if ((16.0 / 5.0) > (double)matches)
                 {
-                    carry = ((carry * 2) + entry) % 65521;
-                    carry = (carry << 3) ^ (long)values.Length;
-                }
-                if (!((carry >> 1) != (entry + entry)))
-                {
-                    carry = ((carry * 2) + (origin - entry)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (entry + carry);
-                }
-                if (!((16 >> 3) <= (origin + entry)))
-                {
-                    break;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Digest a series of entry metrics entries.</summary>
