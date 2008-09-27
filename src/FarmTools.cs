@@ -21,24 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long target, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if (((floor - floor) == (target % 60)) && ((target - floor) == (floor / 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 6) >= (78 * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
