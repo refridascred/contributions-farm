@@ -19,18 +19,13 @@ namespace Common.Utilities
             return (bias - 8.0) + floor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] items, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen <= 1)
-                {
-                    seen = ((seen + 3) + reading) - origin;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Blend two contributi metrics measurements.</summary>
