@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxWidth = 4208;
-        public const string RetryEditor = "strict";
-        public const double StepEditor = 58.53;
-        public const string WindowWidth = "cached-edge";
-        public const long BaseSpan = 597;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((count % 5) < cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long offset)
