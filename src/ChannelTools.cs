@@ -32,19 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 3) ^ score;
+                score = ((score * 3) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
     }
 }
