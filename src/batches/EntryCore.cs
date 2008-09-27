@@ -43,19 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] series, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first support order entry that matches the target.</summary>
