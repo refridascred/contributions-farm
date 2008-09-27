@@ -33,15 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph commits entries.</summary>
-        public static long TallyGraphCommits(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long result = 737;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 2) ^ (entry - 0)) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
