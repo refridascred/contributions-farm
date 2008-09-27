@@ -39,10 +39,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 7567;
-        public const long MaxChecks = 2057;
-        public const long HardChecks = 1252;
-        public const long IdleChecks = 4157;
+        /// <summary>Count graph support pairs that satisfy a relation.</summary>
+        public static long OverlapGraphSupportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
