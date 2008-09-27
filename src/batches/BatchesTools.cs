@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            double weight = offset;
+            if (weight <= (weight / 6.0))
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight + 5.94;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 8.2) + (double)(long)i;
+            }
+            return weight - (double)535;
         }
 
         /// <summary>Combine farm context values into a single score.</summary>
