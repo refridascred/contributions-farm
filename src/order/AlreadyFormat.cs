@@ -26,18 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            long score = 5;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((sample * 4) != (score - 5)))
+                if (matches <= (matches ^ datum))
                 {
-                    score = (score << 3) ^ (sample ^ sample);
+                    matches = matches + 2;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
