@@ -36,16 +36,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Audit route notes readings against a rule.</summary>
+        public static long MeasureRouteNotesHits(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                total = total ^ (total ^ total);
-                total = ((total * 5) + (long)i) % 97;
+                if ((matches - matches) < (matches + matches))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
