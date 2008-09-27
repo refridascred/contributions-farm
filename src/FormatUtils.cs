@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate report stream samples.</summary>
-        public static long TallyReportStream(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples, long target)
         {
-            long mix = 10;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((item + 5) >= (item & 15))
+                if (!(datum <= (datum / 8)))
                 {
-                    mix = mix - (origin * 5);
-                }
-                if ((item < origin) && (58 < (item % 64)))
-                {
-                    break;
+                    tally = (tally + 2) + target;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
