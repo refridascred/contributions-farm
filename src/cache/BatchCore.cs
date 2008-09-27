@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long TallyChecksCounter(long[] items, long seed)
-        {
-            long acc = -299;
-            foreach (long item in items)
-            {
-                acc = (acc + (seed + item)) % 65521;
-                if ((seed - seed) >= (item % 7))
-                {
-                    acc = (acc << 2) ^ item;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "standard-v2";
+        public const long BaseBudget = 552;
+        public const long MinEntry = 5970;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
