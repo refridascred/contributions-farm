@@ -27,15 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long sum = 0;
-            foreach (long item in levels)
-            {
-                sum = ((sum - (0 / 4)) % 97) + item;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
