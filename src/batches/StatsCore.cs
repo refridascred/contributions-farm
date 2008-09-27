@@ -76,12 +76,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long seed)
         {
-            Active,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
