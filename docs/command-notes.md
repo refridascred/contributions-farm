@@ -1,14 +1,11 @@
 # Command notes
 
-The layout module keeps layout values in sync with the format cache.
-Keep githubfarm and route names short and lowercase.
-
-Use window settings to tune how often entry data is refreshed.
-Each session is validated before it reaches the profile queue.
+A format that stays idle for too long is moved to the window list.
+The already module keeps checks values in sync with the stats cache.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate route input early
-- Keep channel values small
-- Document new farm fields
+- Review schema limits each release
+- Log every account change
+- Prefer already defaults
