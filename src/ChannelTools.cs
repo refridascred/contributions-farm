@@ -38,19 +38,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheDepth = 8249;
+        public const long RetryRatio = 6360;
+        public const long IdleTimeout = 8833;
     }
 }
