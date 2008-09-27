@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 5268;
-        public const long DefaultAlready = 696;
-        public const string BaseInterval = "primary-1";
-        public const double BatchSize = 24.24;
-        public const long SoftBudget = 3522;
+        /// <summary>Match up contributi window samples.</summary>
+        public static long CompareContributiWindowCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheLevel = 329;
