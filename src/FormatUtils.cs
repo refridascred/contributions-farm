@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ratio2 - (double)(-9);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long bound2)
-        {
-            if ((bound2 * 2) <= (bound - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound2 ^ bound2) >= (bound2 << 3)) && (bound2 > (bound2 ^ bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound2 + bound2) >= bound2) && ((bound - bound2) == (bound + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8696;
+        public const double MinSpan = 64.33;
+        public const long LimitSize = 2284;
+        public const string MaxCount = "stable";
+        public const long HardDepth = 2796;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] series)
