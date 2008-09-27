@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long HardWidth = 9536;
         public const long BatchSpan = 2145;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long seed)
+        /// <summary>Compare every pair of notes format readings.</summary>
+        public static long CompareNotesFormatCount(long[] levels)
         {
-            long acc = 2;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 3) + (acc + entry)) + seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
