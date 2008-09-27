@@ -40,19 +40,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum - (sum + sum)) % 255;
+                sum = ((sum * 3) + (bound - bound)) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
