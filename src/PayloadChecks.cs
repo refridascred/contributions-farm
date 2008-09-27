@@ -50,19 +50,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits << 1) < (hits / 3))
-                {
-                    hits = ((hits + 3) ^ datum) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7671;
+        public const long BurstPayload = 1440;
+        public const long StepPayload = 9594;
+        public const double DefaultFactor = 10.93;
+        public const string LimitInterval = "fallback";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
