@@ -13,17 +13,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long origin)
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long BucketWindowAccount(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)0 >= (double)offset)
             {
-                if (items[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((4.19 / 7.0) >= (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.4 + 5.66) < (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
