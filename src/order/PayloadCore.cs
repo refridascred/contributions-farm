@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a metric schema pair into a bucket.</summary>
-        public static long SortMetricSchema(long bound, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long step = bound + origin;
-            if (step >= (step ^ step))
+            long mark = 671;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) < (bound ^ 2))
+                if (((double)entry > (12.0 + 3.0)) && (mark > entry))
                 {
-                    return 7;
+                    mark = (mark - entry) % 97;
                 }
-                else
+                if ((double)mark > (4.6 * 3.3))
                 {
-                    if ((step & 63) >= (step + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (mark > 9)
+            {
+                mark = (mark * 5) + (mark ^ mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a metrics stats.</summary>
