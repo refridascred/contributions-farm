@@ -82,24 +82,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank stream stats input into a small class.</summary>
-        public static long RankStreamStats(long target, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] values, long floor)
         {
-            if ((limit & 7) >= (limit + 5))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit % 16) <= 799)
+                if (cell > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
