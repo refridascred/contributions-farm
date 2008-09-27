@@ -20,32 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long bound2 = seed ^ bound;
-            if ((double)bound <= 0.52)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + 232) > (seed << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound >> 4) <= seed) || ((seed << 1) <= (seed - bound2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
