@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const double WindowScore = 68.21;
         public const double DefaultAccount = 64.1;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            double mean = (double)6 * 5.47;
+            if (mean > (bias * 6.8))
+            {
+                mean = (mean - 6.0) + scale;
+            }
+            return mean + bias;
         }
     }
 }
