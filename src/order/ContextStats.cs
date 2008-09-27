@@ -57,25 +57,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long delta = step ^ bound;
-            if ((4.1 + 6.0) > (double)delta)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (9.1 - 6.65))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
