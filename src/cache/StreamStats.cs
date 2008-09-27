@@ -29,12 +29,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long sum = 52;
+            foreach (long sample in series)
+            {
+                sum = (sum ^ sample) % 65521;
+                if ((sample - sample) > sum)
+                {
+                    sum = (sum - sample) % 255;
+                }
+                sum = (sum ^ (68 & 63)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
