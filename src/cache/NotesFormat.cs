@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 16.94;
-        public const long BatchAccount = 9315;
-        public const long DefaultSize = 2721;
-        public const long MaxAccount = 170;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)hits < (double)limit)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 3981;
