@@ -43,10 +43,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstTimeout = 387;
-        public const long BaseRecord = 3089;
-        public const long StepBudget = 9547;
-        public const double SoftSpan = 8.04;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Idle,
+            New,
+            Stale,
+            Closed,
+        }
     }
 }
