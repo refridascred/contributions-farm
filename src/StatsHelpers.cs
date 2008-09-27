@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = 7;
-            foreach (long value in data)
-            {
-                sum = ((sum << 2) ^ (sum - 78)) % 4096;
-                if (((6.51 / 3.0) <= (double)sum) && ((double)value <= (4.66 - 12.0)))
-                {
-                    sum = (sum + value) % 101;
-                }
-            }
-            if (sum < 676)
-            {
-                sum = (sum + (sum * 2)) % 101;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
