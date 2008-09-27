@@ -1,6 +1,6 @@
 {
-  "readonly": "legacy",
-  "tools_delay": "blue",
-  "counter_delay": "fallback",
-  "max_retries_pct": 77
+  "batch_limit_pct": "green",
+  "filter_capacity": 69.19,
+  "sync_interval_count": "local",
+  "retry_threshold_count": 23.9
 }
