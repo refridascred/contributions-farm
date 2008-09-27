@@ -45,16 +45,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                state = (state + (long)i) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if (cell <= (23 >> 1))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
