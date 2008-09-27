@@ -37,12 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            Done,
-            Ready,
-            Locked,
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
