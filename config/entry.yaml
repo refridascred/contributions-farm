@@ -1,9 +1,27 @@
 # entry settings
-audit: open
-min_capacity_s: 22
-cache_ratio_pct: 60
-verbose: false
-retry_depth_pct:
-  - primary
-  - primary
-dry_run: false
+poll_delay_ms:
+  retry_depth_s: cached
+  sync_interval_count: true
+  context_retries: strict
+  idle_ttl_pct: false
+  persist: 250
+warm_size_pct: 500
+max_ttl_count:
+  max_threshold_count: local
+  hard_ratio: green
+  flush_capacity_count:
+    - strict
+    - edge
+    - green
+hard_ratio_pct:
+  compress:
+    - 281
+    - 99
+    - 230
+  audit: 500
+  route_ratio: blue
+  support_delay: fallback
+  burst_threshold: stable
+  tools_window: false
+layout_depth: 42.01
+queue_depth: 37
