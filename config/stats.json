@@ -1,7 +1,24 @@
 {
-  "retry_interval": "local",
-  "default_limit_s": [114, 303, 11],
-  "hard_limit_count": 250,
-  "profile_delay": 65,
-  "compress": "local"
+  "cache_timeout_s": true,
+  "strict": "standard",
+  "base_threshold_count": {
+    "support_capacity": ["stable", "green", "strict"],
+    "checks_limit": 100,
+    "soft_delay_ms": {
+      "default_timeout_s": "primary",
+      "warm_interval_count": [466, 396],
+      "idle_threshold_pct": "legacy",
+      "base_threshold": 52.4,
+      "audit": 100
+    },
+    "metrics_capacity": {
+      "sync_threshold": [143, 171, 477, 31],
+      "enabled": 72,
+      "batch_capacity_ms": false,
+      "burst_capacity": 49,
+      "max_retries_pct": "legacy",
+      "verbose": false
+    },
+    "flush_interval_count": 46.34
+  }
 }
