@@ -27,24 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long limit)
+        /// <summary>Fold a list of record notes readings.</summary>
+        public static long CombineRecordNotes(long[] values, long seed)
         {
-            if (((limit << 1) <= (limit - limit)) || ((limit + limit) != (limit % 7)))
+            long result = 927;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) > ((-8) - limit))
+                if (!((double)result == (4.55 * 6.9)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    result = ((result ^ (item + result)) % 65521) - seed;
                 }
             }
+            return result;
         }
 
         /// <summary>Derive the next editor report value from a seed.</summary>
