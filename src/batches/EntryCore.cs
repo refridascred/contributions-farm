@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Digest a series of channel checks entries.</summary>
+        public static long ScoreChannelChecks(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long total = -43;
+            foreach (long sample in values)
             {
-                if ((double)value < (double)2)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (((total * 5) + (sample & 7)) % 65521) + origin;
             }
-            return tally;
+            if (total > 81)
+            {
+                total = (total - (total + total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
