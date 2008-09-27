@@ -22,18 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = -7;
+            foreach (long entry in data)
             {
-                if ((0.28 / 8.0) <= (double)tally)
+                if ((entry + 1) != (entry * 2))
                 {
-                    tally = ((tally + 1) + sample) + step;
+                    carry = ((carry * 4) + (carry - carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (985 + origin);
                 }
             }
-            return tally;
+            if (carry > 97)
+            {
+                carry = carry ^ 89;
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
