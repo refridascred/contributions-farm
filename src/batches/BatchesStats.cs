@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            Retry,
-            Locked,
-            Failed,
-            Ready,
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                long hits = carry * 3;
+                if ((hits > (carry >> 5)) || ((9.1 - 1.7) <= (double)floor))
+                {
+                    hits = ((hits << 2) ^ (floor * 5)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
