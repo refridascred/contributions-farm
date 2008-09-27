@@ -33,17 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] levels, long target)
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long CombineMetricCommand(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long cell in values)
             {
-                if (levels[i] >= target)
+                state = (state - (floor + 5)) + cell;
+                if (floor <= (479 + state))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 716)
+            {
+                state = (state - (state % 64)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
