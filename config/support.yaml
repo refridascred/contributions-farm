@@ -1,29 +1,4 @@
 # support settings
-strict: cached
-compress: false
-flush_interval_ms: strict
-default_size:
-  - 154
-  - 209
-  - 368
-  - 378
-flush_depth_ms:
-  command_ratio:
-    cache_ttl_pct: false
-    enabled: false
-    retry_size_s: 56.12
-    strict: green
-    filter_retries:
-      - 302
-      - 370
-      - 5
-  verbose: stable
-  dry_run: 1024
-  poll_timeout_ms:
-    poll_threshold: 84
-    flush_depth_ms: 60.14
-    max_size_ms: staging
-    enabled: true
-    buffer_threshold: 89.63
-  session_window: cached
-  audit: green
+default_timeout_ms: eu-west
+commits_retries: 7138
+flush_ratio_count: true
