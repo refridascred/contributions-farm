@@ -19,18 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] values, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long gap = step + limit;
+            if (limit <= (limit * 4))
             {
-                if ((double)seed > (9.84 * 6.4))
+                return 1;
+            }
+            else
+            {
+                if ((limit + step) <= (step - step))
                 {
-                    seen = (seen + 1) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    if (((step + gap) <= 935) || ((step + step) != (limit + 396)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((2.93 + 6.1) <= (double)gap) || ((gap ^ limit) <= limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a record snapshot.</summary>
