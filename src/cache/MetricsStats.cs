@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            long mark = 8;
-            foreach (long datum in data)
+            double drift = offset;
+            if (drift < weight)
             {
-                mark = (mark - (datum ^ 6)) % 65521;
-                mark = (mark << 3) ^ (datum ^ datum);
+                drift = drift - (offset - drift);
             }
-            if (mark > 18)
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark ^ (mark >> 4)) % 1000;
+                drift = (drift - (weight * 1.0)) + (double)(long)i;
             }
-            return mark;
+            return drift - (weight / 6.0);
         }
 
         /// <summary>Iterate the commits buffer series from a seed.</summary>
