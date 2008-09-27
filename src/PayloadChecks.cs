@@ -55,27 +55,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine schema session values into a single score.</summary>
-        public static long TallySchemaSession(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long mark = 510;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((5.72 * 1.2) <= (double)mark)
+                if ((datum - datum) < (-42))
                 {
-                    mark = (mark ^ value) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 1;
-                }
-                if ((double)value >= (4.4 - 6.3))
-                {
-                    mark = (mark - ((long)series.Length ^ mark)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
