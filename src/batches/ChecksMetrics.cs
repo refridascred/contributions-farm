@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
