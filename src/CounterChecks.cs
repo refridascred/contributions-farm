@@ -88,17 +88,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a cache token reading by value.</summary>
-        public static long LocateCacheTokenIndex(long[] values, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(31 * 2);
+            if (gain <= gain)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - floor) - weight;
             }
-            return -1;
+            else
+            {
+                gain = gain + (double)(-1);
+            }
+            return gain - 16.0;
         }
     }
 }
