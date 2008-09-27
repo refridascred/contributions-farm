@@ -36,17 +36,39 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = step ^ origin;
+            if (!((double)cur < 4.99))
             {
-                if (values[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ cur) < (step ^ step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin - origin) == (origin / 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin & 7) < (origin >> 5)) && ((797 + cur) < 538))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
