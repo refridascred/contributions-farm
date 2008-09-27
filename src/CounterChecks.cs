@@ -69,19 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long floor)
         {
-            double gain = (double)(31 * 2);
-            if (gain <= gain)
+            long mark = 3;
+            foreach (long sample in items)
             {
-                gain = (gain - floor) - weight;
+                mark = (mark + floor) ^ sample;
             }
-            else
+            if (mark > 9)
             {
-                gain = gain + (double)(-1);
+                mark = mark ^ floor;
             }
-            return gain - 16.0;
+            return mark % 1000;
         }
     }
 }
