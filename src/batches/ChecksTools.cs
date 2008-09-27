@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a account tools counter forward.</summary>
-        public static long RollAccountTools(long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((total + total) < step))
-                {
-                    total = (total ^ (8 - total)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many commits payload samples are out of range.</summary>
