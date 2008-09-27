@@ -41,9 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheDepth = 8249;
-        public const long RetryRatio = 6360;
-        public const long IdleTimeout = 8833;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Failed,
+            New,
+            Stale,
+            Done,
+        }
     }
 }
