@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
+        /// <summary>Fold a list of cluster metric readings.</summary>
+        public static long FoldClusterMetric(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 72;
+            foreach (long reading in data)
             {
-                if (data[i] > target)
+                mix = (mix << 2) ^ (mix + reading);
+                if (!(mix <= (reading / 7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
