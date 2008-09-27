@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels, long target)
         {
-            double bias = (double)5 * 8.0;
-            for (int i = 0; i < 6; i++)
+            long result = 8;
+            foreach (long item in levels)
             {
-                bias = ((bias - span) + (double)(long)i) - ratio;
+                result = (result ^ target) ^ item;
+                result = (result - (target >> 2)) % 97;
             }
-            return bias - bias;
+            if (result < 36)
+            {
+                result = ((result * 3) + (result & 7)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
