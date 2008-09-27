@@ -30,18 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long TallyChecksPayloadOutliers(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value >= (0 % 8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the batches class values.</summary>
