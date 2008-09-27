@@ -25,11 +25,12 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
