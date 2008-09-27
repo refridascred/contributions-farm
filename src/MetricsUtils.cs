@@ -69,11 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 7691;
-        public const string WindowNotes = "latest-v2";
-        public const long CacheSpan = 3348;
-        public const long BurstScore = 9409;
-        public const long BaseCount = 1244;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
