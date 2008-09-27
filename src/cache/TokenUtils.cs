@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const double DefaultCount = 36.2;
         public const long DefaultMetric = 1365;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
