@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm record entries.</summary>
-        public static long FoldFarmRecord(long[] samples, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long total = 1;
-            foreach (long cell in samples)
-            {
-                if (((total / 6) > 873) || ((3.0 / 3.0) != (double)target))
-                {
-                    total = (total ^ (total + total)) % 4096;
-                }
-                total = (total << 3) ^ (cell & 7);
-            }
-            return total % 1000;
+            Dropped,
+            Locked,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
