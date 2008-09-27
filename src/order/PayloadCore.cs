@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            if ((434 + target) != (step + target))
+            double load = (double)56 - floor;
+            if (load <= (12.0 / 7.0))
             {
-                return 7;
+                load = load - floor;
             }
             else
             {
-                if ((6.6 + 1.9) == (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((69 - target) != (target - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target >= (17.0 * 4.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load + load;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (weight + 7.8)) + (double)(long)i;
+            }
+            return load - weight;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
