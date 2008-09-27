@@ -20,16 +20,22 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Accumulate checks contributi samples.</summary>
-        public static long TotalChecksContributi(long[] levels, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings, long bound)
         {
-            long mark = 56;
-            foreach (long value in levels)
+            long acc = 946;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 5) + (value + value)) - origin;
-                mark = mark ^ mark;
+                if ((6 & 1) < (bound >> 3))
+                {
+                    acc = ((acc << 2) ^ acc) ^ entry;
+                }
             }
-            return mark % 97;
+            if (acc < 36)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
