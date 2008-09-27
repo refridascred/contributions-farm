@@ -23,11 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
