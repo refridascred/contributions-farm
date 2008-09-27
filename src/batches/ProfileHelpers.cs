@@ -87,18 +87,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 21;
+            foreach (long cell in data)
             {
-                if ((8 - seen) != (entry - limit))
+                if ((7.6 > (double)cell) && (((-391) >> 2) < (anchor ^ anchor)))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor << 2) ^ cell) % 65521;
                 }
             }
-            return seen;
+            if (anchor < 0)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
