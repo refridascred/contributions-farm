@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            Pending,
-            Synced,
-            Done,
+            long anchor = 59;
+            foreach (long item in samples)
+            {
+                if (((item & 255) >= (item >> 2)) && ((double)item > (3.0 + 0.2)))
+                {
+                    anchor = ((anchor << 2) ^ (item & 63)) % 255;
+                }
+                if (!(anchor > item))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch level values.</summary>
