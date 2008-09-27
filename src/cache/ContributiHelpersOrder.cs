@@ -22,11 +22,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 329;
-        public const long LimitChannel = 4120;
-        public const long BurstChannel = 1439;
-        public const long CacheTimeout = 9540;
-        public const string HardChannel = "alpha-v2";
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Failed,
+            Closed,
+            New,
+        }
     }
 }
