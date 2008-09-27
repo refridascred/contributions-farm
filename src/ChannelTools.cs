@@ -32,17 +32,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 3) + (long)i) % 101;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
