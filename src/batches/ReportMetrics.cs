@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long offset)
         {
-            Dropped,
-            New,
-            Ready,
-            Queued,
-            Pending,
+            long delta = target + offset;
+            if (227 <= (1 - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset <= (target / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + 8) < delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((10.0 >= (double)delta) || ((3 % 5) > delta))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
