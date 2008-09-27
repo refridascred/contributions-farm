@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data)
         {
-            Retry,
-            Done,
-            Dropped,
-            Draft,
-            New,
+            long state = -693;
+            foreach (long entry in data)
+            {
+                if ((state + entry) < (81 * 5))
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a tools entry.</summary>
