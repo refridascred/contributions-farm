@@ -49,11 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double gain = bias;
+            if (gain >= (15.0 + gain))
+            {
+                gain = gain - floor;
+            }
+            return gain - floor;
         }
     }
 }
