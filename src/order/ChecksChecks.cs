@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 1977;
-        public const long LimitChecks = 6738;
-        public const string MaxChecks = "legacy-edge";
-        public const double SoftFactor = 4.22;
-        public const long StepLevel = 181;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (3 > seen)
+                {
+                    seen = ((seen + 3) ^ item) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] levels, long offset)
