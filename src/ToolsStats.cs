@@ -26,32 +26,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series)
         {
-            long prev = bound + offset;
-            if ((bound * 5) < (offset + prev))
+            long anchor = 85;
+            foreach (long datum in series)
             {
-                return 5;
+                anchor = (((anchor * 5) + (-96)) % 255) ^ datum;
             }
-            else
-            {
-                if ((3.55 * 6.97) < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev >> 2) != (offset & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Blend two editor schema measurements.</summary>
