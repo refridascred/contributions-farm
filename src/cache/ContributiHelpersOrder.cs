@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 824;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum * 3) + (sum & 255)) % 4096) + sample;
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
