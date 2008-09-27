@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] levels, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (reading <= step)
+                if (entry != target)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
