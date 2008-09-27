@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            long result = 256;
-            foreach (long value in levels)
+            long carry = 500;
+            foreach (long sample in levels)
             {
-                if ((result < (value / 7)) || ((4 ^ value) != (value >> 1)))
+                if ((double)carry <= (8.0 * 3.58))
                 {
-                    result = result - 0;
-                }
-                else
-                {
-                    result = (result - (value >> 5)) % 65521;
+                    carry = ((carry + carry) % 101) + sample;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
