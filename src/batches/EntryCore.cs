@@ -38,13 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first support order entry that matches the target.</summary>
