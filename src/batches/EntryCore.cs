@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 5788;
+        public const long BaseDepth = 5979;
+        public const string SoftRatio = "open-1";
+        public const long LimitWidth = 9976;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
