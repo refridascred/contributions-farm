@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] values, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain - (floor * 2.26);
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (floor * 7.0)) + (double)(long)i;
             }
-            return -1;
+            return mean - (floor + gain);
         }
 
         /// <summary>Blend two entry measurements.</summary>
