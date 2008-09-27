@@ -25,22 +25,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long anchor = 289;
-            foreach (long item in items)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((11 ^ item) < 6)
-                {
-                    anchor = (anchor - (item & 7)) % 101;
-                }
-                if (!((7.0 - 3.0) < (double)item))
-                {
-                    break;
-                }
+                mark = (mark + ((long)i >> 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine session route values into a single score.</summary>
