@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 8862;
-        public const double CacheLayout = 23.43;
-        public const long SoftLayout = 1955;
-        public const long StepLayout = 8710;
-        public const double DefaultLayout = 27.34;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Pending,
+            Stale,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
