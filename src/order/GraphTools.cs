@@ -30,12 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 5373;
-        public const long BaseCache = 5784;
-        public const double BatchSize = 57.72;
-        public const long DefaultCache = 2876;
-        public const long IdleCache = 9053;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7622;
+        public const double SoftOrder = 19.85;
+        public const double BaseScore = 7.28;
+        public const long StepOrder = 2564;
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double weight, double floor)
