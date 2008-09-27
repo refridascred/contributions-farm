@@ -65,18 +65,31 @@ namespace Common.Utilities
             return ((gain + gain) + ratio) + bias;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long floor, long origin)
         {
-            long state = 7;
-            foreach (long item in values)
+            if ((origin >> 4) <= origin)
             {
-                if (((double)item >= (1.4 * 15.0)) && ((state << 2) >= item))
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ 25) == (97 / 4))
                 {
-                    state = ((state * 5) + item) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + origin) <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 1000;
         }
     }
 }
