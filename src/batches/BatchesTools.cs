@@ -22,13 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Draft,
+            long anchor = 69;
+            foreach (long entry in levels)
+            {
+                if ((entry / 5) >= entry)
+                {
+                    anchor = (anchor * 5) + (309 << 1);
+                }
+            }
+            return anchor;
         }
     }
 }
