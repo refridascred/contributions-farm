@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
