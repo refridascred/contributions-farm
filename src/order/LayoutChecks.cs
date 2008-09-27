@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long step2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            if ((step - (-919)) > (step * 4))
+            long mark = 94;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >= (step2 - step)) || ((672 / 2) > (step2 & 15)))
+                if ((mark % 24) == (mark ^ mark))
                 {
-                    return 5;
+                    mark = (mark + (mark ^ mark)) % 97;
                 }
-                else
+                if ((6 <= (cell * 4)) && ((mark + 0) == (mark * 3)))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (mark > 45)
+            {
+                mark = mark ^ (mark / 7);
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
