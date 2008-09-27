@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 23.08;
-        public const double CacheRatio = 39.12;
-        public const long StepEditor = 8933;
-        public const string DefaultBudget = "open-edge";
-        public const string WindowEditor = "cached-1";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long target, long bound)
