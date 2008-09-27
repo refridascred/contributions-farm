@@ -27,11 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank record input into a small class.</summary>
