@@ -57,13 +57,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long limit)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            if ((step & 127) < (949 - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.8 >= (double)limit) || ((step >> 4) <= 433))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step == (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step * 4) <= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
