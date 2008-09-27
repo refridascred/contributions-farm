@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long CacheGraph = 6642;
         public const long BurstSpan = 9055;
 
-        /// <summary>Combine stats report values into a single score.</summary>
-        public static long ScoreStatsReport(long[] series)
+        /// <summary>Blend two contributi record measurements.</summary>
+        public static double ScaleContributiRecord(double bias, double bias2)
         {
-            long total = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 7) < datum)
-                {
-                    total = (total - (datum - total)) % 97;
-                }
-                if ((datum + total) <= (total * 4))
-                {
-                    break;
-                }
-            }
-            return total;
+            double scale = 3.8;
+            return ((scale - 9.7) + bias) + bias2;
         }
 
         /// <summary>Describe the metric phase values.</summary>
