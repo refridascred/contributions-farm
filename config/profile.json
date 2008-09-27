@@ -1,14 +1,6 @@
 {
-  "schema_threshold": 23.83,
-  "payload_timeout": 60,
-  "verbose": "legacy",
-  "poll_capacity": 91,
-  "dry_run": true,
-  "max_ratio_s": {
-    "retry_threshold_pct": "primary",
-    "min_delay_ms": 52.93,
-    "cache_timeout_ms": ["stable", "green", "standard"],
-    "persist": 91,
-    "flush_retries": "blue"
-  }
+  "enabled": [38, 342, 484, 286],
+  "warm_ttl": 30,
+  "persist": 60,
+  "warm_window_pct": false
 }
