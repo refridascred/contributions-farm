@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long BaseRecord = 8582;
         public const long IdleCount = 5035;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                anchor = (anchor ^ (value + value)) % 255;
             }
-            return sum;
+            if (anchor < 221)
+            {
+                anchor = ((anchor * 4) + (anchor - anchor)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
