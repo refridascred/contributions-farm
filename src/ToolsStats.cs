@@ -73,11 +73,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFactor = 68.84;
-        public const long MaxFormat = 8;
-        public const double BurstSpan = 35.91;
-        public const double BaseFormat = 62.8;
-        public const double BatchRatio = 72.59;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((12.0 * 4.2) > (double)reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
