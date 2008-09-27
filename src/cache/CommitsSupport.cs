@@ -54,9 +54,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitRatio = 21.33;
-        public const string WindowFactor = "stable-edge";
-        public const long MinSpan = 9835;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
