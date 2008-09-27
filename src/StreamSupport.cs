@@ -24,11 +24,23 @@ namespace Common.Utilities
         public const long RetryNotes = 8900;
         public const string BurstLevel = "strict-1";
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate cache order samples.</summary>
+        public static long WeighCacheOrder(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long state = 801;
+            foreach (long cell in levels)
+            {
+                state = state - (state >> 1);
+                if (((cell % 2) > (cell - cell)) || (((-50) / 7) != (cell / 9)))
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = ((state << 3) ^ (state ^ state)) % 101;
+            }
+            return state;
         }
     }
 }
