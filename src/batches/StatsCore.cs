@@ -71,19 +71,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] data, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Done,
+            Queued,
         }
     }
 }
