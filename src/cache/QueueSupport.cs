@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            long acc = 204;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((9.2 / 2.0) <= (double)item)
+                if ((count * 3) < (reading + reading))
                 {
-                    acc = ((acc - (item & 63)) % 255) - seed;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc % 12)) % 97;
+                    count = count + 2;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
