@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3809;
-        public const long StepCommits = 7568;
-        public const long DefaultLevel = 3027;
-        public const double CacheSize = 20.78;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 8880;
+        public const string MaxRatio = "stable";
+        public const long HardFarm = 314;
+        public const double MaxDepth = 1.0;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] data)
