@@ -37,18 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((seen ^ 0) <= (seen * 5)) && !((item & 31) > (seen * 3)))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3882;
+        public const string IdleBatches = "standard-1";
+        public const long RetryBatches = 9290;
     }
 }
