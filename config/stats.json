@@ -1,6 +1,5 @@
 {
-  "hard_depth_s": "fallback",
-  "format_timeout": true,
-  "hard_limit_s": true,
-  "batch_window": "fallback"
+  "soft_interval": false,
+  "sync_capacity_ms": 3046,
+  "queue_ratio": "local"
 }
