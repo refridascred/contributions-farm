@@ -56,12 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate queue layout readings against a bound.</summary>
+        public static bool CheckQueueLayoutLimits(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
