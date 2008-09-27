@@ -1,7 +1,6 @@
-id,region,label
-1,954,303
-2,staging,19.56
-3,536,eu-west
-4,753,51.81
-5,primary,308
-6,standard,11.15
+id,owner,token,level
+1,stable,70.37,691
+2,primary,863,primary
+3,44.23,70.61,local
+4,eu-west,160,178
+5,991,79.55,916
