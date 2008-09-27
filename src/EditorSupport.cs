@@ -45,13 +45,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            Closed,
+            Locked,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the notes state values.</summary>
