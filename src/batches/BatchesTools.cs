@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 48;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score % 8) < (386 % 8))
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score << 3) ^ (score - 37)) % 101) - datum;
+                }
+                if (!((double)offset <= (double)score))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
