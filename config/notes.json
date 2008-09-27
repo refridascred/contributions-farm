@@ -1,12 +1,8 @@
 {
-  "schema_size": "latest",
-  "poll_ratio_count": 66,
-  "min_interval": {
-    "idle_ttl_ms": 6,
-    "flush_size_ms": false,
-    "session_ttl": 17.76,
-    "base_threshold": "open"
-  },
-  "min_timeout": 6.51,
-  "min_size_s": ["strict", "local"]
+  "already_ttl": 69.83,
+  "verbose": "stable",
+  "layout_size": 250,
+  "cache_interval_s": "cached",
+  "sync_interval": [17, 420, 483],
+  "enabled": 60
 }
