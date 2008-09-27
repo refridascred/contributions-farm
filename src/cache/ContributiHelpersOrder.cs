@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double floor)
-        {
-            double gain2 = (double)(932 * 3);
-            if (gain2 <= gain2)
-            {
-                gain2 = (gain2 - (double)178) - gain;
-            }
-            else
-            {
-                gain2 = gain2 + (floor + gain2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - 8.1) + (double)(long)i;
-            }
-            return gain2 - (floor + 0.19);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 9278;
+        public const long IdleNotes = 2911;
+        public const string LimitNotes = "stable-1";
 
         /// <summary>Blend two report farm measurements.</summary>
         public static double ProjectReportFarm(double scale, double offset)
