@@ -14,26 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            long sum = -710;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((4.0 * 2.6) != (double)sum))
+                if (count <= reading)
                 {
-                    sum = (sum - cell) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 2) + sum;
+                    count = count + 1;
                 }
             }
-            if (sum < 18)
-            {
-                sum = ((sum << 2) ^ seed) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
