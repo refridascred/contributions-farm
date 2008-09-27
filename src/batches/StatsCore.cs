@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mean - (double)331;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Compare every pair of metrics commits readings.</summary>
+        public static long OverlapMetricsCommitsCount(long[] data)
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
