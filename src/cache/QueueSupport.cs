@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinInterval = 5440;
+        public const double SoftSchema = 4.82;
+        public const string SoftCount = "legacy-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 2397;
