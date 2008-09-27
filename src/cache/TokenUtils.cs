@@ -15,10 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxFactor = "local";
-        public const long CacheSpan = 6431;
-        public const long MaxBudget = 3366;
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
