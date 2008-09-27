@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstTimeout = "cached";
+        public const double CacheGraph = 65.77;
+        public const long BatchGraph = 4933;
+        public const long BaseGraph = 4264;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
