@@ -44,12 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheRatio = "primary";
-        public const long SoftSize = 9965;
-        public const long BaseTools = 5307;
-        public const long RetryTools = 6753;
-        public const long DefaultTools = 5143;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowTimeout = 7793;
+        public const string BurstBuffer = "cached-v2";
+        public const long MaxBuffer = 1739;
+        public const long CacheBuffer = 173;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long target, long step)
