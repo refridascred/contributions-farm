@@ -42,18 +42,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - (-745)) > ((-531) - 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
