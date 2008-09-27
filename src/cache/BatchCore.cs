@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits % 16) > (hits + (-68)))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
