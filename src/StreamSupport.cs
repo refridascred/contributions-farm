@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            Pending,
-            Idle,
-            Draft,
-            Synced,
-            Locked,
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics entry.</summary>
