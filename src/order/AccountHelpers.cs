@@ -58,16 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings, long offset)
-        {
-            long carry = 2;
-            foreach (long reading in readings)
-            {
-                carry = ((carry * 3) + offset) ^ reading;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "alpha";
+        public const double StepBudget = 1.27;
+        public const long HardCount = 5950;
+        public const string DefaultSession = "fallback";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double scale, double span)
