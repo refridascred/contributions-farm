@@ -21,18 +21,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long floor)
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool VerifyBatchOrderLimits(long[] items, long seed)
         {
-            long score = 535;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (((double)sample != (double)(long)values.Length) && (score < (score * 3)))
+                if (item <= seed)
                 {
-                    score = (score - (score + floor)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
