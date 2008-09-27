@@ -1,6 +1,7 @@
 # entry settings
-retry_limit: cached
-cache_ttl_ms: true
-sync_window: local
-buffer_size: latest
-sync_delay_ms: 250
+metric_delay: 35
+burst_delay_pct: false
+poll_ratio_ms:
+  hard_capacity_pct: edge
+  max_timeout_s: 79
+  burst_ratio: true
