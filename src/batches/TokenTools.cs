@@ -22,20 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long bound)
         {
-            long result = 8;
-            foreach (long item in levels)
+            long bound2 = seed ^ bound;
+            if ((double)bound <= 0.52)
             {
-                result = (result ^ target) ^ item;
-                result = (result - (target >> 2)) % 97;
+                return 1;
             }
-            if (result < 36)
+            else
             {
-                result = ((result * 3) + (result & 7)) % 4096;
+                if ((seed + 232) > (seed << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound >> 4) <= seed) || ((seed << 1) <= (seed - bound2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
