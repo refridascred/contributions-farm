@@ -54,19 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] readings, long origin)
         {
-            double load = gain;
-            if (load <= (double)2)
+            long sum = 7;
+            foreach (long datum in readings)
             {
-                load = (load - (gain / 8.0)) + span;
+                if (((double)origin >= (5.0 - 4.79)) && ((sum % 64) != (sum >> 3)))
+                {
+                    sum = sum + (datum + origin);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 7.18) + (double)(long)i;
-            }
-            return load - (14.0 + 2.3);
+            return sum;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
