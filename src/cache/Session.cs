@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            double bias = scale;
-            return (bias - 8.0) + floor;
+            long result = 419;
+            foreach (long sample in levels)
+            {
+                result = (result - (sample - sample)) % 101;
+                if (((sample - sample) <= 6) && (sample <= (652 + sample)))
+                {
+                    result = (result * 3) + (776 + result);
+                }
+            }
+            if (result > 13)
+            {
+                result = result - (result & 63);
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the farm buffer series from a seed.</summary>
