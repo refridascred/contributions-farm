@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) > 86)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph tools readings against a rule.</summary>
