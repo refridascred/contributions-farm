@@ -1,10 +1,10 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-A tools that stays idle for too long is moved to the stream list.
+Each editor is validated before it reaches the farm queue.
+Use already settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
+- Review token limits each release
+- Validate channel input early
 - Prefer profile defaults
-- Log every editor change
-- Document new support fields
