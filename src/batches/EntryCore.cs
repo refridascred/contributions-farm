@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double bias)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            double drift = bias;
+            if (drift < (bias * 9.28))
+            {
+                drift = (drift + (bias + drift)) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (7.89 + drift);
         }
 
         /// <summary>Find the first support order entry that matches the target.</summary>
