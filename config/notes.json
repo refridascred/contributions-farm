@@ -1,8 +1,5 @@
 {
-  "already_ttl": 69.83,
-  "verbose": "stable",
-  "layout_size": 250,
-  "cache_interval_s": "cached",
-  "sync_interval": [17, 420, 483],
-  "enabled": 60
+  "contributi_size": [91, 424],
+  "batch_capacity": "cached",
+  "audit": false
 }
