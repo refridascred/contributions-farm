@@ -55,18 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long CountStreamFarmGaps(long[] levels, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed > (98 / 5))
+                if (readings[i] > origin)
                 {
-                    count = (count + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
