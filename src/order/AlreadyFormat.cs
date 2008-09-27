@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many window checks samples are out of range.</summary>
-        public static long MeasureWindowChecksGaps(long[] levels, long origin)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value > (value * 5))
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the filter kind values.</summary>
