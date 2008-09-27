@@ -1,23 +1,9 @@
 # support settings
-persist: 1024
-burst_timeout: 90
-max_ratio_count: false
-account_capacity:
-  - 275
-  - 399
-dry_run:
-  batch_timeout:
-    - 467
-    - 413
-    - 279
-  warm_timeout_ms: 500
-  strict: 32.5
-  retry_depth_pct:
-    - legacy
-    - standard
-    - open
-    - standard
-  cache_size_pct:
-    - 352
-    - 154
-  verbose: 1.56
+report_ttl: stable
+payload_capacity:
+  - 25
+  - 236
+hard_window_pct: 100
+metrics_ttl:
+  - latest
+  - primary
