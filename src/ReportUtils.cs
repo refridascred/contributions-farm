@@ -57,18 +57,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double gain2 = (double)(2 + (-22));
+            if (gain2 > (offset * 6.3))
             {
-                if (((hits / 7) <= hits) || ((double)hits == (19.0 + 19.0)))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                gain2 = gain2 + (gain2 * 4.4);
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - (gain + gain);
+            }
+            return gain2 + offset;
         }
 
         /// <summary>Hold a checks info.</summary>
