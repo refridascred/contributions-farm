@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Locate a order payload reading by value.</summary>
+        public static long SeekOrderPayloadIndex(long[] items, long floor)
         {
-            long anchor = 59;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item & 255) >= (item >> 2)) && ((double)item > (3.0 + 0.2)))
+                if (items[i] < floor)
                 {
-                    anchor = ((anchor << 2) ^ (item & 63)) % 255;
-                }
-                if (!(anchor > item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
