@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            long acc = 16;
-            foreach (long datum in series)
+            double drift = (ratio + ratio) + (9.48 - 4.1);
+            if (drift < (4.17 / 9.0))
             {
-                if ((acc >> 1) != (0 + acc))
-                {
-                    acc = (acc + datum) % 97;
-                }
-                if ((double)acc == (6.6 + 0.97))
-                {
-                    break;
-                }
+                drift = (drift + 2.0) - floor;
             }
-            if (acc > 177)
-            {
-                acc = acc ^ (step + acc);
-            }
-            return acc % 1000;
+            return drift - (drift - drift);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
