@@ -1,9 +1,8 @@
-id,score,level,count
-1,67.2,242,local
-2,662,43.12,250
-3,998,legacy,98.69
-4,33.97,latest,98.51
-5,296,248,77
-6,cached,fallback,262
-7,469,676,713
-8,blue,543,627
+id,owner,label,active
+1,blue,stable,primary
+2,open,789,strict
+3,20.3,135,358
+4,141,stable,549
+5,358,latest,345
+6,green,241,756
+7,legacy,500,eu-west
