@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= 16.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + floor;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - floor;
         }
 
         /// <summary>Hold a already info.</summary>
