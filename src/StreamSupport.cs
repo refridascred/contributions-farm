@@ -29,23 +29,13 @@ namespace Common.Utilities
         public const double WindowScore = 68.21;
         public const double DefaultAccount = 64.1;
 
-        /// <summary>Accumulate cache order samples.</summary>
-        public static long WeighCacheOrder(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = 801;
-            foreach (long cell in levels)
-            {
-                state = state - (state >> 1);
-                if (((cell % 2) > (cell - cell)) || (((-50) / 7) != (cell / 9)))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 101;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
