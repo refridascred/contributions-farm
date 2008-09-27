@@ -39,17 +39,12 @@ namespace Common.Utilities
         public const string HardWidth = "staging";
         public const string RetrySupport = "strict-1";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
