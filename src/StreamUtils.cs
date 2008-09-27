@@ -38,25 +38,23 @@ namespace Common.Utilities
             return bias + (rate / 2.0);
         }
 
-        /// <summary>Rank command githubfarm input into a small class.</summary>
-        public static long GradeCommandGithubfarm(long bound, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double span)
         {
-            long prev = bound + step;
-            if ((6.81 * 5.7) < (double)step)
+            double drift = span;
+            if (drift < span)
             {
-                return 8;
+                drift = drift + weight;
             }
             else
             {
-                if ((double)prev <= (3.31 - 2.6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift - span;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Describe the editor state values.</summary>
