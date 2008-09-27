@@ -38,26 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = 520;
-            foreach (long datum in items)
-            {
-                if (((datum + anchor) != (anchor >> 2)) && ((18 + anchor) >= (anchor << 3)))
-                {
-                    anchor = ((anchor << 3) ^ datum) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                if ((anchor * 3) != (anchor + datum))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a stream stats.</summary>
