@@ -39,19 +39,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Blend two contributi metrics measurements.</summary>
+        public static double AdjustContributiMetrics(double scale, double span)
         {
-            double scale = ratio / 5.0;
-            if (scale < 3.92)
+            double rate = scale;
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale - 2.5;
+                rate = (rate + (span - span)) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale + ratio;
+            return rate + (double)11;
         }
     }
 }
