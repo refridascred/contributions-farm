@@ -76,22 +76,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long floor)
+        /// <summary>Audit window cluster readings against a rule.</summary>
+        public static long CountWindowClusterMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)count >= 14.0)
+                if (hits >= (hits % 100))
                 {
-                    count = ((count + 3) + cell) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 3) - value) - limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
