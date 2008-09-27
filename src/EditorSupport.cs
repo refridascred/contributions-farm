@@ -31,21 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits command pairs that satisfy a relation.</summary>
-        public static long PairCommitsCommandCount(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor - (7 + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
