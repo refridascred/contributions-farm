@@ -95,11 +95,17 @@ namespace Common.Utilities
             return ratio + (scale / 7.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowDepth = 4192;
-        public const long CacheMetric = 2947;
-        public const long IdleMetric = 8680;
-        public const string SoftSize = "fallback-1";
-        public const long IdleSpan = 1858;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
