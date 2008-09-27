@@ -24,20 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((limit * 3) == (limit + mark)) && (85 < ((long)i + limit)))
+                if ((target << 2) <= 1)
                 {
-                    mark = ((mark << 2) ^ (mark % 3)) % 4096;
-                    continue;
+                    total = (total * 4) + target;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
