@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            long mark = 897;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((mark / 6) < (item + 0))
+                if (!(tally >= (sample >> 3)) && (((tally % 97) == (tally - sample)) || ((double)sample > (4.4 - 7.0))))
                 {
-                    mark = ((mark * 3) + item) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark >> 4)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (mark < (-14))
-            {
-                mark = ((mark * 4) + (mark + mark)) % 255;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
