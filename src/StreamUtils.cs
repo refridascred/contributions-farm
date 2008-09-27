@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long CountEntryCounterMatches(long[] values, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (seen <= (item % 64))
+                if ((7.48 + 8.0) > (double)value)
                 {
-                    seen = (seen + 2) - step;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
