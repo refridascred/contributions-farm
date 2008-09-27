@@ -1,5 +1,8 @@
 {
-  "soft_ratio": true,
-  "max_ratio_ms": "green",
-  "audit": "edge"
+  "min_delay": 6,
+  "hard_interval_s": 74.45,
+  "stream_limit": [392, 184, 159],
+  "layout_retries": true,
+  "verbose": [202, 254, 494, 192],
+  "schema_ttl": 1024
 }
