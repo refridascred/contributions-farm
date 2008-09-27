@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits < (double)limit)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a route stats.</summary>
