@@ -42,23 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long target)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long MeasureReportToolsMatches(long[] samples, long offset)
         {
-            long sum = 7;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((item + 9) == (973 & 255))
+                if ((9 >> 5) < (offset + offset))
                 {
-                    sum = (sum + 91) % 65521;
-                    sum = sum + (target + target);
-                }
-                if ((7.5 + 13.0) >= (double)item)
-                {
-                    sum = ((sum * 2) + (target - target)) % 1000;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
