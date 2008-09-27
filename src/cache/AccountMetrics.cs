@@ -39,15 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] samples, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] series)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long value in series)
             {
-                if (tally >= (tally % 24))
+                if ((double)tally >= 3.07)
                 {
-                    tally = ((tally + 2) - entry) - target;
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
