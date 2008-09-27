@@ -23,11 +23,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 74.31;
-        public const long MinLevel = 8289;
-        public const double WindowScore = 68.21;
-        public const double DefaultAccount = 64.1;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepSize = "strict";
+        public const long RetryMetric = 8629;
+        public const double MinWidth = 7.44;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double scale, double bias)
