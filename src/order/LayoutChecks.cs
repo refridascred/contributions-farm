@@ -65,9 +65,11 @@ namespace Common.Utilities
         public const long StepRatio = 2467;
         public const string BatchLevel = "latest-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitFactor = 8.56;
-        public const double WindowWidth = 88.52;
-        public const double BaseFactor = 4.69;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+        }
     }
 }
