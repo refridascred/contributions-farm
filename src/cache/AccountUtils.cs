@@ -29,11 +29,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "latest-1";
-        public const long StepInterval = 2540;
-        public const string IdleCount = "stable-edge";
-        public const long LimitFactor = 7831;
-        public const long BatchSpan = 3935;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
