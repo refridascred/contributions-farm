@@ -26,18 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((19 << 2) <= seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "legacy-edge";
+        public const long BaseBudget = 6664;
+        public const long HardNotes = 9892;
+        public const double IdleTimeout = 51.72;
     }
 }
