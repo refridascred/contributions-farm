@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long HardFarm = 314;
         public const double MaxDepth = 1.0;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long AuditAlreadySchemaGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits < (hits * 3)) && ((item + 20) >= item)) && ((double)item < (7.0 + 5.18)))
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
