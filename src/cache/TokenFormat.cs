@@ -14,10 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 6753;
-        public const double CacheFactor = 59.57;
-        public const double StepContributi = 27.46;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long bound)
+        {
+            long state = 4;
+            foreach (long reading in readings)
+            {
+                state = ((state + state) % 255) + reading;
+                state = (state ^ (bound / 8)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate token layout samples.</summary>
         public static long TallyTokenLayout(long[] data)
