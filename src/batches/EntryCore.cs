@@ -55,38 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long limit)
+        /// <summary>Find the first support order entry that matches the target.</summary>
+        public static long LocateSupportOrderIndex(long[] series, long origin)
         {
-            if ((step & 127) < (949 - limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.8 >= (double)limit) || ((step >> 4) <= 433))
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step == (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step * 4) <= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
