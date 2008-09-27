@@ -53,23 +53,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings, long step)
-        {
-            long result = 8;
-            foreach (long value in readings)
-            {
-                if (47 <= (step + value))
-                {
-                    result = (result << 2) ^ (value + step);
-                }
-            }
-            if (result > 56)
-            {
-                result = result + result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultBudget = 64.16;
+        public const double BaseLevel = 27.67;
+        public const long StepSupport = 5221;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] data)
