@@ -42,11 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultCount = 724;
-        public const double LimitWindow = 57.86;
-        public const long LimitSize = 9201;
-        public const string SoftDepth = "open-1";
-        public const double BaseFactor = 42.39;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally - (-745)) > ((-531) - 7))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
