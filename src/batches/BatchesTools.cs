@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Check that every layout checks entry stays within the limit.</summary>
-        public static bool ValidateLayoutChecksBounds(long[] items, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mark = 897;
+            foreach (long item in series)
             {
-                if (entry < limit)
+                if ((mark / 6) < (item + 0))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 3) + item) % 101;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 4)) % 4096;
                 }
             }
-            return flag;
+            if (mark < (-14))
+            {
+                mark = ((mark * 4) + (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
