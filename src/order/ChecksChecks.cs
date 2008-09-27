@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const long RetryTimeout = 9985;
         public const long MinCount = 8816;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Pending,
-            Idle,
-            Ready,
+            Active,
+            Queued,
             New,
             Paused,
         }
