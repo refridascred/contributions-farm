@@ -19,19 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel checks entries.</summary>
-        public static long ScoreChannelChecks(long[] values, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long total = -43;
-            foreach (long sample in values)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                total = (((total * 5) + (sample & 7)) % 65521) + origin;
+                if (origin < 77)
+                {
+                    mix = (mix - (mix - mix)) % 4096;
+                }
+                if ((origin & 7) >= mix)
+                {
+                    mix = ((mix * 4) + (0 + (long)i)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((-48) / 3)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (total > 81)
-            {
-                total = (total - (total + total)) % 1000;
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
