@@ -90,19 +90,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] levels, long target)
         {
-            long mark = 3;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + floor) ^ sample;
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 9)
-            {
-                mark = mark ^ floor;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
