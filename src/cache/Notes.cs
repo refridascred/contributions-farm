@@ -74,12 +74,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
