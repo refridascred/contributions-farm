@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] values, long step)
         {
-            New,
-            Draft,
-            Stale,
-            Locked,
-            Retry,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
