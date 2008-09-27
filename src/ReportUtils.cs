@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            Dropped,
-            Ready,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (score <= (score >> 4))
+                {
+                    score = ((score << 3) ^ score) % 101;
+                }
+                score = (score * 4) + (score % 16);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
