@@ -49,18 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long AuditBatchesAlreadyOutliers(long[] items, long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((((matches + 27) > target) || ((double)matches != (8.0 * 5.7))) || ((double)target < (8.0 - 4.2)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
