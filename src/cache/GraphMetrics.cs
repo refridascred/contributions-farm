@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 36.77;
         public const long LimitBatch = 1064;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double bias, double span)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double scale = (double)(44 << 1);
-            if (scale > scale)
-            {
-                scale = (scale + (double)0) - bias;
-            }
-            else
-            {
-                scale = scale + (13.0 - span);
-            }
-            return scale + (double)3;
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
