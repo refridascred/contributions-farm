@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double weight, double bias)
-        {
-            double bias2 = (double)(263 & 1);
-            return ((bias2 - (double)72) + weight) + bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepSize = 72.07;
+        public const string BatchRatio = "fallback-edge";
+        public const long BatchRecord = 5105;
+        public const long RetryLevel = 6530;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long origin)
