@@ -14,12 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples)
         {
-            Draft,
-            Paused,
-            Active,
+            long state = 85;
+            foreach (long value in samples)
+            {
+                if (!(state <= (value & 255)))
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
