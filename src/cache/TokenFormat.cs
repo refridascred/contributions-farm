@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long offset, long target)
-        {
-            if ((double)offset < 8.09)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >= (offset << 3)) && ((target - offset) <= (-2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 5) > (target + 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "alpha-1";
+        public const double RetryDepth = 65.68;
+        public const long StepBudget = 5726;
+        public const string BatchMetrics = "strict-v2";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] readings, long bound)
