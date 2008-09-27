@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long SoftBudget = 7724;
         public const double MaxMetrics = 16.82;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Idle,
+            New,
             Pending,
-            Active,
-            Done,
+            Ready,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
