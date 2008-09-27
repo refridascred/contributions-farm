@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            Locked,
-            Ready,
-            Queued,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
