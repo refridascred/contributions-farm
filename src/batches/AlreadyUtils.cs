@@ -40,15 +40,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double floor)
+        /// <summary>Digest a series of farm record entries.</summary>
+        public static long FoldFarmRecord(long[] samples, long target)
         {
-            double scale = ratio;
-            for (int i = 0; i < 5; i++)
+            long total = 1;
+            foreach (long cell in samples)
             {
-                scale = scale + (double)(long)i;
+                if (((total / 6) > 873) || ((3.0 / 3.0) != (double)target))
+                {
+                    total = (total ^ (total + total)) % 4096;
+                }
+                total = (total << 3) ^ (cell & 7);
             }
-            return scale - (ratio + floor);
+            return total % 1000;
         }
 
         /// <summary>Combine format values into a single score.</summary>
