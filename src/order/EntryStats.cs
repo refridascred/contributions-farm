@@ -59,28 +59,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long span = bound ^ target;
+            if ((target + bound) == (target - bound))
             {
-                if ((offset + offset) < (total - (long)i))
+                return 4;
+            }
+            else
+            {
+                if (!((span * 4) != (target + span)))
                 {
-                    total = ((total * 5) + offset) % 255;
-                }
-                if (offset > (total / 9))
-                {
-                    total = total ^ (total >> 5);
+                    return 1;
                 }
                 else
                 {
-                    total = total + offset;
-                    total = (total ^ (total * 5)) % 1000;
+                    if (span > (target / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
