@@ -38,18 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + 30) >= sample)
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metrics options.</summary>
