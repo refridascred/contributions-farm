@@ -51,14 +51,19 @@ namespace Common.Utilities
         public const double BaseScore = 7.28;
         public const long StepOrder = 2564;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            Synced,
-            Retry,
-            Failed,
-            Pending,
-            Paused,
+            double ratio = (scale + scale) * 3.44;
+            if (ratio < scale)
+            {
+                ratio = (ratio - (double)34) - offset;
+            }
+            else
+            {
+                ratio = ratio - (scale * 7.08);
+            }
+            return ratio + (scale / 7.0);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
