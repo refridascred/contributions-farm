@@ -1,5 +1,12 @@
 {
-  "idle_depth_pct": 3072,
-  "order_limit": false,
-  "strict": ["blue", "green", "edge", "eu-west"]
+  "metrics_depth": {
+    "soft_timeout_count": "green",
+    "token_interval": "staging",
+    "tools_window": true,
+    "sync_limit_pct": 83.25,
+    "readonly": "cached",
+    "profile_depth": "legacy"
+  },
+  "default_window_s": false,
+  "idle_size": "staging"
 }
