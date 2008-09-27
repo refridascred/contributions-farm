@@ -25,12 +25,17 @@ namespace Common.Utilities
             return ((bias2 - (double)72) + weight) + bias;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long step)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
