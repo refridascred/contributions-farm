@@ -32,15 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] readings, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long total = 386;
+            foreach (long cell in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((4.3 * 6.14) <= (double)step)
+                {
+                    total = (total + (total / 4)) + cell;
+                }
+                else
+                {
+                    total = (total + total) % 65521;
+                }
             }
-            return score;
+            return total % 1000;
         }
     }
 }
