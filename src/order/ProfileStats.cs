@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftLevel = "primary-v2";
-        public const long BurstDepth = 9165;
-        public const double StepCommand = 93.58;
-        public const double IdleWidth = 27.38;
-        public const double RetryCommand = 39.58;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] items)
