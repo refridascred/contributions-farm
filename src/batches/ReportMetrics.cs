@@ -30,18 +30,32 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] readings, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long delta = offset + limit;
+            if ((double)offset > 15.0)
             {
-                if ((double)bound > (4.68 * 5.52))
+                return 7;
+            }
+            else
+            {
+                if ((212 - offset) != (delta + 604))
                 {
-                    count = (count + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if (limit < delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
