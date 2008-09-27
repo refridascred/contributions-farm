@@ -28,23 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((sum >> 4) <= (sum + target))
-                {
-                    sum = sum ^ (target + target);
-                }
-                else
-                {
-                    sum = (sum ^ (target / 5)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
