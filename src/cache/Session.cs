@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = 536;
+            foreach (long item in data)
             {
-                if (sample > (sample + 398))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state - floor) % 4096) - item;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of contributi record readings.</summary>
