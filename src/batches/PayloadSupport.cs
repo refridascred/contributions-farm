@@ -27,18 +27,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] values, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((hits - reading) > origin)
+                if ((sum >> 4) <= (sum + target))
                 {
-                    hits = hits + 3;
+                    sum = sum ^ (target + target);
                 }
+                else
+                {
+                    sum = (sum ^ (target / 5)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
     }
 }
