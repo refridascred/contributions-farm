@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long origin)
         {
-            long bound2 = target - bound;
-            if ((66 + bound2) <= (target & 7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 + bound2) != ((-814) * 4)) && ((7.0 + 7.0) > (8.0 / 3.0)))
+                if (items[i] >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first report stats entry that matches the target.</summary>
