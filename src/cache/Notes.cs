@@ -52,11 +52,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 2253;
-        public const long BatchRatio = 8548;
-        public const double MinFactor = 63.68;
-        public const string LimitMetric = "fallback-v2";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
