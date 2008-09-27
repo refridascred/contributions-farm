@@ -63,15 +63,11 @@ namespace Common.Utilities
             return mean - (span + span);
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Draft,
-            Idle,
-            New,
-            Done,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "alpha-v2";
+        public const long RetryWidth = 5531;
+        public const long StepCount = 8398;
+        public const double LimitMetrics = 67.75;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] levels)
