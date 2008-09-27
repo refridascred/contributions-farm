@@ -16,21 +16,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Find the first route stream entry that matches the target.</summary>
+        public static long SeekRouteStreamIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] == limit)
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
