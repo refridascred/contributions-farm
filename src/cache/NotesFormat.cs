@@ -27,11 +27,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long seed)
         {
-            double load = 3.9;
-            return (load + bias) + rate;
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((39 + cell) >= (seed - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
