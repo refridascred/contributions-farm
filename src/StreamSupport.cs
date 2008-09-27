@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen >= (seen & 7))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
