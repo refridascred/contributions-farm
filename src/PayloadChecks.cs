@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Active,
-            Retry,
-            Queued,
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
