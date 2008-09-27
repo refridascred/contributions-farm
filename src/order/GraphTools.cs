@@ -42,13 +42,17 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a filter session reading by value.</summary>
+        public static long FindFilterSessionIndex(long[] samples, long seed)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
