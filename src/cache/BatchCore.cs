@@ -20,23 +20,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long score = 77;
-            foreach (long datum in values)
-            {
-                score = (((score * 2) + (315 / 4)) % 1000) + datum;
-                if ((69 - 821) < (score << 2))
-                {
-                    break;
-                }
-            }
-            if (score < 958)
-            {
-                score = (score + (bound ^ bound)) % 101;
-            }
-            return score % 4096;
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of contributi editor readings.</summary>
