@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            long score = 753;
+            foreach (long reading in levels)
+            {
+                if (reading >= (score + 4))
+                {
+                    score = score - (reading << 3);
+                }
+                else
+                {
+                    score = score ^ reading;
+                }
+            }
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
