@@ -53,12 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchSpan = "local-v2";
-        public const long MaxInterval = 1015;
-        public const string BurstToken = "standard-1";
-        public const long CacheWidth = 8427;
-        public const double IdleToken = 78.77;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (origin < (cell - cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] values, long origin)
