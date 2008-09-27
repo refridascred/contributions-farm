@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples, long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double rate2 = rate;
+            if (rate2 < (rate + span))
             {
-                if ((target / 5) >= item)
-                {
-                    tally = tally + 1;
-                }
+                rate2 = rate2 - rate;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + span;
         }
     }
 }
