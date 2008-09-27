@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 9597;
         public const double BaseBatch = 46.89;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
-            Queued,
-            Retry,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count >= (count - count))
+                {
+                    count = ((count + 1) - entry) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
