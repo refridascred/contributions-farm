@@ -1,6 +1,17 @@
 {
-  "enabled": [38, 342, 484, 286],
-  "warm_ttl": 30,
-  "persist": 60,
-  "warm_window_pct": false
+  "idle_size_count": {
+    "contributi_capacity": "fallback",
+    "hard_size": "standard",
+    "enabled": 15.07,
+    "buffer_ttl": {
+      "strict": true,
+      "enabled": "standard",
+      "min_timeout_s": "primary",
+      "readonly": "primary"
+    },
+    "cache_timeout": 3078,
+    "default_capacity_count": "staging"
+  },
+  "enabled": false,
+  "cache_limit_pct": 5052
 }
