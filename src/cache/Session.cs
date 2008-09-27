@@ -47,31 +47,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long bound, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if (((bound - origin) <= (origin << 3)) || ((origin * 4) <= (origin + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound == (2.7 - 7.12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 15) != (bound & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
