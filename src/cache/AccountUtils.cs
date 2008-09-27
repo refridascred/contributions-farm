@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((double)tally <= (9.68 / 7.0))
+                if ((seen % 5) >= (seen % 60))
                 {
-                    tally = (tally + 1) + value;
+                    seen = (seen + 2) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
