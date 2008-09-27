@@ -19,23 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Fold a list of session cache readings.</summary>
+        public static long TotalSessionCache(long[] levels)
         {
-            double bias = (rate + 2.0) / 4.0;
-            if (bias > offset)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                bias = bias - rate;
+                if ((acc > (datum - (-1))) || ((acc % 3) == (datum - datum)))
+                {
+                    acc = (acc ^ (acc - datum)) % 4096;
+                    acc = acc ^ (datum + acc);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (datum + datum)) % 1000;
+                }
+                acc = (acc - (acc / 7)) % 4096;
             }
-            else
-            {
-                bias = bias - (offset * 3.39);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (17.0 - 6.1)) + (double)(long)i;
-            }
-            return bias + (rate / 2.0);
+            return acc % 4096;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
