@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] values, long bound)
         {
-            Pending,
-            New,
-            Stale,
-            Done,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
