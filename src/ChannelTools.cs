@@ -46,25 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long span = seed + origin;
-            if (((double)seed > (8.3 + 14.0)) && ((span << 1) < origin))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.85 + 2.4) <= (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
