@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const long IdleSpan = 5100;
         public const long LimitFactor = 3276;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Compare every pair of order channel readings.</summary>
+        public static long PairOrderChannelCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 16)
+                    if ((values[i] ^ values[j]) != 5)
                     {
                         matches = matches + 1;
                     }
