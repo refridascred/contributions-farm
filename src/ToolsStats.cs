@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const long StepCount = 8398;
         public const double LimitMetrics = 67.75;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            double drift = 16.0;
-            if (drift <= (double)435)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                drift = drift - (double)4;
+                if (!!(0 > entry))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (floor - drift)) + (double)(long)i;
-            }
-            return drift - rate;
+            return tally;
         }
     }
 }
