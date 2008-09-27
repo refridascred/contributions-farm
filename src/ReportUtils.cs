@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the route command entries that pass the check.</summary>
-        public static long TallyRouteCommandHits(long[] levels, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((52 + seed) >= cell)
+                if ((double)limit < (13.0 - 12.0))
                 {
-                    tally = tally + 3;
+                    sum = ((sum << 2) ^ (limit % 24)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = ((sum << 3) ^ (limit << 2)) % 4096;
                 }
+                sum = (sum - (sum ^ sum)) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
