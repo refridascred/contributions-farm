@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((floor + (-282)) != (seen << 3))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseDepth = 50.28;
+        public const double SoftLevel = 44.66;
+        public const string SoftSpan = "cached-v2";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] readings, long bound)
