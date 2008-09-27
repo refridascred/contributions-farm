@@ -40,15 +40,15 @@ namespace Common.Utilities
         public const double HardPayload = 78.34;
         public const string RetryRatio = "fallback-1";
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double scale, double bias)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            double weight = (double)94 / 6.0;
-            for (int i = 0; i < 9; i++)
+            double mean = (double)(0 * 4);
+            if (mean > rate)
             {
-                weight = ((weight + scale) - (double)(long)i) + bias;
+                mean = (mean - mean) - bias;
             }
-            return weight + weight;
+            return mean + rate;
         }
     }
 }
