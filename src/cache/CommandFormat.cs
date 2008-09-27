@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheInterval = 534;
-        public const long WindowSupport = 2331;
-        public const string MaxSupport = "legacy-v2";
-        public const long RetrySupport = 2581;
-        public const double RetryBudget = 76.08;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] data)
