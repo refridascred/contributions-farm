@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a metrics command pair into a bucket.</summary>
-        public static long SortMetricsCommand(long seed, long limit)
+        /// <summary>Match up window layout samples.</summary>
+        public static long MatchWindowLayoutCount(long[] data)
         {
-            if ((seed - seed) <= seed)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit + limit) >= (seed - seed)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 64) != (seed / 3))
+                    if ((data[i] + data[j]) < 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
