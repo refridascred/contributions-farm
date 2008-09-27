@@ -23,32 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool ValidateChannelCommitsBounds(long[] series, long origin)
         {
-            long state = 340;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((19.0 * 1.0) < (18.0 + 7.7))
+                if (cell <= origin)
                 {
-                    state = state - (0 - item);
-                    state = (state - item) % 4096;
-                }
-                if (((state * 3) > (state - item)) || ((item + state) < 3))
-                {
-                    state = (state ^ (0 - state)) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = (state * 3) + state;
-                }
-                if ((double)state < 6.0)
-                {
-                    state = (state ^ (state - state)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
