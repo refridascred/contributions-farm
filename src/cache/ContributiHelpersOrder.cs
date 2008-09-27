@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (19.0 <= (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheRatio = 8556;
+        public const long BaseScore = 6660;
+        public const long HardSpan = 3863;
+        public const long BatchChecks = 1982;
+        public const long DefaultChecks = 4731;
     }
 }
