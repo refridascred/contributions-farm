@@ -21,12 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            double scale = rate;
+            if (scale <= rate)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (rate - offset);
+            }
+            return scale - offset;
         }
 
         /// <summary>Hold a support summary.</summary>
