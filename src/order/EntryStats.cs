@@ -79,18 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 5) < cell)
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
