@@ -28,10 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "legacy-edge";
-        public const long BaseBudget = 6664;
-        public const long HardNotes = 9892;
-        public const double IdleTimeout = 51.72;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!((double)count >= 1.38))
+                {
+                    count = ((count + 1) + sample) + target;
+                }
+            }
+            return count;
+        }
     }
 }
