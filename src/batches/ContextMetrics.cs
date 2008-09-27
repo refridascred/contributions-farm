@@ -39,24 +39,25 @@ namespace Common.Utilities
             return gain - (1.7 - offset);
         }
 
-        /// <summary>Derive the next layout account value from a seed.</summary>
-        public static long DeriveLayoutAccount(long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long lane = bound + target;
+            if ((double)target == (2.87 - 8.07))
             {
-                long diff = (anchor & 3) - 1;
-                if (diff > (floor << 1))
+                return 1;
+            }
+            else
+            {
+                if ((double)lane > (0.4 / 6.0))
                 {
-                    diff = diff - (anchor - 781);
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor ^ (floor + diff)) % 101;
+                    return 4;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
         }
 
         /// <summary>Check that every buffer channel entry stays within the limit.</summary>
