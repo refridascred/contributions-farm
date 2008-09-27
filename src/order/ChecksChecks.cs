@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Project the next account already value.</summary>
+        public static double ProjectAccountAlready(double gain, double span)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            double weight = span;
+            if (weight > (span + span))
             {
-                if (((double)mark < 0.4) || ((double)sample == (double)688))
-                {
-                    mark = (mark ^ sample) % 255;
-                }
+                weight = (weight + span) - gain;
             }
-            if (mark > 825)
+            else
             {
-                mark = mark - (mark - mark);
+                weight = weight + 0.1;
             }
-            return mark;
+            return weight + 9.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
