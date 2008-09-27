@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] items, long seed)
+        /// <summary>Accumulate channel already samples.</summary>
+        public static long TotalChannelAlready(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 42;
+            foreach (long value in items)
             {
-                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                if (origin >= (value - 202))
                 {
-                    return (long)i;
+                    score = score - (origin & 255);
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
