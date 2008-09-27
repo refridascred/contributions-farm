@@ -21,19 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every queue report entry stays within the limit.</summary>
-        public static bool GuardQueueReportLimits(long[] samples, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item <= floor)
+                if ((0 + datum) < (target * 5))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Blend two queue payload measurements.</summary>
