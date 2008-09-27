@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 5268;
+        public const long DefaultAlready = 696;
+        public const string BaseInterval = "primary-1";
+        public const double BatchSize = 24.24;
+        public const long SoftBudget = 3522;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheLevel = 329;
