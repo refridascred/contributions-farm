@@ -1,13 +1,16 @@
 # Command notes
 
-The filter report groups every graph by tools.
-When a buffer fails, the report handler retries a few times before giving up.
+Each contributi is validated before it reaches the queue queue.
+The checks module keeps account values in sync with the entry cache.
+The window helpers are pure functions, so they are safe to call from any thread.
 
-Run the commits check before changing any githubfarm limits.
-Defaults for batch live in the config folder and can be overridden per environment.
+When a stream fails, the buffer handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep commits and contributi names short and lowercase.
 
 ## Guidelines
 
-- Document new order fields
-- Keep checks values small
-- Log every commits change
+- Validate graph input early
+- Log every stats change
+- Keep layout values small
+- Document new command fields
