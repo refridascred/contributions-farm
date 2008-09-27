@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long HardMetric = 2148;
         public const string IdleMetric = "open-v2";
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
