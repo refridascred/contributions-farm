@@ -20,23 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double bias, double offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            double gain = bias * 13.0;
-            if (gain > (gain / 2.0))
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (double)844;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (gain + 1.2)) + (double)(long)i;
-            }
-            return gain - (1.7 - offset);
+            return state;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
