@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((tally - (long)items.Length) == ((long)items.Length - value)) || ((double)tally <= (0.2 - 4.9))) && ((9.0 * 2.9) < (double)value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleTimeout = "stable";
+        public const long HardMetric = 2148;
+        public const string IdleMetric = "open-v2";
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long bound)
