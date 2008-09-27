@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double BurstBuffer = 25.44;
         public const string BurstScore = "standard-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data, long target)
         {
-            long mix = -36;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = mix - (cell % 10);
+                if (((-534) * 4) <= count)
+                {
+                    count = ((count + 2) + datum) - target;
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix + (63 * 2)) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
