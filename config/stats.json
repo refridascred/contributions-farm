@@ -1,5 +1,6 @@
 {
-  "soft_interval": false,
-  "sync_capacity_ms": 3046,
-  "queue_ratio": "local"
+  "dry_run": 7993,
+  "max_window_count": 51,
+  "poll_ratio": 7537,
+  "readonly": ["eu-west", "primary"]
 }
