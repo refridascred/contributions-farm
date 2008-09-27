@@ -26,19 +26,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] levels, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (item >= step)
+                if (sample < bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
