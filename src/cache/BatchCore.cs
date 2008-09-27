@@ -38,22 +38,23 @@ namespace Common.Utilities
         public const long BatchDepth = 6684;
         public const long BatchToken = 5651;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double drift = (double)((-58) / 4);
+            if (drift >= (double)10)
             {
-                if (reading <= (-38))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift - bias;
             }
-            return seen;
+            else
+            {
+                drift = drift - (double)(-7);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (18.0 / 6.0)) + (double)(long)i;
+            }
+            return drift - offset;
         }
     }
 }
