@@ -50,12 +50,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first buffer counter entry that matches the target.</summary>
