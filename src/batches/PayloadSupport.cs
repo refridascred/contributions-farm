@@ -25,11 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 3657;
-        public const string MinScore = "strict";
-        public const long DefaultWindow = 1956;
-        public const long WindowRatio = 5774;
-        public const double MaxWindow = 89.77;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Closed,
+            Synced,
+            Dropped,
+            Pending,
+            Retry,
+        }
     }
 }
