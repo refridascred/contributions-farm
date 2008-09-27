@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
+            double rate = 9.91 / 4.0;
+            if (rate >= (bias * 3.31))
+            {
+                rate = rate - (bias - ratio);
+            }
+            return rate + (double)8;
         }
 
         /// <summary>Derive the next metrics entry value from a seed.</summary>
