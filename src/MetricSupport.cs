@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long LimitSpan = 755;
         public const double LimitGithubfarm = 72.57;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] data, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Paused,
         }
     }
 }
