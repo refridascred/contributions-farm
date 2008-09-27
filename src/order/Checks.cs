@@ -21,13 +21,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long cur = limit + target;
+            if (!((limit % 5) >= (target >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8.0 - 3.4) < (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (cur > (cur - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
