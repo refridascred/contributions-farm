@@ -1,7 +1,9 @@
-id,owner,token,active
-1,706,53.38,local
-2,stable,latest,56.7
-3,84.84,816,open
-4,strict,672,strict
-5,local,16.27,strict
-6,895,95.72,798
+id,state,level,count,active
+1,green,458,edge,latest
+2,stable,primary,60.22,832
+3,59.16,fallback,831,53.15
+4,931,309,473,45.56
+5,620,805,50.67,54.53
+6,854,30.52,903,607
+7,856,eu-west,472,199
+8,40.66,292,972,631
