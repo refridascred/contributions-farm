@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next account already value.</summary>
-        public static double ProjectAccountAlready(double gain, double span)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            double weight = span;
-            if (weight > (span + span))
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                weight = (weight + span) - gain;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + 0.1;
-            }
-            return weight + 9.0;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
