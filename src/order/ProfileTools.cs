@@ -34,18 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile report samples are out of range.</summary>
-        public static long MeasureProfileReportGaps(long[] levels, long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((35 ^ limit) < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - cell;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
