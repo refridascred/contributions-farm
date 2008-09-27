@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] samples, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (9 <= (tally * 3))
-                {
-                    tally = ((tally + 2) + sample) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every layout command entry stays within the limit.</summary>
