@@ -45,20 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (943 + result)) % 1000;
-                if ((double)result > (1.0 / 9.0))
-                {
-                    result = result - (target & 7);
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
