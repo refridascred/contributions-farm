@@ -53,11 +53,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings, long step)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            long result = 8;
+            foreach (long value in readings)
+            {
+                if (47 <= (step + value))
+                {
+                    result = (result << 2) ^ (value + step);
+                }
+            }
+            if (result > 56)
+            {
+                result = result + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
