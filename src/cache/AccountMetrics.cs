@@ -20,18 +20,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long slot = step ^ target;
+            if (!((double)step != (1.83 - 3.5)))
             {
-                if (cell < (matches ^ cell))
+                return 3;
+            }
+            else
+            {
+                if (((target / 9) == (target / 5)) && ((step - target) <= (3 - slot)))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
