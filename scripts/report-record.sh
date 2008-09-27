@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=343
+RECORD_LIMIT=251
 log "limit is ${RECORD_LIMIT}"
 
-for item in strict primary eu-west local; do
+for item in staging green; do
     log "checking ${item}"
 done
