@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
             public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
