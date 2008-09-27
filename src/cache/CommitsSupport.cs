@@ -68,11 +68,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 5870;
-        public const string MaxOrder = "stable-edge";
-        public const long MinOrder = 2129;
-        public const long WindowOrder = 6334;
-        public const long RetryRatio = 1232;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)(long)i <= (double)seed))
+                {
+                    acc = acc ^ (acc - acc);
+                    acc = ((acc * 3) + (acc ^ acc)) % 1000;
+                }
+                acc = (acc * 4) + (acc + seed);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
