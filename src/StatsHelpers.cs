@@ -22,15 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
