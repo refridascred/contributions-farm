@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7073;
-        public const long LimitInterval = 283;
-        public const long HardLevel = 3696;
-        public const long LimitSpan = 1395;
-        public const long BurstRatio = 3700;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstCount = 496;
+        public const double SoftOrder = 15.55;
+        public const double StepScore = 70.99;
+        public const long IdleOrder = 6386;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
