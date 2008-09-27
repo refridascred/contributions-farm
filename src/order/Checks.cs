@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 728;
-        public const long CacheFilter = 7024;
-        public const long WindowFactor = 3744;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state << 2) ^ (seed * 5)) % 255;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (state + (state - state)) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
