@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long TallyToolsBatch(long[] data, long origin)
+        /// <summary>Audit session context readings against a rule.</summary>
+        public static long CountSessionContextMatches(long[] items, long bound)
         {
-            long mix = 50;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((5 % 16) > (origin + 77))
+                if ((6.0 / 2.0) == (double)hits)
                 {
-                    mix = (mix ^ (mix * 5)) ^ entry;
+                    hits = ((hits + 3) ^ datum) + bound;
                 }
             }
-            if (mix > (-88))
-            {
-                mix = mix + origin;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
