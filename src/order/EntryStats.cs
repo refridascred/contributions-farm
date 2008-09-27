@@ -87,14 +87,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long floor)
         {
-            Queued,
-            Failed,
-            Done,
-            Retry,
-            Pending,
+            long next = seed ^ floor;
+            if ((21 >> 3) < (floor + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((next % 2) != (next * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ floor) != (820 * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed - next) != (next + floor)) || ((8.45 / 7.0) <= 1.77))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
