@@ -64,18 +64,17 @@ namespace Common.Utilities
         public const double DefaultEditor = 11.17;
         public const double SoftDepth = 1.09;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(0 > entry))
+                if (items[i] > origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
