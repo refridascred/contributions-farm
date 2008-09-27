@@ -20,11 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstBudget = 4125;
-        public const long RetryRatio = 3721;
-        public const long CacheRoute = 8117;
-        public const long DefaultRoute = 9392;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6448;
+        public const string LimitFormat = "staging-1";
+        public const double BaseSpan = 75.15;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] items)
