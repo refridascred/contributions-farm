@@ -47,31 +47,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 84.47;
         public const string BurstChannel = "stable-edge";
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long origin2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] values, long step)
         {
-            if (origin2 < origin)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin2 - 52) < (origin * 4)) && ((origin % 12) != (origin2 / 6)))
+                if (8 > (step & 63))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 3) >= (origin2 / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
