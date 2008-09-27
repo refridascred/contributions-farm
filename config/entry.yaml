@@ -1,5 +1,17 @@
 # entry settings
-commits_depth: cached
-compress: true
-dry_run: 43.12
-command_interval: 63.27
+batch_retries: local
+metrics_size: 9064
+poll_window_ms:
+  - 20
+  - 53
+  - 401
+readonly:
+  format_ttl: 30
+  burst_depth_pct:
+    - primary
+    - open
+    - primary
+    - green
+  idle_window_count: 60
+  default_ttl_s: staging
+entry_retries: 7129
