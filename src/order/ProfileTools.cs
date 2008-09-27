@@ -39,19 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (item != floor)
+                if ((double)step >= 3.0)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
