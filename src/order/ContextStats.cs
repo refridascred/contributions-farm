@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long origin)
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long AuditWindowContributiMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if (((9.0 - 11.0) != (double)cell) && ((7 + cell) > matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
