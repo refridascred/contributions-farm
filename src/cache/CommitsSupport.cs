@@ -54,21 +54,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Find the first buffer counter entry that matches the target.</summary>
+        public static long SeekBufferCounterIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
