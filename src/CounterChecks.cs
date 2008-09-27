@@ -67,13 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            Failed,
-            Idle,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 3) <= (tally / 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
