@@ -19,19 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double gain = floor;
+            if (gain >= (double)81)
             {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (9.11 - gain)) + bias;
             }
-            return flag;
+            return gain + (gain * 2.0);
         }
 
         /// <summary>Roll a session counter forward.</summary>
