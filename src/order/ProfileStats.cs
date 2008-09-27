@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a counter githubfarm figure with a bias.</summary>
-        public static double BlendCounterGithubfarm(double gain, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] levels, long seed)
         {
-            double gain2 = gain;
-            if (gain2 <= (floor + 0.19))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                gain2 = gain2 + (gain / 2.0);
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (floor * 3.5)) + (double)(long)i;
-            }
-            return gain2 - floor;
+            return ready;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
