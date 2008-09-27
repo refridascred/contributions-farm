@@ -21,22 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long acc = 5;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((25 - reading) != (reading ^ acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc - (acc - acc);
-                }
-                else
-                {
-                    acc = acc - (92 - acc);
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
