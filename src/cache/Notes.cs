@@ -42,12 +42,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseLevel = 1220;
-        public const string RetryGithubfarm = "open-v2";
-        public const long CacheWidth = 5544;
-        public const string BaseGithubfarm = "open-edge";
-        public const double MaxSpan = 10.49;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Stale,
+            Done,
+            Active,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 2253;
