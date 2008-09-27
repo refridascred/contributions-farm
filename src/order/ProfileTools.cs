@@ -24,12 +24,12 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < floor)
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
