@@ -43,16 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Scale a support format figure with a bias.</summary>
+        public static double ProjectSupportFormat(double scale, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 2) + (mix - mix);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            double mean = offset;
+            return (mean + 0.48) + scale;
         }
     }
 }
