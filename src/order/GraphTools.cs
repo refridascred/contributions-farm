@@ -42,23 +42,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Adjust a payload metric reading.</summary>
-        public static double ScalePayloadMetric(double bias, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double gain = span;
-            if (gain <= (double)4)
-            {
-                gain = (gain - (8.18 * 2.33)) - bias;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - 5.0;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
