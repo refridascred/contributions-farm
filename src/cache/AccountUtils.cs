@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstCount = "cached";
-        public const long HardMetrics = 4420;
-        public const long LimitMetrics = 1989;
-        public const double BaseWidth = 74.1;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Failed,
+            Paused,
+            Draft,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
