@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long state = 5;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ (origin ^ origin)) % 65521;
-                if (2 > (origin ^ mix))
+                state = (state << 2) ^ (state << 3);
+                if ((4.1 > (double)state) && ((7.94 - 2.0) > (double)cell))
                 {
-                    mix = (mix + (origin % 2)) % 255;
+                    state = ((state << 2) ^ state) % 101;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
