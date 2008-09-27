@@ -49,18 +49,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if (seed > limit)
             {
-                if (matches < (matches + 93))
+                return 2;
+            }
+            else
+            {
+                if (!(seed > (limit ^ 79)))
                 {
-                    matches = (matches + 1) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((9 - 737) > (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
