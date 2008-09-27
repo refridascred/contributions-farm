@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits - sample) > sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
