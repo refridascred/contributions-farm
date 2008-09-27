@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next batch stats value.</summary>
-        public static double SmoothBatchStats(double weight, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            double scale = (bias / 9.0) / 2.0;
-            if (scale >= (double)5)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                scale = (scale - 1.1) - weight;
+                if ((double)matches <= 8.0)
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (bias + 12.0)) - (double)(long)i;
-            }
-            return scale - scale;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
