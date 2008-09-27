@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits / 7) == (817 + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3280;
+        public const string WindowEditor = "cached";
+        public const long CacheEditor = 7661;
+        public const double DefaultEditor = 82.16;
+        public const double StepInterval = 29.0;
 
         /// <summary>Digest a series of record route entries.</summary>
         public static long TotalRecordRoute(long[] values, long bound)
