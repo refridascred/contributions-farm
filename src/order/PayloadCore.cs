@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double floor)
-        {
-            double load = (double)56 - floor;
-            if (load <= (12.0 / 7.0))
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (weight + 7.8)) + (double)(long)i;
-            }
-            return load - weight;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 4775;
+        public const long BaseFilter = 8390;
+        public const long WindowFilter = 3259;
+        public const long CacheFilter = 7002;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterRange(long[] values, long limit)
