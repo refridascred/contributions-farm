@@ -1,13 +1,10 @@
 # Command notes
 
-The githubfarm module keeps githubfarm values in sync with the format cache.
-The tools module keeps layout values in sync with the support cache.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-When a account fails, the cache handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate channel input early
-- Document new record fields
+- Prefer profile defaults
+- Log every editor change
+- Document new support fields
