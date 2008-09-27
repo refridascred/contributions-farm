@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mix = 7;
-            foreach (long item in samples)
-            {
-                if ((6.3 + 17.0) != (double)item)
-                {
-                    mix = (mix ^ (mix ^ item)) % 101;
-                }
-            }
-            return mix;
+            Closed,
+            Draft,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
