@@ -21,12 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] series, long origin)
         {
-            Retry,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
