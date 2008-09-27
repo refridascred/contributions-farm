@@ -1,14 +1,14 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    region TEXT,
+    level INTEGER,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    weight REAL
+    rank INTEGER,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (region, state, count, weight) VALUES ('standard', 'legacy', 53, 63.27);
-INSERT INTO stats_logs (region, state, count, weight) VALUES ('open', 'strict', 13, 6.55);
-INSERT INTO stats_logs (region, state, count, weight) VALUES ('edge', 'legacy', 81, 69.9);
+INSERT INTO stats_logs (level, state, rank) VALUES (36, 'staging', 94);
+INSERT INTO stats_logs (level, state, rank) VALUES (7, 'cached', 19);
+INSERT INTO stats_logs (level, state, rank) VALUES (18, 'open', 63);
