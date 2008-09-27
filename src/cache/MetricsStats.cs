@@ -35,12 +35,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Closed,
-            Synced,
+            Queued,
+            Done,
             Stale,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
