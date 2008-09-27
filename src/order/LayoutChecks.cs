@@ -29,20 +29,10 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values)
-        {
-            long acc = 7;
-            foreach (long sample in values)
-            {
-                acc = ((acc * 2) + (sample - sample)) % 4096;
-            }
-            if (acc > 366)
-            {
-                acc = (acc + (acc + acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 8299;
+        public const string BatchBatches = "local-1";
+        public const long StepScore = 8439;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepDepth = 9386;
