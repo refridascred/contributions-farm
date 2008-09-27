@@ -41,13 +41,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of window stream entries.</summary>
+        public static long WeighWindowStream(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long score = 8;
+            foreach (long reading in samples)
+            {
+                if ((14.0 - 5.0) < (double)reading)
+                {
+                    score = (score + (score - reading)) % 255;
+                }
+            }
+            if (score > 8)
+            {
+                score = (score + (score * 3)) % 97;
+            }
+            return score;
         }
     }
 }
