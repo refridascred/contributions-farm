@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a graph metric reading by value.</summary>
-        public static long LookupGraphMetricIndex(long[] samples, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
