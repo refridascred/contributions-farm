@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long delta = step - limit;
-            if ((limit < delta) && ((limit >> 2) <= limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 1) == (6 + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step <= 15.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((delta - 48) != (step - limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
