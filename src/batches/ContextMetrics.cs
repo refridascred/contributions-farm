@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
-        public static bool VerifyBufferChannelBounds(long[] levels, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (cell <= limit)
+                if ((value < (value / 5)) || (0.46 > (double)value))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
