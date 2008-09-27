@@ -1,6 +1,10 @@
-id,region,ratio,score
-1,34.77,57.0,491
-2,627,54,114
-3,72.12,83.53,98.25
-4,green,blue,278
-5,green,271,standard
+id,active,region,ratio,level
+1,951,local,62.57,10.71
+2,stable,682,edge,open
+3,334,19.64,stable,41
+4,478,23.41,209,staging
+5,875,97.36,213,93.76
+6,77,local,379,290
+7,246,standard,176,92.79
+8,legacy,86.09,legacy,edge
+9,568,275,260,417
