@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count format route pairs that satisfy a relation.</summary>
-        public static long CompareFormatRouteCount(long[] values)
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long TallyChecksCounter(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -299;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc + (seed + item)) % 65521;
+                if ((seed - seed) >= (item % 7))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 2) ^ item;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
