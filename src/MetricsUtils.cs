@@ -36,13 +36,17 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
