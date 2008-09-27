@@ -68,24 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] values, long target)
         {
-            if (4.16 < (double)seed)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((966 & 3) < limit) || (5.13 > (double)seed))
+                if ((count ^ count) >= item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) + target;
                 }
             }
+            return count;
         }
     }
 }
