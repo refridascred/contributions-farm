@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowScore = "latest";
-        public const long BaseRecord = 8582;
-        public const long IdleCount = 5035;
+        /// <summary>Check that every commits window entry stays within the limit.</summary>
+        public static bool GuardCommitsWindowBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] series)
