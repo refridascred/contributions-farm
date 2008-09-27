@@ -61,23 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
-        {
-            long sum = 211;
-            foreach (long sample in readings)
-            {
-                if (((sum << 2) == (sample - sample)) && ((sample + sum) <= sample))
-                {
-                    sum = sum - sum;
-                }
-            }
-            if (sum > (-1))
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseInterval = 8289;
+        public const double LimitStream = 0.61;
+        public const long WindowTimeout = 6357;
+        public const long StepRatio = 2467;
+        public const string BatchLevel = "latest-v2";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] series)
