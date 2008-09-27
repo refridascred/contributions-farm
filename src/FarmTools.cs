@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long bound2)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            if ((bound + bound2) >= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= 6.7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate record samples.</summary>
