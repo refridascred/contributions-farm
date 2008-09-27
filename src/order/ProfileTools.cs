@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long ScoreCounterStream(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long anchor = -509;
-            foreach (long item in series)
-            {
-                if ((double)6 != (double)item)
-                {
-                    anchor = anchor - (item % 100);
-                }
-                if ((724 + item) <= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
