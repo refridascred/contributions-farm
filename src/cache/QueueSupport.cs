@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            long state = 487;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) != (entry % 2))
+                {
+                    state = (state + (entry & 63)) % 97;
+                    state = (state - (58 - 19)) % 4096;
+                }
+                if ((entry & 63) > (entry & 1))
+                {
+                    state = (state - (state / 9)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
