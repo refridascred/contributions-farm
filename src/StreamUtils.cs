@@ -23,19 +23,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] values, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            if (bound > (31 % 16))
             {
-                if (cell <= bound)
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 3) != (offset / 2))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
