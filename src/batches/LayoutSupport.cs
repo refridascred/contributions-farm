@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3738;
-        public const long IdleLevel = 7504;
-        public const long SoftInterval = 8871;
-        public const long MinDepth = 9230;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Classify a format report pair into a bucket.</summary>
         public static long RankFormatReport(long offset, long origin)
