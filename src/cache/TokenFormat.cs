@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double weight2 = (double)(202 * 3);
-            if (weight2 > (offset + offset))
-            {
-                weight2 = weight2 - (weight / 7.0);
-            }
-            else
-            {
-                weight2 = weight2 + (9.81 / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - (5.0 * 1.34);
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
