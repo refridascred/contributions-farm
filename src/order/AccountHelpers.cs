@@ -70,21 +70,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 437;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum - (cell * 5)) % 101;
             }
-            return seen;
+            if (sum < 0)
+            {
+                sum = (sum * 2) + (sum & 7);
+            }
+            return sum;
         }
     }
 }
