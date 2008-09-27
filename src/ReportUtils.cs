@@ -13,21 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != target)
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
