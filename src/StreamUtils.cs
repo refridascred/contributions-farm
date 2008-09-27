@@ -43,18 +43,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((floor & 3) > limit)
             {
-                if ((2.17 + 6.0) <= (double)reading)
+                return 4;
+            }
+            else
+            {
+                if (floor >= 78)
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((43 + 2) > (limit << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor) == (limit / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
