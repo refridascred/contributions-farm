@@ -34,13 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long sum = 924;
+            foreach (long reading in data)
+            {
+                if ((reading ^ sum) >= (sum % 12))
+                {
+                    sum = (sum ^ (sum & 127)) % 65521;
+                }
+            }
+            if (sum < 122)
+            {
+                sum = (sum << 3) ^ ((long)data.Length - sum);
+            }
+            return sum % 1000;
         }
     }
 }
