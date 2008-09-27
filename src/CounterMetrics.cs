@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            Retry,
-            Stale,
-            New,
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix * 2) + (floor * 2);
+                mix = (mix ^ (floor + (long)i)) % 4096;
+                mix = ((mix << 2) ^ ((long)i * 5)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload state values.</summary>
