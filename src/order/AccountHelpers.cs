@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long WeighBatchBuffer(long[] items)
+        /// <summary>Check that every checks metric entry stays within the limit.</summary>
+        public static bool ValidateChecksMetricBounds(long[] readings, long limit)
         {
-            long anchor = 687;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((entry >> 5) < (entry * 5))
+                if (item >= limit)
                 {
-                    anchor = anchor + (anchor - entry);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor > 847)
-            {
-                anchor = (anchor ^ (18 - anchor)) % 4096;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the cluster level values.</summary>
