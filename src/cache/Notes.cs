@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] readings, long step)
+        /// <summary>Rank batch order input into a small class.</summary>
+        public static long SortBatchOrder(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long edge = bound + limit;
+            if (bound <= (25 * 4))
             {
-                if ((3.51 / 7.0) <= (double)cell)
+                return 1;
+            }
+            else
+            {
+                if ((3.68 + 12.0) >= (double)edge)
                 {
-                    matches = (matches + 3) - step;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - 9) < (edge + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
