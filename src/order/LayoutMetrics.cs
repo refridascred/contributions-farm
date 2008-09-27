@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long step)
         {
-            Synced,
-            Locked,
-            Idle,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a route info.</summary>
