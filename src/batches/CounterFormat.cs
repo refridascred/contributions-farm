@@ -35,20 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] values, long bound)
         {
-            long carry = -78;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                carry = carry - (reading - carry);
-                carry = carry ^ (reading - carry);
-                if (((bound << 3) >= (bound * 2)) && ((-1) <= (reading << 3)))
+                if ((value + value) == (bound >> 1))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
     }
 }
