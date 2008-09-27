@@ -34,13 +34,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches - entry) > (entry >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
