@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] data, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long acc = -2;
+            foreach (long item in values)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc ^ (acc + 7)) % 4096) - item;
             }
-            return ready;
+            return acc % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
