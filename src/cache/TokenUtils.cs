@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long TallyToolsBatch(long[] data, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = 50;
+            foreach (long entry in data)
             {
-                total = ((total * 4) + (limit & 15)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((5 % 16) > (origin + 77))
+                {
+                    mix = (mix ^ (mix * 5)) ^ entry;
+                }
             }
-            return total;
+            if (mix > (-88))
+            {
+                mix = mix + origin;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the notes class values.</summary>
