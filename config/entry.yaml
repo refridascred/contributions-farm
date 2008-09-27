@@ -1,41 +1,10 @@
 # entry settings
-retry_window_pct:
-  - cached
-  - green
-  - green
-  - blue
-poll_ratio_ms: 30
-cache_timeout_count:
-  - 455
-  - 135
-  - 6
-  - 106
-idle_ttl_count: false
-soft_interval_ms:
-  max_interval_pct: open
-  sync_delay:
-    flush_interval_ms: blue
-    batch_delay: 5133
-    soft_limit_s: 6420
-    soft_window_count:
-      - 80
-      - 158
-      - 125
-    batch_retries_s:
-      - blue
-      - green
-      - eu-west
-  burst_threshold_ms:
-    notes_retries: 7441
-    hard_limit: 94.71
-    warm_limit_pct: fallback
-    readonly: true
-  max_delay_pct: 79.69
-max_timeout_s:
-  persist:
-    entry_retries: false
-    layout_ttl: true
-    poll_capacity: legacy
-  flush_limit: true
-  idle_depth_ms: 30
-  stats_depth: open
+flush_limit_ms:
+  - legacy
+  - open
+  - local
+hard_timeout_ms: 60
+dry_run: strict
+burst_window_ms: standard
+idle_capacity: 30
+base_retries_pct: 90
