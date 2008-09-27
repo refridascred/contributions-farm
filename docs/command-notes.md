@@ -1,11 +1,14 @@
 # Command notes
 
-The account module keeps graph values in sync with the window cache.
-The support module keeps tools values in sync with the batch cache.
-Defaults for account live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the layout queue.
+
+A commits that stays idle for too long is moved to the format list.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Review metrics limits each release
-- Prefer metric defaults
+- Keep queue values small
+- Log every cache change
+- Validate graph input early
+- Document new session fields
