@@ -36,20 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings)
-        {
-            long carry = 43;
-            foreach (long cell in readings)
-            {
-                carry = carry + cell;
-            }
-            if (carry > 1)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1010;
+        public const double LimitEditor = 55.35;
+        public const long IdleSpan = 5100;
+        public const long LimitFactor = 3276;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] items)
