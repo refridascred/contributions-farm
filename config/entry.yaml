@@ -1,5 +1,6 @@
 # entry settings
-min_retries: false
-min_timeout_s: 28
-metrics_window: true
-cache_limit_s: false
+retry_limit: cached
+cache_ttl_ms: true
+sync_window: local
+buffer_size: latest
+sync_delay_ms: 250
