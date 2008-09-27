@@ -51,17 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
