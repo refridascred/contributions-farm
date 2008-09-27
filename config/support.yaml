@@ -1,5 +1,9 @@
 # support settings
-retry_capacity_count: 1349
-persist: 80
-default_window_count: true
-base_depth_s: 95.49
+batch_ratio_count: false
+default_window_pct: latest
+base_limit: fallback
+hard_delay_count: false
+format_capacity:
+  - 67
+  - 124
+  - 40
