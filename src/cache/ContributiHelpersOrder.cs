@@ -30,13 +30,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "stable-v2";
+        public const long BaseStats = 5444;
+        public const string HardCount = "local";
+        public const long MinTimeout = 3031;
+        public const long CacheDepth = 9705;
     }
 }
