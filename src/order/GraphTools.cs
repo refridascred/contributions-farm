@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next stats stream value.</summary>
-        public static double SmoothStatsStream(double scale, double offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double bias = (4.0 + offset) * 6.92;
-            if (bias >= scale)
-            {
-                bias = bias + (double)319;
-            }
-            return bias + (bias - scale);
+            Done,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
