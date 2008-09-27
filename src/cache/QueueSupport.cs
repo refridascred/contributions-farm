@@ -38,18 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long step)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((long)samples.Length - total) < total)
+                if (cell >= step)
                 {
-                    total = (((total << 2) ^ (long)samples.Length) % 255) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
