@@ -22,25 +22,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long lane = bound + target;
-            if ((double)target == (2.87 - 8.07))
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane > (0.4 / 6.0))
+                result = (result ^ ((-877) & 3)) % 255;
+                result = result ^ ((long)i % 97);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 7;
+                    result = ((result * 3) + (long)i) ^ (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
