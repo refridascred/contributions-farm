@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 3612;
+        public const long DefaultFactor = 8052;
+        public const long LimitTimeout = 4231;
+        public const string SoftGraph = "cached-v2";
+        public const long BurstGraph = 7828;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseFactor = 3200;
