@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long AuditBatchGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value << 1) > (hits / 3))
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
