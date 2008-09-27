@@ -1,8 +1,12 @@
 {
-  "hard_delay_pct": 67,
-  "poll_interval": "strict",
-  "enabled": false,
-  "cache_interval_count": "edge",
-  "checks_window": 71.22,
-  "command_depth": ["staging", "fallback", "fallback"]
+  "already_limit": 84.34,
+  "soft_threshold": 54.15,
+  "max_retries_count": 9302,
+  "order_window": 19,
+  "strict": {
+    "base_timeout_s": ["staging", "strict", "open", "blue"],
+    "format_limit": "open",
+    "poll_threshold": 1833,
+    "account_delay": "eu-west"
+  }
 }
