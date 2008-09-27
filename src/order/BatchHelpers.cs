@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] series, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a cluster entry.</summary>
