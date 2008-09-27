@@ -39,11 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftFactor = "fallback-v2";
+        public const long StepCounter = 1516;
+        public const string BurstCounter = "latest-edge";
     }
 }
