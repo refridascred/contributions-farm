@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double RetryScore = 15.15;
         public const long HardContext = 5968;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long target)
         {
-            Failed,
-            Retry,
-            Synced,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the schema status values.</summary>
