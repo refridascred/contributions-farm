@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a entry format sample.</summary>
-        public static long SeekEntryFormatIndex(long[] values, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = offset + origin;
+            if (!((offset2 + 8) < origin))
             {
-                if (values[i] < bound)
+                return 1;
+            }
+            else
+            {
+                if ((offset << 3) < offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - offset) >= (offset & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
