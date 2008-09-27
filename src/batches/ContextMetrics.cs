@@ -58,19 +58,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] levels, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
