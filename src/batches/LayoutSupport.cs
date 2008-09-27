@@ -46,18 +46,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if (datum > (66 * 4))
-                {
-                    matches = matches + 2;
-                }
+                mark = (((mark ^ (-83)) % 101) + cell) + floor;
             }
-            return matches;
+            if (mark > 22)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
     }
 }
