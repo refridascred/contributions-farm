@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Idle,
-            Stale,
-            Retry,
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
