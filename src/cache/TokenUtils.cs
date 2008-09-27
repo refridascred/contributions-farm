@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Paused,
-            Done,
-            Stale,
-            Ready,
-            Failed,
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
