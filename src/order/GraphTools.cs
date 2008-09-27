@@ -42,18 +42,24 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] values, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((bound2 < (bound + (-54))) && ((2.92 + 11.0) > (double)bound))
             {
-                if ((seen * 4) >= (0 + seen))
+                return 6;
+            }
+            else
+            {
+                if (((bound - bound) > (bound2 * 5)) || ((bound2 - bound2) > bound))
                 {
-                    seen = ((seen + 2) + datum) + target;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
