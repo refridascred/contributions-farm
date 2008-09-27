@@ -1,15 +1,15 @@
 # githubfarm settings
-min_size_count: true
-readonly: 1131
-enabled: 97.2
-burst_size: 1024
-channel_delay:
-  - open
-  - staging
-  - blue
-  - eu-west
-default_retries_count:
-  - fallback
-  - fallback
-  - eu-west
-  - standard
+min_capacity_s: 15
+stream_depth: green
+compress:
+  sync_window: 100
+  dry_run:
+    - 444
+    - 149
+  default_delay_count: 23
+  batches_window:
+    - 120
+    - 313
+    - 246
+hard_size: false
+soft_ttl_ms: fallback
