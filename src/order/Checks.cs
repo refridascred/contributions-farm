@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long CacheFilter = 7024;
         public const long WindowFactor = 3744;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
             long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + value) != (732 / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
