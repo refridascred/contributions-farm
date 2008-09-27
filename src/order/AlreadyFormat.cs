@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            long edge = seed - bound;
-            if ((edge ^ seed) <= (seed * 4))
+            long mix = 86;
+            foreach (long entry in levels)
             {
-                return 6;
+                mix = mix ^ (entry + (long)levels.Length);
             }
-            else
-            {
-                if ((seed * 2) > 4)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
