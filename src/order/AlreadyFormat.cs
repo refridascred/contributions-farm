@@ -31,18 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Count the contributi batch entries that pass the check.</summary>
+        public static long MeasureContributiBatchOutliers(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)levels.Length % 10) >= (seen - 48))
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - reading;
                 }
             }
             return seen;
