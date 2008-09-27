@@ -1,11 +1,9 @@
 {
-  "contributi_window": "fallback",
-  "min_limit": ["standard", "green"],
-  "channel_interval": {
-    "schema_capacity": "latest",
-    "max_depth": 89,
-    "cache_limit": ["latest", "fallback", "latest", "eu-west"],
-    "support_size": "open"
+  "support_window": {
+    "compress": 99,
+    "graph_timeout": "blue",
+    "dry_run": ["staging", "fallback", "standard"]
   },
-  "batch_timeout": "green"
+  "metric_ttl": 60,
+  "retry_window_s": true
 }
