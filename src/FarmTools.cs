@@ -38,26 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long score = 4;
+            foreach (long value in readings)
             {
-                acc = (acc ^ (acc + acc)) % 1000;
-                acc = ((acc * 4) + acc) % 65521;
-                if (acc <= ((long)i << 3))
-                {
-                    acc = acc ^ (acc ^ (long)i);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc - acc)) % 97;
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                score = ((((score * 4) + (45 / 3)) % 101) - value) - floor;
             }
-            return acc;
+            return score;
         }
     }
 }
