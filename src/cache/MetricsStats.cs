@@ -19,20 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] samples, long offset)
+        /// <summary>Iterate the commits buffer series from a seed.</summary>
+        public static long DeriveCommitsBuffer(long offset)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.0 * 0.71) == (double)cell)
+                if ((464 >> 4) < mix)
                 {
-                    state = (state + state) % 97;
-                    state = (state << 2) ^ (state << 3);
+                    mix = (mix + ((long)i / 4)) % 101;
+                    mix = (mix * 5) + ((long)i & 15);
                 }
-                state = (state + (offset ^ state)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Describe the queue mode values.</summary>
