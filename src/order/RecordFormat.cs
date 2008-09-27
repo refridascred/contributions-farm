@@ -51,18 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long AuditOrderQueueOutliers(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (count > (count + count))
+                if (!((double)seen > (double)value))
                 {
-                    count = (count + 1) + datum;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
