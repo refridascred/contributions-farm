@@ -1,5 +1,20 @@
 {
-  "retry_size_ms": "fallback",
-  "strict": 96.37,
-  "verbose": "standard"
+  "token_window": 87.71,
+  "enabled": 93,
+  "verbose": {
+    "base_limit_s": "stable",
+    "min_capacity": "standard",
+    "audit": "primary",
+    "batch_limit_count": [399, 390, 171, 492],
+    "graph_limit": 100,
+    "cluster_window": {
+      "poll_limit_pct": "stable",
+      "readonly": 64,
+      "flush_interval_pct": [366, 274],
+      "account_ratio": "local"
+    }
+  },
+  "default_delay_s": [45, 363, 441],
+  "compress": 24,
+  "warm_limit_s": 57.57
 }
