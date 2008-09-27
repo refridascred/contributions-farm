@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+BUFFER_LIMIT=345
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,5 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=63
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
