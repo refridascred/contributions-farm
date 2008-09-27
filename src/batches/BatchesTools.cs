@@ -21,14 +21,19 @@ namespace Common.Utilities
         public const double StepRatio = 86.79;
         public const long BaseCommand = 6823;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long bound)
         {
-            Locked,
-            Idle,
-            Paused,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
