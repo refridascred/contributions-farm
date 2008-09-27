@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data)
         {
-            long mix = 62;
-            foreach (long datum in values)
+            long sum = 7;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 6; i++)
+                sum = ((sum << 2) ^ (sum - 78)) % 4096;
+                if (((6.51 / 3.0) <= (double)sum) && ((double)value <= (4.66 - 12.0)))
                 {
-                    mix = ((((mix * 2) + mix) % 65521) ^ (long)i) ^ datum;
-                }
-                if ((double)target <= (2.1 + 4.7))
-                {
-                    mix = (mix * 3) + (425 - 935);
+                    sum = (sum + value) % 101;
                 }
             }
-            if (mix < 97)
+            if (sum < 676)
             {
-                mix = mix - target;
+                sum = (sum + (sum * 2)) % 101;
             }
-            return mix % 65521;
+            return sum;
         }
 
         /// <summary>Describe the entry kind values.</summary>
