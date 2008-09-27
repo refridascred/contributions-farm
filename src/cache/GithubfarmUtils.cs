@@ -33,13 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
             public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a format snapshot.</summary>
