@@ -51,18 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Find the first notes window entry that matches the target.</summary>
+        public static long LocateNotesWindowIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen > (double)value))
+                if (levels[i] == offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
