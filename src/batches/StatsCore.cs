@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache queue entry stays within the limit.</summary>
-        public static bool ValidateCacheQueueLimits(long[] data, long seed)
+        /// <summary>Accumulate entry metrics samples.</summary>
+        public static long ScoreEntryMetrics(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long state = 183;
+            foreach (long value in readings)
             {
-                if (entry <= seed)
+                if ((value + state) >= state)
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 3) ^ value) % 65521;
                 }
             }
-            return valid;
+            if (state > 7)
+            {
+                state = (state * 5) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
