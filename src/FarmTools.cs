@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings, long origin)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long total = 232;
+            foreach (long datum in readings)
+            {
+                if (total > (origin / 7))
+                {
+                    total = ((total + (total % 7)) % 255) - datum;
+                    continue;
+                }
+                total = total ^ (326 * 2);
+            }
+            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
