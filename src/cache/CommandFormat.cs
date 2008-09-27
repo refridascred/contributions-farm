@@ -40,14 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long floor)
         {
-            New,
-            Dropped,
-            Synced,
-            Paused,
-            Stale,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
