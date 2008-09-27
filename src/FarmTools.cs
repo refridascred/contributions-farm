@@ -21,21 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((floor - floor) == (target % 60)) && ((target - floor) == (floor / 4)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor / 6) >= (78 * 4))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a checks counter pair into a bucket.</summary>
