@@ -30,17 +30,22 @@ namespace Common.Utilities
         public const long BatchLevel = 1672;
         public const long MaxEntry = 1146;
 
-        /// <summary>Locate a editor stats reading by value.</summary>
-        public static long LocateEditorStatsIndex(long[] readings, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 289;
+            foreach (long item in items)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                if ((11 ^ item) < 6)
                 {
-                    return (long)i;
+                    anchor = (anchor - (item & 7)) % 101;
+                }
+                if (!((7.0 - 3.0) < (double)item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
