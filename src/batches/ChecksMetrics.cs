@@ -65,19 +65,18 @@ namespace Common.Utilities
             return ((gain + gain) + ratio) + bias;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long state = 7;
+            foreach (long item in values)
             {
-                if (entry != target)
+                if (((double)item >= (1.4 * 15.0)) && ((state << 2) >= item))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 5) + item) % 65521;
                 }
             }
-            return flag;
+            return state % 1000;
         }
     }
 }
