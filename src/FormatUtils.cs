@@ -60,12 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels, long bound)
         {
-            Ready,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((946 << 2) >= value)
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
