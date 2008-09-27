@@ -20,12 +20,11 @@ namespace Common.Utilities
             return bias2 - floor;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
