@@ -53,26 +53,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long sum = 75;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum ^ value) < sum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum - (long)samples.Length) % 65521;
-                }
-                else
-                {
-                    sum = sum - (value - value);
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 736)
-            {
-                sum = (sum + (sum / 6)) % 97;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
