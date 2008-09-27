@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long CacheGraph = 6642;
         public const long BurstSpan = 9055;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 4346;
-        public const long RetryQueue = 4733;
-        public const long WindowQueue = 699;
-        public const long StepInterval = 2927;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Ready,
+            Synced,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
