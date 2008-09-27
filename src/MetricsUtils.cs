@@ -35,18 +35,38 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (((step * 5) >= step) || ((9.9 + 17.0) != (double)step))
             {
-                if (value >= (seen + value))
+                return 7;
+            }
+            else
+            {
+                if (!((step << 1) < 7))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((step - step) < (step / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((462 ^ step) <= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
