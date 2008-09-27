@@ -27,12 +27,24 @@ namespace Common.Utilities
         public const double DefaultTimeout = 36.77;
         public const long LimitBatch = 1064;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long target)
         {
-            Pending,
-            Draft,
-            Stale,
+            if (((target / 3) <= floor) && (floor < target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target ^ floor) >= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
