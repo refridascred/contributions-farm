@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long floor)
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool VerifyCommandBatchesRange(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (items[i] < floor)
+                if (cell >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit profile session readings against a rule.</summary>
