@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "alpha-1";
-        public const double RetryDepth = 65.68;
-        public const long StepBudget = 5726;
-        public const string BatchMetrics = "strict-v2";
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long CountRecordSupportGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + (long)samples.Length) > count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] readings, long bound)
