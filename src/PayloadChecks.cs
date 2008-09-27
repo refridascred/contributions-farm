@@ -43,18 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] values)
+        /// <summary>Validate stream contributi readings against a bound.</summary>
+        public static bool VerifyStreamContributiLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((count & 1) < (sample >> 4))
+                if (sample >= origin)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
