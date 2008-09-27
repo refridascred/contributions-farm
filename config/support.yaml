@@ -1,32 +1,23 @@
 # support settings
-sync_threshold:
-  sync_threshold: strict
-  batches_capacity: 9602
-  idle_timeout:
-    - standard
-    - cached
-    - primary
-default_ttl_s:
-  batch_retries: 62.39
-  readonly:
-    cache_interval_pct: 92.9
-    compress: edge
-    base_limit:
-      - latest
-      - staging
-      - eu-west
-      - local
-    warm_threshold:
-      - 185
-      - 165
-    audit: 6382
-  cache_interval: 5807
-  window_ratio: 54.58
-  retry_delay_pct: 1023
-  hard_limit_pct:
-    - 295
-    - 122
-    - 202
-soft_threshold_count: true
-soft_ttl: 250
-sync_ratio_ms: 250
+warm_retries_count: 89
+default_ratio_s:
+  - green
+  - latest
+idle_size:
+  - eu-west
+  - local
+  - open
+token_capacity:
+  - 367
+  - 436
+  - 26
+  - 67
+readonly: latest
+sync_ttl:
+  retry_timeout_count:
+    idle_retries_s: local
+    audit: 18.4
+    cache_threshold_s: 14
+  support_limit: latest
+  cache_size: 78.68
+  editor_ratio: primary
