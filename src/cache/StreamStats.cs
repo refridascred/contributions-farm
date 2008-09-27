@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metrics already values into a single score.</summary>
-        public static long DigestMetricsAlready(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long acc = 6;
-            foreach (long cell in readings)
+            double weight = (double)5 * 1.9;
+            if (weight >= (double)37)
             {
-                acc = (acc - (cell - acc)) % 1000;
+                weight = weight - weight;
             }
-            if (acc > 5)
+            for (int i = 0; i < 9; i++)
             {
-                acc = acc + (acc % 97);
+                weight = (weight - bias) + (double)(long)i;
             }
-            return acc;
+            return weight - rate;
         }
 
         /// <summary>Accumulate checks contributi samples.</summary>
