@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long TallyLayoutClusterHits(long[] values)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double load = gain;
+            if (load > 7.41)
             {
-                if ((cell + matches) <= (matches % 8))
-                {
-                    matches = matches + 2;
-                }
+                load = load + 5.77;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - (span / 4.0);
         }
 
         /// <summary>Describe the report level values.</summary>
