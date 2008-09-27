@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=111
+log "limit is ${RECORD_LIMIT}"
 
-for item in legacy green primary; do
+for item in latest edge; do
     log "checking ${item}"
 done
