@@ -1,6 +1,11 @@
 {
-  "command_interval": "eu-west",
-  "poll_delay_s": 1083,
-  "sync_ttl": ["stable", "blue"],
-  "persist": 782
+  "contributi_window": "fallback",
+  "min_limit": ["standard", "green"],
+  "channel_interval": {
+    "schema_capacity": "latest",
+    "max_depth": 89,
+    "cache_limit": ["latest", "fallback", "latest", "eu-west"],
+    "support_size": "open"
+  },
+  "batch_timeout": "green"
 }
