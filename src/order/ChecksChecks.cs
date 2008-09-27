@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every commits window entry stays within the limit.</summary>
-        public static bool GuardCommitsWindowBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 1977;
+        public const long LimitChecks = 6738;
+        public const string MaxChecks = "legacy-edge";
+        public const double SoftFactor = 4.22;
+        public const long StepLevel = 181;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] series)
