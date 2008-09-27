@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((4 & 7) < matches)
+                if ((tally % 8) >= tally)
                 {
-                    matches = (matches + 2) + item;
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
