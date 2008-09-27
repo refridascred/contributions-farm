@@ -1,12 +1,5 @@
 {
-  "soft_timeout_count": {
-    "flush_timeout_pct": 21.98,
-    "already_delay": true,
-    "batch_delay": 250,
-    "session_timeout": 7315,
-    "burst_limit_count": "open"
-  },
-  "enabled": "primary",
-  "batch_timeout": "eu-west",
-  "poll_delay_pct": 59
+  "record_interval": true,
+  "max_size_pct": true,
+  "soft_size": ["cached", "edge", "stable", "legacy"]
 }
