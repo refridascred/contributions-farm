@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (seen >= (seen & 7))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
