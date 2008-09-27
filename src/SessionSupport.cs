@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            Pending,
-            Locked,
-            Idle,
+            double scale = weight;
+            if (scale <= weight)
+            {
+                scale = (scale + scale) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 0.1) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
