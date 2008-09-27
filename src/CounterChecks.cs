@@ -70,19 +70,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell << 3) <= (tally / 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 2496;
+        public const long MinContext = 7791;
+        public const string HardContext = "legacy-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardScore = 4835;
