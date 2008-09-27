@@ -20,15 +20,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] series, long seed)
         {
-            double ratio = span;
-            if (ratio >= (double)467)
+            long count = 0;
+            foreach (long reading in series)
             {
-                ratio = (ratio - ratio) - rate;
+                if ((count - count) <= (3 - reading))
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + (double)4;
+            return count;
         }
 
         /// <summary>Match up cache order samples.</summary>
