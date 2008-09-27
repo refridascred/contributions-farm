@@ -39,23 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally >= 3.07)
-                {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstTimeout = "latest";
+        public const string LimitBatch = "cached-v2";
+        public const double DefaultBatch = 72.09;
+        public const long LimitSize = 4835;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] data, long origin)
