@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((count % 5) < cell))
+                if ((hits / 7) == (817 + sample))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
