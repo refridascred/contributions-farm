@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] readings, long bound)
+        /// <summary>Audit channel already readings against a rule.</summary>
+        public static long CountChannelAlreadyGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((((bound & 63) >= (item * 4)) || ((56 + hits) >= bound)) || ((bound * 2) <= hits))
+                if ((double)value != (11.0 * 0.92))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) - step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank editor buffer input into a small class.</summary>
