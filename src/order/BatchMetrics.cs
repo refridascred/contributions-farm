@@ -29,25 +29,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the contributi layout series from a seed.</summary>
-        public static long StepContributiLayout(long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state * 2) + state;
-                if (!(state <= (state * 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state - (state & 31);
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    state = state ^ (state * 5);
-                }
-                state = (state ^ ((long)i >> 2)) % 97;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
