@@ -1,11 +1,7 @@
 {
-  "sync_size_ms": false,
-  "tools_size": 39.51,
-  "metric_depth": {
-    "sync_threshold": "standard",
-    "burst_delay_pct": "local",
-    "cache_capacity": true,
-    "persist": "primary",
-    "sync_ttl": 30
-  }
+  "retry_interval": "local",
+  "default_limit_s": [114, 303, 11],
+  "hard_limit_count": 250,
+  "profile_delay": 65,
+  "compress": "local"
 }
