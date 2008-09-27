@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] items, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                result = result + bound;
-                if ((double)result > (9.5 * 4.4))
+                if (value < floor)
                 {
-                    result = (result - (result + bound)) % 97;
-                    result = (result - result) % 4096;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Match up account samples.</summary>
