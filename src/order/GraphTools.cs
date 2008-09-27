@@ -51,11 +51,14 @@ namespace Common.Utilities
         public const double BaseScore = 7.28;
         public const long StepOrder = 2564;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultInterval = 6935;
-        public const string WindowCount = "alpha-1";
-        public const string CacheBudget = "open";
-        public const long SoftFormat = 3277;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Done,
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterGaps(long[] samples, long seed)
