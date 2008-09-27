@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long target)
         {
-            double weight = (double)(492 >> 4);
-            if (weight < weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + (3.5 * 1.11)) + floor;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + gain;
+            return -1;
         }
     }
 }
