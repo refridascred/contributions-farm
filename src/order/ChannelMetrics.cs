@@ -26,16 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Digest a series of record route entries.</summary>
+        public static long TotalRecordRoute(long[] values, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long score = 80;
+            foreach (long cell in values)
             {
-                sum = (sum ^ (long)i) % 101;
-                sum = ((sum * 2) + (long)i) % 101;
+                score = (((score - (score - score)) % 4096) + cell) + bound;
             }
-            return sum;
+            return score;
         }
     }
 }
