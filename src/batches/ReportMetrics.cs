@@ -57,22 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings, long bound)
         {
-            long result = -9;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((2 + 848) <= (datum + result))
+                if ((double)bound > (4.68 * 5.52))
                 {
-                    result = (result + offset) % 65521;
+                    count = (count + 1) + datum;
                 }
             }
-            if (result > 1)
-            {
-                result = ((result << 3) ^ (result >> 5)) % 97;
-            }
-            return result;
+            return count;
         }
     }
 }
