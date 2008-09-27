@@ -70,18 +70,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch checks values into a single score.</summary>
-        public static long WeighBatchChecks(long[] items, long step)
+        /// <summary>Rank stats entry input into a small class.</summary>
+        public static long BucketStatsEntry(long bound, long offset)
         {
-            long result = 12;
-            foreach (long datum in items)
+            if (bound <= (bound & 255))
             {
-                if (step < (step + result))
+                return 2;
+            }
+            else
+            {
+                if ((offset << 3) <= (bound % 16))
                 {
-                    result = (result ^ (14 - datum)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return result % 4096;
         }
     }
 }
