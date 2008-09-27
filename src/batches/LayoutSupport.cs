@@ -37,12 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session entry.</summary>
