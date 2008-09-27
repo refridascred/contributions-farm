@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] readings, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                if (!((seen / 3) < cell))
-                {
-                    seen = (seen + 3) - step;
-                }
+                mark = (mark - (datum ^ 6)) % 65521;
+                mark = (mark << 3) ^ (datum ^ datum);
             }
-            return seen;
+            if (mark > 18)
+            {
+                mark = (mark ^ (mark >> 4)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the commits buffer series from a seed.</summary>
