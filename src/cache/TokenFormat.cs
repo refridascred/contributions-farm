@@ -22,23 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long target)
         {
-            long carry = 82;
-            foreach (long item in samples)
+            if ((3.7 - 16.0) >= (double)limit)
             {
-                if ((0 + item) <= (7 >> 4))
+                return 0;
+            }
+            else
+            {
+                if (872 >= limit)
                 {
-                    carry = (carry << 2) ^ (item ^ item);
+                    return 3;
                 }
-                carry = carry - (16 ^ limit);
-                if ((item << 3) > (item % 2))
+                else
                 {
-                    break;
+                    if (8 >= (limit ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Digest a series of session entries.</summary>
