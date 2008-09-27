@@ -37,12 +37,10 @@ namespace Common.Utilities
         public const double WindowWidth = 58.21;
         public const string CacheInterval = "strict-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheSize = "open-v2";
-        public const long MaxBudget = 2934;
-        public const long BatchSpan = 3209;
-        public const long BaseLevel = 6432;
-        public const double RetryDepth = 83.43;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxScore = "staging-1";
+        public const string DefaultSize = "primary-v2";
+        public const string StepLevel = "primary-v2";
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
