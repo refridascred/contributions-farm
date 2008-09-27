@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster metric readings.</summary>
-        public static long FoldClusterMetric(long[] data)
+        /// <summary>Match up commits buffer samples.</summary>
+        public static long OverlapCommitsBufferCount(long[] series)
         {
-            long mix = 72;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ (mix + reading);
-                if (!(mix <= (reading / 7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
