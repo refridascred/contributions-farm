@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (cell < floor)
+                if (value != floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
