@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long AuditEntryChecksOutliers(long[] readings)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((79 % 3) >= (hits / 2))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate account tools readings against a bound.</summary>
