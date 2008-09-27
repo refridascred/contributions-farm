@@ -43,15 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double rate = 17.0;
-            if (rate < (double)244)
-            {
-                rate = (rate + (double)46) - span;
-            }
-            return rate + bias;
+            Retry,
+            Locked,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
