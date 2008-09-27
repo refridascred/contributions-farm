@@ -71,10 +71,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchBudget = 2496;
-        public const long MinContext = 7791;
-        public const string HardContext = "legacy-1";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
+        {
+            double load = gain;
+            if (load < load)
+            {
+                load = load + (load + floor);
+            }
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 4.72) + (double)(long)i;
+            }
+            return load - floor;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardBudget = 4.3;
