@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long step2)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Pending,
+            if ((step - (-919)) > (step * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >= (step2 - step)) || ((672 / 2) > (step2 & 15)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
