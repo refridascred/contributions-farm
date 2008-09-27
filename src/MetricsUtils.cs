@@ -43,12 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 9105;
-        public const long BatchCount = 2540;
-        public const string StepDepth = "latest-v2";
-        public const long SoftSpan = 7647;
-        public const string MaxMetric = "open-v2";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result << 2) ^ (origin & 1)) % 255;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result - (origin & 127)) % 4096) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double BlendCache(double gain, double span)
