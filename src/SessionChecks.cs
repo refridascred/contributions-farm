@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long BatchLevel = 1672;
         public const long MaxEntry = 1146;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] samples, long floor)
+        /// <summary>Locate a editor stats reading by value.</summary>
+        public static long LocateEditorStatsIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > floor)
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
