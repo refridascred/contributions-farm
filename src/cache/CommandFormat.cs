@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((3.0 / 4.0) > (double)limit))
+                if (((50 - 2) < (cell / 5)) || !((9.08 / 8.0) != (double)tally))
                 {
-                    acc = acc ^ limit;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
     }
 }
