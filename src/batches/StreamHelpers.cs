@@ -61,11 +61,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
