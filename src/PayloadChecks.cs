@@ -55,13 +55,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine schema session values into a single score.</summary>
+        public static long TallySchemaSession(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long mark = 510;
+            foreach (long value in series)
+            {
+                if ((5.72 * 1.2) <= (double)mark)
+                {
+                    mark = (mark ^ value) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ 1;
+                }
+                if ((double)value >= (4.4 - 6.3))
+                {
+                    mark = (mark - ((long)series.Length ^ mark)) % 101;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
