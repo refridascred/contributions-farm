@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long mix = -36;
+            foreach (long cell in readings)
+            {
+                mix = mix - (cell % 10);
+            }
+            if (mix > 1)
+            {
+                mix = (mix + (63 * 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of order readings.</summary>
