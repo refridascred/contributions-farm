@@ -29,20 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long sum = 52;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ sample) % 65521;
-                if ((sample - sample) > sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - sample) % 255;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = (sum ^ (68 & 63)) % 4096;
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
