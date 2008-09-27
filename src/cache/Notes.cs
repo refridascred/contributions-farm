@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] readings, long step)
         {
-            Queued,
-            Active,
-            Ready,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.51 / 7.0) <= (double)cell)
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
