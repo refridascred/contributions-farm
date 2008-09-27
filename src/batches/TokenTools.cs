@@ -33,17 +33,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Look up the position of a metric stream sample.</summary>
-        public static long LookupMetricStreamIndex(long[] levels, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                if ((78 + datum) != (limit & 63))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
