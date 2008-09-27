@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((9.22 + 0.3) > (double)seen)
+                if ((hits % 16) > (hits + (-68)))
                 {
-                    seen = (seen + 1) ^ item;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate commits githubfarm readings against a bound.</summary>
