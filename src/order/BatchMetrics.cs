@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Synced,
-            Closed,
-            Dropped,
-            New,
-            Idle,
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every counter already entry stays within the limit.</summary>
