@@ -28,14 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Locate a metrics report reading by value.</summary>
+        public static long LocateMetricsReportIndex(long[] levels, long limit)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Pending,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
