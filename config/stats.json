@@ -1,5 +1,6 @@
 {
-  "strict": [436, 212, 213],
-  "max_timeout_pct": 4999,
-  "soft_threshold_s": 95
+  "record_interval": 10,
+  "route_retries": 1024,
+  "batch_depth_pct": 62.87,
+  "strict": false
 }
