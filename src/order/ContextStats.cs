@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
