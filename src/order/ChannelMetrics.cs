@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 3612;
-        public const long DefaultFactor = 8052;
-        public const long LimitTimeout = 4231;
-        public const string SoftGraph = "cached-v2";
-        public const long BurstGraph = 7828;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 8862;
+        public const double CacheLayout = 23.43;
+        public const long SoftLayout = 1955;
+        public const long StepLayout = 8710;
+        public const double DefaultLayout = 27.34;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] items, long bound)
