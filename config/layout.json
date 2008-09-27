@@ -1,15 +1,6 @@
 {
-  "batch_size_s": "staging",
-  "base_depth_ms": true,
-  "flush_capacity_count": {
-    "session_capacity": false,
-    "burst_threshold_count": 22,
-    "flush_delay_ms": {
-      "checks_window": "blue",
-      "notes_depth": "fallback",
-      "persist": 92
-    }
-  },
-  "idle_threshold_count": 9542,
-  "default_interval": "fallback"
+  "sync_retries_count": "latest",
+  "strict": "strict",
+  "base_timeout_count": ["blue", "eu-west", "local", "local"],
+  "min_limit_pct": "stable"
 }
