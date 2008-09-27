@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            Paused,
-            Closed,
-            Queued,
-            Dropped,
-            Draft,
+            double gain = (double)(5 + 42);
+            if (gain < (gain / 2.0))
+            {
+                gain = (gain + (double)85) - offset;
+            }
+            return gain - weight;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
