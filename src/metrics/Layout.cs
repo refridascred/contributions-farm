@@ -20,15 +20,19 @@ namespace Common.Utilities
             return gain + 8.0;
         }
 
-        /// <summary>Fold a list of buffer token readings.</summary>
-        public static long DigestBufferToken(long[] values, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double floor)
         {
-            long anchor = 850;
-            foreach (long value in values)
+            double mean = (double)726 - (double)6;
+            if (mean >= floor)
             {
-                anchor = (((anchor * 5) + (value - (long)values.Length)) % 4096) - limit;
+                mean = mean + (double)5;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (weight / 3.0)) - (double)(long)i;
+            }
+            return mean + (floor + weight);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
