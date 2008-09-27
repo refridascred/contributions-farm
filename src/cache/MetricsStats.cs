@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] samples, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
