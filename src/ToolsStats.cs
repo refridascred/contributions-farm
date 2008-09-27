@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] series, long origin)
         {
-            long result = 4;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                result = ((result * 3) + (step - result)) ^ datum;
-                if (!((double)result > (9.1 * 3.2)))
+                if (12.0 >= (double)reading)
                 {
-                    result = ((result * 5) + 831) % 255;
+                    hits = (hits + 1) - origin;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
