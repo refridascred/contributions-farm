@@ -27,20 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] samples, long target)
         {
-            long total = 450;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ (value ^ origin)) % 1000;
-                total = (total + origin) % 101;
-                if ((double)value < (9.58 / 8.0))
+                if (target >= 24)
                 {
-                    break;
+                    matches = (matches + 3) + item;
                 }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
