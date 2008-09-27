@@ -1,8 +1,6 @@
-id,ratio,weight
-1,793,580
-2,60.27,4.14
-3,0.12,edge
-4,963,64.06
-5,legacy,12.69
-6,primary,blue
-7,fallback,31.5
+id,ratio,label,owner,rank
+1,stable,staging,17.58,122
+2,green,78.76,504,legacy
+3,37.84,609,fallback,stable
+4,stable,346,227,open
+5,28.08,231,797,open
