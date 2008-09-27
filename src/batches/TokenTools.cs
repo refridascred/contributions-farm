@@ -44,19 +44,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 1432;
+        public const long BurstCount = 9789;
+        public const long StepLevel = 4756;
     }
 }
