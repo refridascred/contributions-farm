@@ -1,13 +1,6 @@
 {
-  "record_ratio": {
-    "default_size": "local",
-    "poll_ratio_pct": "legacy",
-    "sync_interval": 250,
-    "dry_run": 500,
-    "burst_threshold_ms": "cached"
-  },
-  "sync_window_pct": true,
-  "min_ratio_ms": "legacy",
-  "poll_window": "fallback",
-  "queue_delay": 14
+  "max_window_pct": 60,
+  "flush_timeout_ms": "local",
+  "poll_delay_s": true,
+  "warm_depth": [313, 433, 416]
 }
