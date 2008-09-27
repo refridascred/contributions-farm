@@ -57,20 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark - floor;
-                if (!((0.9 + 5.66) == (double)(long)i))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
