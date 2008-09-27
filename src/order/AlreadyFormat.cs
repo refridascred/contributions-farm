@@ -83,22 +83,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values, long target)
+        /// <summary>Locate a window session reading by value.</summary>
+        public static long FindWindowSessionIndex(long[] levels, long seed)
         {
-            long state = 226;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target - cell) <= (578 - cell))
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    state = (state + (target / 5)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 929)
-            {
-                state = (state ^ (target % 10)) % 4096;
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
