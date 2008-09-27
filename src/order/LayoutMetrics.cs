@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double bias, double floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double gain = floor;
-            if (gain >= (double)81)
-            {
-                gain = (gain + (9.11 - gain)) + bias;
-            }
-            return gain + (gain * 2.0);
+            Idle,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Roll a session counter forward.</summary>
