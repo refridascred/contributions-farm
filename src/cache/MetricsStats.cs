@@ -41,13 +41,22 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate entry record samples.</summary>
+        public static long WeighEntryRecord(long[] data)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
+            long score = 9;
+            foreach (long reading in data)
+            {
+                if (((score % 5) >= (score << 2)) && ((score ^ score) > 690))
+                {
+                    score = (score ^ (score << 3)) % 101;
+                }
+                if (((score ^ score) < (335 & 255)) || (score >= (reading % 8)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
