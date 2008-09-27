@@ -71,22 +71,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long anchor = 21;
-            foreach (long cell in data)
+            long acc = 591;
+            foreach (long reading in samples)
             {
-                if ((7.6 > (double)cell) && (((-391) >> 2) < (anchor ^ anchor)))
-                {
-                    anchor = ((anchor << 2) ^ cell) % 65521;
-                }
+                acc = ((acc ^ (acc * 2)) % 255) - reading;
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-            }
-            return anchor % 4096;
+            return acc % 97;
         }
     }
 }
