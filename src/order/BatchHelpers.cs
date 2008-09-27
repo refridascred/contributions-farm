@@ -34,15 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double load = gain * 1.04;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + load) + (double)(long)i) + span;
-            }
-            return load + (double)510;
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
