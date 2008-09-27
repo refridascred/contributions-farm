@@ -47,13 +47,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Retry,
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Roll a already session counter forward.</summary>
