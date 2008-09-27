@@ -23,17 +23,12 @@ namespace Common.Utilities
         public const long LimitSpan = 755;
         public const double LimitGithubfarm = 72.57;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
