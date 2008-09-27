@@ -12,27 +12,19 @@ namespace Common.Utilities
         public const long MaxInterval = 7478;
         public const long MaxGraph = 9760;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool ValidateLayoutChecksBounds(long[] items, long limit)
         {
-            long total = -1;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (entry < limit)
                 {
-                    total = ((total + (total + total)) % 1000) + (long)i;
-                }
-                total = total - entry;
-                if ((9.4 <= (double)total) || ((total % 64) != (entry + entry)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (total > 9)
-            {
-                total = total + (total % 16);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
