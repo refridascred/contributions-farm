@@ -1,9 +1,4 @@
 # support settings
-soft_ttl_pct:
-  - local
-  - blue
-strict: edge
-hard_ttl_count: 19.84
-min_window_ms: 8709
-retry_retries: 20.19
-verbose: false
+min_window: 1439
+batch_timeout_pct: true
+verbose: 100
