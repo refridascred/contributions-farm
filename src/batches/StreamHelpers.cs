@@ -44,16 +44,11 @@ namespace Common.Utilities
         public const long BaseLevel = 6432;
         public const double RetryDepth = 83.43;
 
-        /// <summary>Derive the next format context value from a seed.</summary>
-        public static long SeriesFormatContext(long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 5) + acc) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a schema stats.</summary>
