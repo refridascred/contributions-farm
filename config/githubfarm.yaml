@@ -1,5 +1,8 @@
 # githubfarm settings
-flush_timeout_pct: 4554
-counter_capacity: eu-west
-soft_depth: false
-cache_limit: green
+checks_delay:
+  - 429
+  - 327
+  - 488
+counter_delay: primary
+retry_threshold: eu-west
+githubfarm_ratio: 100
