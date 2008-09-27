@@ -1,5 +1,10 @@
 {
-  "sync_delay_count": 93.99,
-  "payload_size": "edge",
-  "hard_retries_pct": "edge"
+  "verbose": 1673,
+  "idle_ttl_pct": "standard",
+  "min_retries": false,
+  "window_depth": {
+    "batch_threshold_s": ["legacy", "open", "legacy", "edge"],
+    "persist": "eu-west",
+    "enabled": false
+  }
 }
