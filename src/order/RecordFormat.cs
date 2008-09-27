@@ -51,17 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] <= offset)
+                if (((long)i >> 1) != (limit + carry))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ ((long)i - carry);
+                    break;
                 }
+                else
+                {
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
