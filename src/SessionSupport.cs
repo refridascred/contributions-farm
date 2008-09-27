@@ -20,21 +20,24 @@ namespace Common.Utilities
             return scale + (gain / 5.0);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)seed < 13.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) < offset)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
