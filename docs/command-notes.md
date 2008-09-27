@@ -1,16 +1,14 @@
 # Command notes
 
-Run the editor check before changing any commits limits.
-Each counter is validated before it reaches the cluster queue.
-Use githubfarm settings to tune how often support data is refreshed.
+The layout module keeps layout values in sync with the format cache.
+Keep githubfarm and route names short and lowercase.
 
-Keep batch and editor names short and lowercase.
-The support module keeps cache values in sync with the metric cache.
-Run the graph check before changing any stream limits.
+Use window settings to tune how often entry data is refreshed.
+Each session is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Log every session change
-- Review window limits each release
-- Keep account values small
+- Review context limits each release
+- Validate route input early
+- Keep channel values small
+- Document new farm fields
