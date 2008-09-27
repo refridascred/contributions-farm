@@ -74,9 +74,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheTimeout = "open-v2";
-        public const long SoftMetrics = 6485;
-        public const long BurstCount = 5532;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Paused,
+            Ready,
+            Synced,
+            Locked,
+            Draft,
+        }
     }
 }
