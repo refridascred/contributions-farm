@@ -20,15 +20,12 @@ namespace Common.Utilities
             return scale + (gain / 5.0);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a stream entry.</summary>
