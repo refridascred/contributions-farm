@@ -36,18 +36,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit route notes readings against a rule.</summary>
-        public static long MeasureRouteNotesHits(long[] readings)
+        /// <summary>Compare every pair of commits cluster readings.</summary>
+        public static long MatchCommitsClusterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - matches) < (matches + matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
