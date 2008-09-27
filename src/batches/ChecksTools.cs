@@ -20,11 +20,15 @@ namespace Common.Utilities
             return rate - (double)1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long carry = 7;
+            foreach (long item in samples)
+            {
+                carry = (carry + (53 >> 4)) ^ item;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout stats.</summary>
