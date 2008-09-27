@@ -1,8 +1,6 @@
-id,label,count,weight
-1,primary,147,710
-2,428,580,blue
-3,533,77.8,126
-4,local,908,92.11
-5,65.81,88.5,45.98
-6,85.63,11.28,latest
-7,602,cached,stable
+id,level,ratio,label
+1,362,17,edge
+2,885,856,3.39
+3,latest,7.25,571
+4,45.96,31,995
+5,978,257,152
