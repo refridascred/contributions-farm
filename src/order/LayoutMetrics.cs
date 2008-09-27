@@ -34,11 +34,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long origin)
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            long step = limit + origin;
+            if (step <= (201 - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + limit) <= (origin + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((17.0 * 6.25) >= (double)step) || ((origin - limit) < origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (6.11 / 6.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
