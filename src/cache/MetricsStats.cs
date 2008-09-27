@@ -22,24 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = scale + ratio;
-            }
-            else
-            {
-                scale = scale + (6.0 + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias / 8.0)) + (double)(long)i;
-            }
-            return scale + (double)5;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepScore = "alpha";
+        public const long BaseCount = 6926;
+        public const string BurstFormat = "standard";
+        public const double HardSpan = 59.53;
+        public const long HardFormat = 100;
 
         /// <summary>Accumulate entry record samples.</summary>
         public static long WeighEntryRecord(long[] data)
