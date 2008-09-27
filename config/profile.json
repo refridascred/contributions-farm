@@ -1,17 +1,9 @@
 {
-  "idle_size_count": {
-    "contributi_capacity": "fallback",
-    "hard_size": "standard",
-    "enabled": 15.07,
-    "buffer_ttl": {
-      "strict": true,
-      "enabled": "standard",
-      "min_timeout_s": "primary",
-      "readonly": "primary"
-    },
-    "cache_timeout": 3078,
-    "default_capacity_count": "staging"
+  "queue_ratio": 84.08,
+  "idle_interval_ms": {
+    "base_ttl_ms": "edge",
+    "default_interval_count": "strict",
+    "order_delay": 47.84
   },
-  "enabled": false,
-  "cache_limit_pct": 5052
+  "cluster_retries": 6605
 }
