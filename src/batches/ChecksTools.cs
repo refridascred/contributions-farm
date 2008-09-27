@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] values, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long delta = origin - bound;
+            if ((delta - bound) == (delta - delta))
             {
-                if (reading != step)
+                return 2;
+            }
+            else
+            {
+                if ((delta + delta) < bound)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
