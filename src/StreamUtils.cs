@@ -71,17 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] items, long seed)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long MeasureOrderSchemaHits(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (items[i] >= seed)
+                if (!((cell - seed) >= (42 << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
