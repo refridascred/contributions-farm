@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mean + (offset - weight);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1999;
-        public const double MaxChannel = 19.29;
-        public const long RetryTimeout = 6509;
-        public const double BatchBudget = 87.3;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
