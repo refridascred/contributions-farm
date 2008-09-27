@@ -27,15 +27,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Adjust a cache reading.</summary>
