@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values, long origin)
         {
-            long mix = 675;
-            foreach (long value in samples)
+            long mark = -42;
+            foreach (long item in values)
             {
-                mix = (mix + (21 * 2)) % 255;
-                if ((value * 3) >= (mix + mix))
+                if (!((double)mark >= (12.0 / 8.0)))
                 {
-                    break;
+                    mark = (mark - (origin + item)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark + item);
                 }
             }
-            if (mix < 75)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a format snapshot.</summary>
