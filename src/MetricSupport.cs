@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long origin)
+        /// <summary>Count the window format entries that pass the check.</summary>
+        public static long AuditWindowFormatOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] == origin)
+                if ((cell >= (cell & 127)) || !((double)tally >= (8.99 * 1.2)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
