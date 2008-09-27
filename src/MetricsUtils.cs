@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double CacheSession = 57.29;
         public const long BaseFactor = 9625;
 
-        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
-        public static bool ValidateChannelMetricsLimits(long[] series, long offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a layout stats.</summary>
