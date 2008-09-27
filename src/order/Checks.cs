@@ -21,21 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate editor samples.</summary>
