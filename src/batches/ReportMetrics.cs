@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long FoldQueuePayload(long[] series, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long result = 257;
-            foreach (long cell in series)
+            long mix = 675;
+            foreach (long value in samples)
             {
-                result = (result + step) - cell;
+                mix = (mix + (21 * 2)) % 255;
+                if ((value * 3) >= (mix + mix))
+                {
+                    break;
+                }
             }
-            if (result < 1)
+            if (mix < 75)
             {
-                result = ((result * 5) + (0 + step)) % 4096;
+                mix = (mix << 2) ^ (mix - mix);
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Hold a format snapshot.</summary>
