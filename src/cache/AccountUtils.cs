@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = floor - limit;
+            if ((floor < (floor - limit)) && ((11.0 - 6.5) > (double)edge))
             {
-                if (series[i] > target)
+                return 3;
+            }
+            else
+            {
+                if (((9.0 - 3.9) != (double)edge) && ((double)limit > (9.78 - 4.0)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - limit) > edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
