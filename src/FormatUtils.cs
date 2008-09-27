@@ -94,17 +94,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema notes value from a seed.</summary>
-        public static long SeriesSchemaNotes(long step)
+        /// <summary>Count the tools cluster entries that pass the check.</summary>
+        public static long MeasureToolsClusterHits(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + step) % 255;
-                mix = mix - step;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((sample * 2) < (sample ^ sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
