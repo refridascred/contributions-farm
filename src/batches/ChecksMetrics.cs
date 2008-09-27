@@ -39,16 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items, long step)
-        {
-            long acc = 1;
-            foreach (long reading in items)
-            {
-                acc = (acc ^ (reading % 12)) - step;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepLevel = 3996;
+        public const long MinSchema = 2499;
+        public const double WindowBudget = 41.77;
+        public const string LimitCount = "primary";
 
         /// <summary>Adjust a stream session reading.</summary>
         public static double AdjustStreamSession(double weight, double floor)
