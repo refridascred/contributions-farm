@@ -57,12 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepInterval = 6243;
-        public const string BaseEditor = "cached";
-        public const long RetryEditor = 1763;
-        public const double DefaultEditor = 11.17;
-        public const double SoftDepth = 1.09;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Done,
+            Idle,
+            New,
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] items, long origin)
