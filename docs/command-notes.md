@@ -1,11 +1,11 @@
 # Command notes
 
-The entry module keeps profile values in sync with the report cache.
-Use account settings to tune how often order data is refreshed.
-Keep already and filter names short and lowercase.
+Run the support check before changing any support limits.
+When a stream fails, the githubfarm handler retries a few times before giving up.
+Keep layout and queue names short and lowercase.
 
 ## Guidelines
 
+- Keep contributi values small
 - Document new layout fields
-- Keep stream values small
-- Log every window change
+- Log every session change
