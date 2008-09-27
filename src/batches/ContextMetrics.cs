@@ -85,11 +85,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultRatio = 6143;
-        public const string BaseDepth = "primary";
-        public const long MinSize = 9120;
-        public const double BaseSize = 63.57;
-        public const long StepDepth = 6440;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
