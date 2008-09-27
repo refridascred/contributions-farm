@@ -40,22 +40,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 6;
+            foreach (long cell in samples)
             {
-                if (origin < (367 + 860))
+                if ((8.6 - 5.9) < (double)total)
                 {
-                    tally = (tally + 2) ^ sample;
+                    total = (total + step) + cell;
                 }
-                else
+                if ((step - step) != (total + 5))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (total > 8)
+            {
+                total = ((total * 3) + 81) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
