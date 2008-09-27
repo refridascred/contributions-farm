@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long CacheRatio = 959;
         public const long BurstScore = 3463;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
-            Done,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (double)count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
