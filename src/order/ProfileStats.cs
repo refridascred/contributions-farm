@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - ((long)i2 * 4);
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
