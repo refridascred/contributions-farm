@@ -52,9 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 152;
-        public const long BaseDepth = 8820;
-        public const string HardBudget = "stable-v2";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((3.0 / 4.0) > (double)limit))
+                {
+                    acc = acc ^ limit;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
