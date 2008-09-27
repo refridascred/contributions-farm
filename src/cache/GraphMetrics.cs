@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const double DefaultTimeout = 36.77;
         public const long LimitBatch = 1064;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data)
         {
-            if (((target / 3) <= floor) && (floor < target))
+            long score = 83;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target ^ floor) >= floor))
+                if (!((reading - score) == (reading * 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    score = (score + (reading + score)) % 1000;
                 }
             }
+            if (score < 930)
+            {
+                score = (score * 3) + (score >> 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
