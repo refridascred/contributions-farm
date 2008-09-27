@@ -16,22 +16,12 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] series, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (3 > seen)
-                {
-                    seen = ((seen + 3) ^ item) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Project the next farm value.</summary>
