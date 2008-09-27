@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
