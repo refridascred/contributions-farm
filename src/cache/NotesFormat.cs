@@ -15,13 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools entry.</summary>
