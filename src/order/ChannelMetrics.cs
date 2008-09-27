@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] values)
-        {
-            long anchor = 53;
-            foreach (long cell in values)
-            {
-                anchor = anchor - (cell + cell);
-                if (((cell & 1) <= (44 << 2)) && ((0 - anchor) < (anchor - anchor)))
-                {
-                    anchor = (anchor * 5) + (anchor % 60);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxSpan = 2.67;
+        public const string BurstTimeout = "primary-v2";
+        public const long MaxSize = 9184;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseFactor = 3200;
