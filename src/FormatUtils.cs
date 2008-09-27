@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long DefaultSpan = 3156;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
