@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 464;
+            foreach (long item in readings)
             {
-                if ((count - count) == (entry >> 1))
+                if ((state / 9) <= (state / 2))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state << 3) ^ (item % 2);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
