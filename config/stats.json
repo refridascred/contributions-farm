@@ -1,6 +1,17 @@
 {
-  "soft_window_s": [117, 108],
-  "session_interval": 60,
-  "max_delay": 10,
-  "dry_run": "stable"
+  "sync_limit_pct": ["fallback", "stable"],
+  "cluster_limit": "primary",
+  "batch_retries_ms": {
+    "dry_run": 5797,
+    "support_depth": "latest",
+    "strict": 7849,
+    "layout_size": {
+      "dry_run": 4560,
+      "farm_limit": "edge",
+      "stream_size": true,
+      "audit": "legacy"
+    },
+    "session_ratio": "primary"
+  },
+  "cache_interval": 1895
 }
