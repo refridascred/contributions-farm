@@ -43,20 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long sum = 444;
+            foreach (long item in items)
             {
-                result = ((result << 2) ^ (origin & 1)) % 255;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result - (origin & 127)) % 4096) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                sum = (((sum * 5) + sum) % 101) ^ item;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
