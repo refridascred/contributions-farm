@@ -55,28 +55,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a already session counter forward.</summary>
-        public static long DeriveAlreadySession(long step)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            double drift = (double)((-40) + (-86));
+            for (int i = 0; i < 5; i++)
             {
-                if (step > mix)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ 5) % 101;
-                }
-                if (step <= 974)
-                {
-                    mix = mix - step;
-                    mix = (mix ^ ((long)i + step)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                drift = ((drift - rate) + (double)(long)i) + offset;
             }
-            return mix;
+            return drift - 9.19;
         }
     }
 }
