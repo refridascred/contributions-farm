@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Idle,
-            Synced,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinFactor = 9598;
+        public const double RetryPayload = 12.81;
+        public const long BaseSize = 4594;
+        public const double HardPayload = 78.34;
+        public const string RetryRatio = "fallback-1";
 
         /// <summary>Adjust a cache reading.</summary>
         public static double AdjustCache(double scale, double bias)
