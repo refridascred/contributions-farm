@@ -37,32 +37,18 @@ namespace Common.Utilities
             return load - (double)68;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] data)
         {
-            long span = bound - limit;
-            if ((0.8 / 5.0) < (double)limit)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < bound)
+                if (cell < (matches ^ cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit / 2) > (span * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
