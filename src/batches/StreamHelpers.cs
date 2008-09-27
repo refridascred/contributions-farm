@@ -42,10 +42,17 @@ namespace Common.Utilities
         public const long BaseLevel = 6432;
         public const double RetryDepth = 83.43;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultTimeout = 68.03;
-        public const long BaseScore = 5672;
-        public const long WindowBudget = 29;
+        /// <summary>Derive the next format context value from a seed.</summary>
+        public static long SeriesFormatContext(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 5) + acc) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
