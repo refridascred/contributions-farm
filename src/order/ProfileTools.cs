@@ -39,13 +39,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long ClassifyChecksPayload(long bound, long bound2)
         {
-            Retry,
-            Active,
-            Locked,
-            Dropped,
+            if ((bound2 <= (bound + bound)) || (bound > (bound2 - bound2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 ^ bound2) < (bound + bound2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
