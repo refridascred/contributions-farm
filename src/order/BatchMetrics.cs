@@ -44,15 +44,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of metric contributi readings.</summary>
-        public static long DigestMetricContributi(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] values, long step)
         {
-            long mix = -183;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                mix = ((mix + (mix & 15)) % 97) + datum;
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
