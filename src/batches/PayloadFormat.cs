@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double bias2 = bias;
-            if (bias2 <= 16.0)
-            {
-                bias2 = bias2 + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - floor;
+            Dropped,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
