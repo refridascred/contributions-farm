@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long mark = 2;
-            foreach (long sample in items)
+            long total = 9;
+            foreach (long reading in samples)
             {
-                mark = (((mark + (mark * 3)) % 1000) - sample) - target;
+                if (((long)samples.Length - total) < total)
+                {
+                    total = (((total << 2) ^ (long)samples.Length) % 255) ^ reading;
+                }
             }
-            return mark;
+            return total;
         }
     }
 }
