@@ -1,13 +1,5 @@
 {
-  "strict": 36,
-  "warm_timeout": false,
-  "payload_interval": 1024,
-  "verbose": "open",
-  "poll_retries": 7923,
-  "readonly": {
-    "flush_depth": "eu-west",
-    "warm_ttl": 273,
-    "idle_capacity_pct": [490, 467],
-    "retry_threshold_count": [83, 207, 208]
-  }
+  "soft_ratio": true,
+  "max_ratio_ms": "green",
+  "audit": "edge"
 }
