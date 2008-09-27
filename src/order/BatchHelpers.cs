@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample > count) || ((33 * 4) <= sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
