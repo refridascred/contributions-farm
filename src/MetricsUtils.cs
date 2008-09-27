@@ -43,20 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double offset)
-        {
-            double scale = rate;
-            if (scale <= rate)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (rate - offset);
-            }
-            return scale - offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 9105;
+        public const long BatchCount = 2540;
+        public const string StepDepth = "latest-v2";
+        public const long SoftSpan = 7647;
+        public const string MaxMetric = "open-v2";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double BlendCache(double gain, double span)
