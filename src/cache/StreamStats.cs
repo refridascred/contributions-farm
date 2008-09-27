@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] items, long seed)
         {
-            long acc = 946;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((6 & 1) < (bound >> 3))
+                if ((seed < 17) || ((4.0 + 8.76) < (double)seed))
                 {
-                    acc = ((acc << 2) ^ acc) ^ entry;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc < 36)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
