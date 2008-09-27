@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long FoldQueuePayload(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 257;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + step) - cell;
             }
-            return tally;
+            if (result < 1)
+            {
+                result = ((result * 5) + (0 + step)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a format snapshot.</summary>
