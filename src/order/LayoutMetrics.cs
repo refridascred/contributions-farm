@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long target)
         {
-            Done,
-            Active,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
