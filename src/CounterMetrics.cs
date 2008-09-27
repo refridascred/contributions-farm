@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long AuditFormatGraphHits(long[] data, long bound)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long value in data)
             {
-                if ((39 % 5) >= (tally ^ value))
+                if ((count * 3) < (value << 2))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
