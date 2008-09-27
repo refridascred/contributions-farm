@@ -68,26 +68,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long mix = 1;
-            foreach (long item in values)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((46 + step) <= (item << 3)) && (mix > 89))
-                {
-                    mix = mix + (item + mix);
-                }
-                if ((double)item == (9.91 / 6.0))
-                {
-                    break;
-                }
+                result = (result * 2) + (target >> 1);
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mix > 218)
-            {
-                mix = (mix << 2) ^ (step << 1);
-            }
-            return mix;
+            return result;
         }
     }
 }
