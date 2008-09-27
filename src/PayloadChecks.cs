@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 9597;
         public const double BaseBatch = 46.89;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count >= (count - count))
-                {
-                    count = ((count + 1) - entry) - offset;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
