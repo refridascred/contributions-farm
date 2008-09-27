@@ -56,14 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Paused,
-            Ready,
-            Synced,
-            Locked,
-            Draft,
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
