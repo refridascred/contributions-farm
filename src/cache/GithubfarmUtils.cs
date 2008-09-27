@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Done,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
