@@ -20,19 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long value in levels)
             {
-                if ((cell + matches) > (target >> 1))
+                if ((double)matches > (9.97 - 8.79))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) ^ value;
                 }
             }
             return matches;
