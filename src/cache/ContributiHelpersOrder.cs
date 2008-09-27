@@ -22,35 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long offset)
         {
-            if ((seed & 1) >= (target ^ seed))
+            if ((offset >= (offset + 505)) && ((offset * 3) >= offset))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((target >> 3) > seed)
+                if ((limit * 3) != (70 * 3))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (!((seed + target) != (seed << 1)))
+                    if ((19.0 * 8.95) >= (double)offset)
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if (((525 + target) <= (81 >> 4)) && ((seed - target) >= 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
