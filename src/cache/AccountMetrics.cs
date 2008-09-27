@@ -46,13 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Failed,
+            Pending,
+            Done,
+            Retry,
             Ready,
-            Synced,
-            Queued,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
