@@ -30,17 +30,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next checks payload value from a seed.</summary>
-        public static long StepChecksPayload(long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double weight, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = result - (result - result);
-                result = ((result << 3) ^ floor) % 101;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            double gain = floor;
+            return (gain + (gain * 17.0)) + weight;
         }
 
         /// <summary>Hold a schema options.</summary>
