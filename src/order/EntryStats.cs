@@ -23,22 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long MeasureStatsChannelGaps(long[] levels, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)levels.Length > (count ^ limit)) || (((double)limit != (double)9) || ((97 & 3) < (value << 3))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
