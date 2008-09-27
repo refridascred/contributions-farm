@@ -68,18 +68,9 @@ namespace Common.Utilities
         public const long StepRatio = 2467;
         public const string BatchLevel = "latest-v2";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) >= 998)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitFactor = 8.56;
+        public const double WindowWidth = 88.52;
+        public const double BaseFactor = 4.69;
     }
 }
