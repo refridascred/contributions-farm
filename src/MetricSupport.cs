@@ -14,21 +14,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((1.65 - 1.3) > (double)step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((376 - step) > (step ^ step)) || ((step - seed) <= (step / 8)))
                 {
-                    if ((levels[i] - levels[j]) == 13)
+                    return 5;
+                }
+                else
+                {
+                    if ((step - seed) <= step)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
