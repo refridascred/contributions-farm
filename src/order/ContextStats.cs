@@ -44,23 +44,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account record value.</summary>
-        public static double SmoothAccountRecord(double rate, double span)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long step, long bound)
         {
-            double bias = span;
-            if (bias < (bias + span))
+            long delta = step ^ bound;
+            if ((4.1 + 6.0) > (double)delta)
             {
-                bias = bias + (double)62;
+                return 5;
             }
             else
             {
-                bias = bias - (rate * 14.0);
+                if ((double)step <= (9.1 - 6.65))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias + rate;
         }
     }
 }
