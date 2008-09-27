@@ -21,13 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            Done,
-            Draft,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((974 + seen) > seen) && (((double)seen < (2.5 + 7.9)) || ((value + seen) >= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
