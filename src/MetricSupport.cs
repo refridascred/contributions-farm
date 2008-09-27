@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            Ready,
-            Idle,
-            Stale,
-            Failed,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count - count) == (entry >> 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
