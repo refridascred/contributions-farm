@@ -69,22 +69,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph already samples are out of range.</summary>
-        public static long TallyGraphAlreadyMatches(long[] items, long bound)
+        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
+        public static long SeriesEditorGithubfarm(long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!!(tally > (reading >> 3)))
+                if ((double)offset < (3.0 / 2.0))
                 {
-                    tally = (tally + 3) + bound;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
