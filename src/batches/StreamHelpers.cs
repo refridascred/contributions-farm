@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Stale,
-            New,
-            Failed,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 4300;
+        public const long CacheCommand = 6545;
+        public const double WindowWidth = 58.21;
+        public const string CacheInterval = "strict-edge";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string CacheSize = "open-v2";
