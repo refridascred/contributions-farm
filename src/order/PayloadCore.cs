@@ -38,11 +38,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((double)floor > 4.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + 3) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a payload header.</summary>
