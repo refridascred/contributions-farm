@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (value != step)
+                if ((double)step >= (5.0 / 4.0))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
