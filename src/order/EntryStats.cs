@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((4 & 7) < matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
