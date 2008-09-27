@@ -43,24 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long floor)
+        /// <summary>Match up farm checks samples.</summary>
+        public static long PairFarmChecksCount(long[] items)
         {
-            if (869 < (floor - 7))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8 + offset) <= (floor ^ offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
