@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Retry,
-            Dropped,
-            Closed,
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
