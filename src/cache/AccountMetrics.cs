@@ -68,17 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools metrics sample.</summary>
-        public static long LookupToolsMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 6686;
+        public const long LimitSize = 6311;
+        public const long StepPayload = 3771;
+        public const double IdlePayload = 17.02;
     }
 }
