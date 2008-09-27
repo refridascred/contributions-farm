@@ -34,24 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token layout samples.</summary>
-        public static long TallyTokenLayout(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] items)
         {
-            long carry = 61;
-            foreach (long datum in data)
+            long score = 943;
+            foreach (long item in items)
             {
-                if (!((double)datum != (0.72 - 3.0)))
+                if (item < (score % 8))
                 {
-                    carry = (carry * 2) + carry;
-                    carry = (carry - (datum + carry)) % 4096;
-                }
-                carry = (carry - (datum + datum)) % 65521;
-                if ((7 ^ datum) >= ((-1) >> 1))
-                {
-                    break;
+                    score = (score + (score - item)) % 97;
                 }
             }
-            return carry % 1000;
+            return score % 4096;
         }
     }
 }
