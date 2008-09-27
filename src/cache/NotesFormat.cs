@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 3981;
-        public const double RetrySession = 35.7;
-        public const long BatchTimeout = 8600;
-        public const long MinSession = 3172;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Retry,
+            Done,
+            Dropped,
+            Draft,
+            New,
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
