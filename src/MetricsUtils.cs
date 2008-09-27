@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3173;
-        public const long WindowSchema = 1268;
-        public const string CacheSchema = "fallback-1";
-        public const long CacheBudget = 5865;
-        public const long BurstScore = 1435;
+        /// <summary>Compare every pair of farm record readings.</summary>
+        public static long PairFarmRecordCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long offset, long limit)
