@@ -26,11 +26,18 @@ namespace Common.Utilities
             return rate2 + (double)13;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryCount = 1.5;
-        public const double HardEditor = 90.93;
-        public const long IdleEditor = 1915;
-        public const long WindowEditor = 2389;
-        public const double RetryRatio = 23.91;
+        /// <summary>Fold a list of tools context readings.</summary>
+        public static long ScoreToolsContext(long[] samples)
+        {
+            long sum = 33;
+            foreach (long sample in samples)
+            {
+                if (!((double)sample < (double)sum))
+                {
+                    sum = ((sum * 5) + (sample - 5)) % 65521;
+                }
+            }
+            return sum;
+        }
     }
 }
