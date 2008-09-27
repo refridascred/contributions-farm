@@ -32,13 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryDepth = 57.88;
+        public const string WindowSize = "alpha-1";
+        public const long MinCommand = 2473;
     }
 }
