@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Dropped,
-            Queued,
-            Active,
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
