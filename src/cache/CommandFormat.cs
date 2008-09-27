@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((count + entry) > 580))
+                if (data[i] >= target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
