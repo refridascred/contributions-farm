@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] levels, long step)
         {
-            double ratio = (rate - 3.0) + (rate + offset);
-            if (ratio <= ratio)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                ratio = ratio - (offset - rate);
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - 15.0;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
