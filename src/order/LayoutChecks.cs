@@ -65,23 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Digest a series of schema record entries.</summary>
+        public static long TotalSchemaRecord(long[] samples, long origin)
         {
-            double load = floor;
-            if (load > (load + floor))
+            long anchor = 36;
+            foreach (long entry in samples)
             {
-                load = load + (double)1;
+                if ((4.62 * 2.4) > (double)origin)
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 101) - entry;
+                }
             }
-            else
-            {
-                load = load - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (floor / 6.0)) - (double)(long)i;
-            }
-            return load - 1.76;
+            return anchor;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
