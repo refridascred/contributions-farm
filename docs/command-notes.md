@@ -1,14 +1,10 @@
 # Command notes
 
-Run the buffer check before changing any already limits.
-Run the cache check before changing any contributi limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
-
-Use record settings to tune how often order data is refreshed.
-Each report is validated before it reaches the window queue.
+Use batches settings to tune how often stream data is refreshed.
+Use cache settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Prefer cache defaults
-- Validate layout input early
+- Keep batch values small
+- Prefer profile defaults
+- Log every batch change
