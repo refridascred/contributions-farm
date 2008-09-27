@@ -16,19 +16,14 @@ namespace Common.Utilities
             return load - (double)5;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] data, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Ready,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
