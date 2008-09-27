@@ -37,38 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            if (target < offset)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 >> 4) != (offset % 3))
+                if ((double)total <= (double)origin)
                 {
-                    return 1;
+                    total = (total << 3) ^ (origin - (long)i);
                 }
-                else
-                {
-                    if ((offset & 127) == (offset / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset == (5.0 / 2.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
