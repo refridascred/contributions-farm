@@ -67,18 +67,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of editor contributi entries.</summary>
-        public static long TotalEditorContributi(long[] data, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long floor)
         {
-            long total = -92;
-            foreach (long item in data)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((total >> 5) == (3 % 3))
+                if ((707 / 2) > anchor)
                 {
-                    total = ((total ^ item) % 65521) - seed;
+                    anchor = anchor + floor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank report buffer input into a small class.</summary>
