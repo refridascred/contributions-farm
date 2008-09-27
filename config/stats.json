@@ -1,7 +1,6 @@
 {
-  "retry_threshold": "strict",
-  "githubfarm_depth": false,
-  "stats_interval": 42.29,
-  "notes_capacity": ["stable", "green", "open"],
-  "soft_timeout": 100
+  "account_window": "legacy",
+  "stream_capacity": true,
+  "commits_depth": 100,
+  "retry_retries": "blue"
 }
