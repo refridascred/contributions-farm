@@ -1,27 +1,29 @@
 # support settings
-githubfarm_ttl: false
-sync_capacity_pct: cached
-hard_threshold_ms:
-  min_depth_pct: 4875
-  verbose: cached
-  idle_size_pct: fallback
-  commits_depth: green
-  burst_limit: 53.11
-cache_depth: fallback
-support_retries:
-  default_capacity: strict
-  cache_limit_pct:
-    - 361
-    - 240
-    - 383
-  base_timeout_ms:
-    notes_capacity: 9240
-    retry_ttl_s: 97.5
-    strict: eu-west
-  farm_window:
-    - fallback
-    - green
-    - green
-    - staging
-  idle_depth_ms: 9699
-  tools_limit: 44.33
+strict: cached
+compress: false
+flush_interval_ms: strict
+default_size:
+  - 154
+  - 209
+  - 368
+  - 378
+flush_depth_ms:
+  command_ratio:
+    cache_ttl_pct: false
+    enabled: false
+    retry_size_s: 56.12
+    strict: green
+    filter_retries:
+      - 302
+      - 370
+      - 5
+  verbose: stable
+  dry_run: 1024
+  poll_timeout_ms:
+    poll_threshold: 84
+    flush_depth_ms: 60.14
+    max_size_ms: staging
+    enabled: true
+    buffer_threshold: 89.63
+  session_window: cached
+  audit: green
