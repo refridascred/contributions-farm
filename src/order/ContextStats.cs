@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            if ((floor + floor2) < (floor / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(floor <= (floor2 >> 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine notes token values into a single score.</summary>
