@@ -30,39 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long next = seed - origin;
-            if ((next / 2) == (79 << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((80 & 31) > (seed ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed & 15) < (next * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= 100)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
