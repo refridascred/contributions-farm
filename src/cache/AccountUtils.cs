@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long LimitMetrics = 1989;
         public const double BaseWidth = 74.1;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Active,
-            New,
-            Locked,
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
