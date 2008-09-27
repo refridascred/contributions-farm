@@ -50,15 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series)
         {
-            long state = -80;
-            foreach (long entry in data)
+            long state = 298;
+            foreach (long entry in series)
             {
-                state = (state * 5) + ((long)data.Length ^ entry);
+                if ((entry << 3) != ((long)series.Length + entry))
+                {
+                    state = (state ^ (state / 8)) % 1000;
+                }
             }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Hold a commits info.</summary>
