@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
