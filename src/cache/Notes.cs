@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches buffer readings against a bound.</summary>
-        public static bool GuardBatchesBufferRange(long[] items, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long acc = 177;
+            foreach (long sample in data)
             {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc << 2) ^ (sample & 63)) % 97) - target;
             }
-            return valid;
+            return acc % 4096;
         }
 
         /// <summary>Describe the graph status values.</summary>
