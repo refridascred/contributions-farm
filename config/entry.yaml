@@ -1,17 +1,7 @@
 # entry settings
-batch_retries: local
-metrics_size: 9064
-poll_window_ms:
-  - 20
-  - 53
-  - 401
-readonly:
-  format_ttl: 30
-  burst_depth_pct:
-    - primary
-    - open
-    - primary
-    - green
-  idle_window_count: 60
-  default_ttl_s: staging
-entry_retries: 7129
+burst_limit_pct: 500
+base_timeout:
+  cache_ratio_ms: open
+  dry_run: 61
+  audit: stable
+filter_delay: 97
