@@ -15,22 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 30.01;
+        public const double DefaultCount = 36.2;
+        public const long DefaultMetric = 1365;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double RetryDepth = 57.88;
