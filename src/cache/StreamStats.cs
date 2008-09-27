@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = weight;
+            if (mean < mean)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            else
+            {
+                mean = mean + (7.25 * 4.64);
+            }
+            return mean + (offset - weight);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
