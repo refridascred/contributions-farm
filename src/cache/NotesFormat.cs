@@ -28,18 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 2;
+            foreach (long reading in values)
             {
-                if ((39 + cell) >= (seed - hits))
-                {
-                    hits = hits + 3;
-                }
+                total = (total ^ (reading / 4)) + step;
             }
-            return hits;
+            return total;
         }
     }
 }
