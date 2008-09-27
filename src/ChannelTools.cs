@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8706;
-        public const string LimitLevel = "latest-edge";
-        public const double MinSpan = 6.08;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
+        {
+            long state = -2;
+            foreach (long entry in series)
+            {
+                if (!((double)entry >= (double)state))
+                {
+                    state = (state - (state + entry)) % 65521;
+                }
+                else
+                {
+                    state = (state - 41) % 1000;
+                }
+            }
+            if (state > 702)
+            {
+                state = ((state << 2) ^ (state / 2)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
