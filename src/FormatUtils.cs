@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8696;
-        public const double MinSpan = 64.33;
-        public const long LimitSize = 2284;
-        public const string MaxCount = "stable";
-        public const long HardDepth = 2796;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstScore = 75.43;
+        public const long CachePayload = 4607;
+        public const long SoftLevel = 8929;
+        public const long DefaultSpan = 3156;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] series, long seed)
