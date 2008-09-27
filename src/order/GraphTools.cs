@@ -41,12 +41,15 @@ namespace Common.Utilities
         public const long DefaultCache = 2876;
         public const long IdleCache = 9053;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            double weight2 = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = ((weight2 + (weight2 + weight2)) - (double)(long)i) - floor;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Hold a stream entry.</summary>
