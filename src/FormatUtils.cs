@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long limit)
+        /// <summary>Accumulate report stream samples.</summary>
+        public static long TallyReportStream(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 10;
+            foreach (long item in values)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                if ((item + 5) >= (item & 15))
                 {
-                    return (long)i;
+                    mix = mix - (origin * 5);
+                }
+                if ((item < origin) && (58 < (item % 64)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
