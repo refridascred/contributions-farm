@@ -33,24 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double offset)
-        {
-            double rate = 9.8;
-            if (rate >= rate)
-            {
-                rate = (rate - bias) - offset;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + 2.41;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleLevel = 35.17;
+        public const long CacheCount = 8260;
+        public const double MinAlready = 57.6;
 
         /// <summary>Validate queue already readings against a bound.</summary>
         public static bool CheckQueueAlreadyBounds(long[] readings, long floor)
