@@ -23,38 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels, long floor)
         {
-            if ((step / 2) > (step - 14))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset > (step % 64))
+                if (!(((entry ^ seen) < (2 ^ 511)) || ((double)entry < 3.1)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) != (step & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - offset) > (offset ^ 24))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 3) + floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
