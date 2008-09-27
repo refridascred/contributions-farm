@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long CacheBudget = 5865;
         public const long BurstScore = 1435;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long limit)
         {
-            Pending,
-            Synced,
-            Locked,
-            Ready,
+            long next = offset + limit;
+            if ((double)offset <= (double)next)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((next ^ limit) < (limit + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
