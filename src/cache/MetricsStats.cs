@@ -41,25 +41,13 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long step2 = offset - step;
-            if ((step - 361) <= (offset / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(19.0 > (double)step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
