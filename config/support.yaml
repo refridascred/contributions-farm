@@ -1,14 +1,4 @@
 # support settings
-readonly:
-  - open
-  - local
-  - open
-  - local
-hard_ttl: green
-poll_threshold: 5670
-session_capacity:
-  - eu-west
-  - stable
-  - green
-max_size_pct: true
-burst_threshold_s: primary
+farm_ratio: 9
+graph_threshold: 59
+buffer_ttl: 250
