@@ -1,6 +1,12 @@
 {
-  "readonly": [55, 497],
-  "sync_retries": 71,
-  "min_delay": "primary",
-  "soft_capacity_pct": 75
+  "max_size_s": false,
+  "base_size": {
+    "sync_threshold": "open",
+    "max_ttl_ms": ["standard", "local"],
+    "sync_limit": [430, 250],
+    "token_limit": [252, 217],
+    "stats_timeout": [296, 381],
+    "burst_threshold_s": 3028
+  },
+  "warm_timeout_count": ["cached", "legacy"]
 }
