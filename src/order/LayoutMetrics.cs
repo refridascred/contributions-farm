@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long total = -8;
+            foreach (long sample in readings)
             {
-                if (item < floor)
+                if (!((step + step) >= sample))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 2) ^ ((-806) / 7)) % 4096;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
