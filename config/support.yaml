@@ -1,7 +1,27 @@
 # support settings
-flush_size: 30
-audit: 4274
-command_window:
-  idle_ttl: 85.18
-  base_ratio_pct: 6011
-  strict: 87
+githubfarm_ttl: false
+sync_capacity_pct: cached
+hard_threshold_ms:
+  min_depth_pct: 4875
+  verbose: cached
+  idle_size_pct: fallback
+  commits_depth: green
+  burst_limit: 53.11
+cache_depth: fallback
+support_retries:
+  default_capacity: strict
+  cache_limit_pct:
+    - 361
+    - 240
+    - 383
+  base_timeout_ms:
+    notes_capacity: 9240
+    retry_ttl_s: 97.5
+    strict: eu-west
+  farm_window:
+    - fallback
+    - green
+    - green
+    - staging
+  idle_depth_ms: 9699
+  tools_limit: 44.33
