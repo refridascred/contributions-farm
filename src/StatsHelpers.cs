@@ -45,12 +45,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 7897;
-        public const long MinRatio = 6447;
-        public const double BurstSize = 59.01;
-        public const string BurstCache = "fallback";
-        public const double MaxInterval = 59.81;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitInterval = "standard-1";
+        public const string RetryStats = "primary-edge";
+        public const long HardStats = 2955;
 
         /// <summary>Roll a commits stats counter forward.</summary>
         public static long SeriesCommitsStats(long offset)
