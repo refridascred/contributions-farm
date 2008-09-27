@@ -1,7 +1,10 @@
 {
-  "retry_window_ms": [380, 91],
-  "idle_ratio_count": "edge",
-  "batch_ttl_s": "eu-west",
-  "githubfarm_limit": true,
-  "poll_window": [342, 242]
+  "cluster_ttl": [230, 146, 224, 446],
+  "commits_delay": "latest",
+  "base_threshold": {
+    "min_threshold": 95,
+    "base_capacity": 2917,
+    "readonly": true
+  },
+  "retry_delay": 83.47
 }
