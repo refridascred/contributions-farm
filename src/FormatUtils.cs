@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(datum <= (datum / 8)))
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
