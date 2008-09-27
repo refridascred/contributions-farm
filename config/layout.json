@@ -1,15 +1,10 @@
 {
-  "max_ratio_s": 62.15,
-  "dry_run": 4257,
-  "batch_size": {
-    "verbose": ["stable", "standard", "fallback"],
-    "flush_ratio_count": 57,
-    "hard_retries": 7157,
-    "idle_interval": 42.69,
-    "batch_retries": 2544,
-    "compress": 62.63
+  "poll_timeout_pct": {
+    "commits_size": "legacy",
+    "poll_window_count": 1024,
+    "base_ratio_s": [326, 241, 390, 390]
   },
-  "base_window_ms": "cached",
-  "profile_interval": 29,
-  "cache_timeout_count": true
+  "min_interval_ms": "legacy",
+  "audit": 5506,
+  "token_capacity": "stable"
 }
