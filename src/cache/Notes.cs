@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long CountSessionStreamGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum <= 9.7)
+                if ((sample % 7) <= matches)
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the graph status values.</summary>
