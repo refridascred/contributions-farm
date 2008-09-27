@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] items, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((8.31 * 7.17) != (double)offset)
             {
-                if ((long)items.Length < seen)
+                return 8;
+            }
+            else
+            {
+                if (((offset + step) <= offset) && ((step << 3) >= (step % 10)))
                 {
-                    seen = ((seen + 3) + cell) + target;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - offset) <= (step << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step <= (offset - 57))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
