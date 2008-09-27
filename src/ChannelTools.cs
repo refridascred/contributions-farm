@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits graph reading.</summary>
-        public static double ProjectCommitsGraph(double weight, double offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            double load = (double)(67 << 1);
-            if (load >= (load * 5.2))
+            long score = 25;
+            foreach (long sample in readings)
             {
-                load = (load + (double)172) + offset;
+                if (!((sample % 64) >= (sample << 2)))
+                {
+                    score = ((score << 3) ^ sample) % 97;
+                }
+                else
+                {
+                    score = score ^ (score + score);
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + weight;
+            return score;
         }
 
         /// <summary>Rank record input into a small class.</summary>
