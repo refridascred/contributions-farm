@@ -34,12 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepSpan = 90.4;
+        public const long BaseLevel = 3161;
+        public const long MaxAccount = 5415;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] readings)
