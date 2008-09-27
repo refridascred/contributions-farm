@@ -1,10 +1,15 @@
 # Command notes
 
-Keep cache and batches names short and lowercase.
-Each counter is validated before it reaches the payload queue.
+Keep stats and batches names short and lowercase.
+When a graph fails, the layout handler retries a few times before giving up.
+Run the stats check before changing any layout limits.
+
+Each window is validated before it reaches the stats queue.
+Use channel settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Document new channel fields
-- Review stream limits each release
-- Keep contributi values small
+- Document new stats fields
+- Keep graph values small
+- Log every account change
+- Review channel limits each release
