@@ -26,10 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "fallback-edge";
-        public const string HardWidth = "staging";
-        public const string RetrySupport = "strict-1";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= 3.3)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
