@@ -49,12 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
             public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a cluster cache reading.</summary>
