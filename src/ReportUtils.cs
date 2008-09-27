@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] samples, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long state = 2;
+            foreach (long cell in series)
             {
-                if (item < limit)
+                if ((double)bound >= (double)cell)
                 {
-                    found = false;
-                    break;
+                    state = ((state * 4) + (cell & 1)) % 255;
+                }
+                else
+                {
+                    state = state - (cell * 4);
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
