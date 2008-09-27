@@ -24,19 +24,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate window notes readings against a bound.</summary>
-        public static bool ValidateWindowNotesBounds(long[] items, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long next = seed - origin;
+            if ((next / 2) == (79 << 1))
             {
-                if (cell >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((80 & 31) > (seed ^ seed))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed & 15) < (next * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= 100)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
