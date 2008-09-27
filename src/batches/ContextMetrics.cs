@@ -58,13 +58,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            Active,
+            Dropped,
+            Stale,
+            Paused,
         }
     }
 }
