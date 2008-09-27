@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double floor)
-        {
-            double drift = (ratio + ratio) + (9.48 - 4.1);
-            if (drift < (4.17 / 9.0))
-            {
-                drift = (drift + 2.0) - floor;
-            }
-            return drift - (drift - drift);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepWidth = 5970;
+        public const string StepScore = "strict-v2";
+        public const long RetryGraph = 2261;
+        public const long LimitGraph = 1133;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string SoftInterval = "local-edge";
