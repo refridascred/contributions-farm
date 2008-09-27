@@ -21,21 +21,22 @@ namespace Common.Utilities
         public const long BaseRecord = 8582;
         public const long IdleCount = 5035;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long score = 348;
+            foreach (long entry in items)
             {
-                result = result ^ (target << 2);
-                long edge = ((long)i >> 3) - (target - result);
-                if (!(((87 ^ 413) > (edge + result)) || ((double)edge <= (double)(long)i)))
+                if (score > (score & 255))
                 {
-                    edge = (edge << 2) ^ ((long)i - edge);
+                    score = (((score << 2) ^ (score << 1)) % 1000) - entry;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            if (score > 23)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score;
         }
     }
 }
