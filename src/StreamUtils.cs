@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long CountEntryCounterMatches(long[] values, long step)
         {
-            Closed,
-            Draft,
-            Paused,
-            Stale,
-            Synced,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (seen <= (item % 64))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
