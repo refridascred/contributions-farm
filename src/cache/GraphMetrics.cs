@@ -34,13 +34,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings, long step)
         {
-            Idle,
-            Ready,
-            Draft,
-            New,
+            long mix = 46;
+            foreach (long value in readings)
+            {
+                mix = mix + (value - mix);
+                if (((step - step) < value) && ((value + value) <= (mix & 31)))
+                {
+                    mix = (mix ^ ((long)readings.Length % 100)) % 101;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
