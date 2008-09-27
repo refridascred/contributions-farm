@@ -40,21 +40,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count graph support pairs that satisfy a relation.</summary>
-        public static long OverlapGraphSupportCount(long[] series)
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool ValidateCacheAccountLimits(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < offset)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
