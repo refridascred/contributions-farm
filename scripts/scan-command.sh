@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-standard}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
+COMMAND_LIMIT=311
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in edge local; do
-    log "checking ${item}"
-done
