@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (target >= (entry & 7))
+                if (series[i] <= offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
