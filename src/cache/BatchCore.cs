@@ -18,12 +18,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7252;
+        public const long BurstSize = 2962;
+        public const long BatchScore = 1133;
+        public const long BaseInterval = 7359;
+        public const double LimitBudget = 31.47;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterOutliers(long[] values, long step)
