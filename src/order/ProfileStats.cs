@@ -60,21 +60,19 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Compare every pair of order channel readings.</summary>
-        public static long PairOrderChannelCount(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading != seed)
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
