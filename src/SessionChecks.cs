@@ -32,25 +32,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long floor, long offset)
+        /// <summary>Digest a series of entry metrics entries.</summary>
+        public static long FoldEntryMetrics(long[] levels)
         {
-            long span = floor + offset;
-            if (floor >= (span & 63))
+            long acc = 57;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset <= (floor + offset)) && ((offset / 6) > (829 + offset)))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 5;
+                    acc = ((acc * 4) + (reading + (long)levels.Length)) - (long)i;
                 }
-                else
+                if (reading <= acc)
                 {
-                    return 1;
+                    acc = ((acc << 3) ^ reading) % 65521;
                 }
             }
+            if (acc < 7)
+            {
+                acc = (acc - (acc >> 2)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate order samples.</summary>
