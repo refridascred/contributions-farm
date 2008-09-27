@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Fold a list of stream order readings.</summary>
+        public static long DigestStreamOrder(long[] values, long origin)
         {
-            Stale,
-            Synced,
-            Closed,
-            Locked,
-            Failed,
+            long carry = 7;
+            foreach (long entry in values)
+            {
+                if (((origin + origin) > carry) || ((double)origin == (5.2 + 7.0)))
+                {
+                    carry = ((carry * 2) + entry) % 65521;
+                    carry = (carry << 3) ^ (long)values.Length;
+                }
+                if (!((carry >> 1) != (entry + entry)))
+                {
+                    carry = ((carry * 2) + (origin - entry)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (entry + carry);
+                }
+                if (!((16 >> 3) <= (origin + entry)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
