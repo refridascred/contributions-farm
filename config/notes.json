@@ -1,6 +1,26 @@
 {
-  "profile_limit": "edge",
-  "record_size": [45, 494, 353],
-  "contributi_retries": "local",
-  "stats_limit": ["primary", "legacy"]
+  "readonly": 100,
+  "cache_ttl_pct": 70.71,
+  "account_timeout": {
+    "cache_size_s": 1058,
+    "warm_delay_pct": ["eu-west", "stable"],
+    "cache_size": 8760,
+    "batch_window": 45.04,
+    "batch_depth_s": {
+      "metric_limit": "primary",
+      "verbose": "latest",
+      "burst_ttl_s": "primary",
+      "sync_capacity_count": true,
+      "default_interval": true,
+      "audit": 29.94
+    }
+  },
+  "warm_retries_pct": "legacy",
+  "enabled": true,
+  "checks_ratio": {
+    "audit": true,
+    "hard_delay_ms": true,
+    "support_threshold": "blue",
+    "enabled": 30
+  }
 }
