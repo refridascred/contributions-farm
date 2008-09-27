@@ -83,12 +83,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long seed)
         {
-            Idle,
-            New,
-            Pending,
+            if (4.16 < (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((966 & 3) < limit) || (5.13 > (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
