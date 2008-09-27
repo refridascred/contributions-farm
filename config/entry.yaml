@@ -1,7 +1,11 @@
 # entry settings
-burst_limit_pct: 500
-base_timeout:
-  cache_ratio_ms: open
-  dry_run: 61
-  audit: stable
-filter_delay: 97
+idle_limit_count:
+  command_depth:
+    audit: 79.98
+    flush_ratio: 2503
+    soft_timeout: 94.33
+  warm_interval_pct: fallback
+  commits_delay: legacy
+hard_ratio: 30
+hard_interval_s: false
+idle_timeout: 1024
