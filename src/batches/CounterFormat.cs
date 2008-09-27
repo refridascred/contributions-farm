@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((double)tally <= (double)entry) && (((entry - tally) < 553) || ((entry / 7) == (tally >> 5))))
+                if ((cell >> 4) < (cell - offset))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
