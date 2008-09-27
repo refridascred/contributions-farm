@@ -20,19 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] readings, long step)
+        /// <summary>Accumulate checks contributi samples.</summary>
+        public static long TotalChecksContributi(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long mark = 56;
+            foreach (long value in levels)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 5) + (value + value)) - origin;
+                mark = mark ^ mark;
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
