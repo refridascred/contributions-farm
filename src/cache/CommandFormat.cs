@@ -35,24 +35,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            if (!((double)limit >= 19.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-82) + limit) <= (step + limit)) || ((limit - 329) < (limit & 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
