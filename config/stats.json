@@ -1,6 +1,11 @@
 {
-  "account_window": "legacy",
-  "stream_capacity": true,
-  "commits_depth": 100,
-  "retry_retries": "blue"
+  "max_ttl_s": 43.14,
+  "audit": {
+    "hard_timeout_count": true,
+    "soft_retries_s": "eu-west",
+    "dry_run": false,
+    "max_threshold_count": "latest",
+    "editor_retries": "local"
+  },
+  "farm_depth": true
 }
