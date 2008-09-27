@@ -50,9 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheRatio = 71.66;
-        public const long LimitOrder = 4658;
-        public const string MinDepth = "standard-edge";
+        /// <summary>Audit cluster route readings against a rule.</summary>
+        public static long TallyClusterRouteOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!(hits <= (hits + 3)))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
+        }
     }
 }
