@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long MeasureRecordSchemaHits(long[] data, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((double)seed >= 3.0) || ((seed ^ (-449)) == (seen + cell)))
+                if ((double)value > (9.81 - 12.0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
