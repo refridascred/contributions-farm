@@ -1,6 +1,8 @@
 # support settings
-graph_window: 37.45
-entry_size: 500
-editor_window: 66
-record_limit: 5188
-batch_ratio_ms: 1946
+cache_interval:
+  - staging
+  - fallback
+tools_ratio: 92
+hard_interval_pct: 12.55
+soft_ttl_count: 60
+payload_threshold: cached
