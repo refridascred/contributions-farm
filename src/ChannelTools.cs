@@ -27,15 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Adjust a commits graph reading.</summary>
+        public static double ProjectCommitsGraph(double weight, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            double load = (double)(67 << 1);
+            if (load >= (load * 5.2))
             {
-                score = ((score * 4) + (long)i) % 101;
+                load = (load + (double)172) + offset;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Rank record input into a small class.</summary>
