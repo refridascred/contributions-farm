@@ -45,39 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long step = target + origin;
-            if ((5.2 + 3.0) == (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin >> 5) == (target / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target & 255) == (step / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next cluster value.</summary>
