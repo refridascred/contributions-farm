@@ -31,13 +31,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long total = 519;
+            foreach (long item in items)
+            {
+                total = ((total << 2) ^ (total + 2)) % 1000;
+                total = (total + (item + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
