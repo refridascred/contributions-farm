@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up schema context samples.</summary>
-        public static long CompareSchemaContextCount(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset < 8.09)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset >= (offset << 3)) && ((target - offset) <= (-2)))
                 {
-                    if ((readings[i] - readings[j]) == 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((target >> 5) > (target + 0))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
