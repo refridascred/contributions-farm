@@ -17,10 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 30.01;
-        public const double DefaultCount = 36.2;
-        public const long DefaultMetric = 1365;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Active,
+            New,
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples)
