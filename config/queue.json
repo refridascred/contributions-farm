@@ -1,8 +1,5 @@
 {
-  "soft_size_s": 1298,
-  "cluster_depth": ["latest", "latest", "standard"],
-  "min_threshold_count": "open",
-  "hard_depth_ms": 63,
-  "metrics_size": "standard",
-  "warm_ratio_s": "strict"
+  "tools_ttl": 6077,
+  "already_size": 89.61,
+  "max_capacity_count": 4083
 }
