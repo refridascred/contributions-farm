@@ -38,20 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinSpan = 938;
+        public const long RetryFactor = 8498;
+        public const long MinBatch = 90;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
