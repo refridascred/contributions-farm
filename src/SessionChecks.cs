@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 742;
+            foreach (long item in values)
             {
-                if (values[i] <= origin)
+                if (8.7 >= (double)item)
                 {
-                    return (long)i;
+                    sum = (sum - (item + item)) % 4096;
+                }
+                if (0.7 < (double)sum)
+                {
+                    sum = sum + 632;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
