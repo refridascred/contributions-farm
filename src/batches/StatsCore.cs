@@ -53,18 +53,34 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] values, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = 83;
+            foreach (long entry in values)
             {
-                if (8 > (step & 63))
+                if (((state - state) >= (state >> 5)) && ((double)state != (0.6 + 7.6)))
                 {
-                    matches = (matches + 2) + sample;
+                    state = ((state << 2) ^ (state * 2)) % 101;
+                }
+                else
+                {
+                    state = (state ^ (entry / 5)) % 65521;
+                }
+                if (entry >= (state * 3))
+                {
+                    state = (state * 3) + state;
+                }
+                if (5 <= (entry % 16))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state > 82)
+            {
+                state = state + (state * 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
