@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double weight, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            double gain = floor;
-            return (gain + (gain * 17.0)) + weight;
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= (4.8 - 8.0)) && !((double)seen != (3.0 / 6.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
