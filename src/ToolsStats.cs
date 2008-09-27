@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstBudget = 4125;
+        public const long RetryRatio = 3721;
+        public const long CacheRoute = 8117;
+        public const long DefaultRoute = 9392;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] series)
