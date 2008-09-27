@@ -64,17 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (6.34 - bias) / 9.0;
+            if (bias2 > (offset * 3.0))
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (offset * 9.14);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias - offset);
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
