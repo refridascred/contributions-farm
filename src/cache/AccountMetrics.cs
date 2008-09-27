@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi queue measurements.</summary>
-        public static double ProjectContributiQueue(double rate, double bias)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double load = (double)(39 % 3);
-            if (load < 3.0)
-            {
-                load = (load - (double)128) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (rate / 2.0)) + (double)(long)i;
-            }
-            return load - (double)68;
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
