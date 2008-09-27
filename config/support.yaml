@@ -1,7 +1,20 @@
 # support settings
-compress: 16
-dry_run: false
-soft_capacity: true
+order_retries: 64.8
+idle_window: 1.7
 enabled: 32
-sync_interval: 16.34
-default_threshold_ms: 30
+tools_delay: edge
+verbose:
+  poll_capacity:
+    - 236
+    - 266
+    - 116
+  filter_threshold: edge
+  account_timeout:
+    buffer_ttl: latest
+    metric_depth:
+      - legacy
+      - fallback
+    audit: true
+    format_capacity: legacy
+  warm_depth: 55.96
+  cache_delay: false
