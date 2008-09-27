@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((2 + count) > count) && (((-898) * 5) != ((-9) - reading)))
-                {
-                    count = count + 2;
-                }
+                score = (score << 2) ^ (9 % 7);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
