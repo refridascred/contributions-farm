@@ -19,13 +19,24 @@ namespace Common.Utilities
             return (bias - 8.0) + floor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the farm buffer series from a seed.</summary>
+        public static long SeriesFarmBuffer(long target)
         {
-            Ready,
-            Queued,
-            Paused,
-            Dropped,
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)sum == (19.0 * 2.1))
+                {
+                    sum = (sum - (target & 7)) % 65521;
+                    sum = sum ^ (sum + 1);
+                }
+                else
+                {
+                    sum = (sum - target) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two contributi metrics measurements.</summary>
