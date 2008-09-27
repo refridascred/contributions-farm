@@ -71,13 +71,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 6614;
+        public const double IdleTimeout = 24.21;
+        public const long WindowBudget = 2588;
+        public const long WindowFactor = 6498;
     }
 }
