@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            long state = 119;
-            foreach (long datum in values)
+            long total = 94;
+            foreach (long entry in items)
             {
-                if (((state ^ datum) == (datum + offset)) || ((datum % 64) < (datum - state)))
+                if ((72 <= total) || (((long)items.Length + entry) > total))
                 {
-                    state = (state << 2) ^ state;
+                    total = ((total * 2) + (entry - 68)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (total << 3)) % 101;
                 }
             }
-            if (state > 1)
-            {
-                state = (state + offset) % 101;
-            }
-            return state % 1000;
+            return total % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
