@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "standard-v2";
-        public const long BaseBudget = 552;
-        public const long MinEntry = 5970;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count - count) == (count * 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
