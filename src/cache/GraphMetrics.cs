@@ -37,13 +37,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitFactor = 1862;
+        public const long WindowScore = 4586;
+        public const double RetrySupport = 63.93;
 
         /// <summary>Rank layout batch input into a small class.</summary>
         public static long SortLayoutBatch(long offset, long offset2)
