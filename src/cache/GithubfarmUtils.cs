@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool GuardChecksReportLimits(long[] series, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
