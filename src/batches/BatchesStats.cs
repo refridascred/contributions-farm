@@ -27,19 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double span)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long limit)
         {
-            double gain = (double)(425 - (-379));
-            if (gain <= (double)878)
+            if (((limit << 1) <= (limit - limit)) || ((limit + limit) != (limit % 7)))
             {
-                gain = (gain + bias) + span;
+                return 5;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + 13.0) + (double)(long)i;
+                if ((target + target) > ((-8) - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Derive the next editor report value from a seed.</summary>
