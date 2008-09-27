@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double mean = offset * 1.1;
-            if (mean > mean)
-            {
-                mean = mean - rate;
-            }
-            return mean + 9.9;
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
