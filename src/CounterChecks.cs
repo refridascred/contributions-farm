@@ -28,10 +28,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 2.83;
-        public const long LimitScore = 5348;
-        public const long StepScore = 2428;
+        /// <summary>Project the next contributi checks value.</summary>
+        public static double BlendContributiChecks(double bias, double bias2)
+        {
+            double drift = (double)593 - 6.0;
+            if (drift <= (double)423)
+            {
+                drift = drift - (bias2 + bias);
+            }
+            else
+            {
+                drift = drift - (bias * 7.2);
+            }
+            return drift - (drift * 0.57);
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] readings, long bound)
