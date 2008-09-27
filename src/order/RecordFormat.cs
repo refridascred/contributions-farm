@@ -46,17 +46,9 @@ namespace Common.Utilities
         public const string HardMetric = "legacy-edge";
         public const long StepMetric = 4887;
 
-        /// <summary>Find the first notes window entry that matches the target.</summary>
-        public static long LocateNotesWindowIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 174;
+        public const long IdleScore = 5626;
+        public const long MaxScore = 2706;
     }
 }
