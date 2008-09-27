@@ -20,10 +20,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSpan = 1094;
-        public const long MinCommand = 7556;
-        public const long BaseSize = 213;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long bound, long target)
+        {
+            long slot = bound - target;
+            if ((slot >= (4 - bound)) || ((double)bound == (5.9 + 15.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)slot > (3.48 + 3.5)) && ((double)target <= 3.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot & 1) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstGraph = 8178;
