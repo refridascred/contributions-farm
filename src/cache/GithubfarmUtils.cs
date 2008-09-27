@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 2632;
+        public const double StepSession = 41.85;
+        public const long BaseSession = 9471;
+        public const long IdleDepth = 9078;
+        public const double SoftSession = 24.3;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] readings)
