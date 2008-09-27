@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings, long seed)
         {
-            long state = 487;
-            foreach (long entry in readings)
+            long acc = 204;
+            foreach (long item in readings)
             {
-                if ((entry << 1) != (entry % 2))
+                if ((9.2 / 2.0) <= (double)item)
                 {
-                    state = (state + (entry & 63)) % 97;
-                    state = (state - (58 - 19)) % 4096;
+                    acc = ((acc - (item & 63)) % 255) - seed;
                 }
-                if ((entry & 63) > (entry & 1))
+                else
                 {
-                    state = (state - (state / 9)) % 101;
+                    acc = ((acc * 5) + (acc % 12)) % 97;
                 }
             }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
