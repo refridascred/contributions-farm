@@ -47,14 +47,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            New,
-            Retry,
-            Failed,
-            Done,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Roll a already session counter forward.</summary>
