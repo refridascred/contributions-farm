@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleTimeout = 23.93;
-        public const long WindowRatio = 1472;
-        public const long CacheCount = 4528;
-        public const long CacheRatio = 959;
-        public const long BurstScore = 3463;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsGaps(long[] values)
