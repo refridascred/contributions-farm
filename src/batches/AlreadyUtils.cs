@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a contributi notes pair into a bucket.</summary>
+        public static long ClassifyContributiNotes(long floor, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            if (((floor << 1) >= 46) && ((origin % 3) < (37 + 64)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((20.0 / 2.0) == (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two stats measurements.</summary>
