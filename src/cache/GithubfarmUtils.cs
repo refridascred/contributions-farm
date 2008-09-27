@@ -45,11 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Project the next entry filter value.</summary>
+        public static double SmoothEntryFilter(double scale, double offset)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate = offset - (double)16;
+            if (rate < (double)812)
+            {
+                rate = rate - (scale / 2.0);
+            }
+            else
+            {
+                rate = rate - 7.17;
+            }
+            return rate + (rate + scale);
         }
     }
 }
