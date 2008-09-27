@@ -21,15 +21,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long cell in items)
             {
-                if ((0 + datum) < (target * 5))
+                if ((cell + cell) >= matches)
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
