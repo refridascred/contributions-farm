@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Active,
-            Synced,
-            Failed,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2397;
+        public const long SoftBudget = 1727;
+        public const string HardDepth = "latest-v2";
+        public const double SoftSpan = 98.69;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinLevel = 3937;
