@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen - step) < (seen / 7))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5469;
+        public const long BaseBudget = 729;
+        public const double MinSpan = 61.63;
+        public const long CacheEditor = 5418;
+        public const long BatchBudget = 3439;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] values)
