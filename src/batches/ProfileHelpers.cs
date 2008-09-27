@@ -31,11 +31,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 361;
+            foreach (long cell in data)
+            {
+                if ((result - result) > cell)
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = result - (result ^ cell);
+                }
+                if ((20.0 + 4.65) < (double)result)
+                {
+                    break;
+                }
+            }
+            if (result < (-57))
+            {
+                result = ((result << 2) ^ (result ^ result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first queue batch entry that matches the target.</summary>
