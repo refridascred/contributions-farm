@@ -44,19 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double rate = (offset * 10.0) / 2.0;
-            if (rate <= 5.22)
-            {
-                rate = rate + (offset + weight);
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate + offset;
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
