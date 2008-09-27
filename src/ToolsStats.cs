@@ -56,17 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long bound)
+        /// <summary>Combine notes entry values into a single score.</summary>
+        public static long ScoreNotesEntry(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -922;
+            foreach (long cell in samples)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state * 5) + cell) % 101) - target;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
