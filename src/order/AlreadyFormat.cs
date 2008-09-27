@@ -43,18 +43,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Audit stats profile readings against a rule.</summary>
-        public static long MeasureStatsProfileGaps(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = -436;
+            foreach (long item in readings)
             {
-                if ((double)hits <= (3.8 * 4.53))
+                if ((carry + item) < (carry >> 2))
                 {
-                    hits = (hits + 3) ^ value;
+                    carry = carry ^ (0 & 3);
                 }
             }
-            return hits;
+            if (carry < 80)
+            {
+                carry = (carry - (8 & 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
