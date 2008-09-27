@@ -69,14 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Done,
-            Synced,
-            Paused,
-            Closed,
-            Locked,
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
