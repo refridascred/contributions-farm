@@ -55,12 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long MeasureNotesChannelGaps(long[] readings)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((matches & 127) > reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
