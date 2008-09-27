@@ -51,15 +51,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long score = 355;
-            foreach (long value in levels)
+            long acc = 52;
+            foreach (long sample in data)
             {
-                score = ((score - score) % 4096) - value;
+                acc = ((acc ^ acc) % 101) ^ sample;
             }
-            return score;
+            if (acc > (-657))
+            {
+                acc = (acc - ((-80) * 4)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm profile readings.</summary>
