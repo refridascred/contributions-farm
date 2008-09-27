@@ -33,20 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window stream counter forward.</summary>
-        public static long StepWindowStream(long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset >> 4) <= (sum + sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 5) + (offset ^ (long)i)) % 101;
-                    continue;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
