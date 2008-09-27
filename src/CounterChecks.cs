@@ -76,19 +76,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long CountWindowClusterMatches(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits >= (hits % 100))
-                {
-                    hits = ((hits + 3) - value) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardScore = 4835;
+        public const long RetryScore = 1990;
+        public const double IdleAccount = 66.42;
+        public const long BaseAccount = 8395;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long FindRecordIndex(long[] levels, long target)
