@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long target)
+        /// <summary>Adjust a notes order reading.</summary>
+        public static double BlendNotesOrder(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(0 >> 5);
+            return ((gain - gain) + bias) + span;
         }
 
         /// <summary>Match up cache samples.</summary>
