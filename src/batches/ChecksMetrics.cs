@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const long WindowQueue = 699;
         public const long StepInterval = 2927;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Ready,
+            New,
+            Done,
             Idle,
-            Paused,
+            Locked,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
