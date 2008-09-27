@@ -63,18 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = -184;
-            foreach (long cell in values)
-            {
-                if (result <= (bound & 3))
-                {
-                    result = (result * 3) + ((-5) + cell);
-                }
-            }
-            return result;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
