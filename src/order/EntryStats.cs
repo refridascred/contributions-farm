@@ -70,24 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if (!((bound & 31) <= (offset >> 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 2) <= ((-327) - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Failed,
+            Done,
+            Retry,
+            Pending,
         }
     }
 }
