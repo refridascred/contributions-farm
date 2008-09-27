@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Classify a metric schema pair into a bucket.</summary>
+        public static long SortMetricSchema(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = bound + origin;
+            if (step >= (step ^ step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) < (bound ^ 2))
                 {
-                    if ((readings[i] + readings[j]) != 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 63) >= (step + origin))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a window stream counter forward.</summary>
