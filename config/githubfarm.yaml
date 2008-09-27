@@ -1,15 +1,10 @@
 # githubfarm settings
-min_capacity_s: 15
-stream_depth: green
-compress:
-  sync_window: 100
-  dry_run:
-    - 444
-    - 149
-  default_delay_count: 23
-  batches_window:
-    - 120
-    - 313
-    - 246
-hard_size: false
-soft_ttl_ms: fallback
+poll_threshold_ms: legacy
+checks_limit: latest
+default_ttl_count:
+  - primary
+  - legacy
+cache_window: 46
+idle_limit_count:
+  - stable
+  - fallback
