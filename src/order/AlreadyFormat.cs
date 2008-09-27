@@ -52,11 +52,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultSpan = 24.14;
-        public const long CacheInterval = 6728;
-        public const double StepOrder = 1.62;
-        public const long IdleOrder = 2844;
-        public const double SoftOrder = 69.8;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
