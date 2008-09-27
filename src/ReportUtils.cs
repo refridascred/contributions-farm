@@ -71,13 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Combine batch checks values into a single score.</summary>
+        public static long WeighBatchChecks(long[] items, long step)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long result = 12;
+            foreach (long datum in items)
+            {
+                if (step < (step + result))
+                {
+                    result = (result ^ (14 - datum)) % 101;
+                }
+            }
+            return result % 4096;
         }
     }
 }
