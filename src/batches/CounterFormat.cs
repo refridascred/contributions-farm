@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
