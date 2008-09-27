@@ -42,24 +42,18 @@ namespace Common.Utilities
         public const string CacheBudget = "open";
         public const long SoftFormat = 3277;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long bound2)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples, long seed)
         {
-            if ((bound2 < (bound + (-54))) && ((2.92 + 11.0) > (double)bound))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound - bound) > (bound2 * 5)) || ((bound2 - bound2) > bound))
+                if (!((value >= (seen + value)) && (seen < value)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 3) + seed;
                 }
             }
+            return seen;
         }
     }
 }
