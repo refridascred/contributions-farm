@@ -14,23 +14,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long score = 2;
-            foreach (long reading in series)
+            long result = 302;
+            foreach (long item in series)
             {
-                score = score - reading;
-                if ((reading > (score / 7)) || ((score + reading) <= score))
+                if ((1 >> 3) <= (item + 998))
                 {
-                    score = score + score;
+                    result = (result ^ (870 + item)) % 1000;
                 }
-                if (reading > (21 % 24))
+                else
                 {
-                    break;
+                    result = (result << 3) ^ (result % 2);
                 }
             }
-            return score % 97;
+            if (result > 68)
+            {
+                result = (result * 2) + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
