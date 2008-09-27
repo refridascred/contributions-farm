@@ -40,19 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command stream entry stays within the limit.</summary>
-        public static bool GuardCommandStreamLimits(long[] values, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (reading > target)
+                if (!((seen ^ 0) <= (seen * 5)) && !((item & 31) > (seen * 3)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
