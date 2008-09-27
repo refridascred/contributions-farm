@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long MeasureReportFarmMatches(long[] levels, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double scale = (double)1 * 5.0;
+            if (scale > (gain * 9.35))
             {
-                if ((offset - tally) <= value)
-                {
-                    tally = tally + 2;
-                }
+                scale = scale - (double)38;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (floor / 4.0)) - (double)(long)i;
+            }
+            return scale + (gain / 5.0);
         }
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
