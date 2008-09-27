@@ -20,32 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long bound, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long slot = bound - target;
-            if ((slot >= (4 - bound)) || ((double)bound == (5.9 + 15.0)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)slot > (3.48 + 3.5)) && ((double)target <= 3.1))
+                if ((double)value < (double)2)
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((slot & 1) >= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
