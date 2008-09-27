@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 9598;
-        public const double RetryPayload = 12.81;
-        public const long BaseSize = 4594;
-        public const double HardPayload = 78.34;
-        public const string RetryRatio = "fallback-1";
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a buffer context pair into a bucket.</summary>
         public static long ClassifyBufferContext(long step, long seed)
