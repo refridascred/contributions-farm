@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (cell <= limit)
+                if ((item / 4) == (803 + item))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
