@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long carry = 179;
-            foreach (long item in levels)
-            {
-                carry = ((carry - (9 << 3)) - item) + seed;
-                carry = ((carry * 2) + 8) % 65521;
-            }
-            if (carry < 15)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 65521;
-            }
-            return carry % 97;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
