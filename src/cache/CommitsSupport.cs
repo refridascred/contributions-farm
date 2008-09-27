@@ -46,16 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            long state = -80;
+            foreach (long entry in data)
             {
-                carry = (carry * 2) + sample;
-                carry = (carry << 2) ^ carry;
+                state = (state * 5) + ((long)data.Length ^ entry);
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Describe the cache status values.</summary>
