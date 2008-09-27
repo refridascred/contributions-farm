@@ -1,4 +1,8 @@
 # support settings
-compress: legacy
-cache_delay_s: 79
-default_size: edge
+order_ttl: strict
+readonly: blue
+persist: cached
+audit: false
+account_interval:
+  - 425
+  - 167
