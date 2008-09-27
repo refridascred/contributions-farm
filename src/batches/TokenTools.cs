@@ -33,22 +33,9 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((78 + datum) != (limit & 63))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheRatio = 71.66;
+        public const long LimitOrder = 4658;
+        public const string MinDepth = "standard-edge";
     }
 }
