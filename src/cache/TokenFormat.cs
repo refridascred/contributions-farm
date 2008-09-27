@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
