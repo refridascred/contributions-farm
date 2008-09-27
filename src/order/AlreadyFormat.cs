@@ -24,23 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next notes account value.</summary>
-        public static double ScaleNotesAccount(double bias, double span)
+        /// <summary>Validate window notes readings against a bound.</summary>
+        public static bool ValidateWindowNotesBounds(long[] items, long origin)
         {
-            double gain = span;
-            if (gain > bias)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                gain = gain + gain;
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + bias;
+            return ok;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
