@@ -20,13 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] readings, long step)
         {
             bool valid = true;
-            foreach (long entry in series)
+            foreach (long entry in readings)
             {
-                if (entry > target)
+                if (entry <= step)
                 {
                     valid = false;
                     break;
