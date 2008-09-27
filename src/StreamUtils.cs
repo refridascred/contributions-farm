@@ -44,18 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((1.51 - 8.64) < (double)seen)
+                if ((2.17 + 6.0) <= (double)reading)
                 {
-                    seen = (seen + 1) - entry;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
