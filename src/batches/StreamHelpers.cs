@@ -35,22 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = 70;
-            foreach (long item in items)
-            {
-                if (item <= (step >> 1))
-                {
-                    mark = (mark + 21) % 4096;
-                }
-            }
-            if (mark < 810)
-            {
-                mark = ((mark << 2) ^ (step / 7)) % 65521;
-            }
-            return mark;
+            Stale,
+            New,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
