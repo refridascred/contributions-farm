@@ -66,18 +66,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout session samples.</summary>
-        public static long CombineLayoutSession(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            long anchor = 18;
-            foreach (long datum in values)
+            double rate = (offset * 10.0) / 2.0;
+            if (rate <= 5.22)
             {
-                if ((anchor + datum) < (anchor + anchor))
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 1000;
-                }
+                rate = rate + (offset + weight);
             }
-            return anchor;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate + offset;
         }
 
         /// <summary>Look up the position of a cache already sample.</summary>
