@@ -52,11 +52,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            New,
+            Failed,
+            Ready,
         }
     }
 }
