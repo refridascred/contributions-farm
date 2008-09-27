@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long BaseLevel = 3161;
         public const long MaxAccount = 5415;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings)
-        {
-            long mix = 9;
-            foreach (long cell in readings)
-            {
-                if ((cell + mix) > (mix % 16))
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheFactor = 94;
+        public const double SoftMetric = 38.73;
+        public const long CacheMetric = 2295;
+        public const string HardMetric = "legacy-edge";
+        public const long StepMetric = 4887;
 
         /// <summary>Find the first notes window entry that matches the target.</summary>
         public static long LocateNotesWindowIndex(long[] levels, long offset)
