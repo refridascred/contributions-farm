@@ -54,12 +54,31 @@ namespace Common.Utilities
         public const double SoftTimeout = 84.47;
         public const string BurstChannel = "stable-edge";
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long origin2)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            if (origin2 < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin2 - 52) < (origin * 4)) && ((origin % 12) != (origin2 / 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 3) >= (origin2 / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
