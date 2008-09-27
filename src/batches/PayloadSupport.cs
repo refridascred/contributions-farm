@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 732;
         public const string MinRecord = "latest-1";
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] readings, long origin)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Synced,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
