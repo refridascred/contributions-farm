@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long result = 89;
-            foreach (long value in data)
-            {
-                if (((double)limit > (6.06 / 4.0)) || ((708 * 4) > limit))
-                {
-                    result = ((result ^ 3) % 97) - value;
-                }
-            }
-            return result % 1000;
+            New,
+            Failed,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up payload samples.</summary>
