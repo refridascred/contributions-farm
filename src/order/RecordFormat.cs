@@ -33,22 +33,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count >> 1) < ((long)items.Length & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first notes window entry that matches the target.</summary>
