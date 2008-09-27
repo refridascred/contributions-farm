@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftRatio = 3340;
-        public const long WindowCounter = 5978;
-        public const long BatchCounter = 3436;
-        public const string StepBudget = "strict-v2";
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Paused,
+            Dropped,
+            New,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
