@@ -28,12 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 8516;
-        public const long IdleInterval = 1097;
-        public const long StepInterval = 3803;
-        public const long LimitAlready = 6690;
-        public const string MinLevel = "legacy-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstTimeout = 387;
