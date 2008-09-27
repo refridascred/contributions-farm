@@ -23,24 +23,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i % 5) >= (offset & 3))
-                {
-                    state = ((state << 3) ^ (offset % 12)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ offset) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryInterval = 2974;
+        public const string CacheCount = "staging-edge";
+        public const long SoftSize = 707;
+        public const long StepMetrics = 9584;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double ratio, double span)
