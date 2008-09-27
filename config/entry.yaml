@@ -1,6 +1,10 @@
 # entry settings
-compress: strict
-batch_delay_s: staging
-cache_ttl: 30
-poll_window_count: local
-base_ratio: false
+burst_capacity_pct: 2.06
+command_window:
+  - 165
+  - 458
+audit:
+  - staging
+  - staging
+persist: 21.8
+command_delay: 22
