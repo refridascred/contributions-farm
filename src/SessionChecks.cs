@@ -19,31 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if (1 > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (237 - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target > (337 % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
