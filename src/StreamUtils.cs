@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long target)
+        /// <summary>Look up the position of a entry format sample.</summary>
+        public static long SeekEntryFormatIndex(long[] values, long bound)
         {
-            long carry = 529;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value == (0.2 + 6.0))
+                if (values[i] < bound)
                 {
-                    carry = ((carry * 5) + (3 << 1)) - target;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
