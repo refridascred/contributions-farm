@@ -21,10 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultTimeout = "primary-v2";
-        public const string LimitTimeout = "latest";
-        public const double IdleRecord = 87.38;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Fold a list of record notes readings.</summary>
         public static long CombineRecordNotes(long[] values, long seed)
