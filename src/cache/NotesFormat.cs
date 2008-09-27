@@ -29,12 +29,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Pending,
-            Idle,
-            Ready,
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
