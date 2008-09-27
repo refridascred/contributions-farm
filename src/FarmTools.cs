@@ -33,14 +33,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            Locked,
-            Retry,
-            Stale,
-            Ready,
-            Pending,
+            double load = scale;
+            if (load <= (double)853)
+            {
+                load = load + floor;
+            }
+            return load + floor;
         }
     }
 }
