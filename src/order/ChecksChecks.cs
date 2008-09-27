@@ -16,10 +16,12 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 6839;
-        public const long LimitRecord = 2848;
-        public const double CacheRatio = 6.13;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheTimeout = 7248;
+        public const string StepLevel = "cached-1";
+        public const long BaseContext = 609;
+        public const long RetryTimeout = 9985;
+        public const long MinCount = 8816;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] series, long origin)
