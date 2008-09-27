@@ -57,31 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if (seed >= (seed + seed2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 < (69 + seed)) && ((double)seed2 <= (8.42 - 9.7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((-4) > seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
