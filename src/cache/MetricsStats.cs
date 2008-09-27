@@ -35,15 +35,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 8;
-            foreach (long cell in levels)
-            {
-                acc = ((acc * 2) + 907) - cell;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
