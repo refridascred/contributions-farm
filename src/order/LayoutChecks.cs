@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            Queued,
-            Draft,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!(((long)data.Length & 7) > datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
