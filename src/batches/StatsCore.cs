@@ -15,22 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long MeasureCommitsFarmHits(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((-1) < (seen ^ entry))
+                if (((double)hits < (9.3 + 8.0)) && (floor > (sample - floor)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
