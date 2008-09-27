@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Queued,
-            Locked,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 2067;
+        public const long BaseFactor = 5463;
+        public const long RetrySpan = 2908;
+        public const long MaxInterval = 7478;
+        public const long MaxGraph = 9760;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
