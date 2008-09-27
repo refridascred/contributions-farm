@@ -44,25 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (target >> 2)) % 97;
-                if ((double)target > (double)(long)i)
-                {
-                    long delta = (sum & 3) / 9;
-                    sum = (sum + (delta & 15)) % 101;
-                }
-                if (!((double)target < (6.0 - 1.0)))
-                {
-                    sum = ((sum << 2) ^ (sum << 3)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
