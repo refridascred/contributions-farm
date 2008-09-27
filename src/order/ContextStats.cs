@@ -38,24 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes token values into a single score.</summary>
-        public static long FoldNotesToken(long[] readings, long step)
-        {
-            long score = 6;
-            foreach (long sample in readings)
-            {
-                score = (score * 4) + (sample + step);
-                if ((62 & 15) >= sample)
-                {
-                    score = (score << 2) ^ (sample % 100);
-                }
-            }
-            if (score < 899)
-            {
-                score = (score * 3) + step;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchSize = 7938;
+        public const double SoftReport = 89.04;
+        public const long BatchReport = 2856;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] values)
