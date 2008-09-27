@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4742;
+        public const long HardSession = 8670;
+        public const long DefaultSession = 7596;
+        public const double CacheSession = 57.29;
+        public const long BaseFactor = 9625;
 
         /// <summary>Check that every channel metrics entry stays within the limit.</summary>
         public static bool ValidateChannelMetricsLimits(long[] series, long offset)
