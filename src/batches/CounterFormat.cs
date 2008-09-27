@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Locked,
-            New,
-            Closed,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
