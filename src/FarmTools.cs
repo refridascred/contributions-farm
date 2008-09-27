@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
