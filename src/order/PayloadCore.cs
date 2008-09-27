@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long WindowFilter = 3259;
         public const long CacheFilter = 7002;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] values, long limit)
+        /// <summary>Roll a window stream counter forward.</summary>
+        public static long StepWindowStream(long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < limit)
+                if ((offset >> 4) <= (sum + sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 5) + (offset ^ (long)i)) % 101;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a entry summary.</summary>
