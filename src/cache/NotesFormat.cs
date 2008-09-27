@@ -26,15 +26,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double ratio = gain;
-            if (ratio > 3.0)
-            {
-                ratio = (ratio - gain) - floor;
-            }
-            return ratio - ratio;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
