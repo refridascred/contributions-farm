@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((2.98 + 13.0) > (double)entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a route info.</summary>
