@@ -1,11 +1,11 @@
 # Command notes
 
-Run the support check before changing any support limits.
-When a stream fails, the githubfarm handler retries a few times before giving up.
-Keep layout and queue names short and lowercase.
+The account module keeps graph values in sync with the window cache.
+The support module keeps tools values in sync with the batch cache.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new layout fields
-- Log every session change
+- Log every metric change
+- Review metrics limits each release
+- Prefer metric defaults
