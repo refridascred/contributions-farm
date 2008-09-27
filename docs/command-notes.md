@@ -1,12 +1,12 @@
 # Command notes
 
-The checks report groups every payload by metrics.
-The farm module keeps cluster values in sync with the record cache.
-Use filter settings to tune how often command data is refreshed.
+Keep format and tools names short and lowercase.
+A cluster that stays idle for too long is moved to the githubfarm list.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every cluster change
-- Validate token input early
-- Document new record fields
+- Review context limits each release
+- Validate tools input early
+- Log every metric change
+- Document new metric fields
