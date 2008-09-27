@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many editor window samples are out of range.</summary>
-        public static long CountEditorWindowMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (0 > entry)
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "legacy";
+        public const double MinAlready = 47.37;
+        public const string WindowRatio = "open-1";
+        public const long LimitAlready = 4777;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long limit)
