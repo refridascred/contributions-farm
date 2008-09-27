@@ -1,10 +1,23 @@
 # support settings
-readonly:
-  - latest
-  - stable
-  - standard
-  - local
-warm_size_s: latest
-base_threshold_ms: 79.64
-persist: 59
-editor_depth: false
+persist: 1024
+burst_timeout: 90
+max_ratio_count: false
+account_capacity:
+  - 275
+  - 399
+dry_run:
+  batch_timeout:
+    - 467
+    - 413
+    - 279
+  warm_timeout_ms: 500
+  strict: 32.5
+  retry_depth_pct:
+    - legacy
+    - standard
+    - open
+    - standard
+  cache_size_pct:
+    - 352
+    - 154
+  verbose: 1.56
