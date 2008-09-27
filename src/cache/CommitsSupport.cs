@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total - (total + 306);
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
