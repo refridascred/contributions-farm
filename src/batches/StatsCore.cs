@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Done,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit commits farm readings against a rule.</summary>
