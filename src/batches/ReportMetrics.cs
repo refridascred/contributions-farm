@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] values, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor + (-282)) != (seen << 3))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
