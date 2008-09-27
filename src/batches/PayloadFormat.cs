@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel tools samples are out of range.</summary>
-        public static long TallyChannelToolsGaps(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits * 5) != ((-29) + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
