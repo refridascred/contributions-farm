@@ -1,12 +1,14 @@
 {
-  "max_size_s": false,
-  "base_size": {
-    "sync_threshold": "open",
-    "max_ttl_ms": ["standard", "local"],
-    "sync_limit": [430, 250],
-    "token_limit": [252, 217],
-    "stats_timeout": [296, 381],
-    "burst_threshold_s": 3028
+  "cluster_timeout": "fallback",
+  "session_delay": 30,
+  "retry_retries_pct": "primary",
+  "min_depth_count": {
+    "hard_interval_s": 62,
+    "base_size_count": 46.53,
+    "editor_threshold": 64.32,
+    "idle_retries": 12.04,
+    "idle_ttl_ms": 99,
+    "enabled": "eu-west"
   },
-  "warm_timeout_count": ["cached", "legacy"]
+  "warm_size_count": "open"
 }
