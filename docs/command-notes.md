@@ -1,12 +1,14 @@
 # Command notes
 
-Run the payload check before changing any editor limits.
-A filter that stays idle for too long is moved to the counter list.
-Each session is validated before it reaches the checks queue.
+The session helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the stats list.
+
+Each layout is validated before it reaches the schema queue.
+The layout report groups every githubfarm by order.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer channel defaults
-- Review profile limits each release
-- Keep commits values small
+- Prefer profile defaults
+- Keep stats values small
+- Validate record input early
+- Document new graph fields
