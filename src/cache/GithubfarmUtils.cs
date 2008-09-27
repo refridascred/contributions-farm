@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Done,
-            Failed,
-            Paused,
-            Locked,
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
