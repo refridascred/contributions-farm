@@ -37,19 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            if (869 < (floor - 7))
             {
-                if ((double)total <= (double)origin)
-                {
-                    total = (total << 3) ^ (origin - (long)i);
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((8 + offset) <= (floor ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
