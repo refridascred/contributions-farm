@@ -1,6 +1,15 @@
 {
-  "batch_limit_pct": "green",
-  "filter_capacity": 69.19,
-  "sync_interval_count": "local",
-  "retry_threshold_count": 23.9
+  "max_ratio_s": 62.15,
+  "dry_run": 4257,
+  "batch_size": {
+    "verbose": ["stable", "standard", "fallback"],
+    "flush_ratio_count": 57,
+    "hard_retries": 7157,
+    "idle_interval": 42.69,
+    "batch_retries": 2544,
+    "compress": 62.63
+  },
+  "base_window_ms": "cached",
+  "profile_interval": 29,
+  "cache_timeout_count": true
 }
