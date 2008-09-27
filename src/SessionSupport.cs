@@ -29,17 +29,31 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (step <= (origin + origin))
             {
-                if (values[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (!((step / 5) <= step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) <= (origin + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
