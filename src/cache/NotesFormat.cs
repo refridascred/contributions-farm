@@ -15,15 +15,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long delta = step - limit;
+            if ((limit < delta) && ((limit >> 2) <= limit))
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((limit >> 1) == (6 + delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= 15.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((delta - 48) != (step - limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools entry.</summary>
