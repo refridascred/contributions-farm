@@ -15,12 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long step)
         {
-            Locked,
-            Dropped,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
