@@ -16,12 +16,32 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank channel graph input into a small class.</summary>
+        public static long BucketChannelGraph(long offset, long limit)
         {
-            Pending,
-            Idle,
-            Active,
+            long span = offset ^ limit;
+            if (((double)span < 8.5) || (offset <= (63 & 15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((5.0 * 6.0) > (double)limit) || (offset < (span / 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset & 31) > (1 & 255)) || ((5.84 - 3.7) <= (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
