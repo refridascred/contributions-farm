@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits githubfarm readings against a bound.</summary>
-        public static bool ValidateCommitsGithubfarmLimits(long[] items, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (entry > offset)
+                if ((seen & 63) < seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) ^ sample) + target;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
