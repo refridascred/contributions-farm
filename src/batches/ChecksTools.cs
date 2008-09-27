@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long step)
+        /// <summary>Roll a account tools counter forward.</summary>
+        public static long RollAccountTools(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < step)
+                if (!((total + total) < step))
                 {
-                    return (long)i;
+                    total = (total ^ (8 - total)) % 97;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many commits payload samples are out of range.</summary>
