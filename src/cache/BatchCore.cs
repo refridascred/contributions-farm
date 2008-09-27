@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 72;
+            foreach (long datum in levels)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                if (((double)mark <= (double)9) && ((3.0 - 2.0) > (double)mark))
                 {
-                    return (long)i;
+                    mark = (mark ^ (long)levels.Length) + datum;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
