@@ -57,19 +57,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data, long offset)
         {
-            double gain2 = (double)(2 + (-22));
-            if (gain2 > (offset * 6.3))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                gain2 = gain2 + (gain2 * 4.4);
+                if (offset > (matches << 1))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain + gain);
-            }
-            return gain2 + offset;
+            return matches;
         }
 
         /// <summary>Hold a checks info.</summary>
