@@ -46,19 +46,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                mark = (((mark ^ (-83)) % 101) + cell) + floor;
-            }
-            if (mark > 22)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
