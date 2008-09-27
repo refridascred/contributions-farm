@@ -76,39 +76,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long floor)
+        /// <summary>Combine already token values into a single score.</summary>
+        public static long WeighAlreadyToken(long[] values, long seed)
         {
-            long next = seed ^ floor;
-            if ((21 >> 3) < (floor + seed))
+            long mark = 3;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next % 2) != (next * 2))
+                if (mark >= (mark * 5))
                 {
-                    return 8;
+                    mark = (mark + (cell - mark)) % 65521;
                 }
                 else
                 {
-                    if ((seed ^ floor) != (820 * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed - next) != (next + floor)) || ((8.45 / 7.0) <= 1.77))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = ((mark * 2) + (seed + mark)) % 101;
                 }
             }
+            return mark;
         }
     }
 }
