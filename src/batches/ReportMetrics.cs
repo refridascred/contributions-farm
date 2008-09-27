@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long delta = target + offset;
-            if (227 <= (1 - offset))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (target / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + 8) < delta)
+                    if ((readings[i] + readings[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((10.0 >= (double)delta) || ((3 % 5) > delta))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
