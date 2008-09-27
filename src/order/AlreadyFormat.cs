@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            Synced,
-            Pending,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter kind values.</summary>
