@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order session entries.</summary>
-        public static long TallyOrderSession(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long limit)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            long score = 104;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 2) + anchor) - datum;
+                score = (score * 2) + (limit + limit);
+                if (((reading << 3) > 2) && ((reading >> 3) <= (score - score)))
+                {
+                    score = ((score << 3) ^ (limit + reading)) % 97;
+                }
             }
-            if (anchor > 195)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Blend two command measurements.</summary>
