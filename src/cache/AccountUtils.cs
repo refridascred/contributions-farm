@@ -54,17 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "latest-1";
+        public const long StepInterval = 2540;
+        public const string IdleCount = "stable-edge";
+        public const long LimitFactor = 7831;
+        public const long BatchSpan = 3935;
     }
 }
