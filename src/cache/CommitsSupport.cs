@@ -17,10 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 24.48;
-        public const long RetryBuffer = 4078;
-        public const long BurstSize = 8666;
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool GuardWindowStatsRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
