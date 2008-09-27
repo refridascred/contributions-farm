@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batches stats entries that pass the check.</summary>
-        public static long MeasureBatchesStatsGaps(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)402 != (double)entry)
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5849;
+        public const long CacheScore = 7005;
+        public const long BaseCount = 1779;
+        public const string SoftSpan = "stable-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheTimeout = 9278;
