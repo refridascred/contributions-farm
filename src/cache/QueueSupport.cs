@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long TallyCounterBatches(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = 3;
-            foreach (long cell in levels)
-            {
-                mix = (mix + (mix % 5)) - cell;
-            }
-            return mix;
+            Active,
+            Synced,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
