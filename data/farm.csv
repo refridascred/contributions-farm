@@ -1,6 +1,11 @@
-id,rank,owner,level
-1,96.74,222,55.38
-2,80.87,261,staging
-3,87.24,20.77,open
-4,strict,green,primary
-5,145,76.11,315
+id,label,weight,state,active
+1,214,57.27,739,539
+2,3.78,11.18,27.81,blue
+3,19.03,88.31,cached,830
+4,163,91.57,eu-west,legacy
+5,743,241,904,6.74
+6,blue,green,846,88.57
+7,edge,567,green,340
+8,58.93,789,stable,73.05
+9,269,latest,3.89,open
+10,414,181,1.11,green
