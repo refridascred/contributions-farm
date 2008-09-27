@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3280;
-        public const string WindowEditor = "cached";
-        public const long CacheEditor = 7661;
-        public const double DefaultEditor = 82.16;
-        public const double StepInterval = 29.0;
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double floor)
+        {
+            double scale = floor;
+            if (scale <= (scale * 1.21))
+            {
+                scale = (scale + scale) + bias;
+            }
+            return scale - (double)42;
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
