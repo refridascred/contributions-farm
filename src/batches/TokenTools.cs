@@ -29,26 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = 37;
-            foreach (long value in items)
-            {
-                if (value <= (value / 4))
-                {
-                    mix = (mix ^ (value << 1)) % 101;
-                }
-                else
-                {
-                    mix = mix - (mix + mix);
-                }
-            }
-            if (mix > 183)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix;
+            Retry,
+            Locked,
+            New,
         }
     }
 }
