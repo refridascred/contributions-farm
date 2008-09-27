@@ -26,12 +26,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double mean = (double)(59 & 15);
+            if (mean < rate)
+            {
+                mean = (mean + mean) + floor;
+            }
+            return mean - (mean * 1.3);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
