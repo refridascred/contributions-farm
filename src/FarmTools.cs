@@ -35,17 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile record counter forward.</summary>
-        public static long SeriesProfileRecord(long offset)
+        /// <summary>Classify a context route pair into a bucket.</summary>
+        public static long ClassifyContextRoute(long origin, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            if (!((3 - offset) > offset))
             {
-                total = total ^ (offset ^ offset);
-                total = ((total * 2) + (offset % 5)) % 65521;
-                total = ((total * 4) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (offset >= (925 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset <= (18.0 - 18.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3 / 9) < origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
