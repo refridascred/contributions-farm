@@ -1,7 +1,5 @@
 {
-  "sync_capacity_pct": [449, 150],
-  "sync_window": 41.99,
-  "idle_ratio": ["edge", "primary", "eu-west", "open"],
-  "default_interval_pct": 54,
-  "metrics_interval": 25.21
+  "idle_depth_pct": 3072,
+  "order_limit": false,
+  "strict": ["blue", "green", "edge", "eu-west"]
 }
