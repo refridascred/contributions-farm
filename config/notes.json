@@ -1,5 +1,5 @@
 {
-  "poll_delay_count": 31.45,
-  "burst_interval_count": "eu-west",
-  "graph_threshold": 6429
+  "readonly": true,
+  "max_delay": 100,
+  "verbose": 9046
 }
