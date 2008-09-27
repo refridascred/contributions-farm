@@ -1,14 +1,15 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the layout queue.
+Keep stream and queue names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-A commits that stays idle for too long is moved to the format list.
-Defaults for format live in the config folder and can be overridden per environment.
+Run the filter check before changing any payload limits.
+A farm that stays idle for too long is moved to the stats list.
+Use context settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every cache change
-- Validate graph input early
-- Document new session fields
+- Log every entry change
+- Validate commits input early
+- Prefer session defaults
+- Keep tools values small
