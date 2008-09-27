@@ -1,6 +1,8 @@
 {
-  "poll_depth_pct": "standard",
-  "counter_delay": "open",
-  "command_retries": "cached",
-  "audit": 30
+  "max_threshold": ["open", "edge"],
+  "base_delay_ms": 97,
+  "batches_capacity": ["stable", "local"],
+  "audit": false,
+  "verbose": "staging",
+  "soft_ratio": false
 }
