@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
