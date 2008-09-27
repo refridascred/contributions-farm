@@ -21,21 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of githubfarm buffer readings.</summary>
-        public static long OverlapGithubfarmBufferCount(long[] samples)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
