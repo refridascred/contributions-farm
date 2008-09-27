@@ -14,18 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long TallyProfileSessionGaps(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((hits + 113) >= (hits + (long)items.Length)) && (hits > (428 / 8))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
