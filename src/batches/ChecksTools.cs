@@ -33,15 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long carry = 7;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (53 >> 4)) ^ item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
