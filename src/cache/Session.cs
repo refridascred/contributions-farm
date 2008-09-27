@@ -41,13 +41,31 @@ namespace Common.Utilities
         public const long MaxSpan = 9077;
         public const string DefaultFarm = "stable-1";
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long target)
         {
-            Failed,
-            Paused,
-            Locked,
-            Idle,
+            if (((9.5 + 6.08) <= (double)origin) && (7.7 > (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= 16.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - origin) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
