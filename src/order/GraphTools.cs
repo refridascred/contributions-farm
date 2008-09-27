@@ -45,11 +45,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7622;
-        public const double SoftOrder = 19.85;
-        public const double BaseScore = 7.28;
-        public const long StepOrder = 2564;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long origin)
+        {
+            long step = target + origin;
+            if ((5.2 + 3.0) == (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin >> 5) == (target / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target & 255) == (step / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double scale, double offset)
