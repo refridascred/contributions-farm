@@ -1,7 +1,8 @@
 {
-  "default_threshold_s": "open",
-  "metric_retries": "cached",
-  "metric_window": 37,
-  "batch_capacity": 16,
-  "base_threshold_pct": 78
+  "poll_limit": 3245,
+  "batch_delay_ms": "legacy",
+  "soft_ttl_pct": 1680,
+  "max_ratio": "legacy",
+  "burst_size_pct": true,
+  "strict": "edge"
 }
