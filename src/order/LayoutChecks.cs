@@ -29,13 +29,19 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] values)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Pending,
+            long acc = 7;
+            foreach (long sample in values)
+            {
+                acc = ((acc * 2) + (sample - sample)) % 4096;
+            }
+            if (acc > 366)
+            {
+                acc = (acc + (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
