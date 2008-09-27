@@ -45,39 +45,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a format report pair into a bucket.</summary>
-        public static long RankFormatReport(long offset, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long diff = offset + origin;
-            if (3 > (origin + diff))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 4) <= (origin + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (784 >= (origin + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin <= 2.16) || ((diff + offset) < (offset >> 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
