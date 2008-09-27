@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardTimeout = 4262;
-        public const long IdleCluster = 2145;
-        public const long BatchCluster = 7494;
-        public const string HardCluster = "primary-edge";
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long bound)
+        {
+            if ((double)step != (19.0 - 3.23))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + step) == (bound % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
