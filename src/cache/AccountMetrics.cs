@@ -14,11 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTimeout = "local-1";
-        public const long BurstTools = 881;
-        public const long StepTools = 9116;
-        public const long MinTools = 8942;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 9099;
+        public const long RetryScore = 6861;
+        public const string DefaultTimeout = "fallback-edge";
+        public const double MaxCount = 71.78;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
