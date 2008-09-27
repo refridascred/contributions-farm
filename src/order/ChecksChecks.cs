@@ -23,38 +23,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 9985;
         public const long MinCount = 8816;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long offset, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if (1.03 < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) < (offset / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step == (7.1 - 7.7)) && ((offset << 2) < 305))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((13.0 - 9.0) >= (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
