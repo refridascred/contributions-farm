@@ -32,23 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Compare every pair of metrics account readings.</summary>
+        public static long CompareMetricsAccountCount(long[] levels)
         {
-            long anchor = -6;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample / 7) < (186 >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + sample;
-                    anchor = (anchor + (sample + sample)) % 255;
-                }
-                if ((sample >> 2) <= (sample << 3))
-                {
-                    anchor = ((anchor * 3) + sample) % 97;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return seen;
         }
     }
 }
