@@ -34,19 +34,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((580 / 8) > matches)
-                {
-                    matches = ((matches + 3) ^ sample) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 3537;
+        public const long CacheChecks = 8415;
+        public const long DefaultChecks = 7896;
+        public const long LimitChecks = 8574;
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double gain, double bias)
