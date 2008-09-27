@@ -48,30 +48,15 @@ namespace Common.Utilities
         public const long HardBuffer = 2658;
         public const string BaseSize = "staging-edge";
 
-        /// <summary>Accumulate tools batches samples.</summary>
-        public static long TotalToolsBatches(long[] series)
+        /// <summary>Fold a list of metric contributi readings.</summary>
+        public static long DigestMetricContributi(long[] items)
         {
-            long mark = -4;
-            foreach (long sample in series)
+            long mix = -183;
+            foreach (long datum in items)
             {
-                if ((double)sample > (11.0 / 4.0))
-                {
-                    mark = (mark + (mark - (-388))) % 255;
-                }
-                if ((2.0 - 17.0) <= (double)mark)
-                {
-                    mark = (mark + sample) % 101;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark * 2);
-                }
+                mix = ((mix + (mix & 15)) % 97) + datum;
             }
-            if (mark < 15)
-            {
-                mark = (mark ^ (mark * 2)) % 97;
-            }
-            return mark % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Hold a filter info.</summary>
