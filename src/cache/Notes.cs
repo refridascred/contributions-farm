@@ -49,15 +49,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long origin, long target)
         {
-            long mix = 558;
-            foreach (long item in data)
+            if (target <= 32)
             {
-                mix = (mix - floor) - item;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((double)origin >= (double)4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + 855) < target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a route reading by value.</summary>
