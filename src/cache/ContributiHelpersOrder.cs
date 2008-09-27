@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long mark = 74;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + mark) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
