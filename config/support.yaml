@@ -1,15 +1,7 @@
 # support settings
-base_depth_ms:
-  cache_depth_s: 71.14
-  contributi_window: standard
-  strict: 5596
-  hard_ttl_s: stable
-  sync_delay: false
-  cache_size: legacy
-enabled: 44
-hard_ratio:
-  - 424
-  - 226
-  - 410
-  - 288
-flush_capacity_ms: 9127
+compress: 16
+dry_run: false
+soft_capacity: true
+enabled: 32
+sync_interval: 16.34
+default_threshold_ms: 30
