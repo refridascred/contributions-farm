@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long offset)
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long AuditGraphCommandGaps(long[] levels)
         {
-            long score = 48;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((score % 8) < (386 % 8))
+                if ((double)hits != (3.5 - 0.5))
                 {
-                    score = (((score << 3) ^ (score - 37)) % 101) - datum;
-                }
-                if (!((double)offset <= (double)score))
-                {
-                    break;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
