@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long CacheFilter = 7024;
         public const long WindowFactor = 3744;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long offset, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] data)
         {
-            if ((offset & 63) <= (offset + seed))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset == (3.6 / 8.0))
+                if ((value + value) != (732 / 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
