@@ -54,24 +54,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long origin)
+        /// <summary>Roll a already session counter forward.</summary>
+        public static long DeriveAlreadySession(long step)
         {
-            if ((((-35) % 7) < (origin << 1)) || ((origin - offset) < (offset & 7)))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 8) < offset)
+                if (step > mix)
                 {
-                    return 7;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    mix = (mix ^ 5) % 101;
                 }
+                if (step <= 974)
+                {
+                    mix = mix - step;
+                    mix = (mix ^ ((long)i + step)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
     }
 }
