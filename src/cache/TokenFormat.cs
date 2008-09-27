@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context batch samples.</summary>
-        public static long TallyContextBatch(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            long carry = 299;
-            foreach (long datum in levels)
+            double weight2 = (double)(202 * 3);
+            if (weight2 > (offset + offset))
             {
-                if ((carry + datum) < (carry >> 4))
-                {
-                    carry = ((carry << 3) ^ (carry >> 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
+                weight2 = weight2 - (weight / 7.0);
             }
-            return carry % 97;
+            else
+            {
+                weight2 = weight2 + (9.81 / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 - (5.0 * 1.34);
         }
 
         /// <summary>Look up the position of a record sample.</summary>
