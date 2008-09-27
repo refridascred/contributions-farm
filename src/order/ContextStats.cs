@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 1.51;
-        public const double WindowStream = 37.46;
-        public const string BatchCount = "stable";
-        public const long SoftFactor = 7655;
-        public const long DefaultSpan = 6529;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
         public static bool CheckNotesWindowLimits(long[] series, long offset)
