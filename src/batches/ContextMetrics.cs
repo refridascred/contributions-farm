@@ -37,21 +37,19 @@ namespace Common.Utilities
             return gain - (1.7 - offset);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Validate layout context readings against a bound.</summary>
+        public static bool GuardLayoutContextLimits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a entry header.</summary>
