@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = 402;
+            foreach (long reading in data)
             {
-                mix = (mix * 2) + (floor * 2);
-                mix = (mix ^ (floor + (long)i)) % 4096;
-                mix = ((mix << 2) ^ ((long)i * 5)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((reading & 7) >= (reading * 3))
+                {
+                    mark = (mark * 3) + floor;
+                }
+                mark = (mark + floor) % 4096;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the payload state values.</summary>
