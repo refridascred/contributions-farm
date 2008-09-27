@@ -68,12 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool VerifyBufferChannelBounds(long[] levels, long limit)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
