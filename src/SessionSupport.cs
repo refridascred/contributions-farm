@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Draft,
-            Done,
-            Idle,
-            Paused,
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
