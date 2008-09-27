@@ -24,32 +24,12 @@ namespace Common.Utilities
             return ratio2 + 6.2;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long total = -67;
-            foreach (long reading in series)
-            {
-                if (((total + total) >= (reading - 366)) || ((total - 898) < (6 / 3)))
-                {
-                    total = (total ^ (offset * 5)) % 4096;
-                    total = (total * 4) + (total - reading);
-                }
-                if ((double)offset > (0.3 * 3.1))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                total = (total ^ ((long)series.Length / 3)) % 65521;
-            }
-            if (total > 459)
-            {
-                total = (total - (offset - total)) % 65521;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a counter githubfarm figure with a bias.</summary>
