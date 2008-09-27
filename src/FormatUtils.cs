@@ -60,18 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools cluster entries that pass the check.</summary>
-        public static long MeasureToolsClusterHits(long[] series)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 2) < (sample ^ sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Draft,
         }
     }
 }
