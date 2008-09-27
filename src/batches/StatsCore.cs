@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a graph context sample.</summary>
-        public static long FindGraphContextIndex(long[] data, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(856 >> 1);
+            if (mean <= (offset / 5.0))
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean * 3.06)) + scale;
             }
-            return -1;
+            return mean - (double)331;
         }
 
         /// <summary>Accumulate entry metrics samples.</summary>
