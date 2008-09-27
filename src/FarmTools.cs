@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            long score = 2;
+            foreach (long reading in series)
+            {
+                score = score - reading;
+                if ((reading > (score / 7)) || ((score + reading) <= score))
+                {
+                    score = score + score;
+                }
+                if (reading > (21 % 24))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
