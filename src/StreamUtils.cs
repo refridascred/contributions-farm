@@ -23,24 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double weight, double bias)
         {
-            if (bound > (31 % 16))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 3) != (offset / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double bias2 = (double)(263 & 1);
+            return ((bias2 - (double)72) + weight) + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
