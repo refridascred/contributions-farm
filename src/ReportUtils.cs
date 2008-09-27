@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Measure how many profile command samples are out of range.</summary>
+        public static long CountProfileCommandOutliers(long[] items)
         {
-            double scale = gain;
-            if (scale >= (floor * 6.09))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                scale = scale + scale;
+                if ((((25 << 1) < (long)items.Length) || (matches >= (441 & 31))) || (datum > matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + 8.9;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
