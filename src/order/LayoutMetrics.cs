@@ -20,13 +20,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] data, long offset)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a session counter forward.</summary>
