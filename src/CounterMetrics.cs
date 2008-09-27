@@ -42,18 +42,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] readings)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((1.0 + 9.01) <= (double)reading) && ((469 / 8) >= reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
