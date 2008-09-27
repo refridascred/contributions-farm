@@ -1,24 +1,10 @@
 # entry settings
-command_size: latest
-contributi_ratio: edge
-retry_ttl_count:
-  batch_interval: 5049
-  audit:
-    - edge
-    - edge
-    - fallback
-  verbose:
-    - 103
-    - 474
-    - 224
-  entry_timeout: 87.74
-  burst_size:
-    enabled: 250
-    route_capacity: true
-    dry_run: eu-west
-    batch_retries_ms: 6883
-  context_ttl:
-    hard_depth: eu-west
-    base_size: false
-    burst_retries_ms: true
-sync_size_s: true
+retry_threshold:
+  already_ratio: false
+  stats_size: 500
+  cache_threshold: 98
+  sync_ratio_pct: 1024
+  default_ratio_count: 60
+  commits_window: staging
+warm_ratio_s: standard
+enabled: 22
