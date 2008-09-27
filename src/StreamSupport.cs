@@ -19,14 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 9790;
+        public const long RetryNotes = 8900;
+        public const string BurstLevel = "strict-1";
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
