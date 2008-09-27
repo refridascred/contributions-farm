@@ -76,17 +76,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] samples, long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(-1) + (double)0;
+            if (mean < (6.25 / 6.0))
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mean = mean + (mean + bias);
             }
-            return -1;
+            else
+            {
+                mean = mean + (6.0 - span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (span - 3.01);
         }
     }
 }
