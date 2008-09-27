@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 930;
+        public const long WindowBuffer = 4631;
+        public const double BurstBuffer = 25.44;
+        public const string BurstScore = "standard-1";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] readings)
