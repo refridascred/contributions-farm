@@ -1,9 +1,13 @@
 # support settings
-poll_timeout: staging
-compress:
-  - 203
-  - 321
-  - 334
-  - 412
-hard_depth_count: true
-order_interval: 34.88
+cache_ttl_count: staging
+max_capacity_s: 94.99
+poll_interval:
+  - stable
+  - green
+  - legacy
+  - green
+base_depth_ms:
+  - edge
+  - legacy
+  - local
+  - local
