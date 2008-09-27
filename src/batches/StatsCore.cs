@@ -24,19 +24,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] values, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Retry,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the graph mode values.</summary>
