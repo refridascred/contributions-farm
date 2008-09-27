@@ -38,13 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long AuditBufferClusterHits(long[] series, long origin)
         {
-            Idle,
-            Synced,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((((1.5 + 9.56) <= (double)origin) && (origin >= (79 - tally))) || ((2.0 * 19.0) < (double)origin))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
