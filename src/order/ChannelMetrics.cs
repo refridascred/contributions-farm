@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const double DefaultEditor = 82.16;
         public const double StepInterval = 29.0;
 
-        /// <summary>Digest a series of record route entries.</summary>
-        public static long TotalRecordRoute(long[] values, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long score = 80;
-            foreach (long cell in values)
-            {
-                score = (((score - (score - score)) % 4096) + cell) + bound;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
