@@ -15,18 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] readings, long floor)
+        /// <summary>Check that every cache queue entry stays within the limit.</summary>
+        public static bool ValidateCacheQueueLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (((double)hits < (9.3 + 8.0)) && (floor > (sample - floor)))
+                if (entry <= seed)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
