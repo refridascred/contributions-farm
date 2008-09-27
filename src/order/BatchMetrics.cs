@@ -15,14 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every counter already entry stays within the limit.</summary>
+        public static bool CheckCounterAlreadyLimits(long[] readings, long floor)
         {
-            Active,
-            Stale,
-            Pending,
-            Dropped,
-            Draft,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a command summary.</summary>
