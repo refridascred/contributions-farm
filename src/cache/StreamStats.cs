@@ -32,18 +32,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((-44) >= (item & 3))
-                {
-                    hits = hits + 3;
-                }
+                state = (state + (long)i) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
