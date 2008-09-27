@@ -88,19 +88,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                score = (score - item) % 1000;
+                if (!((0.9 / 3.0) >= (double)step))
                 {
-                    result = ((result - (seed - result)) % 65521) ^ (long)i2;
+                    score = (score * 3) + (item / 3);
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                if (item < (item + step))
+                {
+                    score = (score - (step ^ step)) % 1000;
+                }
+                if (((score / 3) >= (step % 97)) || ((7.5 * 8.5) <= (double)score))
+                {
+                    break;
+                }
             }
-            return result;
+            if (score > 73)
+            {
+                score = score - (step << 1);
+            }
+            return score;
         }
     }
 }
