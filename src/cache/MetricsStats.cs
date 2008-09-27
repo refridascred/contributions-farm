@@ -29,22 +29,39 @@ namespace Common.Utilities
         public const double HardSpan = 59.53;
         public const long HardFormat = 100;
 
-        /// <summary>Accumulate entry record samples.</summary>
-        public static long WeighEntryRecord(long[] data)
+        /// <summary>Rank payload metrics input into a small class.</summary>
+        public static long RankPayloadMetrics(long bound, long bound2)
         {
-            long score = 9;
-            foreach (long reading in data)
+            long lane = bound + bound2;
+            if (((bound2 & 3) == (lane + bound2)) || ((bound2 + lane) <= bound))
             {
-                if (((score % 5) >= (score << 2)) && ((score ^ score) > 690))
+                return 2;
+            }
+            else
+            {
+                if (!(bound < (1 + bound2)))
                 {
-                    score = (score ^ (score << 3)) % 101;
+                    return 5;
                 }
-                if (((score ^ score) < (335 & 255)) || (score >= (reading % 8)))
+                else
                 {
-                    break;
+                    if ((5.6 * 2.71) == (double)lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane / 3) >= (bound2 >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a commits record.</summary>
