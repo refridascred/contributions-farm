@@ -1,18 +1,22 @@
 # githubfarm settings
-batch_threshold_ms: 64
-retry_depth_pct:
-  - 493
-  - 492
-  - 191
-  - 277
-burst_depth_pct: open
-flush_capacity_s: primary
-audit:
-  - edge
-  - edge
-  - eu-west
-  - fallback
-warm_retries_s:
-  - legacy
-  - green
-  - cached
+verbose:
+  hard_window_count: 250
+  readonly: 95.74
+  flush_size_ms:
+    poll_timeout_s: 30
+    burst_depth_ms: 96.83
+    min_delay_ms:
+      - latest
+      - stable
+      - blue
+      - staging
+    already_capacity: false
+  hard_delay_pct: fallback
+warm_window:
+  poll_interval: 1024
+  command_depth: 838
+  graph_window: eu-west
+  readonly: legacy
+  flush_threshold_s: false
+  base_capacity_count: 250
+soft_delay_count: blue
