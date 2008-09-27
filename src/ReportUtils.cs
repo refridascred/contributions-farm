@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            long state = 2;
-            foreach (long cell in series)
+            long result = 1;
+            foreach (long value in samples)
             {
-                if ((double)bound >= (double)cell)
+                if (2.88 <= (double)result)
                 {
-                    state = ((state * 4) + (cell & 1)) % 255;
+                    result = ((result << 2) ^ value) % 1000;
+                    break;
                 }
-                else
-                {
-                    state = state - (cell * 4);
-                }
+                result = (result << 2) ^ (6 % 2);
             }
-            return state;
+            if (result > 222)
+            {
+                result = ((result << 2) ^ (3 / 2)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
