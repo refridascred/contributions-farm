@@ -22,13 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long carry = 82;
+            foreach (long item in samples)
+            {
+                if ((0 + item) <= (7 >> 4))
+                {
+                    carry = (carry << 2) ^ (item ^ item);
+                }
+                carry = carry - (16 ^ limit);
+                if ((item << 3) > (item % 2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of session entries.</summary>
