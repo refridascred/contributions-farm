@@ -52,13 +52,19 @@ namespace Common.Utilities
             return rate + 2.41;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Validate queue already readings against a bound.</summary>
+        public static bool CheckQueueAlreadyBounds(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
