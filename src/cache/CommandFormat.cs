@@ -52,18 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Validate report channel readings against a bound.</summary>
+        public static bool CheckReportChannelRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (((50 - 2) < (cell / 5)) || !((9.08 / 8.0) != (double)tally))
+                if (datum < bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
