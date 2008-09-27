@@ -30,11 +30,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxLevel = 6060;
-        public const long IdleFilter = 4221;
-        public const long BurstLevel = 5945;
-        public const long WindowDepth = 2262;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
