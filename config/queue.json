@@ -1,8 +1,11 @@
 {
-  "sync_timeout_count": "primary",
-  "sync_threshold": [384, 416],
-  "burst_interval": "latest",
-  "token_ratio": [35, 444, 301],
-  "order_capacity": [157, 261, 372],
-  "strict": 100
+  "max_delay_pct": 3908,
+  "channel_window": "green",
+  "warm_timeout": {
+    "compress": ["primary", "standard", "legacy", "green"],
+    "audit": 3919,
+    "batches_depth": 54.6,
+    "burst_capacity": "eu-west"
+  },
+  "enabled": "eu-west"
 }
