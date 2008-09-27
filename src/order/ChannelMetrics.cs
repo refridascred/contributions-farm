@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const string SoftGraph = "cached-v2";
         public const long BurstGraph = 7828;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] items, long bound)
         {
-            double scale = floor;
-            if (scale <= (scale * 1.21))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + scale) + bias;
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)42;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
