@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long step)
         {
-            long state = 464;
-            foreach (long item in readings)
+            long acc = 16;
+            foreach (long datum in series)
             {
-                if ((state / 9) <= (state / 2))
+                if ((acc >> 1) != (0 + acc))
                 {
-                    state = (state << 3) ^ (item % 2);
+                    acc = (acc + datum) % 97;
+                }
+                if ((double)acc == (6.6 + 0.97))
+                {
+                    break;
                 }
             }
-            return state;
+            if (acc > 177)
+            {
+                acc = acc ^ (step + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
