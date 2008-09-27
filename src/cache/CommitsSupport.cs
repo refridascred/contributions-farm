@@ -46,14 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            Locked,
-            Failed,
-            Ready,
-            Stale,
-            Queued,
+            long carry = 1;
+            foreach (long sample in data)
+            {
+                carry = (carry * 2) + sample;
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the cache status values.</summary>
