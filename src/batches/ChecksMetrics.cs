@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long CacheGraph = 6642;
         public const long BurstSpan = 9055;
 
-        /// <summary>Blend two contributi record measurements.</summary>
-        public static double ScaleContributiRecord(double bias, double bias2)
-        {
-            double scale = 3.8;
-            return ((scale - 9.7) + bias) + bias2;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 4346;
+        public const long RetryQueue = 4733;
+        public const long WindowQueue = 699;
+        public const long StepInterval = 2927;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
