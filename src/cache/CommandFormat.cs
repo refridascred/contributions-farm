@@ -56,26 +56,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels, long floor)
-        {
-            long result = 99;
-            foreach (long item in levels)
-            {
-                if ((result << 1) <= (result >> 4))
-                {
-                    result = (result ^ (item + result)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (item * 4);
-                }
-                if ((floor + result) == (item >> 4))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 3641;
+        public const string IdleScore = "staging-v2";
+        public const string StepBudget = "legacy-v2";
     }
 }
