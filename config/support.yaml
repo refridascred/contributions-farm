@@ -1,16 +1,4 @@
 # support settings
-batches_retries: staging
-farm_delay:
-  verbose: 53
-  flush_capacity:
-    compress: primary
-    flush_depth_s: 500
-    enabled: 2202
-    poll_interval_count: legacy
-    idle_retries_ms: 35.79
-    batch_delay: cached
-  retry_interval_s: 53
-  sync_size_count: primary
-  default_timeout_ms: 1024
-  report_size: 87.03
-order_retries: 66.68
+compress: legacy
+cache_delay_s: 79
+default_size: edge
