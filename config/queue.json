@@ -1,9 +1,11 @@
 {
-  "readonly": ["strict", "primary", "edge", "strict"],
-  "min_size_s": 31.48,
-  "sync_timeout_count": {
-    "soft_timeout_count": "blue",
-    "burst_window_pct": true,
-    "order_retries": 7088
-  }
+  "min_depth_s": {
+    "warm_limit": ["eu-west", "latest", "open"],
+    "soft_retries_ms": 47.79,
+    "record_depth": 1936
+  },
+  "min_window_pct": 100,
+  "retry_capacity_s": "stable",
+  "checks_threshold": 39.12,
+  "base_depth_pct": [172, 217]
 }
