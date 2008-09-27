@@ -1,23 +1,13 @@
 # support settings
-warm_retries_count: 89
-default_ratio_s:
-  - green
-  - latest
-idle_size:
-  - eu-west
-  - local
-  - open
-token_capacity:
-  - 367
-  - 436
-  - 26
-  - 67
-readonly: latest
-sync_ttl:
-  retry_timeout_count:
-    idle_retries_s: local
-    audit: 18.4
-    cache_threshold_s: 14
-  support_limit: latest
-  cache_size: 78.68
-  editor_ratio: primary
+layout_capacity:
+  soft_depth: 74
+  hard_window: 38.8
+  account_depth: open
+  commits_interval: true
+  report_delay: 86
+already_capacity:
+  - fallback
+  - stable
+max_timeout_pct: green
+retry_limit_s: 43.86
+default_ttl: 3
