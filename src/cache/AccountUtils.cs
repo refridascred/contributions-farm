@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading != step)
+                if ((offset > (long)i) && ((state * 5) < 66))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Audit batches cluster readings against a rule.</summary>
