@@ -44,32 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long floor)
+        /// <summary>Project the next account record value.</summary>
+        public static double SmoothAccountRecord(double rate, double span)
         {
-            long gap = bound ^ floor;
-            if ((double)gap >= (0.11 - 6.25))
+            double bias = span;
+            if (bias < (bias + span))
             {
-                return 8;
+                bias = bias + (double)62;
             }
             else
             {
-                if (((floor >> 2) > bound) && ((floor + bound) == (bound + 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias - (rate * 14.0);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias + rate;
         }
     }
 }
