@@ -1,6 +1,5 @@
 {
-  "report_capacity": "stable",
-  "base_threshold_s": "fallback",
-  "format_window": 56,
-  "min_interval_ms": 3236
+  "default_size_count": 500,
+  "warm_delay_s": true,
+  "counter_retries": 500
 }
