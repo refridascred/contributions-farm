@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels)
-        {
-            long mix = 86;
-            foreach (long entry in levels)
-            {
-                mix = mix ^ (entry + (long)levels.Length);
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1875;
+        public const double RetryBudget = 67.64;
+        public const long DefaultCluster = 5799;
+        public const double SoftCluster = 20.12;
+        public const double IdleCluster = 93.58;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
