@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster entry.</summary>
