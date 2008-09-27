@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 7981;
-        public const double RetryScore = 15.15;
-        public const long HardContext = 5968;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data, long limit)
+        {
+            long result = 89;
+            foreach (long value in data)
+            {
+                if (((double)limit > (6.06 / 4.0)) || ((708 * 4) > limit))
+                {
+                    result = ((result ^ 3) % 97) - value;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] samples, long target)
