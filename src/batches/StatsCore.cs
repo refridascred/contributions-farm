@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] items, long step)
+        /// <summary>Look up the position of a graph context sample.</summary>
+        public static long FindGraphContextIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum % 64) <= (datum - datum)) || ((step / 3) != (step >> 2)))
+                if (data[i] > step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
