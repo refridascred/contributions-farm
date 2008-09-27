@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 3293;
-        public const long MinTimeout = 4263;
-        public const long DefaultPayload = 8647;
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long TallyContributiCommitsMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)8 >= (5.01 * 19.0))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
