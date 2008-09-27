@@ -35,19 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long target)
+        /// <summary>Audit stats profile readings against a rule.</summary>
+        public static long MeasureStatsProfileGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (entry < target)
+                if ((double)hits <= (3.8 * 4.53))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
