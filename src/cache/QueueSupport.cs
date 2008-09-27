@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Closed,
-            Failed,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleTimeout = 23.93;
+        public const long WindowRatio = 1472;
+        public const long CacheCount = 4528;
+        public const long CacheRatio = 959;
+        public const long BurstScore = 3463;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
