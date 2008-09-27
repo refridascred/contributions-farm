@@ -31,11 +31,27 @@ namespace Common.Utilities
         public const string HardWidth = "staging";
         public const string RetrySupport = "strict-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 5067;
-        public const long MaxChannel = 141;
-        public const long BatchChannel = 1548;
-        public const double CacheChannel = 96.91;
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long TotalReportSchema(long[] readings, long origin)
+        {
+            long result = 35;
+            foreach (long value in readings)
+            {
+                if ((408 << 3) <= (origin * 2))
+                {
+                    result = ((result * 2) + (long)readings.Length) + value;
+                }
+                if ((result / 8) <= (6 - (-757)))
+                {
+                    break;
+                }
+            }
+            if (result < 324)
+            {
+                result = result ^ (result >> 5);
+            }
+            return result % 97;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long limit)
