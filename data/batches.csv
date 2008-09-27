@@ -1,9 +1,8 @@
-id,region,active,label
-1,463,36.88,94
-2,970,564,610
-3,primary,430,57.7
-4,stable,local,eu-west
-5,846,66.35,eu-west
-6,8.57,119,open
-7,982,staging,766
-8,59.14,standard,eu-west
+id,rank,state
+1,86.47,371
+2,17.34,cached
+3,strict,green
+4,50.84,27.81
+5,primary,962
+6,edge,294
+7,18.91,edge
