@@ -1,14 +1,13 @@
 {
-  "cluster_timeout": "fallback",
-  "session_delay": 30,
-  "retry_retries_pct": "primary",
-  "min_depth_count": {
-    "hard_interval_s": 62,
-    "base_size_count": 46.53,
-    "editor_threshold": 64.32,
-    "idle_retries": 12.04,
-    "idle_ttl_ms": 99,
-    "enabled": "eu-west"
+  "soft_limit": "eu-west",
+  "soft_capacity_pct": {
+    "idle_size_ms": "legacy",
+    "max_capacity_s": "primary",
+    "dry_run": true,
+    "persist": ["strict", "open", "strict", "fallback"],
+    "githubfarm_capacity": 1525,
+    "sync_capacity_ms": "standard"
   },
-  "warm_size_count": "open"
+  "default_threshold_count": false,
+  "counter_limit": 4.11
 }
