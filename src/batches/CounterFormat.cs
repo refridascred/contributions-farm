@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Draft,
-            New,
-            Active,
-            Stale,
-            Idle,
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
