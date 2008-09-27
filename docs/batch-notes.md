@@ -1,14 +1,12 @@
 # Batch notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use session settings to tune how often already data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-
-Keep counter and route names short and lowercase.
-Each metric is validated before it reaches the report queue.
+Use profile settings to tune how often already data is refreshed.
+When a support fails, the report handler retries a few times before giving up.
+Run the counter check before changing any window limits.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer metric defaults
-- Document new channel fields
+- Prefer payload defaults
+- Document new cluster fields
+- Log every context change
+- Keep metric values small
