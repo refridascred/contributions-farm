@@ -1,24 +1,23 @@
 # githubfarm settings
-batch_timeout_count:
-  max_interval_s: true
-  max_timeout_ms: eu-west
-  soft_limit:
-    default_interval_pct: true
-    verbose: true
-    min_capacity_count: false
-    persist: 100
-    min_capacity: edge
-  base_retries_ms: false
-editor_ratio: latest
-checks_interval:
-  githubfarm_depth:
-    batch_ttl_count: 71.93
-    checks_threshold: staging
-    account_limit: strict
-    audit: primary
-  profile_depth:
-    batch_limit: fallback
-    sync_delay_s: 51
-    max_ttl: standard
-  entry_timeout: 60
-  buffer_ratio: blue
+base_ratio_pct:
+  githubfarm_ratio:
+    - primary
+    - green
+  compress:
+    poll_interval_count: 7621
+    dry_run: 88.0
+    notes_ttl: 9262
+  warm_interval_s: 4.07
+  audit:
+    poll_interval: 60
+    metric_limit: 61.81
+    max_retries_count: false
+    route_timeout:
+      - standard
+      - open
+      - open
+      - latest
+base_threshold: 500
+support_timeout: primary
+flush_size: blue
+strict: 43.35
