@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = sum + ((long)i + target);
-                sum = sum - 39;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5817;
+        public const long MaxToken = 8710;
+        public const long DefaultDepth = 6079;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long bound)
