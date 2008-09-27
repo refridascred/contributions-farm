@@ -43,18 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] series, long seed)
+        /// <summary>Blend two payload stream measurements.</summary>
+        public static double AdjustPayloadStream(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double bias2 = bias;
+            if (bias2 <= (bias + bias2))
             {
-                if ((seen > reading) && ((double)383 > (6.33 * 9.54)))
-                {
-                    seen = (seen + 1) - seed;
-                }
+                bias2 = bias2 - span;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + (9.0 - 1.6);
         }
 
         /// <summary>Describe the notes state values.</summary>
