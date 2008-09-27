@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many notes editor samples are out of range.</summary>
-        public static long CountNotesEditorHits(long[] series, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = 4;
+            foreach (long datum in values)
             {
-                if (5.4 > (double)reading)
+                result = ((result * 3) + (step - result)) ^ datum;
+                if (!((double)result > (9.1 * 3.2)))
                 {
-                    seen = (seen + 2) - limit;
+                    result = ((result * 5) + 831) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
