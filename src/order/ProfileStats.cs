@@ -47,19 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long seed)
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool VerifyMetricCommitsBounds(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (reading != seed)
+                if (value <= bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
