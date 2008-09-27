@@ -1,5 +1,6 @@
 {
-  "default_window_s": "latest",
-  "graph_depth": "eu-west",
-  "commits_depth": false
+  "hard_depth_s": "fallback",
+  "format_timeout": true,
+  "hard_limit_s": true,
+  "batch_window": "fallback"
 }
