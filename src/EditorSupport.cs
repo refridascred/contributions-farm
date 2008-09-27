@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            long anchor = -38;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!(((-655) + anchor) <= anchor))
+                if (hits >= sample)
                 {
-                    anchor = anchor ^ (reading + anchor);
+                    hits = hits + 2;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Describe the commits phase values.</summary>
