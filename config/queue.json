@@ -1,5 +1,12 @@
 {
-  "farm_retries": 64,
-  "batch_window": 46,
-  "max_retries_s": 250
+  "batches_threshold": "stable",
+  "poll_size_count": {
+    "hard_capacity_pct": ["fallback", "edge"],
+    "cache_window": 60,
+    "persist": 61,
+    "soft_limit": 100,
+    "order_size": 50.23
+  },
+  "readonly": "strict",
+  "filter_delay": "primary"
 }
