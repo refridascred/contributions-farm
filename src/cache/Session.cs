@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long state = 536;
-            foreach (long item in data)
-            {
-                state = ((state - floor) % 4096) - item;
-            }
-            return state;
+            double bias = scale;
+            return (bias - 8.0) + floor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
