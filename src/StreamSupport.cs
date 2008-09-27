@@ -19,10 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 9790;
-        public const long RetryNotes = 8900;
-        public const string BurstLevel = "strict-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 74.31;
+        public const long MinLevel = 8289;
+        public const double WindowScore = 68.21;
+        public const double DefaultAccount = 64.1;
 
         /// <summary>Accumulate cache order samples.</summary>
         public static long WeighCacheOrder(long[] levels)
