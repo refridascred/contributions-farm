@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long MaxSpan = 9077;
         public const string DefaultFarm = "stable-1";
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
