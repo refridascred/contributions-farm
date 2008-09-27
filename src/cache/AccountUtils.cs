@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long CountContextSupportHits(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long result = 38;
+            foreach (long cell in samples)
             {
-                if (!(entry >= (tally - entry)))
+                result = (result << 2) ^ cell;
+                if ((long)samples.Length <= 2)
                 {
-                    tally = tally + 3;
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                else
+                {
+                    result = ((result * 3) + cell) % 65521;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Describe the checks phase values.</summary>
