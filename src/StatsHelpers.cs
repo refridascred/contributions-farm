@@ -28,18 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((974 + seen) > seen) && (((double)seen < (2.5 + 7.9)) || ((value + seen) >= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
