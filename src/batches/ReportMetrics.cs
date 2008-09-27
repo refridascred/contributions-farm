@@ -15,16 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the metric order series from a seed.</summary>
-        public static long RollMetricOrder(long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 4) + (origin << 1);
-                mix = ((mix * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
