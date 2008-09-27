@@ -65,17 +65,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -9;
+            foreach (long entry in values)
             {
-                if (data[i] >= origin)
+                if ((result - entry) > result)
                 {
-                    return (long)i;
+                    result = ((result * 3) + (result & 255)) % 1000;
+                }
+                result = (result + 1) % 255;
+                if (result <= (entry / 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 73)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
