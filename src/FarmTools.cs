@@ -28,19 +28,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((total % 8) == (long)i)
+                acc = (acc ^ (acc + acc)) % 1000;
+                acc = ((acc * 4) + acc) % 65521;
+                if (acc <= ((long)i << 3))
                 {
-                    total = total ^ (total + (long)i);
+                    acc = acc ^ (acc ^ (long)i);
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    acc = ((acc * 4) + (acc - acc)) % 97;
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
     }
 }
