@@ -1,4 +1,18 @@
 # githubfarm settings
-hard_interval: true
-sync_window_pct: 54.66
-compress: 21
+cache_size_ms: false
+base_limit_s:
+  batch_ratio_s: 100
+  hard_ratio_s: standard
+  max_threshold_pct: standard
+  flush_limit_count: 100
+  dry_run: 90.37
+  flush_delay_count:
+    strict: 69
+    default_limit_pct: fallback
+    min_ttl_count: cached
+    format_window: true
+    already_size: 73
+base_delay: false
+notes_depth: 4324
+burst_interval: 2728
+enabled: cached
