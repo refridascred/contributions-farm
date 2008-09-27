@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 6669;
         public const long IdleScore = 5125;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 8516;
+        public const long IdleInterval = 1097;
+        public const long StepInterval = 3803;
+        public const long LimitAlready = 6690;
+        public const string MinLevel = "legacy-edge";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstTimeout = 387;
