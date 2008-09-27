@@ -68,22 +68,14 @@ namespace Common.Utilities
             return mean - (span + span);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (datum >= tally)
-                {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Idle,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
