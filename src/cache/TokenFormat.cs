@@ -44,18 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long step)
         {
-            long score = 943;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < (score % 8))
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    score = (score + (score - item)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
