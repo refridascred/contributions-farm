@@ -54,19 +54,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            double ratio = (scale + scale) * 3.44;
-            if (ratio < scale)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio - (double)34) - offset;
+                total = total ^ (total ^ total);
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - (scale * 7.08);
-            }
-            return ratio + (scale / 7.0);
+            return total;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
