@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 - (ratio2 + ratio);
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + span) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 - ratio2);
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
