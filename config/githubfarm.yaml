@@ -1,25 +1,33 @@
 # githubfarm settings
-warm_ratio:
-  enabled: local
-  idle_capacity: 17.62
-  support_limit:
-    - 230
-    - 373
-    - 161
-  profile_interval: staging
-  compress:
-    - cached
-    - strict
-    - latest
-entry_timeout:
-  verbose:
-    - fallback
-    - cached
-    - primary
-  batches_window: 250
-  metric_window:
-    - 184
-    - 329
-    - 487
-max_delay_count: staging
-warm_ratio_ms: stable
+poll_delay: 100
+compress: primary
+farm_delay: true
+warm_depth: strict
+default_timeout_pct:
+  - legacy
+  - edge
+  - staging
+flush_timeout_s:
+  sync_size:
+    default_size: 6.57
+    burst_delay_ms: 97.73
+    audit: 43.58
+    cache_timeout: 54.57
+    strict: 1024
+  stats_capacity: primary
+  compress: standard
+  context_delay: 7531
+  burst_timeout_ms: 60
+  soft_timeout_ms:
+    cache_delay_count: 44.59
+    default_ttl: 77.35
+    min_threshold_ms:
+      - 270
+      - 326
+      - 44
+    cache_ratio_pct:
+      - staging
+      - open
+      - latest
+      - open
+    burst_delay: false
