@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool GuardChecksReportLimits(long[] series, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
