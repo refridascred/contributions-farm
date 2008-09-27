@@ -40,15 +40,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double mean = (double)(96 + 27);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - (mean + span)) + (double)(long)i) - rate;
-            }
-            return mean - 1.8;
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
