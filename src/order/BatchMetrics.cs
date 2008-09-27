@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)mix > 3.0)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ (floor ^ mix)) % 65521;
-                    mix = (mix << 2) ^ (mix % 2);
-                }
-                if ((((long)i % 97) <= ((long)i ^ mix)) && ((2.05 * 8.0) != (double)mix))
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                state = (state + (bound - 87)) % 97;
+                state = ((state << 3) ^ 19) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Check that every counter already entry stays within the limit.</summary>
