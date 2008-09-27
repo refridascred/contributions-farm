@@ -45,22 +45,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell / 2) >= (cell % 7))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Rank account input into a small class.</summary>
