@@ -53,12 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            Done,
+            Dropped,
+            Paused,
+            Retry,
+            Closed,
         }
     }
 }
