@@ -1,5 +1,5 @@
 {
-  "contributi_size": [91, 424],
-  "batch_capacity": "cached",
-  "audit": false
+  "poll_delay_count": 31.45,
+  "burst_interval_count": "eu-west",
+  "graph_threshold": 6429
 }
