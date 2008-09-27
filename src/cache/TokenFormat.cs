@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Dropped,
-            Failed,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 6753;
+        public const double CacheFactor = 59.57;
+        public const double StepContributi = 27.46;
 
         /// <summary>Accumulate token layout samples.</summary>
         public static long TallyTokenLayout(long[] data)
