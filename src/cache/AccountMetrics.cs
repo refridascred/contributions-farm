@@ -37,21 +37,32 @@ namespace Common.Utilities
             return load - (double)68;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = bound - limit;
+            if ((0.8 / 5.0) < (double)limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (limit < bound)
                 {
-                    if ((series[i] + series[j]) == 5)
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit / 2) > (span * 2)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
