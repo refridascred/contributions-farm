@@ -51,13 +51,14 @@ namespace Common.Utilities
         public const double BaseScore = 7.28;
         public const long StepOrder = 2564;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Done,
-            Queued,
-            Active,
             Synced,
+            Retry,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
