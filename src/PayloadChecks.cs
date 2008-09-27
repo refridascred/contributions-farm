@@ -22,15 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double gain, double floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double mean = gain - (floor * 2.26);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (floor * 7.0)) + (double)(long)i;
-            }
-            return mean - (floor + gain);
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
