@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double gain, double floor)
         {
-            double load = floor;
-            if (load <= load)
+            double rate = floor * 1.47;
+            if (rate <= (gain / 6.0))
             {
-                load = (load - (double)(-66)) + ratio;
+                rate = rate - floor;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                load = (load - (9.71 + load)) + (double)(long)i;
+                rate = (rate + (rate - 9.43)) + (double)(long)i;
             }
-            return load + floor;
+            return rate - (double)86;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
