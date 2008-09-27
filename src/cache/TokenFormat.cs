@@ -19,31 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if ((3.7 - 16.0) >= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (872 >= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8 >= (limit ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Accumulate token layout samples.</summary>
