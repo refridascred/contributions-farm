@@ -33,11 +33,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8224;
-        public const double WindowBudget = 7.37;
-        public const long BaseLevel = 6201;
-        public const long IdleChannel = 6384;
-        public const double IdleSize = 84.65;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Locked,
+            Retry,
+            Stale,
+            Ready,
+            Pending,
+        }
     }
 }
