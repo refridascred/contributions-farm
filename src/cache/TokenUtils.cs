@@ -20,9 +20,11 @@ namespace Common.Utilities
         public const double DefaultCount = 36.2;
         public const long DefaultMetric = 1365;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryDepth = 57.88;
-        public const string WindowSize = "alpha-1";
-        public const long MinCommand = 2473;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
