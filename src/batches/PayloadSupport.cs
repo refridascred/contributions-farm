@@ -25,17 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 3657;
+        public const string MinScore = "strict";
+        public const long DefaultWindow = 1956;
+        public const long WindowRatio = 5774;
+        public const double MaxWindow = 89.77;
     }
 }
