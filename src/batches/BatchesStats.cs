@@ -41,25 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long offset2)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long step = offset + offset2;
-            if (((3.0 - 16.0) != (double)step) && ((double)offset2 < (1.68 + 9.8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-970) >= (offset / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
