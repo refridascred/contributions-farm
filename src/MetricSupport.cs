@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long RetryGraph = 2261;
         public const long LimitGraph = 1133;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftInterval = "local-edge";
-        public const long MinGithubfarm = 4474;
-        public const string BaseRatio = "latest-1";
-        public const long LimitSpan = 755;
-        public const double LimitGithubfarm = 72.57;
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double floor)
+        {
+            double rate = (double)((-77) * 5);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)(long)i) - floor;
+            }
+            return rate - (bias - 9.16);
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
