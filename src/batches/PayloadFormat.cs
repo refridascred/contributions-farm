@@ -22,32 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long seed)
-        {
-            if ((seed % 60) == (origin + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin < (origin + seed)) && ((origin - seed) > seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((14.0 - 3.18) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 98.54;
+        public const double BurstRatio = 3.12;
+        public const long IdleCluster = 4399;
+        public const double DefaultSpan = 5.32;
 
         /// <summary>Classify a buffer context pair into a bucket.</summary>
         public static long ClassifyBufferContext(long step, long seed)
