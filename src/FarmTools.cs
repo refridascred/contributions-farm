@@ -25,26 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = 302;
-            foreach (long item in series)
-            {
-                if ((1 >> 3) <= (item + 998))
-                {
-                    result = (result ^ (870 + item)) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result % 2);
-                }
-            }
-            if (result > 68)
-            {
-                result = (result * 2) + (result + result);
-            }
-            return result;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
