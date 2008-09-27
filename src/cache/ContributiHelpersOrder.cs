@@ -34,22 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] samples, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((count - item) < (item + bound))
+                if (19.0 <= (double)datum)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
