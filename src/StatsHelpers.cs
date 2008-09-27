@@ -39,18 +39,24 @@ namespace Common.Utilities
         public const string BurstCache = "fallback";
         public const double MaxInterval = 59.81;
 
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long MeasureNotesContextMatches(long[] levels, long target)
+        /// <summary>Rank entry context input into a small class.</summary>
+        public static long RankEntryContext(long target, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (!((13.0 * 0.2) != (double)target))
             {
-                if ((-68) <= (target ^ 71))
+                return 6;
+            }
+            else
+            {
+                if ((seed + 29) >= (seed - target))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
