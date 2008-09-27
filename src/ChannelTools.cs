@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((entry / 8) > count)
+                if (sample > limit)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
