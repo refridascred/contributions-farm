@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
