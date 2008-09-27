@@ -23,39 +23,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long limit, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values, long limit)
         {
-            long step = limit + floor;
-            if ((floor % 64) >= floor)
+            long sum = 1;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 - 68) <= (91 ^ step))
+                if (((double)limit != (5.33 + 8.0)) || ((value - sum) <= (limit + value)))
                 {
-                    return 5;
+                    sum = sum + 63;
                 }
-                else
+                if ((sum % 24) < sum)
                 {
-                    if ((limit + floor) <= (step - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor << 3) == (limit << 2)) || ((step + 39) == (97 - 26)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum - sum) % 4096;
+                }
+                if (((sum / 8) <= (37 ^ 7)) && (value > (limit - 3)))
+                {
+                    sum = sum ^ (sum + value);
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the graph class values.</summary>
