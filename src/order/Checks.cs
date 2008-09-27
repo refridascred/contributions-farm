@@ -40,24 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            long anchor = 354;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor + (2 - anchor)) - reading;
-                anchor = anchor - (anchor >> 1);
-                if ((double)offset <= (3.7 + 5.1))
+                if ((cell / 2) >= (cell % 7))
                 {
-                    anchor = anchor + (650 + 53);
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor < 54)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank account input into a small class.</summary>
