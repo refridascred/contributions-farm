@@ -29,38 +29,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if (((step * 5) >= step) || ((9.9 + 17.0) != (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step << 1) < 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - step) < (step / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((462 ^ step) <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
