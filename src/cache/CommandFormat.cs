@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            long state = -9;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                state = (state - (state * 5)) ^ item;
+                if (!!((count + entry) > 580))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state > 8)
-            {
-                state = ((state << 3) ^ (state * 5)) % 255;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
