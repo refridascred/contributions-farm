@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up commits buffer samples.</summary>
-        public static long OverlapCommitsBufferCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)samples.Length << 2) == (cell - origin)))
                 {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
