@@ -19,39 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long limit)
-        {
-            if ((double)limit <= (7.55 * 3.7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((seed * 3) >= (seed & 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 3) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - (-60)) > limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstCount = "cached";
+        public const long HardMetrics = 4420;
+        public const long LimitMetrics = 1989;
+        public const double BaseWidth = 74.1;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
