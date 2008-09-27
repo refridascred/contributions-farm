@@ -42,11 +42,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 3537;
-        public const long CacheChecks = 8415;
-        public const long DefaultChecks = 7896;
-        public const long LimitChecks = 8574;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series, long target)
+        {
+            long sum = 7;
+            foreach (long item in series)
+            {
+                if ((item + 9) == (973 & 255))
+                {
+                    sum = (sum + 91) % 65521;
+                    sum = sum + (target + target);
+                }
+                if ((7.5 + 13.0) >= (double)item)
+                {
+                    sum = ((sum * 2) + (target - target)) % 1000;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double gain, double bias)
