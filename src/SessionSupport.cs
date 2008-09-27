@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Find the first metric notes entry that matches the target.</summary>
+        public static long LocateMetricNotesIndex(long[] data, long bound)
         {
-            double ratio2 = (double)((-8) + 839);
-            if (ratio2 > (floor - ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 + (floor * 0.05);
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return -1;
         }
 
         /// <summary>Audit format cache readings against a rule.</summary>
