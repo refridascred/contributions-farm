@@ -53,21 +53,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 445;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (acc ^ reading)) % 255;
             }
-            return seen;
+            if (acc < 54)
+            {
+                acc = (acc + (target % 10)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
