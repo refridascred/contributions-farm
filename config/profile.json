@@ -1,14 +1,19 @@
 {
-  "cache_limit_pct": {
-    "contributi_retries": {
-      "session_size": ["blue", "local", "legacy", "local"],
-      "schema_depth": false,
-      "base_size": ["stable", "stable", "legacy"]
+  "editor_limit": 7284,
+  "default_capacity_pct": true,
+  "base_delay_s": 250,
+  "filter_threshold": {
+    "base_retries": true,
+    "verbose": {
+      "hard_delay_ms": [364, 488],
+      "cache_window_pct": 3557,
+      "audit": false,
+      "cache_size": ["local", "eu-west", "standard"],
+      "retry_ratio_ms": 14.69,
+      "channel_window": 250
     },
-    "metric_size": "edge",
-    "soft_ratio_ms": [341, 352, 211, 483]
+    "base_timeout": 250,
+    "min_capacity_s": "latest"
   },
-  "persist": 7553,
-  "payload_capacity": 61,
-  "metric_threshold": false
+  "idle_ratio_ms": 500
 }
