@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
