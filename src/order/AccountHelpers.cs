@@ -70,23 +70,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            double scale2 = scale;
-            if (scale2 >= (double)9)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (double)(-320);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - (span + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + (span - scale2);
+            return seen;
         }
     }
 }
