@@ -37,22 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3738;
+        public const long IdleLevel = 7504;
+        public const long SoftInterval = 8871;
+        public const long MinDepth = 9230;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long seed)
