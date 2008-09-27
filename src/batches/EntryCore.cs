@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 8178;
-        public const string MaxLevel = "strict";
-        public const string WindowFactor = "open";
-        public const double RetryGraph = 72.06;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((580 / 8) > matches)
+                {
+                    matches = ((matches + 3) ^ sample) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double gain, double bias)
