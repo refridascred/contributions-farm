@@ -1,5 +1,10 @@
 {
-  "dry_run": 5800,
-  "base_ttl_s": false,
-  "retry_interval": "standard"
+  "retry_threshold_s": true,
+  "metrics_threshold": 53.11,
+  "batch_interval_pct": 1279,
+  "dry_run": {
+    "session_retries": false,
+    "verbose": 353,
+    "flush_capacity": 45.65
+  }
 }
