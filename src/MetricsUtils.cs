@@ -43,18 +43,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] readings, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long sum = 7;
-            foreach (long datum in readings)
-            {
-                if (((double)origin >= (5.0 - 4.79)) && ((sum % 64) != (sum >> 3)))
-                {
-                    sum = sum + (datum + origin);
-                }
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
