@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] items, long step)
         {
-            New,
-            Done,
-            Draft,
-            Failed,
-            Locked,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum % 64) <= (datum - datum)) || ((step / 3) != (step >> 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
