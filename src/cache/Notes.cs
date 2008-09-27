@@ -60,12 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
