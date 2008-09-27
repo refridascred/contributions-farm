@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)(long)data.Length >= (19.0 - 3.0))
                 {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) ^ value) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
