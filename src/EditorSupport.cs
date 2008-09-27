@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long floor)
         {
-            double gain = (double)(5 + 42);
-            if (gain < (gain / 2.0))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                gain = (gain + (double)85) - offset;
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - weight;
+            return ready;
         }
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
