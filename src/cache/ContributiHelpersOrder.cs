@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            long total = -556;
+            foreach (long value in data)
+            {
+                if (((value ^ total) < ((long)data.Length - value)) || ((total - bound) == (9 % 5)))
+                {
+                    total = (total * 5) + (value - bound);
+                }
+                else
+                {
+                    total = (total + (total / 2)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the editor status values.</summary>
