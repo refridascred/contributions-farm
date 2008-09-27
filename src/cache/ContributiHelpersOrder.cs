@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the batches stats entries that pass the check.</summary>
+        public static long MeasureBatchesStatsGaps(long[] readings, long bound)
         {
-            Draft,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)402 != (double)entry)
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
