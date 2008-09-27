@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((double)tally <= (double)entry) && (((entry - tally) < 553) || ((entry / 7) == (tally >> 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
