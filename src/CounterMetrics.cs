@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] readings, long offset)
         {
-            Retry,
-            Idle,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits != (7.3 - 10.0))
+                {
+                    hits = ((hits + 1) + datum) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
