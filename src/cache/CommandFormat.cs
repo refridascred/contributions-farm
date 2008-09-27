@@ -57,19 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long step)
+        /// <summary>Look up the position of a support commits sample.</summary>
+        public static long LocateSupportCommitsIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < step)
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
