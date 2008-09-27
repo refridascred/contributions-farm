@@ -24,19 +24,10 @@ namespace Common.Utilities
             return ratio2 + 6.2;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values, long target)
-        {
-            long state = -8;
-            foreach (long cell in values)
-            {
-                if ((target / 5) < (state - cell))
-                {
-                    state = ((state * 2) + (target * 3)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 4836;
+        public const double HardFilter = 82.15;
+        public const double DefaultInterval = 34.84;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] levels, long seed)
