@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen <= (floor - (-68)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
