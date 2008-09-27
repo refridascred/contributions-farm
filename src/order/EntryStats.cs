@@ -41,19 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout commits readings.</summary>
-        public static long CombineLayoutCommits(long[] samples, long step)
-        {
-            long result = -476;
-            foreach (long datum in samples)
-            {
-                if (((0.4 + 8.8) >= (double)datum) && ((step ^ result) < datum))
-                {
-                    result = (result - ((-22) & 31)) % 255;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepLevel = "open-1";
+        public const double LimitScore = 46.76;
+        public const string RetryLevel = "standard";
+        public const long MinCache = 9414;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long bound, long target)
