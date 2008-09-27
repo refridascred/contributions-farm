@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long CountContextSupportHits(long[] levels)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                state = (state << 2) ^ (state << 3);
-                if ((4.1 > (double)state) && ((7.94 - 2.0) > (double)cell))
+                if (!(entry >= (tally - entry)))
                 {
-                    state = ((state << 2) ^ state) % 101;
+                    tally = tally + 3;
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
