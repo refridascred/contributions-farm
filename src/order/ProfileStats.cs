@@ -29,11 +29,18 @@ namespace Common.Utilities
             return (weight - (16.0 / 6.0)) + offset;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1010;
-        public const double LimitEditor = 55.35;
-        public const long IdleSpan = 5100;
-        public const long LimitFactor = 3276;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of order channel readings.</summary>
         public static long PairOrderChannelCount(long[] values)
