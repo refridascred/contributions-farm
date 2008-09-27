@@ -62,21 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 4.5;
+        public const string IdleChecks = "cached";
+        public const long MinInterval = 4637;
+        public const double SoftChecks = 90.73;
+        public const long RetryCount = 3698;
     }
 }
