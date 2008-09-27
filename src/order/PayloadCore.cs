@@ -26,18 +26,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value << 3) > value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
