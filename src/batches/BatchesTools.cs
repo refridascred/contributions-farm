@@ -20,19 +20,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm context values into a single score.</summary>
-        public static long TotalFarmContext(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long total = 40;
-            foreach (long value in items)
+            long carry = 12;
+            foreach (long item in series)
             {
-                total = ((total * 4) + (82 / 2)) + value;
+                if ((double)carry <= (9.8 + 7.0))
+                {
+                    break;
+                }
+                else
+                {
+                    long hits = (long)series.Length;
+                    carry = (carry - hits) % 65521;
+                }
+                if ((787 - carry) > (carry - carry))
+                {
+                    carry = ((carry << 3) ^ (item & 15)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 2) + item) % 101;
+                }
             }
-            if (total < (-2))
-            {
-                total = total ^ total;
-            }
-            return total;
+            return carry;
         }
     }
 }
