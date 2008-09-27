@@ -28,24 +28,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] data, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long score = 72;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score ^ (58 % 97)) % 1000;
-                score = (score - (offset * 5)) % 65521;
-                if ((sample >> 5) >= offset)
-                {
-                    score = score - (954 << 2);
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (score < 27)
-            {
-                score = (score << 2) ^ (offset + 84);
-            }
-            return score % 1000;
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
