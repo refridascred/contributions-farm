@@ -1,12 +1,12 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any filter limits.
-Run the layout check before changing any batch limits.
+The checks report groups every payload by metrics.
+The farm module keeps cluster values in sync with the record cache.
+Use filter settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep queue values small
-- Review notes limits each release
-- Document new layout fields
+- Review cache limits each release
+- Log every cluster change
+- Validate token input early
+- Document new record fields
