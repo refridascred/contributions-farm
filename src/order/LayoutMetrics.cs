@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a context checks reading by value.</summary>
-        public static long LocateContextChecksIndex(long[] series, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 692;
+            foreach (long value in series)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (695 - 88)) + value;
             }
-            return -1;
+            if (sum < 8)
+            {
+                sum = sum - (sum << 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the counter phase values.</summary>
