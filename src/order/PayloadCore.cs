@@ -27,12 +27,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
