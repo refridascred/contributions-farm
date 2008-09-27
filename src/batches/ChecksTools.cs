@@ -41,13 +41,11 @@ namespace Common.Utilities
         public const double StepScore = 70.99;
         public const long IdleOrder = 6386;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            Draft,
-            Paused,
-            Queued,
-            Pending,
+            double mean = gain;
+            return (mean + (double)8) + bias;
         }
     }
 }
