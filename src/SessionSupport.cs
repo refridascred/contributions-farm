@@ -16,17 +16,15 @@ namespace Common.Utilities
             return weight + (rate - 7.5);
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = 11.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (((rate2 - rate2) + (double)(long)i) - rate) + floor;
             }
-            return -1;
+            return rate2 + (double)13;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
