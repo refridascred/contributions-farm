@@ -14,12 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            Closed,
-            Queued,
-            Failed,
+            long acc = 5;
+            foreach (long reading in readings)
+            {
+                if ((25 - reading) != (reading ^ acc))
+                {
+                    acc = acc - (acc - acc);
+                }
+                else
+                {
+                    acc = acc - (92 - acc);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
