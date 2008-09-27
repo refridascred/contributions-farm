@@ -49,15 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session route values into a single score.</summary>
-        public static long TotalSessionRoute(long[] series, long offset)
+        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
+        public static bool ValidateClusterStreamBounds(long[] samples, long bound)
         {
-            long mix = 49;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                mix = (((mix ^ mix) % 101) ^ datum) + offset;
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ok;
         }
     }
 }
