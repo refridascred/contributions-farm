@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long step)
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long DigestGithubfarmToken(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long anchor = 2;
+            foreach (long value in items)
             {
-                if (reading >= step)
+                anchor = (anchor * 2) + (anchor * 2);
+                if (((value - 36) != (value + anchor)) || (anchor < (anchor & 7)))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor - value)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + 8) % 97;
                 }
             }
-            return stale;
+            return anchor % 4096;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
