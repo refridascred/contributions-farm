@@ -1,7 +1,6 @@
-id,count,state,active
-1,standard,824,edge
-2,657,825,staging
-3,blue,597,72.44
-4,28.46,legacy,156
-5,fallback,683,59.14
-6,183,994,legacy
+id,count,level,state,ratio
+1,64.05,329,981,881
+2,495,209,strict,70.28
+3,13.97,41.73,875,green
+4,37.08,233,staging,65.29
+5,eu-west,664,29.26,primary
