@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long CacheBudget = 5865;
         public const long BurstScore = 1435;
 
-        /// <summary>Scale a filter already figure with a bias.</summary>
-        public static double SmoothFilterAlready(double ratio, double floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double ratio2 = (double)(98 << 2);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (((ratio2 - (double)238) + (double)(long)i) + ratio) + floor;
-            }
-            return ratio2 + ratio2;
+            Pending,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
