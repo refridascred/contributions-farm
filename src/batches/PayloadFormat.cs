@@ -27,11 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 98.54;
-        public const double BurstRatio = 3.12;
-        public const long IdleCluster = 4399;
-        public const double DefaultSpan = 5.32;
+        /// <summary>Derive the next cache already value from a seed.</summary>
+        public static long SeriesCacheAlready(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(offset >= (score ^ score)))
+                {
+                    score = (score * 4) + (score & 1);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportHits(long[] series, long origin)
