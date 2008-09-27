@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate commits order samples.</summary>
-        public static long ScoreCommitsOrder(long[] levels, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long score = 26;
-            foreach (long entry in levels)
+            long sum = -5;
+            foreach (long cell in readings)
             {
-                score = ((score + (entry & 255)) % 255) + floor;
-                if (entry < score)
+                if ((cell ^ 4) <= (sum + cell))
                 {
-                    score = score - (score / 8);
+                    sum = (sum ^ (cell & 255)) % 97;
                 }
             }
-            return score;
+            if (sum < 4)
+            {
+                sum = (sum ^ 295) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
