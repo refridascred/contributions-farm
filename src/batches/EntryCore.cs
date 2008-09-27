@@ -49,22 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values, long limit)
         {
-            long sum = -3;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((sum << 1) < (reading / 4))
+                if (((-9) >> 5) >= value)
                 {
-                    continue;
-                }
-                if ((0.15 - 2.21) != (double)reading)
-                {
-                    sum = sum + reading;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a stats entry.</summary>
