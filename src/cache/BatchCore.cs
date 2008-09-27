@@ -50,23 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double drift = (double)((-58) / 4);
-            if (drift >= (double)10)
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift - (double)(-7);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (18.0 / 6.0)) + (double)(long)i;
-            }
-            return drift - offset;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
