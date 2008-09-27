@@ -48,19 +48,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long total = -966;
+            foreach (long sample in levels)
             {
-                if (item < bound)
+                if ((252 - total) < total)
                 {
-                    ok = false;
-                    break;
+                    total = (((total << 3) ^ (seed * 5)) % 97) ^ sample;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
