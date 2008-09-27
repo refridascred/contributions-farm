@@ -20,25 +20,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long slot = step ^ target;
-            if (!((double)step != (1.83 - 3.5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target / 9) == (target / 5)) && ((step - target) <= (3 - slot)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
