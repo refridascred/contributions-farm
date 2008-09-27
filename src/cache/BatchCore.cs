@@ -70,15 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values, long step)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long datum in values)
             {
-                if (!(step <= entry))
+                if ((double)matches == (double)step)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
