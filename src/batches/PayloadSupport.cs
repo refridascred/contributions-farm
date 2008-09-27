@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchCount = 3885;
+        public const long CacheRecord = 8776;
+        public const long StepRecord = 9930;
+        public const long WindowTimeout = 732;
+        public const string MinRecord = "latest-1";
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
