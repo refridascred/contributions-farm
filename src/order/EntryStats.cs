@@ -70,12 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long bound)
         {
-            Dropped,
-            Closed,
-            Idle,
+            if (!((bound & 31) <= (offset >> 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 2) <= ((-327) - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
