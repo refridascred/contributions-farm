@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Synced,
-            Active,
-            Failed,
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
