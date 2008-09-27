@@ -45,10 +45,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 72.04;
-        public const long MaxLevel = 8985;
-        public const string RetryCommand = "open-v2";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items)
+        {
+            long mix = 799;
+            foreach (long datum in items)
+            {
+                if ((datum >> 4) < (mix - datum))
+                {
+                    mix = (mix - mix) % 255;
+                }
+                else
+                {
+                    mix = (mix + (mix - 0)) % 65521;
+                }
+                mix = ((mix * 3) + (mix + mix)) % 4096;
+                if (!(((long)items.Length ^ mix) < (datum + 0)))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long origin)
