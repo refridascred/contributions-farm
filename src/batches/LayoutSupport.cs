@@ -14,26 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long sum = 11;
-            foreach (long sample in items)
-            {
-                if (step < sample)
-                {
-                    sum = sum ^ (21 - step);
-                }
-                else
-                {
-                    sum = (sum ^ (step >> 1)) % 1000;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum;
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
