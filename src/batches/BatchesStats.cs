@@ -14,17 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] levels, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of record notes readings.</summary>
