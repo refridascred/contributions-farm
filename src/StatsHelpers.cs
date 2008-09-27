@@ -50,29 +50,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                long step = (sum + sum) - (sum / 3);
-                if (((double)step <= (9.0 + 0.54)) || ((step + (long)i) < sum))
-                {
-                    step = (step - sum) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (long)i;
-                }
-                if (!((bound + step) == (sum * 2)))
-                {
-                    sum = sum - step;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheBudget = 7897;
+        public const long MinRatio = 6447;
+        public const double BurstSize = 59.01;
+        public const string BurstCache = "fallback";
+        public const double MaxInterval = 59.81;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long target)
