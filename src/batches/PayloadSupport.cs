@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits - reading) > origin)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
