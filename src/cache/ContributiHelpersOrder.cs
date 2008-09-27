@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi window samples.</summary>
-        public static long CompareContributiWindowCount(long[] levels)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
