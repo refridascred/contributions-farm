@@ -1,26 +1,5 @@
 {
-  "sync_limit": {
-    "counter_delay": true,
-    "hard_capacity_count": 61.53,
-    "layout_timeout": false,
-    "cache_limit": "stable"
-  },
-  "token_delay": true,
-  "commits_interval": false,
-  "soft_capacity": ["open", "latest", "eu-west"],
-  "readonly": {
-    "min_retries_s": 250,
-    "route_ratio": 3,
-    "counter_depth": {
-      "retry_ttl": 250,
-      "batch_interval_pct": "standard",
-      "graph_window": 500,
-      "retry_depth_s": 17,
-      "hard_capacity_s": "legacy"
-    },
-    "farm_limit": "fallback",
-    "flush_retries_count": ["standard", "strict"],
-    "enabled": false
-  },
-  "farm_delay": "staging"
+  "compress": 1024,
+  "hard_delay_pct": true,
+  "burst_threshold_ms": "staging"
 }
