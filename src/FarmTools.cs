@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 784;
+            foreach (long cell in series)
+            {
+                if ((cell >> 1) != (637 * 3))
+                {
+                    mark = (mark - (272 ^ 1)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
