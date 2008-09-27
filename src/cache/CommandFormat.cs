@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            double rate = 1.2;
+            if (rate >= bias2)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor - 75) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                rate = rate + (double)8;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (11.0 - rate)) - (double)(long)i;
+            }
+            return rate - (bias * 18.0);
         }
     }
 }
