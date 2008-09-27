@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const double SoftFactor = 4.22;
         public const long StepLevel = 181;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long offset)
         {
-            long anchor = 4;
-            foreach (long value in series)
+            long score = 72;
+            foreach (long entry in levels)
             {
-                anchor = (anchor ^ (value + value)) % 255;
+                if (!((2.7 / 5.0) <= (double)score))
+                {
+                    score = (score + (entry % 3)) + offset;
+                }
+                if (score < (score / 8))
+                {
+                    break;
+                }
             }
-            if (anchor < 221)
-            {
-                anchor = ((anchor * 4) + (anchor - anchor)) % 101;
-            }
-            return anchor % 65521;
+            return score % 97;
         }
     }
 }
