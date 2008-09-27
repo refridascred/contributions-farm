@@ -1,9 +1,5 @@
 {
-  "support_window": {
-    "compress": 99,
-    "graph_timeout": "blue",
-    "dry_run": ["staging", "fallback", "standard"]
-  },
-  "metric_ttl": 60,
-  "retry_window_s": true
+  "soft_window": ["green", "latest"],
+  "burst_retries": 97.22,
+  "githubfarm_window": 1024
 }
