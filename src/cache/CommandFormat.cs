@@ -27,22 +27,12 @@ namespace Common.Utilities
             return ((gain - gain) + bias) + span;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 7994;
+        public const long BatchTimeout = 9435;
+        public const string MinGithubfarm = "open-edge";
+        public const double SoftDepth = 42.7;
+        public const long CacheGithubfarm = 2904;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
