@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long TallyProfileSessionGaps(long[] items)
         {
-            double drift = offset - (offset - bias);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                drift = (drift - 8.87) + (double)(long)i;
+                if (!(((hits + 113) >= (hits + (long)items.Length)) && (hits > (428 / 8))))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return drift + (bias + bias);
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
