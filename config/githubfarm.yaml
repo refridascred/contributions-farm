@@ -1,9 +1,5 @@
 # githubfarm settings
-sync_limit_s: local
-hard_limit_pct: false
-compress:
-  - fallback
-  - eu-west
-soft_limit_pct: green
-cache_limit_s: 80.88
-soft_capacity_s: 500
+flush_timeout_pct: 4554
+counter_capacity: eu-west
+soft_depth: false
+cache_limit: green
