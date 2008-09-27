@@ -1,5 +1,5 @@
 {
-  "tools_ttl": 6077,
-  "already_size": 89.61,
-  "max_capacity_count": 4083
+  "farm_retries": 64,
+  "batch_window": 46,
+  "max_retries_s": 250
 }
