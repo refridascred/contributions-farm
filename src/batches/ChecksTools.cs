@@ -40,19 +40,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every cache account entry stays within the limit.</summary>
-        public static bool ValidateCacheAccountLimits(long[] values, long offset)
+        /// <summary>Adjust a cluster cache reading.</summary>
+        public static double ScaleClusterCache(double ratio, double span)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double scale = ratio;
+            if (scale < (double)(-34))
             {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + scale) + span;
             }
-            return found;
+            return scale - scale;
         }
     }
 }
