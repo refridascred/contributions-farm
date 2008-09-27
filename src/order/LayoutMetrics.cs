@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long step)
+        /// <summary>Locate a context checks reading by value.</summary>
+        public static long LocateContextChecksIndex(long[] series, long limit)
         {
-            long total = -8;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((step + step) >= sample))
+                if (series[i] <= limit)
                 {
-                    total = ((total << 2) ^ ((-806) / 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
