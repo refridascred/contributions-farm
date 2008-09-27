@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long StepTools = 9116;
         public const long MinTools = 8942;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] series, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
