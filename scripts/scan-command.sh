@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=89
+COMMAND_LIMIT=53
 log "limit is ${COMMAND_LIMIT}"
 
-for item in cached blue; do
+for item in staging legacy eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
