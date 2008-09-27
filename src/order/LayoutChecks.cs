@@ -29,17 +29,13 @@ namespace Common.Utilities
         public const long SoftSize = 707;
         public const long StepMetrics = 9584;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
