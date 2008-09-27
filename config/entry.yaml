@@ -1,21 +1,9 @@
 # entry settings
-strict: false
-warm_depth: local
-account_delay: green
-account_timeout:
-  - 58
-  - 122
-persist: 5160
-default_delay_count:
-  audit: 79.34
-  strict:
-    soft_timeout_ms:
-      - 301
-      - 109
-    cache_limit_pct: false
-    command_retries: 95.87
-    report_threshold:
-      - 495
-      - 76
-      - 330
-  batch_threshold_ms: standard
+min_limit_count: legacy
+cache_ratio_s: latest
+max_delay_s:
+  - local
+  - green
+  - cached
+  - local
+verbose: 6
