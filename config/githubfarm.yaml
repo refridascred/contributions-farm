@@ -1,4 +1,24 @@
 # githubfarm settings
-batches_limit: false
-base_delay_pct: 38.98
-counter_delay: 55.21
+batch_timeout_count:
+  max_interval_s: true
+  max_timeout_ms: eu-west
+  soft_limit:
+    default_interval_pct: true
+    verbose: true
+    min_capacity_count: false
+    persist: 100
+    min_capacity: edge
+  base_retries_ms: false
+editor_ratio: latest
+checks_interval:
+  githubfarm_depth:
+    batch_ttl_count: 71.93
+    checks_threshold: staging
+    account_limit: strict
+    audit: primary
+  profile_depth:
+    batch_limit: fallback
+    sync_delay_s: 51
+    max_ttl: standard
+  entry_timeout: 60
+  buffer_ratio: blue
