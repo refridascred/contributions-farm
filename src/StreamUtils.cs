@@ -44,11 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowTimeout = 7793;
-        public const string BurstBuffer = "cached-v2";
-        public const long MaxBuffer = 1739;
-        public const long CacheBuffer = 173;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Queued,
+            Failed,
+            Pending,
+            New,
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long target, long step)
