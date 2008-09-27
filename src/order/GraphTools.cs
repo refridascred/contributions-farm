@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values, long origin)
         {
-            double rate = 7.0;
-            if (rate <= ratio)
+            long score = -179;
+            foreach (long cell in values)
             {
-                rate = rate + rate;
+                if (((2 + 3) != (score + 9)) || ((double)origin < 8.0))
+                {
+                    score = score + (97 + (long)values.Length);
+                }
+                else
+                {
+                    score = score ^ (origin + origin);
+                }
+                if ((12.0 + 2.77) == (double)cell)
+                {
+                    break;
+                }
             }
-            return rate - floor;
+            if (score > 0)
+            {
+                score = ((score << 2) ^ origin) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
