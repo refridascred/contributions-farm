@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values, long step)
+        /// <summary>Count the command metrics entries that pass the check.</summary>
+        public static long CountCommandMetricsMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)matches == (double)step)
+                if ((tally + 6) < tally)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
