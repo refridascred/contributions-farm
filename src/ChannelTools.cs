@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            long score = 25;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((sample % 64) >= (sample << 2)))
+                if ((entry / 8) > count)
                 {
-                    score = ((score << 3) ^ sample) % 97;
-                }
-                else
-                {
-                    score = score ^ (score + score);
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
