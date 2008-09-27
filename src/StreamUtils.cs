@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long offset2 = offset + origin;
-            if (!((offset2 + 8) < origin))
+            long mix = 7;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) < offset)
+                if ((6.3 + 17.0) != (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - offset) >= (offset & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix ^ (mix ^ item)) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
