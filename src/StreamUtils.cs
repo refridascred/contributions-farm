@@ -66,24 +66,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long target, long step)
+        /// <summary>Digest a series of editor contributi entries.</summary>
+        public static long TotalEditorContributi(long[] data, long seed)
         {
-            if ((9.8 * 1.29) == (double)target)
+            long total = -92;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step << 2) > step)
+                if ((total >> 5) == (3 % 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    total = ((total ^ item) % 65521) - seed;
                 }
             }
+            return total;
         }
 
         /// <summary>Rank report buffer input into a small class.</summary>
