@@ -61,14 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Retry,
-            Locked,
-            New,
-            Queued,
-            Closed,
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
