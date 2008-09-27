@@ -1,6 +1,9 @@
-id,weight,owner,ratio
-1,stable,local,legacy
-2,primary,edge,legacy
-3,standard,primary,146
-4,38.66,446,595
-5,532,70.61,6.92
+id,token,active
+1,strict,15.92
+2,303,27.32
+3,753,127
+4,61.48,standard
+5,44.13,101
+6,658,421
+7,778,45.0
+8,green,475
