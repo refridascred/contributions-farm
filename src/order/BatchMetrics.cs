@@ -25,21 +25,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
