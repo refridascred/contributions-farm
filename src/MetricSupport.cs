@@ -28,22 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] readings, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] samples, long origin)
         {
-            long total = 386;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.3 * 6.14) <= (double)step)
+                if (samples[i] == origin)
                 {
-                    total = (total + (total / 4)) + cell;
-                }
-                else
-                {
-                    total = (total + total) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
