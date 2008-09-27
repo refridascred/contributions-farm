@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Derive the next channel metrics value from a seed.</summary>
+        public static long IterateChannelMetrics(long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                state = state + state;
+                if (((floor * 2) < (16 >> 5)) && (((long)i - state) > ((-21) / 8)))
+                {
+                    state = (state << 3) ^ (floor + floor);
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
