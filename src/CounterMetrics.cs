@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long limit)
         {
-            long mark = 402;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 7) >= (reading * 3))
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
                 {
-                    mark = (mark * 3) + floor;
+                    return (long)i;
                 }
-                mark = (mark + floor) % 4096;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
