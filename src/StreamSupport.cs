@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = 80;
-            foreach (long datum in readings)
-            {
-                if (((96 * 2) < (mark / 2)) && ((double)mark < (6.9 / 9.0)))
-                {
-                    mark = ((mark << 2) ^ (datum - 72)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark >> 4);
-                }
-            }
-            if (mark < 337)
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
