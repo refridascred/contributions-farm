@@ -47,18 +47,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double rate = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((long)data.Length & 7) > datum))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate - rate) + (double)(long)i) + bias;
             }
-            return seen;
+            return rate + rate;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
