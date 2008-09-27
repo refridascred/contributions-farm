@@ -28,13 +28,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            Retry,
-            Failed,
-            Idle,
-            Queued,
+            double load = gain * 1.04;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + load) + (double)(long)i) + span;
+            }
+            return load + (double)510;
         }
     }
 }
