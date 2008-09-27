@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "latest";
-        public const double WindowTimeout = 8.95;
-        public const long IdleEntry = 1677;
-        public const string WindowWidth = "stable-edge";
-        public const double WindowLevel = 33.33;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchLevel = "stable-v2";
+        public const long SoftBudget = 7724;
+        public const double MaxMetrics = 16.82;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] readings, long target)
