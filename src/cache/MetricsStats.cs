@@ -38,13 +38,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            Queued,
-            Done,
-            Stale,
-            New,
+            long anchor = 512;
+            foreach (long item in series)
+            {
+                if ((double)anchor != (double)item)
+                {
+                    anchor = anchor + (anchor + item);
+                }
+                if (!(9.9 > (double)anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 59)
+            {
+                anchor = (anchor << 2) ^ (anchor + 1);
+            }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
