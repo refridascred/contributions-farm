@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample > count) || ((33 * 4) <= sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = rate;
+            return mean - (offset - offset);
         }
 
         /// <summary>Hold a counter snapshot.</summary>
