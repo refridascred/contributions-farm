@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long lane = origin ^ step;
-            if (!((lane * 3) <= (lane * 2)))
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (lane >= (step ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)lane >= (3.7 + 0.79)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)step <= (5.31 / 5.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate channel already samples.</summary>
