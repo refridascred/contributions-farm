@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a record snapshot.</summary>
