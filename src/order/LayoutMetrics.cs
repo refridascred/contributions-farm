@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] values, long floor)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
