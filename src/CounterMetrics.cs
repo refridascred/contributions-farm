@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 96.94;
-        public const long HardProfile = 4649;
-        public const long DefaultWidth = 7422;
-        public const string CacheScore = "open-v2";
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Retry,
+            Idle,
+            Done,
+            Stale,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxDepth = "cached";
