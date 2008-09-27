@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Locked,
-            Failed,
-            New,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9797;
+        public const long BaseWindow = 1895;
+        public const long StepWindow = 7349;
+        public const double BatchSize = 93.08;
+        public const string BatchWindow = "stable-v2";
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long floor)
