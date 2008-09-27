@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long step, long seed)
+        /// <summary>Fold a list of schema editor readings.</summary>
+        public static long ScoreSchemaEditor(long[] levels)
         {
-            if (!(243 >= (274 - step)))
+            long state = 5;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 1) >= (seed + seed))
+                if ((sample + 7) <= 8)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    state = ((state * 3) + sample) % 101;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
