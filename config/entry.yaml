@@ -1,9 +1,7 @@
 # entry settings
-min_limit_count: legacy
-cache_ratio_s: latest
-max_delay_s:
-  - local
-  - green
-  - cached
-  - local
-verbose: 6
+audit: 37.27
+poll_timeout_ms: 96.44
+session_ttl: open
+warm_window_count: 21.02
+idle_limit_ms: 9468
+verbose: 624
