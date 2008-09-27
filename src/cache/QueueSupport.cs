@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double SoftSchema = 4.82;
         public const string SoftCount = "legacy-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2397;
-        public const long SoftBudget = 1727;
-        public const string HardDepth = "latest-v2";
-        public const double SoftSpan = 98.69;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Closed,
+            Failed,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] readings)
