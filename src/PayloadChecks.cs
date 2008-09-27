@@ -28,16 +28,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double ProjectClusterFilter(double bias, double span)
-        {
-            double mean = (bias / 8.0) - (double)0;
-            if (mean > (2.0 * 13.0))
-            {
-                mean = mean - mean;
-            }
-            return mean - span;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 23.82;
+        public const long DefaultRatio = 9597;
+        public const double BaseBatch = 46.89;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
