@@ -56,19 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue layout readings against a bound.</summary>
-        public static bool CheckQueueLayoutLimits(long[] readings, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
