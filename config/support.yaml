@@ -1,4 +1,12 @@
 # support settings
-default_timeout_ms: eu-west
-commits_retries: 7138
-flush_ratio_count: true
+min_interval_count: 49.58
+min_threshold_pct:
+  max_capacity: stable
+  enabled:
+    - latest
+    - primary
+  base_interval_s: cached
+  persist: 16
+max_interval_count: standard
+default_ratio_pct: edge
+retry_capacity_count: true
