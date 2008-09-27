@@ -1,19 +1,7 @@
 {
-  "notes_limit": {
-    "cache_timeout_s": 70.89,
-    "verbose": "eu-west",
-    "commits_limit": ["staging", "cached", "open"],
-    "payload_threshold": true,
-    "cluster_limit": 500
-  },
-  "base_threshold_count": 1622,
-  "max_threshold_count": ["latest", "legacy"],
-  "verbose": {
-    "enabled": ["latest", "green", "staging"],
-    "audit": 51.78,
-    "sync_depth": 7562,
-    "tools_retries": false
-  },
-  "cache_delay": 9308,
-  "default_depth": 250
+  "default_threshold_s": "open",
+  "metric_retries": "cached",
+  "metric_window": 37,
+  "batch_capacity": 16,
+  "base_threshold_pct": 78
 }
