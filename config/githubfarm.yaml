@@ -1,19 +1,8 @@
 # githubfarm settings
-cache_limit_s:
-  base_ratio_count: false
-  batch_depth_ms: 54
-  cache_depth: 96.48
-  base_timeout_count: 3635
-  batch_size: 97
-  counter_size: primary
-max_capacity_ms: staging
-cache_threshold_ms:
-  - edge
-  - edge
-  - cached
-  - strict
-sync_limit_ms: 5211
-format_size: 51.46
-batch_interval:
+audit: 8304
+checks_ttl:
+  - blue
+  - eu-west
   - standard
-  - stable
+  - fallback
+flush_interval_pct: 59.5
