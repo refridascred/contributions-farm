@@ -32,17 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue cluster series from a seed.</summary>
-        public static long SeriesQueueCluster(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSpan = 7893;
+        public const double BaseBudget = 98.09;
+        public const string CacheChecks = "stable";
+        public const long IdleRatio = 8892;
+        public const long MinSize = 9658;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
