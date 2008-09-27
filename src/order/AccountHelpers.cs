@@ -40,21 +40,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Classify a format batch pair into a bucket.</summary>
+        public static long GradeFormatBatch(long offset, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin > (origin + 86)) && ((offset - origin) == (origin >> 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((origin - origin) < offset) || (origin >= (origin / 2)))
                 {
-                    if ((data[i] + data[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (1.0 < (double)offset)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine farm cache values into a single score.</summary>
