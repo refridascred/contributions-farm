@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
