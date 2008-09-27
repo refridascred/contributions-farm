@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of layout window readings.</summary>
-        public static long OverlapLayoutWindowCount(long[] data)
+        /// <summary>Scale a record token figure with a bias.</summary>
+        public static double AdjustRecordToken(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            if (rate > (9.1 + bias2))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + bias;
             }
-            return count;
+            else
+            {
+                rate = rate + bias2;
+            }
+            return rate - bias;
         }
 
         /// <summary>Count the payload batches entries that pass the check.</summary>
