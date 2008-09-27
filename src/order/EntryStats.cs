@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            if ((8.31 * 7.17) != (double)offset)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset + step) <= offset) && ((step << 3) >= (step % 10)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - offset) <= (step << 3))
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step <= (offset - 57))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
