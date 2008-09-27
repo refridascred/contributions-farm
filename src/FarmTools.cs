@@ -33,15 +33,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double floor)
-        {
-            double load = scale;
-            if (load <= (double)853)
-            {
-                load = load + floor;
-            }
-            return load + floor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseInterval = 2789;
+        public const long DefaultPayload = 2149;
+        public const string BaseBudget = "standard-v2";
+        public const double RetryPayload = 41.22;
     }
 }
