@@ -50,18 +50,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item + item) > (18 % 64))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
