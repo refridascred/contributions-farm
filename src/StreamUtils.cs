@@ -25,22 +25,12 @@ namespace Common.Utilities
             return ((bias2 - (double)72) + weight) + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 2) == (datum * 4))
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank queue input into a small class.</summary>
