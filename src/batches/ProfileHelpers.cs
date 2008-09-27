@@ -68,25 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum * 2) + (5 << 3);
-                if (!((57 - sum) >= (step & 7)))
+                if ((8 - seen) != (entry - limit))
                 {
-                    sum = (sum + (long)i) % 65521;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    sum = (sum * 4) + (step - sum);
-                    sum = ((sum * 2) + step) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
     }
 }
