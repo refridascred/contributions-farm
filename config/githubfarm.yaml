@@ -1,4 +1,6 @@
 # githubfarm settings
-entry_limit: edge
-dry_run: fallback
-batch_limit_s: 88
+default_capacity: 98.22
+metric_limit: 49
+base_timeout_pct: true
+readonly: 33.02
+editor_retries: 3
