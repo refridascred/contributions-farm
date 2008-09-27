@@ -23,12 +23,22 @@ namespace Common.Utilities
             return scale - (double)42;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] levels, long target)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + matches) > (target >> 1))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
