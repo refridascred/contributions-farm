@@ -46,11 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepLevel = 3996;
-        public const long MinSchema = 2499;
-        public const double WindowBudget = 41.77;
-        public const string LimitCount = "primary";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 72.04;
+        public const long MaxLevel = 8985;
+        public const string RetryCommand = "open-v2";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long origin)
