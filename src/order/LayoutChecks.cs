@@ -42,18 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] levels, long bound)
+        /// <summary>Match up batch commits samples.</summary>
+        public static long PairBatchCommitsCount(long[] data)
         {
-            long acc = 17;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound - bound) > (4 >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc - reading;
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
