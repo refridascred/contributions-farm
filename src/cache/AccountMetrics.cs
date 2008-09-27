@@ -35,11 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstTimeout = "latest";
-        public const string LimitBatch = "cached-v2";
-        public const double DefaultBatch = 72.09;
-        public const long LimitSize = 4835;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Failed,
+            Ready,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] data, long origin)
