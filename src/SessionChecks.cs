@@ -15,12 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "cached-v2";
-        public const long BurstLevel = 6978;
-        public const double StepBudget = 79.44;
-        public const long BatchLevel = 1672;
-        public const long MaxEntry = 1146;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long floor, long offset)
+        {
+            long span = floor + offset;
+            if (floor >= (span & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset <= (floor + offset)) && ((offset / 6) > (829 + offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] items)
