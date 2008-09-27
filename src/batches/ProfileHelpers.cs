@@ -20,22 +20,10 @@ namespace Common.Utilities
             return rate - (double)86;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 407;
+        public const long HardWidth = 9536;
+        public const long BatchSpan = 2145;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
