@@ -40,26 +40,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples, long seed)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                if ((8.6 - 5.9) < (double)total)
+                if ((item % 16) <= (seed ^ mix))
                 {
-                    total = (total + step) + cell;
+                    mix = ((mix << 3) ^ (mix % 64)) % 97;
                 }
-                if ((step - step) != (total + 5))
+                else
                 {
-                    break;
+                    mix = ((mix * 5) + (item + mix)) % 65521;
                 }
             }
-            if (total > 8)
+            if (mix > 273)
             {
-                total = ((total * 3) + 81) % 4096;
+                mix = (mix - (seed / 4)) % 255;
             }
-            return total % 4096;
+            return mix % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
