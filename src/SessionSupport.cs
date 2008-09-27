@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 109;
-        public const long SoftBatches = 6456;
-        public const long DefaultCount = 5032;
-        public const long CacheBatches = 9198;
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long MeasureReportFarmMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((offset - tally) <= value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double ratio, double floor)
