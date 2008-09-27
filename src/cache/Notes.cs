@@ -38,32 +38,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long origin, long target)
-        {
-            if (target <= 32)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (double)4)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + 855) < target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 874;
+        public const string WindowTimeout = "legacy-v2";
+        public const long RetryBudget = 2763;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double bias, double span)
