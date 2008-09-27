@@ -28,15 +28,21 @@ namespace Common.Utilities
         public const long RetryMetric = 8629;
         public const double MinWidth = 7.44;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            double mean = (double)6 * 5.47;
-            if (mean > (bias * 6.8))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - 6.0) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return seen;
         }
     }
 }
