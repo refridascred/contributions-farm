@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the payload mode values.</summary>
