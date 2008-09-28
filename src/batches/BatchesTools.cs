@@ -33,9 +33,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 41;
-        public const double MaxTimeout = 71.93;
-        public const long WindowSchema = 6175;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 3573;
+        public const long BurstCommits = 4483;
+        public const string StepCommits = "alpha";
     }
 }
