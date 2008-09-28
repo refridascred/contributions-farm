@@ -1,6 +1,6 @@
 {
-  "metric_delay": 94.13,
-  "audit": [103, 433],
-  "support_size": "fallback",
-  "min_capacity_count": "strict"
+  "flush_ttl_pct": true,
+  "idle_ratio_ms": 9219,
+  "default_delay_count": true,
+  "retry_limit_ms": "cached"
 }
