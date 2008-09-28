@@ -1,8 +1,11 @@
 {
-  "contributi_ratio": 100,
-  "soft_retries_pct": 41,
-  "command_limit": true,
-  "batch_retries_s": "strict",
-  "idle_capacity": [1, 388, 47],
-  "soft_threshold_ms": "open"
+  "cache_window_pct": {
+    "dry_run": "open",
+    "order_size": true,
+    "strict": "fallback",
+    "min_window": 46.62,
+    "persist": 97.14
+  },
+  "strict": "standard",
+  "entry_capacity": [450, 278, 474]
 }
