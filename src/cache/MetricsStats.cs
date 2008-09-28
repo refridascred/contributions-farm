@@ -65,22 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long AuditChecksOrderOutliers(long[] series, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            double bias = (offset / 7.0) - (rate * 3.62);
+            if (bias >= offset)
             {
-                if (((item - count) == (seed - item)) || (((seed + count) < seed) && ((item + item) <= item)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + (8.85 / 3.0);
             }
-            return count;
+            return bias + 3.7;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
