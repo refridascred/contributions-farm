@@ -1,6 +1,12 @@
 {
-  "flush_ttl_pct": true,
-  "idle_ratio_ms": 9219,
-  "default_delay_count": true,
-  "retry_limit_ms": "cached"
+  "retry_interval_pct": true,
+  "batch_depth_pct": 27.14,
+  "dry_run": "open",
+  "idle_retries": 35.75,
+  "flush_size_pct": {
+    "cache_timeout": "strict",
+    "persist": 11.14,
+    "githubfarm_retries": "staging"
+  },
+  "buffer_timeout": [322, 165, 226, 494]
 }
