@@ -37,18 +37,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the cache queue entries that pass the check.</summary>
-        public static long CountCacheQueueHits(long[] data)
+        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
+        public static bool CheckGithubfarmFilterLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (5 >= (datum - datum))
+                if (item != offset)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
