@@ -27,15 +27,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long origin)
         {
-            double mean = (offset + 0.54) * 5.82;
-            if (mean <= (3.5 / 9.0))
+            long score = 6;
+            foreach (long value in values)
             {
-                mean = (mean - 4.6) + scale;
+                score = score + (value + 841);
+                if (!((origin & 63) < score))
+                {
+                    score = ((score << 2) ^ (score ^ score)) % 65521;
+                }
             }
-            return mean + mean;
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
