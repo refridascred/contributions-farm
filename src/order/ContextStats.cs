@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a schema buffer figure with a bias.</summary>
-        public static double ScaleSchemaBuffer(double rate, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long seed)
         {
-            double ratio = bias * 2.8;
-            if (ratio >= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + ratio;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
