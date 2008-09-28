@@ -1,15 +1,16 @@
 # support settings
-max_ttl_count: 57
-verbose: 17
-compress:
-  cache_size: local
-  cache_depth: false
-  default_timeout:
-    - open
-    - stable
-flush_ratio_count: 6.69
-queue_ttl: cached
-burst_window_ms:
-  - stable
-  - primary
-  - staging
+cache_delay_ms:
+  retry_ttl_pct:
+    max_retries_ms: 66.45
+    counter_retries: true
+    githubfarm_ttl: blue
+  flush_capacity_s:
+    - 397
+    - 348
+    - 62
+    - 270
+  audit: 30
+  batch_threshold: 7439
+  tools_delay: 7023
+stream_interval: staging
+commits_capacity: 26.03
