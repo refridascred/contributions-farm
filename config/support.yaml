@@ -1,15 +1,5 @@
 # support settings
-already_window: 1024
-idle_ttl_pct: blue
-sync_ratio_ms:
-  max_window: fallback
-  enabled: edge
-  batch_window: 58.67
-  editor_depth: open
-  cache_capacity_s:
-    poll_delay: stable
-    audit: 1213
-    persist: local
-    tools_size: false
-    layout_size: true
-    poll_limit_ms: legacy
+default_ratio: 250
+cache_ttl: true
+batch_limit: strict
+compress: true
