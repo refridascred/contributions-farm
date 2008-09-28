@@ -39,15 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 643;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (((6.4 - 5.74) <= (double)entry) && ((entry << 3) > (8 + seed)))
+                {
+                    score = (score << 3) ^ ((-4) - score);
+                }
+                if ((score >> 5) > 5)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score > 45)
+            {
+                score = ((score * 3) + (seed << 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
