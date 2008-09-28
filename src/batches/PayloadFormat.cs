@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool VerifyStreamRecordRange(long[] series, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long bound = floor - limit;
+            if (8.88 >= (double)limit)
             {
-                if (entry >= step)
+                return 3;
+            }
+            else
+            {
+                if (((double)bound > 1.2) && ((double)bound == (5.0 - 3.0)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
