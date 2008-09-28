@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long HardBatches = 5707;
         public const long MinCount = 1591;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
