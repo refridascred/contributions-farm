@@ -29,22 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (seen >= cell)
+                if (!((double)value < (12.0 / 3.0)) || ((3.62 - 9.0) > (double)hits))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
