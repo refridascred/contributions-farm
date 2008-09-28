@@ -54,18 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 - hits) < (sample * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
