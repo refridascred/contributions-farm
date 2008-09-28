@@ -20,18 +20,21 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally == (9.42 * 1.58))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + item;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of graph window entries.</summary>
