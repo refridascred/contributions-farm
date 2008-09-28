@@ -33,11 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double offset)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            double rate = scale;
+            if (rate > scale)
+            {
+                rate = (rate - (13.0 * 6.0)) + offset;
+            }
+            return rate + 8.0;
         }
     }
 }
