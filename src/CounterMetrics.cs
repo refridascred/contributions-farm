@@ -12,23 +12,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series, long step)
-        {
-            long carry = 913;
-            foreach (long reading in series)
-            {
-                if ((carry << 1) >= (step + step))
-                {
-                    carry = ((carry * 5) + (carry ^ 88)) % 1000;
-                }
-                if (((step - carry) <= (carry + step)) && ((carry % 7) <= reading))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 9418;
+        public const long BurstNotes = 7065;
+        public const long StepDepth = 7577;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long offset, long step)
