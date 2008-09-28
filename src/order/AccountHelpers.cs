@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const long BatchInterval = 6170;
         public const long IdleRecord = 6390;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
