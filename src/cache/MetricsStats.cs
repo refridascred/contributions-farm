@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheLevel = 5691;
-        public const long CacheFactor = 7904;
-        public const double DefaultRatio = 4.21;
-        public const long StepScore = 5679;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit token metric readings against a rule.</summary>
         public static long TallyTokenMetricMatches(long[] data, long offset)
