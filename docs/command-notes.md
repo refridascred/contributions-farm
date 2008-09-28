@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-When a stream fails, the command handler retries a few times before giving up.
-
-Use farm settings to tune how often channel data is refreshed.
-Use route settings to tune how often profile data is refreshed.
-The account module keeps cache values in sync with the cache cache.
+The profile report groups every already by stream.
+The account helpers are pure functions, so they are safe to call from any thread.
+Keep entry and record names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every order change
-- Prefer format defaults
-- Keep batch values small
+- Review editor limits each release
+- Log every batch change
+- Prefer payload defaults
+- Keep queue values small
