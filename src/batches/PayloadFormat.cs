@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool VerifyBatchesFarmRange(long[] items, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a metrics stats.</summary>
