@@ -20,18 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = -948;
+            foreach (long reading in samples)
             {
-                if ((double)reading > (1.16 - 0.1))
-                {
-                    hits = (hits + 1) - floor;
-                }
+                total = (total * 3) + (reading + reading);
             }
-            return hits;
+            if (total > 613)
+            {
+                total = total - 32;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
