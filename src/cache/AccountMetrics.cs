@@ -23,17 +23,18 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                carry = (carry * 2) + carry;
-                carry = (carry - (origin - (long)i)) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((count + offset) > (value ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
