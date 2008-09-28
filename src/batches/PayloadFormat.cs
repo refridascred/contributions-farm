@@ -41,10 +41,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "standard-v2";
-        public const long CacheNotes = 2626;
-        public const long LimitSpan = 4342;
-        public const long WindowNotes = 1057;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long target2)
+        {
+            if (!((8.3 * 14.0) == (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target2 == (6.57 / 8.0)) && (target2 > (target ^ target2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target2 - target2) < (target ^ target2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
