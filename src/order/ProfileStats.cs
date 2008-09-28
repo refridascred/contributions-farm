@@ -35,38 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long bound)
         {
-            if ((target + target) <= (target * 3))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 255) < bound)
+                if (reading > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ bound) < (target & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound ^ 299) > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many layout account samples are out of range.</summary>
