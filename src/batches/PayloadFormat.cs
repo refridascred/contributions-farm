@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) >= (seed + seed))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 19.45;
+        public const long MinQueue = 5445;
+        public const long LimitQueue = 6415;
+        public const long RetryQueue = 8822;
+        public const long CacheDepth = 4295;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLayout = 91.98;
