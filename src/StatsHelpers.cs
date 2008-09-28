@@ -16,15 +16,19 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale2);
         }
 
-        /// <summary>Adjust a stream window reading.</summary>
-        public static double SmoothStreamWindow(double weight, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] values, long seed)
         {
-            double bias = floor;
-            if (bias > (weight * 20.0))
+            bool stale = true;
+            foreach (long value in values)
             {
-                bias = bias + (weight / 8.0);
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - (bias / 8.0);
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
