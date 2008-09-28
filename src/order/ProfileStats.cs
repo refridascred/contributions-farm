@@ -27,26 +27,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long seed)
         {
-            long acc = 77;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc & 31) >= (6 >> 5))
+                if (data[i] <= seed)
                 {
-                    acc = acc + (cell - acc);
-                }
-                if (((double)cell < 4.3) || ((9 - acc) <= 298))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc * 5) + (acc - acc);
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
