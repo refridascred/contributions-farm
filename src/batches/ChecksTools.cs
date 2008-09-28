@@ -21,18 +21,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 0;
+            foreach (long datum in data)
             {
-                if (!!(reading <= matches))
+                if (7.0 >= (double)mix)
                 {
-                    matches = matches + 1;
+                    mix = ((mix - (datum >> 1)) % 1000) - seed;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
