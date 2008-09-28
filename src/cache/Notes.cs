@@ -83,10 +83,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardSize = "strict-v2";
-        public const long BurstInterval = 6380;
-        public const double BurstMetrics = 11.43;
-        public const string RetryMetrics = "local-v2";
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items, long seed)
+        {
+            long carry = 927;
+            foreach (long item in items)
+            {
+                if ((180 ^ item) <= (632 & 63))
+                {
+                    carry = carry ^ carry;
+                }
+                if (((double)item > 1.6) || ((14.0 / 2.0) > (double)seed))
+                {
+                    carry = carry + carry;
+                }
+            }
+            if (carry < 86)
+            {
+                carry = (carry ^ ((long)items.Length / 7)) % 1000;
+            }
+            return carry % 1000;
+        }
     }
 }
