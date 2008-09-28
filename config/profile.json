@@ -1,5 +1,5 @@
 {
-  "cache_ttl_s": true,
-  "support_delay": 1776,
-  "soft_delay_pct": "stable"
+  "max_size_s": "cached",
+  "burst_ttl_pct": "open",
+  "githubfarm_depth": false
 }
