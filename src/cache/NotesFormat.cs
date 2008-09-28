@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile already entries.</summary>
-        public static long TotalProfileAlready(long[] readings, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long score = 43;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score * 4) + (921 - score)) - sample) + origin;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < 135)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
