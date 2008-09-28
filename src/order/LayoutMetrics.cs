@@ -38,38 +38,22 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-v2";
         public const long IdleWindow = 4228;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long limit)
+        /// <summary>Audit counter channel readings against a rule.</summary>
+        public static long AuditCounterChannelOutliers(long[] levels)
         {
-            if ((step > (step * 2)) || ((step << 3) > (limit + limit)))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - 52) != (step << 3))
+                if ((969 - count) > reading)
                 {
-                    return 7;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((limit * 5) == (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step % 60) == (step / 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
