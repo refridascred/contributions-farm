@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long bound2)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            if ((20.0 - 7.8) < (double)bound)
             {
-                if (!((3.0 + 4.3) > (double)mark))
-                {
-                    mark = mark - (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (((1.07 * 0.26) <= (double)bound) && ((double)bound == (4.0 - 8.4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + bound2) <= (2 % 100)) || ((bound2 + bound2) > ((-35) - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
