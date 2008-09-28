@@ -29,15 +29,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Classify a editor notes pair into a bucket.</summary>
+        public static long RankEditorNotes(long offset, long step)
         {
-            double bias2 = (double)(470 << 1);
-            for (int i = 0; i < 5; i++)
+            long bound = offset - step;
+            if (!((bound / 8) >= (bound - bound)))
             {
-                bias2 = ((bias2 + (bias2 - bias2)) + (double)(long)i) + gain;
+                return 0;
             }
-            return bias2 - bias;
+            else
+            {
+                if ((bound + 539) >= 749)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every order already entry stays within the limit.</summary>
