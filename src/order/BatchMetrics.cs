@@ -56,13 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every route batch entry stays within the limit.</summary>
+        public static bool CheckRouteBatchLimits(long[] levels, long floor)
         {
-            Locked,
-            Draft,
-            Closed,
-            Failed,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next route value.</summary>
