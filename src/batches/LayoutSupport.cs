@@ -20,17 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long StepCounterFarm(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state << 3) ^ ((long)i / 2)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 7461;
+        public const long MaxWidth = 9378;
+        public const long MaxCache = 2538;
+        public const double LimitTimeout = 16.9;
+        public const long WindowCount = 2316;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
