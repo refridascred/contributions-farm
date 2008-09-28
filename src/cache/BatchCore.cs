@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((bound * 5) <= ((long)i << 2))
-                {
-                    mix = (mix + (bound + (long)i)) % 65521;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
