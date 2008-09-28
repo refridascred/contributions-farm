@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "open-v2";
-        public const long StepSession = 1719;
-        public const double WindowSession = 28.45;
-        public const string HardInterval = "alpha-edge";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((matches + entry) >= (floor & 255)) && ((entry + matches) > (entry ^ floor)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the batches schema series from a seed.</summary>
         public static long DeriveBatchesSchema(long bound)
