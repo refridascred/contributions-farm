@@ -64,19 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long anchor = 54;
+            foreach (long datum in levels)
             {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ datum) % 101;
             }
-            return ok;
+            return anchor;
         }
     }
 }
