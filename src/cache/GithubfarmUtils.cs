@@ -28,11 +28,39 @@ namespace Common.Utilities
         public const long CacheFarm = 3616;
         public const long LimitTimeout = 2697;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long floor)
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            long offset = target - floor;
+            if ((7.43 / 2.0) >= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset != (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target < (907 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (3.04 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches record.</summary>
