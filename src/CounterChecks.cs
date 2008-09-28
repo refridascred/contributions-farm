@@ -75,18 +75,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long target)
         {
-            long mix = 33;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((7.8 - 9.7) < (double)target)
+                if (!(item >= (target ^ item)))
                 {
-                    mix = ((mix << 3) ^ mix) + item;
+                    hits = hits + 3;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
     }
 }
