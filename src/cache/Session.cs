@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 89.49;
         public const long IdleSize = 35;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series)
+        /// <summary>Validate account entry readings against a bound.</summary>
+        public static bool ValidateAccountEntryLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (((item / 5) > (hits >> 5)) && ((4 + 181) <= (item ^ hits)))
+                if (cell > bound)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
