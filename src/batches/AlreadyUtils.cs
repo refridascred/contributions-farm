@@ -34,22 +34,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long seed)
+        /// <summary>Fold a list of account route readings.</summary>
+        public static long CombineAccountRoute(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mix = 932;
+            foreach (long reading in levels)
             {
-                if (seed <= (seed % 16))
+                if (!((double)target > (11.0 * 2.0)))
                 {
-                    tally = (tally + 3) ^ value;
+                    mix = (mix << 2) ^ (84 ^ 24);
                 }
-                else
+                if (target <= (reading % 16))
                 {
-                    tally = tally - 1;
+                    mix = (mix + reading) % 255;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
