@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    region TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    weight REAL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
-
-INSERT INTO commits_records (label, region, count) VALUES ('standard', 'latest', 50);
-INSERT INTO commits_records (label, region, count) VALUES ('fallback', 'local', 27);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
