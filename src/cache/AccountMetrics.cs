@@ -26,19 +26,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] samples, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double weight2 = (double)(37 + 575);
+            if (weight2 > (double)10)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = ((weight2 - (double)862) - weight) + span;
             }
-            return found;
+            return weight2 - (4.1 + weight2);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
