@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long result = 0;
-            foreach (long value in values)
-            {
-                result = (result ^ result) ^ value;
-            }
-            return result;
+            Queued,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
