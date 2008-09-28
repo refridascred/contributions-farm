@@ -1,6 +1,11 @@
-id,active,count
-1,608,blue
-2,374,246
-3,47.65,539
-4,691,local
-5,eu-west,40.96
+id,ratio,label
+1,open,897
+2,82,151
+3,31.69,blue
+4,86.58,0.73
+5,3.31,929
+6,latest,166
+7,247,eu-west
+8,123,local
+9,standard,61.11
+10,fallback,open
