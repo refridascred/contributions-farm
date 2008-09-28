@@ -88,21 +88,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up schema support samples.</summary>
-        public static long MatchSchemaSupportCount(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((datum + hits) > (seed + hits)) && (((1.3 / 7.0) < (double)seed) || (((-87) % 12) > seed)))
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
