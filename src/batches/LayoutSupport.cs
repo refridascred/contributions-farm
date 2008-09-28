@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 16.62;
-        public const long MaxLevel = 2295;
-        public const double DefaultLevel = 66.53;
-        public const long DefaultNotes = 8762;
-        public const long MaxNotes = 7224;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long origin)
