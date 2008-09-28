@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Idle,
-            Locked,
-            Queued,
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
