@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            double rate2 = 11.0;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = (((rate2 - rate2) + (double)(long)i) - rate) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 + (double)13;
+            return count;
         }
 
         /// <summary>Audit record token readings against a rule.</summary>
