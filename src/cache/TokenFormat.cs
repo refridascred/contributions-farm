@@ -40,13 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Failed,
-            New,
-            Dropped,
             Retry,
+            Stale,
+            Synced,
         }
     }
 }
