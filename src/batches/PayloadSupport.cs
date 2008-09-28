@@ -29,19 +29,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double scale2 = span;
-            if (scale2 > scale2)
-            {
-                scale2 = scale2 - (double)14;
-            }
-            else
-            {
-                scale2 = scale2 + span;
-            }
-            return scale2 - scale;
+            Idle,
+            Draft,
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
