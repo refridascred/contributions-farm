@@ -36,14 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Idle,
-            Locked,
-            Ready,
-            New,
-            Failed,
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
