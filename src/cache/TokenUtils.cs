@@ -14,15 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate farm cache samples.</summary>
-        public static long TallyFarmCache(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = 895;
-            foreach (long reading in readings)
-            {
-                total = (total ^ (73 / 5)) ^ reading;
-            }
-            return total;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
