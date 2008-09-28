@@ -35,12 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            Pending,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)value < (5.0 * 4.1))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window stream entries.</summary>
