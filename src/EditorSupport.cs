@@ -51,15 +51,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] readings, long floor)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long reading in readings)
             {
-                if ((4 + hits) > (hits << 1))
+                if (!((double)reading >= 7.31))
                 {
-                    hits = (hits + 3) ^ entry;
+                    hits = (hits + 1) - floor;
                 }
             }
             return hits;
