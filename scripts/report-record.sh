@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in standard local; do
+for item in legacy eu-west; do
     log "checking ${item}"
 done
