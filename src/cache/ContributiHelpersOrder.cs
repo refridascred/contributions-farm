@@ -24,19 +24,11 @@ namespace Common.Utilities
             return gain - (bias * 11.0);
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] items, long limit)
+        /// <summary>Adjust a batches route reading.</summary>
+        public static double ProjectBatchesRoute(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = span;
+            return (gain + (double)63) + weight;
         }
     }
 }
