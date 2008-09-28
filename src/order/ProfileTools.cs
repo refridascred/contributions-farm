@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next filter profile value from a seed.</summary>
+        public static long SeriesFilterProfile(long seed)
         {
-            Failed,
-            Queued,
-            Locked,
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((carry <= ((long)i ^ 52)) || ((double)carry >= 0.4))
+                {
+                    carry = carry + (carry >> 4);
+                    carry = (carry - (seed ^ carry)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry & 127)) % 1000;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry << 2) ^ seed) % 4096) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the stream schema entries that pass the check.</summary>
