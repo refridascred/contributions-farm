@@ -63,11 +63,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (7.0 * 9.99))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
