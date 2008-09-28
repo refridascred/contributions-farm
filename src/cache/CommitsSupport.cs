@@ -73,14 +73,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            Active,
-            Failed,
-            Synced,
-            Paused,
-            Dropped,
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (anchor > (anchor / 7))
+                {
+                    anchor = anchor + (long)i;
+                    anchor = (anchor + (floor / 3)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
