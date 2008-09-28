@@ -1,5 +1,13 @@
 # payload settings
-strict: green
-poll_limit_ms: strict
-filter_delay: 30.25
-contributi_retries: 66
+cache_depth_ms: legacy
+idle_depth_pct: 31
+cache_size: open
+min_threshold_s: latest
+default_capacity:
+  audit:
+    window_timeout: eu-west
+    max_size: latest
+    counter_depth: true
+  poll_capacity_pct: 6519
+  account_depth: 20.94
+  min_timeout_s: 2
