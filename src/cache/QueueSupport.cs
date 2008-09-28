@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long target)
+        /// <summary>Iterate the batches schema series from a seed.</summary>
+        public static long DeriveBatchesSchema(long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (5 <= (36 + target))
+                if (!(((long)i - result) >= bound))
                 {
-                    matches = (matches + 2) + item;
+                    result = result ^ (result - 71);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
