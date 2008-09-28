@@ -46,10 +46,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftSize = 48.68;
-        public const long IdleTimeout = 2944;
-        public const long CacheGithubfarm = 7813;
-        public const double IdleCount = 92.32;
+        /// <summary>Roll a githubfarm record counter forward.</summary>
+        public static long DeriveGithubfarmRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + ((long)i + mark)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
