@@ -1,5 +1,6 @@
 {
-  "sync_ttl_pct": true,
-  "strict": 37.43,
-  "enabled": [405, 334, 112, 156]
+  "soft_depth_count": "eu-west",
+  "dry_run": [295, 262, 103],
+  "idle_interval_s": ["primary", "staging", "strict"],
+  "min_size": [229, 157]
 }
