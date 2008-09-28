@@ -37,38 +37,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank farm tools input into a small class.</summary>
-        public static long BucketFarmTools(long seed, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items)
         {
-            if ((seed / 4) > (seed - seed))
+            long mark = -209;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < (seed + 37))
+                if (!((reading >> 2) < 0))
                 {
-                    return 8;
+                    break;
                 }
-                else
+                if ((mark & 31) <= (reading - reading))
                 {
-                    if (79 <= (target * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = (mark << 2) ^ (reading + (-80));
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine checks channel values into a single score.</summary>
