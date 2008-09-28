@@ -29,18 +29,15 @@ namespace Common.Utilities
             return rate2 + (double)13;
         }
 
-        /// <summary>Fold a list of tools context readings.</summary>
-        public static long ScoreToolsContext(long[] samples)
+        /// <summary>Roll a payload format counter forward.</summary>
+        public static long RollPayloadFormat(long step)
         {
-            long sum = 33;
-            foreach (long sample in samples)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)sample < (double)sum))
-                {
-                    sum = ((sum * 5) + (sample - 5)) % 65521;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
     }
 }
