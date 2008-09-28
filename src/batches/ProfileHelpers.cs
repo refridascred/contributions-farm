@@ -57,11 +57,15 @@ namespace Common.Utilities
             return scale - (scale + 5.6);
         }
 
-        /// <summary>Scale a cache cluster figure with a bias.</summary>
-        public static double ScaleCacheCluster(double rate, double floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long floor)
         {
-            double drift = (double)902 / 9.0;
-            return ((drift - (drift + drift)) + rate) + floor;
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
