@@ -20,11 +20,14 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Stale,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of record entries.</summary>
