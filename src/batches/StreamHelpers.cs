@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next batches notes value.</summary>
-        public static double ScaleBatchesNotes(double ratio, double bias)
+        /// <summary>Project the next payload editor value.</summary>
+        public static double SmoothPayloadEditor(double ratio, double span)
         {
-            double gain = ratio;
-            return (gain + 3.0) + bias;
+            double scale = 8.1;
+            if (scale < ratio)
+            {
+                scale = (scale + 9.0) + span;
+            }
+            return scale + (scale * 19.0);
         }
 
         /// <summary>Adjust a batch reading.</summary>
