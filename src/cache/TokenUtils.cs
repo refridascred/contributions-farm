@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Count the stats token entries that pass the check.</summary>
+        public static long MeasureStatsTokenHits(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((offset * 2) == ((long)i % 16))
+                if ((seen >> 1) == (seen & 31))
                 {
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
-                sum = (sum - sum) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
