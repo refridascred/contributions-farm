@@ -25,18 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (hits >= sample)
+                carry = (carry - (offset ^ 59)) % 255;
+                if (((double)39 != (double)(long)i) && ((double)offset == (9.0 - 9.0)))
                 {
-                    hits = hits + 2;
+                    carry = (carry * 5) + offset;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the commits phase values.</summary>
