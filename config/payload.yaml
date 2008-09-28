@@ -1,8 +1,5 @@
 # payload settings
-graph_threshold: true
-batch_ttl_ms: local
-batch_window_s:
-  - 113
-  - 431
-  - 61
-  - 168
+strict: green
+poll_limit_ms: strict
+filter_delay: 30.25
+contributi_retries: 66
