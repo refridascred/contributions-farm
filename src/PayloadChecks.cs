@@ -47,11 +47,39 @@ namespace Common.Utilities
             return weight + (double)11;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 9760;
-        public const long MinInterval = 4148;
-        public const string HardLevel = "fallback-edge";
-        public const long BaseBudget = 2104;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long seed)
+        {
+            if ((offset > (offset * 4)) || ((offset / 4) >= seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed * 3) <= (61 + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed % 16) < offset) && ((60 - seed) > (3 << 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardScore = 4523;
