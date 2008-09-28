@@ -1,15 +1,15 @@
 # Command notes
 
-When a counter fails, the graph handler retries a few times before giving up.
-Keep stream and support names short and lowercase.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the checks queue.
+The queue module keeps commits values in sync with the session cache.
+Run the buffer check before changing any commits limits.
 
-Run the context check before changing any report limits.
-The context helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the farm queue.
+The cache report groups every entry by filter.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review editor limits each release
-- Document new context fields
-- Log every tools change
+- Validate account input early
+- Log every checks change
+- Review report limits each release
+- Prefer batch defaults
