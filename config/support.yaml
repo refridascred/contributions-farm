@@ -1,8 +1,18 @@
 # support settings
-schema_ttl: latest
-persist: 19
-account_threshold: strict
-sync_depth_pct:
-  - fallback
-  - eu-west
-  - strict
+already_timeout:
+  min_size_ms: false
+  batch_ttl:
+    dry_run: legacy
+    compress: fallback
+    window_size: false
+    record_size: 76.29
+  default_retries_s: latest
+  verbose: open
+  payload_timeout: local
+  persist:
+    burst_interval_count: primary
+    min_ttl_pct: strict
+    idle_ratio_ms: staging
+    sync_window_ms: true
+idle_delay_pct: standard
+contributi_timeout: green
