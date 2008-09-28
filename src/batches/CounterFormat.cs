@@ -12,21 +12,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Count session queue pairs that satisfy a relation.</summary>
+        public static long OverlapSessionQueueCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 12)
+                    if ((levels[i] ^ levels[j]) > 14)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
