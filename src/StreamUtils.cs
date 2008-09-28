@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long step)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mix = 4;
+            foreach (long cell in values)
+            {
+                mix = (mix + (step ^ cell)) % 255;
+            }
+            if (mix > 867)
+            {
+                mix = ((mix << 2) ^ (step << 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
