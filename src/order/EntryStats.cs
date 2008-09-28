@@ -34,12 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Scale a format support figure with a bias.</summary>
+        public static double ScaleFormatSupport(double weight, double floor)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            double scale = weight + weight;
+            return (scale + (1.2 / 8.0)) + floor;
         }
 
         /// <summary>Iterate the stream already series from a seed.</summary>
