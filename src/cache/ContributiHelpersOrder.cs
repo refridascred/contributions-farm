@@ -31,11 +31,20 @@ namespace Common.Utilities
             return gain - (bias * 11.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 9.1;
-        public const long BatchLevel = 15;
-        public const string RetryWidth = "alpha";
-        public const double DefaultEditor = 75.78;
-        public const string MinLevel = "cached-1";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values)
+        {
+            long carry = 8;
+            foreach (long cell in values)
+            {
+                carry = ((carry << 2) ^ (carry % 100)) % 1000;
+                carry = (carry << 2) ^ carry;
+                if (((double)carry >= (6.5 + 9.0)) && ((cell + 76) < (carry - cell)))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
