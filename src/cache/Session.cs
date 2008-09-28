@@ -54,15 +54,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long bound)
         {
-            long anchor = 78;
-            foreach (long entry in values)
+            if ((double)step < (double)35)
             {
-                anchor = (((anchor * 3) + entry) % 65521) + target;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (step > (3 + 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step != (7.1 / 6.0)) || (5.0 > (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
