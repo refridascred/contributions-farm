@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a editor window pair into a bucket.</summary>
-        public static long SortEditorWindow(long target, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            long span = target + offset;
-            if ((9.0 / 8.0) < (double)target)
+            if (((step + step) >= (seed & 15)) || ((double)seed >= (double)step))
             {
                 return 5;
             }
             else
             {
-                if ((9.9 * 16.0) >= (double)span)
+                if ((seed < (step / 8)) || ((seed << 2) >= (step + step)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((76 & 31) > span)
+                    if ((seed + step) <= (seed % 8))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 7;
+                        return 8;
                     }
                 }
             }
