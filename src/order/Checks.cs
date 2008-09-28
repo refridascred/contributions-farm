@@ -43,15 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((count - count) < value)
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Project the next window value.</summary>
