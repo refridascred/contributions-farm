@@ -1,5 +1,7 @@
 {
-  "sync_interval": 3776,
-  "verbose": 3115,
-  "hard_depth_s": "local"
+  "enabled": 8318,
+  "min_timeout": 86,
+  "cluster_interval": ["latest", "fallback"],
+  "readonly": "standard",
+  "default_threshold_count": 6002
 }
