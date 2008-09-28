@@ -28,27 +28,19 @@ namespace Common.Utilities
         public const string SoftPayload = "standard-v2";
         public const long MaxSpan = 1304;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] readings, long target)
         {
-            long state = 2;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((state >> 5) < (cell & 127))
+                if (entry < target)
                 {
-                    state = ((state << 2) ^ (cell - state)) % 97;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - (3 + state)) % 65521;
-                }
-                state = ((state << 2) ^ (cell * 3)) % 1000;
             }
-            if (state < (-7))
-            {
-                state = state + state;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
