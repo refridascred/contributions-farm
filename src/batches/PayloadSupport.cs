@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Stale,
-            Idle,
             Pending,
-            Draft,
+            Stale,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
