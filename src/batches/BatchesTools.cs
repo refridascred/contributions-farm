@@ -17,38 +17,22 @@ namespace Common.Utilities
         public const long MinSize = 3308;
         public const long BatchGithubfarm = 2677;
 
-        /// <summary>Grade a command metric value against two limits.</summary>
-        public static long ClassifyCommandMetric(long limit, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels, long offset)
         {
-            if (((origin + origin) >= (origin >> 4)) && ((double)limit > 6.92))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((10.0 * 8.0) > (9.0 / 9.0)) && ((38 << 3) >= (limit / 6)))
+                if ((2.0 * 7.31) == (double)hits)
                 {
-                    return 8;
+                    hits = ((hits + 2) + cell) + offset;
                 }
                 else
                 {
-                    if (1 >= (origin + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 3) >= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
