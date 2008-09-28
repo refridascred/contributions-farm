@@ -66,22 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload session readings against a rule.</summary>
-        public static long MeasurePayloadSessionHits(long[] series)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((8.46 / 3.0) != (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
