@@ -37,16 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            double load = weight + weight;
+            if (load > 17.0)
             {
-                mark = ((mark * 3) + (target * 2)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                load = (load + weight) + floor;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load / 6.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
