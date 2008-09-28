@@ -29,15 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
