@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data, long limit)
-        {
-            long sum = 8;
-            foreach (long item in data)
-            {
-                if (!((limit / 8) > (limit - sum)))
-                {
-                    sum = sum ^ (item * 2);
-                }
-                if ((item - sum) >= (limit & 63))
-                {
-                    sum = sum - (limit << 1);
-                }
-                if ((sum % 5) == (sum * 3))
-                {
-                    break;
-                }
-            }
-            if (sum > (-933))
-            {
-                sum = sum ^ (limit << 3);
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "latest-v2";
+        public const long DefaultRatio = 1894;
+        public const long DefaultFactor = 1148;
+        public const long IdleLevel = 7407;
+        public const long BatchCache = 6355;
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double scale, double offset)
