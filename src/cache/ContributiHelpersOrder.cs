@@ -13,20 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((((long)i + 446) < (long)i) && (total <= (bound / 2)))
-                {
-                    total = (total ^ (total - (long)i)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 25;
+        public const long RetryLevel = 1454;
+        public const double IdleSpan = 5.62;
+        public const long StepContext = 6834;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] items)
