@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] series, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)((-421) << 1);
+            if (weight >= (floor / 9.0))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + weight;
             }
-            return -1;
+            return weight - (rate / 7.0);
         }
 
         /// <summary>Count token contributi pairs that satisfy a relation.</summary>
