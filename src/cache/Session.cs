@@ -35,31 +35,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            if ((double)step < (double)35)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                mark = ((mark * 3) + (target * 2)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (step > (3 + 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step != (7.1 / 6.0)) || (5.0 > (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
