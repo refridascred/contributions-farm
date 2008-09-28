@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            double scale = (rate / 9.0) / 4.0;
-            if (scale >= rate)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (bias + scale);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - 2.82;
+            return tally;
         }
 
         /// <summary>Fold a list of session readings.</summary>
