@@ -59,18 +59,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstDepth = "open-v2";
+        public const double SoftFilter = 45.72;
+        public const long DefaultFilter = 1245;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long SoftLevel = 4411;
