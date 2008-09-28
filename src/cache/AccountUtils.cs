@@ -23,14 +23,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            Paused,
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
+            long result = 760;
+            foreach (long value in levels)
+            {
+                result = result - (result * 3);
+                if (((value - value) == (value + result)) && (result < (result ^ value)))
+                {
+                    continue;
+                }
+                result = result - (value % 5);
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a metric info.</summary>
