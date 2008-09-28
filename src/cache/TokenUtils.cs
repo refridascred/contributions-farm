@@ -44,13 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            New,
-            Retry,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen <= 4.54)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
