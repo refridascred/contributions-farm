@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the stats token entries that pass the check.</summary>
-        public static long MeasureStatsTokenHits(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((seen >> 1) == (seen & 31))
+                if (((entry << 3) < (8 + offset)) && (((matches + entry) != (matches + matches)) && ((double)entry < (2.7 - 16.0))))
                 {
-                    seen = (seen + 2) ^ value;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
