@@ -67,13 +67,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long origin, long target)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long offset = origin ^ target;
+            if ((offset + 0) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 4) == (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) > (origin ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
