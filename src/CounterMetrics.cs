@@ -32,18 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long score = 10;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample > 4.47)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (33 ^ score)) - limit;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
