@@ -33,17 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] data, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mark = (mark << 3) ^ (target / 3);
-                mark = (mark ^ (target + target)) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (entry > (entry & 7))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
