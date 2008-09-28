@@ -34,16 +34,9 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - (anchor + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9376;
+        public const long HardEditor = 7190;
+        public const double BurstDepth = 21.99;
     }
 }
