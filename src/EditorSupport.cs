@@ -38,15 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support stats counter forward.</summary>
-        public static long SeriesSupportStats(long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
