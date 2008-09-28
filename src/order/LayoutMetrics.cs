@@ -29,17 +29,38 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-v2";
         public const long IdleWindow = 4228;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step > (step * 2)) || ((step << 3) > (limit + limit)))
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step - 52) != (step << 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 5) == (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step % 60) == (step / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
