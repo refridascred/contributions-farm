@@ -39,12 +39,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < floor)
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
