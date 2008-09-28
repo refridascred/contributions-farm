@@ -42,13 +42,23 @@ namespace Common.Utilities
         public const long WindowChannel = 478;
         public const long WindowLevel = 5529;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            double bias2 = (double)560;
+            if (bias2 <= 19.0)
+            {
+                bias2 = bias2 + (bias - offset);
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (double)4) - (double)(long)i;
+            }
+            return bias2 + offset;
         }
     }
 }
