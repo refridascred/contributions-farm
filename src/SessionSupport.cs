@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string BatchLayout = "staging-1";
         public const long CacheLevel = 6198;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long anchor = 6;
-            foreach (long entry in data)
-            {
-                if ((entry >= (248 + anchor)) && ((anchor % 5) <= 5))
-                {
-                    anchor = (anchor ^ (entry + anchor)) % 1000;
-                }
-            }
-            if (anchor < 275)
-            {
-                anchor = (anchor + (4 & 63)) % 97;
-            }
-            return anchor % 4096;
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a metrics summary.</summary>
