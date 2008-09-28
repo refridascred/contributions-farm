@@ -52,22 +52,18 @@ namespace Common.Utilities
         public const double SoftBatches = 23.11;
         public const long IdleFactor = 5554;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Measure how many support route samples are out of range.</summary>
+        public static long TallySupportRouteOutliers(long[] series, long limit)
         {
-            long result = 461;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (7 < (result + entry))
+                if (limit >= (reading + hits))
                 {
-                    result = (result << 2) ^ (entry / 2);
-                }
-                else
-                {
-                    result = (result - (entry & 3)) % 255;
+                    hits = hits + 3;
                 }
             }
-            return result % 97;
+            return hits;
         }
     }
 }
