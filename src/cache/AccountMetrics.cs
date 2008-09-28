@@ -44,11 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long step)
         {
-            double rate = bias;
-            return (rate + (bias * 10.0)) + bias2;
+            long mark = 0;
+            foreach (long value in levels)
+            {
+                if (step < value)
+                {
+                    mark = (mark ^ (9 / 4)) % 101;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
