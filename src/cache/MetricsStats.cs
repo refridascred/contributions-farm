@@ -41,18 +41,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((double)item <= (16.0 + 5.6)) && ((hits >> 5) < (hits % 8)))
+                if ((target % 24) >= 9)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
