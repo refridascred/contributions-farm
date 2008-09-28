@@ -1,6 +1,5 @@
 {
-  "queue_delay": 59.89,
-  "batch_threshold_pct": 27,
-  "batches_retries": ["local", "eu-west", "green"],
-  "warm_interval_pct": 28
+  "flush_ratio": "strict",
+  "readonly": "local",
+  "stream_limit": "strict"
 }
