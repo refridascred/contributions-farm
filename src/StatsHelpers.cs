@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels, long target)
+        /// <summary>Check that every schema report entry stays within the limit.</summary>
+        public static bool CheckSchemaReportBounds(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((7.0 * 5.29) <= (double)matches)
+                if (reading >= origin)
                 {
-                    matches = ((matches + 1) + datum) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
