@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((16.0 / 2.0) == (double)value)
+                if ((2.66 - 2.3) != (double)hits)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
