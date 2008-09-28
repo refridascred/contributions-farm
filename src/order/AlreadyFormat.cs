@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double scale = (rate / 8.0) * 6.4;
+            if (scale > (double)222)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (4.6 * 10.0);
             }
-            return ready;
+            else
+            {
+                scale = scale + (double)9;
+            }
+            return scale + span;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
