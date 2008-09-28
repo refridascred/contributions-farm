@@ -70,22 +70,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (20.0 <= (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
