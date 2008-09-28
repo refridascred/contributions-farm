@@ -47,18 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values, long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((-2) - bound) >= (entry % 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
