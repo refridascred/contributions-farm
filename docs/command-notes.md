@@ -1,12 +1,11 @@
 # Command notes
 
-The profile report groups every already by stream.
-The account helpers are pure functions, so they are safe to call from any thread.
-Keep entry and record names short and lowercase.
+A checks that stays idle for too long is moved to the metric list.
+Keep commits and record names short and lowercase.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every batch change
-- Prefer payload defaults
-- Keep queue values small
+- Validate farm input early
+- Prefer channel defaults
+- Keep metrics values small
+- Log every contributi change
