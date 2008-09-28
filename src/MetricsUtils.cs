@@ -51,19 +51,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] readings, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data, long origin)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long sample in data)
             {
-                if (reading <= matches)
+                if (!((8 << 1) > (origin & 127)))
                 {
-                    matches = (matches + 1) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) - sample;
                 }
             }
             return matches;
