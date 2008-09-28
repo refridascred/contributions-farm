@@ -1,5 +1,8 @@
 {
-  "batch_threshold_count": 50,
-  "max_delay_s": 40.03,
-  "dry_run": 76
+  "retry_delay_pct": "eu-west",
+  "support_size": "latest",
+  "readonly": 60,
+  "hard_threshold": "strict",
+  "min_ttl_ms": 93.49,
+  "poll_depth_pct": 42.54
 }
