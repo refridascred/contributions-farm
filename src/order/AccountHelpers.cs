@@ -52,18 +52,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data, long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mix = 71;
-            foreach (long entry in data)
-            {
-                if (((entry << 3) < 3) || ((11.0 / 3.0) <= (double)mix))
-                {
-                    mix = (mix ^ entry) - floor;
-                }
-            }
-            return mix % 97;
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
