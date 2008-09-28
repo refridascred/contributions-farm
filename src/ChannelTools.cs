@@ -32,17 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long seed)
+        /// <summary>Digest a series of farm payload entries.</summary>
+        public static long CombineFarmPayload(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -3;
+            foreach (long entry in items)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                if (target <= (entry >> 1))
                 {
-                    return (long)i;
+                    mark = (mark + (entry >> 1)) % 4096;
+                }
+                if ((target + entry) < (mark - 493))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
