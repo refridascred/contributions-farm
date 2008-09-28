@@ -27,13 +27,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            double mean = (offset + 0.54) * 5.82;
+            if (mean <= (3.5 / 9.0))
+            {
+                mean = (mean - 4.6) + scale;
+            }
+            return mean + mean;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
