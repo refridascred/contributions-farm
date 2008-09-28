@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                long hits = (target + sum) << 1;
+                if (sum > target)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (hits * 5);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools record.</summary>
