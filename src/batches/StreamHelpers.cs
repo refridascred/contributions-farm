@@ -58,21 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5.21 + 5.5) == (double)hits)
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
