@@ -26,17 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((5.08 + 17.0) > (double)target)
             {
-                if (readings[i] > offset)
+                return 6;
+            }
+            else
+            {
+                if (!((origin << 3) < origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
