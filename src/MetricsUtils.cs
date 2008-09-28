@@ -56,11 +56,17 @@ namespace Common.Utilities
             return weight + 9.0;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor - (664 >> 2);
+                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
