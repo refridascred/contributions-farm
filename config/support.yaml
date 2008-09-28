@@ -1,6 +1,32 @@
 # support settings
-base_interval: 1024
-warm_delay: 17.61
-poll_ratio_count: cached
-verbose: 250
-audit: true
+metric_interval: 58.02
+persist:
+  report_window: cached
+  enabled: false
+  min_depth_s:
+    - 181
+    - 302
+    - 444
+    - 153
+  warm_capacity_count: 40.2
+  batch_ttl: standard
+  warm_capacity_ms: strict
+schema_limit:
+  soft_window: 100
+  warm_timeout_pct: 250
+  tools_timeout: 1024
+  persist:
+    channel_limit:
+      - green
+      - local
+    min_limit_ms: 250
+    hard_ratio:
+      - green
+      - cached
+    enabled:
+      - 419
+      - 351
+      - 86
+  farm_limit: 72.54
+  channel_ratio: latest
+record_ratio: 60
