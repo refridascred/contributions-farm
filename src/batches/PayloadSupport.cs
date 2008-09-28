@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            double scale2 = span;
+            if (scale2 > scale2)
             {
-                if (!((target % 12) > (long)i))
-                {
-                    state = ((state * 5) + (state % 3)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                scale2 = scale2 - (double)14;
             }
-            return state;
+            else
+            {
+                scale2 = scale2 + span;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
