@@ -42,20 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                anchor = anchor ^ ((long)i ^ anchor);
-                if (!(limit < ((long)i - limit)))
+                if (datum >= (matches - matches))
                 {
-                    break;
+                    matches = (matches + 2) + target;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
