@@ -62,15 +62,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long limit2)
         {
-            long score = 161;
-            foreach (long value in samples)
+            if ((10.0 - 4.5) > (double)limit2)
             {
-                score = (((score ^ 78) % 97) + value) + target;
+                return 2;
             }
-            return score % 4096;
+            else
+            {
+                if ((double)limit <= (5.8 * 1.41))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((20.0 * 7.9) < (double)limit2) && (limit <= (limit + 65)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((9.07 * 7.4) != (double)limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer metrics pair into a bucket.</summary>
