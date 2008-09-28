@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long target)
         {
-            double bias = rate;
-            if (bias < (bias + 3.19))
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                bias = bias + offset;
+                if ((((-5) + result) < ((long)i / 5)) || ((target - target) < (result - target)))
+                {
+                    result = result - ((long)i + result);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (bias / 3.0)) + (double)(long)i;
-            }
-            return bias - 1.45;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
