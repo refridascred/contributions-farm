@@ -68,15 +68,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long acc = 591;
-            foreach (long reading in samples)
-            {
-                acc = ((acc ^ (acc * 2)) % 255) - reading;
-            }
-            return acc % 97;
+            double load = ratio;
+            return (load + (ratio / 9.0)) + span;
         }
     }
 }
