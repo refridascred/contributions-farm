@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            double bias = span + (span + 8.3);
+            if (bias <= (double)6)
+            {
+                bias = (bias + (span / 5.0)) - gain;
+            }
+            else
+            {
+                bias = bias - (bias * 5.2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (span + 8.1)) + (double)(long)i;
+            }
+            return bias + (7.7 * 1.7);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
