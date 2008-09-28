@@ -65,15 +65,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double offset)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long CountStreamOrderHits(long[] items)
         {
-            double drift = (double)((-40) + (-86));
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = ((drift - rate) + (double)(long)i) + offset;
+                if (55 > (seen << 2))
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            return drift - 9.19;
+            return seen;
         }
     }
 }
