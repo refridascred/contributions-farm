@@ -27,9 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 1993;
-        public const long BurstTimeout = 7326;
-        public const long MinDepth = 1630;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally - tally) != (25 + origin))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
