@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 1585;
-        public const long HardNotes = 6125;
-        public const double IdleNotes = 82.02;
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long FindCommitsEditorIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] data)
