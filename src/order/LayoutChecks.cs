@@ -87,16 +87,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result << 2) ^ ((long)i - floor)) % 4096;
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((4.78 / 4.0) <= (double)(long)i))
+                {
+                    break;
+                }
+                if (((7.88 - 4.29) <= (double)seed) && ((long)i > ((-70) >> 3)))
+                {
+                    total = (total - (76 * 5)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (total + seed)) % 101;
+                }
+                total = (total ^ (total & 3)) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
