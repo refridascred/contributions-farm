@@ -56,9 +56,14 @@ namespace Common.Utilities
         public const string HardMetric = "legacy-edge";
         public const long StepMetric = 4887;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 174;
-        public const long IdleScore = 5626;
-        public const long MaxScore = 2706;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Queued,
+            Locked,
+            Retry,
+            Closed,
+            Failed,
+        }
     }
 }
