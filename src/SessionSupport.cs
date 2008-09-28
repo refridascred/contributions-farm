@@ -27,20 +27,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] data, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (((long)i - score) < (0 ^ score))
+                if (sample < target)
                 {
-                    score = ((score * 5) + ((long)i - score)) % 4096;
-                    score = (score ^ (seed + 719)) % 1000;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
