@@ -43,18 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command support entries that pass the check.</summary>
-        public static long MeasureCommandSupportMatches(long[] readings, long step)
+        /// <summary>Validate token context readings against a bound.</summary>
+        public static bool CheckTokenContextBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((step / 4) >= value)
+                if (reading != seed)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
