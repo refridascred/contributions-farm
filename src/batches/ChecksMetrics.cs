@@ -61,24 +61,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            double gain = bias;
+            if (gain < (rate - bias))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry + (carry % 64)) - (long)i2;
-                }
-                if (!(3.0 < (double)(long)i))
-                {
-                    carry = (carry + carry) % 101;
-                }
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 3) + (long)i) % 4093;
+                gain = gain + (bias / 7.0);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of commits contributi entries.</summary>
