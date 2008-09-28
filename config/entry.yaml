@@ -1,22 +1,19 @@
 # entry settings
-contributi_timeout: 60.45
-retry_capacity_pct:
-  strict: 7705
-  layout_delay: 43
-  default_timeout: green
-  soft_interval_count: true
-  burst_window: latest
-enabled: staging
-cache_retries: true
-strict:
-  base_limit_pct:
-    - 276
-    - 158
-    - 304
-  base_ratio:
-    - eu-west
-    - open
-    - open
-    - legacy
-  default_ratio_pct: 17.88
-default_size_s: 7516
+flush_interval:
+  retry_ratio_s: 1024
+  warm_interval: true
+  cache_interval_ms:
+    default_ttl_s: eu-west
+    warm_capacity: 7178
+    retry_threshold: 7312
+    max_timeout:
+      - 342
+      - 192
+      - 195
+      - 10
+    batch_ratio_s: 250
+  batches_window: 37
+queue_threshold: false
+enabled: 24
+retry_retries_s: cached
+batch_ttl: false
