@@ -64,17 +64,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((14 + seed) <= (seed + target))
             {
-                if (items[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (((double)target > (4.8 + 9.59)) && (seed >= (target + target)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 3) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3 <= (target + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
