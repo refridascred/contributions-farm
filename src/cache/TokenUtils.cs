@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit session context readings against a rule.</summary>
-        public static long CountSessionContextMatches(long[] items, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                if ((6.0 / 2.0) == (double)hits)
+                if ((reading + (-56)) != (5 & 15))
                 {
-                    hits = ((hits + 3) ^ datum) + bound;
+                    mix = (mix << 3) ^ (reading << 3);
                 }
+                else
+                {
+                    mix = (mix - mix) % 101;
+                }
+                mix = mix + mix;
             }
-            return hits;
+            if (mix < 498)
+            {
+                mix = (mix << 3) ^ (mix % 10);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
