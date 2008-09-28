@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double bias)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] samples, long floor)
         {
-            double load = rate;
-            if (load < (double)5)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                load = (load - (rate * 6.0)) + bias;
+                if (!((double)515 <= (double)matches))
+                {
+                    matches = ((matches + 1) + item) - floor;
+                }
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load + (double)0;
+            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
