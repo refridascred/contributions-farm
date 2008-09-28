@@ -27,12 +27,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSpan = 7330;
-        public const string SoftDepth = "standard-edge";
-        public const long HardFactor = 4382;
-        public const double MinGithubfarm = 23.11;
-        public const long RetryWidth = 395;
+        /// <summary>Validate cluster route readings against a bound.</summary>
+        public static bool CheckClusterRouteLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double gain, double bias)
