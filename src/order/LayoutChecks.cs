@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two account report measurements.</summary>
-        public static double AdjustAccountReport(double ratio, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            double rate = (8.4 * 1.51) - ratio;
-            if (rate > (ratio + rate))
+            long total = 383;
+            foreach (long cell in readings)
             {
-                rate = rate + (ratio + span);
+                total = (total ^ total) % 255;
+                if ((cell + cell) > (total * 5))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total + (total / 7)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate + (span * 0.5);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate + 1.5)) + (double)(long)i;
-            }
-            return rate + (rate + ratio);
+            return total % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
