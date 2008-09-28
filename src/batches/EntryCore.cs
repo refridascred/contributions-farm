@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Failed,
-            Closed,
-            Active,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8816;
+        public const string LimitSpan = "local-1";
+        public const string RetryRoute = "primary-edge";
+        public const double CacheRoute = 28.13;
 
         /// <summary>Accumulate stats payload samples.</summary>
         public static long DigestStatsPayload(long[] series, long step)
