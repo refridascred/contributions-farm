@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            double scale = (rate / 9.0) / 4.0;
+            if (scale >= rate)
+            {
+                scale = scale + (bias + scale);
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - 2.82;
         }
 
         /// <summary>Fold a list of session readings.</summary>
