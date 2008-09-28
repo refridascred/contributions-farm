@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long mix = 1;
+            foreach (long datum in readings)
+            {
+                mix = ((((mix << 3) ^ mix) % 4096) + datum) + target;
+            }
+            if (mix > 6)
+            {
+                mix = (mix + (mix >> 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
