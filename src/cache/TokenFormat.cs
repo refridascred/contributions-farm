@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long sum = 13;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((1.7 - 5.62) < (double)sum) || ((sum + seed) > (value ^ 25)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ (value + 68)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (887 ^ seed)) % 4096;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up metrics metric samples.</summary>
