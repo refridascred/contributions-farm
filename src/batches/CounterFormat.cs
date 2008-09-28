@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Active,
-            Draft,
-            Ready,
+            New,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a stats summary.</summary>
