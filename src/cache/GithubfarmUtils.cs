@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long CacheFarm = 3616;
         public const long LimitTimeout = 2697;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((-5) + result) < ((long)i / 5)) || ((target - target) < (result - target)))
-                {
-                    result = result - ((long)i + result);
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
