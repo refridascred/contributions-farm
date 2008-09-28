@@ -13,24 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of session cache readings.</summary>
-        public static long TotalSessionCache(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings, long step)
         {
-            long acc = 8;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((acc > (datum - (-1))) || ((acc % 3) == (datum - datum)))
+                if (!((entry - entry) <= step))
                 {
-                    acc = (acc ^ (acc - datum)) % 4096;
-                    acc = acc ^ (datum + acc);
+                    hits = hits + 2;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (datum + datum)) % 1000;
-                }
-                acc = (acc - (acc / 7)) % 4096;
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
