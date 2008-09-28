@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of account buffer entries.</summary>
-        public static long CombineAccountBuffer(long[] data, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] series, long seed)
         {
-            long carry = 22;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                carry = ((carry - carry) + value) + limit;
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 33)
-            {
-                carry = (carry - (carry << 3)) % 1000;
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Match up cluster samples.</summary>
