@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long seed)
+        /// <summary>Count the stats counter entries that pass the check.</summary>
+        public static long MeasureStatsCounterMatches(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value <= seed)
+                if ((8.0 * 15.0) >= (double)sample)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
