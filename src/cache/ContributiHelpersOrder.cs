@@ -13,13 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            Queued,
-            Done,
-            Synced,
-            Dropped,
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((((long)i + 446) < (long)i) && (total <= (bound / 2)))
+                {
+                    total = (total ^ (total - (long)i)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
