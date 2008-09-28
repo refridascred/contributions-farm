@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            long state = 7;
+            foreach (long item in samples)
+            {
+                if (state <= ((-76) / 6))
+                {
+                    state = ((state + limit) % 65521) ^ item;
+                }
+                if ((state << 3) > limit)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
