@@ -28,18 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long MeasureReportToolsMatches(long[] samples, long offset)
+        /// <summary>Accumulate stats payload samples.</summary>
+        public static long DigestStatsPayload(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 36;
+            foreach (long sample in series)
             {
-                if ((9 >> 5) < (offset + offset))
-                {
-                    seen = (seen + 3) - cell;
-                }
+                score = (((score << 2) ^ (score * 3)) - sample) + step;
             }
-            return seen;
+            if (score > 0)
+            {
+                score = (score ^ (score ^ (long)series.Length)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Count the report checks entries that pass the check.</summary>
