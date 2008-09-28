@@ -1,8 +1,5 @@
 {
-  "retry_delay_pct": "eu-west",
-  "support_size": "latest",
-  "readonly": 60,
-  "hard_threshold": "strict",
-  "min_ttl_ms": 93.49,
-  "poll_depth_pct": 42.54
+  "idle_timeout": ["standard", "latest", "latest", "fallback"],
+  "hard_window_s": 32,
+  "audit": [211, 74]
 }
