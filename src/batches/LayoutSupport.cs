@@ -23,12 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 7461;
-        public const long MaxWidth = 9378;
-        public const long MaxCache = 2538;
-        public const double LimitTimeout = 16.9;
-        public const long WindowCount = 2316;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
