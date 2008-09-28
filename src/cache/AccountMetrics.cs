@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
