@@ -1,11 +1,14 @@
 # Command notes
 
-Each entry is validated before it reaches the metrics queue.
-The already report groups every already by format.
-Each batches is validated before it reaches the cluster queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the queue list.
+Use metric settings to tune how often support data is refreshed.
+
+Use metric settings to tune how often batches data is refreshed.
+Keep filter and entry names short and lowercase.
 
 ## Guidelines
 
-- Prefer session defaults
-- Log every order change
-- Validate metrics input early
+- Document new already fields
+- Review cache limits each release
+- Prefer context defaults
