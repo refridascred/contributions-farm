@@ -32,22 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings, long limit)
         {
-            long mix = -7;
-            foreach (long reading in samples)
+            long score = 10;
+            foreach (long sample in readings)
             {
-                if (reading > (reading ^ reading))
+                if ((double)sample > 4.47)
                 {
-                    mix = (mix - (mix ^ reading)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix ^ mix)) % 97;
+                    score = (score + (33 ^ score)) - limit;
                 }
             }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Adjust a editor reading.</summary>
