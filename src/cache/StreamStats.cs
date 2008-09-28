@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cache already entry that matches the target.</summary>
-        public static long SeekCacheAlreadyIndex(long[] levels, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
