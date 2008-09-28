@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long seed)
         {
-            Dropped,
-            Pending,
-            Active,
+            long span = floor ^ seed;
+            if ((double)span == (6.0 - 7.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((889 >> 1) > (span - 56))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.14 - 4.01) == (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)span > (8.5 / 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
