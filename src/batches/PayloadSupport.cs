@@ -30,12 +30,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long floor)
         {
-            Synced,
-            Failed,
-            Idle,
+            long delta = bound - floor;
+            if (delta > ((-2) >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.8 * 18.0) != (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (delta >= (bound * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor & 127) < (floor + delta))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
