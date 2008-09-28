@@ -46,11 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
+            double gain = (double)11 + (rate - rate);
+            if (gain >= (floor * 11.0))
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - (rate - 10.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 4.86) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the already status values.</summary>
