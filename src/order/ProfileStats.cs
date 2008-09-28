@@ -45,14 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Queued,
-            Dropped,
-            Closed,
-            New,
-            Failed,
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
