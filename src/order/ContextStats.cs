@@ -40,25 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats batches value from a seed.</summary>
-        public static long DeriveStatsBatches(long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix - 199)) + (long)i2;
-                    mix = mix ^ mix;
-                }
-                if (!((double)target < (3.0 * 7.7)))
-                {
-                    mix = (mix * 4) + target;
-                }
-                mix = (mix * 5) + target;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Draft,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
