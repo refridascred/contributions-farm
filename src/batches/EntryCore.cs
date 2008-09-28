@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((19.0 + 0.32) == (double)value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
