@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool VerifyLayoutFarmLimits(long[] items, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry << 3) ^ ((long)i & 127);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
     }
 }
