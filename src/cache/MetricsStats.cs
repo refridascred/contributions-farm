@@ -65,13 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the checks order entries that pass the check.</summary>
+        public static long AuditChecksOrderOutliers(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((item - count) == (seed - item)) || (((seed + count) < seed) && ((item + item) <= item)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
