@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of cluster session readings.</summary>
-        public static long TallyClusterSession(long[] series, long seed)
-        {
-            long carry = 655;
-            foreach (long reading in series)
-            {
-                carry = (carry ^ (long)series.Length) + reading;
-                carry = ((carry * 2) + seed) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "cached";
+        public const string IdleSpan = "latest";
+        public const long CacheContributi = 9343;
+        public const long MinContributi = 2910;
+        public const long BatchBudget = 1530;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double ProjectAccount(double bias, double offset)
