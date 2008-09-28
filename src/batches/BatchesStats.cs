@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] series, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Locate a token reading by value.</summary>
