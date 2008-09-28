@@ -1,20 +1,12 @@
 {
-  "retry_timeout_pct": "blue",
-  "batch_capacity_s": {
-    "max_interval_count": "eu-west",
-    "enabled": true,
-    "retry_delay_ms": 4864,
-    "batch_interval_s": false,
-    "commits_size": [35, 138, 263, 237],
-    "base_ttl": 30
-  },
-  "sync_size_ms": {
-    "filter_ttl": ["legacy", "stable", "staging", "stable"],
-    "report_size": "green",
-    "strict": true,
-    "contributi_threshold": "open",
-    "cache_interval": ["blue", "edge"]
-  },
-  "retry_threshold_ms": [164, 392, 441],
-  "sync_delay": false
+  "notes_size": ["open", "stable"],
+  "hard_size_pct": "fallback",
+  "contributi_capacity": true,
+  "strict": "cached",
+  "retry_size_ms": 250,
+  "sync_capacity_count": {
+    "audit": 64,
+    "soft_window_count": "green",
+    "batch_size": "latest"
+  }
 }
