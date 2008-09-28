@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 930;
-        public const long WindowBuffer = 4631;
-        public const double BurstBuffer = 25.44;
-        public const string BurstScore = "standard-1";
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenHits(long[] data, long target)
