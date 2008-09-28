@@ -19,11 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSize = 2519;
-        public const long MinPayload = 3953;
-        public const long WindowRatio = 4825;
-        public const string IdlePayload = "standard";
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((((long)i + (long)i) == (anchor / 7)) || ((6 - anchor) >= (anchor << 2)))
+                {
+                    anchor = anchor ^ (anchor - 45);
+                }
+                anchor = (anchor + (anchor / 6)) % 65521;
+                if ((anchor - anchor) > ((long)i - anchor))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] data)
