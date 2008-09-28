@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long seed)
         {
-            Stale,
-            Failed,
-            Idle,
-            Draft,
+            if ((double)target < (2.0 * 8.22))
+            {
+                return 0;
+            }
+            else
+            {
+                if (41 < (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < (7.86 / 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
