@@ -60,23 +60,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] samples)
         {
-            double weight = (rate / 8.0) + (double)14;
-            if (weight > (16.0 - 3.1))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                weight = weight + (7.97 - rate);
+                if (20.0 <= (double)sample)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight - (offset + offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (offset * 8.0)) + (double)(long)i;
-            }
-            return weight - offset;
+            return hits;
         }
     }
 }
