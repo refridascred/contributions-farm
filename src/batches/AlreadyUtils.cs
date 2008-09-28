@@ -42,13 +42,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long seed2)
         {
-            Retry,
-            Ready,
-            Pending,
-            New,
+            if ((double)seed2 >= (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-563) + seed) != (seed2 / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((93 / 2) < seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
