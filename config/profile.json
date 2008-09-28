@@ -1,15 +1,6 @@
 {
-  "payload_depth": [143, 415, 397],
-  "enabled": {
-    "retry_threshold_s": false,
-    "min_limit_ms": [124, 404, 372, 116],
-    "strict": 371,
-    "burst_threshold_count": 65,
-    "default_retries_count": {
-      "readonly": 90,
-      "hard_ttl_pct": false,
-      "min_threshold": "eu-west"
-    }
-  },
-  "editor_ttl": 9490
+  "burst_threshold_s": false,
+  "filter_window": 90.55,
+  "poll_timeout": [307, 492, 293, 258],
+  "batch_threshold_s": 53.08
 }
