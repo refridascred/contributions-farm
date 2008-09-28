@@ -34,22 +34,19 @@ namespace Common.Utilities
         public const string MinLevel = "fallback";
         public const long IdleWidth = 9889;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Derive the next batches command value from a seed.</summary>
+        public static long DeriveBatchesCommand(long bound)
         {
-            long score = 83;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((reading - score) == (reading * 2)))
+                if (!(14.0 < (double)(long)i))
                 {
-                    score = (score + (reading + score)) % 1000;
+                    mark = (mark - (long)i) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (score < 930)
-            {
-                score = (score * 3) + (score >> 3);
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Describe the channel class values.</summary>
