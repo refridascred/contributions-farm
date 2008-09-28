@@ -19,12 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long mark = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = mark + (mark + target);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the session commits entries that pass the check.</summary>
