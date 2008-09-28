@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long origin, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long step = origin + floor;
-            if ((step >> 5) >= (floor + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (floor << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor < (step ^ 608)) && ((origin ^ step) < (3 - origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
