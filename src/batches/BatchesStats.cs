@@ -30,22 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value < (5.0 * 4.1))
+                if (series[i] > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of window stream entries.</summary>
