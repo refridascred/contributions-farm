@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Queued,
-            Paused,
-            Failed,
-            Retry,
+            Done,
+            Dropped,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
