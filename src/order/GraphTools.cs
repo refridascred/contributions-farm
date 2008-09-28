@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
