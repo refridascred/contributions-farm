@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            double weight2 = (offset * 0.7) + offset;
-            if (weight2 >= (5.3 - weight))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 + (weight - weight2);
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
