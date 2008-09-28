@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double bias = rate;
+            if (bias < (bias + 3.19))
             {
-                if (!(((reading % 8) == (seed / 8)) || ((hits / 8) < (reading << 1))))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias + offset;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias / 3.0)) + (double)(long)i;
+            }
+            return bias - 1.45;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
