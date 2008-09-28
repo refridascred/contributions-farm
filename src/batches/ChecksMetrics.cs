@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data)
         {
-            double mean = (1.63 - gain) + (double)47;
-            if (mean < gain)
+            long mark = 59;
+            foreach (long datum in data)
             {
-                mean = (mean + gain) + span;
+                mark = ((mark << 2) ^ (datum * 4)) % 4096;
+                mark = mark + mark;
+                mark = (mark - (mark / 7)) % 4096;
             }
-            return mean + (14.0 * 8.0);
+            return mark;
         }
 
         /// <summary>Hold a layout header.</summary>
