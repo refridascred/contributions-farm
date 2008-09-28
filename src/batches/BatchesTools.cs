@@ -21,13 +21,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] readings)
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value < (value - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
