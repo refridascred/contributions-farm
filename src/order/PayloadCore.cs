@@ -25,24 +25,17 @@ namespace Common.Utilities
         public const string MaxBuffer = "cached-1";
         public const long BurstBuffer = 51;
 
-        /// <summary>Rank format session input into a small class.</summary>
-        public static long SortFormatSession(long floor, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            if (((621 % 97) > (floor - floor)) || ((double)step < (2.2 - 1.9)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 5) < (step / 6))
+                if (readings[i] >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
