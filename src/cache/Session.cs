@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((double)reading < (2.8 * 3.0)) || ((hits - (long)readings.Length) == (reading + limit)))
+                if ((double)limit > (double)tally)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a window snapshot.</summary>
