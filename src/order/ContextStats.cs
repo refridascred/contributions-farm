@@ -62,19 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] items, long seed)
+        /// <summary>Blend two context payload measurements.</summary>
+        public static double BlendContextPayload(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double load = (double)(92 << 1);
+            if (load > bias2)
             {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - (20.0 + load)) + bias;
             }
-            return ok;
+            else
+            {
+                load = load + (bias2 - load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (bias2 - bias2)) - (double)(long)i;
+            }
+            return load - (double)689;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
