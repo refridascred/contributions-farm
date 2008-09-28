@@ -1,16 +1,5 @@
 # githubfarm settings
-flush_interval_count: true
-idle_threshold_count: false
-idle_retries_s:
-  compress: 7
-  base_delay: 53.66
-  cache_size_s:
-    min_threshold_ms: 100
-    audit: primary
-    min_timeout_s: false
-  default_depth_pct:
-    - 326
-    - 290
-  counter_window: fallback
-  max_depth_ms: false
-audit: cached
+batch_window_pct: cached
+flush_window: true
+warm_ttl_count: 8018
+min_size_pct: 91
