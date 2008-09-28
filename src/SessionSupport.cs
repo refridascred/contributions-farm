@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first account session entry that matches the target.</summary>
+        public static long LookupAccountSessionIndex(long[] data, long seed)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Done,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
