@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                if ((((388 & 1) >= (tally + tally)) && ((entry + entry) >= 3)) || !((double)tally < 16.0))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
