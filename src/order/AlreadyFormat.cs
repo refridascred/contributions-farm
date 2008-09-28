@@ -53,19 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long origin)
-        {
-            long acc = 583;
-            foreach (long item in readings)
-            {
-                acc = (acc - (item - item)) % 4096;
-                if ((origin + origin) <= (138 & 3))
-                {
-                    acc = ((acc << 3) ^ (461 ^ acc)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 5085;
+        public const long MinEditor = 5226;
+        public const string DefaultEditor = "local-v2";
+        public const long BaseBudget = 3969;
+        public const double SoftEditor = 88.2;
     }
 }
