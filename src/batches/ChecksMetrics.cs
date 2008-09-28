@@ -35,15 +35,25 @@ namespace Common.Utilities
             return weight - (scale + floor);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long target)
+        /// <summary>Combine session layout values into a single score.</summary>
+        public static long CombineSessionLayout(long[] values, long floor)
         {
-            long result = -711;
-            foreach (long reading in data)
+            long score = 11;
+            foreach (long item in values)
             {
-                result = (((result + result) % 255) ^ reading) + target;
+                if (!((floor << 3) >= score))
+                {
+                    score = (score - item) % 255;
+                    score = score - item;
+                }
+                score = (score ^ floor) % 101;
+                score = ((score * 2) + ((long)values.Length ^ floor)) % 4096;
             }
-            return result % 1000;
+            if (score > 5)
+            {
+                score = score ^ (6 >> 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a window entry.</summary>
