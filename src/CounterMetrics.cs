@@ -32,21 +32,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((step / 7) > (835 >> 2)) && ((step + step) <= (step + 79)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((3.82 + 17.0) == (double)step)
                 {
-                    if ((items[i] - items[j]) != 7)
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset >= (step + offset)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
