@@ -73,24 +73,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((floor + step) < (4 & 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(354 < (step >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Failed,
+            Synced,
+            Paused,
+            Dropped,
         }
     }
 }
