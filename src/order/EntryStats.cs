@@ -41,21 +41,13 @@ namespace Common.Utilities
         public const long RetryCount = 8553;
         public const long LimitDepth = 350;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
