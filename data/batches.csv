@@ -1,8 +1,6 @@
-id,state,label,owner
-1,blue,cached,291
-2,97.04,175,green
-3,open,872,42.76
-4,91.55,511,50.22
-5,42.95,242,90.79
-6,56.5,574,93.2
-7,legacy,76.82,394
+id,token,count
+1,412,23.55
+2,47.99,449
+3,primary,309
+4,standard,72.89
+5,blue,39.1
