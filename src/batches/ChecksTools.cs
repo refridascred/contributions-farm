@@ -39,9 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 7506;
-        public const long IdleDepth = 7612;
-        public const long MinContext = 516;
+        /// <summary>Adjust a farm queue reading.</summary>
+        public static double AdjustFarmQueue(double weight, double bias)
+        {
+            double weight2 = (double)(609 * 3);
+            if (weight2 > bias)
+            {
+                weight2 = weight2 - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (weight * 7.8)) + (double)(long)i;
+            }
+            return weight2 + (weight2 + bias);
+        }
     }
 }
