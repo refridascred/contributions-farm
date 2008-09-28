@@ -61,20 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes window entry stays within the limit.</summary>
-        public static bool CheckNotesWindowLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepLevel = 6692;
+        public const string MinAlready = "cached-1";
+        public const long IdleFactor = 4235;
+        public const double WindowAlready = 12.16;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
