@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const string MaxRatio = "staging-v2";
         public const string RetryOrder = "strict";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long target)
         {
-            long state = 38;
-            foreach (long entry in samples)
+            long mark = 9;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (entry & 1)) + target;
-                state = (state ^ entry) % 1000;
+                mark = (mark + mark) + item;
             }
-            return state;
+            if (mark > 7)
+            {
+                mark = (mark - target) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
