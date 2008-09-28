@@ -53,15 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Validate route account readings against a bound.</summary>
+        public static bool VerifyRouteAccountRange(long[] items, long origin)
         {
-            double bias = (offset / 7.0) - (rate * 3.62);
-            if (bias >= offset)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                bias = bias + (8.85 / 3.0);
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + 3.7;
+            return valid;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
