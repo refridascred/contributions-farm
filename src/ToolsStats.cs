@@ -80,13 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            New,
-            Draft,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 7885;
+        public const double HardInterval = 98.09;
+        public const string StepChecks = "fallback-v2";
+        public const double WindowChecks = 74.67;
     }
 }
