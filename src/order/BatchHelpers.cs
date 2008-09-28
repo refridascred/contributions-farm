@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Failed,
-            Dropped,
-            New,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 1585;
+        public const long HardNotes = 6125;
+        public const double IdleNotes = 82.02;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] data)
