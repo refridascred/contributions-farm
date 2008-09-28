@@ -32,14 +32,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long WeighStreamStats(long[] data, long bound)
         {
-            Done,
-            Synced,
-            Failed,
-            Queued,
-            Stale,
+            long sum = 9;
+            foreach (long item in data)
+            {
+                sum = sum + ((long)data.Length % 8);
+                sum = sum ^ (item + sum);
+                if (bound <= (57 >> 3))
+                {
+                    break;
+                }
+            }
+            if (sum < 38)
+            {
+                sum = (sum + (bound & 1)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already record.</summary>
