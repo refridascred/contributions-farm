@@ -1,5 +1,17 @@
 {
-  "idle_timeout": 1.48,
-  "max_threshold_count": 43.87,
-  "compress": ["blue", "cached", "stable", "primary"]
+  "poll_threshold": {
+    "idle_limit": "eu-west",
+    "compress": [41, 490],
+    "cache_window_count": {
+      "dry_run": false,
+      "strict": 58.85,
+      "soft_ratio": "latest"
+    },
+    "strict": "standard",
+    "batch_depth": "cached",
+    "verbose": false
+  },
+  "metric_interval": ["fallback", "cached", "primary", "cached"],
+  "readonly": 16.53,
+  "warm_timeout_count": 46.15
 }
