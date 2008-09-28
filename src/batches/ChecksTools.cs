@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm queue reading.</summary>
-        public static double AdjustFarmQueue(double weight, double bias)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            double weight2 = (double)(609 * 3);
-            if (weight2 > bias)
-            {
-                weight2 = weight2 - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (weight * 7.8)) + (double)(long)i;
-            }
-            return weight2 + (weight2 + bias);
+            double load = (double)(7 >> 5);
+            return ((load - load) + scale) + span;
         }
     }
 }
