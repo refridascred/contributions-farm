@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheTimeout = 96.96;
-        public const long HardScore = 9902;
-        public const long MaxRatio = 7640;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterMatches(long[] items)
