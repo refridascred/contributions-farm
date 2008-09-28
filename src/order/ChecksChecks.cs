@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
