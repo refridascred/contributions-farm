@@ -1,6 +1,5 @@
 {
-  "compress": 30,
-  "batches_ttl": 35.44,
-  "profile_delay": 40.04,
-  "strict": 89
+  "poll_size_pct": false,
+  "min_retries": 17,
+  "hard_threshold": 9
 }
