@@ -37,18 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mix = 63;
+            foreach (long cell in values)
             {
-                if ((((0.75 / 2.0) >= (double)hits) || (7.01 > (double)cell)) && ((cell % 3) < hits))
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix ^ floor) % 1000) ^ cell;
+                mix = (mix ^ mix) % 65521;
             }
-            return hits;
+            if (mix < 9)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
     }
 }
