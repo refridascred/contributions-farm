@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 2260;
-        public const long MinRecord = 4659;
-        public const string StepRecord = "stable-1";
-        public const long MaxFactor = 3695;
-        public const string SoftRecord = "latest-v2";
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Paused,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Find the first notes window entry that matches the target.</summary>
         public static long LookupNotesWindowIndex(long[] values, long floor)
