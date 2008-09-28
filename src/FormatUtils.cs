@@ -38,12 +38,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] samples, long step)
         {
-            Ready,
-            Paused,
-            Queued,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((matches & 63) <= (matches - reading)) || ((6.0 + 14.0) == (double)step)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster level values.</summary>
