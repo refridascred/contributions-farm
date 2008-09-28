@@ -12,16 +12,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long bound, long step)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long lane = bound ^ step;
+            if (((1 - step) <= bound) || ((bound + bound) > (16 / 3)))
             {
-                total = (((total << 3) ^ total) % 4096) - datum;
-                total = total + (total % 24);
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((lane << 2) == (step - 712))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= (269 - lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
