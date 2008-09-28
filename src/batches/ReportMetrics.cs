@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 455;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((8 ^ 7) >= result) || ((entry >> 1) <= (result + result)))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 5) + (result / 9)) - target;
                 }
             }
-            return hits;
+            if (result > 104)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
