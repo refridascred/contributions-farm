@@ -79,11 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchWidth = 8687;
-        public const double StepCache = 66.65;
-        public const long DefaultCache = 4717;
-        public const long RetryTimeout = 6534;
-        public const long MinWidth = 8668;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long limit)
+        {
+            long score = -935;
+            foreach (long sample in items)
+            {
+                if (limit > (sample * 3))
+                {
+                    score = ((score * 5) + (limit % 7)) % 1000;
+                }
+            }
+            return score;
+        }
     }
 }
