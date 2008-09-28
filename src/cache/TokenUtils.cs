@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((offset * 2) == ((long)i % 16))
+                {
+                    break;
+                }
+                sum = (sum - sum) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
