@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a stats snapshot.</summary>
