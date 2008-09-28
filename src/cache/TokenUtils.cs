@@ -17,17 +17,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + 16.0) + (double)(long)i) - bias;
             }
-            return -1;
+            return bias2 + offset;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
