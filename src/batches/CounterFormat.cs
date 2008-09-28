@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3824;
+        public const string BaseBatch = "latest-1";
+        public const double LimitBatch = 63.84;
+        public const long SoftBatch = 4256;
+        public const long StepBatch = 3589;
 
         /// <summary>Accumulate channel payload samples.</summary>
         public static long FoldChannelPayload(long[] data)
