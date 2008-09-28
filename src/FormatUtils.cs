@@ -30,10 +30,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCount = 37.9;
-        public const double MaxCluster = 51.79;
-        public const long SoftDepth = 7978;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Draft,
+            Pending,
+            Ready,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string HardCount = "strict-1";
