@@ -49,21 +49,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of stream layout readings.</summary>
-        public static long MatchStreamLayoutCount(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 71;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry << 3) < 3) || ((11.0 / 3.0) <= (double)mix))
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ entry) - floor;
                 }
             }
-            return matches;
+            return mix % 97;
         }
     }
 }
