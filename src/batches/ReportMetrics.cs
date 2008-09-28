@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "alpha-v2";
-        public const double DefaultFactor = 5.43;
-        public const long BurstBudget = 3900;
-        public const long BaseStream = 8136;
-        public const double RetryScore = 94.5;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "legacy-1";
+        public const string RetryWidth = "local";
+        public const long IdleBatch = 4009;
+        public const long MaxFactor = 9668;
+        public const string CacheTimeout = "strict-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatLimits(long[] values, long limit)
