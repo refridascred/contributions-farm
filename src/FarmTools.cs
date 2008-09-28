@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long bound2)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            if ((bound + bound2) >= bound)
+            double scale = floor * 5.5;
+            if (scale >= gain)
             {
-                return 8;
+                scale = scale + floor;
             }
-            else
-            {
-                if ((double)bound >= 6.7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale - gain;
         }
 
         /// <summary>Iterate the metric session series from a seed.</summary>
