@@ -1,5 +1,13 @@
 # entry settings
-readonly: latest
-cache_threshold: true
-strict: false
-already_ratio: stable
+retry_size: 56.5
+batch_capacity: 50.53
+flush_retries_ms: edge
+cache_capacity:
+  readonly:
+    - 368
+    - 140
+  default_ttl: 70
+  profile_capacity: staging
+  strict: 9973
+  retry_threshold: staging
+batches_limit: open
