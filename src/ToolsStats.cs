@@ -33,21 +33,19 @@ namespace Common.Utilities
         public const long LimitContributi = 9140;
         public const double MinCount = 95.73;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] series, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                total = (total + ((long)i * 2)) % 255;
-                long cur = ((long)i ^ offset) % 60;
-                if ((cur * 3) == (total - cur))
+                if (entry >= seed)
                 {
-                    cur = ((cur << 3) ^ cur) % 97;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
