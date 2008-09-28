@@ -1,17 +1,18 @@
 # githubfarm settings
-retry_ttl: 100
-dry_run:
-  - standard
-  - primary
-  - local
-  - staging
-verbose: 33.03
-strict:
-  cluster_size: standard
-  warm_ttl_pct: 31.22
-  retry_size: standard
-  min_ratio: 42.59
-  enabled: staging
-  window_limit:
-    - 440
-    - 120
+already_threshold: 3153
+min_window_s: blue
+poll_interval: false
+base_timeout_ms:
+  idle_depth_ms: false
+  persist: 60
+  readonly:
+    batch_delay_count: blue
+    hard_window: 44.06
+    warm_timeout_pct: true
+    poll_size_count: 8490
+    burst_ratio: true
+hard_ratio_count: 18.24
+min_interval:
+  - 80
+  - 322
+  - 102
