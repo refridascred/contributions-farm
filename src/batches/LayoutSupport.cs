@@ -55,26 +55,15 @@ namespace Common.Utilities
         public const long BurstDepth = 172;
         public const long DefaultSpan = 5094;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long step)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= floor)
-                {
-                    carry = (carry * 2) + (carry + floor);
-                }
-                else
-                {
-                    carry = (carry * 2) + (value - value);
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (carry < 743)
-            {
-                carry = carry + (163 - 245);
-            }
-            return carry;
+            return anchor;
         }
     }
 }
