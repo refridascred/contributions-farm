@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Ready,
-            Draft,
-            Idle,
-            Paused,
             Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Rank context input into a small class.</summary>
