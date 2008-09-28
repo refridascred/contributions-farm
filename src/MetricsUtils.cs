@@ -45,13 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
