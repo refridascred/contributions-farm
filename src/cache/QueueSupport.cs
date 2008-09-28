@@ -32,11 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Weight { get; set; }
+            public long Limit { get; set; }
             public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
