@@ -47,19 +47,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] samples, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long state = 2;
+            foreach (long cell in data)
             {
-                if (sample != seed)
+                if ((state >> 5) < (cell & 127))
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 2) ^ (cell - state)) % 97;
                 }
+                else
+                {
+                    state = (state - (3 + state)) % 65521;
+                }
+                state = ((state << 2) ^ (cell * 3)) % 1000;
             }
-            return valid;
+            if (state < (-7))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
