@@ -59,12 +59,19 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Fold a list of metrics commits readings.</summary>
+        public static long DigestMetricsCommits(long[] data)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long total = 637;
+            foreach (long datum in data)
+            {
+                total = ((total << 3) ^ (total % 8)) + datum;
+            }
+            if (total < 61)
+            {
+                total = total ^ (total + 168);
+            }
+            return total;
         }
     }
 }
