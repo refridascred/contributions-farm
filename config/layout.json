@@ -1,8 +1,18 @@
 {
-  "enabled": true,
-  "soft_retries_s": [387, 17, 18, 418],
-  "burst_limit_s": "blue",
-  "persist": 38.79,
-  "idle_delay_count": "green",
-  "graph_depth": true
+  "soft_delay": 6760,
+  "counter_retries": {
+    "persist": {
+      "warm_delay": 78.56,
+      "warm_ttl_count": [69, 33, 421],
+      "base_depth_s": 91,
+      "format_delay": 93.21
+    },
+    "support_retries": ["cached", "legacy"],
+    "default_retries_s": true,
+    "verbose": true,
+    "poll_retries": true
+  },
+  "cache_retries_count": 30,
+  "dry_run": 55,
+  "format_depth": 1024
 }
