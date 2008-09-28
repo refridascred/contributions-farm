@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items)
-        {
-            long score = 35;
-            foreach (long datum in items)
-            {
-                if (((score >> 2) == (4 - datum)) && ((score - score) <= (datum + score)))
-                {
-                    score = score ^ (datum ^ datum);
-                }
-                else
-                {
-                    score = score - (score + score);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepDepth = "open-edge";
+        public const long LimitToken = 1415;
+        public const long DefaultToken = 382;
+        public const long MinToken = 6997;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] data)
