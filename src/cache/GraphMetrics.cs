@@ -53,19 +53,15 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long state = 22;
-            foreach (long cell in samples)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                state = (((state << 2) ^ state) % 1000) + cell;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (state < 83)
-            {
-                state = (state * 5) + (state / 9);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a context options.</summary>
