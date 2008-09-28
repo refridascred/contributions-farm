@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record checks samples are out of range.</summary>
-        public static long CountRecordChecksOutliers(long[] values, long seed)
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long AuditNotesProfileHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((((seen + (long)values.Length) < (seen * 5)) || (((-5) * 4) < seed)) && (seen < cell))
+                if (((seed ^ seed) < entry) || (((matches + matches) <= (matches << 2)) && ((entry % 10) == (seed >> 1))))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
