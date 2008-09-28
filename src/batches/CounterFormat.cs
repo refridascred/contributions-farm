@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            New,
+            Pending,
+            Paused,
+            Failed,
             Synced,
-            Idle,
-            Queued,
         }
 
         /// <summary>Hold a stats summary.</summary>
