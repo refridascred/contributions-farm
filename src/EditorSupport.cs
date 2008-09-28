@@ -47,19 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
