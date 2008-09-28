@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels)
-        {
-            long result = 12;
-            foreach (long value in levels)
-            {
-                if ((result + 97) >= (result % 60))
-                {
-                    result = ((result * 5) + (7 & 127)) % 1000;
-                }
-                result = ((result * 3) + value) % 65521;
-                if ((double)value < (2.74 + 7.38))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 5389;
+        public const double IdleRoute = 55.73;
+        public const long CacheRoute = 2554;
+        public const double DefaultRoute = 76.36;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] readings, long target)
