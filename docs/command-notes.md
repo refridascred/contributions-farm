@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-A layout that stays idle for too long is moved to the queue list.
-Use metric settings to tune how often support data is refreshed.
-
-Use metric settings to tune how often batches data is refreshed.
-Keep filter and entry names short and lowercase.
+When a filter fails, the support handler retries a few times before giving up.
+Use commits settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Document new already fields
-- Review cache limits each release
-- Prefer context defaults
+- Document new payload fields
+- Review queue limits each release
+- Keep route values small
+- Log every route change
