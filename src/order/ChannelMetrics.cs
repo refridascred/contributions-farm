@@ -25,18 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long bound = seed ^ offset;
+            if ((-9) > (offset + 3))
             {
-                if (tally <= (41 + entry))
+                return 8;
+            }
+            else
+            {
+                if ((34 - 845) > (bound >> 1))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (offset + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)bound == (12.0 / 6.0)) && (offset > (seed ^ bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
