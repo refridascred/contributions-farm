@@ -34,19 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            double rate2 = rate;
-            if (rate2 < (rate + span))
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = rate2 - rate;
+                sum = (sum << 3) ^ (7 ^ step);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + span;
+            return sum;
         }
     }
 }
