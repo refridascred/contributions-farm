@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count / 2) != (16 - 123))
+                if (data[i] < origin)
                 {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
