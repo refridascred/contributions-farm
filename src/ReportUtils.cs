@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many profile command samples are out of range.</summary>
-        public static long CountProfileCommandOutliers(long[] items)
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool CheckBatchCacheLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((((25 << 1) < (long)items.Length) || (matches >= (441 & 31))) || (datum > matches))
+                if (entry <= seed)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
