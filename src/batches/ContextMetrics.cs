@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long result = 8;
+            foreach (long item in series)
             {
-                if (((cell / 2) == (1 + cell)) && ((double)count != (13.0 * 0.43)))
+                if (bound > (428 + item))
                 {
-                    count = count + 2;
+                    result = ((result * 2) + (832 << 1)) % 97;
+                }
+                else
+                {
+                    result = (result + item) % 101;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
