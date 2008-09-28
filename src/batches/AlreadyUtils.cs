@@ -48,13 +48,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long limit)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
+            long lane = origin ^ limit;
+            if ((double)lane >= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((396 & 3) != (lane - lane)) && ((lane ^ 119) == (lane / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane + 39) > (6 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((76 + lane) >= lane)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
