@@ -31,23 +31,19 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] levels, long origin)
         {
-            double drift = bias;
-            if (drift > drift)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                drift = drift - (8.9 + bias2);
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (bias2 + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)(-662);
+            return flag;
         }
     }
 }
