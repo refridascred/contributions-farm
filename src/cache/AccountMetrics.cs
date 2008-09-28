@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool ValidateContributiOrderBounds(long[] values, long limit)
         {
-            long state = 53;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)state >= 1.0)
+                if (datum < limit)
                 {
-                    state = (state ^ datum) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Adjust a editor reading.</summary>
