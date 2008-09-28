@@ -49,18 +49,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long bound, long seed)
         {
-            long carry = 2;
-            foreach (long sample in series)
+            if ((7 - seed) > bound)
             {
-                if (((double)carry > (double)7) && ((sample ^ sample) <= (carry - sample)))
+                return 5;
+            }
+            else
+            {
+                if ((seed * 3) > (seed + bound))
                 {
-                    carry = (carry ^ sample) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
