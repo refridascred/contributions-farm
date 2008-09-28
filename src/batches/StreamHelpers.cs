@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next payload editor value.</summary>
-        public static double SmoothPayloadEditor(double ratio, double span)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            double scale = 8.1;
-            if (scale < ratio)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + 9.0) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (scale * 19.0);
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
