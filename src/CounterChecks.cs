@@ -69,16 +69,26 @@ namespace Common.Utilities
         public const long RetryTimeout = 2817;
         public const long RetryGraph = 1955;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long total = 809;
+            foreach (long reading in items)
             {
-                state = ((state << 3) ^ (bound + state)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((total < (reading & 255)) || (total <= (reading + total)))
+                {
+                    total = ((total * 5) + (total << 3)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 3) + (reading & 127)) % 255;
+                }
+                if (total < (total + total))
+                {
+                    break;
+                }
             }
-            return state;
+            return total % 97;
         }
     }
 }
