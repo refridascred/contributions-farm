@@ -26,17 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
