@@ -1,19 +1,9 @@
 # support settings
-readonly:
-  audit: 22.77
-  support_limit: blue
-  compress: false
-  layout_threshold:
-    cache_limit: true
-    soft_timeout: local
-    soft_retries_ms: 1024
-    account_window:
-      - 157
-      - 473
-      - 279
-batch_interval_count: 39
-min_window:
-  - stable
-  - standard
-  - stable
-  - staging
+entry_timeout: standard
+sync_retries_ms: open
+soft_capacity_count: 89
+soft_limit_s:
+  - 148
+  - 315
+default_depth_pct: stable
+idle_timeout: edge
