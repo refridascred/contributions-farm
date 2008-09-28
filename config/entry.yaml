@@ -1,14 +1,5 @@
 # entry settings
-batch_threshold: 48.64
-already_limit:
-  default_capacity_pct:
-    - local
-    - latest
-    - blue
-  strict: 21.7
-  max_depth: primary
-  base_interval:
-    - open
-    - blue
-    - staging
-schema_delay: edge
+dry_run: stable
+cache_limit: 1858
+sync_timeout: 2.03
+verbose: latest
