@@ -16,22 +16,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long CountCommandClusterMatches(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (count < (count % 100))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a account entry.</summary>
