@@ -1,13 +1,6 @@
 # support settings
-batch_depth: 2
-retry_window: 60
-default_ratio_pct:
-  default_limit_count: green
-  githubfarm_ratio:
-    batch_depth_count: 94
-    strict: stable
-    cache_size_s: 59
-  idle_delay: 1024
-  batch_depth: 28.55
-  dry_run: 91.03
-graph_depth: 8671
+hard_retries_pct: cached
+entry_capacity: 9383
+flush_retries: 74.91
+warm_delay_count: strict
+compress: false
