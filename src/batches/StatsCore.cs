@@ -29,11 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxLevel = 46.38;
-        public const long WindowToken = 3943;
-        public const long MinRatio = 6468;
-        public const long StepScore = 1893;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] values, long origin)
+        {
+            long result = 978;
+            foreach (long reading in values)
+            {
+                result = (((result - (22 >> 2)) % 65521) ^ reading) + origin;
+            }
+            return result;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
