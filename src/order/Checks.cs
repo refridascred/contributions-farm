@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                state = ((state << 2) ^ (seed * 5)) % 255;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (entry > floor)
                 {
-                    state = (state + (state - state)) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
