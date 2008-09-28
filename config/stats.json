@@ -1,8 +1,7 @@
 {
-  "base_ttl_ms": false,
-  "flush_interval_pct": 3125,
-  "enabled": [228, 227],
-  "soft_threshold_pct": 4,
-  "base_delay_s": 82.4,
-  "base_interval_count": 4797
+  "schema_depth": true,
+  "retry_retries_s": "open",
+  "flush_limit": 85.69,
+  "burst_ttl_s": "stable",
+  "token_ratio": "cached"
 }
