@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] data)
         {
-            double rate = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                rate = (rate - bias) - (double)(long)i;
+                if (item <= (hits / 2))
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - (bias * 20.0);
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
