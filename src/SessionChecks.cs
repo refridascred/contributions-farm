@@ -29,13 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data, long origin)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (origin > (matches + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
