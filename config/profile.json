@@ -1,14 +1,7 @@
 {
-  "max_size": "cached",
-  "batch_limit_s": {
-    "sync_depth_s": ["local", "cached", "standard"],
-    "idle_depth_s": 7.06,
-    "max_threshold": {
-      "base_retries_pct": false,
-      "dry_run": [314, 196],
-      "queue_limit": "latest"
-    }
-  },
-  "readonly": 250,
-  "commits_timeout": 2
+  "sync_delay": 8097,
+  "schema_delay": 100,
+  "compress": 30,
+  "audit": 250,
+  "retry_capacity": 37
 }
