@@ -26,11 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinRatio = 8376;
-        public const long BurstContributi = 8019;
-        public const string DefaultTimeout = "primary-1";
-        public const long CacheContributi = 5509;
-        public const long WindowContributi = 9911;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1905;
+        public const double BaseWidth = 87.85;
+        public const long MaxEntry = 750;
     }
 }
