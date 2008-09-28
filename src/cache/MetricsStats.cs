@@ -42,13 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] items, long seed)
         {
-            New,
-            Synced,
-            Active,
-            Queued,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
