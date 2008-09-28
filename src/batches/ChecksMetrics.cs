@@ -27,22 +27,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 6;
+            foreach (long cell in readings)
             {
-                if ((5.8 / 7.0) >= (double)floor)
+                if ((double)mix <= 6.87)
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = ((mix << 2) ^ (cell + mix)) % 97;
                 }
             }
-            return count;
+            if (mix < 322)
+            {
+                mix = ((mix << 2) ^ (mix - 37)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
