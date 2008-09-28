@@ -27,13 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Look up the position of a channel buffer sample.</summary>
+        public static long FindChannelBufferIndex(long[] samples, long origin)
         {
-            New,
-            Active,
-            Stale,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
