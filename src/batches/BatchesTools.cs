@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Derive the next account already value from a seed.</summary>
+        public static long SeriesAccountAlready(long step)
         {
-            double scale = (double)8 * 0.9;
-            if (scale < (double)7)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                scale = ((scale + (scale + 18.0)) - gain) - span;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (scale * 6.1);
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
