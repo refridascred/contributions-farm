@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item >= ((long)levels.Length >> 3))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4067;
+        public const string CacheRatio = "staging-edge";
+        public const long BatchGithubfarm = 8069;
+        public const string MinGithubfarm = "open-1";
+        public const long MaxCount = 3183;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepScore = 314;
