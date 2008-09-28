@@ -36,22 +36,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long TallySessionContributiMatches(long[] readings, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!(((-788) + entry) > 1))
+                if (count < (count / 3))
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
