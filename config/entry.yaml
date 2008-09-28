@@ -1,5 +1,8 @@
 # entry settings
-dry_run: stable
-cache_limit: 1858
-sync_timeout: 2.03
-verbose: latest
+queue_timeout:
+  readonly: true
+  sync_timeout: 62
+  burst_capacity_s: 24
+  buffer_delay: 75.37
+hard_capacity_count: false
+profile_ttl: 5152
