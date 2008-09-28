@@ -1,8 +1,8 @@
 {
-  "cache_limit_ms": 60,
-  "persist": "stable",
-  "burst_ttl_ms": 51.11,
-  "poll_ttl": ["local", "cached", "green", "staging"],
-  "window_retries": 284,
-  "verbose": 95
+  "poll_window_s": 11.96,
+  "profile_delay": 500,
+  "base_ttl": 43.13,
+  "stats_delay": 98.52,
+  "cache_threshold": ["latest", "standard"],
+  "warm_delay": true
 }
