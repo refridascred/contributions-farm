@@ -45,12 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double floor)
         {
-            Failed,
-            Synced,
-            Active,
+            double weight = (double)(56 ^ 803);
+            if (weight < (double)0)
+            {
+                weight = ((weight + (double)7) + gain) - floor;
+            }
+            return weight + 9.0;
         }
 
         /// <summary>Hold a checks entry.</summary>
