@@ -1,7 +1,6 @@
 # support settings
-poll_window_ms: true
-retry_depth_pct: 6283
-strict: 73
-retry_timeout_s: edge
-cache_depth: fallback
-persist: 8726
+hard_ratio_pct: open
+hard_ttl_count: green
+persist: 9236
+min_interval_pct: 64.99
+default_window: latest
