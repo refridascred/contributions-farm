@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 4894;
-        public const long MinContributi = 4736;
-        public const long StepTimeout = 6254;
+        /// <summary>Check that every format route entry stays within the limit.</summary>
+        public static bool CheckFormatRouteBounds(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 4248;
