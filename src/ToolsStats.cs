@@ -61,19 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] values, long step)
         {
-            long acc = 64;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = (acc ^ (value ^ value)) % 65521;
+                if ((9.8 + 1.27) >= (double)cell)
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < 43)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
