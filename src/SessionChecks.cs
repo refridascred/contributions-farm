@@ -44,13 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 1999;
+        public const long MaxMetrics = 1185;
+        public const string BatchMetrics = "open";
+        public const double LimitMetrics = 95.89;
+        public const long BaseCount = 9876;
     }
 }
