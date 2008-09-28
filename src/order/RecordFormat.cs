@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ratio - (ratio - 3.36);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 6316;
-        public const long HardDepth = 4912;
-        public const long MinDepth = 5667;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long mix = -13;
+            foreach (long sample in items)
+            {
+                mix = ((mix << 3) ^ (5 / 9)) % 97;
+                mix = (mix * 3) + 4;
+                if ((double)mix < (10.0 - 2.06))
+                {
+                    mix = (mix - (mix ^ mix)) % 65521;
+                }
+                if (mix > (mix - sample))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] data, long limit)
