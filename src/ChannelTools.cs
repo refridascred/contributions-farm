@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit checks entry readings against a rule.</summary>
-        public static long MeasureChecksEntryOutliers(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] series, long step)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long cell in series)
             {
-                if (!!(entry <= (tally ^ tally)))
+                if ((double)step >= (15.0 / 5.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) ^ cell;
                 }
             }
             return tally;
