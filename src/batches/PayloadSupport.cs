@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Queued,
-            Locked,
-            Stale,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 1602;
+        public const double LimitCount = 20.43;
+        public const string BurstRecord = "open";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 2777;
