@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long mark = 0;
+            foreach (long entry in samples)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (entry < (entry << 3))
+                {
+                    mark = mark - (mark & 3);
+                }
             }
-            return total;
+            return mark % 97;
         }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
