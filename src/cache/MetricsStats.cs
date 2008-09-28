@@ -27,39 +27,18 @@ namespace Common.Utilities
         public const double HardSpan = 59.53;
         public const long HardFormat = 100;
 
-        /// <summary>Rank payload metrics input into a small class.</summary>
-        public static long RankPayloadMetrics(long bound, long bound2)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long TallyTokenMetricMatches(long[] data, long offset)
         {
-            long lane = bound + bound2;
-            if (((bound2 & 3) == (lane + bound2)) || ((bound2 + lane) <= bound))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound < (1 + bound2)))
+                if (!((double)entry <= (19.0 - 3.93)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.6 * 2.71) == (double)lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane / 3) >= (bound2 >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
