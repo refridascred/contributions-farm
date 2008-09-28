@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long edge = offset - floor;
+            if ((floor / 5) >= edge)
             {
-                state = (state + (bound - 87)) % 97;
-                state = ((state << 3) ^ 19) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (1 >= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 - 7.32) >= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (edge ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every counter already entry stays within the limit.</summary>
