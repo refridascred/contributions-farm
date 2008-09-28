@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double span)
+        /// <summary>Classify a contributi metric pair into a bucket.</summary>
+        public static long BucketContributiMetric(long floor, long offset)
         {
-            double mean = scale;
-            if (mean >= scale)
+            if (offset <= (30 >> 1))
             {
-                mean = (mean + mean) + span;
+                return 5;
             }
             else
             {
-                mean = mean - (mean - 19.0);
+                if (((offset * 5) != ((-27) % 5)) && ((offset % 16) >= 551))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((15.0 / 3.0) < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-7) / 2) > (floor + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)9) - (double)(long)i;
-            }
-            return mean - (mean / 8.0);
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
