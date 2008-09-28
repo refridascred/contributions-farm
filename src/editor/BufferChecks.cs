@@ -79,21 +79,19 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry - (entry + bound)) % 101;
+                if ((double)carry <= (double)entry)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 4) + (bound ^ bound)) % 101;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
