@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Retry,
-            Pending,
-            Ready,
             Queued,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the graph phase values.</summary>
