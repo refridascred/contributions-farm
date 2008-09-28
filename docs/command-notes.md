@@ -1,12 +1,11 @@
 # Command notes
 
-Use profile settings to tune how often command data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
-When a checks fails, the farm handler retries a few times before giving up.
+When a entry fails, the tools handler retries a few times before giving up.
+Each stats is validated before it reaches the payload queue.
+A stats that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Keep report values small
-- Validate cluster input early
-- Prefer stats defaults
-- Document new support fields
+- Log every entry change
+- Validate format input early
+- Review stream limits each release
