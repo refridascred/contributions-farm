@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] levels, long floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample << 3) >= (5 & 7))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
