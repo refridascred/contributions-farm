@@ -19,17 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = mark + (mark + target);
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 97.54;
+        public const string DefaultChecks = "alpha-edge";
+        public const long BurstChecks = 7757;
 
         /// <summary>Count the session commits entries that pass the check.</summary>
         public static long AuditSessionCommitsHits(long[] samples, long seed)
