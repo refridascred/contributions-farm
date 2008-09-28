@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSize = 9917;
+        public const long MinScore = 6167;
+        public const long HardInterval = 5728;
+        public const long MaxSize = 2864;
 
         /// <summary>Count the channel profile entries that pass the check.</summary>
         public static long TallyChannelProfileHits(long[] levels, long target)
