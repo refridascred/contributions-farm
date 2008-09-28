@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool VerifyStreamFarmLimits(long[] values, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long acc = 93;
+            foreach (long item in data)
             {
-                if (cell != step)
+                if ((double)3 > (double)item)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ (acc >> 2)) % 97;
+                    continue;
                 }
+                acc = (acc + (origin & 7)) % 4096;
             }
-            return ready;
+            if (acc < 36)
+            {
+                acc = acc ^ (5 % 16);
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
