@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long state = 3;
-            foreach (long sample in levels)
+            double gain = 4.65 / 9.0;
+            if (gain <= (gain * 2.9))
             {
-                state = ((state - ((-71) % 60)) % 97) + sample;
+                gain = ((gain - 9.0) + bias) - bias2;
             }
-            return state % 4096;
+            return gain + gain;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
