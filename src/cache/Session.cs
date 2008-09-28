@@ -57,25 +57,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Classify a account tools pair into a bucket.</summary>
-        public static long GradeAccountTools(long seed, long seed2)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long cur = seed ^ seed2;
-            if (5 <= cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur & 7) == (seed2 ^ 119))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
