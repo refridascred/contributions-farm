@@ -21,11 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 4895;
-        public const string BaseCount = "strict";
-        public const long LimitLevel = 3867;
-        public const string BaseMetric = "stable";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepInterval = 6061;
+        public const long RetryScore = 7951;
+        public const string MinSchema = "staging-v2";
+        public const long IdleScore = 9921;
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] levels)
