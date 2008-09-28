@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long RetryRecord = 9804;
         public const long MaxScore = 3531;
 
-        /// <summary>Count the window batch entries that pass the check.</summary>
-        public static long AuditWindowBatchMatches(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data, long seed)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long reading in data)
             {
-                if (value <= ((-7) + value))
+                if ((8.7 + 14.0) <= (double)reading)
                 {
-                    count = count + 2;
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
