@@ -19,38 +19,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            if (seed >= (seed ^ origin))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin <= (origin ^ 5)) && ((seed ^ origin) > (seed - origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 3) > (seed >> 2))
+                    if ((items[i] ^ items[j]) == 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (origin + 386))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
