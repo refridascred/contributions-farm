@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long bound = floor - limit;
-            if (8.88 >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound > 1.2) && ((double)bound == (5.0 - 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
