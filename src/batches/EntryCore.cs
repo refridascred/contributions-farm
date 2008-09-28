@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((11.0 / 5.0) > (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
