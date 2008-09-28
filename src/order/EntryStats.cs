@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 722;
+            foreach (long value in items)
             {
-                if (data[i] <= step)
+                if (value < (anchor << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor + value) % 255;
+                    anchor = ((anchor * 2) + anchor) % 101;
+                    break;
                 }
+                anchor = (anchor << 3) ^ (value + origin);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
