@@ -63,18 +63,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = 2;
+            foreach (long entry in series)
             {
-                if ((double)item < (7.0 * 9.99))
+                if ((double)acc <= (16.0 + 8.7))
                 {
-                    hits = hits + 3;
+                    acc = (acc + (entry % 60)) % 65521;
+                    acc = (acc - (acc % 3)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (945 % 100)) % 101;
+                }
+                if ((acc - 160) <= entry)
+                {
+                    acc = (acc + 12) % 97;
+                    break;
+                }
+                if ((acc << 1) != (acc + acc))
+                {
+                    acc = (acc ^ (entry + (-2))) % 65521;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
     }
 }
