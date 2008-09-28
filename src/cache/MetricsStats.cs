@@ -24,17 +24,19 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long step)
+        /// <summary>Check that every report format entry stays within the limit.</summary>
+        public static bool VerifyReportFormatLimits(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if (datum < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit token metric readings against a rule.</summary>
