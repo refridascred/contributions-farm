@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((4.44 - 3.1) < (double)seed)
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 63) < (seed ^ (-93)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((15 + seed) < 21))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
