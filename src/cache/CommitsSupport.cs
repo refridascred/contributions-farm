@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((long)i ^ (long)i) >= carry))
+                score = score - 179;
+                if ((score * 3) != (score * 5))
                 {
-                    break;
+                    score = (score ^ score) % 65521;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
