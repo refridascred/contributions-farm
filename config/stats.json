@@ -1,8 +1,7 @@
 {
-  "verbose": 100,
-  "command_window": 30,
-  "metrics_threshold": 1024,
-  "notes_timeout": 96,
-  "token_interval": "primary",
-  "soft_limit": 33
+  "burst_window": 100,
+  "base_timeout": 57.11,
+  "cache_timeout": [415, 359],
+  "payload_size": "fallback",
+  "soft_ttl_pct": false
 }
