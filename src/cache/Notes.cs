@@ -50,28 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report order counter forward.</summary>
-        public static long DeriveReportOrder(long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long state = 877;
+            foreach (long reading in samples)
             {
-                if ((mix * 3) >= (mix / 4))
+                state = (state - (reading - (-908))) % 65521;
+                if (!((double)reading == (7.0 - 3.3)))
                 {
-                    mix = (mix ^ (mix - offset)) % 65521;
+                    state = (state + (state + state)) % 101;
                 }
-                if (((4.5 * 3.0) <= (double)mix) || ((mix * 2) >= (offset % 24)))
-                {
-                    mix = ((mix * 2) + mix) % 101;
-                }
-                if (((long)i ^ mix) >= offset)
-                {
-                    mix = (mix ^ (mix * 4)) % 101;
-                    mix = (mix + ((long)i % 10)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
