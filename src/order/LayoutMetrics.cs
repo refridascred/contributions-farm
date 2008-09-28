@@ -19,11 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 6089;
-        public const double SoftWindow = 41.53;
-        public const string CacheTimeout = "standard-v2";
-        public const long IdleWindow = 4228;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first stats cache entry that matches the target.</summary>
         public static long SeekStatsCacheIndex(long[] readings, long offset)
