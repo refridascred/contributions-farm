@@ -40,30 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command order value against two limits.</summary>
-        public static long RankCommandOrder(long offset, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long bound)
         {
-            long span = offset - floor;
-            if (!((floor * 5) <= 656))
+            if ((limit + limit) != (limit - bound))
             {
                 return 3;
             }
             else
             {
-                if (((span << 3) >= (floor ^ floor)) && ((floor >> 3) >= offset))
+                if ((bound + limit) >= (limit - limit))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((floor + floor) <= (floor & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
