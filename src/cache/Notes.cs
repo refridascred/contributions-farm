@@ -34,10 +34,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 874;
-        public const string WindowTimeout = "legacy-v2";
-        public const long RetryBudget = 2763;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double bias, double floor)
+        {
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
