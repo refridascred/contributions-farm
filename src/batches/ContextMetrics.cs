@@ -56,11 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Match up payload contributi samples.</summary>
+        public static long ComparePayloadContributiCount(long[] samples)
         {
-            double rate = offset - gain;
-            return rate - (1.57 + offset);
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
