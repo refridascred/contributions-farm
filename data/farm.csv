@@ -1,6 +1,7 @@
-id,active,rank,state
-1,30,edge,open
-2,31.38,67.81,strict
-3,96.17,77.87,strict
-4,8,82.52,389
-5,998,open,strict
+id,owner
+1,73.79
+2,571
+3,393
+4,strict
+5,21.3
+6,77.77
