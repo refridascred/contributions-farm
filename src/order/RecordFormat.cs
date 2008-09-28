@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ratio - (ratio - 3.36);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample <= (4.81 + 0.42)) || ((sample << 3) < (step >> 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 6316;
+        public const long HardDepth = 4912;
+        public const long MinDepth = 5667;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] data, long limit)
