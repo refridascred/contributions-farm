@@ -44,19 +44,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double scale2 = bias;
-            if (scale2 > (scale2 + 8.22))
-            {
-                scale2 = scale2 + (scale2 * 8.7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - (scale + scale2)) + (double)(long)i;
-            }
-            return scale2 + (bias + 15.0);
+            Done,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
