@@ -39,39 +39,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] values, long limit)
         {
-            long delta = bound - floor;
-            if (delta > ((-2) >> 4))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.8 * 18.0) != (double)floor)
+                if ((limit ^ limit) >= ((long)values.Length * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (delta >= (bound * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor & 127) < (floor + delta))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 3) - entry;
                 }
             }
+            return count;
         }
     }
 }
