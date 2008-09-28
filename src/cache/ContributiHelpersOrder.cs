@@ -30,12 +30,19 @@ namespace Common.Utilities
             return mean - (mean - bias);
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
