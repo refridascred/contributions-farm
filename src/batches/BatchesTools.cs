@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long SortAccountLayout(long limit, long offset)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (offset <= (1 % 10))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) < 21)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
