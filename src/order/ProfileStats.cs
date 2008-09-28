@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
