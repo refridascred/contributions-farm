@@ -76,19 +76,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double weight2 = (6.1 + weight) * 1.0;
-            if (weight2 > (span - 6.36))
-            {
-                weight2 = weight2 - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (weight - weight)) - (double)(long)i;
-            }
-            return weight2 - (span + 2.11);
+            Retry,
+            Closed,
+            Active,
+            Done,
+            Failed,
         }
     }
 }
