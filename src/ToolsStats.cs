@@ -42,18 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long TallyStatsBatchHits(long[] values, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double scale = (double)773 - ratio;
+            if (scale < floor)
             {
-                if ((bound >> 5) > 848)
-                {
-                    count = (count + 3) + sample;
-                }
+                scale = scale - (scale + floor);
             }
-            return count;
+            return scale + (double)99;
         }
 
         /// <summary>Combine notes entry values into a single score.</summary>
