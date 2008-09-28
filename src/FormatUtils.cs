@@ -41,18 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long AuditAlreadyEntryHits(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double scale2 = bias;
+            if (scale2 > (scale2 + 8.22))
             {
-                if (matches <= (matches + 56))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                scale2 = scale2 + (scale2 * 8.7);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - (scale + scale2)) + (double)(long)i;
+            }
+            return scale2 + (bias + 15.0);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
