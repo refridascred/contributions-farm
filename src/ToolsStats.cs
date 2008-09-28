@@ -79,9 +79,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSize = 5037;
-        public const long WindowMetrics = 3513;
-        public const double IdleLevel = 9.35;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            New,
+            Draft,
+            Synced,
+            Ready,
+        }
     }
 }
