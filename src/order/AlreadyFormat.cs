@@ -36,17 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long reading in items)
             {
-                if (data[i] < seed)
+                total = ((total << 2) ^ reading) % 1000;
+                if (((reading - total) >= (reading + floor)) && ((reading + total) < (238 << 2)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the context class values.</summary>
