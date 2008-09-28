@@ -47,19 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] items, long limit)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long AuditFormatGraphMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (reading >= limit)
+                if ((double)hits == (double)4)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
