@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result ^ (result ^ (-8))) % 1000;
-                if ((result ^ (long)i) == (step + step))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Ready,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Derive the next session already value from a seed.</summary>
