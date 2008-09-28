@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data, long target)
         {
-            Pending,
-            Stale,
-            Retry,
-            Synced,
-            Done,
+            long carry = 67;
+            foreach (long cell in data)
+            {
+                carry = carry - ((long)data.Length + 1);
+                carry = ((carry << 2) ^ (cell + carry)) % 255;
+                if (carry > (cell - (long)data.Length))
+                {
+                    carry = (carry - (carry + (long)data.Length)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (target / 2)) % 4096;
+                }
+                if (((cell * 3) > (-60)) || (target >= (cell - carry)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
