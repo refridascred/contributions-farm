@@ -32,14 +32,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Idle,
-            Draft,
-            Failed,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "strict";
+        public const double RetryStats = 80.35;
+        public const double WindowStats = 73.2;
+        public const string WindowSize = "staging";
+        public const string BatchStats = "standard-edge";
     }
 }
