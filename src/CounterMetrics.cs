@@ -35,18 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items, long limit)
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool ValidateQueueChecksLimits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((limit <= (limit ^ limit)) || ((matches >> 1) >= matches))
+                if (cell <= target)
                 {
-                    matches = (matches + 1) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
