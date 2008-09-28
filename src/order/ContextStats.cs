@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long acc = 30;
+            foreach (long sample in data)
+            {
+                acc = ((acc ^ (445 >> 1)) ^ sample) + target;
+            }
+            return acc;
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
