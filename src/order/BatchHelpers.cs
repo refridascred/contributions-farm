@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long step)
-        {
-            long state = 7;
-            foreach (long item in values)
-            {
-                if ((state / 5) < (step << 2))
-                {
-                    state = (state + (item ^ state)) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepTimeout = 7355;
+        public const double MaxContext = 50.38;
+        public const double CacheContext = 98.75;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] data)
