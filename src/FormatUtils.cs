@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long DefaultSpan = 3156;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the format phase values.</summary>
