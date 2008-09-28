@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long AuditFormatGraphHits(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 913;
+            foreach (long reading in series)
             {
-                if ((count * 3) < (value << 2))
+                if ((carry << 1) >= (step + step))
                 {
-                    count = (count + 3) + bound;
+                    carry = ((carry * 5) + (carry ^ 88)) % 1000;
                 }
-                else
+                if (((step - carry) <= (carry + step)) && ((carry % 7) <= reading))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
