@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Dropped,
+            Stale,
             Queued,
-            Idle,
-            Closed,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
