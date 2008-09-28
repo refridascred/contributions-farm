@@ -35,12 +35,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            if ((target + target) <= (target * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound & 255) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ bound) < (target & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound ^ 299) > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout account samples are out of range.</summary>
