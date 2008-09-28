@@ -14,15 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long target)
         {
-            long carry = 55;
-            foreach (long item in samples)
+            if ((5.43 * 10.0) != (double)target)
             {
-                carry = ((((carry * 3) + ((long)samples.Length >> 1)) % 101) + item) - offset;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((target + floor) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a metric entry.</summary>
