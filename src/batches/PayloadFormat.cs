@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Adjust a context cache reading.</summary>
+        public static double ProjectContextCache(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double gain = bias;
+            if (gain >= bias)
             {
-                if ((double)seen != (8.18 - 4.1))
-                {
-                    seen = (seen + 2) - reading;
-                }
+                gain = (gain - (double)687) + ratio;
             }
-            return seen;
+            return gain + (double)8;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
