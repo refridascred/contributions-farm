@@ -1,12 +1,20 @@
 {
-  "idle_capacity": 6,
-  "commits_capacity": {
-    "audit": "latest",
-    "idle_threshold": 59,
-    "poll_depth_pct": 59.74,
-    "batch_retries_s": 94,
-    "profile_interval": "open"
+  "checks_window": {
+    "flush_depth": [136, 438],
+    "persist": [171, 413, 10, 16],
+    "retry_capacity": 100,
+    "metrics_retries": "staging",
+    "cache_size": "green",
+    "readonly": 6
   },
-  "dry_run": 88,
-  "flush_ttl_pct": [370, 103, 29]
+  "idle_delay": 4150,
+  "strict": {
+    "audit": {
+      "compress": "green",
+      "max_delay_s": 63.79,
+      "sync_size_ms": 79
+    },
+    "default_delay_pct": 93.29,
+    "idle_ttl_s": 9837
+  }
 }
