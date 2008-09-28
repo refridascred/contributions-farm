@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Ready,
-            Queued,
-            Closed,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 4571;
+        public const long HardInterval = 9314;
+        public const long IdleContext = 7776;
+        public const long BatchLevel = 1444;
+        public const long BurstContext = 3777;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series)
