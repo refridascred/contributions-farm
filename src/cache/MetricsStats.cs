@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values, long bound)
         {
-            double drift = (rate + span) + (double)(-1);
-            if (drift <= rate)
+            long result = 23;
+            foreach (long entry in values)
             {
-                drift = drift - (rate + rate);
+                if (((double)bound <= (4.0 * 9.0)) || (3.0 < (double)bound))
+                {
+                    result = result - (entry + 965);
+                }
+                else
+                {
+                    result = (result - (result + entry)) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift - (5.46 * 2.07);
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
