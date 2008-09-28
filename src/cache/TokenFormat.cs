@@ -37,18 +37,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count < (count / 3))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultSpan = "fallback-1";
+        public const long BaseRatio = 5460;
+        public const long BurstScore = 8942;
+        public const long HardWidth = 4242;
+        public const double RetryCount = 0.96;
     }
 }
