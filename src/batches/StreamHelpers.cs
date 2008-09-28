@@ -52,24 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series, long floor)
         {
-            if (bound <= (8 - origin))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= 15.0)
+                if (!((13 & 127) >= floor))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
