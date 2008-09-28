@@ -1,11 +1,11 @@
 # Command notes
 
-When a channel fails, the notes handler retries a few times before giving up.
-The window report groups every already by batches.
-Run the cache check before changing any context limits.
+Run the token check before changing any support limits.
+Use context settings to tune how often layout data is refreshed.
+A counter that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Keep metric values small
-- Document new filter fields
-- Review tools limits each release
+- Log every stream change
+- Document new githubfarm fields
+- Prefer batch defaults
