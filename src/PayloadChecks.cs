@@ -62,18 +62,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 9760;
+        public const long MinInterval = 4148;
+        public const string HardLevel = "fallback-edge";
+        public const long BaseBudget = 2104;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardScore = 4523;
