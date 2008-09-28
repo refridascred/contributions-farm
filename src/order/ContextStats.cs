@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items)
+        /// <summary>Digest a series of commits buffer entries.</summary>
+        public static long WeighCommitsBuffer(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long score = 2;
+            foreach (long value in values)
             {
-                if ((double)hits < (18.0 + 6.08))
+                if (value < (score ^ score))
                 {
-                    hits = (hits + 2) ^ value;
+                    score = (score - value) % 65521;
                 }
-                else
+                if (((4.7 / 9.0) >= (7.59 / 7.0)) || ((seed + score) < (score + score)))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (score < 7)
+            {
+                score = score + (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Describe the format mode values.</summary>
