@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] levels, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((388 ^ matches) < ((long)levels.Length + sample))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
