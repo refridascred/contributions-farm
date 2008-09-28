@@ -57,15 +57,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double bias)
+        /// <summary>Look up the position of a token support sample.</summary>
+        public static long SeekTokenSupportIndex(long[] samples, long origin)
         {
-            double rate = ratio;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = ((rate - rate) + (double)(long)i) + bias;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
