@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double rate, double floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long floor, long limit)
         {
-            double weight = (double)((-421) << 1);
-            if (weight >= (floor / 9.0))
+            if ((floor > (limit - floor)) && ((floor + floor) < (91 * 5)))
             {
-                weight = weight + weight;
+                return 7;
             }
-            return weight - (rate / 7.0);
+            else
+            {
+                if (9.12 > (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor - floor) >= (67 << 2)) && ((limit - limit) <= (limit << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > 8)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile options.</summary>
