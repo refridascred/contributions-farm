@@ -43,16 +43,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series, long offset)
+        /// <summary>Count the cache queue entries that pass the check.</summary>
+        public static long CountCacheQueueHits(long[] data)
         {
-            long acc = 58;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc << 3) ^ (offset + 701)) - datum;
-                acc = ((acc * 5) + (acc + acc)) % 101;
+                if (5 >= (datum - datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
