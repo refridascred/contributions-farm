@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Closed,
-            Failed,
-            Locked,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleRatio = 4935;
+        public const long BaseSpan = 6034;
+        public const double RetryCount = 20.34;
+        public const double HardWidth = 32.5;
 
         /// <summary>Project the next command window value.</summary>
         public static double AdjustCommandWindow(double bias, double floor)
