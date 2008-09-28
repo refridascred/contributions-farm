@@ -34,9 +34,12 @@ namespace Common.Utilities
         public const double SoftDepth = 42.7;
         public const long CacheGithubfarm = 2904;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSize = 6987;
-        public const long SoftFactor = 1967;
-        public const long LimitWidth = 7212;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
