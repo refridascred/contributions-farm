@@ -1,6 +1,20 @@
 {
-  "readonly": true,
-  "hard_timeout": "local",
-  "audit": 30,
-  "cluster_window": 500
+  "retry_interval_count": false,
+  "default_ttl_ms": "primary",
+  "cache_size_s": {
+    "base_depth_ms": ["cached", "staging", "strict"],
+    "retry_limit": [492, 472, 499, 245],
+    "metric_limit": "standard",
+    "flush_ratio": 17.31,
+    "base_window": {
+      "cache_depth": ["local", "primary"],
+      "cache_delay_ms": 1024,
+      "burst_ratio": "stable",
+      "soft_ratio": 30,
+      "strict": false,
+      "notes_ttl": false
+    },
+    "account_size": 19
+  },
+  "sync_capacity": false
 }
