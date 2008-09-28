@@ -30,21 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Project the next command window value.</summary>
+        public static double AdjustCommandWindow(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 3.77;
+            if (scale >= (double)904)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = ((scale + scale) + bias) - floor;
             }
-            return matches;
+            return scale - (scale * 4.1);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
