@@ -25,17 +25,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a schema report sample.</summary>
-        public static long FindSchemaReportIndex(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] >= bound)
+                if (((seed * 5) == (sample - seed)) || (((67 >> 1) > (seed >> 2)) || ((double)seed > (5.08 + 17.0))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
