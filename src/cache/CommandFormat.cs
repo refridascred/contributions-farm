@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const double SoftDepth = 42.7;
         public const long CacheGithubfarm = 2904;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long seed)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((seed - 9) <= (seed - matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
