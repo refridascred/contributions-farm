@@ -32,13 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long FoldChannelEditor(long[] data)
         {
-            New,
-            Failed,
-            Closed,
-            Draft,
+            long acc = -782;
+            foreach (long value in data)
+            {
+                if ((acc >> 4) > (value - value))
+                {
+                    acc = (acc - (value & 255)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
