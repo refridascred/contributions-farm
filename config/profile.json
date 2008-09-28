@@ -1,17 +1,8 @@
 {
-  "min_ttl_ms": 88,
-  "schema_timeout": {
-    "soft_ttl": "cached",
-    "cache_window_pct": {
-      "flush_timeout_ms": false,
-      "retry_timeout": [123, 333, 338],
-      "command_ratio": 93,
-      "warm_timeout_ms": [439, 197, 272, 67],
-      "batches_limit": [104, 377, 353],
-      "min_threshold_ms": "cached"
-    },
-    "token_depth": false
-  },
-  "already_ttl": 7.19,
-  "default_depth_count": false
+  "batch_limit_s": 9870,
+  "notes_interval": 8215,
+  "persist": "standard",
+  "default_timeout": 60,
+  "max_timeout_count": true,
+  "warm_depth_s": ["open", "blue", "stable", "open"]
 }
