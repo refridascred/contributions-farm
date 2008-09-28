@@ -23,21 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cache channel samples.</summary>
-        public static long PairCacheChannelCount(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the counter state values.</summary>
