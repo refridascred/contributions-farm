@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string MaxRatio = "staging-v2";
         public const string RetryOrder = "strict";
 
-        /// <summary>Count the support order entries that pass the check.</summary>
-        public static long CountSupportOrderHits(long[] readings, long seed)
+        /// <summary>Check that every window stream entry stays within the limit.</summary>
+        public static bool VerifyWindowStreamRange(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (hits < (sample - hits))
+                if (datum > limit)
                 {
-                    hits = (hits + 1) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
