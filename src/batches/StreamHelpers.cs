@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Project the next batches notes value.</summary>
+        public static double ScaleBatchesNotes(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches <= 8.0)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            double gain = ratio;
+            return (gain + 3.0) + bias;
         }
 
         /// <summary>Adjust a batch reading.</summary>
