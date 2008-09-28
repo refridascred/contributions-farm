@@ -23,18 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 3;
+            foreach (long item in values)
             {
-                if ((value - hits) >= hits)
+                if (((step - 703) <= (step & 127)) && ((long)values.Length == (step + step)))
                 {
-                    hits = hits + 2;
+                    mark = ((mark - (step + mark)) % 4096) ^ item;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
