@@ -12,16 +12,10 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
-        {
-            long acc = 930;
-            foreach (long datum in samples)
-            {
-                acc = ((acc ^ 8) % 255) ^ datum;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "staging";
+        public const long MinSize = 3308;
+        public const long BatchGithubfarm = 2677;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinChannel = 2772;
