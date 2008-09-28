@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double span)
-        {
-            double gain = 7.0;
-            if (gain <= (0.36 * 14.0))
-            {
-                gain = (gain - span) + rate;
-            }
-            return gain + (double)8;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 9832;
+        public const double WindowSize = 70.44;
+        public const double IdleWidth = 37.35;
+        public const double DefaultRatio = 90.95;
+        public const long LimitChannel = 4857;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordHits(long[] data, long offset)
