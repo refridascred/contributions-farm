@@ -71,12 +71,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long acc = -84;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (15.0 * 7.34))
+                {
+                    acc = ((acc << 2) ^ (acc - cell)) % 97;
+                }
+                if (!(cell < (cell & 63)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up schema support samples.</summary>
