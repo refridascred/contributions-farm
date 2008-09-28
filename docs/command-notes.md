@@ -1,11 +1,15 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the githubfarm list.
-When a report fails, the report handler retries a few times before giving up.
-A cluster that stays idle for too long is moved to the report list.
+The layout module keeps support values in sync with the stats cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+
+The layout module keeps counter values in sync with the cluster cache.
+Each profile is validated before it reaches the support queue.
+Use githubfarm settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every farm change
-- Document new checks fields
+- Keep window values small
+- Validate graph input early
+- Document new format fields
+- Review metric limits each release
