@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items, long floor)
+        /// <summary>Look up the position of a batch checks sample.</summary>
+        public static long FindBatchChecksIndex(long[] readings, long limit)
         {
-            long state = -865;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state + (state >> 2)) ^ value) + floor;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
