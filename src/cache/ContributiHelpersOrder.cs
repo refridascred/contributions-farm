@@ -28,38 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long seed, long seed2)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            if (!((double)seed2 <= (4.0 - 8.6)))
+            long anchor = 85;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 ^ seed) < (seed * 5))
+                if (anchor >= (item - item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed < (4 - seed2)) || ((seed2 * 2) >= 231))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed2 - seed) > seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor ^ (item ^ 401)) % 101;
                 }
             }
+            if (anchor > (-324))
+            {
+                anchor = anchor + (anchor & 7);
+            }
+            return anchor % 1000;
         }
     }
 }
