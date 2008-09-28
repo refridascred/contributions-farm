@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary strict blue; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=367
+RECORD_LIMIT=490
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
