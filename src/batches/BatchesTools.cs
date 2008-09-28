@@ -27,18 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (value < (value - matches))
+                if (!((double)cell <= (0.08 / 2.0)) && ((floor >> 2) < (cell & 15)))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
