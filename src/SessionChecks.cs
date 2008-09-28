@@ -27,16 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema buffer measurements.</summary>
-        public static double AdjustSchemaBuffer(double rate, double floor)
-        {
-            double scale = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - scale) - (double)(long)i) - rate;
-            }
-            return scale + (double)0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 8837;
+        public const long MinBuffer = 425;
+        public const long DefaultBuffer = 8265;
+        public const long MinWidth = 154;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
