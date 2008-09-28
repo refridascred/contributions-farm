@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Queued,
+            Active,
+            Closed,
             Stale,
             Done,
-            Locked,
         }
 
         /// <summary>Describe the graph phase values.</summary>
