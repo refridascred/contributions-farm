@@ -1,12 +1,8 @@
 {
-  "already_limit": 84.34,
-  "soft_threshold": 54.15,
-  "max_retries_count": 9302,
-  "order_window": 19,
-  "strict": {
-    "base_timeout_s": ["staging", "strict", "open", "blue"],
-    "format_limit": "open",
-    "poll_threshold": 1833,
-    "account_delay": "eu-west"
-  }
+  "cache_ttl_s": "local",
+  "farm_interval": 62.22,
+  "soft_retries_s": "fallback",
+  "default_ttl": "strict",
+  "persist": "staging",
+  "compress": "stable"
 }
