@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long AuditGraphCommandGaps(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((double)hits != (3.5 - 0.5))
+                if (datum != step)
                 {
-                    hits = (hits + 3) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
