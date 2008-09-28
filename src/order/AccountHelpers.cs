@@ -63,18 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 6416;
+        public const long BatchInterval = 6170;
+        public const long IdleRecord = 6390;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
