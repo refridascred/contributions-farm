@@ -15,18 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "latest-v2";
+        public const long HardBatches = 5707;
+        public const long MinCount = 1591;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings, long step)
