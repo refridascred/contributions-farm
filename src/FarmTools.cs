@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the buffer token series from a seed.</summary>
-        public static long RollBufferToken(long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((13.0 + 9.48) < (double)total))
-                {
-                    total = (total * 2) + ((-328) + (long)i);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a batches record.</summary>
