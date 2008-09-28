@@ -21,11 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepInterval = 6061;
-        public const long RetryScore = 7951;
-        public const string MinSchema = "staging-v2";
-        public const long IdleScore = 9921;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double bias2)
+        {
+            double bias3 = bias2 - (bias2 * 1.1);
+            if (bias3 > bias3)
+            {
+                bias3 = bias3 + (bias3 * 5.0);
+            }
+            return bias3 - bias;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] levels)
