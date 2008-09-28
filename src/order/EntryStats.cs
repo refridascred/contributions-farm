@@ -66,11 +66,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2596;
-        public const double WindowSize = 19.9;
-        public const long DefaultChecks = 7559;
-        public const long LimitRatio = 5094;
-        public const long LimitFactor = 1856;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Pending,
+            Ready,
+            Active,
+            New,
+        }
     }
 }
