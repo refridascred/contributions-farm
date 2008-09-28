@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] series, long limit)
         {
-            New,
-            Paused,
-            Queued,
-            Pending,
-            Synced,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a token reading by value.</summary>
