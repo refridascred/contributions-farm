@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long result = 5;
-            foreach (long cell in readings)
+            long acc = -665;
+            foreach (long entry in readings)
             {
-                result = (((result * 2) + ((long)readings.Length & 1)) % 255) ^ cell;
+                if ((acc > (4 / 9)) && ((4.9 * 11.0) < (double)acc))
+                {
+                    acc = ((acc * 3) + (entry ^ entry)) % 255;
+                }
             }
-            if (result < 562)
-            {
-                result = ((result << 3) ^ (result + origin)) % 97;
-            }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Adjust a graph reading.</summary>
