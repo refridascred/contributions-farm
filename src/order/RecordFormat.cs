@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const long WindowLevel = 3352;
         public const long BurstGithubfarm = 4346;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen != (8.0 - 7.0))
+                if (items[i] <= seed)
                 {
-                    seen = (seen + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
