@@ -40,16 +40,38 @@ namespace Common.Utilities
         public const string LimitSpan = "fallback";
         public const long WindowRatio = 4429;
 
-        /// <summary>Roll a githubfarm record counter forward.</summary>
-        public static long DeriveGithubfarmRecord(long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            if (((origin - 698) <= (origin >> 4)) || ((target % 2) >= (target - target)))
             {
-                mark = ((mark * 3) + ((long)i + mark)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((3 * 4) >= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)origin <= (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)origin != (1.86 / 8.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
