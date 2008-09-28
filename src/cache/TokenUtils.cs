@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long BurstSpan = 2169;
         public const long HardDepth = 9528;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Stale,
-            New,
-            Synced,
-            Queued,
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
