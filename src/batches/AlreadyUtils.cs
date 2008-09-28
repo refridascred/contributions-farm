@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9797;
-        public const long BaseWindow = 1895;
-        public const long StepWindow = 7349;
-        public const double BatchSize = 93.08;
-        public const string BatchWindow = "stable-v2";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 4248;
