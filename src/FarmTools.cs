@@ -33,10 +33,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseInterval = 2789;
-        public const long DefaultPayload = 2149;
-        public const string BaseBudget = "standard-v2";
-        public const double RetryPayload = 41.22;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 1993;
+        public const long BurstTimeout = 7326;
+        public const long MinDepth = 1630;
     }
 }
