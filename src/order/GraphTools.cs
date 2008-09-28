@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long seed)
+        /// <summary>Accumulate queue session samples.</summary>
+        public static long TotalQueueSession(long[] samples)
         {
-            long span = floor ^ seed;
-            if ((double)span == (6.0 - 7.0))
+            long total = 69;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((889 >> 1) > (span - 56))
+                total = ((total * 2) + (total ^ total)) % 1000;
+                if ((305 - total) >= (datum % 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.14 - 4.01) == (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)span > (8.5 / 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total - (total >> 5)) % 97;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
