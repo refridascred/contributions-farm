@@ -1,36 +1,12 @@
 # githubfarm settings
-sync_interval_pct: 15
-hard_window: latest
-report_timeout:
-  schema_delay:
-    - 9
-    - 232
-    - 422
-  soft_ratio_ms: 49.11
-  hard_window:
-    hard_ttl_pct: false
-    audit: 2.89
-    min_retries: 5080
-    readonly: eu-west
-    poll_capacity_count: true
-  cache_retries_ms:
-    flush_window: 60
-    base_depth_ms: 64.59
-    cache_limit: 27
-  sync_capacity_count:
-    - local
-    - strict
-    - cached
-    - fallback
-  verbose:
-    default_size:
-      - primary
-      - blue
-      - local
-    cache_size_s: fallback
-    retry_ratio_count: 93.71
-    batch_depth_pct:
-      - fallback
-      - blue
-    hard_depth: 500
-    poll_delay_count: 2590
+min_retries_count:
+  - green
+  - cached
+profile_retries: false
+batch_timeout_s: 52.17
+max_interval:
+  - fallback
+  - legacy
+  - staging
+  - primary
+min_capacity: false
