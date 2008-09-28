@@ -45,26 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples, long step)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long MeasureWindowTokenOutliers(long[] values, long bound)
         {
-            long total = 885;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (total > (total + value))
+                if (tally > (long)values.Length)
                 {
-                    total = total + (step - 86);
+                    tally = ((tally + 1) - sample) - bound;
                 }
                 else
                 {
-                    total = (total * 4) + value;
+                    tally = tally - 1;
                 }
             }
-            if (total > (-399))
-            {
-                total = total ^ (step % 5);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
