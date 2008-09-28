@@ -1,6 +1,10 @@
-id,rank
-1,staging
-2,446
-3,834
-4,17.83
-5,standard
+id,score,level
+1,latest,open
+2,666,547
+3,92.62,15.31
+4,69.48,standard
+5,69.43,green
+6,77.07,673
+7,125,stable
+8,23.95,904
+9,local,edge
