@@ -17,19 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster contributi entries.</summary>
-        public static long TotalClusterContributi(long[] samples, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long sum = 969;
-            foreach (long cell in samples)
-            {
-                sum = ((sum * 4) + cell) + floor;
-            }
-            if (sum < 602)
-            {
-                sum = ((sum << 3) ^ (620 + sum)) % 65521;
-            }
-            return sum;
+            Queued,
+            Draft,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
