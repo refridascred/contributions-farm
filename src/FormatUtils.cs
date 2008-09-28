@@ -15,18 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((8.6 - 17.0) <= (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
