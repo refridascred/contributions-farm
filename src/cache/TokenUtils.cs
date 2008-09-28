@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics account readings.</summary>
-        public static long CompareMetricsAccountCount(long[] levels)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 18)
+                    if ((data[i] - data[j]) < 20)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
