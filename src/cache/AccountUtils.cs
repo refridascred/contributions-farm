@@ -28,14 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            Failed,
-            Paused,
-            Draft,
-            Ready,
-            Pending,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (16.0 * 0.07))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
