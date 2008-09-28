@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = 39;
-            foreach (long sample in data)
-            {
-                if ((bound % 60) < (-5))
-                {
-                    acc = ((acc * 5) + bound) ^ sample;
-                }
-            }
-            return acc % 65521;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
