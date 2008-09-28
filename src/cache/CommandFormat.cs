@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)cell <= (double)acc) && ((target & 127) > target))
                 {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 4) + acc) % 65521;
                 }
             }
-            return tally;
+            if (acc < 602)
+            {
+                acc = acc - 609;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
