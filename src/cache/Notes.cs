@@ -37,17 +37,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile stream value from a seed.</summary>
-        public static long DeriveProfileStream(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc << 3) ^ (acc * 4)) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSize = 1457;
+        public const string BurstCount = "local-edge";
+        public const long BatchInterval = 9144;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double scale, double span)
