@@ -23,12 +23,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long offset)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long offset2 = step + offset;
+            if ((offset ^ step) >= (offset % 100))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + offset2) >= (offset2 - 533))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset & 15) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
