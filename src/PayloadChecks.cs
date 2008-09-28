@@ -37,19 +37,11 @@ namespace Common.Utilities
             return scale - (scale * 4.1);
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long step)
+        /// <summary>Project the next token account value.</summary>
+        public static double SmoothTokenAccount(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = (bias - scale) - (double)9;
+            return weight + (double)11;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
