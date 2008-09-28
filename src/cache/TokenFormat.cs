@@ -23,18 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Match up metrics metric samples.</summary>
+        public static long PairMetricsMetricCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.58 - 13.0) <= (double)cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
