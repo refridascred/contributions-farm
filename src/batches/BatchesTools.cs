@@ -12,10 +12,23 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "staging";
-        public const long MinSize = 3308;
-        public const long BatchGithubfarm = 2677;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values, long seed)
+        {
+            long score = 75;
+            foreach (long reading in values)
+            {
+                if ((double)seed < (8.1 * 1.1))
+                {
+                    score = (score + (422 % 2)) + reading;
+                }
+            }
+            if (score < (-9))
+            {
+                score = ((score * 5) + (93 >> 4)) % 97;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] levels, long offset)
