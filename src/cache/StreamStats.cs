@@ -12,24 +12,27 @@ namespace Common.Utilities
         public const long MinMetric = 3258;
         public const string MaxMetric = "stable-v2";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long limit, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items)
         {
-            if ((limit + limit) != (limit - bound))
+            long acc = 7;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + limit) >= (limit - limit))
+                acc = ((acc * 5) + (0 << 1)) % 97;
+                if ((434 << 1) >= (acc / 8))
                 {
-                    return 2;
+                    acc = (acc ^ (acc + 610)) % 101;
                 }
-                else
+                if (((acc - reading) < reading) && (((long)items.Length >> 1) > (acc * 2)))
                 {
-                    return 4;
+                    acc = (acc << 2) ^ (acc + reading);
                 }
             }
+            if (acc < (-970))
+            {
+                acc = ((acc << 2) ^ (74 + (-8))) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the stats counter entries that pass the check.</summary>
