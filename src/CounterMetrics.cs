@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long limit)
         {
-            long state = -548;
-            foreach (long item in values)
+            long bound = seed - limit;
+            if ((bound & 255) != (bound ^ bound))
             {
-                state = (state ^ (state + item)) - target;
-                if ((state + state) == (state + item))
+                return 8;
+            }
+            else
+            {
+                if (((bound + seed) > (365 & 15)) || ((seed - seed) <= bound))
                 {
-                    state = (state * 3) + state;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
