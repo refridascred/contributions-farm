@@ -71,12 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine checks channel values into a single score.</summary>
+        public static long FoldChecksChannel(long[] items)
         {
-            Stale,
-            Active,
-            New,
+            long mark = 76;
+            foreach (long entry in items)
+            {
+                mark = (mark + (mark ^ entry)) % 4096;
+                if ((entry ^ entry) < (mark ^ mark))
+                {
+                    mark = (mark - entry) % 65521;
+                }
+            }
+            if (mark > 141)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
