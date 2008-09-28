@@ -27,18 +27,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long MeasureCommitsAccountHits(long[] readings, long bound)
+        /// <summary>Count the channel profile entries that pass the check.</summary>
+        public static long TallyChannelProfileHits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((cell & 31) >= bound)
+                if (((target << 2) < (item << 1)) || (((long)levels.Length << 1) >= (110 + target)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
