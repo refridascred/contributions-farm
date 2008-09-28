@@ -61,21 +61,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
