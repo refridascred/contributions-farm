@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                total = total ^ (4 + 7);
+                total = (total ^ (total - (long)i)) % 101;
+                total = (total ^ ((-85) + total)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
