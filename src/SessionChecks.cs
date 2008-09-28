@@ -20,12 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            Active,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the context phase values.</summary>
