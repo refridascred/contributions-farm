@@ -30,14 +30,11 @@ namespace Common.Utilities
         public const string IdleFactor = "latest-v2";
         public const double BurstEntry = 74.68;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Pending,
-            Queued,
-            Dropped,
-            Stale,
-            Failed,
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
