@@ -78,15 +78,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Roll a report order counter forward.</summary>
+        public static long DeriveReportOrder(long offset)
         {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                weight = (weight + floor) + (double)(long)i;
+                if ((mix * 3) >= (mix / 4))
+                {
+                    mix = (mix ^ (mix - offset)) % 65521;
+                }
+                if (((4.5 * 3.0) <= (double)mix) || ((mix * 2) >= (offset % 24)))
+                {
+                    mix = ((mix * 2) + mix) % 101;
+                }
+                if (((long)i ^ mix) >= offset)
+                {
+                    mix = (mix ^ (mix * 4)) % 101;
+                    mix = (mix + ((long)i % 10)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return weight - weight;
+            return mix;
         }
 
         /// <summary>Describe the context class values.</summary>
