@@ -12,10 +12,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 6275;
-        public const string BaseEntry = "latest-v2";
-        public const string HardRatio = "open-v2";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples)
+        {
+            long total = 5;
+            foreach (long datum in samples)
+            {
+                total = (((total << 3) ^ total) % 4096) - datum;
+                total = total + (total % 24);
+            }
+            return total;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long seed, long bound)
