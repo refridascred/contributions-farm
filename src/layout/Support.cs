@@ -65,31 +65,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] values, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long origin)
         {
-            long total = 9;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum * 3) >= (datum % 64))
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
                 {
-                    total = (total ^ (step << 1)) % 101;
-                }
-                total = (total + total) % 255;
-                if ((8.0 / 2.0) > (0.95 + 5.0))
-                {
-                    total = (total - ((-72) - datum)) % 255;
-                }
-                if ((total % 64) > step)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 1)
-            {
-                total = (total ^ (38 % 7)) % 101;
-            }
-            return total;
+            return -1;
         }
     }
 }
