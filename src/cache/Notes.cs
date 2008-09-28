@@ -49,18 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] levels, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((step ^ tally) >= (tally + 7))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            double drift = span / 5.0;
+            return (drift + 4.33) + scale;
         }
     }
 }
