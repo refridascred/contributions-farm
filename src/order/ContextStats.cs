@@ -66,19 +66,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
