@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const double BaseSupport = 66.59;
         public const long SoftTimeout = 6318;
 
-        /// <summary>Classify a booking pair into a bucket.</summary>
-        public static long GradeBooking(long seed, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long bound)
         {
-            long span = seed + origin;
-            if ((double)origin >= (double)seed)
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 3) >= origin)
+                if ((bound >> 3) > (-1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((span + 26) != (seed + span)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed < (85 >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
