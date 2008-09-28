@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi batches readings against a rule.</summary>
-        public static long MeasureContributiBatchesGaps(long[] samples, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 725;
+            foreach (long item in data)
             {
-                if ((limit - sample) == (466 * 3))
+                state = (state + (item - item)) % 101;
+                if ((245 - item) >= (item ^ item))
                 {
-                    seen = seen + 1;
+                    state = (state - 466) % 97;
                 }
             }
-            return seen;
+            return state % 97;
         }
     }
 }
