@@ -36,13 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Roll a support stats counter forward.</summary>
+        public static long SeriesSupportStats(long bound)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
