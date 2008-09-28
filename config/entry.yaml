@@ -1,19 +1,14 @@
 # entry settings
-flush_interval:
-  retry_ratio_s: 1024
-  warm_interval: true
-  cache_interval_ms:
-    default_ttl_s: eu-west
-    warm_capacity: 7178
-    retry_threshold: 7312
-    max_timeout:
-      - 342
-      - 192
-      - 195
-      - 10
-    batch_ratio_s: 250
-  batches_window: 37
-queue_threshold: false
-enabled: 24
-retry_retries_s: cached
-batch_ttl: false
+batch_threshold: 48.64
+already_limit:
+  default_capacity_pct:
+    - local
+    - latest
+    - blue
+  strict: 21.7
+  max_depth: primary
+  base_interval:
+    - open
+    - blue
+    - staging
+schema_delay: edge
