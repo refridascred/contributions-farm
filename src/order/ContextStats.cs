@@ -16,11 +16,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
