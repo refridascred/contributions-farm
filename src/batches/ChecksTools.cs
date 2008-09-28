@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstLevel = 8201;
-        public const long StepBudget = 772;
-        public const long MaxSession = 5198;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
         public static long GradeContextQueue(long limit, long offset)
