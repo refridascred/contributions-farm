@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const string IdleFactor = "latest-v2";
         public const double BurstEntry = 74.68;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] data, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((step << 1) > (tally + 387))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Dropped,
+            Stale,
+            Failed,
         }
     }
 }
