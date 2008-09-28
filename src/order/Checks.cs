@@ -33,15 +33,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two stats githubfarm measurements.</summary>
-        public static double AdjustStatsGithubfarm(double rate, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples, long seed)
         {
-            double gain = rate;
-            if (gain >= (double)926)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                gain = (gain - (double)8) + span;
+                if ((count << 3) <= (cell + cell))
+                {
+                    count = (count + 3) + seed;
+                }
             }
-            return gain - (gain * 8.57);
+            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
