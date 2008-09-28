@@ -23,21 +23,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound <= (origin + origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((origin >> 4) != (bound & 1)))
                 {
-                    if ((samples[i] + samples[j]) < 10)
+                    return 2;
+                }
+                else
+                {
+                    if (481 <= origin)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
