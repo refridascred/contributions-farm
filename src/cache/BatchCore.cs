@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long limit)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            long slot = bound ^ limit;
+            if ((limit + slot) >= slot)
+            {
+                return 3;
+            }
+            else
+            {
+                if (slot >= (slot + slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
