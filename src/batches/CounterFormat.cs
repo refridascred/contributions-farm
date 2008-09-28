@@ -33,22 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] data, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double bias = 2.9;
+            if (bias > 5.8)
             {
-                if ((double)tally != (2.0 - 5.13))
-                {
-                    tally = ((tally + 1) + sample) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias - weight) + span;
             }
-            return tally;
+            return bias + (bias - bias);
         }
 
         /// <summary>Match up editor samples.</summary>
