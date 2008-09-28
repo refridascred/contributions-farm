@@ -85,14 +85,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long origin)
         {
-            Queued,
-            Closed,
-            Draft,
-            Locked,
-            Retry,
+            long acc = 583;
+            foreach (long item in readings)
+            {
+                acc = (acc - (item - item)) % 4096;
+                if ((origin + origin) <= (138 & 3))
+                {
+                    acc = ((acc << 3) ^ (461 ^ acc)) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
