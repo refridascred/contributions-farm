@@ -1,6 +1,5 @@
 {
-  "format_depth": false,
-  "filter_window": false,
-  "warm_threshold_s": 100,
-  "soft_capacity_pct": "green"
+  "compress": 72,
+  "burst_capacity": 6445,
+  "persist": 678
 }
