@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long RetryRatio = 6532;
         public const string BurstCommits = "cached-1";
 
-        /// <summary>Derive the next support session value from a seed.</summary>
-        public static long DeriveSupportSession(long seed)
+        /// <summary>Digest a series of cluster token entries.</summary>
+        public static long DigestClusterToken(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long total = 977;
+            foreach (long entry in samples)
             {
-                state = (state + (seed * 5)) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                if (((total - total) < entry) && ((total + total) <= entry))
+                {
+                    total = ((total << 2) ^ total) % 101;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a context info.</summary>
