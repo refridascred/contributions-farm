@@ -32,17 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
