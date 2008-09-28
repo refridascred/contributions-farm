@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine context schema values into a single score.</summary>
-        public static long FoldContextSchema(long[] levels)
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long MeasureEditorToolsMatches(long[] levels)
         {
-            long score = 9;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((datum % 100) <= (9 % 5))
+                if (((tally * 4) == (item - item)) && ((9.6 - 6.43) <= (double)item))
                 {
-                    score = score - (datum + datum);
+                    tally = tally + 2;
                 }
             }
-            if (score < 0)
-            {
-                score = ((score << 3) ^ (score + score)) % 97;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
