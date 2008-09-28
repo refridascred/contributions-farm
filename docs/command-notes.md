@@ -1,14 +1,13 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the schema list.
-Run the support check before changing any batch limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the token queue.
 
-The token module keeps farm values in sync with the session cache.
-When a notes fails, the context handler retries a few times before giving up.
-Use metric settings to tune how often token data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every metric change
-- Validate token input early
+- Prefer metric defaults
+- Review farm limits each release
+- Document new support fields
