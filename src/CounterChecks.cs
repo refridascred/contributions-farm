@@ -79,17 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long target)
+        /// <summary>Measure how many buffer batches samples are out of range.</summary>
+        public static long CountBufferBatchesMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if (!((item - tally) > tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
