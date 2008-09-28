@@ -55,19 +55,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series, long floor)
         {
-            double rate = scale;
-            if (rate > scale)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                rate = rate - scale;
+                if (((double)matches >= (3.5 + 20.0)) && ((double)reading > 0.05))
+                {
+                    matches = (matches + 2) - floor;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (8.0 - bias);
+            return matches;
         }
     }
 }
