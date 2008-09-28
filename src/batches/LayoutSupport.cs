@@ -27,17 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] samples, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 89;
+            foreach (long datum in items)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (datum >> 5)) % 4096;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a session entry.</summary>
