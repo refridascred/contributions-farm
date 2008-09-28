@@ -53,15 +53,19 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Fold a list of queue command readings.</summary>
+        public static long ScoreQueueCommand(long[] values)
         {
-            double weight = scale;
-            if (weight < weight)
+            long sum = 943;
+            foreach (long value in values)
             {
-                weight = (weight - (8.3 * 4.58)) - span;
+                sum = (sum ^ 73) % 255;
+                if ((value * 4) < sum)
+                {
+                    sum = ((sum * 2) + (value - sum)) % 65521;
+                }
             }
-            return weight - weight;
+            return sum;
         }
 
         /// <summary>Hold a context options.</summary>
