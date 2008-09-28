@@ -29,19 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Look up the position of a notes tools sample.</summary>
+        public static long LookupNotesToolsIndex(long[] samples, long offset)
         {
-            double gain2 = (double)(8 + (-75));
-            if (gain2 > (double)3)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = gain2 - gain;
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain - gain2);
-            }
-            return gain2 + offset;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
