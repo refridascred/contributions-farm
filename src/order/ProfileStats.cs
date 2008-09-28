@@ -42,18 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout account samples are out of range.</summary>
-        public static long AuditLayoutAccountOutliers(long[] samples, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double bias2 = bias;
+            if (bias2 < (double)24)
             {
-                if (!(95 < tally))
-                {
-                    tally = ((tally + 3) - sample) + seed;
-                }
+                bias2 = (bias2 - (double)3) - span;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (7.0 / 9.0)) - (double)(long)i;
+            }
+            return bias2 - (double)(-3);
         }
     }
 }
