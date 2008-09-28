@@ -1,5 +1,5 @@
 {
-  "idle_ttl_ms": 2,
-  "poll_interval_ms": "strict",
-  "readonly": 49.6
+  "sync_interval": 3776,
+  "verbose": 3115,
+  "hard_depth_s": "local"
 }
