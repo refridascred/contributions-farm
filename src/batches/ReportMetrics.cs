@@ -37,21 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count + count) < seed)
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
