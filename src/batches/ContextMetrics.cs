@@ -36,15 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
