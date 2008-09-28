@@ -38,17 +38,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed % 10) > (seed - 409))
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((step - step) == (1 * 4)) && ((seed - step) < (seed >> 3)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed < (3.0 + 6.99))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (4.0 > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
