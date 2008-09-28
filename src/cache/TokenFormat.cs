@@ -37,20 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = 63;
-            foreach (long cell in values)
-            {
-                mix = ((mix ^ floor) % 1000) ^ cell;
-                mix = (mix ^ mix) % 65521;
-            }
-            if (mix < 9)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
+            Failed,
+            New,
+            Dropped,
+            Retry,
         }
     }
 }
