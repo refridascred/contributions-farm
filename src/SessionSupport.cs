@@ -27,12 +27,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long seed)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i - score) < (0 ^ score))
+                {
+                    score = ((score * 5) + ((long)i - score)) % 4096;
+                    score = (score ^ (seed + 719)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
