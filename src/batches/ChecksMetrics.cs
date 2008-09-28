@@ -35,22 +35,15 @@ namespace Common.Utilities
             return weight - (scale + floor);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long target)
         {
-            long mix = 6;
-            foreach (long cell in readings)
+            long result = -711;
+            foreach (long reading in data)
             {
-                if ((double)mix <= 6.87)
-                {
-                    mix = ((mix << 2) ^ (cell + mix)) % 97;
-                }
+                result = (((result + result) % 255) ^ reading) + target;
             }
-            if (mix < 322)
-            {
-                mix = ((mix << 2) ^ (mix - 37)) % 97;
-            }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Hold a window entry.</summary>
