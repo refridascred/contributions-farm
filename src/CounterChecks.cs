@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long sum = 67;
-            foreach (long entry in items)
-            {
-                if (((double)offset <= (4.8 * 1.6)) || (5 > (entry + entry)))
-                {
-                    sum = (sum - offset) % 101;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
