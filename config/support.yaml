@@ -1,4 +1,7 @@
 # support settings
-flush_ratio_s: 937
-default_ratio_pct: 12.84
-audit: true
+poll_window_ms: true
+retry_depth_pct: 6283
+strict: 73
+retry_timeout_s: edge
+cache_depth: fallback
+persist: 8726
