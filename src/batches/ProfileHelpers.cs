@@ -45,10 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 9613;
-        public const double BaseRoute = 27.14;
-        public const string HardRoute = "latest";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Stamp { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] items, long limit)
