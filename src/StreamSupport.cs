@@ -35,11 +35,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha";
-        public const long BaseLayout = 8448;
-        public const long BurstSize = 5336;
-        public const long BurstRatio = 101;
-        public const string CacheLayout = "latest-1";
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long MeasureReportPayloadMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((offset - offset) == (item >> 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
