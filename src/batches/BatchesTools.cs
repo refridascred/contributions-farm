@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = 8;
-            foreach (long cell in readings)
-            {
-                mark = (mark * 5) + (cell - mark);
-            }
-            if (mark < 6)
-            {
-                mark = (mark - (mark * 2)) % 255;
-            }
-            return mark % 97;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
