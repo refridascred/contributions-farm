@@ -19,19 +19,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] series, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (entry <= origin)
+                if ((double)reading > (1.16 - 0.1))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
