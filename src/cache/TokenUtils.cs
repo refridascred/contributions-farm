@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seen <= 4.54)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
