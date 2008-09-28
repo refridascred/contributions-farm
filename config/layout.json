@@ -1,15 +1,8 @@
 {
-  "metrics_retries": 90.92,
-  "record_window": {
-    "compress": 20.21,
-    "retry_ttl_ms": "green",
-    "batch_ratio_ms": {
-      "already_capacity": 6977,
-      "max_window_s": 92.13,
-      "hard_window_count": "edge"
-    },
-    "max_interval_s": [23, 180, 462],
-    "commits_threshold": true
-  },
-  "payload_limit": ["open", "green"]
+  "enabled": true,
+  "soft_retries_s": [387, 17, 18, 418],
+  "burst_limit_s": "blue",
+  "persist": 38.79,
+  "idle_delay_count": "green",
+  "graph_depth": true
 }
