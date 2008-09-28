@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] series, long step)
         {
-            Queued,
-            Pending,
-            Synced,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((966 ^ item) <= (seen + step))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
