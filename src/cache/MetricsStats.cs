@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up counter commits samples.</summary>
-        public static long MatchCounterCommitsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultRatio = 1083;
+        public const double BaseInterval = 71.91;
+        public const string StepWindow = "stable";
+        public const double LimitWidth = 23.55;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long step)
