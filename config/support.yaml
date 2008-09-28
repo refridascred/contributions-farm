@@ -1,4 +1,4 @@
 # support settings
-context_limit: blue
-verbose: 13.32
-soft_depth: 30
+sync_interval_s: false
+warm_capacity_count: edge
+warm_window: 70
