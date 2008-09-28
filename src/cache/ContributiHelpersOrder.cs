@@ -17,14 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            Queued,
-            Draft,
-            New,
-            Locked,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit context cluster readings against a rule.</summary>
