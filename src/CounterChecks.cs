@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSize = 3120;
-        public const double DefaultCommits = 55.9;
-        public const long WindowCommits = 9643;
-        public const long LimitTimeout = 6257;
-        public const long StepInterval = 364;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Closed,
+            Failed,
+            Active,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] values, long floor)
