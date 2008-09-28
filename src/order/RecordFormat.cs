@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (sample >= limit)
+                if ((double)seen != (8.0 - 7.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
