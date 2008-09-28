@@ -82,10 +82,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 7885;
-        public const double HardInterval = 98.09;
-        public const string StepChecks = "fallback-v2";
-        public const double WindowChecks = 74.67;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long floor)
+        {
+            long delta = target ^ floor;
+            if (!(target >= 96))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)delta == (6.74 * 20.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 64) < (target ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
