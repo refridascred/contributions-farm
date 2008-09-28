@@ -66,12 +66,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool VerifyClusterFormatBounds(long[] readings, long origin)
         {
-            Done,
-            Closed,
-            Queued,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
