@@ -16,16 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchCount = "strict-edge";
+        public const double CacheGraph = 95.51;
+        public const double WindowInterval = 90.79;
+        public const long MinInterval = 6608;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
