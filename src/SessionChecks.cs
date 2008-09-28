@@ -29,19 +29,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (origin > (matches + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 9202;
+        public const long IdleCount = 2973;
+        public const string CacheLevel = "cached-edge";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] data, long limit)
