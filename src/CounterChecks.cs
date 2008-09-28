@@ -79,18 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer batches samples are out of range.</summary>
-        public static long CountBufferBatchesMatches(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!((item - tally) > tally))
+                if ((count + (long)series.Length) < 2)
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + reading;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
