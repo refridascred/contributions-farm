@@ -1,5 +1,8 @@
 {
-  "cache_timeout": 82.87,
-  "batch_depth_ms": 23,
-  "dry_run": true
+  "max_threshold_s": "edge",
+  "soft_ratio_s": 94.61,
+  "sync_threshold_count": "blue",
+  "soft_threshold": "open",
+  "window_limit": 60,
+  "verbose": [131, 396, 217]
 }
