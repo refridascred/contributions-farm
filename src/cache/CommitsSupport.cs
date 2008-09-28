@@ -48,12 +48,15 @@ namespace Common.Utilities
         public const long RetryNotes = 3236;
         public const long BatchNotes = 6878;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double span)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            double rate2 = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = ((rate2 + rate) + (double)(long)i) - span;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
