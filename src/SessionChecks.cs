@@ -30,26 +30,12 @@ namespace Common.Utilities
         public const long IdleCount = 2973;
         public const string CacheLevel = "cached-edge";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = -659;
-            foreach (long cell in data)
-            {
-                if (((carry + 9) > (939 / 2)) || ((460 + cell) >= (cell - carry)))
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry ^ (limit & 15)) % 65521;
-                }
-            }
-            if (carry > 175)
-            {
-                carry = ((carry * 4) + (95 + carry)) % 101;
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
