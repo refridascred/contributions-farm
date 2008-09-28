@@ -64,13 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] samples, long floor)
         {
-            Paused,
-            Synced,
-            Ready,
-            Retry,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metric class values.</summary>
