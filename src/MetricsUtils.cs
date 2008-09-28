@@ -62,17 +62,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Audit profile filter readings against a rule.</summary>
+        public static long MeasureProfileFilterMatches(long[] readings, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor - (664 >> 2);
-                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((sample / 4) < (limit << 1))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
