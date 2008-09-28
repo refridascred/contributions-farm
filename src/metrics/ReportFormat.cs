@@ -49,15 +49,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            long acc = 212;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc - (origin % 5)) % 97) + reading;
+                if ((double)count <= (15.0 / 6.0))
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
