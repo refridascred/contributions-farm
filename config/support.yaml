@@ -1,6 +1,19 @@
 # support settings
-sync_interval_s:
-  - 92
-  - 64
-warm_delay: 91.94
-readonly: false
+readonly:
+  audit: 22.77
+  support_limit: blue
+  compress: false
+  layout_threshold:
+    cache_limit: true
+    soft_timeout: local
+    soft_retries_ms: 1024
+    account_window:
+      - 157
+      - 473
+      - 279
+batch_interval_count: 39
+min_window:
+  - stable
+  - standard
+  - stable
+  - staging
