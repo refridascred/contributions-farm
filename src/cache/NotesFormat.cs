@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long sum = 808;
+            foreach (long cell in values)
             {
-                if (((double)reading < (4.75 + 8.0)) || ((seen << 1) < seen))
-                {
-                    seen = (seen + 1) + target;
-                }
+                sum = (sum << 2) ^ (cell ^ cell);
             }
-            return seen;
+            if (sum < 65)
+            {
+                sum = ((sum * 3) + 591) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
