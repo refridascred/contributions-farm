@@ -24,10 +24,19 @@ namespace Common.Utilities
             return ratio2 + 6.2;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 4836;
-        public const double HardFilter = 82.15;
-        public const double DefaultInterval = 34.84;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
+        {
+            long acc = 126;
+            foreach (long reading in samples)
+            {
+                if ((acc / 9) >= (7 - 9))
+                {
+                    acc = ((acc ^ (acc - acc)) % 4096) + reading;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] levels, long seed)
