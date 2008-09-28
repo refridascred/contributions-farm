@@ -26,13 +26,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            if ((origin ^ target) < (target - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target / 6) > (target + 8)) || ((double)origin < (6.79 - 2.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
