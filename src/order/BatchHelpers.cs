@@ -20,11 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            double mean = rate;
-            return mean - (offset - offset);
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
