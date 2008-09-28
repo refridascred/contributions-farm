@@ -12,14 +12,26 @@ namespace Common.Utilities
         public const long MaxFactor = 3695;
         public const string SoftRecord = "latest-v2";
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] data, long step)
         {
-            Locked,
-            Pending,
-            Dropped,
-            Ready,
-            Paused,
+            long anchor = 57;
+            foreach (long value in data)
+            {
+                if (!((step ^ step) > (anchor & 63)))
+                {
+                    anchor = (anchor - (step + step)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (value & 63)) % 255;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = anchor ^ ((long)data.Length * 4);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
