@@ -49,12 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Locked,
-            Failed,
-            Idle,
+            Pending,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine report batch values into a single score.</summary>
