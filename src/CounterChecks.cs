@@ -79,18 +79,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count + (long)series.Length) < 2)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 15.12;
+        public const long SoftLayout = 5648;
+        public const long WindowBudget = 4029;
+        public const string MinSpan = "staging";
+        public const string CacheLayout = "fallback";
     }
 }
