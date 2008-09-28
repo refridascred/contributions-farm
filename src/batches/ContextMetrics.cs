@@ -18,12 +18,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstLevel = 9800;
-        public const long LimitRecord = 1910;
-        public const long MinInterval = 4461;
-        public const long RetryRecord = 9804;
-        public const long MaxScore = 3531;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long floor)
+        {
+            long next = origin - floor;
+            if (!((floor - origin) > (origin - 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((1 + origin) <= floor) || (floor < next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next & 15) < (next / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + origin) >= (next + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] data, long seed)
