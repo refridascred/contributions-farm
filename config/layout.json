@@ -1,5 +1,13 @@
 {
-  "poll_size_pct": false,
-  "min_retries": 17,
-  "hard_threshold": 9
+  "cache_ratio": 60,
+  "graph_ratio": [336, 129],
+  "base_depth_pct": 24.65,
+  "sync_threshold_count": 14.22,
+  "base_size": {
+    "enabled": 6813,
+    "verbose": "latest",
+    "persist": [298, 256],
+    "strict": 2253
+  },
+  "readonly": false
 }
