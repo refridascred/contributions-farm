@@ -33,26 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mark = 87;
-            foreach (long item in readings)
-            {
-                if (!((double)item == (2.0 + 8.75)))
-                {
-                    mark = mark ^ (step << 2);
-                }
-                if (((-355) - 867) == (mark ^ step))
-                {
-                    break;
-                }
-            }
-            if (mark < 644)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
