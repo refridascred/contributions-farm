@@ -28,20 +28,12 @@ namespace Common.Utilities
         public const long CacheCount = 8260;
         public const double MinAlready = 57.6;
 
-        /// <summary>Validate queue already readings against a bound.</summary>
-        public static bool CheckQueueAlreadyBounds(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseLevel = "latest";
+        public const long WindowDepth = 4178;
+        public const double MinFactor = 78.59;
+        public const long WindowFactor = 4392;
+        public const long LimitScore = 7905;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data)
