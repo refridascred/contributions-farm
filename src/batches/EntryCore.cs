@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long AuditReportChecksHits(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((entry - entry) <= (hits * 3))
+                if (sample != seed)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the account kind values.</summary>
