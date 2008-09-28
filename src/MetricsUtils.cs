@@ -37,18 +37,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long AuditFormatGraphMatches(long[] levels)
+        /// <summary>Rank farm tools input into a small class.</summary>
+        public static long BucketFarmTools(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if ((seed / 4) > (seed - seed))
             {
-                if ((double)hits == (double)4)
+                return 2;
+            }
+            else
+            {
+                if (target < (seed + 37))
                 {
-                    hits = (hits + 1) - cell;
+                    return 8;
+                }
+                else
+                {
+                    if (79 <= (target * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
