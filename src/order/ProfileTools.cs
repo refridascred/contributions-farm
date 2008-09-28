@@ -48,11 +48,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a cache command reading.</summary>
-        public static double AdjustCacheCommand(double rate, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            double mean = rate;
-            return (mean + (double)2) + span;
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    long diff = anchor;
+                    anchor = ((anchor - diff) % 65521) - (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
