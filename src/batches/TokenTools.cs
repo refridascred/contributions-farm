@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long MinFarm = 4892;
         public const string IdleFarm = "staging-edge";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] series, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
