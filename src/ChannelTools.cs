@@ -31,13 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Failed,
-            New,
-            Stale,
-            Done,
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
