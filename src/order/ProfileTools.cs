@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream schema entries that pass the check.</summary>
-        public static long CountStreamSchemaMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally < (5.1 * 20.0))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 5949;
+        public const long MaxCommits = 6622;
+        public const long HardCommits = 6683;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double gain, double span)
