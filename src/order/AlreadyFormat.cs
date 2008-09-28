@@ -45,14 +45,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Done,
-            Dropped,
-            Paused,
-            Retry,
-            Closed,
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
