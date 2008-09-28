@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of context githubfarm readings.</summary>
-        public static long DigestContextGithubfarm(long[] series, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = 166;
-            foreach (long item in series)
-            {
-                if (!((89 >> 5) >= (seed + seed)))
-                {
-                    acc = acc ^ (item % 24);
-                }
-                else
-                {
-                    acc = acc - (acc & 15);
-                }
-            }
-            if (acc < 41)
-            {
-                acc = acc + ((long)series.Length - seed);
-            }
-            return acc % 65521;
+            Synced,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
