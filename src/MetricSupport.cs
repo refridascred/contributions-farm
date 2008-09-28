@@ -27,17 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel buffer sample.</summary>
-        public static long FindChannelBufferIndex(long[] samples, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                long matches = ((long)i * 2) + (mix ^ seed);
+                if (mix >= (matches & 3))
                 {
-                    return (long)i;
+                    matches = ((matches * 3) + seed) % 1000;
+                    mix = ((mix * 4) + (5 % 5)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
