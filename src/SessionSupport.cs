@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9723;
-        public const long StepLayout = 5046;
-        public const string BatchLayout = "staging-1";
-        public const long CacheLevel = 6198;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double floor)
+        {
+            double weight = (double)683 + (1.36 + ratio);
+            if (weight > (double)61)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + (double)26;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (floor - floor);
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
