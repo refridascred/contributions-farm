@@ -32,11 +32,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
