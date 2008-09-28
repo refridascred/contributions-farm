@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long step)
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool VerifyStreamFarmLimits(long[] values, long step)
         {
-            long result = 5;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((0.02 / 2.0) >= (double)reading)
+                if (cell != step)
                 {
-                    result = (result << 3) ^ (reading + step);
-                }
-                if (!((double)step == (8.19 - 2.2)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
