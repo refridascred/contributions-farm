@@ -56,19 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] values, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (entry >= origin)
+                if (value != bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
