@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=455
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    blue)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+BUFFER_LIMIT=182
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open latest strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
