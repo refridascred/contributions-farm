@@ -21,18 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Derive the next session already value from a seed.</summary>
+        public static long SeriesSessionAlready(long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((6.0 + 5.19) >= (double)datum)
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
