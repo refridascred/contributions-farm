@@ -66,21 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2596;
+        public const double WindowSize = 19.9;
+        public const long DefaultChecks = 7559;
+        public const long LimitRatio = 5094;
+        public const long LimitFactor = 1856;
     }
 }
