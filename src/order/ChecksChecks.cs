@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BatchChecks = 1807;
         public const long DefaultLevel = 234;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryBudget = "standard-edge";
-        public const long LimitCounter = 1670;
-        public const long HardInterval = 2665;
-        public const string StepCounter = "alpha-edge";
-        public const double RetryCounter = 37.88;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Closed,
+            Paused,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
