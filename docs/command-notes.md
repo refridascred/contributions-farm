@@ -1,10 +1,14 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-The contributi report groups every metric by editor.
+A githubfarm that stays idle for too long is moved to the stats list.
+Each order is validated before it reaches the account queue.
+
+Run the payload check before changing any cache limits.
+The profile report groups every stream by schema.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer notes defaults
-- Keep layout values small
+- Prefer report defaults
+- Validate batches input early
+- Log every command change
+- Review cache limits each release
