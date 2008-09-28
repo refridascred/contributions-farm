@@ -33,18 +33,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] values, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (4.91 > (double)hits)
-                {
-                    hits = ((hits + 1) + sample) + floor;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
