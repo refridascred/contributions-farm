@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            double scale = (double)(46 % 10);
-            if (scale < (double)7)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale - (3.0 * 7.3);
+                carry = ((carry << 2) ^ (bound << 1)) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (((carry << 2) ^ (bound / 7)) % 97) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + (rate / 8.0);
-            }
-            return scale - (span + span);
+            return carry;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
