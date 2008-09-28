@@ -37,12 +37,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((origin + origin) < (total * 5)))
+                {
+                    total = ((total << 2) ^ (898 + total)) % 65521;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total * 4) + (origin >> 2)) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
