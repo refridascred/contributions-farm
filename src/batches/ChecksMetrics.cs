@@ -51,11 +51,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            Synced,
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
