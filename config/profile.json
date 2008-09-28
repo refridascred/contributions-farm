@@ -1,5 +1,23 @@
 {
-  "sync_interval": "standard",
-  "graph_depth": [314, 230, 394],
-  "verbose": false
+  "retry_ttl": {
+    "cache_timeout": "staging",
+    "cache_timeout_pct": "cached",
+    "payload_delay": "primary",
+    "layout_interval": {
+      "compress": 100,
+      "min_ratio": "legacy",
+      "tools_interval": 500,
+      "flush_interval_ms": "local"
+    },
+    "strict": 250
+  },
+  "sync_capacity_s": "fallback",
+  "compress": 1024,
+  "default_limit_ms": {
+    "counter_depth": "legacy",
+    "max_depth_s": ["open", "open"],
+    "retry_threshold_ms": 96.6
+  },
+  "strict": 250,
+  "metric_size": "legacy"
 }
