@@ -1,7 +1,15 @@
 {
-  "burst_window": 100,
-  "base_timeout": 57.11,
-  "cache_timeout": [415, 359],
-  "payload_size": "fallback",
-  "soft_ttl_pct": false
+  "enabled": true,
+  "compress": {
+    "schema_interval": ["legacy", "staging", "green"],
+    "default_window_pct": false,
+    "cache_delay_ms": true,
+    "enabled": 47.66,
+    "counter_retries": [99, 264],
+    "commits_size": "edge"
+  },
+  "tools_interval": "staging",
+  "counter_interval": 88,
+  "idle_capacity": "edge",
+  "burst_timeout": ["open", "strict"]
 }
