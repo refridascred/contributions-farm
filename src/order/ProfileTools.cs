@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long AuditEntryChecksOutliers(long[] readings)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((79 % 3) >= (hits / 2))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
