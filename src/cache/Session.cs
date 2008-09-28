@@ -8,8 +8,8 @@ namespace Common.Utilities
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
