@@ -26,11 +26,33 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 91.98;
-        public const long StepLayout = 2444;
-        public const double HardLayout = 4.96;
-        public const long IdleLayout = 5201;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long origin2)
+        {
+            long prev = origin + origin2;
+            if ((prev + prev) > origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)prev >= 17.0) && (prev <= (origin2 - 727)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((19 << 3) < (prev & 7)) || (origin > 897))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksHits(long[] samples)
