@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Iterate the metric session series from a seed.</summary>
+        public static long DeriveMetricSession(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
