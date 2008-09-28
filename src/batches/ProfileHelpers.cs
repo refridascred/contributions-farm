@@ -20,10 +20,12 @@ namespace Common.Utilities
             return rate - (double)86;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 407;
-        public const long HardWidth = 9536;
-        public const long BatchSpan = 2145;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of notes format readings.</summary>
         public static long CompareNotesFormatCount(long[] levels)
