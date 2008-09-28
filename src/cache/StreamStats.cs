@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6751;
-        public const double CacheDepth = 18.07;
-        public const long BurstMetric = 4498;
-        public const long MinMetric = 3258;
-        public const string MaxMetric = "stable-v2";
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double bias)
+        {
+            double load = rate;
+            if (load < (double)5)
+            {
+                load = (load - (rate * 6.0)) + bias;
+            }
+            else
+            {
+                load = load + (load + load);
+            }
+            return load + (double)0;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] items)
