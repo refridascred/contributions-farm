@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long CacheCount = 8260;
         public const double MinAlready = 57.6;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Derive the next already command value from a seed.</summary>
+        public static long SeriesAlreadyCommand(long seed)
         {
-            long score = 44;
-            foreach (long sample in items)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                score = ((score * 5) + (426 % 7)) ^ sample;
+                if (!((double)seed >= (1.0 - 7.38)))
+                {
+                    sum = ((sum << 3) ^ (seed >> 3)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (score > 164)
-            {
-                score = (score - (score * 3)) % 255;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
