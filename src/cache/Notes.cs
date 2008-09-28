@@ -37,15 +37,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batch entry series from a seed.</summary>
-        public static long IterateBatchEntry(long bound)
+        /// <summary>Derive the next profile stream value from a seed.</summary>
+        public static long DeriveProfileStream(long target)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                acc = ((acc << 3) ^ (acc * 4)) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
