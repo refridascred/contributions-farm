@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            double rate = 20.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate + (span - 18.0)) - (double)(long)i) - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (span - rate);
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
