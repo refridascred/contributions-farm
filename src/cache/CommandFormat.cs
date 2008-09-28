@@ -27,22 +27,21 @@ namespace Common.Utilities
             return ((gain - gain) + bias) + span;
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long MeasureCommandReportGaps(long[] readings)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample / 8) != (sample & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a editor stats.</summary>
