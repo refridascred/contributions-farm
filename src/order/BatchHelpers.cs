@@ -37,9 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstSize = 89.15;
-        public const long SoftScore = 1673;
-        public const long BurstMetric = 6829;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Idle,
+            Locked,
+            Ready,
+            New,
+            Failed,
+        }
     }
 }
