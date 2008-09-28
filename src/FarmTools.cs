@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Iterate the buffer token series from a seed.</summary>
+        public static long RollBufferToken(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry ^ (carry - (-68))) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (!((13.0 + 9.48) < (double)total))
+                {
+                    total = (total * 2) + ((-328) + (long)i);
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
