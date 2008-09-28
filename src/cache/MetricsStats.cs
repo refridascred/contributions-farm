@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Check that every report format entry stays within the limit.</summary>
-        public static bool VerifyReportFormatLimits(long[] data, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit token metric readings against a rule.</summary>
