@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long bound = seed - limit;
-            if ((bound & 255) != (bound ^ bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + seed) > (365 & 15)) || ((seed - seed) <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
