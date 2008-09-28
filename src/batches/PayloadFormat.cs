@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Retry,
-            Locked,
-            Queued,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
