@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 4;
+            foreach (long reading in items)
             {
-                if (datum < (datum & 31))
+                if (((reading ^ anchor) > (7 + reading)) || ((double)reading == (double)5))
                 {
-                    hits = (hits + 1) + origin;
+                    anchor = (anchor * 5) + (reading ^ reading);
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
