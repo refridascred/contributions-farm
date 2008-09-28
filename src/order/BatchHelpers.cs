@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long floor)
         {
-            long score = 104;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score * 2) + (limit + limit);
-                if (((reading << 3) > 2) && ((reading >> 3) <= (score - score)))
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
                 {
-                    score = ((score << 3) ^ (limit + reading)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
