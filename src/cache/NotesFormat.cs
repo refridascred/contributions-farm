@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Closed,
-            Stale,
+            Locked,
+            Synced,
+            Retry,
             Dropped,
-            Done,
-            Failed,
+            Ready,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
