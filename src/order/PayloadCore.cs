@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] series, long bound)
         {
-            double weight = offset;
-            if (weight < (18.0 + 8.22))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + weight) + bias;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (weight * 0.9);
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
