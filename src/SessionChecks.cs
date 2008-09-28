@@ -18,11 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 8;
+            foreach (long item in data)
+            {
+                if (!((limit / 8) > (limit - sum)))
+                {
+                    sum = sum ^ (item * 2);
+                }
+                if ((item - sum) >= (limit & 63))
+                {
+                    sum = sum - (limit << 1);
+                }
+                if ((sum % 5) == (sum * 3))
+                {
+                    break;
+                }
+            }
+            if (sum > (-933))
+            {
+                sum = sum ^ (limit << 3);
+            }
+            return sum;
         }
 
         /// <summary>Project the next entry value.</summary>
