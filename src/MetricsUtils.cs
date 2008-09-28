@@ -71,18 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile filter readings against a rule.</summary>
-        public static long MeasureProfileFilterMatches(long[] readings, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample / 4) < (limit << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            New,
         }
     }
 }
