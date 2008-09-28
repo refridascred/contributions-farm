@@ -23,12 +23,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "legacy-1";
-        public const string RetryWidth = "local";
-        public const long IdleBatch = 4009;
-        public const long MaxFactor = 9668;
-        public const string CacheTimeout = "strict-1";
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long bound, long seed)
+        {
+            if (!((bound % 7) != (bound - bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound * 4) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatLimits(long[] values, long limit)
