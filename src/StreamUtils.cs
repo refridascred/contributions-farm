@@ -63,15 +63,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = 28;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((mark + reading) >= mark)
+                {
+                    mark = ((mark + 3) % 101) - offset;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Validate format profile readings against a bound.</summary>
