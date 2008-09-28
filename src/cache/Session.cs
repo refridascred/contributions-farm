@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] samples, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] < target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (total + seed);
+                    total = total ^ ((long)i2 * 4);
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
