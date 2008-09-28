@@ -34,13 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] values, long step)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
