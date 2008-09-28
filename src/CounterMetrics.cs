@@ -35,13 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseFactor = 89.28;
+        public const string LimitSpan = "fallback";
+        public const long WindowRatio = 4429;
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
         public static long DeriveGithubfarmRecord(long limit)
