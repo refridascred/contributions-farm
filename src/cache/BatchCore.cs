@@ -31,22 +31,23 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long TallySupportContextGaps(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift > drift)
             {
-                if (item > (matches % 8))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift - (8.9 + bias2);
             }
-            return matches;
+            else
+            {
+                drift = drift + (bias2 + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)(-662);
         }
     }
 }
