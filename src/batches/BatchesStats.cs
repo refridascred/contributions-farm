@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout already values into a single score.</summary>
-        public static long TallyLayoutAlready(long[] items, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            long total = -2;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                total = (total + (total - (long)items.Length)) + reading;
-                total = ((total * 5) + (total ^ target)) % 1000;
+                if ((((double)37 > (double)(long)series.Length) || (entry > ((-706) - entry))) || (((hits + entry) <= entry) || ((double)hits < (6.9 + 5.31))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
