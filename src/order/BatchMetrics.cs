@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Project the next checks tools value.</summary>
+        public static double ProjectChecksTools(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double drift = bias * 6.46;
+            if (drift >= bias)
             {
-                if ((entry & 127) <= (entry << 2))
-                {
-                    tally = tally + 1;
-                }
+                drift = (drift + (3.0 / 3.0)) - scale;
             }
-            return tally;
+            return drift + bias;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
