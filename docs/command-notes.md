@@ -1,15 +1,15 @@
 # Command notes
 
-Run the filter check before changing any tools limits.
-Each filter is validated before it reaches the notes queue.
-The queue report groups every githubfarm by counter.
+Each commits is validated before it reaches the batches queue.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for batch live in the config folder and can be overridden per environment.
-When a channel fails, the cache handler retries a few times before giving up.
+Use already settings to tune how often metric data is refreshed.
+Each route is validated before it reaches the window queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep contributi values small
-- Log every layout change
-- Document new channel fields
+- Review context limits each release
+- Log every notes change
+- Prefer payload defaults
+- Keep channel values small
