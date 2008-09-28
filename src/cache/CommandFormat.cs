@@ -40,12 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long mark = 1;
+            foreach (long item in levels)
+            {
+                mark = (mark * 2) + (item >> 2);
+                mark = (mark + (item >> 4)) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
