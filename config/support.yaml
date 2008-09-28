@@ -1,8 +1,8 @@
 # support settings
-warm_depth: open
-record_limit: strict
-retry_timeout_ms:
-  - edge
-  - primary
+schema_ttl: latest
+persist: 19
+account_threshold: strict
+sync_depth_pct:
+  - fallback
+  - eu-west
   - strict
-  - staging
