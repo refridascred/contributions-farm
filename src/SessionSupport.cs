@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long SoftSchema = 5278;
         public const long DefaultSchema = 6076;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 66.6;
-        public const double SoftEntry = 28.08;
-        public const long BatchEntry = 8155;
-        public const long MinEntry = 7785;
-        public const double HardDepth = 70.08;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
