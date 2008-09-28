@@ -18,22 +18,32 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of format record readings.</summary>
-        public static long TotalFormatRecord(long[] samples, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long seed2)
         {
-            long total = 47;
-            foreach (long value in samples)
+            long offset = seed + seed2;
+            if ((offset ^ 0) > (-61))
             {
-                if (((529 * 5) <= offset) && (offset > (total / 2)))
+                return 1;
+            }
+            else
+            {
+                if ((seed2 + seed) <= seed2)
                 {
-                    total = ((total - (total << 1)) % 65521) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (seed2 <= (seed + seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 491)
-            {
-                total = (total ^ (offset + offset)) % 101;
-            }
-            return total;
         }
     }
 }
