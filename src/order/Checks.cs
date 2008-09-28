@@ -51,18 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long carry = 2;
+            foreach (long sample in series)
             {
-                if ((count - count) < value)
+                if (((double)carry > (double)7) && ((sample ^ sample) <= (carry - sample)))
                 {
-                    count = count + 2;
+                    carry = (carry ^ sample) % 65521;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Project the next window value.</summary>
