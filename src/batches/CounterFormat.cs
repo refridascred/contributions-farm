@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((7.0 * 2.0) < (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((10 + step) <= (seed / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Match up route samples.</summary>
