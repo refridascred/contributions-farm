@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long offset)
         {
-            long mix = 4;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 2) + mix) + reading;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
