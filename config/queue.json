@@ -1,5 +1,8 @@
 {
-  "idle_threshold_pct": ["staging", "fallback"],
-  "support_window": "cached",
-  "flush_threshold": "strict"
+  "enabled": 47,
+  "soft_interval": "legacy",
+  "graph_delay": "edge",
+  "account_delay": 35,
+  "poll_delay": [445, 457],
+  "warm_window_count": 30
 }
