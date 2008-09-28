@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long seed)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
