@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of route window entries.</summary>
-        public static long WeighRouteWindow(long[] series, long step)
+        /// <summary>Digest a series of format route entries.</summary>
+        public static long ScoreFormatRoute(long[] values, long offset)
         {
-            long carry = 96;
-            foreach (long reading in series)
+            long carry = 449;
+            foreach (long cell in values)
             {
-                if (!((carry % 97) < (reading * 5)))
+                if (cell > (505 + carry))
                 {
-                    carry = ((carry + (reading & 63)) % 4096) + step;
-                }
-                else
-                {
-                    carry = (carry * 2) + (8 >> 4);
+                    carry = (carry ^ (cell % 12)) + offset;
                 }
             }
             return carry;
