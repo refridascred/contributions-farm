@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5047;
-        public const long MinCommand = 9784;
-        public const long WindowInterval = 855;
-        public const long BatchCommand = 356;
-        public const long BurstCommand = 3825;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Combine route batches values into a single score.</summary>
         public static long WeighRouteBatches(long[] levels, long seed)
