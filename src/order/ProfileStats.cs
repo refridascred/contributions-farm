@@ -36,13 +36,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            New,
-            Locked,
-            Ready,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
