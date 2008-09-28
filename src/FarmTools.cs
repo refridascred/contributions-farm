@@ -17,18 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 881;
-            foreach (long cell in values)
-            {
-                if (!((3.6 / 2.0) <= (2.17 + 7.6)))
-                {
-                    acc = ((acc ^ (416 * 2)) + cell) - origin;
-                }
-            }
-            return acc % 1000;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
