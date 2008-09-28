@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] data, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (((limit & 15) <= (offset << 1)) && ((double)limit > (1.0 - 4.5)))
             {
-                if ((double)limit > (double)tally)
+                return 1;
+            }
+            else
+            {
+                if ((offset + limit) >= 698)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= 4.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a commits reading.</summary>
