@@ -1,5 +1,5 @@
 {
-  "cache_threshold_ms": true,
-  "hard_delay": ["latest", "strict", "stable"],
-  "cache_size_s": ["latest", "blue"]
+  "soft_timeout": false,
+  "route_threshold": 32,
+  "dry_run": 500
 }
