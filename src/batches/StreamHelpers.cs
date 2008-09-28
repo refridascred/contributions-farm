@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Validate notes report readings against a bound.</summary>
+        public static bool GuardNotesReportBounds(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > step)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every tools command entry stays within the limit.</summary>
