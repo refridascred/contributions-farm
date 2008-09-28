@@ -34,12 +34,23 @@ namespace Common.Utilities
         public const double MinGithubfarm = 23.11;
         public const long RetryWidth = 395;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            double rate = bias;
+            if (rate >= (double)(-1))
+            {
+                rate = (rate - bias) - gain;
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 1.7) + (double)(long)i;
+            }
+            return rate + (double)54;
         }
 
         /// <summary>Measure how many window token samples are out of range.</summary>
