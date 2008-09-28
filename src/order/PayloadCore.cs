@@ -35,17 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first contributi payload entry that matches the target.</summary>
-        public static long SeekContributiPayloadIndex(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if ((7 + seen) != (90 * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
