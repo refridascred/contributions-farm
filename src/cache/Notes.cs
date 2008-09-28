@@ -49,19 +49,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long entry in levels)
             {
-                if (datum > (datum + tally))
+                if ((step ^ tally) >= (tally + 7))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) ^ entry;
                 }
             }
             return tally;
