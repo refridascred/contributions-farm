@@ -32,12 +32,20 @@ namespace Common.Utilities
         public const long CacheCount = 8260;
         public const double MinAlready = 57.6;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseLevel = "latest";
-        public const long WindowDepth = 4178;
-        public const double MinFactor = 78.59;
-        public const long WindowFactor = 4392;
-        public const long LimitScore = 7905;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
+        {
+            long score = 44;
+            foreach (long sample in items)
+            {
+                score = ((score * 5) + (426 % 7)) ^ sample;
+            }
+            if (score > 164)
+            {
+                score = (score - (score * 3)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] data)
