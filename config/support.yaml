@@ -1,9 +1,11 @@
 # support settings
-enabled:
-  - standard
-  - standard
-  - edge
-  - edge
-poll_ratio_ms: true
-flush_size: 7695
-batches_limit: 93.48
+command_depth: 60
+burst_timeout_pct: 1024
+cache_ttl: 4404
+soft_ttl: 10
+cache_limit:
+  - 356
+  - 243
+  - 15
+  - 251
+enabled: 250
