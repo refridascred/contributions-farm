@@ -44,11 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 1766;
-        public const string MinSpan = "latest-v2";
-        public const long RetryNotes = 3236;
-        public const long BatchNotes = 6878;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Active,
+            Synced,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double rate, double span)
