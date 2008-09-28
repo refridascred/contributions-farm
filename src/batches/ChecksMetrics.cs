@@ -20,14 +20,15 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            Pending,
-            Stale,
-            Done,
-            Idle,
-            Closed,
+            long acc = 73;
+            foreach (long reading in samples)
+            {
+                acc = (((acc << 2) ^ acc) % 65521) + reading;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of record entries.</summary>
