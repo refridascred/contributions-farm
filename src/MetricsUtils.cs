@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the metrics already entries that pass the check.</summary>
