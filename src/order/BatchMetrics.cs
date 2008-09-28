@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter already entry stays within the limit.</summary>
-        public static bool CheckCounterAlreadyLimits(long[] readings, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell > floor)
+                if (((5.9 - 1.0) != (double)(long)i) && ((origin & 31) == (acc + acc)))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc * 5) + (acc ^ origin)) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
