@@ -59,11 +59,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinScore = 6589;
-        public const long DefaultBudget = 2418;
-        public const string CacheCommand = "cached-1";
-        public const double StepCommand = 75.44;
-        public const double DefaultFactor = 61.29;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
