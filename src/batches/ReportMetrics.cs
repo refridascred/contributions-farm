@@ -34,19 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 3400;
+        public const string LimitSize = "alpha-v2";
+        public const double BurstFilter = 2.64;
     }
 }
