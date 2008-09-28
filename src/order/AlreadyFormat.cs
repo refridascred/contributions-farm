@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const double BaseInterval = 9.73;
         public const long MaxSize = 5635;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings)
-        {
-            long acc = 28;
-            foreach (long entry in readings)
-            {
-                if ((7 >> 4) <= (acc * 3))
-                {
-                    acc = ((acc - (acc ^ acc)) % 255) + entry;
-                }
-                else
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "legacy";
+        public const long HardPayload = 6299;
+        public const long BatchPayload = 6860;
+        public const string BaseBudget = "primary-v2";
+        public const long LimitCount = 6688;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] items, long seed)
