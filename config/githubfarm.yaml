@@ -1,9 +1,7 @@
 # githubfarm settings
-githubfarm_delay: 30
-poll_interval: 8997
-retry_size_pct:
-  - 337
-  - 134
-  - 97
-session_timeout: strict
-flush_size: 90.7
+verbose: 8.55
+buffer_window: local
+batch_timeout: 58.16
+strict:
+  - fallback
+  - local
