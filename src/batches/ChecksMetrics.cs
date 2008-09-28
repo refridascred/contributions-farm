@@ -78,17 +78,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = scale;
+            if (mean < 7.7)
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - 8.2;
             }
-            return -1;
+            return mean + (mean + bias);
         }
     }
 }
