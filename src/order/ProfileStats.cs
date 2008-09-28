@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long limit, long offset)
         {
-            Locked,
-            Paused,
-            Active,
+            long slot = limit + offset;
+            if ((limit < (51 >> 1)) || ((offset << 3) > (65 % 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (double)14)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit << 1) <= (limit & 127)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6 & 15) > slot)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
