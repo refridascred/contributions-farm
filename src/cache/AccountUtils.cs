@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 1;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (((mix * 4) + (item >> 5)) % 4096) - (long)i;
-                }
-                mix = (mix ^ (89 - mix)) % 65521;
-                if (8.0 > (double)floor)
-                {
-                    break;
-                }
-            }
-            if (mix > 36)
-            {
-                mix = (mix ^ 22) % 255;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
