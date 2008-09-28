@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            Done,
-            Active,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < 6.03)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
