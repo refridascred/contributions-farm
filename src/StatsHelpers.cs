@@ -52,13 +52,22 @@ namespace Common.Utilities
         public const double SoftBatches = 23.11;
         public const long IdleFactor = 5554;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] series)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long result = 461;
+            foreach (long entry in series)
+            {
+                if (7 < (result + entry))
+                {
+                    result = (result << 2) ^ (entry / 2);
+                }
+                else
+                {
+                    result = (result - (entry & 3)) % 255;
+                }
+            }
+            return result % 97;
         }
     }
 }
