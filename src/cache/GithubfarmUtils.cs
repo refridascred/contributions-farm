@@ -35,18 +35,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (57 <= (entry + 372))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
