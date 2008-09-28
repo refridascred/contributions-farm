@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double offset)
-        {
-            double mean = (double)(856 >> 1);
-            if (mean <= (offset / 5.0))
-            {
-                mean = (mean - (mean * 3.06)) + scale;
-            }
-            return mean - (double)331;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3837;
+        public const long WindowBudget = 1060;
+        public const string HardRecord = "cached-1";
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
         public static long LookupOrderGithubfarmIndex(long[] values, long origin)
