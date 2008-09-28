@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstScore = 77.84;
+        public const long BurstWidth = 1529;
+        public const long WindowInterval = 2074;
+        public const long RetrySpan = 6739;
+        public const double RetryScore = 47.29;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 8233;
