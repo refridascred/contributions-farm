@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Fold a list of farm batches readings.</summary>
+        public static long FoldFarmBatches(long[] values)
         {
-            long score = 751;
-            foreach (long cell in levels)
+            long state = 44;
+            foreach (long sample in values)
             {
-                score = ((score + score) % 1000) ^ cell;
+                state = state - (state >> 5);
+                if ((state >= (sample - sample)) || ((sample + state) > (state * 3)))
+                {
+                    break;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
