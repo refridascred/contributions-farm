@@ -36,21 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                result = (result ^ ((-877) & 3)) % 255;
-                result = result ^ ((long)i % 97);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result * 3) + (long)i) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
