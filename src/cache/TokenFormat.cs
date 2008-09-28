@@ -27,14 +27,27 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            Paused,
-            Done,
-            Ready,
-            Failed,
-            Locked,
+            long result = 92;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result * 5) + (0 - result)) ^ (long)i;
+                }
+                result = (result ^ (result + (long)samples.Length)) % 101;
+                if ((result > (cell * 3)) && ((result + cell) > (396 + 8)))
+                {
+                    result = (result - result) % 97;
+                }
+            }
+            if (result < 21)
+            {
+                result = result + (result + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
