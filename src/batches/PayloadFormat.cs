@@ -29,32 +29,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Adjust a command metric reading.</summary>
+        public static double SmoothCommandMetric(double rate, double bias)
         {
-            long prev = origin + origin2;
-            if ((prev + prev) > origin)
+            double gain = 3.9;
+            if (gain < (double)(-41))
             {
-                return 3;
+                gain = (gain + 9.0) + rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)prev >= 17.0) && (prev <= (origin2 - 727)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((19 << 3) < (prev & 7)) || (origin > 897))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = (gain - bias) + (double)(long)i;
             }
+            return gain + (double)42;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
