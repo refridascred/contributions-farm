@@ -35,12 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryRatio = 96.11;
-        public const string MaxContext = "stable-edge";
-        public const long LimitContext = 2703;
-        public const long RetryScore = 6355;
-        public const long HardTimeout = 5223;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 91.98;
+        public const long StepLayout = 2444;
+        public const double HardLayout = 4.96;
+        public const long IdleLayout = 5201;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksHits(long[] samples)
