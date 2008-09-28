@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a command filter reading.</summary>
-        public static double SmoothCommandFilter(double scale, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double scale2 = floor;
-            if (scale2 < (scale - scale2))
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 + floor;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
