@@ -1,10 +1,18 @@
 # githubfarm settings
-queue_capacity: false
-persist:
-  - 290
-  - 459
-filter_delay: edge
-hard_interval: staging
-poll_delay:
-  - 404
-  - 426
+strict:
+  command_interval: primary
+  sync_window: 1846
+  batch_window: 1878
+  min_window_pct: 76.26
+  editor_delay:
+    - 100
+    - 411
+    - 194
+flush_retries:
+  - 107
+  - 392
+  - 139
+  - 460
+soft_ratio: staging
+payload_limit: primary
+session_delay: 968
