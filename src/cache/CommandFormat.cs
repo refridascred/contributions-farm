@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] items, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.26 - 3.7) >= (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
