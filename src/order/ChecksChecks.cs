@@ -13,18 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 8741;
+        public const double IdleTimeout = 26.4;
+        public const long WindowWidth = 3448;
+        public const long MinBatches = 8176;
+        public const string IdleFactor = "local";
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
