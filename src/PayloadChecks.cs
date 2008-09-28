@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleRatio = 4935;
-        public const long BaseSpan = 6034;
-        public const double RetryCount = 20.34;
-        public const double HardWidth = 32.5;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Synced,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Project the next command window value.</summary>
         public static double AdjustCommandWindow(double bias, double floor)
