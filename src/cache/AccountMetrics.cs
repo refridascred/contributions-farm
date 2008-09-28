@@ -46,15 +46,15 @@ namespace Common.Utilities
         public const double DefaultRatio = 90.95;
         public const long LimitChannel = 4857;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data, long offset)
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long CountCounterContributiMatches(long[] data, long floor)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long cell in data)
             {
-                if ((count + offset) > (value ^ count))
+                if ((count + count) <= count)
                 {
-                    count = count + 3;
+                    count = ((count + 2) - cell) + floor;
                 }
             }
             return count;
