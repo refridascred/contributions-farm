@@ -96,23 +96,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            double load = (double)(88 ^ 0);
-            if (load >= weight)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (double)65) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (weight + 0.6)) + (double)(long)i;
-            }
-            return load + (weight - load);
+            return seen;
         }
     }
 }
