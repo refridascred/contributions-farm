@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] items)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count - count) <= 26)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
