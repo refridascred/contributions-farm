@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if ((double)count < (double)63)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
