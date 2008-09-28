@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long IdleLevel = 7407;
         public const long BatchCache = 6355;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
         {
-            double weight = (offset - 0.3) / 4.0;
-            if (weight > 2.21)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight + (weight - scale);
+                long seen = (limit / 9) - ((long)i / 9);
+                mark = (mark + (mark - seen)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)92) + (double)(long)i;
-            }
-            return weight - scale;
+            return mark;
         }
 
         /// <summary>Fold a list of metrics commits readings.</summary>
