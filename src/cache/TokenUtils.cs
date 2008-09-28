@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long state = -865;
+            foreach (long value in items)
+            {
+                state = ((state + (state >> 2)) ^ value) + floor;
+            }
+            return state;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
