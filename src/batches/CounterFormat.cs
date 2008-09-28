@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 6)
+                    if ((values[i] ^ values[j]) < 12)
                     {
                         hits = hits + 1;
                     }
