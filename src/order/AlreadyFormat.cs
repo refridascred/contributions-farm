@@ -45,12 +45,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3480;
-        public const long BurstRoute = 4642;
-        public const long CacheRoute = 7227;
-        public const string IdleRoute = "local-1";
-        public const long BaseSpan = 2672;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double span)
