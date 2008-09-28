@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] data, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (item < floor)
+                if (!((tally - cell) >= (floor * 3)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster contributi entries.</summary>
