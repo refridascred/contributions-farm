@@ -16,19 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score << 2) ^ (bound + bound)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
