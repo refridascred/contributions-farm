@@ -80,18 +80,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Validate format profile readings against a bound.</summary>
+        public static bool ValidateFormatProfileLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (!(482 > reading))
+                if (value != seed)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
