@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Idle,
-            Locked,
-            Failed,
             New,
+            Active,
+            Stale,
             Done,
         }
     }
