@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every schema report entry stays within the limit.</summary>
-        public static bool CheckSchemaReportBounds(long[] samples, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mix = 645;
+            foreach (long cell in items)
             {
-                if (reading >= origin)
+                if ((double)cell < (4.6 - 4.98))
                 {
-                    ok = false;
+                    mix = ((mix << 3) ^ ((long)items.Length * 3)) % 4096;
+                }
+                else
+                {
+                    mix = mix - floor;
+                }
+                mix = (mix ^ cell) % 255;
+                if ((13 << 3) > cell)
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
