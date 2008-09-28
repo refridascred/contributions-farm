@@ -47,15 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] values, long origin)
         {
-            long anchor = 54;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                anchor = (anchor ^ datum) % 101;
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
