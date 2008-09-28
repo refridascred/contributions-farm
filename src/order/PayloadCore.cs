@@ -25,18 +25,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] readings)
+        /// <summary>Rank format session input into a small class.</summary>
+        public static long SortFormatSession(long floor, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if (((621 % 97) > (floor - floor)) || ((double)step < (2.2 - 1.9)))
             {
-                if ((7 + seen) != (90 * 4))
+                return 3;
+            }
+            else
+            {
+                if ((step * 5) < (step / 6))
                 {
-                    seen = (seen + 3) ^ datum;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
