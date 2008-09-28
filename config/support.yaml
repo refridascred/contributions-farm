@@ -1,4 +1,8 @@
 # support settings
-flush_ratio_ms: true
-stream_ttl: 15
-persist: staging
+dry_run: 83
+token_delay:
+  - staging
+  - stable
+  - cached
+  - strict
+stats_ratio: green
