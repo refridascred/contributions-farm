@@ -1,8 +1,12 @@
 {
-  "batch_limit_s": 9870,
-  "notes_interval": 8215,
-  "persist": "standard",
-  "default_timeout": 60,
-  "max_timeout_count": true,
-  "warm_depth_s": ["open", "blue", "stable", "open"]
+  "batch_window": true,
+  "burst_capacity_count": true,
+  "readonly": {
+    "min_size_s": false,
+    "metrics_capacity": 3,
+    "strict": "strict",
+    "idle_timeout": 53.64,
+    "min_ratio_pct": 8209,
+    "warm_capacity_pct": 59.28
+  }
 }
