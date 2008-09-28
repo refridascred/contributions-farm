@@ -37,9 +37,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowLevel = 8478;
-        public const long BaseInterval = 6087;
-        public const long SoftAccount = 6638;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
