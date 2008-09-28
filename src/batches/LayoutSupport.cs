@@ -44,18 +44,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3260;
+        public const long BurstDepth = 172;
+        public const long DefaultSpan = 5094;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] readings, long floor)
