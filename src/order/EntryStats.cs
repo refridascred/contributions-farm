@@ -96,39 +96,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer metrics pair into a bucket.</summary>
-        public static long RankBufferMetrics(long bound, long bound2)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double floor)
         {
-            long next = bound + bound2;
-            if (!((8.2 - 9.1) <= (double)next))
+            double load = (double)(88 ^ 0);
+            if (load >= weight)
             {
-                return 6;
+                load = (load + (double)65) - floor;
             }
             else
             {
-                if (bound <= 403)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((88 & 31) < bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound2 <= (bound + 0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                load = load - load;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (weight + 0.6)) + (double)(long)i;
+            }
+            return load + (weight - load);
         }
     }
 }
