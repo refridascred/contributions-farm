@@ -37,25 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session layout values into a single score.</summary>
-        public static long CombineSessionLayout(long[] values, long floor)
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long WeighGraphWindow(long[] series, long origin)
         {
-            long score = 11;
-            foreach (long item in values)
+            long total = 593;
+            foreach (long reading in series)
             {
-                if (!((floor << 3) >= score))
+                if (((double)99 == (double)reading) && ((double)origin <= (3.0 - 3.3)))
                 {
-                    score = (score - item) % 255;
-                    score = score - item;
+                    total = (total ^ (2 + origin)) % 97;
                 }
-                score = (score ^ floor) % 101;
-                score = ((score * 2) + ((long)values.Length ^ floor)) % 4096;
             }
-            if (score > 5)
-            {
-                score = score ^ (6 >> 1);
-            }
-            return score % 97;
+            return total;
         }
 
         /// <summary>Hold a window entry.</summary>
