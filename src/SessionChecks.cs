@@ -19,13 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix - seed) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
