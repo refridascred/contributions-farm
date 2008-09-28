@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool GuardToolsCommandBounds(long[] samples, long limit)
         {
-            double scale = weight;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                scale = ((scale - (double)544) - (double)(long)i) + span;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + (weight * 3.53);
+            return valid;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
