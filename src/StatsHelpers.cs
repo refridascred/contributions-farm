@@ -43,18 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] series)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((2 & 63) > seen) && ((double)seen != (2.0 / 5.0)))
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
