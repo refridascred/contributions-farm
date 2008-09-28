@@ -39,17 +39,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinLevel = "cached";
+        public const long RetryRatio = 6813;
+        public const long BatchSpan = 9544;
+        public const double StepTimeout = 30.03;
+        public const long MaxCluster = 5206;
     }
 }
