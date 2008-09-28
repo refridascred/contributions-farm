@@ -1,6 +1,10 @@
 # githubfarm settings
-filter_window: 500
-batch_depth: fallback
-burst_delay_pct: strict
-verbose: false
-default_ratio_count: blue
+queue_capacity: false
+persist:
+  - 290
+  - 459
+filter_delay: edge
+hard_interval: staging
+poll_delay:
+  - 404
+  - 426
