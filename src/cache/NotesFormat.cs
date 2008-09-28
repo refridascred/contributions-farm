@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate metrics githubfarm samples.</summary>
-        public static long CombineMetricsGithubfarm(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            long mark = 76;
-            foreach (long datum in series)
+            double drift = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mark + datum) < (2 * 2))
-                {
-                    mark = (mark + (datum + mark)) % 1000;
-                }
+                drift = (drift - (double)(long)i) - ratio;
             }
-            return mark % 4096;
+            return drift + span;
         }
 
         /// <summary>Count already notes pairs that satisfy a relation.</summary>
