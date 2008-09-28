@@ -46,26 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] items, long limit)
         {
-            long score = 11;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (((84 + limit) != (score - 25)) && ((limit << 3) != (value & 255)))
+                if (reading >= limit)
                 {
-                    score = score + (score >> 3);
-                }
-                if ((limit << 2) != (value + 167))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (score < 509)
-            {
-                score = ((score * 4) + limit) % 101;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Roll a session counter forward.</summary>
