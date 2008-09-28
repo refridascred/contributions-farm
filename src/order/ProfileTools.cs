@@ -37,12 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the session commits entries that pass the check.</summary>
+        public static long AuditSessionCommitsHits(long[] samples, long seed)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally + seed) > sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
