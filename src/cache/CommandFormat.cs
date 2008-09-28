@@ -25,10 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 42.44;
-        public const long MaxStream = 6259;
-        public const long IdleStream = 1108;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data, long bound)
+        {
+            long anchor = 74;
+            foreach (long sample in data)
+            {
+                anchor = ((anchor - (bound - anchor)) % 255) ^ sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double SmoothGraph(double rate, double floor)
