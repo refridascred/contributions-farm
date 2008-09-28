@@ -1,13 +1,6 @@
 {
-  "cache_ratio": 60,
-  "graph_ratio": [336, 129],
-  "base_depth_pct": 24.65,
-  "sync_threshold_count": 14.22,
-  "base_size": {
-    "enabled": 6813,
-    "verbose": "latest",
-    "persist": [298, 256],
-    "strict": 2253
-  },
-  "readonly": false
+  "persist": 8145,
+  "burst_depth": 58.18,
+  "min_capacity": 5209,
+  "min_ttl_s": true
 }
