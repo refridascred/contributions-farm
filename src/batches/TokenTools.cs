@@ -29,11 +29,38 @@ namespace Common.Utilities
         public const long MinFarm = 4892;
         public const string IdleFarm = "staging-edge";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double span)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long offset, long target)
         {
-            double mean = 15.0 * 1.8;
-            return ((mean + (double)1) + weight) + span;
+            if (!((768 + target) == (offset >> 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.0 * 8.25) <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.57 * 8.4) >= (1.8 + 9.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - offset) != (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
