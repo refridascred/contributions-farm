@@ -1,20 +1,5 @@
 {
-  "retry_retries": 11,
-  "buffer_limit": {
-    "retry_window_s": "primary",
-    "idle_retries": 62.39,
-    "audit": "open",
-    "warm_limit_pct": {
-      "notes_ratio": 30,
-      "compress": "local",
-      "batch_depth": 6233
-    },
-    "batch_ttl_s": {
-      "command_limit": true,
-      "hard_size_count": 30,
-      "batch_delay_ms": 7827
-    },
-    "batch_capacity_pct": 40
-  },
-  "soft_threshold": 2868
+  "idle_timeout": 1.48,
+  "max_threshold_count": 43.87,
+  "compress": ["blue", "cached", "stable", "primary"]
 }
