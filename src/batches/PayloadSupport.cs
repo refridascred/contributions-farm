@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
