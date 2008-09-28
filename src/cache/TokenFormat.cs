@@ -36,17 +36,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long limit)
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long TallySessionContributiMatches(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] <= limit)
+                if (!(((-788) + entry) > 1))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
