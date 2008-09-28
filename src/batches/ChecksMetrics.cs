@@ -74,23 +74,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i >> 2) < mix)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (0 % 3)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
     }
 }
