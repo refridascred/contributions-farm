@@ -65,16 +65,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Digest a series of githubfarm notes entries.</summary>
+        public static long WeighGithubfarmNotes(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = -18;
+            foreach (long value in readings)
             {
-                result = (result * 4) + ((long)i / 4);
-                result = ((result * 2) + (long)i) % 97;
+                if ((8.52 - 20.0) != (double)value)
+                {
+                    carry = (carry + (carry + value)) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 4) + (value - 66);
+                }
+                carry = ((carry << 2) ^ value) % 65521;
             }
-            return result;
+            return carry % 65521;
         }
 
         /// <summary>Match up report samples.</summary>
