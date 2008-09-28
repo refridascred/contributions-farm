@@ -1,7 +1,8 @@
 {
-  "base_retries_ms": "green",
-  "default_ratio_count": ["local", "blue", "cached", "primary"],
-  "burst_limit_s": false,
-  "entry_timeout": "eu-west",
-  "entry_window": 30
+  "persist": 250,
+  "idle_capacity_pct": true,
+  "soft_capacity_count": 33.64,
+  "warm_window": 45,
+  "min_capacity_s": 55,
+  "retry_capacity": "staging"
 }
