@@ -59,11 +59,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            Idle,
+            Queued,
+            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
