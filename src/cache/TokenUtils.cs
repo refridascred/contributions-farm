@@ -31,12 +31,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score + (score + (-1));
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
