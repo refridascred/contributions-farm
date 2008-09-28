@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long origin)
         {
-            long lane = step - offset;
-            if (!((16.0 / 5.0) > (double)lane))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (3.0 - 2.0))
+                if (sample != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset / 4) < (5 >> 1)) && (25 > (lane + lane)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((lane / 6) == (step + lane)) && ((double)lane >= (double)offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate farm samples.</summary>
