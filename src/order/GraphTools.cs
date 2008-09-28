@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 8465;
-        public const string BurstMetric = "strict-v2";
-        public const long LimitTimeout = 2439;
-        public const long RetryMetric = 1301;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] readings, long seed)
