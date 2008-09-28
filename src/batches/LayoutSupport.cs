@@ -27,16 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items)
-        {
-            long total = 89;
-            foreach (long datum in items)
-            {
-                total = ((total * 3) + (datum >> 5)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 8855;
+        public const string LimitBudget = "stable-edge";
+        public const double RetryBudget = 32.22;
+        public const long SoftScore = 5443;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
