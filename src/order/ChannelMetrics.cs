@@ -25,17 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((step + state) <= (step >> 2))
                 {
-                    return (long)i;
+                    state = (state ^ step) - sample;
                 }
             }
-            return -1;
+            if (state < 4)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
     }
 }
