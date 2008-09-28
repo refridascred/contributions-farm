@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 33.31;
-        public const long BatchFormat = 9232;
-        public const double StepCount = 56.52;
-        public const double IdleSpan = 65.28;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 760;
+        public const long IdleEditor = 85;
+        public const long WindowEditor = 676;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesGaps(long[] values)
