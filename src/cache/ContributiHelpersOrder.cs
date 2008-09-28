@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] samples, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= (hits % 100))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
