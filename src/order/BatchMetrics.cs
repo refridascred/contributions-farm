@@ -56,19 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route batch entry stays within the limit.</summary>
-        public static bool CheckRouteBatchLimits(long[] levels, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (datum >= floor)
+                if ((step + hits) >= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
