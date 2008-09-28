@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 2439;
         public const long RetryMetric = 1301;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetrySpan = "alpha";
-        public const double CacheTimeout = 57.05;
-        public const long HardRatio = 9190;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 27.9;
