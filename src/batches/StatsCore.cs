@@ -16,22 +16,18 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Measure how many schema contributi samples are out of range.</summary>
-        public static long CountSchemaContributiHits(long[] readings, long step)
+        /// <summary>Measure how many report cluster samples are out of range.</summary>
+        public static long MeasureReportClusterOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)entry < (6.0 + 9.2))
+                if ((0 - item) > (hits - hits))
                 {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
