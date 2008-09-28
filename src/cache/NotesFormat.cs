@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long origin, long floor)
         {
-            long sum = 808;
-            foreach (long cell in values)
+            long step = origin + floor;
+            if ((step >> 5) >= (floor + step))
             {
-                sum = (sum << 2) ^ (cell ^ cell);
+                return 1;
             }
-            if (sum < 65)
+            else
             {
-                sum = ((sum * 3) + 591) % 255;
+                if (origin >= (floor << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor < (step ^ 608)) && ((origin ^ step) < (3 - origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
