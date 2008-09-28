@@ -1,5 +1,8 @@
 {
-  "batches_threshold": 91.11,
-  "default_timeout_count": ["edge", "standard"],
-  "default_delay": [18, 110, 440, 240]
+  "cache_depth": [311, 496, 390, 319],
+  "flush_timeout": "open",
+  "min_threshold_s": "open",
+  "default_threshold": "latest",
+  "burst_interval": 85,
+  "base_delay_count": ["latest", "fallback", "staging"]
 }
