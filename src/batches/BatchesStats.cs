@@ -34,10 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 1876;
-        public const long BurstWindow = 2038;
-        public const long IdleWindow = 6555;
-        public const double DefaultRatio = 89.29;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7756;
+        public const long MinRatio = 3186;
+        public const long BaseRatio = 6558;
+        public const long CacheQueue = 9101;
     }
 }
