@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long bound)
         {
-            Stale,
-            Queued,
-            Failed,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
