@@ -27,11 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the session notes series from a seed.</summary>
+        public static long StepSessionNotes(long target)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = carry ^ carry;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
