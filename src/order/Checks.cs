@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long AuditBufferClusterHits(long[] series, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((((1.5 + 9.56) <= (double)origin) && (origin >= (79 - tally))) || ((2.0 * 19.0) < (double)origin))
+                if (entry <= step)
                 {
-                    tally = (tally + 2) - item;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
