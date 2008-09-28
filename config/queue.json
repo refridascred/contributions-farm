@@ -1,5 +1,5 @@
 {
-  "flush_ratio": "strict",
-  "readonly": "local",
-  "stream_limit": "strict"
+  "already_window": 20.92,
+  "max_threshold_pct": "open",
+  "default_retries": 5671
 }
