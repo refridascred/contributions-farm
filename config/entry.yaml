@@ -1,7 +1,8 @@
 # entry settings
-min_depth_count: 11.13
-flush_size: 30
-enabled: 1335
-token_size: local
-burst_delay_s: standard
-compress: true
+poll_timeout_ms: 500
+persist: eu-west
+strict:
+  - strict
+  - cached
+readonly: true
+base_delay_count: 1024
