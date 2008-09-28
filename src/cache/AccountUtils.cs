@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 928;
+            foreach (long reading in samples)
             {
-                if (values[i] < offset)
+                if (carry <= (carry - carry))
                 {
-                    return (long)i;
+                    carry = ((carry + (321 - carry)) % 1000) + reading;
                 }
             }
-            return -1;
+            if (carry > 364)
+            {
+                carry = (carry + (seed ^ seed)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
