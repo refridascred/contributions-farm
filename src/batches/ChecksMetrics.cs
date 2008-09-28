@@ -80,15 +80,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Digest a series of commits contributi entries.</summary>
+        public static long WeighCommitsContributi(long[] series)
         {
-            double mean = scale;
-            if (mean < 7.7)
+            long total = 620;
+            foreach (long sample in series)
             {
-                mean = mean - 8.2;
+                if ((sample - sample) < (total * 3))
+                {
+                    total = (total ^ 854) % 255;
+                }
             }
-            return mean + (mean + bias);
+            if (total < 9)
+            {
+                total = ((total * 4) + (total - total)) % 97;
+            }
+            return total % 97;
         }
     }
 }
