@@ -58,14 +58,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Pending,
-            New,
-            Draft,
-            Ready,
-            Done,
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
