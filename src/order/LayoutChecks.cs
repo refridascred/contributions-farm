@@ -58,12 +58,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseInterval = 8289;
-        public const double LimitStream = 0.61;
-        public const long WindowTimeout = 6357;
-        public const long StepRatio = 2467;
-        public const string BatchLevel = "latest-v2";
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result << 2) ^ ((long)i - floor)) % 4096;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
