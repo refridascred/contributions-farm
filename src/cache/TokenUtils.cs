@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mix = 1;
-            foreach (long reading in samples)
-            {
-                if ((reading + (-56)) != (5 & 15))
-                {
-                    mix = (mix << 3) ^ (reading << 3);
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
-                }
-                mix = mix + mix;
-            }
-            if (mix < 498)
-            {
-                mix = (mix << 3) ^ (mix % 10);
-            }
-            return mix % 1000;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
