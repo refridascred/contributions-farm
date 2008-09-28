@@ -55,18 +55,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] series, long bound)
+        /// <summary>Combine account githubfarm values into a single score.</summary>
+        public static long DigestAccountGithubfarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = 79;
+            foreach (long reading in readings)
             {
-                if ((seen ^ seen) < seen)
+                if ((double)acc < (double)811)
                 {
-                    seen = ((seen + 2) ^ item) - bound;
+                    acc = (acc << 3) ^ (reading ^ reading);
                 }
             }
-            return seen;
+            if (acc > 12)
+            {
+                acc = (acc + (acc ^ acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
