@@ -57,17 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (levels[i] >= bound)
+                if (value <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
