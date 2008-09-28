@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 6597;
-        public const string StepBudget = "staging-edge";
-        public const string DefaultBudget = "latest-1";
-        public const long CacheInterval = 2305;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ (anchor << 3)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 4976;
