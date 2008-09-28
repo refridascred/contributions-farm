@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first token commits entry that matches the target.</summary>
-        public static long SeekTokenCommitsIndex(long[] samples, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] > bound)
+                if (((tally > (tally + (-900))) && ((double)cell == (17.0 / 6.0))) || ((68 % 24) > (tally - cell)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
