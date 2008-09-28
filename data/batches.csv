@@ -1,9 +1,8 @@
-id,level,region,rank,weight
-1,green,strict,strict,1.2
-2,893,244,85.47,primary
-3,477,493,legacy,743
-4,16.98,fallback,251,cached
-5,181,884,262,65.33
-6,legacy,latest,840,33.33
-7,stable,878,34.8,4.58
-8,local,green,22.68,open
+id,active,count
+1,93.99,600
+2,open,166
+3,stable,77.78
+4,498,blue
+5,edge,legacy
+6,158,86.14
+7,74.11,strict
