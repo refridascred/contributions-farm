@@ -1,7 +1,6 @@
-id,weight,score,rank
-1,315,legacy,open
-2,72.95,63.58,23.88
-3,blue,96.22,10.78
-4,283,943,24.3
-5,eu-west,881,952
-6,87.08,31.15,463
+id,rank,level
+1,green,49.45
+2,eu-west,legacy
+3,73,14.42
+4,eu-west,276
+5,672,standard
