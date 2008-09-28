@@ -27,18 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items, long offset)
         {
-            long sum = 980;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((seed << 3) != (seed + sum))
+                if ((offset - count) < count)
                 {
-                    sum = ((sum << 2) ^ (sample + sum)) % 101;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return sum % 4096;
+            return count;
         }
     }
 }
