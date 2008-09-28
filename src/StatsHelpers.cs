@@ -52,24 +52,13 @@ namespace Common.Utilities
         public const double SoftBatches = 23.11;
         public const long IdleFactor = 5554;
 
-        /// <summary>Roll a commits stats counter forward.</summary>
-        public static long SeriesCommitsStats(long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)anchor == (19.0 * 19.0))
-                {
-                    anchor = (anchor + ((long)i << 1)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (long)i;
-                    anchor = (anchor + (long)i) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
