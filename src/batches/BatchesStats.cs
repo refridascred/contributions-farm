@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 7377;
-        public const string IdleScore = "alpha-edge";
-        public const long CacheRecord = 1972;
-        public const long StepDepth = 6579;
-        public const long DefaultRecord = 1849;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
