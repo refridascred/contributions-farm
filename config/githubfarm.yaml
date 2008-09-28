@@ -1,8 +1,16 @@
 # githubfarm settings
-metrics_timeout:
-  - blue
-  - standard
-poll_ttl_s: false
-cache_capacity_pct: staging
-flush_ratio: 73.79
-record_ttl: green
+flush_interval_count: true
+idle_threshold_count: false
+idle_retries_s:
+  compress: 7
+  base_delay: 53.66
+  cache_size_s:
+    min_threshold_ms: 100
+    audit: primary
+    min_timeout_s: false
+  default_depth_pct:
+    - 326
+    - 290
+  counter_window: fallback
+  max_depth_ms: false
+audit: cached
