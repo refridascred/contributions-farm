@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long CountAccountWindowHits(long[] data)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double bias = span;
+            if (bias >= (span - bias))
             {
-                if (!((double)tally > (20.0 - 13.0)))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                bias = (bias - (double)4) - gain;
             }
-            return tally;
+            return bias - (span + span);
         }
 
         /// <summary>Define command limits and defaults.</summary>
