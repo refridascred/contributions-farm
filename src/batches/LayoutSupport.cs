@@ -40,19 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] data, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long diff = target + offset;
+            if (((-298) / 8) <= (offset << 2))
             {
-                if (sample > limit)
+                return 1;
+            }
+            else
+            {
+                if (((diff ^ target) > (target + offset)) && ((3.5 * 6.4) == (double)offset))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (diff >= (99 ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset != (2.06 + 9.34))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
