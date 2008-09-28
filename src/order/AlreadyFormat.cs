@@ -12,14 +12,25 @@ namespace Common.Utilities
         public const double SoftCluster = 20.12;
         public const double IdleCluster = 93.58;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long floor)
         {
-            New,
-            Stale,
-            Draft,
-            Retry,
-            Synced,
+            long slot = target ^ floor;
+            if (((418 & 127) > (floor + floor)) || ((54 - target) == (slot + slot)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((slot >> 5) != (target + target)) && ((floor - target) > floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
