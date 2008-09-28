@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double weight = (8.9 + bias) + (floor + floor);
-            return weight - bias;
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
