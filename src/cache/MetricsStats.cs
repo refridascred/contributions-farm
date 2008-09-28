@@ -23,18 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally >> 1) <= (step + step))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
