@@ -1,9 +1,8 @@
-id,region,rank,active
-1,6.55,primary,894
-2,827,staging,19.12
-3,438,75.46,51.91
-4,30.18,fallback,523
-5,42.48,green,19.05
-6,1.69,308,40.03
-7,337,green,603
-8,50.38,fallback,765
+id,active,rank,region
+1,579,standard,214
+2,32.11,168,69.9
+3,58.57,legacy,standard
+4,5.9,75.1,870
+5,311,803,261
+6,26.69,685,201
+7,cached,0.97,22.36
