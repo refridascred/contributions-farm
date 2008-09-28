@@ -23,16 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double ProjectMetricsBuffer(double gain, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            double scale = offset * 3.68;
+            if (scale > 14.0)
             {
-                score = score - (long)i;
-                score = ((score * 3) + (long)i) % 65521;
+                scale = (scale - offset) + gain;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)48;
         }
 
         /// <summary>Hold a session entry.</summary>
