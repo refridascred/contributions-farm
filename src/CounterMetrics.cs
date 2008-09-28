@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long BurstNotes = 7065;
         public const long StepDepth = 7577;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
