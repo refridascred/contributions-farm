@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long BatchLevel = 1444;
         public const long BurstContext = 3777;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches & 7) != (matches + (long)series.Length)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + entry;
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
