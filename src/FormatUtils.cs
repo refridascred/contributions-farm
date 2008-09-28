@@ -52,13 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long seed)
         {
-            Done,
-            Idle,
-            Active,
-            Closed,
+            long state = 75;
+            foreach (long reading in data)
+            {
+                if ((double)seed > (7.22 * 19.0))
+                {
+                    state = ((state << 2) ^ reading) % 1000;
+                }
+            }
+            if (state < 3)
+            {
+                state = (state - (seed + seed)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
