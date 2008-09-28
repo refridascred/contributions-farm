@@ -46,13 +46,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long offset)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
