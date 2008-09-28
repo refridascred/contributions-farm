@@ -1,8 +1,7 @@
 {
-  "max_threshold_s": "edge",
-  "soft_ratio_s": 94.61,
-  "sync_threshold_count": "blue",
-  "soft_threshold": "open",
-  "window_limit": 60,
-  "verbose": [131, 396, 217]
+  "base_retries": 1024,
+  "readonly": 7590,
+  "default_limit": "blue",
+  "sync_depth_count": 97.94,
+  "default_delay": ["standard", "green", "fallback"]
 }
