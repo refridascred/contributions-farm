@@ -80,22 +80,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long CountSupportStreamOutliers(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((11.0 - 7.57) != (double)hits) || ((datum - hits) >= 52))
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
