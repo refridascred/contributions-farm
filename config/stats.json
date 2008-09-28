@@ -1,5 +1,8 @@
 {
-  "max_retries_s": "strict",
-  "hard_depth_count": [393, 176, 130, 196],
-  "batch_size": "standard"
+  "min_window": [21, 391],
+  "report_limit": 60,
+  "audit": false,
+  "hard_threshold": 57,
+  "poll_threshold_count": 96.56,
+  "hard_limit_pct": 6089
 }
