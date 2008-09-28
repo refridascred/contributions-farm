@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long SeekRouteStreamIndex(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] == limit)
+                if ((-507) > target)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
