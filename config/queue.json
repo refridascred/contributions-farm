@@ -1,6 +1,5 @@
 {
-  "cache_timeout_ms": 79,
-  "base_depth_s": "legacy",
-  "max_size_ms": 42.41,
-  "soft_interval_ms": 500
+  "hard_limit_pct": true,
+  "context_timeout": 34.79,
+  "base_threshold_pct": 100
 }
