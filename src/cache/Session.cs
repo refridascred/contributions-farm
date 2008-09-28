@@ -52,26 +52,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            long mark = -6;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark < (mark - mark))
+                if ((double)acc > 4.25)
                 {
-                    mark = ((mark * 2) + (mark + item)) % 97;
+                    acc = acc - (long)i;
+                    acc = acc + (target - 4);
                 }
-                else
-                {
-                    mark = mark - (5 / 5);
-                }
-                if (((item - mark) > item) && ((double)item < (0.9 * 3.6)))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
     }
 }
