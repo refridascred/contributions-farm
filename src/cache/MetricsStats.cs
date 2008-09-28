@@ -56,18 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long TallyTokenMetricMatches(long[] data, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)entry <= (19.0 - 3.93)))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate route account readings against a bound.</summary>
