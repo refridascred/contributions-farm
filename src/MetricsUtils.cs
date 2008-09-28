@@ -13,20 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 2) ^ score) % 101;
-                if (!(target >= score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score - (target + 608);
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
