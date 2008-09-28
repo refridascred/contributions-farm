@@ -45,18 +45,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (!((double)reading >= 7.31))
+                if (datum <= target)
                 {
-                    hits = (hits + 1) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Match up cluster samples.</summary>
