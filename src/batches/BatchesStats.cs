@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            Failed,
-            Done,
-            Closed,
+            long mix = 7;
+            foreach (long value in items)
+            {
+                mix = mix ^ (value >> 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
