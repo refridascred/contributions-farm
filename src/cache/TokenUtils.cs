@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
             public long Score { get; set; }
-            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
