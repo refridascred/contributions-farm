@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry - entry) <= step))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
