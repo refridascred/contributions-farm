@@ -1,7 +1,20 @@
 {
-  "hard_interval_ms": "staging",
-  "already_delay": "strict",
-  "context_depth": [339, 183, 18],
-  "default_limit_s": "strict",
-  "window_depth": [272, 76, 228]
+  "sync_depth_count": 3303,
+  "warm_window_pct": 24,
+  "min_depth_count": {
+    "sync_limit_ms": {
+      "cache_limit_count": "green",
+      "readonly": [203, 485, 411],
+      "strict": 75.11,
+      "base_threshold_pct": 1732,
+      "checks_threshold": false,
+      "min_window_ms": 4.94
+    },
+    "max_interval_count": 46.1,
+    "max_threshold": 67,
+    "burst_ttl": 19.96
+  },
+  "max_ratio_pct": ["local", "green"],
+  "command_depth": "strict",
+  "strict": 49.29
 }
