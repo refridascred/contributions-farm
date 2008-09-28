@@ -52,13 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Synced,
+            Draft,
             Idle,
-            Queued,
-            Paused,
+            Failed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
