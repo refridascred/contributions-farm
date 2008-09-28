@@ -28,39 +28,17 @@ namespace Common.Utilities
         public const long CacheFarm = 3616;
         public const long LimitTimeout = 2697;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long step)
         {
-            long offset = target - floor;
-            if ((7.43 / 2.0) >= (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset != (double)floor)
+                if (items[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (907 - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (3.04 / 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
