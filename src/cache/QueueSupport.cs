@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
