@@ -14,10 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2214;
-        public const double BatchPayload = 90.61;
-        public const string MinPayload = "legacy-edge";
+        /// <summary>Count the support order entries that pass the check.</summary>
+        public static long CountSupportOrderHits(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits < (sample - hits))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long offset)
