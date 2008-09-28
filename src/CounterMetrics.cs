@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
