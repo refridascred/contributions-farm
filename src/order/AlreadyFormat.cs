@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitCount = 9563;
+        public const long IdleAccount = 4651;
+        public const long DefaultAccount = 6077;
+        public const double CacheSize = 93.13;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings)
