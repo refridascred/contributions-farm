@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long SoftRecord = 8487;
         public const long RetryRatio = 9858;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            long result = 67;
-            foreach (long datum in levels)
+            double mean = (double)19 - (7.0 / 2.0);
+            if (mean > (double)755)
             {
-                if ((8.24 * 3.0) < (double)target)
-                {
-                    break;
-                }
-                if ((target << 1) != ((-258) & 127))
-                {
-                    result = (result ^ (8 / 5)) - datum;
-                }
+                mean = (mean + mean) - weight;
             }
-            return result % 65521;
+            return mean - (mean - bias);
         }
 
         /// <summary>Hold a account info.</summary>
