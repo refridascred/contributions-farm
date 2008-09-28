@@ -28,11 +28,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 92.59;
-        public const long LimitScore = 2267;
-        public const long StepDepth = 7462;
-        public const long DefaultTimeout = 3079;
-        public const double SoftBatches = 4.31;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
