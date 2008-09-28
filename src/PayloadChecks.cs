@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4970;
-        public const long LimitWindow = 6151;
-        public const long LimitTimeout = 5654;
-        public const long IdleTimeout = 6691;
-        public const long BatchTimeout = 6311;
+        /// <summary>Match up filter report samples.</summary>
+        public static long PairFilterReportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
