@@ -49,13 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
