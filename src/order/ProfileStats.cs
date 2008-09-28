@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count entry tools pairs that satisfy a relation.</summary>
-        public static long OverlapEntryToolsCount(long[] items)
+        /// <summary>Digest a series of graph commits entries.</summary>
+        public static long DigestGraphCommits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 675;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((94 >> 2) == (anchor + cell)) && ((anchor ^ anchor) < cell))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (647 << 2);
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
