@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const long BatchInterval = 6170;
         public const long IdleRecord = 6390;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((1 / 3) > (tally - cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the record payload entries that pass the check.</summary>
