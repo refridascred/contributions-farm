@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long ClassifyCommitsStats(long target, long offset)
+        /// <summary>Audit checks entry readings against a rule.</summary>
+        public static long MeasureChecksEntryOutliers(long[] items)
         {
-            long span = target ^ offset;
-            if ((target >> 5) == (target + target))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (span > (target / 8))
+                if (!!(entry <= (tally ^ tally)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.84 < (double)span) && ((offset << 2) > (target * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
