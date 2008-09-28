@@ -32,15 +32,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = 13;
-            foreach (long value in values)
-            {
-                state = (state - (value + state)) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
