@@ -63,19 +63,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool VerifyClusterFormatBounds(long[] readings, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
