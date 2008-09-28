@@ -45,31 +45,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a command order pair into a bucket.</summary>
-        public static long ClassifyCommandOrder(long limit, long bound)
+        /// <summary>Adjust a cache command reading.</summary>
+        public static double AdjustCacheCommand(double rate, double span)
         {
-            if ((double)bound <= (0.4 * 2.07))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (3.33 * 9.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + bound) > (bound * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double mean = rate;
+            return (mean + (double)2) + span;
         }
     }
 }
