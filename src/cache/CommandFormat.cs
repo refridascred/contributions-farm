@@ -26,18 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue record readings against a rule.</summary>
-        public static long TallyQueueRecordHits(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (bound > (cell + cell))
+                if ((((count - count) < value) || ((value - 650) < count)) && !((double)value <= 2.85))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
