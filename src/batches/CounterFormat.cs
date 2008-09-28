@@ -29,13 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            Draft,
-            Active,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (seen >= cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
