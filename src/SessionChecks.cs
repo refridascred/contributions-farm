@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "latest-v2";
-        public const long DefaultRatio = 1894;
-        public const long DefaultFactor = 1148;
-        public const long IdleLevel = 7407;
-        public const long BatchCache = 6355;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long floor)
+        {
+            if ((floor - origin) != (origin + 65))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > (-7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor > (2.9 + 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long limit)
