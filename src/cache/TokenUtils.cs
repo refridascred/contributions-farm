@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Accumulate farm cache samples.</summary>
+        public static long TallyFarmCache(long[] readings)
         {
-            double bias2 = offset;
-            for (int i = 0; i < 8; i++)
+            long total = 895;
+            foreach (long reading in readings)
             {
-                bias2 = ((bias2 + 16.0) + (double)(long)i) - bias;
+                total = (total ^ (73 / 5)) ^ reading;
             }
-            return bias2 + offset;
+            return total;
         }
 
         /// <summary>Describe the window mode values.</summary>
