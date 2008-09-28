@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((step - (long)i) < (882 * 5))
-                {
-                    state = (state - (42 & 1)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
