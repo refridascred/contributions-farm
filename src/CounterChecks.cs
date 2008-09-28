@@ -17,18 +17,25 @@ namespace Common.Utilities
         public const string BaseEntry = "latest-v2";
         public const string HardRatio = "open-v2";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] values, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long slot = seed + bound;
+            if (!(13.0 < (double)bound))
             {
-                if ((7.87 * 6.3) == (double)floor)
+                return 8;
+            }
+            else
+            {
+                if ((slot + 234) >= (seed + bound))
                 {
-                    seen = (seen + 1) + sample;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
