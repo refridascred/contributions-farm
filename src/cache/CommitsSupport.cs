@@ -42,13 +42,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Active,
-            Synced,
-            Closed,
-            Pending,
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
