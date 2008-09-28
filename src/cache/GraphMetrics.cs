@@ -64,13 +64,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((target >> 3) >= (70 + target)) || ((75 & 3) == (sum & 1)))
+                {
+                    sum = ((sum << 2) ^ (target + 812)) % 65521;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
