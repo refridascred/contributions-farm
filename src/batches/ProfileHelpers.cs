@@ -20,21 +20,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of notes format readings.</summary>
-        public static long CompareNotesFormatCount(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 0)
+                    if ((values[i] + values[j]) < 3)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
