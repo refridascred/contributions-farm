@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long target)
         {
-            long mark = 3;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((step - 703) <= (step & 127)) && ((long)values.Length == (step + step)))
+                if (samples[i] == target)
                 {
-                    mark = ((mark - (step + mark)) % 4096) ^ item;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
