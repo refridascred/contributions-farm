@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = 8;
-            foreach (long item in series)
-            {
-                if (bound > (428 + item))
-                {
-                    result = ((result * 2) + (832 << 1)) % 97;
-                }
-                else
-                {
-                    result = (result + item) % 101;
-                }
-            }
-            return result;
+            Locked,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
