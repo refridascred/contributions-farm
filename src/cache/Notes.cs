@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            long total = 8;
-            foreach (long cell in values)
+            double mean = 4.84;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)cell == (2.68 / 3.0)) && (cell <= (total ^ total)))
-                {
-                    total = (total - (total - total)) % 255;
-                }
-                if (cell >= ((long)values.Length - cell))
-                {
-                    total = total - cell;
-                }
+                mean = ((mean - offset) + (double)(long)i) - gain;
             }
-            return total;
+            return mean - 7.47;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
