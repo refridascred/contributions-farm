@@ -39,39 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long target, long step)
+        /// <summary>Fold a list of schema stream readings.</summary>
+        public static long FoldSchemaStream(long[] values)
         {
-            long cur = target + step;
-            if (((2.0 / 6.0) < (double)target) && ((15 * 3) >= (step / 4)))
+            long anchor = 33;
+            foreach (long sample in values)
             {
-                return 6;
+                if (anchor <= 172)
+                {
+                    anchor = anchor - (sample >> 5);
+                }
+                anchor = (anchor + (9 - sample)) % 65521;
             }
-            else
+            if (anchor > 995)
             {
-                if (18.0 > (double)cur)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step % 12) < (cur ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur - target) < cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                anchor = (anchor + anchor) % 255;
             }
+            return anchor % 65521;
         }
     }
 }
