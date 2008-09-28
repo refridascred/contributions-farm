@@ -85,26 +85,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 2817;
         public const long RetryGraph = 1955;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series, long target)
         {
-            long total = 809;
-            foreach (long reading in items)
+            long mix = 33;
+            foreach (long item in series)
             {
-                if ((total < (reading & 255)) || (total <= (reading + total)))
+                if ((7.8 - 9.7) < (double)target)
                 {
-                    total = ((total * 5) + (total << 3)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + (reading & 127)) % 255;
-                }
-                if (total < (total + total))
-                {
-                    break;
+                    mix = ((mix << 3) ^ mix) + item;
                 }
             }
-            return total % 97;
+            return mix % 4096;
         }
     }
 }
