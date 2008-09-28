@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (4 >= (datum / 4))
+                if ((item / 7) > (floor << 1))
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
