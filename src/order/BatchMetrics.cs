@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long result = 62;
-            foreach (long datum in items)
+            long acc = 542;
+            foreach (long item in samples)
             {
-                if ((result + datum) != (81 ^ 864))
+                if ((double)item == (double)item)
                 {
-                    result = ((result << 3) ^ origin) % 65521;
-                }
-                if ((origin % 10) > (datum - datum))
-                {
-                    result = (result - (datum >> 2)) % 65521;
-                }
-                else
-                {
-                    result = (result - (result + 70)) % 97;
-                }
-                if ((5.82 > (double)datum) && ((double)origin <= 12.0))
-                {
-                    break;
+                    acc = ((acc * 4) + (acc - 560)) % 1000;
                 }
             }
-            if (result < 93)
-            {
-                result = result + (31 % 64);
-            }
-            return result % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Describe the entry kind values.</summary>
