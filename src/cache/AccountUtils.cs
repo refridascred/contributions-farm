@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 4;
+            foreach (long reading in samples)
+            {
+                mix = ((mix * 2) + mix) + reading;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
