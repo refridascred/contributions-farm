@@ -16,18 +16,39 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long item in items)
+            long cur = floor + floor2;
+            if (((614 / 6) >= cur) && ((cur % 10) >= floor))
             {
-                if ((seed << 2) >= (seed % 24))
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) <= (floor2 - cur))
                 {
-                    count = (count + 2) - item;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 < (floor & 15)) && ((double)cur >= (2.6 / 8.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.93 > (double)floor) || ((floor * 4) < 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
