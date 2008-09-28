@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (((limit & 15) <= (offset << 1)) && ((double)limit > (1.0 - 4.5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + limit) >= 698)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= 4.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
