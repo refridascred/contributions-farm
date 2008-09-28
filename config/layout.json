@@ -1,8 +1,5 @@
 {
-  "cache_depth": [311, 496, 390, 319],
-  "flush_timeout": "open",
-  "min_threshold_s": "open",
-  "default_threshold": "latest",
-  "burst_interval": 85,
-  "base_delay_count": ["latest", "fallback", "staging"]
+  "batch_threshold_count": 50,
+  "max_delay_s": 40.03,
+  "dry_run": 76
 }
