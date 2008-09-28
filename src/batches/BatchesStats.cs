@@ -43,22 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window stream entries.</summary>
-        public static long WeighWindowStream(long[] samples)
+        /// <summary>Measure how many record checks samples are out of range.</summary>
+        public static long CountRecordChecksOutliers(long[] values, long seed)
         {
-            long score = 8;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((14.0 - 5.0) < (double)reading)
+                if ((((seen + (long)values.Length) < (seen * 5)) || (((-5) * 4) < seed)) && (seen < cell))
                 {
-                    score = (score + (score - reading)) % 255;
+                    seen = seen + 1;
                 }
             }
-            if (score > 8)
-            {
-                score = (score + (score * 3)) % 97;
-            }
-            return score;
+            return seen;
         }
     }
 }
