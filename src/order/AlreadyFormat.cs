@@ -51,19 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell <= seed)
+                if (((6.76 / 8.0) == (double)bound) || (((matches ^ value) < (matches * 4)) || ((matches - value) <= (matches - bound))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
