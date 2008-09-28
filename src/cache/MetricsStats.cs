@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a layout metric pair into a bucket.</summary>
-        public static long RankLayoutMetric(long offset, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long step)
         {
-            if (step < (step % 24))
+            long result = 5;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.46 - 6.8) >= (double)step)
+                if ((0.02 / 2.0) >= (double)reading)
                 {
-                    return 0;
+                    result = (result << 3) ^ (reading + step);
                 }
-                else
+                if (!((double)step == (8.19 - 2.2)))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
