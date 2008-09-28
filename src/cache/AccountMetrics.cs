@@ -19,15 +19,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Locate a graph editor reading by value.</summary>
+        public static long LocateGraphEditorIndex(long[] samples, long seed)
         {
-            double weight2 = (double)(37 + 575);
-            if (weight2 > (double)10)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = ((weight2 - (double)862) - weight) + span;
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (4.1 + weight2);
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
