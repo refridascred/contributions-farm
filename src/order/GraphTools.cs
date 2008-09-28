@@ -14,15 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
+        public static bool GuardGithubfarmContributiBounds(long[] levels, long target)
         {
-            long carry = 8;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                carry = (carry - (carry - reading)) % 1000;
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
