@@ -20,18 +20,18 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples, long origin)
+        /// <summary>Count the counter token entries that pass the check.</summary>
+        public static long CountCounterTokenHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(((long)samples.Length << 2) == (cell - origin)))
+                if (seen > sample)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) - target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two stats measurements.</summary>
