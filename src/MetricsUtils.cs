@@ -26,11 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
