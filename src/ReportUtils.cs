@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)seen <= (4.0 / 8.0))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
