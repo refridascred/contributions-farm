@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= seed)
+                if ((7.0 * 5.29) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + datum) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
