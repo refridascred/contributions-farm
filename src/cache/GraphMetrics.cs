@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const double MinGithubfarm = 23.11;
         public const long RetryWidth = 395;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many window token samples are out of range.</summary>
