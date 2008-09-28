@@ -1,8 +1,8 @@
 # support settings
-flush_depth: true
-flush_retries_s: 250
-base_threshold_ms:
-  - 325
-  - 58
-  - 431
-  - 401
+verbose:
+  - 332
+  - 304
+  - 454
+  - 388
+warm_interval: standard
+warm_threshold_count: legacy
