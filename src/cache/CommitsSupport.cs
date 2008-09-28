@@ -70,11 +70,24 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 2570;
-        public const double BurstGraph = 82.21;
-        public const long BatchGraph = 4510;
-        public const long IdleGraph = 2966;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
+        {
+            long mix = 495;
+            foreach (long reading in series)
+            {
+                mix = (mix ^ (mix << 2)) - reading;
+                if (mix >= (4 >> 1))
+                {
+                    break;
+                }
+            }
+            if (mix > 566)
+            {
+                mix = (mix + (mix - mix)) % 1000;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long floor)
