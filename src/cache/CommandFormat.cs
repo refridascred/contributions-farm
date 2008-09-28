@@ -37,18 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 119;
+            foreach (long reading in items)
             {
-                if ((((count - count) < value) || ((value - 650) < count)) && !((double)value <= 2.85))
-                {
-                    count = count + 2;
-                }
+                result = result + reading;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Adjust a graph reading.</summary>
