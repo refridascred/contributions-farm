@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long target)
+        /// <summary>Match up counter queue samples.</summary>
+        public static long PairCounterQueueCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
