@@ -36,24 +36,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two context payload measurements.</summary>
-        public static double BlendContextPayload(double bias, double bias2)
-        {
-            double load = (double)(92 << 1);
-            if (load > bias2)
-            {
-                load = (load - (20.0 + load)) + bias;
-            }
-            else
-            {
-                load = load + (bias2 - load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias2 - bias2)) - (double)(long)i;
-            }
-            return load - (double)689;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "primary-1";
+        public const string SoftSize = "primary-1";
+        public const long StepFormat = 1878;
+        public const long WindowSpan = 6952;
+        public const long BatchSize = 4504;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long step, long limit)
