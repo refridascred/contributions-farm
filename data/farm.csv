@@ -1,6 +1,11 @@
-id,state,level,region,rank
-1,801,staging,959,blue
-2,primary,strict,56,684
-3,502,2.39,84.18,682
-4,713,open,edge,577
-5,954,715,fallback,9.01
+id,region,score
+1,local,537
+2,246,764
+3,primary,109
+4,65.44,873
+5,green,open
+6,441,primary
+7,58.87,51.85
+8,93.18,552
+9,846,fallback
+10,691,770
