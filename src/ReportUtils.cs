@@ -58,11 +58,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double drift = bias;
-            return (drift + 5.17) + ratio;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
