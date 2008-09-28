@@ -61,25 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data, long origin)
-        {
-            long acc = 417;
-            foreach (long value in data)
-            {
-                long prev = origin;
-                if ((double)prev < 0.6)
-                {
-                    prev = (prev + (origin + 86)) % 97;
-                    acc = ((acc * 3) + (origin + prev)) % 1000;
-                }
-                if (value <= acc)
-                {
-                    acc = (acc - (acc + origin)) % 97;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 5865;
+        public const long DefaultStats = 4514;
+        public const long StepWidth = 9603;
+        public const long SoftRatio = 9450;
+        public const long SoftSpan = 5685;
 
         /// <summary>Adjust a editor report reading.</summary>
         public static double AdjustEditorReport(double scale, double span)
