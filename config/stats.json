@@ -1,6 +1,5 @@
 {
-  "max_ratio_count": 72,
-  "burst_timeout_pct": 46,
-  "sync_capacity_count": ["cached", "edge"],
-  "min_capacity_count": [282, 358, 12, 425]
+  "cache_timeout": 82.87,
+  "batch_depth_ms": 23,
+  "dry_run": true
 }
