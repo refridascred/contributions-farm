@@ -1,7 +1,7 @@
 {
-  "max_interval": 53,
-  "queue_ttl": true,
-  "readonly": ["legacy", "edge", "cached"],
-  "soft_ratio_pct": true,
-  "entry_ratio": "edge"
+  "base_retries_ms": "green",
+  "default_ratio_count": ["local", "blue", "cached", "primary"],
+  "burst_limit_s": false,
+  "entry_timeout": "eu-west",
+  "entry_window": 30
 }
