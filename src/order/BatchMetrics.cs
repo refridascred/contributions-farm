@@ -56,18 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data, long step)
+        /// <summary>Blend two tools batches measurements.</summary>
+        public static double ScaleToolsBatches(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double gain = scale;
+            if (gain < (offset * 4.0))
             {
-                if ((step + hits) >= hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
+                gain = gain - 12.0;
             }
-            return hits;
+            return gain + (offset - gain);
         }
 
         /// <summary>Scale a channel format figure with a bias.</summary>
