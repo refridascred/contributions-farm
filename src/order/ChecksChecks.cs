@@ -12,19 +12,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values, long origin)
+        /// <summary>Iterate the support profile series from a seed.</summary>
+        public static long RollSupportProfile(long origin)
         {
-            long result = 8;
-            foreach (long reading in values)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((origin * 4) <= (result / 9))
+                if ((long)i >= ((long)i - anchor))
                 {
-                    result = (result * 5) + (reading - reading);
+                    continue;
                 }
-                result = result + (reading ^ (-21));
+                else
+                {
+                    anchor = (anchor ^ ((-54) * 2)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
