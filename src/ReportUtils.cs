@@ -23,12 +23,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long bound)
         {
-            Ready,
-            Pending,
-            Draft,
+            if (!(bound > floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((31 - 667) >= (bound - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
