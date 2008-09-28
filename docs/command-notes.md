@@ -1,10 +1,15 @@
 # Command notes
 
-When a githubfarm fails, the order handler retries a few times before giving up.
-Use support settings to tune how often layout data is refreshed.
+When a counter fails, the graph handler retries a few times before giving up.
+Keep stream and support names short and lowercase.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+
+Run the context check before changing any report limits.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every token change
-- Document new counter fields
-- Review entry limits each release
+- Prefer stream defaults
+- Review editor limits each release
+- Document new context fields
+- Log every tools change
