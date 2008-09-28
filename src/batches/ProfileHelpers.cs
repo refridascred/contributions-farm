@@ -42,18 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double scale = offset;
+            if (scale > (scale + bias))
             {
-                if (!((entry % 8) != (12 >> 1)))
-                {
-                    seen = seen + 3;
-                }
+                scale = scale - 9.49;
             }
-            return seen;
+            else
+            {
+                scale = scale - (double)72;
+            }
+            return scale - (scale + 5.6);
         }
 
         /// <summary>Combine tools cluster values into a single score.</summary>
