@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long floor)
-        {
-            long slot = target ^ floor;
-            if (((418 & 127) > (floor + floor)) || ((54 - target) == (slot + slot)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((slot >> 5) != (target + target)) && ((floor - target) > floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 50.98;
+        public const double LimitFactor = 36.41;
+        public const string IdleSupport = "strict-1";
+        public const double BaseInterval = 9.73;
+        public const long MaxSize = 5635;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] readings)
