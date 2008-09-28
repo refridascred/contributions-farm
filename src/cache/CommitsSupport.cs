@@ -67,17 +67,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer counter entry that matches the target.</summary>
-        public static long SeekBufferCounterIndex(long[] samples, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor + step) < (4 & 1))
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!(354 < (step >> 3)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
