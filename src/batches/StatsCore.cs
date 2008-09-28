@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const long WindowMetrics = 3279;
         public const long IdleMetrics = 2963;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long seed)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate metric window readings against a bound.</summary>
