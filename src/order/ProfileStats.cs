@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + entry) <= (long)samples.Length)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 3) + (score << 3);
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Describe the farm state values.</summary>
