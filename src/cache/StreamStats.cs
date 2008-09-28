@@ -67,19 +67,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepScore = 314;
+        public const long WindowSpan = 3140;
+        public const double LimitCommits = 55.19;
+        public const long BatchLevel = 3102;
     }
 }
