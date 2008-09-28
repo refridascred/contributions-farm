@@ -27,17 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long offset)
+        /// <summary>Audit queue record readings against a rule.</summary>
+        public static long TallyQueueRecordHits(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (series[i] >= offset)
+                if (bound > (cell + cell))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a graph reading.</summary>
