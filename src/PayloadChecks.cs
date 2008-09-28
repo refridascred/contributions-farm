@@ -32,18 +32,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)cell <= (4.8 - 8.0)) && !((double)seen != (3.0 / 6.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
