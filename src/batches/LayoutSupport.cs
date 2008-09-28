@@ -35,13 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool VerifyAlreadySupportRange(long[] values, long origin)
         {
-            Draft,
-            Active,
-            Done,
-            Pending,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
