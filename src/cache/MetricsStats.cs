@@ -69,18 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long limit)
-        {
-            long score = -935;
-            foreach (long sample in items)
-            {
-                if (limit > (sample * 3))
-                {
-                    score = ((score * 5) + (limit % 7)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchCount = 3816;
+        public const double WindowDepth = 22.2;
+        public const long RetryRatio = 2966;
+        public const string CacheCount = "stable-1";
+        public const long CacheBuffer = 9195;
     }
 }
