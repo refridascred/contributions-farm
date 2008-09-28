@@ -1,20 +1,6 @@
 {
-  "route_retries": "fallback",
-  "cache_limit": 250,
-  "max_capacity_s": [54, 34, 28],
-  "route_window": "strict",
-  "base_size": 250,
-  "compress": {
-    "warm_ratio_s": 6.94,
-    "hard_size_s": {
-      "audit": ["edge", "standard", "primary"],
-      "min_delay": 7,
-      "graph_depth": 34.36,
-      "readonly": false
-    },
-    "burst_ratio_pct": 4126,
-    "notes_limit": "cached",
-    "flush_retries_pct": true,
-    "order_size": false
-  }
+  "compress": 30,
+  "batches_ttl": 35.44,
+  "profile_delay": 40.04,
+  "strict": 89
 }
