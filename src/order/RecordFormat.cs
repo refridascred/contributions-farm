@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            double ratio = 8.1;
-            if (ratio >= (double)1)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - floor) - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (ratio - 3.36);
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
