@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string BatchLayout = "staging-1";
         public const long CacheLevel = 6198;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 5837;
-        public const double BurstFarm = 68.47;
-        public const long CacheInterval = 1424;
-        public const double BaseFarm = 72.1;
-        public const long WindowFactor = 4836;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of format record readings.</summary>
         public static long TotalFormatRecord(long[] samples, long offset)
