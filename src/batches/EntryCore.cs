@@ -52,14 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Closed,
+            Synced,
             Pending,
             Active,
-            Draft,
             Retry,
+            Idle,
         }
     }
 }
