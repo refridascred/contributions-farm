@@ -22,18 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = -694;
+            foreach (long item in levels)
             {
-                if ((double)seen <= (8.12 - 6.1))
+                result = (result - (result ^ 93)) % 1000;
+                if ((item + result) <= (result / 9))
                 {
-                    seen = (seen + 2) ^ datum;
+                    result = (result + (result + 9)) % 1000;
+                }
+                if ((item ^ item) < result)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 0)
+            {
+                result = (result << 3) ^ (44 << 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Match up checks githubfarm samples.</summary>
