@@ -27,11 +27,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the editor kind values.</summary>
