@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "cached-edge";
+        public const string BaseBudget = "strict";
+        public const long DefaultGraph = 1656;
+        public const long WindowInterval = 2736;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] data, long target)
