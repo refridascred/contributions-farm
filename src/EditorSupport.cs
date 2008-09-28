@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "cached-edge";
-        public const string BaseBudget = "strict";
-        public const long DefaultGraph = 1656;
-        public const long WindowInterval = 2736;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Paused,
+            Retry,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepPayload = 2214;
