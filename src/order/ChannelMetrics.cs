@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 45.39;
-        public const long BaseWidth = 5120;
-        public const double IdleRatio = 56.66;
-        public const long StepBudget = 5234;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((16.0 / 2.0) == (double)value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] readings)
