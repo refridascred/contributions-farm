@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4067;
-        public const string CacheRatio = "staging-edge";
-        public const long BatchGithubfarm = 8069;
-        public const string MinGithubfarm = "open-1";
-        public const long MaxCount = 3183;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long seed, long limit)
