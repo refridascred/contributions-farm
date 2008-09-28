@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long anchor = 37;
-            foreach (long entry in data)
-            {
-                if (!(((-3) % 60) <= (target / 7)))
-                {
-                    anchor = anchor ^ entry;
-                }
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Scale a format support figure with a bias.</summary>
