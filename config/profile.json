@@ -1,5 +1,8 @@
 {
-  "enabled": 60,
-  "context_ratio": "latest",
-  "warm_timeout_s": 83
+  "dry_run": 20.37,
+  "soft_interval_count": 30,
+  "githubfarm_depth": 1314,
+  "already_depth": [430, 209],
+  "readonly": false,
+  "max_limit_pct": 250
 }
