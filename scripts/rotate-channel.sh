@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open stable; do
+CHANNEL_LIMIT=224
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west standard strict; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
