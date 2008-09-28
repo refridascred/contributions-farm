@@ -43,19 +43,26 @@ namespace Common.Utilities
         public const double DefaultTimeout = 89.49;
         public const long IdleSize = 35;
 
-        /// <summary>Validate account entry readings against a bound.</summary>
-        public static bool ValidateAccountEntryLimits(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mark = -6;
+            foreach (long item in readings)
             {
-                if (cell > bound)
+                if (mark < (mark - mark))
                 {
-                    found = false;
+                    mark = ((mark * 2) + (mark + item)) % 97;
+                }
+                else
+                {
+                    mark = mark - (5 / 5);
+                }
+                if (((item - mark) > item) && ((double)item < (0.9 * 3.6)))
+                {
                     break;
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
