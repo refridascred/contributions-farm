@@ -27,20 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Audit context cluster readings against a rule.</summary>
+        public static long CountContextClusterGaps(long[] readings)
         {
-            long carry = 8;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry << 2) ^ (carry % 100)) % 1000;
-                carry = (carry << 2) ^ carry;
-                if (((double)carry >= (6.5 + 9.0)) && ((cell + 76) < (carry - cell)))
+                if ((8.0 / 5.0) == (double)seen)
                 {
-                    break;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
