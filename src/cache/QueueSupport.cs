@@ -31,14 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Locked,
-            Retry,
-            Failed,
-            Draft,
-            Paused,
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
