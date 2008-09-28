@@ -46,11 +46,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultBudget = 71.63;
+        public const double RetrySupport = 30.03;
+        public const long WindowSupport = 5534;
+        public const double CacheSupport = 58.92;
     }
 }
