@@ -11,20 +11,22 @@ namespace Common.Utilities
         public const string BatchLayout = "staging-1";
         public const long CacheLevel = 6198;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long anchor = 6;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((entry >= (248 + anchor)) && ((anchor % 5) <= 5))
                 {
-                    total = total + (long)i2;
-                    total = (total ^ (seed & 31)) % 1000;
+                    anchor = (anchor ^ (entry + anchor)) % 1000;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            if (anchor < 275)
+            {
+                anchor = (anchor + (4 & 63)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics summary.</summary>
