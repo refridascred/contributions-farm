@@ -58,20 +58,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target >> 3) >= (70 + target)) || ((75 & 3) == (sum & 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (target + 812)) % 65521;
-                    continue;
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
     }
 }
