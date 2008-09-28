@@ -17,17 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 881;
+            foreach (long cell in values)
             {
-                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                if (!((3.6 / 2.0) <= (2.17 + 7.6)))
                 {
-                    return (long)i;
+                    acc = ((acc ^ (416 * 2)) + cell) - origin;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Match up route samples.</summary>
