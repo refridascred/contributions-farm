@@ -55,11 +55,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultSpan = "fallback-1";
-        public const long BaseRatio = 5460;
-        public const long BurstScore = 8942;
-        public const long HardWidth = 4242;
-        public const double RetryCount = 0.96;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
