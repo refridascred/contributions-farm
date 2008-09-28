@@ -39,22 +39,15 @@ namespace Common.Utilities
         public const long MaxStream = 6259;
         public const long IdleStream = 1108;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Combine filter report values into a single score.</summary>
+        public static long TallyFilterReport(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = 6;
+            foreach (long reading in samples)
             {
-                if (((7.1 - 6.81) == (double)reading) && ((reading & 31) > (hits - hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result ^ (reading - result)) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
