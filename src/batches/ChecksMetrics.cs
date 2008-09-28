@@ -20,19 +20,21 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Match up profile counter samples.</summary>
+        public static long OverlapProfileCounterCount(long[] data)
         {
-            double weight = floor;
-            if (weight < floor)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - (scale + floor);
+            return count;
         }
 
         /// <summary>Combine session layout values into a single score.</summary>
