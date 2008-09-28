@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double gain = span;
-            if (gain <= (double)16)
-            {
-                gain = (gain + (gain * 6.31)) - ratio;
-            }
-            return gain + (gain * 1.31);
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit metric support readings against a rule.</summary>
