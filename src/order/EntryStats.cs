@@ -53,21 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 161;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score ^ 78) % 97) + value) + target;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Classify a buffer metrics pair into a bucket.</summary>
