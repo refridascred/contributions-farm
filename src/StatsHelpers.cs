@@ -68,18 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support route samples are out of range.</summary>
-        public static long TallySupportRouteOutliers(long[] series, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (limit >= (reading + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
