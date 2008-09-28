@@ -28,17 +28,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = offset + bound;
+            if ((bound ^ 8) <= (bound % 24))
             {
-                if (data[i] <= step)
+                return 6;
+            }
+            else
+            {
+                if (5.0 <= (double)delta)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((delta >= (bound / 8)) || ((bound / 6) <= delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of metrics account readings.</summary>
