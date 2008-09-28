@@ -15,18 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long seed)
         {
-            long acc = 126;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc / 9) >= (7 - 9))
+                if (samples[i] <= seed)
                 {
-                    acc = ((acc ^ (acc - acc)) % 4096) + reading;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
