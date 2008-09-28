@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 8855;
+        public const long MaxSize = 7168;
+        public const double BurstWidth = 81.52;
+        public const long SoftSession = 7962;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 9418;
