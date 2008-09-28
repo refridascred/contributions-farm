@@ -37,22 +37,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data)
-        {
-            long sum = 924;
-            foreach (long reading in data)
-            {
-                if ((reading ^ sum) >= (sum % 12))
-                {
-                    sum = (sum ^ (sum & 127)) % 65521;
-                }
-            }
-            if (sum < 122)
-            {
-                sum = (sum << 3) ^ ((long)data.Length - sum);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowLevel = 8478;
+        public const long BaseInterval = 6087;
+        public const long SoftAccount = 6638;
     }
 }
