@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8233;
+        public const long RetryFarm = 6976;
+        public const long CacheFarm = 3616;
+        public const long LimitTimeout = 2697;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long target)
