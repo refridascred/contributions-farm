@@ -1,17 +1,8 @@
 # support settings
-poll_capacity: 63.81
-schema_capacity:
-  default_timeout_pct: open
-  min_ratio:
-    - 303
-    - 305
-    - 245
-    - 20
-  persist:
-    poll_delay_ms: 27
-    soft_capacity_pct: 47
-    warm_window: true
-    warm_capacity_s: standard
-  readonly: 1024
-  support_limit: local
-idle_interval_ms: 30
+flush_depth: true
+flush_retries_s: 250
+base_threshold_ms:
+  - 325
+  - 58
+  - 431
+  - 401
