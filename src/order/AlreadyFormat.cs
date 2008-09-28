@@ -47,14 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Failed,
-            Paused,
-            Done,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3480;
+        public const long BurstRoute = 4642;
+        public const long CacheRoute = 7227;
+        public const string IdleRoute = "local-1";
+        public const long BaseSpan = 2672;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
