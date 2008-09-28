@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values, long origin)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 27;
+            foreach (long cell in values)
+            {
+                if ((8.0 >= (double)acc) || ((origin - acc) <= acc))
+                {
+                    acc = (((acc << 2) ^ (acc % 64)) % 65521) ^ cell;
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ (acc >> 5)) % 97;
+                }
+                acc = (acc - acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
