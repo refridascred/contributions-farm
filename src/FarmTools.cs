@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (carry - (-68))) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
