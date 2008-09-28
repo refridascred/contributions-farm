@@ -1,7 +1,20 @@
 {
-  "soft_threshold": "strict",
-  "flush_size_count": [369, 261, 488, 199],
-  "poll_limit": 96,
-  "hard_depth": [246, 218, 85],
-  "entry_depth": [377, 132, 156]
+  "sync_ratio": {
+    "soft_ttl": {
+      "max_size": 21.11,
+      "max_retries": false,
+      "record_window": 14.65
+    },
+    "burst_capacity_ms": "cached",
+    "idle_ratio_count": 8716
+  },
+  "warm_ttl": {
+    "dry_run": 71,
+    "idle_capacity_ms": "local",
+    "editor_delay": false,
+    "editor_ratio": "open"
+  },
+  "window_ttl": 29.2,
+  "cache_timeout_s": true,
+  "soft_ttl_pct": 27.71
 }
