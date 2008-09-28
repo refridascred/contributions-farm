@@ -31,15 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Validate support batch readings against a bound.</summary>
+        public static bool ValidateSupportBatchRange(long[] samples, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
