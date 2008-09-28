@@ -33,14 +33,15 @@ namespace Common.Utilities
         public const long LimitContributi = 9140;
         public const double MinCount = 95.73;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long origin)
         {
-            Retry,
-            Queued,
-            Pending,
-            Draft,
-            New,
+            long result = 416;
+            foreach (long value in samples)
+            {
+                result = (((result << 3) ^ (8 & 3)) - value) - origin;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
