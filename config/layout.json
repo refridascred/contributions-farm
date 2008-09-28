@@ -1,18 +1,6 @@
 {
-  "counter_retries": 59,
-  "batch_ttl_s": 62,
-  "idle_size_pct": true,
-  "audit": {
-    "idle_depth_count": 4702,
-    "readonly": {
-      "sync_timeout_s": 3355,
-      "retry_window": [79, 37],
-      "default_size_count": 100,
-      "readonly": "stable",
-      "sync_retries_count": 29.63
-    },
-    "max_threshold": 17.29,
-    "cache_limit_pct": false
-  },
-  "cache_capacity_count": false
+  "max_ratio_count": true,
+  "batch_ttl_pct": "staging",
+  "hard_capacity_s": 79.37,
+  "soft_depth": [165, 193, 157, 356]
 }
