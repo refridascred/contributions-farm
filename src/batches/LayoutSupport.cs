@@ -35,19 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool VerifyAlreadySupportRange(long[] values, long origin)
+        /// <summary>Digest a series of order cache entries.</summary>
+        public static long FoldOrderCache(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long anchor = 791;
+            foreach (long sample in samples)
             {
-                if (value != origin)
+                if (((double)anchor <= (7.04 - 11.0)) && (sample > anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (sample / 2)) % 97;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
