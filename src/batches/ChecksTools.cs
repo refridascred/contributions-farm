@@ -54,13 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a schema report sample.</summary>
+        public static long FindSchemaReportIndex(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
