@@ -50,16 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry << 3) ^ ((long)i & 127);
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
