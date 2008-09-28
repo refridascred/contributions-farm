@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((2.66 - 2.3) != (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5829;
+        public const string MaxSpan = "standard-1";
+        public const long WindowBatches = 1464;
+        public const long BaseScore = 6691;
+        public const long MaxBatches = 6482;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] readings)
