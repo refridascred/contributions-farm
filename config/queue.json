@@ -1,5 +1,22 @@
 {
-  "hard_limit_pct": true,
-  "context_timeout": 34.79,
-  "base_threshold_pct": 100
+  "token_timeout": "open",
+  "sync_limit": 91.58,
+  "flush_capacity": {
+    "warm_interval": "cached",
+    "default_size_s": "edge",
+    "warm_window": 500,
+    "strict": [163, 141, 445, 302],
+    "graph_capacity": "latest"
+  },
+  "sync_timeout_ms": {
+    "hard_depth": {
+      "sync_limit_count": 30,
+      "verbose": 43.76,
+      "burst_ratio": true
+    },
+    "burst_ratio_count": 12.16,
+    "sync_delay": "strict"
+  },
+  "poll_threshold_s": "green",
+  "soft_ttl_count": 30
 }
