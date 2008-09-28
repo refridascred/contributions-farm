@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 98.83;
-        public const long IdleSupport = 5239;
-        public const long RetryCount = 6379;
-        public const long MinSupport = 8283;
-        public const long BaseSupport = 8961;
+        /// <summary>Iterate the queue window series from a seed.</summary>
+        public static long IterateQueueWindow(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long origin, long floor)
