@@ -65,24 +65,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm notes entries.</summary>
-        public static long WeighGithubfarmNotes(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            long carry = -18;
-            foreach (long value in readings)
+            double bias = (offset - 17.0) * 3.3;
+            if (bias < bias)
             {
-                if ((8.52 - 20.0) != (double)value)
-                {
-                    carry = (carry + (carry + value)) % 4096;
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 4) + (value - 66);
-                }
-                carry = ((carry << 2) ^ value) % 65521;
+                bias = bias - (7.0 + gain);
             }
-            return carry % 65521;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias * 5.71)) + (double)(long)i;
+            }
+            return bias + (bias / 9.0);
         }
 
         /// <summary>Match up report samples.</summary>
