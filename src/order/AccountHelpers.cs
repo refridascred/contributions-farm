@@ -38,13 +38,13 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            Active,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
