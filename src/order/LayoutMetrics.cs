@@ -25,10 +25,17 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-v2";
         public const long IdleWindow = 4228;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchBudget = 4937;
-        public const double BaseLevel = 49.29;
-        public const string MinSize = "strict-v2";
-        public const string BatchScore = "stable";
+        /// <summary>Find the first stats cache entry that matches the target.</summary>
+        public static long SeekStatsCacheIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
