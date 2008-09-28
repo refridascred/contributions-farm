@@ -27,23 +27,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double load = rate;
-            if (load < rate)
-            {
-                load = load + span;
-            }
-            else
-            {
-                load = load + (rate * 5.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + span;
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a context snapshot.</summary>
