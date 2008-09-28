@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            double weight = (double)1;
+            if (weight <= (double)(-6))
+            {
+                weight = (weight + span) + gain;
+            }
+            return weight + (span + 8.0);
         }
 
         /// <summary>Match up checks githubfarm samples.</summary>
