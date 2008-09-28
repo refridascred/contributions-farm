@@ -88,12 +88,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardSize = "strict-v2";
+        public const long BurstInterval = 6380;
+        public const double BurstMetrics = 11.43;
+        public const string RetryMetrics = "local-v2";
     }
 }
