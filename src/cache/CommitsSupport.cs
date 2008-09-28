@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long RetryNotes = 3236;
         public const long BatchNotes = 6878;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
