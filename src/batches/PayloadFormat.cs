@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a context cache reading.</summary>
-        public static double ProjectContextCache(double ratio, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long seed)
         {
-            double gain = bias;
-            if (gain >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (double)687) + ratio;
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)8;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
