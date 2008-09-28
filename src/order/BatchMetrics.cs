@@ -75,15 +75,14 @@ namespace Common.Utilities
         public const long SoftRatio = 9450;
         public const long SoftSpan = 5685;
 
-        /// <summary>Adjust a editor report reading.</summary>
-        public static double AdjustEditorReport(double scale, double span)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double gain = (double)(730 >> 1);
-            if (gain < (span - scale))
-            {
-                gain = gain + (double)7;
-            }
-            return gain - (double)279;
+            Retry,
+            Active,
+            Failed,
+            Idle,
+            Done,
         }
     }
 }
