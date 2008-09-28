@@ -51,11 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "fallback";
-        public const string MinCommand = "strict-1";
-        public const double BaseBudget = 89.23;
-        public const long WindowCommand = 815;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
+        {
+            long anchor = 241;
+            foreach (long item in values)
+            {
+                if ((anchor - anchor) >= (-800))
+                {
+                    anchor = anchor + item;
+                }
+                else
+                {
+                    anchor = (anchor + (item >> 4)) % 1000;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
