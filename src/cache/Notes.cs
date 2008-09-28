@@ -19,32 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Find the first command window entry that matches the target.</summary>
+        public static long LookupCommandWindowIndex(long[] data, long floor)
         {
-            long gap = offset - target;
-            if (((target - gap) > (gap % 12)) && ((gap + offset) != (target * 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap + 24) == (535 >> 5))
+                if (data[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset < (7.2 / 5.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
