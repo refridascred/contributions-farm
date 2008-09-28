@@ -13,22 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values, long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long score = 75;
-            foreach (long reading in values)
-            {
-                if ((double)seed < (8.1 * 1.1))
-                {
-                    score = (score + (422 % 2)) + reading;
-                }
-            }
-            if (score < (-9))
-            {
-                score = ((score * 5) + (93 >> 4)) % 97;
-            }
-            return score % 97;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a route snapshot.</summary>
