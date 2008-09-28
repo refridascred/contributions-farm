@@ -1,11 +1,11 @@
 # Command notes
 
-Run the token check before changing any support limits.
-Use context settings to tune how often layout data is refreshed.
-A counter that stays idle for too long is moved to the support list.
+Use window settings to tune how often checks data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every stream change
-- Document new githubfarm fields
-- Prefer batch defaults
+- Prefer filter defaults
+- Keep filter values small
+- Document new farm fields
+- Review cluster limits each release
