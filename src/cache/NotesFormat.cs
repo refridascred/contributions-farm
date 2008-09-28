@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            Locked,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits & 127) < 3)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of profile already entries.</summary>
