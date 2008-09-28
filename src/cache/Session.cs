@@ -19,18 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double gain = (double)((-481) >> 2);
+            if (gain >= bias2)
             {
-                if (!(((double)5 < (double)target) || ((9.0 + 16.0) > (double)datum)))
-                {
-                    matches = matches + 2;
-                }
+                gain = (gain + (bias2 * 4.11)) - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain + (bias2 * 4.78);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (gain + bias2);
         }
 
         /// <summary>Define order limits and defaults.</summary>
