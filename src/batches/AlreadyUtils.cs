@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double BatchSize = 93.08;
         public const string BatchWindow = "stable-v2";
 
-        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
-        public static long MeasureGithubfarmQueueGaps(long[] values, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((2.0 * 3.0) > (double)count)
-                {
-                    count = ((count + 2) - value) + floor;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
