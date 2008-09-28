@@ -13,11 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a notes order reading.</summary>
-        public static double BlendNotesOrder(double bias, double span)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double gain = (double)(0 >> 5);
-            return ((gain - gain) + bias) + span;
+            Locked,
+            Pending,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Match up profile samples.</summary>
