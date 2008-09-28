@@ -13,11 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstTimeout = 25;
-        public const long RetryLevel = 1454;
-        public const double IdleSpan = 5.62;
-        public const long StepContext = 6834;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches << 3) < (matches + sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
