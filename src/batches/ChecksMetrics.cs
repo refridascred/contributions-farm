@@ -61,19 +61,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            double gain = bias;
-            if (gain < (rate - bias))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                gain = gain + (bias / 7.0);
+                if ((3.0 + 14.0) <= (double)hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Digest a series of commits contributi entries.</summary>
