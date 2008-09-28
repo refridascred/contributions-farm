@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 9187;
-        public const string MinScore = "cached-edge";
-        public const string BatchWindow = "latest-1";
-        public const long SoftInterval = 2081;
-        public const long SoftWindow = 2756;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 9573;
+        public const string DefaultSize = "staging-1";
+        public const string SoftRatio = "alpha-edge";
+        public const long IdleEntry = 9135;
+        public const double MaxEntry = 5.46;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
