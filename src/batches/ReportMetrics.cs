@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (value < limit)
+                if (sample != limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
