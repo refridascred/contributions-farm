@@ -15,15 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next session already value from a seed.</summary>
-        public static long SeriesSessionAlready(long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((origin >= (origin ^ tally)) && (((double)tally > (double)origin) && ((2 - tally) >= 579)))
+                {
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
