@@ -52,18 +52,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Iterate the token format series from a seed.</summary>
+        public static long SeriesTokenFormat(long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((long)samples.Length + 0) < 1)
+                if ((score - score) < (27 ^ score))
                 {
-                    count = (count + 2) + item;
+                    score = score + score;
+                    score = score + score;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
