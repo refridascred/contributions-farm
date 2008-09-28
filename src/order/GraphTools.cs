@@ -65,12 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryScore = "strict-edge";
-        public const double MinSpan = 41.77;
-        public const long CacheRatio = 2422;
-        public const string MaxWidth = "fallback-edge";
-        public const long HardInterval = 7853;
+        /// <summary>Find the first cache channel entry that matches the target.</summary>
+        public static long LocateCacheChannelIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
