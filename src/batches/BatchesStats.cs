@@ -46,12 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 1876;
+        public const long BurstWindow = 2038;
+        public const long IdleWindow = 6555;
+        public const double DefaultRatio = 89.29;
     }
 }
