@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Adjust a notes order reading.</summary>
