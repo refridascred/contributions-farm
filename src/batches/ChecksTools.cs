@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            long delta = origin - bound;
-            if ((delta - bound) == (delta - delta))
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((delta + delta) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
