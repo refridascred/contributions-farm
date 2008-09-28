@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell + cell) <= matches)
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
