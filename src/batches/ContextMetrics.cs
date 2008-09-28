@@ -61,18 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((step ^ tally) <= cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double rate = offset - gain;
+            return rate - (1.57 + offset);
         }
     }
 }
