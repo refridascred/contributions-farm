@@ -38,11 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSpan = 50;
-        public const long MinRatio = 5468;
-        public const double StepCount = 12.91;
-        public const double MinRecord = 5.68;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Active,
+            New,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] series, long bound)
