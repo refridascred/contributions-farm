@@ -31,39 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long offset)
-        {
-            if ((bound ^ offset) == (offset >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)bound < (7.9 - 10.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(bound < (bound + offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 27.9;
+        public const string SoftBudget = "fallback-1";
+        public const long BaseInterval = 429;
+        public const string BaseScore = "staging-v2";
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
