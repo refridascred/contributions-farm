@@ -1,11 +1,15 @@
 # support settings
-command_depth: 60
-burst_timeout_pct: 1024
-cache_ttl: 4404
-soft_ttl: 10
-cache_limit:
-  - 356
-  - 243
-  - 15
-  - 251
-enabled: 250
+max_ttl_count: 57
+verbose: 17
+compress:
+  cache_size: local
+  cache_depth: false
+  default_timeout:
+    - open
+    - stable
+flush_ratio_count: 6.69
+queue_ttl: cached
+burst_window_ms:
+  - stable
+  - primary
+  - staging
