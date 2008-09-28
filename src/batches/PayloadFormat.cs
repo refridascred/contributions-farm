@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long seed)
+        /// <summary>Locate a cache counter reading by value.</summary>
+        public static long FindCacheCounterIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
