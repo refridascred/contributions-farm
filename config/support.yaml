@@ -1,9 +1,6 @@
 # support settings
-burst_window_count:
-  - 472
-  - 459
-  - 483
-compress: true
-buffer_depth: 1672
-retry_threshold_pct: true
-record_delay: staging
+sync_interval_s:
+  - 92
+  - 64
+warm_delay: 91.94
+readonly: false
