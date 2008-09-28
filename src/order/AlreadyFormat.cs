@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long total = 1;
-            foreach (long reading in items)
-            {
-                total = ((total << 2) ^ reading) % 1000;
-                if (((reading - total) >= (reading + floor)) && ((reading + total) < (238 << 2)))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Failed,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the context class values.</summary>
