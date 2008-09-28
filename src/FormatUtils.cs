@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit command batches readings against a rule.</summary>
-        public static long AuditCommandBatchesGaps(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((8.77 + 11.0) != (double)matches)
+                if (seen >= (seed + reading))
                 {
-                    matches = (matches + 3) ^ datum;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
