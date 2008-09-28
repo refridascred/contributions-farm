@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Classify a order session pair into a bucket.</summary>
+        public static long SortOrderSession(long seed, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            if ((double)seed > (double)963)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin <= (origin - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.53 + 5.0) != (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(seed >= (21 / 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
