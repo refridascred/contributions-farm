@@ -31,23 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long origin)
         {
-            double rate2 = rate;
-            if (rate2 > 3.02)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                rate2 = rate2 + floor;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (6.4 - rate2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (rate2 / 9.0)) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return flag;
         }
     }
 }
