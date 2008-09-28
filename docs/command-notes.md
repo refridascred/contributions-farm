@@ -1,11 +1,15 @@
 # Command notes
 
-When a token fails, the report handler retries a few times before giving up.
-The commits report groups every stats by stream.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Defaults for metrics live in the config folder and can be overridden per environment.
+When a stream fails, the command handler retries a few times before giving up.
+
+Use farm settings to tune how often channel data is refreshed.
+Use route settings to tune how often profile data is refreshed.
+The account module keeps cache values in sync with the cache cache.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review token limits each release
-- Log every graph change
+- Review graph limits each release
+- Log every order change
+- Prefer format defaults
+- Keep batch values small
