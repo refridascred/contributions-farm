@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings, long target)
+        /// <summary>Locate a token window reading by value.</summary>
+        public static long LocateTokenWindowIndex(long[] levels, long target)
         {
-            long mix = 3;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)readings.Length + reading) == (reading / 9)))
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
-                    mix = ((mix * 5) + (771 * 3)) - target;
+                    return (long)i;
                 }
             }
-            if (mix < 259)
-            {
-                mix = (mix << 3) ^ (593 / 5);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
