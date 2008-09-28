@@ -36,19 +36,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a command metric reading.</summary>
-        public static double SmoothCommandMetric(double rate, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            double gain = 3.9;
-            if (gain < (double)(-41))
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + 9.0) + rate;
+                drift = ((drift - (offset - drift)) + (double)(long)i) - scale;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (double)42;
+            return drift + (double)31;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
