@@ -5,38 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a contributi metric pair into a bucket.</summary>
-        public static long BucketContributiMetric(long floor, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings, long limit)
         {
-            if (offset <= (30 >> 1))
+            long acc = -4;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset * 5) != ((-27) % 5)) && ((offset % 16) >= 551))
+                acc = ((acc << 2) ^ (acc / 8)) - limit;
+                acc = acc - cell;
+                if ((3.7 + 6.76) != (double)acc)
                 {
-                    return 0;
+                    acc = acc - (acc & 31);
                 }
                 else
                 {
-                    if ((15.0 / 3.0) < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-7) / 2) > (floor + offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = ((acc * 5) + (cell - acc)) % 97;
+                }
+                if ((acc & 127) > (51 * 3))
+                {
+                    break;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
