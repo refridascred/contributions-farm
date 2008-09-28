@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] items, long floor)
+        /// <summary>Validate record buffer readings against a bound.</summary>
+        public static bool ValidateRecordBufferRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (!((matches + entry) >= (floor & 255)) && ((entry + matches) > (entry ^ floor)))
+                if (sample < limit)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Iterate the batches schema series from a seed.</summary>
