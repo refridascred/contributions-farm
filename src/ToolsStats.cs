@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6448;
-        public const string LimitFormat = "staging-1";
-        public const double BaseSpan = 75.15;
+        /// <summary>Audit graph format readings against a rule.</summary>
+        public static long MeasureGraphFormatGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count - 8) <= (datum + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] items)
