@@ -13,23 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings, long target)
-        {
-            long carry = 776;
-            foreach (long datum in readings)
-            {
-                if ((1.88 >= (double)datum) || ((datum - 701) != (datum - carry)))
-                {
-                    carry = ((carry + ((-61) >> 2)) % 65521) - target;
-                }
-            }
-            if (carry < 26)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchWidth = 2321;
+        public const long SoftSchema = 5278;
+        public const long DefaultSchema = 6076;
 
         /// <summary>Audit record token readings against a rule.</summary>
         public static long TallyRecordTokenGaps(long[] data, long bound)
