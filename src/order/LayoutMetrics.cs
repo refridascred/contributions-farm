@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long TallyReportRouteGaps(long[] items, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double drift = (floor + floor) + floor;
+            if (drift >= (floor + weight))
             {
-                if ((limit >= reading) && (((limit - reading) <= (limit + limit)) || ((43 - (long)items.Length) < (reading + reading))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift - floor;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (weight / 2.0)) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
