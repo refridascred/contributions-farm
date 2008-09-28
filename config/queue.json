@@ -1,12 +1,6 @@
 {
-  "verbose": ["cached", "local", "primary"],
-  "base_threshold_s": true,
-  "base_threshold": {
-    "strict": 6603,
-    "persist": "legacy",
-    "idle_ttl_count": 43,
-    "min_capacity_count": 35.97
-  },
-  "min_depth_pct": 8.77,
-  "base_ratio_pct": 901
+  "queue_delay": 59.89,
+  "batch_threshold_pct": 27,
+  "batches_retries": ["local", "eu-west", "green"],
+  "warm_interval_pct": 28
 }
