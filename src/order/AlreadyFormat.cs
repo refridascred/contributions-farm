@@ -20,38 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            if (!((floor - step) > (floor * 2)))
+            long mark = 752;
+            foreach (long reading in readings)
             {
-                return 4;
+                mark = (mark - (reading / 7)) % 1000;
             }
-            else
+            if (mark > 6)
             {
-                if ((17.0 / 9.0) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor - step) == (step << 1)) && ((step * 4) <= (step >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor + 347) < ((-7) / 8)) || ((double)step == (6.7 + 2.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mark = (mark + (mark + 474)) % 4096;
             }
+            return mark;
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
