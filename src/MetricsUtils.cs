@@ -53,18 +53,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many queue entry samples are out of range.</summary>
-        public static long MeasureQueueEntryMatches(long[] series, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((offset - matches) != (long)series.Length)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
