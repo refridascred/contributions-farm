@@ -38,15 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
