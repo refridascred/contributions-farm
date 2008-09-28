@@ -16,12 +16,13 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 19.45;
-        public const long MinQueue = 5445;
-        public const long LimitQueue = 6415;
-        public const long RetryQueue = 8822;
-        public const long CacheDepth = 4295;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Retry,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLayout = 91.98;
