@@ -20,19 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long prev = bound - target;
+            if ((prev ^ target) < bound)
             {
-                if (sample >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((target << 1) > prev)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (target + prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev - prev) <= prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
