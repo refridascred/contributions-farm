@@ -41,13 +41,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
+            Queued,
+            New,
+            Idle,
             Draft,
-            Pending,
-            Locked,
-            Done,
+            Dropped,
         }
     }
 }
