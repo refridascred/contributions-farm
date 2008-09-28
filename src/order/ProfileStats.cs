@@ -41,14 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] series)
         {
-            Paused,
-            Idle,
-            Synced,
-            Retry,
-            Locked,
+            long acc = 77;
+            foreach (long cell in series)
+            {
+                if ((acc & 31) >= (6 >> 5))
+                {
+                    acc = acc + (cell - acc);
+                }
+                if (((double)cell < 4.3) || ((9 - acc) <= 298))
+                {
+                    break;
+                }
+            }
+            if (acc < 3)
+            {
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc % 65521;
         }
     }
 }
