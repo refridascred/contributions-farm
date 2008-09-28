@@ -1,12 +1,9 @@
 # entry settings
-max_limit: 7042
-cache_ttl_ms:
-  - primary
-  - primary
+base_ttl: cached
+githubfarm_timeout: eu-west
+graph_ttl:
+  - edge
+  - fallback
   - cached
-githubfarm_size: true
-persist:
-  - 263
-  - 228
-  - 210
-max_threshold_ms: false
+default_interval_count: true
+base_ratio_ms: latest
