@@ -1,27 +1,22 @@
 # entry settings
-poll_delay_ms:
-  retry_depth_s: cached
-  sync_interval_count: true
-  context_retries: strict
-  idle_ttl_pct: false
-  persist: 250
-warm_size_pct: 500
-max_ttl_count:
-  max_threshold_count: local
-  hard_ratio: green
-  flush_capacity_count:
-    - strict
-    - edge
-    - green
-hard_ratio_pct:
-  compress:
-    - 281
-    - 99
-    - 230
-  audit: 500
-  route_ratio: blue
-  support_delay: fallback
-  burst_threshold: stable
-  tools_window: false
-layout_depth: 42.01
-queue_depth: 37
+contributi_timeout: 60.45
+retry_capacity_pct:
+  strict: 7705
+  layout_delay: 43
+  default_timeout: green
+  soft_interval_count: true
+  burst_window: latest
+enabled: staging
+cache_retries: true
+strict:
+  base_limit_pct:
+    - 276
+    - 158
+    - 304
+  base_ratio:
+    - eu-west
+    - open
+    - open
+    - legacy
+  default_ratio_pct: 17.88
+default_size_s: 7516
