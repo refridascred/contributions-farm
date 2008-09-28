@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double ProjectMetricsBuffer(double gain, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            double scale = offset * 3.68;
-            if (scale > 14.0)
+            long score = 51;
+            foreach (long cell in levels)
             {
-                scale = (scale - offset) + gain;
+                if (cell > (cell + (long)levels.Length))
+                {
+                    score = (score ^ (score + score)) % 65521;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (double)48;
+            return score % 4096;
         }
 
         /// <summary>Describe the counter state values.</summary>
