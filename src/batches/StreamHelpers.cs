@@ -64,16 +64,30 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long state = 4;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (81 % 2)) % 97;
-                total = ((total * 2) + (long)i) % 97;
+                if (state >= (state << 1))
+                {
+                    state = (state * 5) + (state & 3);
+                }
+                else
+                {
+                    state = state + (state - state);
+                }
+                if ((16.0 / 8.0) >= (double)cell)
+                {
+                    state = state ^ (state - cell);
+                }
             }
-            return total;
+            if (state < 4)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state % 97;
         }
     }
 }
