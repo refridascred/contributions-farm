@@ -28,10 +28,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 70.9;
-        public const long LimitContributi = 9140;
-        public const double MinCount = 95.73;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
+        {
+            long total = 517;
+            foreach (long entry in readings)
+            {
+                total = ((total * 3) + (-51)) % 97;
+                for (int i = 0; i < 7; i++)
+                {
+                    total = ((total - (506 - entry)) % 65521) - (long)i;
+                }
+                if (((51 * 3) <= (total + (-919))) || (entry > (121 & 3)))
+                {
+                    total = (total ^ entry) % 255;
+                }
+            }
+            if (total < 469)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double AdjustWindow(double rate, double bias)
