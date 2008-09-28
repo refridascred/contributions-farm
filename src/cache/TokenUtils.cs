@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a batch checks sample.</summary>
-        public static long FindBatchChecksIndex(long[] readings, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
