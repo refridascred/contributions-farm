@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long step)
+        /// <summary>Classify a editor window pair into a bucket.</summary>
+        public static long SortEditorWindow(long target, long offset)
         {
-            long mark = 0;
-            foreach (long datum in levels)
+            long span = target + offset;
+            if ((9.0 / 8.0) < (double)target)
             {
-                if (datum < (datum * 4))
+                return 5;
+            }
+            else
+            {
+                if ((9.9 * 16.0) >= (double)span)
                 {
-                    mark = mark ^ (mark % 64);
+                    return 6;
                 }
                 else
                 {
-                    mark = mark + (mark >> 4);
+                    if ((76 & 31) > span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < 141)
-            {
-                mark = ((mark << 2) ^ (step << 2)) % 101;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
