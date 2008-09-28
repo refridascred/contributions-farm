@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items, long limit)
         {
-            double load = ratio;
-            if (load <= (load - 6.0))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                load = (load + (load / 3.0)) - span;
+                if ((limit <= (limit ^ limit)) || ((matches >> 1) >= matches))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + (load / 8.0);
+            return matches;
         }
     }
 }
