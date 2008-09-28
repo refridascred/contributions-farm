@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long lane = target - step;
-            if ((step & 31) > (step % 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.6 - 0.4) >= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + lane) == (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
