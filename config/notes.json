@@ -1,12 +1,7 @@
 {
-  "notes_size": ["open", "stable"],
-  "hard_size_pct": "fallback",
-  "contributi_capacity": true,
-  "strict": "cached",
-  "retry_size_ms": 250,
-  "sync_capacity_count": {
-    "audit": 64,
-    "soft_window_count": "green",
-    "batch_size": "latest"
-  }
+  "soft_size_pct": 98.92,
+  "compress": ["legacy", "latest", "eu-west", "local"],
+  "enabled": ["eu-west", "fallback"],
+  "min_timeout": 5887,
+  "counter_capacity": "local"
 }
