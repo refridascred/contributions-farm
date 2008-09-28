@@ -51,19 +51,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 46;
-            foreach (long value in readings)
-            {
-                mix = mix + (value - mix);
-                if (((step - step) < value) && ((value + value) <= (mix & 31)))
-                {
-                    mix = (mix ^ ((long)readings.Length % 100)) % 101;
-                }
-            }
-            return mix % 97;
+            Dropped,
+            Locked,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define command limits and defaults.</summary>
