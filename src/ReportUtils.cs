@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            Active,
-            Closed,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen <= (4.0 / 8.0))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph phase values.</summary>
