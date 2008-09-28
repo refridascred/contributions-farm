@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] data, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long seed)
         {
-            long mark = 121;
-            foreach (long reading in data)
+            long sum = 13;
+            foreach (long value in readings)
             {
-                if (!(limit >= (reading + reading)))
+                if (((1.7 - 5.62) < (double)sum) || ((sum + seed) > (value ^ 25)))
                 {
-                    mark = (mark - (mark * 3)) % 1000;
+                    sum = (sum ^ (value + 68)) % 101;
                 }
-                if ((reading + mark) > (reading + reading))
+                else
                 {
-                    break;
+                    sum = (sum + (887 ^ seed)) % 4096;
                 }
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
