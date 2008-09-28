@@ -27,10 +27,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 9599;
-        public const long IdleStream = 7629;
-        public const long WindowCount = 803;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] series)
