@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const string BatchLayout = "staging-1";
         public const long CacheLevel = 6198;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            double load = offset;
-            if (load > offset)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + (double)1;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = total + (long)i2;
+                    total = (total ^ (seed & 31)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)512) + (double)(long)i;
-            }
-            return load + weight;
+            return total;
         }
 
         /// <summary>Hold a metrics summary.</summary>
