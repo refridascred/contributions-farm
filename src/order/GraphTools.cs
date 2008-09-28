@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 8465;
+        public const string BurstMetric = "strict-v2";
+        public const long LimitTimeout = 2439;
+        public const long RetryMetric = 1301;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] samples, long offset)
