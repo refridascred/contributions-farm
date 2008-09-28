@@ -34,11 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
