@@ -21,9 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9376;
-        public const long HardEditor = 7190;
-        public const double BurstDepth = 21.99;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long bound)
+        {
+            long sum = -53;
+            foreach (long value in series)
+            {
+                if (!!((4.78 * 12.0) == (double)sum))
+                {
+                    sum = ((sum << 2) ^ (874 & 255)) + value;
+                }
+                if (45 >= (bound ^ bound))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+            }
+            return sum;
+        }
     }
 }
