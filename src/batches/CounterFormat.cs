@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long SoftBatch = 4256;
         public const long StepBatch = 3589;
 
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long FoldChannelPayload(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = 31;
-            foreach (long item in data)
-            {
-                if ((item / 8) < (carry / 4))
-                {
-                    carry = ((carry << 2) ^ item) % 255;
-                }
-            }
-            return carry;
+            Ready,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
