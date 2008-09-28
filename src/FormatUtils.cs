@@ -59,19 +59,15 @@ namespace Common.Utilities
             return scale2 + (bias + 15.0);
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double offset)
         {
-            double drift = gain / 7.0;
-            if (drift < 20.0)
+            double mean = (double)(991 + 750);
+            if (mean > (rate - rate))
             {
-                drift = drift - 4.0;
+                mean = mean - offset;
             }
-            else
-            {
-                drift = drift - (gain / 9.0);
-            }
-            return drift - (gain + offset);
+            return mean + rate;
         }
     }
 }
