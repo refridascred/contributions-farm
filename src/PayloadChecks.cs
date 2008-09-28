@@ -37,23 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + (-977)) < entry)
-                {
-                    tally = (tally + 1) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseLevel = 14.35;
+        public const long BatchRoute = 5006;
+        public const string RetryDepth = "cached-1";
+        public const long StepBudget = 6100;
 
         /// <summary>Project the next token account value.</summary>
         public static double SmoothTokenAccount(double scale, double bias)
