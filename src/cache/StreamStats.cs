@@ -12,36 +12,29 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long step)
+        /// <summary>Grade a command order value against two limits.</summary>
+        public static long RankCommandOrder(long offset, long floor)
         {
-            long cur = bound ^ step;
-            if (246 <= (cur - 29))
+            long span = offset - floor;
+            if (!((floor * 5) <= 656))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)step < 6.9)
+                if (((span << 3) >= (floor ^ floor)) && ((floor >> 3) >= offset))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((cur + bound) > 27)
+                    if ((floor + floor) <= (floor & 255))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if ((9 ^ bound) >= (bound & 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 7;
                     }
                 }
             }
