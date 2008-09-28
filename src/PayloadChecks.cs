@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseScore = "alpha-edge";
-        public const long StepSpan = 9028;
-        public const long CacheSession = 2523;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4970;
+        public const long LimitWindow = 6151;
+        public const long LimitTimeout = 5654;
+        public const long IdleTimeout = 6691;
+        public const long BatchTimeout = 6311;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
