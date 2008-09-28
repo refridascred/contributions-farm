@@ -15,12 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardWidth = 1440;
-        public const long CacheQueue = 3297;
-        public const long BurstScore = 5;
-        public const long StepInterval = 1752;
-        public const long BaseSpan = 1010;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinRatio = 751;
