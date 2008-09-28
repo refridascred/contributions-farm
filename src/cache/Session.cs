@@ -51,17 +51,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long step)
+        /// <summary>Classify a account tools pair into a bucket.</summary>
+        public static long GradeAccountTools(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = seed ^ seed2;
+            if (5 <= cur)
             {
-                if (values[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if ((cur & 7) == (seed2 ^ 119))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
