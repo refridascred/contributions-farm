@@ -34,11 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseLevel = "primary-1";
+        public const long BatchFactor = 9893;
+        public const string StepRatio = "fallback";
+        public const double HardStream = 58.49;
     }
 }
