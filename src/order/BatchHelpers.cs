@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] levels)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count < (double)63)
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
