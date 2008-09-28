@@ -1,4 +1,9 @@
 # support settings
-farm_timeout: eu-west
-session_window: edge
-audit: 86.52
+burst_window_count:
+  - 472
+  - 459
+  - 483
+compress: true
+buffer_depth: 1672
+retry_threshold_pct: true
+record_delay: staging
