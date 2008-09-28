@@ -46,18 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 8;
+            foreach (long item in series)
             {
-                if (matches <= (matches ^ datum))
+                if (!(sum < (item + offset)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
+                sum = (sum + (3 * 4)) % 101;
             }
-            return matches;
+            if (sum > 106)
+            {
+                sum = (sum + (sum & 7)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
