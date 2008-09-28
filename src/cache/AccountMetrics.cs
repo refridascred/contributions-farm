@@ -31,17 +31,17 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Locate a graph editor reading by value.</summary>
-        public static long LocateGraphEditorIndex(long[] samples, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 2) + carry;
+                carry = (carry - (origin - (long)i)) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
