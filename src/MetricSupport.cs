@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 1296;
-        public const double HardFarm = 14.33;
-        public const long BurstFarm = 6292;
-        public const long BaseFarm = 7033;
-        public const string MinTimeout = "local-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell != (9.3 / 7.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
