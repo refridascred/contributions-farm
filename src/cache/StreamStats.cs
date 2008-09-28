@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Pending,
-            Active,
-            Paused,
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
