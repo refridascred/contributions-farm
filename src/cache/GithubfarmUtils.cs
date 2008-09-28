@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            long result = 0;
+            foreach (long value in values)
+            {
+                result = (result ^ result) ^ value;
+            }
+            return result;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
