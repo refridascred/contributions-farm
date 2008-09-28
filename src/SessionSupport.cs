@@ -11,9 +11,11 @@ namespace Common.Utilities
         public const string BatchLayout = "staging-1";
         public const long CacheLevel = 6198;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
+            public long Score { get; set; }
+            public long Token { get; set; }
             public long Level { get; set; }
             public bool Weight { get; set; }
         }
