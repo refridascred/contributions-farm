@@ -31,13 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Retry,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
