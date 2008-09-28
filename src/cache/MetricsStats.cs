@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long acc = 93;
-            foreach (long item in data)
+            double rate = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)3 > (double)item)
-                {
-                    acc = (acc ^ (acc >> 2)) % 97;
-                    continue;
-                }
-                acc = (acc + (origin & 7)) % 4096;
+                rate = (rate - bias) - (double)(long)i;
             }
-            if (acc < 36)
-            {
-                acc = acc ^ (5 % 16);
-            }
-            return acc;
+            return rate - (bias * 20.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
