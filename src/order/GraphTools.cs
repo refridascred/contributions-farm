@@ -45,21 +45,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)samples.Length + 0) < 1)
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
