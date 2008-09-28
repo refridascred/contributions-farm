@@ -1,8 +1,7 @@
 {
-  "commits_limit": 8992,
-  "sync_size_ms": "green",
-  "metrics_timeout": true,
-  "soft_ratio_s": false,
-  "retry_delay_ms": 5646,
-  "batch_threshold_count": true
+  "hard_window": false,
+  "dry_run": 85.84,
+  "graph_delay": ["green", "staging", "strict"],
+  "base_retries_ms": 6507,
+  "context_timeout": [84, 277]
 }
