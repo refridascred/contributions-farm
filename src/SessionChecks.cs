@@ -25,10 +25,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 9202;
-        public const long IdleCount = 2973;
-        public const string CacheLevel = "cached-edge";
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double offset)
+        {
+            double weight = (offset - 0.3) / 4.0;
+            if (weight > 2.21)
+            {
+                weight = weight + (weight - scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)92) + (double)(long)i;
+            }
+            return weight - scale;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
