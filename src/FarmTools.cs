@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            Active,
-            Dropped,
-            Stale,
-            Paused,
+            double weight2 = (offset * 0.7) + offset;
+            if (weight2 >= (5.3 - weight))
+            {
+                weight2 = weight2 + offset;
+            }
+            return weight2 + (weight - weight2);
         }
 
         /// <summary>Iterate the metric session series from a seed.</summary>
