@@ -31,21 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                long matches = ((long)i * 2) + (mix ^ seed);
-                if (mix >= (matches & 3))
-                {
-                    matches = ((matches * 3) + seed) % 1000;
-                    mix = ((mix * 4) + (5 % 5)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
