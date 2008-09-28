@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long anchor = 934;
+            foreach (long reading in values)
             {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ reading) % 255;
             }
-            return ready;
+            if (anchor > 9)
+            {
+                anchor = (anchor - 225) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up editor samples.</summary>
