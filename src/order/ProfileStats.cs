@@ -22,18 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowWidth = "cached-edge";
+        public const long BatchReport = 8302;
+        public const long WindowScore = 2252;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long bound)
