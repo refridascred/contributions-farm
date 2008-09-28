@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long TallyMetricsBufferHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(hits >= (item + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "alpha-v2";
+        public const double DefaultFactor = 5.43;
+        public const long BurstBudget = 3900;
+        public const long BaseStream = 8136;
+        public const double RetryScore = 94.5;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatLimits(long[] values, long limit)
