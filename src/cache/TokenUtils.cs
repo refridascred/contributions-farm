@@ -14,13 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 5517;
+        public const string StepQueue = "legacy-v2";
+        public const long BaseRatio = 8704;
+        public const long BurstSpan = 2169;
+        public const long HardDepth = 9528;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
