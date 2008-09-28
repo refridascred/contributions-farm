@@ -27,11 +27,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 7651;
-        public const long IdleSize = 8670;
-        public const double HardWidth = 85.42;
-        public const long BurstSupport = 8366;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 9599;
+        public const long IdleStream = 7629;
+        public const long WindowCount = 803;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] series)
