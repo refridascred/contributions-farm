@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double mean = (3.29 + span) / 8.0;
+            if (mean < (mean / 7.0))
             {
-                if ((count / 6) >= (value & 127))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (bias - span);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Adjust a format reading.</summary>
