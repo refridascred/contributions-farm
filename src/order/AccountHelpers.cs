@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchLevel = 37.43;
-        public const double LimitDepth = 71.58;
-        public const string IdleWidth = "legacy-edge";
-        public const long DefaultCount = 8160;
-        public const double MinLevel = 78.13;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 1800;
+        public const long MinInterval = 8847;
+        public const long BaseScore = 2809;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
