@@ -71,23 +71,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long seed)
         {
-            double rate2 = (double)(32 - 84);
-            if (rate2 > rate2)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = ((rate2 - rate2) + rate) + offset;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return -1;
         }
     }
 }
