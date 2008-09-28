@@ -1,6 +1,7 @@
 {
-  "batch_interval_count": 9197,
-  "idle_ttl_pct": true,
-  "hard_ratio_ms": true,
-  "warm_delay": 71
+  "account_delay": 580,
+  "compress": false,
+  "sync_limit_pct": "open",
+  "idle_depth_pct": "open",
+  "command_threshold": 5704
 }
