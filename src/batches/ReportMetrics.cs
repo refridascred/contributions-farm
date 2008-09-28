@@ -23,24 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long bound, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] data)
         {
-            if (!((bound % 7) != (bound - bound)))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 4) > bound)
+                if (!(1 > (seen + item)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
