@@ -29,22 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((9.19 / 4.0) > (5.3 - 1.0))
+                if ((entry + (-977)) < entry)
                 {
-                    seen = (seen + 3) ^ entry;
+                    tally = (tally + 1) + bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next token account value.</summary>
