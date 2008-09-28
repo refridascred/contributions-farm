@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next metrics graph value from a seed.</summary>
-        public static long RollMetricsGraph(long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 1;
+            foreach (long sample in samples)
             {
-                if (14 <= (long)i)
+                if ((19.0 - 8.0) <= (double)sum)
                 {
-                    score = (score + (score ^ score)) % 101;
+                    sum = ((sum * 3) + (5 + sum)) % 97;
                 }
-                score = ((score * 4) + (long)i) % 101;
+                else
+                {
+                    sum = sum ^ (sample % 12);
+                }
             }
-            return score;
+            if (sum > 2)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Blend two schema buffer measurements.</summary>
