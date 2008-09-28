@@ -13,22 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long origin)
+        /// <summary>Count window counter pairs that satisfy a relation.</summary>
+        public static long MatchWindowCounterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin >= (origin ^ tally)) && (((double)tally > (double)origin) && ((2 - tally) >= 579)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
