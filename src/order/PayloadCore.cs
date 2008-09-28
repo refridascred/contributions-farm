@@ -23,24 +23,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long floor)
+        /// <summary>Find the first contributi payload entry that matches the target.</summary>
+        public static long SeekContributiPayloadIndex(long[] data, long bound)
         {
-            if ((double)floor > 4.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + 3) >= target)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
