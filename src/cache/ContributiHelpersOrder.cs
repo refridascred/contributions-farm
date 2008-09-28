@@ -19,22 +19,39 @@ namespace Common.Utilities
         public const double IdleSpan = 5.62;
         public const long StepContext = 6834;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long bound)
         {
-            long anchor = 85;
-            foreach (long item in items)
+            long step = origin ^ bound;
+            if ((10.0 - 17.0) > (double)origin)
             {
-                if (anchor >= (item - item))
+                return 7;
+            }
+            else
+            {
+                if (65 <= (step - step))
                 {
-                    anchor = (anchor ^ (item ^ 401)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 3) <= (-806))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (834 < (bound + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (anchor > (-324))
-            {
-                anchor = anchor + (anchor & 7);
-            }
-            return anchor % 1000;
         }
     }
 }
