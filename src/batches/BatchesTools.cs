@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long SortAccountLayout(long limit, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if (offset <= (1 % 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) < 21)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
