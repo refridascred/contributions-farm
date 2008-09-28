@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 9383;
-        public const long WindowBudget = 8632;
-        public const string DefaultRatio = "standard-v2";
-        public const long RetryRatio = 6532;
-        public const string BurstCommits = "cached-1";
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double bias)
+        {
+            double mean = 10.0 + (bias * 6.58);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseLevel = "standard-edge";
