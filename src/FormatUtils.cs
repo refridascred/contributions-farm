@@ -13,11 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstScore = 75.43;
-        public const long CachePayload = 4607;
-        public const long SoftLevel = 8929;
-        public const long DefaultSpan = 3156;
+        /// <summary>Match up farm order samples.</summary>
+        public static long PairFarmOrderCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
