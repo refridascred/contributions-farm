@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Paused,
-            Retry,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 8730;
+        public const double RetryInterval = 51.59;
+        public const long BaseOrder = 4164;
+        public const string MaxRatio = "staging-v2";
+        public const string RetryOrder = "strict";
 
         /// <summary>Count the support order entries that pass the check.</summary>
         public static long CountSupportOrderHits(long[] readings, long seed)
