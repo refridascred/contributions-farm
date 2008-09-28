@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                long diff = target;
-                acc = (acc - (diff + target)) % 1000;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 6597;
+        public const string StepBudget = "staging-edge";
+        public const string DefaultBudget = "latest-1";
+        public const long CacheInterval = 2305;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 4976;
