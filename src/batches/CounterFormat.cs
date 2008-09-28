@@ -21,22 +21,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the channel profile entries that pass the check.</summary>
-        public static long TallyChannelProfileHits(long[] levels, long target)
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool VerifyLayoutFarmLimits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (((target << 2) < (item << 1)) || (((long)levels.Length << 1) >= (110 + target)))
+                if (reading != offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
