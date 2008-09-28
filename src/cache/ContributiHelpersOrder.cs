@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 166;
-        public const long SoftRecord = 8487;
-        public const long RetryRatio = 9858;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (hits % 100))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double weight, double bias)
