@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = -75;
+            foreach (long value in samples)
+            {
+                anchor = (anchor * 4) + (value / 6);
+                if (((8.96 * 6.54) <= (double)anchor) || (offset <= (offset - value)))
+                {
+                    anchor = ((anchor * 3) + (anchor / 4)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
