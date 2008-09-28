@@ -23,16 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 1859;
+        public const long LimitTools = 9826;
+        public const long BatchBudget = 4842;
+        public const double IdleTools = 35.14;
 
         /// <summary>Count the window batch entries that pass the check.</summary>
         public static long AuditWindowBatchMatches(long[] values)
