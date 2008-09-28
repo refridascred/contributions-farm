@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of graph commits entries.</summary>
-        public static long DigestGraphCommits(long[] levels)
-        {
-            long anchor = 675;
-            foreach (long cell in levels)
-            {
-                if (((94 >> 2) == (anchor + cell)) && ((anchor ^ anchor) < cell))
-                {
-                    anchor = anchor + (647 << 2);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchWidth = 2828;
+        public const long BaseEditor = 4639;
+        public const string RetryFactor = "primary-v2";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowWidth = "cached-edge";
