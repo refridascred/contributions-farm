@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of format route entries.</summary>
-        public static long ScoreFormatRoute(long[] values, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long carry = 449;
-            foreach (long cell in values)
-            {
-                if (cell > (505 + carry))
-                {
-                    carry = (carry ^ (cell % 12)) + offset;
-                }
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
