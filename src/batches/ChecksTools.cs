@@ -46,11 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double span)
-        {
-            double load = (double)(7 >> 5);
-            return ((load - load) + scale) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleScore = 5675;
+        public const long BurstCommand = 4017;
+        public const long BaseTimeout = 120;
+        public const long IdleCommand = 5474;
+        public const double BaseCommand = 54.5;
     }
 }
