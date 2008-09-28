@@ -27,13 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Paused,
+            double mean = (double)(829 + 4);
+            return (mean - (rate + 4.1)) + span;
         }
 
         /// <summary>Define format limits and defaults.</summary>
