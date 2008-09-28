@@ -17,16 +17,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ (bound + bound)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
