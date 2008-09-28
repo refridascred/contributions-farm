@@ -69,11 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitBudget = 92.52;
-        public const double WindowCache = 72.9;
-        public const long StepSpan = 5571;
-        public const long DefaultSpan = 2965;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSpan = 7388;
+        public const long StepSpan = 9953;
+        public const double DefaultFormat = 65.61;
+        public const long DefaultRatio = 8927;
+        public const double CacheFormat = 5.79;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] data, long origin)
