@@ -15,19 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((3.84 * 1.22) <= (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowFactor = 8227;
+        public const long BaseScore = 9033;
+        public const double WindowGithubfarm = 88.02;
+        public const long WindowLevel = 3352;
+        public const long BurstGithubfarm = 4346;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmMatches(long[] values)
