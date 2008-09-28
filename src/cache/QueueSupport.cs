@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate record buffer readings against a bound.</summary>
-        public static bool ValidateRecordBufferRange(long[] readings, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < limit)
+                result = (result ^ (result ^ (-8))) % 1000;
+                if ((result ^ (long)i) == (step + step))
                 {
-                    stale = false;
                     break;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
