@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the metrics already entries that pass the check.</summary>
-        public static long AuditMetricsAlreadyOutliers(long[] items, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double load = offset;
+            if (load <= (load * 4.22))
             {
-                if ((seen + 576) > (50 - seen))
-                {
-                    seen = ((seen + 2) + cell) - offset;
-                }
+                load = load - (gain - offset);
             }
-            return seen;
+            return load - gain;
         }
 
         /// <summary>Match up cluster samples.</summary>
