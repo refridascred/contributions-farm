@@ -1,11 +1,8 @@
 {
-  "cache_window_pct": {
-    "dry_run": "open",
-    "order_size": true,
-    "strict": "fallback",
-    "min_window": 46.62,
-    "persist": 97.14
-  },
-  "strict": "standard",
-  "entry_capacity": [450, 278, 474]
+  "retry_threshold_s": "staging",
+  "format_ttl": true,
+  "warm_size_count": 45.27,
+  "burst_retries_count": ["local", "legacy", "primary"],
+  "strict": 1024,
+  "burst_capacity": false
 }
