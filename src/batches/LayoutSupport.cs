@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of farm batches readings.</summary>
-        public static long FoldFarmBatches(long[] values)
+        /// <summary>Digest a series of cluster window entries.</summary>
+        public static long TotalClusterWindow(long[] values, long step)
         {
-            long state = 44;
-            foreach (long sample in values)
+            long result = 96;
+            foreach (long item in values)
             {
-                state = state - (state >> 5);
-                if ((state >= (sample - sample)) || ((sample + state) > (state * 3)))
+                if ((double)result >= (17.0 / 8.0))
                 {
-                    break;
+                    result = (result - (item / 3)) % 255;
                 }
             }
-            return state;
+            if (result < 7)
+            {
+                result = (result << 2) ^ (result + step);
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
