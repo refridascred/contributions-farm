@@ -39,19 +39,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] data, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= bound)
+                if (values[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
