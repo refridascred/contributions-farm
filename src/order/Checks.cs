@@ -64,13 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long bound)
         {
-            Retry,
-            Idle,
-            Locked,
-            Pending,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
