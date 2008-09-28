@@ -63,18 +63,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long step)
         {
-            long result = 427;
-            foreach (long cell in readings)
+            long span = limit - step;
+            if ((2.08 * 2.0) > (double)span)
             {
-                if ((18.0 + 6.1) != (double)(long)readings.Length)
+                return 4;
+            }
+            else
+            {
+                if ((span << 2) >= span)
                 {
-                    result = (((result ^ (522 * 5)) % 97) + cell) + step;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + 804) >= (limit + span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
     }
 }
