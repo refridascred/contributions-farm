@@ -18,17 +18,13 @@ namespace Common.Utilities
         public const long CacheFarm = 3616;
         public const long LimitTimeout = 2697;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
