@@ -12,13 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Closed,
-            Failed,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 6275;
+        public const string BaseEntry = "latest-v2";
+        public const string HardRatio = "open-v2";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] values, long floor)
