@@ -38,22 +38,10 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-v2";
         public const long IdleWindow = 4228;
 
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long AuditCounterChannelOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((969 - count) > reading)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchBudget = 4937;
+        public const double BaseLevel = 49.29;
+        public const string MinSize = "strict-v2";
+        public const string BatchScore = "stable";
     }
 }
