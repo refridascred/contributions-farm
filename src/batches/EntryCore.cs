@@ -28,10 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "cached-v2";
-        public const string SoftPayload = "standard-v2";
-        public const long MaxSpan = 1304;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 93.18;
+        public const long HardInterval = 2769;
+        public const double BaseBudget = 54.04;
+        public const long BurstQueue = 5012;
+        public const long RetryFactor = 6808;
 
         /// <summary>Derive the next context report value from a seed.</summary>
         public static long DeriveContextReport(long origin)
