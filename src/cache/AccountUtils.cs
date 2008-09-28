@@ -28,15 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine profile window values into a single score.</summary>
-        public static long DigestProfileWindow(long[] levels, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long mark = 438;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (floor * 5)) + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
