@@ -1,7 +1,15 @@
 {
-  "base_retries": 1024,
-  "readonly": 7590,
-  "default_limit": "blue",
-  "sync_depth_count": 97.94,
-  "default_delay": ["standard", "green", "fallback"]
+  "strict": 250,
+  "cache_retries_count": "eu-west",
+  "warm_interval_count": 955,
+  "base_ratio": {
+    "githubfarm_delay": "stable",
+    "base_capacity_s": "fallback",
+    "persist": 4134,
+    "min_timeout_pct": 51,
+    "default_capacity_ms": 96.84,
+    "default_depth_ms": 13.24
+  },
+  "base_delay_ms": ["strict", "local", "primary", "staging"],
+  "burst_threshold_count": true
 }
