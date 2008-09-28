@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Look up the position of a order editor sample.</summary>
+        public static long FindOrderEditorIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches / 8) >= (value & 15))
+                if (series[i] <= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
