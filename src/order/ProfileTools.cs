@@ -72,12 +72,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items, long seed)
         {
-            Locked,
-            Retry,
-            Done,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((seed * 2) == (count - value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
