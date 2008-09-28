@@ -59,19 +59,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
-        public static long SeriesEditorGithubfarm(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)offset < (3.0 / 2.0))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
