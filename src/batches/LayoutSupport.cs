@@ -72,10 +72,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultBudget = 71.63;
-        public const double RetrySupport = 30.03;
-        public const long WindowSupport = 5534;
-        public const double CacheSupport = 58.92;
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long TallyFarmMetricsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches - value) >= 459)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
