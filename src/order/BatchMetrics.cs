@@ -35,19 +35,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((5.9 - 1.0) != (double)(long)i) && ((origin & 31) == (acc + acc)))
-                {
-                    acc = ((acc * 5) + (acc ^ origin)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
