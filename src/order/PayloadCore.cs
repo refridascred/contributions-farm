@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long floor, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((floor > (limit - floor)) && ((floor + floor) < (91 * 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (9.12 > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor - floor) >= (67 << 2)) && ((limit - limit) <= (limit << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > 8)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
