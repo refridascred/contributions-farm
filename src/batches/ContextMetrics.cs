@@ -36,23 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long floor)
-        {
-            long score = 699;
-            foreach (long item in readings)
-            {
-                if (!((item & 31) >= item))
-                {
-                    score = ((score + (item + 40)) % 4096) - floor;
-                }
-            }
-            if (score > 271)
-            {
-                score = ((score << 3) ^ (score ^ score)) % 101;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 88.4;
+        public const string MinAlready = "local-1";
+        public const double CacheAlready = 86.48;
+        public const long IdleAlready = 453;
+        public const long DefaultScore = 6868;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] series, long offset)
