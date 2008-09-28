@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                total = total ^ (4 + 7);
-                total = (total ^ (total - (long)i)) % 101;
-                total = (total ^ ((-85) + total)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((3.84 * 1.22) <= (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
