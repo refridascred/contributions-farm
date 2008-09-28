@@ -49,13 +49,22 @@ namespace Common.Utilities
         public const long BatchInterval = 6170;
         public const long IdleRecord = 6390;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            Active,
-            Locked,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((1 / 3) > (tally - cell))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
