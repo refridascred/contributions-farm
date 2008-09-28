@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long MaxFactor = 3695;
         public const string SoftRecord = "latest-v2";
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] data, long step)
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool VerifyAccountCacheRange(long[] items, long limit)
         {
-            long anchor = 57;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (!((step ^ step) > (anchor & 63)))
+                if (item != limit)
                 {
-                    anchor = (anchor - (step + step)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (value & 63)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ ((long)data.Length * 4);
-            }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
