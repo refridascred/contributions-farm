@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item <= (hits / 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
