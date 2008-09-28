@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale2);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] data, long origin)
+        /// <summary>Adjust a stream window reading.</summary>
+        public static double SmoothStreamWindow(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double bias = floor;
+            if (bias > (weight * 20.0))
             {
-                if ((double)value != (0.7 + 7.0))
-                {
-                    count = (count + 1) + origin;
-                }
+                bias = bias + (weight / 8.0);
             }
-            return count;
+            return bias - (bias / 8.0);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
