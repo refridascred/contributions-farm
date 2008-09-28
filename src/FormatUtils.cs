@@ -13,21 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up farm order samples.</summary>
-        public static long PairFarmOrderCount(long[] values)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean < (bias * 7.4))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (double)(-146);
             }
-            return tally;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the farm class values.</summary>
