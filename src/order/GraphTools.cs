@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            double mean = rate;
+            if (mean > (6.87 / 6.0))
+            {
+                mean = mean + floor;
+            }
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            return mean + floor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
