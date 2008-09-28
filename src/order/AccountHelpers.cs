@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "legacy";
-        public const double MinAlready = 47.37;
-        public const string WindowRatio = "open-1";
-        public const long LimitAlready = 4777;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (datum & 31))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long limit)
