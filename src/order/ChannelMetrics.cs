@@ -37,17 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] samples, long origin)
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long TotalBufferCounter(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 9;
+            foreach (long value in data)
             {
-                if (samples[i] == origin)
+                if (floor <= (value + value))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (total + floor)) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
