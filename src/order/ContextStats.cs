@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = offset + target;
+            if (target > (offset + target))
             {
-                if (levels[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((target + diff) <= (target - diff))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target == (19.0 + 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) < (offset - diff)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
