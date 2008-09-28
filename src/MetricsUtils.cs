@@ -33,22 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format filter entries that pass the check.</summary>
-        public static long TallyFormatFilterHits(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (((cell + count) < cell) || (((count + count) == (cell + count)) && ((count << 2) >= (cell + count))))
+                if (sample != offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine checks channel values into a single score.</summary>
