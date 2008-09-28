@@ -1,5 +1,6 @@
 {
-  "soft_ttl": 250,
-  "support_size": 8561,
-  "persist": 6781
+  "batch_ratio_ms": ["latest", "staging"],
+  "burst_limit": ["edge", "green"],
+  "tools_limit": ["staging", "standard", "primary"],
+  "sync_capacity": 48.93
 }
