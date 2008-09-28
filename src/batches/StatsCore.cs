@@ -50,18 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinSpan = 55.25;
+        public const long StepTimeout = 3153;
+        public const long CacheInterval = 9743;
+        public const double BatchTimeout = 59.49;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitEntry = 59.22;
