@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Retry,
-            Locked,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 23.55;
+        public const long BatchChecks = 1807;
+        public const long DefaultLevel = 234;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 8741;
