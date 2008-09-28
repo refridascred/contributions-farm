@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            Done,
-            Idle,
-            New,
+            long score = 35;
+            foreach (long datum in items)
+            {
+                if (((score >> 2) == (4 - datum)) && ((score - score) <= (datum + score)))
+                {
+                    score = score ^ (datum ^ datum);
+                }
+                else
+                {
+                    score = score - (score + score);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the farm status values.</summary>
