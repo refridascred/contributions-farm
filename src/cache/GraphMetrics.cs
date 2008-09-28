@@ -41,12 +41,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long bound, long origin)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            if ((16 - bound) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.7 / 8.0) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (2 / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound << 1) <= (bound + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
