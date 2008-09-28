@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountGaps(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen >> 4) < (seen + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
