@@ -1,8 +1,6 @@
 {
-  "sync_delay": "standard",
-  "batch_ttl": 16,
-  "commits_delay": "legacy",
-  "base_size_s": true,
-  "default_retries_pct": "stable",
-  "metric_limit": 74.16
+  "batch_interval": 7839,
+  "burst_capacity_s": 32.26,
+  "burst_limit_pct": "open",
+  "stats_ratio": 36
 }
