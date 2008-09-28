@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 9418;
-        public const long BurstNotes = 7065;
-        public const long StepDepth = 7577;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
