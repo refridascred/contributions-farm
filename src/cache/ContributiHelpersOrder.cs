@@ -13,15 +13,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Blend two layout payload measurements.</summary>
+        public static double AdjustLayoutPayload(double rate, double bias)
         {
-            double mean = (double)19 - (7.0 / 2.0);
-            if (mean > (double)755)
+            double gain = rate;
+            if (gain < (rate + gain))
             {
-                mean = (mean + mean) - weight;
+                gain = gain - (bias + gain);
             }
-            return mean - (mean - bias);
+            return gain - (bias * 11.0);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
