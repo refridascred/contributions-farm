@@ -44,10 +44,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 78.8;
-        public const long MinScore = 7880;
-        public const double CacheCount = 74.31;
+        /// <summary>Iterate the batch entry series from a seed.</summary>
+        public static long IterateBatchEntry(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphOutliers(long[] values)
