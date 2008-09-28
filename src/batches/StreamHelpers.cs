@@ -50,18 +50,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((7.4 * 17.0) == (double)step)
             {
-                if ((5.21 + 5.5) == (double)hits)
+                return 1;
+            }
+            else
+            {
+                if ((3.19 - 10.0) == (double)seed)
                 {
-                    hits = (hits + 3) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
