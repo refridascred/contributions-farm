@@ -38,17 +38,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long step)
+        /// <summary>Project the next stream githubfarm value.</summary>
+        public static double AdjustStreamGithubfarm(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - 7.1) - (double)(long)i) - offset;
             }
-            return -1;
+            return ratio + 6.35;
         }
     }
 }
