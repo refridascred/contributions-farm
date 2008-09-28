@@ -63,22 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits cluster readings.</summary>
-        public static long MatchCommitsClusterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryScore = "strict-edge";
+        public const double MinSpan = 41.77;
+        public const long CacheRatio = 2422;
+        public const string MaxWidth = "fallback-edge";
+        public const long HardInterval = 7853;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
