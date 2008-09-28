@@ -42,18 +42,28 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples, long seed)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((count << 3) <= (cell + cell))
+                if ((floor - 34) > (mix & 127))
                 {
-                    count = (count + 3) + seed;
+                    mix = ((mix * 2) + (floor << 1)) % 255;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix * 2) + mix) % 65521) ^ (long)i2;
+                }
+                if ((floor << 2) >= (floor >> 5))
+                {
+                    mix = ((mix << 3) ^ (mix / 2)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
