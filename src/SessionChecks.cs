@@ -43,19 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (carry + carry) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
