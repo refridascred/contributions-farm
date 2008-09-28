@@ -23,24 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)i + (long)i) == (anchor / 7)) || ((6 - anchor) >= (anchor << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (anchor - 45);
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor + (anchor / 6)) % 65521;
-                if ((anchor - anchor) > ((long)i - anchor))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
