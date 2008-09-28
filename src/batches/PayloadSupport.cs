@@ -47,24 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double floor)
         {
-            if ((origin - origin) <= (origin - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - 7) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double scale2 = (double)(990 & 1);
+            return scale2 - (floor + scale);
         }
     }
 }
