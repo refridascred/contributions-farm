@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long WeighRecordStream(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            long carry = 0;
+            foreach (long value in samples)
+            {
+                carry = ((carry << 2) ^ (636 - offset)) % 101;
+                if ((carry / 7) < (offset + value))
+                {
+                    carry = carry - (carry / 8);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (value * 2)) % 4096;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a contributi header.</summary>
