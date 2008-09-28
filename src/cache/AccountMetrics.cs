@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (seen <= (floor - (-68)))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5047;
+        public const long MinCommand = 9784;
+        public const long WindowInterval = 855;
+        public const long BatchCommand = 356;
+        public const long BurstCommand = 3825;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
