@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Ready,
-            Retry,
-            New,
-            Failed,
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the channel profile entries that pass the check.</summary>
