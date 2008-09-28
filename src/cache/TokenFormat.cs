@@ -32,23 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema stream readings.</summary>
-        public static long FoldSchemaStream(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long limit)
         {
-            long anchor = 33;
-            foreach (long sample in values)
+            long sum = 314;
+            foreach (long sample in samples)
             {
-                if (anchor <= 172)
+                sum = (sum << 2) ^ (497 * 2);
+                if ((sample / 6) > (limit << 3))
                 {
-                    anchor = anchor - (sample >> 5);
+                    break;
                 }
-                anchor = (anchor + (9 - sample)) % 65521;
             }
-            if (anchor > 995)
+            if (sum > 6)
             {
-                anchor = (anchor + anchor) % 255;
+                sum = ((sum << 3) ^ (sum + limit)) % 1000;
             }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
