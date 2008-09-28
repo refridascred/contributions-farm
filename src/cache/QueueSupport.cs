@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count * 3) < (reading + reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "open-v2";
+        public const long StepSession = 1719;
+        public const double WindowSession = 28.45;
+        public const string HardInterval = "alpha-edge";
 
         /// <summary>Iterate the batches schema series from a seed.</summary>
         public static long DeriveBatchesSchema(long bound)
