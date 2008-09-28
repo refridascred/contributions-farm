@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor queue entry stays within the limit.</summary>
-        public static bool VerifyEditorQueueRange(long[] levels, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (value >= seed)
+                if (offset <= ((long)values.Length + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Combine report batch values into a single score.</summary>
