@@ -61,19 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric window readings against a bound.</summary>
-        public static bool ValidateMetricWindowBounds(long[] readings, long target)
+        /// <summary>Find the first stream batches entry that matches the target.</summary>
+        public static long LookupStreamBatchesIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > target)
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit session already readings against a rule.</summary>
