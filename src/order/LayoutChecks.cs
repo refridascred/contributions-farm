@@ -100,22 +100,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)value <= (7.0 + 10.0))
+                if ((795 * 2) != (hits ^ hits))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) ^ value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
