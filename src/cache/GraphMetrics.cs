@@ -67,12 +67,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
