@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first contributi payload entry that matches the target.</summary>
