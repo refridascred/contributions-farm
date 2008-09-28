@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (total << 3) ^ (total + seed);
-                    total = total ^ ((long)i2 * 4);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 33.31;
+        public const long BatchFormat = 9232;
+        public const double StepCount = 56.52;
+        public const double IdleSpan = 65.28;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] items, long seed)
