@@ -24,17 +24,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                long seen = (limit / 9) - ((long)i / 9);
-                mark = (mark + (mark - seen)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Adjust a command commits reading.</summary>
