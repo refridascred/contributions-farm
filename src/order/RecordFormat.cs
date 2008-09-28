@@ -22,24 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mix = -13;
-            foreach (long sample in items)
-            {
-                mix = ((mix << 3) ^ (5 / 9)) % 97;
-                mix = (mix * 3) + 4;
-                if ((double)mix < (10.0 - 2.06))
-                {
-                    mix = (mix - (mix ^ mix)) % 65521;
-                }
-                if (mix > (mix - sample))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
