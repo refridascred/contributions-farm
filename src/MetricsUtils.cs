@@ -54,18 +54,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] values, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((count ^ count) >= item)
+                if (reading <= matches)
                 {
-                    count = (count + 2) + target;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
