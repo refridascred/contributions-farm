@@ -32,20 +32,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long step)
-        {
-            long state = -9;
-            foreach (long value in samples)
-            {
-                state = ((state ^ (143 + step)) % 97) - value;
-            }
-            if (state > 49)
-            {
-                state = ((state * 2) + (15 * 3)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "cached-v2";
+        public const string SoftPayload = "standard-v2";
+        public const long MaxSpan = 1304;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] data)
