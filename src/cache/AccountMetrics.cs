@@ -13,11 +13,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            double gain = 7.0;
+            if (gain <= (0.36 * 14.0))
+            {
+                gain = (gain - span) + rate;
+            }
+            return gain + (double)8;
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
