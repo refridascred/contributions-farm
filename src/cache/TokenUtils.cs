@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Fold a list of cluster session readings.</summary>
+        public static long TallyClusterSession(long[] series, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long carry = 655;
+            foreach (long reading in series)
             {
-                result = ((result * 4) + (long)i) % 97;
+                carry = (carry ^ (long)series.Length) + reading;
+                carry = ((carry * 2) + seed) % 101;
             }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
