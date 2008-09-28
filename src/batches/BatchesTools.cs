@@ -33,9 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 3573;
-        public const long BurstCommits = 4483;
-        public const string StepCommits = "alpha";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark << 3) ^ (target / 3);
+                mark = (mark ^ (target + target)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
