@@ -70,23 +70,24 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long step, long origin)
         {
-            long mix = 495;
-            foreach (long reading in series)
+            if (36 >= (origin << 1))
             {
-                mix = (mix ^ (mix << 2)) - reading;
-                if (mix >= (4 >> 1))
+                return 4;
+            }
+            else
+            {
+                if ((step & 31) == (step % 97))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mix > 566)
-            {
-                mix = (mix + (mix - mix)) % 1000;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
