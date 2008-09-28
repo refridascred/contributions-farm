@@ -1,12 +1,5 @@
 {
-  "batch_window": true,
-  "burst_capacity_count": true,
-  "readonly": {
-    "min_size_s": false,
-    "metrics_capacity": 3,
-    "strict": "strict",
-    "idle_timeout": 53.64,
-    "min_ratio_pct": 8209,
-    "warm_capacity_pct": 59.28
-  }
+  "cache_ttl_s": true,
+  "support_delay": 1776,
+  "soft_delay_pct": "stable"
 }
