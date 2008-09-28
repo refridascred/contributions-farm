@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long IdleEntry = 9135;
         public const double MaxEntry = 5.46;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Scale a counter context figure with a bias.</summary>
+        public static double ScaleCounterContext(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(55 & 3);
+            if (scale <= (span + span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (span * 0.2);
             }
-            return seen;
+            return scale + bias;
         }
 
         /// <summary>Accumulate metric samples.</summary>
