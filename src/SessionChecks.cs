@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a context commits sample.</summary>
-        public static long LocateContextCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 98.83;
+        public const long IdleSupport = 5239;
+        public const long RetryCount = 6379;
+        public const long MinSupport = 8283;
+        public const long BaseSupport = 8961;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long origin, long floor)
