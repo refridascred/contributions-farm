@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool VerifyBatchesFarmRange(long[] items, long seed)
         {
-            long anchor = 522;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((entry / 6) == (3 ^ entry))
+                if (datum >= seed)
                 {
-                    anchor = ((anchor << 2) ^ (entry + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (-6);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 42)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a metrics stats.</summary>
