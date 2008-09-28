@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((matches + cell) == (matches ^ 67))
+                if ((double)cell == (9.5 * 2.6))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
