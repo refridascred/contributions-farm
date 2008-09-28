@@ -27,11 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 8855;
-        public const string LimitBudget = "stable-edge";
-        public const double RetryBudget = 32.22;
-        public const long SoftScore = 5443;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "fallback";
+        public const string MinCommand = "strict-1";
+        public const double BaseBudget = 89.23;
+        public const long WindowCommand = 815;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
