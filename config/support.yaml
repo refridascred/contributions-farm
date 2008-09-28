@@ -1,30 +1,11 @@
 # support settings
-already_threshold:
-  - standard
-  - staging
-  - stable
+base_depth_count:
+  - local
   - green
-dry_run: 36
-flush_timeout_s: eu-west
-report_interval:
-  default_timeout_count: false
-  sync_threshold_count: true
-  githubfarm_interval: 36
-  hard_delay:
-    - green
-    - cached
-    - primary
-    - legacy
-  buffer_interval:
-    session_size: cached
-    min_size_s: true
-    retry_size: eu-west
-    sync_limit:
-      - 151
-      - 283
-      - 306
-    poll_delay_pct: 30
-    dry_run: open
-  counter_threshold: latest
-poll_depth_s: 72.23
-max_timeout_ms: stable
+  - fallback
+  - green
+cluster_retries: 88.78
+hard_ttl: cached
+counter_retries: eu-west
+retry_retries_ms: 64.19
+flush_retries_s: true
