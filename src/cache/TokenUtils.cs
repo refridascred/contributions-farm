@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items, long bound)
-        {
-            long anchor = 6;
-            foreach (long value in items)
-            {
-                if ((double)bound < 0.9)
-                {
-                    anchor = ((anchor ^ (911 ^ 58)) % 65521) - value;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 2) ^ bound) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 7789;
+        public const long DefaultSize = 2313;
+        public const long HardWidth = 5620;
+        public const long LimitContributi = 7343;
+        public const long SoftBudget = 7398;
 
         /// <summary>Accumulate farm cache samples.</summary>
         public static long TallyFarmCache(long[] readings)
