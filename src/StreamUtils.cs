@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Active,
-            Locked,
-            Done,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
