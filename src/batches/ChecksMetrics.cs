@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mean + (14.0 * 8.0);
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Dropped,
-            Retry,
-            Paused,
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
