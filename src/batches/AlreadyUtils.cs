@@ -14,10 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4248;
-        public const string LimitLayout = "staging-1";
-        public const string StepFactor = "stable-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((target + target) > (target ^ target))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
