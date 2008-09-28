@@ -76,22 +76,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((origin - origin) != (origin ^ (long)levels.Length)) || (((188 - 353) <= (sample + count)) && ((origin * 3) < (origin - sample))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 4) + (result + result)) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
