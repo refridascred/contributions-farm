@@ -36,21 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up checks githubfarm samples.</summary>
-        public static long CompareChecksGithubfarmCount(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the stream already series from a seed.</summary>
