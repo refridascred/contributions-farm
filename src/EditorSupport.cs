@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long DefaultGraph = 1656;
         public const long WindowInterval = 2736;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((-507) > target)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2214;
+        public const double BatchPayload = 90.61;
+        public const string MinPayload = "legacy-edge";
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long offset)
