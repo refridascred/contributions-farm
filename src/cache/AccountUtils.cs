@@ -32,17 +32,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 13;
+            foreach (long value in values)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = (state - (value + state)) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
