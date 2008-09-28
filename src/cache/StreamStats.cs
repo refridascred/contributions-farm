@@ -70,23 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long step)
         {
-            long acc = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 4) + (6 % 12)) % 101;
-                if ((datum - limit) <= datum)
+                if (entry <= step)
                 {
-                    acc = (acc << 3) ^ (datum / 3);
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc + datum);
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return stale;
         }
     }
 }
