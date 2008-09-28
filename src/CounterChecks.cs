@@ -67,11 +67,13 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchInterval = "staging-1";
-        public const long LimitLevel = 4642;
-        public const double WindowCount = 30.19;
-        public const long SoftBudget = 2965;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            New,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] series, long target)
