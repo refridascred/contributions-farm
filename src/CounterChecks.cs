@@ -27,25 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long CountNotesProfileMatches(long[] levels, long limit)
         {
-            long slot = seed + bound;
-            if (!(13.0 < (double)bound))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot + 234) >= (seed + bound))
+                if (((limit + tally) >= (-127)) && ((tally ^ 8) <= tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
