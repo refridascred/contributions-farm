@@ -65,10 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 25.5;
-        public const long LimitTimeout = 7958;
-        public const long MinWindow = 9401;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
