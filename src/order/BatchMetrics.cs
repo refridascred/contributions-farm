@@ -52,13 +52,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long floor)
         {
-            Ready,
-            Queued,
-            Failed,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
