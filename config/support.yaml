@@ -1,11 +1,9 @@
 # support settings
-base_depth_count:
-  - local
-  - green
-  - fallback
-  - green
-cluster_retries: 88.78
-hard_ttl: cached
-counter_retries: eu-west
-retry_retries_ms: 64.19
-flush_retries_s: true
+enabled:
+  - standard
+  - standard
+  - edge
+  - edge
+poll_ratio_ms: true
+flush_size: 7695
+batches_limit: 93.48
