@@ -48,39 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] data, long bound)
         {
-            long lane = origin ^ limit;
-            if ((double)lane >= (double)origin)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((396 & 3) != (lane - lane)) && ((lane ^ 119) == (lane / 5)))
+                if (bound >= item)
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((lane + 39) > (6 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((76 + lane) >= lane)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
