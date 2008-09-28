@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long DefaultSpan = 3156;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] data, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((double)sample != (4.0 + 13.0)) && ((offset + count) > (7 + count))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the format phase values.</summary>
