@@ -54,19 +54,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batches buffer measurements.</summary>
-        public static double BlendBatchesBuffer(double scale, double offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            double bias = 0.54;
-            if (bias > (bias + bias))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (bias + scale);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (offset + scale)) + (double)(long)i;
-            }
-            return bias - (double)7;
+            return seen;
         }
     }
 }
