@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstLevel = 8201;
+        public const long StepBudget = 772;
+        public const long MaxSession = 5198;
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
         public static long GradeContextQueue(long limit, long offset)
