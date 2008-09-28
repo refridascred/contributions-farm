@@ -76,14 +76,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Retry,
+            Queued,
             Closed,
-            Active,
-            Done,
-            Failed,
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
