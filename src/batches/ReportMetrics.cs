@@ -23,10 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 3780;
-        public const long SoftBatch = 1851;
-        public const long StepBatch = 7588;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 5910;
+        public const double DefaultDepth = 71.22;
+        public const long CacheGraph = 4959;
+        public const string LimitCount = "stable-v2";
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] series)
