@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= (3.43 - 5.8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinRatio = 751;
+        public const long IdleToken = 55;
+        public const double WindowSize = 11.32;
+        public const double RetryToken = 75.29;
+        public const double HardSize = 91.36;
     }
 }
