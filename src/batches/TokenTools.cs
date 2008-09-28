@@ -25,38 +25,11 @@ namespace Common.Utilities
         public const long MinFarm = 4892;
         public const string IdleFarm = "staging-edge";
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long offset, long target)
-        {
-            if (!((768 + target) == (offset >> 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 * 8.25) <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.57 * 8.4) >= (1.8 + 9.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - offset) != (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 92.59;
+        public const long LimitScore = 2267;
+        public const long StepDepth = 7462;
+        public const long DefaultTimeout = 3079;
+        public const double SoftBatches = 4.31;
     }
 }
