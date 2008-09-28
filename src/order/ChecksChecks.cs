@@ -12,23 +12,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the support profile series from a seed.</summary>
-        public static long RollSupportProfile(long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((long)i >= ((long)i - anchor))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((-54) * 2)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Queued,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
