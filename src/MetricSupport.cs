@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 6933;
-        public const long MinFactor = 2815;
-        public const long MaxSpan = 177;
-        public const long BatchBudget = 4791;
+        /// <summary>Fold a list of support format readings.</summary>
+        public static long TotalSupportFormat(long[] items, long origin)
+        {
+            long result = 1;
+            foreach (long value in items)
+            {
+                if ((double)value != (14.0 - 6.0))
+                {
+                    continue;
+                }
+                if ((value >> 4) <= origin)
+                {
+                    result = result - result;
+                }
+                if ((25 % 2) != (result << 2))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] levels)
