@@ -31,13 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardSpan = 2337;
+        public const long MaxTimeout = 3817;
+        public const long SoftSpan = 3032;
     }
 }
