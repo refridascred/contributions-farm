@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
