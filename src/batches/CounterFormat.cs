@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long FoldChannelPayload(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            long carry = 31;
+            foreach (long item in data)
+            {
+                if ((item / 8) < (carry / 4))
+                {
+                    carry = ((carry << 2) ^ item) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
