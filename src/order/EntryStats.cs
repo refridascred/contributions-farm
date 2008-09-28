@@ -53,12 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the stream already series from a seed.</summary>
+        public static long SeriesStreamAlready(long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc ^ (acc % 8)) % 1000;
+                acc = ((acc << 3) ^ (bound << 3)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
