@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3824;
-        public const string BaseBatch = "latest-1";
-        public const double LimitBatch = 63.84;
-        public const long SoftBatch = 4256;
-        public const long StepBatch = 3589;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
