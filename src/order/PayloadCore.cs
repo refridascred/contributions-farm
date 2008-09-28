@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many support batch samples are out of range.</summary>
-        public static long CountSupportBatchOutliers(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double weight = offset;
+            if (weight < (18.0 + 8.22))
             {
-                if (!(8 > (count ^ count)))
-                {
-                    count = (count + 2) + item;
-                }
+                weight = (weight + weight) + bias;
             }
-            return count;
+            return weight - (weight * 0.9);
         }
 
         /// <summary>Hold a account snapshot.</summary>
