@@ -27,14 +27,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4996;
+        public const double DefaultTimeout = 89.49;
+        public const long IdleSize = 35;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] series)
