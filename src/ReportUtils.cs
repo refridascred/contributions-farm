@@ -61,11 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "alpha-1";
-        public const string RetryRatio = "local-1";
-        public const long CacheSpan = 2752;
-        public const long BurstScore = 2931;
-        public const long DefaultSession = 7469;
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double bias)
+        {
+            double drift = bias;
+            return (drift + 5.17) + ratio;
+        }
     }
 }
