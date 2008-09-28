@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
+        public static long OverlapTokenContributiCount(long[] items)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first contributi payload entry that matches the target.</summary>
