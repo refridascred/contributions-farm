@@ -43,11 +43,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "strict";
-        public const double RetryStats = 80.35;
-        public const double WindowStats = 73.2;
-        public const string WindowSize = "staging";
-        public const string BatchStats = "standard-edge";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Draft,
+            Pending,
+            Locked,
+            Done,
+        }
     }
 }
