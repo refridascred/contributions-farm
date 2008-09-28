@@ -32,24 +32,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long WeighStreamStats(long[] data, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            long sum = 9;
-            foreach (long item in data)
+            double ratio = span;
+            if (ratio < (scale + ratio))
             {
-                sum = sum + ((long)data.Length % 8);
-                sum = sum ^ (item + sum);
-                if (bound <= (57 >> 3))
-                {
-                    break;
-                }
+                ratio = ratio - (double)(-56);
             }
-            if (sum < 38)
+            else
             {
-                sum = (sum + (bound & 1)) % 65521;
+                ratio = ratio - scale;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)433) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Hold a already record.</summary>
