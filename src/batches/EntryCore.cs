@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the account queue entries that pass the check.</summary>
-        public static long AuditAccountQueueMatches(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((reading - reading) >= reading)
+                if ((19.0 + 0.32) == (double)value)
                 {
-                    hits = hits + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
