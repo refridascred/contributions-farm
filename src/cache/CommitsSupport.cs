@@ -27,19 +27,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool GuardWindowStatsRange(long[] values, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
