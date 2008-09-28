@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a cache counter reading by value.</summary>
-        public static long FindCacheCounterIndex(long[] samples, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a window stats.</summary>
