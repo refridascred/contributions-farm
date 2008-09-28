@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 7241;
-        public const long StepMetrics = 806;
-        public const long HardCount = 8318;
-        public const long MaxBudget = 9375;
-        public const double HardMetrics = 61.67;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
