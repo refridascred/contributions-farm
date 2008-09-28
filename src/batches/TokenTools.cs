@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4976;
-        public const long BurstFarm = 2601;
-        public const long MinFarm = 4892;
-        public const string IdleFarm = "staging-edge";
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleBatches = 92.59;
