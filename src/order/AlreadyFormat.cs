@@ -52,9 +52,19 @@ namespace Common.Utilities
         public const string IdleRoute = "local-1";
         public const long BaseSpan = 2672;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "standard-v2";
-        public const long MinContext = 7395;
-        public const long MinScore = 8351;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double span)
+        {
+            double weight2 = (6.1 + weight) * 1.0;
+            if (weight2 > (span - 6.36))
+            {
+                weight2 = weight2 - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (weight - weight)) - (double)(long)i;
+            }
+            return weight2 - (span + 2.11);
+        }
     }
 }
