@@ -1,8 +1,9 @@
 # githubfarm settings
-flush_delay_ms:
-  - 100
-  - 300
-  - 70
-batch_window: fallback
-retry_ratio_s: standard
-sync_ratio: fallback
+flush_capacity: 66.85
+schema_size: blue
+default_window_pct:
+  - 280
+  - 425
+  - 422
+  - 32
+compress: primary
