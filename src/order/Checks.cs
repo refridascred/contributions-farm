@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((((388 & 1) >= (tally + tally)) && ((entry + entry) >= 3)) || !((double)tally < 16.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
