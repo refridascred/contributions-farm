@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            if ((4.44 - 3.1) < (double)seed)
+            long carry = 6;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 63) < (seed ^ (-93)))
+                if ((item - carry) > (item / 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((15 + seed) < 21))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry + 7) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
