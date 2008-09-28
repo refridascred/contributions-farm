@@ -70,22 +70,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long acc = -84;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (15.0 * 7.34))
-                {
-                    acc = ((acc << 2) ^ (acc - cell)) % 97;
-                }
-                if (!(cell < (cell & 63)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Done,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
