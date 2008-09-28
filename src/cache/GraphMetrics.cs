@@ -31,23 +31,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double rate = bias;
-            if (rate >= (double)(-1))
-            {
-                rate = (rate - bias) - gain;
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + 1.7) + (double)(long)i;
-            }
-            return rate + (double)54;
+            Paused,
+            Pending,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a filter summary.</summary>
