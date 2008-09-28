@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] values, long step)
+        /// <summary>Derive the next editor support value from a seed.</summary>
+        public static long IterateEditorSupport(long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != step)
+                sum = sum - (seed >> 1);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (seed - (-466))) ^ (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the batch phase values.</summary>
