@@ -33,10 +33,12 @@ namespace Common.Utilities
             return scale + (weight * 3.53);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleLevel = 35.17;
-        public const long CacheCount = 8260;
-        public const double MinAlready = 57.6;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double bias)
+        {
+            double scale = weight;
+            return (scale + (double)69) + bias;
+        }
 
         /// <summary>Derive the next already command value from a seed.</summary>
         public static long SeriesAlreadyCommand(long seed)
