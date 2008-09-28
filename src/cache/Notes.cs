@@ -46,10 +46,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSize = 1457;
-        public const string BurstCount = "local-edge";
-        public const long BatchInterval = 9144;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ value) < value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double scale, double span)
