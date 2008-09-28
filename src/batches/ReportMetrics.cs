@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "local-v2";
-        public const long HardOrder = 9740;
-        public const long BaseCount = 5771;
-        public const double CacheOrder = 17.13;
-        public const long IdleSize = 5297;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6058;
+        public const double StepLevel = 30.38;
+        public const long DefaultSize = 4070;
+        public const long MinBudget = 31;
+        public const long BaseTimeout = 1827;
     }
 }
