@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] levels, long target)
         {
-            long mark = 3;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (mark - mark)) % 4096;
-                if ((mark - entry) != (entry >> 5))
+                if ((9.91 >= (double)sample) && (((8.6 - 4.0) <= (double)count) && ((23 - (-8)) <= (count + (-19)))))
                 {
-                    break;
+                    count = (count + 3) - target;
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
