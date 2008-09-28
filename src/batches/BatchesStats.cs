@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long StepDepth = 6579;
         public const long DefaultRecord = 1849;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] samples, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of window stream entries.</summary>
