@@ -19,20 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long DeriveReportBatch(long bound)
+        /// <summary>Find the first cache already entry that matches the target.</summary>
+        public static long SeekCacheAlreadyIndex(long[] levels, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)i % 2) <= ((long)i << 2)))
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
                 {
-                    score = (score + (score + bound)) % 65521;
-                    score = score ^ (bound >> 2);
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
