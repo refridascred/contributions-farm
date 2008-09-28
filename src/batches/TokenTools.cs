@@ -29,11 +29,11 @@ namespace Common.Utilities
         public const long MinFarm = 4892;
         public const string IdleFarm = "staging-edge";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double span)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            double mean = 15.0 * 1.8;
+            return ((mean + (double)1) + weight) + span;
         }
     }
 }
