@@ -54,20 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items)
         {
-            long anchor = 5;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (cell + cell)) % 101;
-                if (anchor <= (anchor << 3))
+                if ((matches << 3) >= 110)
                 {
-                    anchor = anchor + seed;
+                    matches = (matches + 2) - reading;
                 }
-                anchor = ((anchor * 4) + (cell << 1)) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
