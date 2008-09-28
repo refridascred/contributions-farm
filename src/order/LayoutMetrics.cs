@@ -19,40 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm layout input into a small class.</summary>
-        public static long BucketFarmLayout(long bound, long step)
-        {
-            long lane = bound - step;
-            if (!((step % 100) > step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane + step) == (step - 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((946 + lane) >= (bound ^ 502)) && ((double)bound < (7.2 - 1.5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane > 1.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardSize = 2519;
+        public const long MinPayload = 3953;
+        public const long WindowRatio = 4825;
+        public const string IdlePayload = "standard";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] data)
