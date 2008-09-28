@@ -43,24 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Count the command support entries that pass the check.</summary>
+        public static long MeasureCommandSupportMatches(long[] readings, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((((long)i * 2) != ((long)i + 4)) || (offset > acc))
+                if ((step / 4) >= value)
                 {
-                    break;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    acc = acc + 12;
-                }
-                acc = (acc - (acc - offset)) % 65521;
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a token support sample.</summary>
