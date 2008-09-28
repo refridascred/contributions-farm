@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 776;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1.88 >= (double)datum) || ((datum - 701) != (datum - carry)))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry + ((-61) >> 2)) % 65521) - target;
                 }
             }
-            return count;
+            if (carry < 26)
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit record token readings against a rule.</summary>
