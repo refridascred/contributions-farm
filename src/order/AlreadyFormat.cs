@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long origin)
-        {
-            if ((double)6 <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step % 97) < step) && (origin > (origin % 16)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (82 >= (origin + (-8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin << 1) == (origin >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 16.75;
+        public const long MaxDepth = 2641;
+        public const long BurstRatio = 4494;
+        public const string HardStream = "primary-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] items, long seed)
