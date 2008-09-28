@@ -1,9 +1,4 @@
 # support settings
-commits_ratio: 89.25
-poll_limit: true
-sync_ratio: 9242
-compress: 6833
-base_delay:
-  - latest
-  - fallback
-  - open
+flush_ratio_ms: 72
+cache_interval_s: 1024
+metric_size: fallback
