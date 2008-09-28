@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Derive the next batch report value from a seed.</summary>
+        public static long StepBatchReport(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((datum * 3) > 86)
+                bool found = ((double)sum != (1.9 + 7.0)) || (offset >= (offset / 9));
+                if (found)
                 {
-                    seen = seen + 1;
+                    continue;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit graph tools readings against a rule.</summary>
