@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "cached";
-        public const string IdleSpan = "latest";
-        public const long CacheContributi = 9343;
-        public const long MinContributi = 2910;
-        public const long BatchBudget = 1530;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double ProjectAccount(double bias, double offset)
