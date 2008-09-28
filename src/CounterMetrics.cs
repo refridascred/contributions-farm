@@ -27,19 +27,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate queue checks readings against a bound.</summary>
-        public static bool ValidateQueueChecksLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftSize = 48.68;
+        public const long IdleTimeout = 2944;
+        public const long CacheGithubfarm = 7813;
+        public const double IdleCount = 92.32;
     }
 }
