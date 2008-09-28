@@ -65,18 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache channel entry that matches the target.</summary>
-        public static long LocateCacheChannelIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 25.5;
+        public const long LimitTimeout = 7958;
+        public const long MinWindow = 9401;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
