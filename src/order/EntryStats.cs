@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long target)
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long AuditTokenAccountGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample > target)
+                if ((seen >> 4) < (seen + entry))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
