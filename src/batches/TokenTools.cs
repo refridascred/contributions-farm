@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Combine context schema values into a single score.</summary>
+        public static long FoldContextSchema(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long score = 9;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ (anchor << 3)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((datum % 100) <= (9 % 5))
+                {
+                    score = score - (datum + datum);
+                }
             }
-            return anchor;
+            if (score < 0)
+            {
+                score = ((score << 3) ^ (score + score)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
