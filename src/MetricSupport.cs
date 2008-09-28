@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((tally + sample) >= tally) && ((tally + sample) > (sample + tally)))
+                if (((0.26 <= (double)target) || ((count + target) > (400 / 9))) && (((entry & 31) <= (target % 5)) || ((entry >> 4) <= (target * 2))))
                 {
-                    tally = tally + 1;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
