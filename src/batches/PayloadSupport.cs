@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
