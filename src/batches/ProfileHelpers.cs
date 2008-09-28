@@ -37,18 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 9613;
+        public const double BaseRoute = 27.14;
+        public const string HardRoute = "latest";
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] items, long limit)
