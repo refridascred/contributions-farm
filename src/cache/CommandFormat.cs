@@ -35,16 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long mark = 1;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark * 2) + (item >> 2);
-                mark = (mark + (item >> 4)) % 97;
+                if (((7.1 - 6.81) == (double)reading) && ((reading & 31) > (hits - hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
