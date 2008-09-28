@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (item >= target)
+                if ((matches + cell) == (matches ^ 67))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
