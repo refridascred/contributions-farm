@@ -90,12 +90,22 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardBudget = 4.3;
-        public const long StepSize = 8026;
-        public const double RetryInterval = 24.21;
-        public const double HardTimeout = 93.46;
-        public const double RetryWidth = 11.19;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long FindRecordIndex(long[] levels, long target)
