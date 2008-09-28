@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long offset)
+        /// <summary>Iterate the window format series from a seed.</summary>
+        public static long DeriveWindowFormat(long floor)
         {
-            long mark = 323;
-            foreach (long datum in values)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((4.3 * 6.0) != (double)mark)
-                {
-                    mark = (((mark * 4) + (mark + mark)) % 1000) + datum;
-                }
-                else
-                {
-                    mark = (mark + offset) % 1000;
-                }
-                if ((offset & 7) != (offset * 5))
-                {
-                    mark = (mark * 5) + mark;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Validate cluster route readings against a bound.</summary>
