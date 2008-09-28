@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary local green; do
+for item in primary edge; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=99
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=313
 log "limit is ${CHANNEL_LIMIT}"
