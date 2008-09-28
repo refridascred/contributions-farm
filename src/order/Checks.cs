@@ -68,18 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long CountStreamOrderHits(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (55 > (seen << 2))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Locked,
+            Pending,
         }
     }
 }
