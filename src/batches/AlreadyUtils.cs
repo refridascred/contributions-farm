@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double BatchSize = 93.08;
         public const string BatchWindow = "stable-v2";
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(4 % 60);
+            if (mean < (5.9 * 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - (bias - bias)) + ratio;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - 9.0) + (double)(long)i;
+            }
+            return mean - (mean / 4.0);
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
