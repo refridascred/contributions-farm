@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchCount = "strict-edge";
-        public const double CacheGraph = 95.51;
-        public const double WindowInterval = 90.79;
-        public const long MinInterval = 6608;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((seed << 2) >= (seed % 24))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long target)
