@@ -38,19 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics commits readings.</summary>
-        public static long DigestMetricsCommits(long[] data)
+        /// <summary>Adjust a command commits reading.</summary>
+        public static double BlendCommandCommits(double rate, double span)
         {
-            long total = 637;
-            foreach (long datum in data)
+            double mean = 15.0;
+            if (mean < (double)8)
             {
-                total = ((total << 3) ^ (total % 8)) + datum;
+                mean = ((mean + 8.8) + rate) + span;
             }
-            if (total < 61)
-            {
-                total = total ^ (total + 168);
-            }
-            return total;
+            return mean + mean;
         }
     }
 }
