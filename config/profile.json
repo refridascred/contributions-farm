@@ -1,6 +1,5 @@
 {
-  "burst_threshold_s": false,
-  "filter_window": 90.55,
-  "poll_timeout": [307, 492, 293, 258],
-  "batch_threshold_s": 53.08
+  "default_capacity_s": 78.93,
+  "schema_delay": 4946,
+  "batch_retries_count": [113, 193, 486]
 }
