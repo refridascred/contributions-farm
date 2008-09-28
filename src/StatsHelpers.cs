@@ -36,17 +36,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = seed - limit;
+            if (((8 + limit) <= seed) && ((step - (-731)) != (seed / 7)))
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((seed + limit) == (235 << 1)) && ((limit ^ step) != (limit / 5)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (2.88 - 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed < (seed ^ limit)) && (step > (9 % 60)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
