@@ -27,9 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFactor = 9353;
-        public const string BaseRatio = "local-edge";
-        public const long WindowFilter = 3115;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Active,
+            Pending,
+            Locked,
+            Retry,
+        }
     }
 }
