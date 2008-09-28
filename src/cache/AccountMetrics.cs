@@ -58,23 +58,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double gain = (double)11 + (rate - rate);
-            if (gain >= (floor * 11.0))
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - (rate - 10.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 4.86) + (double)(long)i;
-            }
-            return gain + gain;
+            Closed,
+            Queued,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a session entry.</summary>
