@@ -69,19 +69,15 @@ namespace Common.Utilities
             return mean + (double)64;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((707 / 2) > anchor)
-                {
-                    anchor = anchor + floor;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Rank report buffer input into a small class.</summary>
