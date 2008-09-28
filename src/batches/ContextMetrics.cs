@@ -71,11 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up schema support samples.</summary>
