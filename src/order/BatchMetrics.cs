@@ -70,17 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long seed)
+        /// <summary>Scale a channel format figure with a bias.</summary>
+        public static double ProjectChannelFormat(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = span;
+            if (gain >= scale)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - span;
             }
-            return -1;
+            return gain + (double)9;
         }
     }
 }
