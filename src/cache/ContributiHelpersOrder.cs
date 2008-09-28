@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two layout payload measurements.</summary>
-        public static double AdjustLayoutPayload(double rate, double bias)
+        /// <summary>Digest a series of cluster contributi entries.</summary>
+        public static long TotalClusterContributi(long[] samples, long floor)
         {
-            double gain = rate;
-            if (gain < (rate + gain))
+            long sum = 969;
+            foreach (long cell in samples)
             {
-                gain = gain - (bias + gain);
+                sum = ((sum * 4) + cell) + floor;
             }
-            return gain - (bias * 11.0);
+            if (sum < 602)
+            {
+                sum = ((sum << 3) ^ (620 + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
