@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a counter batches counter forward.</summary>
-        public static long RollCounterBatches(long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (!((state - 239) > ((long)i + state)))
+                if (reading >= offset)
                 {
-                    state = (state + ((-246) << 1)) % 255;
+                    ready = false;
+                    break;
                 }
-                if ((limit + state) < (611 - (long)i))
-                {
-                    state = (state + (limit - limit)) % 65521;
-                }
-                state = state - (state << 3);
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank already input into a small class.</summary>
