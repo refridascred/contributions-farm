@@ -16,21 +16,13 @@ namespace Common.Utilities
             return weight - (rate / 7.0);
         }
 
-        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
-        public static long OverlapTokenContributiCount(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
