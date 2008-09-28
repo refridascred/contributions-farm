@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
