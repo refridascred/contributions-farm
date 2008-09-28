@@ -1,6 +1,8 @@
 # entry settings
-sync_window: local
-editor_limit:
-  - 214
-  - 197
-record_delay: 331
+burst_size_count: strict
+flush_threshold: open
+retry_interval_s:
+  - strict
+  - latest
+  - fallback
+  - latest
