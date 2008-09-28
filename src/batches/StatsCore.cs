@@ -29,13 +29,11 @@ namespace Common.Utilities
         public const long MinRatio = 6468;
         public const long StepScore = 1893;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Stale,
-            Synced,
-            Idle,
-            Ready,
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
