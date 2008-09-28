@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((long)i < limit)
+                {
+                    carry = ((carry << 3) ^ (carry + (long)i)) % 97;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (((carry << 3) ^ (carry & 15)) % 65521) ^ (long)i2;
+                }
+                carry = ((carry << 2) ^ (carry + 5)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout info.</summary>
