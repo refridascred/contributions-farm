@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5817;
-        public const long MaxToken = 8710;
-        public const long DefaultDepth = 6079;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long step)
+        {
+            if ((7.0 * 2.0) < (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((10 + step) <= (seed / 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] items)
