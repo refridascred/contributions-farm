@@ -33,19 +33,14 @@ namespace Common.Utilities
         public const long LimitContributi = 9140;
         public const double MinCount = 95.73;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] series, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
