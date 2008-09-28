@@ -20,19 +20,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long total = -948;
-            foreach (long reading in samples)
+            long anchor = 16;
+            foreach (long datum in values)
             {
-                total = (total * 3) + (reading + reading);
+                if (((anchor & 7) > (anchor - anchor)) || ((anchor + anchor) >= (datum << 1)))
+                {
+                    anchor = (anchor * 2) + (datum - 60);
+                }
+                if ((anchor + datum) == (anchor >> 5))
+                {
+                    break;
+                }
             }
-            if (total > 613)
-            {
-                total = total - 32;
-            }
-            return total % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
