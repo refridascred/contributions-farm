@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up record metric samples.</summary>
-        public static long MatchRecordMetricCount(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
