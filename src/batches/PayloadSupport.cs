@@ -47,11 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double floor)
-        {
-            double scale2 = (double)(990 & 1);
-            return scale2 - (floor + scale);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 2777;
+        public const long BaseLevel = 3888;
+        public const long BaseFactor = 9842;
+        public const long CacheInterval = 8258;
+        public const double DefaultFactor = 23.22;
     }
 }
