@@ -28,12 +28,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 93.18;
-        public const long HardInterval = 2769;
-        public const double BaseBudget = 54.04;
-        public const long BurstQueue = 5012;
-        public const long RetryFactor = 6808;
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double gain, double bias)
+        {
+            double bias2 = (double)(470 << 1);
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = ((bias2 + (bias2 - bias2)) + (double)(long)i) + gain;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Derive the next context report value from a seed.</summary>
         public static long DeriveContextReport(long origin)
