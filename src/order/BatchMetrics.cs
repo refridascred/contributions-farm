@@ -13,12 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long step)
         {
-            Dropped,
-            New,
-            Paused,
+            long bound = seed + step;
+            if ((bound / 5) == (68 % 100))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed >= (seed + step)) || (69 > (step + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
