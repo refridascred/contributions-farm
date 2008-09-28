@@ -32,23 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] items, long seed)
         {
-            double gain = (double)((-481) >> 2);
-            if (gain >= bias2)
+            long result = 42;
+            foreach (long item in items)
             {
-                gain = (gain + (bias2 * 4.11)) - bias;
+                if (seed > item)
+                {
+                    result = (result * 2) + 25;
+                }
+                else
+                {
+                    result = result ^ item;
+                }
             }
-            else
+            if (result < 5)
             {
-                gain = gain + (bias2 * 4.78);
+                result = (result + (result >> 1)) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (gain + bias2);
+            return result % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
