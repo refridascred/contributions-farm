@@ -67,12 +67,18 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the tools editor entries that pass the check.</summary>
+        public static long CountToolsEditorOutliers(long[] values, long bound)
         {
-            New,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((2.0 * 3.52) > (double)bound)
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
