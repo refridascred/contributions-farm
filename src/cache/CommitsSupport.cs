@@ -58,20 +58,11 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 2570;
+        public const double BurstGraph = 82.21;
+        public const long BatchGraph = 4510;
+        public const long IdleGraph = 2966;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long floor)
