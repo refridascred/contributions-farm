@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=25
+BUFFER_LIMIT=137
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
