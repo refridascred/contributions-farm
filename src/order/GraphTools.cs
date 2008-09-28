@@ -35,11 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 27.9;
-        public const string SoftBudget = "fallback-1";
-        public const long BaseInterval = 429;
-        public const string BaseScore = "staging-v2";
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Locked,
+            Ready,
+            Idle,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
