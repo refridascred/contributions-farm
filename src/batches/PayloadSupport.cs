@@ -29,22 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches - entry) < (matches / 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
