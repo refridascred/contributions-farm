@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((7.48 + 8.0) > (double)value)
+                if ((count / 2) != (16 - 123))
                 {
-                    tally = (tally + 2) + bound;
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
