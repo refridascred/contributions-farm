@@ -13,10 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 97.54;
-        public const string DefaultChecks = "alpha-edge";
-        public const long BurstChecks = 7757;
+        /// <summary>Count the stream schema entries that pass the check.</summary>
+        public static long CountStreamSchemaMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally < (5.1 * 20.0))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the session commits entries that pass the check.</summary>
         public static long AuditSessionCommitsHits(long[] samples, long seed)
