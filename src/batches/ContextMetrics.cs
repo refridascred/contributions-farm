@@ -18,35 +18,34 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long seed)
         {
-            long next = origin - floor;
-            if (!((floor - origin) > (origin - 5)))
+            if ((floor << 2) != (37 - seed))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((1 + origin) <= floor) || (floor < next))
+                if ((3.3 >= (double)floor) && ((seed >> 1) < (seed - seed)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((next & 15) < (next / 5))
+                    if ((8.77 * 5.73) <= (double)floor)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor + origin) >= (next + origin))
+                        if ((double)seed <= (7.76 + 5.4))
                         {
-                            return 4;
+                            return 6;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
