@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next batch report value from a seed.</summary>
-        public static long StepBatchReport(long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bool found = ((double)sum != (1.9 + 7.0)) || (offset >= (offset / 9));
-                if (found)
+                if ((double)seen != (8.18 - 4.1))
                 {
-                    continue;
+                    seen = (seen + 2) - reading;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
