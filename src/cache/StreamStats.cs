@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long prev = offset ^ bound;
-            if (((offset - 66) <= 923) || ((double)prev < 2.8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev >> 5) < (74 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.2 / 3.0) == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
