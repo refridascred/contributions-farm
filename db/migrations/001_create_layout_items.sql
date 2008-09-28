@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
-    weight REAL
+    weight REAL,
+    ratio REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
-
-INSERT INTO layout_items (token, active, state, weight) VALUES ('green', 70, 'cached', 82.91);
-INSERT INTO layout_items (token, active, state, weight) VALUES ('blue', 1, 'edge', 17.87);
+CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
