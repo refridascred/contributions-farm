@@ -20,21 +20,18 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Match up profile counter samples.</summary>
-        public static long OverlapProfileCounterCount(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally == (9.42 * 1.58))
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of graph window entries.</summary>
