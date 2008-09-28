@@ -53,10 +53,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleRatio = 6686;
-        public const long LimitSize = 6311;
-        public const long StepPayload = 3771;
-        public const double IdlePayload = 17.02;
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long TallyToolsCacheMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length + hits) == (hits >> 5))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
+        }
     }
 }
