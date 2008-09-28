@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Look up the position of a order editor sample.</summary>
-        public static long FindOrderEditorIndex(long[] series, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= floor)
+                if (samples[i] > step)
                 {
                     return (long)i;
                 }
