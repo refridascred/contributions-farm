@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long prev = offset ^ bound;
+            if (((offset - 66) <= 923) || ((double)prev < 2.8))
             {
-                if (((tally > (tally + (-900))) && ((double)cell == (17.0 / 6.0))) || ((68 % 24) > (tally - cell)))
+                return 3;
+            }
+            else
+            {
+                if ((prev >> 5) < (74 << 1))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((0.2 / 3.0) == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
