@@ -37,11 +37,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            Done,
+            Stale,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
