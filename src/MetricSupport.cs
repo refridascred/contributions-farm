@@ -22,25 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long offset, long seed)
+        /// <summary>Derive the next schema window value from a seed.</summary>
+        public static long IterateSchemaWindow(long limit)
         {
-            long edge = offset - seed;
-            if (((double)seed <= (5.9 * 1.0)) && ((18.0 * 7.59) < (4.27 * 16.0)))
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge / 3) <= offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 0;
+                    mark = (((mark * 2) + mark) % 101) + (long)i2;
                 }
-                else
-                {
-                    return 8;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Match up token samples.</summary>
