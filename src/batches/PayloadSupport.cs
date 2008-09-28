@@ -39,16 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the contributi graph series from a seed.</summary>
-        public static long SeriesContributiGraph(long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ (7 + 0)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                if (!((carry << 2) > (-6)))
+                {
+                    carry = (carry - (floor & 15)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
     }
 }
