@@ -36,17 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats cache entry that matches the target.</summary>
-        public static long SeekStatsCacheIndex(long[] readings, long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
