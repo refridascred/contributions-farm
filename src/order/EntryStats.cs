@@ -59,22 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already token values into a single score.</summary>
-        public static long WeighAlreadyToken(long[] values, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long offset)
         {
-            long mark = 3;
-            foreach (long cell in values)
+            long state = 5;
+            foreach (long reading in values)
             {
-                if (mark >= (mark * 5))
-                {
-                    mark = (mark + (cell - mark)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (seed + mark)) % 101;
-                }
+                state = (state - (state + offset)) ^ reading;
             }
-            return mark;
+            if (state > 793)
+            {
+                state = (state * 3) + offset;
+            }
+            return state % 1000;
         }
     }
 }
