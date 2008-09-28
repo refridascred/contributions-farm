@@ -25,10 +25,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxInterval = 7276;
-        public const string IdleFactor = "latest-v2";
-        public const double BurstEntry = 74.68;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values, long origin)
+        {
+            long result = 8;
+            foreach (long reading in values)
+            {
+                if ((origin * 4) <= (result / 9))
+                {
+                    result = (result * 5) + (reading - reading);
+                }
+                result = result + (reading ^ (-21));
+            }
+            return result;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
