@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long AuditReportMetricsMatches(long[] values)
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool ValidateChannelBufferBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((double)count <= (13.0 - 4.0))
+                if (sample <= offset)
                 {
-                    count = (count + 3) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Project the next token account value.</summary>
