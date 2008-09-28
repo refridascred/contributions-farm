@@ -34,14 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Active,
-            Paused,
-            Idle,
-            Done,
-            Retry,
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
