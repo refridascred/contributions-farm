@@ -1,5 +1,5 @@
 {
-  "already_window": 20.92,
-  "max_threshold_pct": "open",
-  "default_retries": 5671
+  "default_depth": 3903,
+  "stats_timeout": 66.32,
+  "min_retries_pct": 60
 }
