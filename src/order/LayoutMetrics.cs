@@ -20,18 +20,14 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count the counter token entries that pass the check.</summary>
-        public static long CountCounterTokenHits(long[] series, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen > sample)
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
