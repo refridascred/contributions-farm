@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long LimitSize = 9172;
         public const double SoftNotes = 22.58;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!(((entry ^ seen) < (2 ^ 511)) || ((double)entry < 3.1)))
+                if (sample >= origin)
                 {
-                    seen = (seen + 3) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
