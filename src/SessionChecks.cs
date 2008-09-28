@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the queue window series from a seed.</summary>
-        public static long IterateQueueWindow(long bound)
+        /// <summary>Derive the next metrics graph value from a seed.</summary>
+        public static long RollMetricsGraph(long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (14 <= (long)i)
+                {
+                    score = (score + (score ^ score)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a account info.</summary>
