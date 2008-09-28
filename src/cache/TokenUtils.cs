@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const long BurstSpan = 2169;
         public const long HardDepth = 9528;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a command commits counter forward.</summary>
+        public static long DeriveCommandCommits(long limit)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
