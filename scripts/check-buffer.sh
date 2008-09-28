@@ -12,6 +12,6 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback local; do
+for item in edge strict eu-west latest; do
     log "checking ${item}"
 done
