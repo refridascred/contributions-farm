@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BatchChecks = 1807;
         public const long DefaultLevel = 234;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            Closed,
-            Paused,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count - value) != (value % 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
