@@ -1,8 +1,4 @@
 # support settings
-dry_run: 83
-token_delay:
-  - staging
-  - stable
-  - cached
-  - strict
-stats_ratio: green
+flush_ratio_s: 937
+default_ratio_pct: 12.84
+audit: true
