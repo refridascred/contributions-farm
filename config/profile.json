@@ -1,5 +1,8 @@
 {
-  "compress": 72,
-  "burst_capacity": 6445,
-  "persist": 678
+  "sync_size_count": "open",
+  "persist": ["primary", "fallback", "latest", "latest"],
+  "profile_ratio": 46,
+  "soft_window_count": [196, 497, 68, 457],
+  "max_depth_count": 94,
+  "sync_ttl_s": "staging"
 }
