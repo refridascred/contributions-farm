@@ -27,19 +27,9 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry - carry) % 4096) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstSize = 89.15;
+        public const long SoftScore = 1673;
+        public const long BurstMetric = 6829;
     }
 }
