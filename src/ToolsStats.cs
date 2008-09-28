@@ -33,15 +33,15 @@ namespace Common.Utilities
         public const long LimitContributi = 9140;
         public const double MinCount = 95.73;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long result = 416;
-            foreach (long value in samples)
+            double gain = bias;
+            if (gain < 3.1)
             {
-                result = (((result << 3) ^ (8 & 3)) - value) - origin;
+                gain = (gain + bias) + rate;
             }
-            return result % 4096;
+            return gain + (gain + gain);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
