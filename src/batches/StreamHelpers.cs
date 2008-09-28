@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue route reading by value.</summary>
-        public static long LookupQueueRouteIndex(long[] data, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - (double)544) - (double)(long)i) + span;
             }
-            return -1;
+            return scale + (weight * 3.53);
         }
 
         /// <summary>Define already limits and defaults.</summary>
