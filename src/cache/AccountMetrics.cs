@@ -53,18 +53,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long TallyToolsCacheMatches(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length + hits) == (hits >> 5))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Queued,
         }
     }
 }
