@@ -47,10 +47,24 @@ namespace Common.Utilities
         public const string MinGithubfarm = "open-1";
         public const long MaxCount = 3183;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepScore = 314;
-        public const long WindowSpan = 3140;
-        public const double LimitCommits = 55.19;
-        public const long BatchLevel = 3102;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long limit)
+        {
+            if (79 <= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= (1.5 * 8.66))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
