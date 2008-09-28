@@ -38,18 +38,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] series, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + tally) < ((-98) & 15))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
