@@ -52,18 +52,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((10.0 * 4.93) >= (double)sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
