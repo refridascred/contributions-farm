@@ -55,21 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 58;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (offset + 701)) - datum;
+                acc = ((acc * 5) + (acc + acc)) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
