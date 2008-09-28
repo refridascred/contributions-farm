@@ -25,13 +25,19 @@ namespace Common.Utilities
             return gain + (gain * 1.31);
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] samples, long offset)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
