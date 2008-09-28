@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((seed * 5) < (seed + tally)) || !((double)seed <= (5.91 + 7.6)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7797;
+        public const long StepWidth = 5632;
+        public const string MaxScore = "cached";
+        public const double SoftBatches = 23.11;
+        public const long IdleFactor = 5554;
 
         /// <summary>Roll a commits stats counter forward.</summary>
         public static long SeriesCommitsStats(long offset)
