@@ -42,13 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the filter notes entries that pass the check.</summary>
+        public static long CountFilterNotesOutliers(long[] samples)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count - cell) <= (cell - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
