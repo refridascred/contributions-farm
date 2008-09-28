@@ -56,12 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
