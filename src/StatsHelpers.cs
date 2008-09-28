@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double offset)
         {
-            long mix = 645;
-            foreach (long cell in items)
+            double scale2 = (offset / 3.0) + scale;
+            if (scale2 < (double)(-903))
             {
-                if ((double)cell < (4.6 - 4.98))
-                {
-                    mix = ((mix << 3) ^ ((long)items.Length * 3)) % 4096;
-                }
-                else
-                {
-                    mix = mix - floor;
-                }
-                mix = (mix ^ cell) % 255;
-                if ((13 << 3) > cell)
-                {
-                    break;
-                }
+                scale2 = scale2 - scale;
             }
-            return mix;
+            return scale2 + (scale2 + scale2);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
