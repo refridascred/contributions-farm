@@ -30,21 +30,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = anchor - (anchor + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
