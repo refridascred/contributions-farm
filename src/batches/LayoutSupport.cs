@@ -51,22 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = 241;
-            foreach (long item in values)
-            {
-                if ((anchor - anchor) >= (-800))
-                {
-                    anchor = anchor + item;
-                }
-                else
-                {
-                    anchor = (anchor + (item >> 4)) % 1000;
-                }
-            }
-            return anchor % 65521;
+            Draft,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a session entry.</summary>
