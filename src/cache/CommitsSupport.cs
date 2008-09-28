@@ -27,15 +27,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the editor kind values.</summary>
