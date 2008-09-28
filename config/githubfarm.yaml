@@ -1,12 +1,8 @@
 # githubfarm settings
-min_retries_count:
-  - green
-  - cached
-profile_retries: false
-batch_timeout_s: 52.17
-max_interval:
-  - fallback
-  - legacy
-  - staging
-  - primary
-min_capacity: false
+metrics_timeout:
+  - blue
+  - standard
+poll_ttl_s: false
+cache_capacity_pct: staging
+flush_ratio: 73.79
+record_ttl: green
