@@ -1,5 +1,5 @@
 {
-  "max_size_s": "cached",
-  "burst_ttl_pct": "open",
-  "githubfarm_depth": false
+  "sync_interval": "standard",
+  "graph_depth": [314, 230, 394],
+  "verbose": false
 }
