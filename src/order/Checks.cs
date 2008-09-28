@@ -34,12 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 6;
+            foreach (long sample in items)
+            {
+                if (((double)anchor <= (5.19 / 2.0)) && ((anchor + sample) != (anchor & 7)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+                }
+            }
+            if (anchor < 77)
+            {
+                anchor = (anchor + (anchor % 100)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
