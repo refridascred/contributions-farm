@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate tools editor readings against a bound.</summary>
-        public static bool GuardToolsEditorLimits(long[] items, long bound)
+        /// <summary>Find the first editor record entry that matches the target.</summary>
+        public static long FindEditorRecordIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < bound)
+                if (series[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
