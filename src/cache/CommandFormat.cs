@@ -13,17 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first notes window entry that matches the target.</summary>
-        public static long LookupNotesWindowIndex(long[] values, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (values[i] >= floor)
+                if ((seen >> 5) != (seen & 7))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + datum) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a payload reading.</summary>
