@@ -36,12 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long floor)
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long score = 699;
+            foreach (long item in readings)
+            {
+                if (!((item & 31) >= item))
+                {
+                    score = ((score + (item + 40)) % 4096) - floor;
+                }
+            }
+            if (score > 271)
+            {
+                score = ((score << 3) ^ (score ^ score)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
