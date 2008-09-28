@@ -12,16 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long CountCommandClusterMatches(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mix = (mix - seed) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (count < (count % 100))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
