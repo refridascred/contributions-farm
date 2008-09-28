@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] levels, long bound)
         {
-            double weight = (double)683 + (1.36 + ratio);
-            if (weight > (double)61)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - weight;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (double)26;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (floor - floor);
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
