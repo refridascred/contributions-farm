@@ -25,12 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepScore = "alpha";
-        public const long BaseCount = 6926;
-        public const string BurstFormat = "standard";
-        public const double HardSpan = 59.53;
-        public const long HardFormat = 100;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 5691;
+        public const long CacheFactor = 7904;
+        public const double DefaultRatio = 4.21;
+        public const long StepScore = 5679;
 
         /// <summary>Audit token metric readings against a rule.</summary>
         public static long TallyTokenMetricMatches(long[] data, long offset)
