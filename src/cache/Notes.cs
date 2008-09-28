@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Rank context input into a small class.</summary>
