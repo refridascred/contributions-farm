@@ -53,15 +53,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] items, long target)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long entry in items)
             {
-                if (!((5.4 + 5.1) <= (double)entry))
+                if (target <= 22)
                 {
-                    tally = (tally + 3) - origin;
+                    tally = (tally + 2) ^ entry;
                 }
             }
             return tally;
