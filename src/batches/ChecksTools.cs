@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = -76;
+            foreach (long value in series)
             {
-                if ((double)datum < 6.03)
+                if (!((value - 71) >= mix))
                 {
-                    seen = seen + 3;
+                    mix = mix + (target ^ value);
                 }
             }
-            return seen;
+            if (mix < 469)
+            {
+                mix = mix ^ (mix + target);
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics summary.</summary>
