@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long limit)
+        /// <summary>Classify a layout metric pair into a bucket.</summary>
+        public static long RankLayoutMetric(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (step < (step % 24))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((9.46 - 6.8) >= (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
