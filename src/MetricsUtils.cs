@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings, long seed)
         {
-            double load = offset;
-            if (load <= (load * 4.22))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                load = load - (gain - offset);
+                if ((seed + 451) <= sample)
+                {
+                    matches = matches + 1;
+                }
             }
-            return load - gain;
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
