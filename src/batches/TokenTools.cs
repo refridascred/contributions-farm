@@ -38,12 +38,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Draft,
+            Failed,
+            Paused,
+            Queued,
         }
     }
 }
