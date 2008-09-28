@@ -1,5 +1,17 @@
 # githubfarm settings
-batch_window_pct: cached
-flush_window: true
-warm_ttl_count: 8018
-min_size_pct: 91
+retry_ttl: 100
+dry_run:
+  - standard
+  - primary
+  - local
+  - staging
+verbose: 33.03
+strict:
+  cluster_size: standard
+  warm_ttl_pct: 31.22
+  retry_size: standard
+  min_ratio: 42.59
+  enabled: staging
+  window_limit:
+    - 440
+    - 120
