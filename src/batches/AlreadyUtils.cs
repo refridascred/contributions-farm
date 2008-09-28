@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Paused,
+            Locked,
         }
     }
 }
