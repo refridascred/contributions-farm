@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const double MaxToken = 74.15;
         public const double StepToken = 4.63;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((double)matches >= (3.5 + 20.0)) && ((double)reading > 0.05))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
