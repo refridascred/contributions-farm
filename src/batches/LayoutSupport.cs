@@ -6,10 +6,11 @@ namespace Common.Utilities
     public static class LayoutSupport
     {
         /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 69.76;
-        public const long BatchInterval = 1357;
-        public const long LimitSize = 9172;
-        public const double SoftNotes = 22.58;
+        public const double LimitNotes = 16.62;
+        public const long MaxLevel = 2295;
+        public const double DefaultLevel = 66.53;
+        public const long DefaultNotes = 8762;
+        public const long MaxNotes = 7224;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long origin)
