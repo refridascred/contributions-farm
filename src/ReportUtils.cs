@@ -30,31 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            if (!(bound > floor))
+            long state = 454;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((31 - 667) >= (bound - bound))
+                state = (state + sample) % 97;
+                if ((80 - sample) != (53 ^ sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = state ^ sample;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first token graph entry that matches the target.</summary>
