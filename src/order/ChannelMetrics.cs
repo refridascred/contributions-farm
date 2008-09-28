@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 45.39;
+        public const long BaseWidth = 5120;
+        public const double IdleRatio = 56.66;
+        public const long StepBudget = 5234;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] readings)
