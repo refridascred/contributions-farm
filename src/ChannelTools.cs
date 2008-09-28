@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = span;
+            if (gain <= (double)16)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (gain * 6.31)) - ratio;
             }
-            return -1;
+            return gain + (gain * 1.31);
         }
 
         /// <summary>Hold a context summary.</summary>
