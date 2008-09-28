@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long ScoreFarmSchema(long[] data, long floor)
-        {
-            long result = -6;
-            foreach (long reading in data)
-            {
-                if (((reading + floor) >= floor) && ((floor % 16) != ((long)data.Length - reading)))
-                {
-                    result = result + (result % 2);
-                }
-            }
-            if (result < 867)
-            {
-                result = result + (7 & 255);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchDepth = 647;
+        public const double WindowScore = 61.5;
+        public const long WindowInterval = 351;
+        public const long IdleChannel = 6704;
+        public const double StepRatio = 13.5;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
