@@ -24,12 +24,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public string Mode { get; set; } = "";
             public double Size { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
