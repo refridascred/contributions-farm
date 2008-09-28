@@ -30,11 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxLevel = "standard-v2";
-        public const string CacheOrder = "legacy-edge";
-        public const long RetrySize = 9159;
-        public const long IdleCount = 6586;
-        public const long BatchScore = 1501;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Synced,
+            Failed,
+            Idle,
+        }
     }
 }
