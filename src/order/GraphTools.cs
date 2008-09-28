@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long origin)
         {
-            Done,
-            Queued,
-            Stale,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many account window samples are out of range.</summary>
