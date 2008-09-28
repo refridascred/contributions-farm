@@ -43,39 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long seed)
-        {
-            long gap = target ^ seed;
-            if ((gap << 2) >= (gap + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ seed) != (target + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((-6) > gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((gap < (26 + target)) && (target > (gap >> 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 7344;
+        public const long LimitSchema = 3059;
+        public const double CacheSpan = 85.92;
+        public const long MinSchema = 8765;
     }
 }
