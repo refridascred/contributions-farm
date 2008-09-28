@@ -21,13 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long origin)
         {
-            Active,
-            Done,
-            Dropped,
-            New,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
