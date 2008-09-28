@@ -1,13 +1,12 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the token queue.
-
-The record helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the schema queue.
+Use schema settings to tune how often notes data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The session report groups every schema by profile.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review farm limits each release
-- Document new support fields
+- Document new checks fields
+- Prefer support defaults
+- Review filter limits each release
+- Keep graph values small
