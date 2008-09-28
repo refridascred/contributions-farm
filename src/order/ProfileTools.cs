@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph commits samples.</summary>
-        public static long CombineGraphCommits(long[] samples)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = 80;
-            foreach (long reading in samples)
-            {
-                if ((long)samples.Length != (anchor + reading))
-                {
-                    anchor = anchor ^ 6;
-                }
-                if ((anchor & 63) != (reading << 1))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the session commits entries that pass the check.</summary>
