@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long target)
         {
-            long anchor = 722;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (value < (anchor << 2))
+                if (sample > target)
                 {
-                    anchor = (anchor + value) % 255;
-                    anchor = ((anchor * 2) + anchor) % 101;
+                    stale = false;
                     break;
                 }
-                anchor = (anchor << 3) ^ (value + origin);
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
