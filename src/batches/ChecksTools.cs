@@ -20,38 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a context queue pair into a bucket.</summary>
-        public static long GradeContextQueue(long limit, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if (((limit + limit) <= (466 - offset)) || (limit < (offset - offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.5 + 7.0) < (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9 <= (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit >= 765)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a schema report sample.</summary>
