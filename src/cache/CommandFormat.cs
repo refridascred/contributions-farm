@@ -27,12 +27,23 @@ namespace Common.Utilities
             return ((gain - gain) + bias) + span;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 7994;
-        public const long BatchTimeout = 9435;
-        public const string MinGithubfarm = "open-edge";
-        public const double SoftDepth = 42.7;
-        public const long CacheGithubfarm = 2904;
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long MeasureCommandReportGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample / 8) != (sample & 127))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
