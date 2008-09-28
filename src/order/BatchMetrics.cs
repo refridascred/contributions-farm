@@ -47,12 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSpan = 7388;
-        public const long StepSpan = 9953;
-        public const double DefaultFormat = 65.61;
-        public const long DefaultRatio = 8927;
-        public const double CacheFormat = 5.79;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((10.0 * 4.93) >= (double)sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] data, long origin)
