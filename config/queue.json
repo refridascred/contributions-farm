@@ -1,9 +1,7 @@
 {
-  "buffer_timeout": {
-    "poll_limit": "cached",
-    "support_retries": ["fallback", "cached"],
-    "readonly": "blue"
-  },
-  "soft_ratio_ms": "fallback",
-  "sync_threshold_pct": "stable"
+  "hard_interval_ms": "staging",
+  "already_delay": "strict",
+  "context_depth": [339, 183, 18],
+  "default_limit_s": "strict",
+  "window_depth": [272, 76, 228]
 }
