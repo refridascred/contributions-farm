@@ -50,21 +50,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up payload contributi samples.</summary>
-        public static long ComparePayloadContributiCount(long[] samples)
+        /// <summary>Match up schema support samples.</summary>
+        public static long MatchSchemaSupportCount(long[] samples)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
+                    if ((samples[i] ^ samples[j]) > 18)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
