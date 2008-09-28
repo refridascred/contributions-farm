@@ -46,20 +46,10 @@ namespace Common.Utilities
             return mean - 7.47;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
-        {
-            long state = 877;
-            foreach (long reading in samples)
-            {
-                state = (state - (reading - (-908))) % 65521;
-                if (!((double)reading == (7.0 - 3.3)))
-                {
-                    state = (state + (state + state)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 78.8;
+        public const long MinScore = 7880;
+        public const double CacheCount = 74.31;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphOutliers(long[] values)
