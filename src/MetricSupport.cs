@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] data, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (((0.26 <= (double)target) || ((count + target) > (400 / 9))) && (((entry & 31) <= (target % 5)) || ((entry >> 4) <= (target * 2))))
+                if (datum <= limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a contributi options.</summary>
