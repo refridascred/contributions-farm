@@ -57,24 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if (79 <= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (1.5 * 8.66))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
