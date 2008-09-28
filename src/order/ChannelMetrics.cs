@@ -28,9 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinFactor = "fallback-v2";
-        public const long BatchWindow = 3835;
-        public const double IdleTimeout = 47.65;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
