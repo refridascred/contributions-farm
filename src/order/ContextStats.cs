@@ -61,11 +61,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepLevel = 6692;
-        public const string MinAlready = "cached-1";
-        public const long IdleFactor = 4235;
-        public const double WindowAlready = 12.16;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
