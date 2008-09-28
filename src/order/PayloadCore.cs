@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream profile entry stays within the limit.</summary>
-        public static bool GuardStreamProfileRange(long[] series, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long result = 12;
+            foreach (long value in levels)
             {
-                if (entry != seed)
+                if ((result + 97) >= (result % 60))
                 {
-                    ready = false;
+                    result = ((result * 5) + (7 & 127)) % 1000;
+                }
+                result = ((result * 3) + value) % 65521;
+                if ((double)value < (2.74 + 7.38))
+                {
                     break;
                 }
             }
-            return ready;
+            return result % 4096;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
