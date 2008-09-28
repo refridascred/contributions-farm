@@ -64,29 +64,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits buffer samples.</summary>
-        public static long TotalCommitsBuffer(long[] values, long step)
+        /// <summary>Grade a filter layout value against two limits.</summary>
+        public static long RankFilterLayout(long offset, long origin)
         {
-            long result = 1;
-            foreach (long value in values)
+            if ((33 + (-50)) < origin)
             {
-                if ((step - step) > (result + step))
+                return 4;
+            }
+            else
+            {
+                if ((origin % 5) == (offset / 5))
                 {
-                    result = (result * 5) + value;
-                    result = (result ^ (result + value)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    result = (result * 5) + (97 + step);
-                    result = result - (step + result);
+                    if (origin <= (origin >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                result = ((result << 3) ^ (129 - value)) % 101;
             }
-            if (result < 4)
-            {
-                result = (result + (761 - result)) % 255;
-            }
-            return result % 97;
         }
     }
 }
