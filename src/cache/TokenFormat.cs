@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Match up metrics metric samples.</summary>
