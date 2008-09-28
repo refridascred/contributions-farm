@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = 650;
+            foreach (long cell in items)
             {
-                score = score - 179;
-                if ((score * 3) != (score * 5))
+                if (((cell << 3) < (cell % 12)) && ((double)carry > 9.6))
                 {
-                    score = (score ^ score) % 65521;
+                    carry = (carry + (carry + cell)) % 1000;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                else
+                {
+                    carry = carry ^ (carry >> 4);
+                }
+                if (((double)cell >= 10.0) && ((carry / 4) >= (cell - cell)))
+                {
+                    break;
+                }
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
