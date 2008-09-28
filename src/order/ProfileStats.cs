@@ -39,18 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile stream entries.</summary>
-        public static long ScoreProfileStream(long[] values)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long score = 8;
-            foreach (long reading in values)
-            {
-                if (((-553) + reading) != (1 << 3))
-                {
-                    score = (score - score) % 1000;
-                }
-            }
-            return score % 65521;
+            New,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
