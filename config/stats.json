@@ -1,22 +1,8 @@
 {
-  "record_size": "green",
-  "readonly": {
-    "tools_interval": {
-      "schema_ratio": 60,
-      "strict": 64.84,
-      "token_window": 37.18,
-      "verbose": 26.39
-    },
-    "base_size": "green",
-    "sync_capacity_s": ["stable", "standard", "eu-west"],
-    "burst_capacity": {
-      "soft_threshold_count": 250,
-      "poll_ratio_count": 6908,
-      "entry_retries": 77.18,
-      "flush_ratio_s": "local",
-      "flush_depth": 38
-    }
-  },
-  "poll_retries_s": "latest",
-  "dry_run": 35.41
+  "verbose": 100,
+  "command_window": 30,
+  "metrics_threshold": 1024,
+  "notes_timeout": 96,
+  "token_interval": "primary",
+  "soft_limit": 33
 }
