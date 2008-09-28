@@ -1,8 +1,9 @@
-id,score,label,region,ratio
-1,fallback,68.83,68.83,389
-2,37.54,200,standard,51
-3,325,strict,34.58,874
-4,strict,eu-west,67.81,470
-5,50.43,583,444,383
-6,strict,95.41,staging,966
-7,93.63,833,eu-west,921
+id,label,count,level,score
+1,161,staging,fallback,green
+2,45,749,956,235
+3,edge,989,open,strict
+4,21.95,40,staging,49.54
+5,857,green,481,93
+6,green,legacy,29.93,fallback
+7,712,178,36.7,legacy
+8,eu-west,931,12.05,532
