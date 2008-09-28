@@ -32,13 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
