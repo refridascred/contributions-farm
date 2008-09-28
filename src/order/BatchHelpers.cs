@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Audit contributi batches readings against a rule.</summary>
+        public static long MeasureContributiBatchesGaps(long[] samples, long limit)
         {
-            long carry = 65;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry * 5) + (60 - entry);
+                if ((limit - sample) == (466 * 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
