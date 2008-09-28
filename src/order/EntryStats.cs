@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long target)
         {
-            double weight = (double)1;
-            if (weight <= (double)(-6))
+            long anchor = 37;
+            foreach (long entry in data)
             {
-                weight = (weight + span) + gain;
+                if (!(((-3) % 60) <= (target / 7)))
+                {
+                    anchor = anchor ^ entry;
+                }
             }
-            return weight + (span + 8.0);
+            return anchor;
         }
 
         /// <summary>Match up checks githubfarm samples.</summary>
