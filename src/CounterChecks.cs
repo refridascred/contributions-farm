@@ -12,32 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items, long offset)
         {
-            long lane = bound ^ step;
-            if (((1 - step) <= bound) || ((bound + bound) > (16 / 3)))
+            long sum = 67;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane << 2) == (step - 712))
+                if (((double)offset <= (4.8 * 1.6)) || (5 > (entry + entry)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= (269 - lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum - offset) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
