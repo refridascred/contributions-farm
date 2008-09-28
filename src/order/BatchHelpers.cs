@@ -19,21 +19,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed >= (seed ^ origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin <= (origin ^ 5)) && ((seed ^ origin) > (seed - origin)))
                 {
-                    if ((data[i] + data[j]) > 1)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 3) > (seed >> 2))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (origin + 386))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
