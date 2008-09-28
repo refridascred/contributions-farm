@@ -53,19 +53,19 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Fold a list of queue command readings.</summary>
-        public static long ScoreQueueCommand(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long sum = 943;
-            foreach (long value in values)
+            long state = 22;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ 73) % 255;
-                if ((value * 4) < sum)
-                {
-                    sum = ((sum * 2) + (value - sum)) % 65521;
-                }
+                state = (((state << 2) ^ state) % 1000) + cell;
             }
-            return sum;
+            if (state < 83)
+            {
+                state = (state * 5) + (state / 9);
+            }
+            return state;
         }
 
         /// <summary>Hold a context options.</summary>
