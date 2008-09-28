@@ -24,11 +24,11 @@ namespace Common.Utilities
             return gain - (bias * 11.0);
         }
 
-        /// <summary>Adjust a batches route reading.</summary>
-        public static double ProjectBatchesRoute(double weight, double span)
-        {
-            double gain = span;
-            return (gain + (double)63) + weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 9.1;
+        public const long BatchLevel = 15;
+        public const string RetryWidth = "alpha";
+        public const double DefaultEditor = 75.78;
+        public const string MinLevel = "cached-1";
     }
 }
