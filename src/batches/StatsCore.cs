@@ -68,18 +68,15 @@ namespace Common.Utilities
         public const long WindowEntry = 2560;
         public const long IdleEntry = 908;
 
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long AuditSessionAlreadyOutliers(long[] levels, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double mean = bias;
+            if (mean > (weight - bias))
             {
-                if ((datum - 33) == (bound - bound))
-                {
-                    matches = matches + 2;
-                }
+                mean = mean + (double)7;
             }
-            return matches;
+            return mean + (mean - bias);
         }
     }
 }
