@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3837;
-        public const long WindowBudget = 1060;
-        public const string HardRecord = "cached-1";
+        /// <summary>Adjust a command filter reading.</summary>
+        public static double SmoothCommandFilter(double scale, double floor)
+        {
+            double scale2 = floor;
+            if (scale2 < (scale - scale2))
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 + floor;
+        }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
         public static long LookupOrderGithubfarmIndex(long[] values, long origin)
