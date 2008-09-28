@@ -71,17 +71,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (data[i] <= seed)
+                if (item < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
