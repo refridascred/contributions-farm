@@ -47,13 +47,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long seed)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long anchor = 5;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor * 2) + (cell + cell)) % 101;
+                if (anchor <= (anchor << 3))
+                {
+                    anchor = anchor + seed;
+                }
+                anchor = ((anchor * 4) + (cell << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up cluster samples.</summary>
