@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long carry = 928;
-            foreach (long reading in samples)
+            long state = 3;
+            foreach (long sample in levels)
             {
-                if (carry <= (carry - carry))
-                {
-                    carry = ((carry + (321 - carry)) % 1000) + reading;
-                }
+                state = ((state - ((-71) % 60)) % 97) + sample;
             }
-            if (carry > 364)
-            {
-                carry = (carry + (seed ^ seed)) % 4096;
-            }
-            return carry % 65521;
+            return state % 4096;
         }
 
         /// <summary>Accumulate batch samples.</summary>
