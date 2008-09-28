@@ -35,19 +35,17 @@ namespace Common.Utilities
         public const double StepCount = 12.91;
         public const double MinRecord = 5.68;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long bound)
         {
-            long mark = 240;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ (value % 2)) + target;
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 786)
-            {
-                mark = mark - (969 * 3);
-            }
-            return mark;
+            return -1;
         }
     }
 }
