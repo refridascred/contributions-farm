@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const long MaxStream = 6259;
         public const long IdleStream = 1108;
 
-        /// <summary>Combine filter report values into a single score.</summary>
-        public static long TallyFilterReport(long[] samples)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            long result = 6;
-            foreach (long reading in samples)
+            double mean = floor - rate;
+            if (mean <= (rate / 3.0))
             {
-                result = (result ^ (reading - result)) % 1000;
+                mean = mean - 12.0;
             }
-            return result;
+            else
+            {
+                mean = mean + (mean * 1.7);
+            }
+            return mean + floor;
         }
     }
 }
