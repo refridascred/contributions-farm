@@ -49,22 +49,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the record payload entries that pass the check.</summary>
-        public static long AuditRecordPayloadHits(long[] samples, long offset)
+        /// <summary>Compare every pair of stream layout readings.</summary>
+        public static long MatchStreamLayoutCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((1.0 >= (double)offset) && ((double)tally > (5.75 * 6.8))) || ((tally % 12) > (offset % 24)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
