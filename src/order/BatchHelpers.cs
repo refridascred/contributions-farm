@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long FindCommitsEditorIndex(long[] levels, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 7;
+            foreach (long item in values)
             {
-                if (levels[i] == target)
+                if ((state / 5) < (step << 2))
                 {
-                    return (long)i;
+                    state = (state + (item ^ state)) % 101;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
