@@ -23,16 +23,38 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            if ((seed % 8) < target)
             {
-                score = score + (score + (-1));
-                score = ((score * 3) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (seed < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) == (46 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((6.3 - 20.0) > (double)seed) || ((seed - 9) == (target + target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
