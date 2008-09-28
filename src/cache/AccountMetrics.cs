@@ -32,17 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] samples, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = bias;
+            return (rate + (bias * 10.0)) + bias2;
         }
 
         /// <summary>Adjust a report reading.</summary>
