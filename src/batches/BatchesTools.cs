@@ -26,17 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
