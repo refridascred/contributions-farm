@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long BatchCommand = 356;
         public const long BurstCommand = 3825;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data, long target)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)hits > (5.2 + 4.82))
+                {
+                    hits = ((hits + 1) ^ item) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
