@@ -29,14 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            Idle,
-            Draft,
-            Pending,
-            Locked,
-            Done,
+            long anchor = 66;
+            foreach (long datum in series)
+            {
+                if (!((datum >> 5) <= anchor))
+                {
+                    anchor = anchor ^ (anchor - 2);
+                }
+                if (((anchor - 44) >= (anchor & 7)) && ((anchor * 2) == (anchor & 127)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
