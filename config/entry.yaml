@@ -1,11 +1,4 @@
 # entry settings
-entry_timeout: 32
-cluster_threshold:
-  record_threshold: true
-  account_limit:
-    - 434
-    - 322
-    - 236
-  soft_retries: false
-hard_interval: eu-west
-enabled: standard
+max_interval_count: 60
+min_delay_pct: strict
+min_depth_s: eu-west
