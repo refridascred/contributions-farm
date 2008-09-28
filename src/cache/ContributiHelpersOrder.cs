@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 9573;
-        public const string DefaultSize = "staging-1";
-        public const string SoftRatio = "alpha-edge";
-        public const long IdleEntry = 9135;
-        public const double MaxEntry = 5.46;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double scale, double span)
+        {
+            double mean = 9.8;
+            if (mean > (double)92)
+            {
+                mean = (mean - span) + scale;
+            }
+            else
+            {
+                mean = mean - (mean - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (double)9;
+        }
 
         /// <summary>Scale a counter context figure with a bias.</summary>
         public static double ScaleCounterContext(double bias, double span)
