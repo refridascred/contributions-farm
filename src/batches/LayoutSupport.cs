@@ -79,15 +79,10 @@ namespace Common.Utilities
         public const long BurstDepth = 172;
         public const long DefaultSpan = 5094;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 8263;
+        public const long LimitCounter = 5255;
+        public const long DefaultCounter = 5857;
+        public const long BatchLevel = 3930;
     }
 }
