@@ -20,20 +20,18 @@ namespace Common.Utilities
         public const long HardBatches = 5707;
         public const long MinCount = 1591;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            long state = 23;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                state = (((state * 5) + (step >> 3)) % 65521) ^ value;
-                state = (state + 470) % 101;
-                if (((step / 4) >= (step % 2)) && ((double)step != (8.4 - 0.2)))
+                if ((tally + 2) < (-90))
                 {
-                    state = ((state << 2) ^ (state >> 1)) % 101;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
