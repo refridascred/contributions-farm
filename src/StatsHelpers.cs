@@ -49,31 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order contributi pair into a bucket.</summary>
-        public static long ClassifyOrderContributi(long bound, long floor)
-        {
-            if (4.64 < (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((86 * 4) == (floor << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + bound) <= (floor - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleDepth = 4684;
+        public const long BatchQueue = 797;
+        public const double LimitTimeout = 73.27;
     }
 }
