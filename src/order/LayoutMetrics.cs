@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] data, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data, long seed)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long cell in data)
             {
-                if (origin < item)
+                if (!((cell << 3) == (cell % 24)))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
