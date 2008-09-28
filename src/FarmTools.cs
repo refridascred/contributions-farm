@@ -27,22 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] levels, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally - tally) != (25 + origin))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
