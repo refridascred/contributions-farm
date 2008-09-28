@@ -27,10 +27,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchWidth = 2321;
-        public const long SoftSchema = 5278;
-        public const long DefaultSchema = 6076;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowRatio = 951;
