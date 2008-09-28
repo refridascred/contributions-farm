@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long score = 751;
+            foreach (long cell in levels)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score + score) % 1000) ^ cell;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
