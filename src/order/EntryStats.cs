@@ -53,38 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long limit2)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((10.0 - 4.5) > (double)limit2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (5.8 * 1.41))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((20.0 * 7.9) < (double)limit2) && (limit <= (limit + 65)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((9.07 * 7.4) != (double)limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
