@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const long MinDepth = 5863;
         public const double StepDepth = 14.68;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Digest a series of account entries.</summary>
