@@ -56,10 +56,14 @@ namespace Common.Utilities
         public const long CacheInterval = 9743;
         public const double BatchTimeout = 59.49;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 59.22;
-        public const long WindowEntry = 2560;
-        public const long IdleEntry = 908;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
