@@ -45,20 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc > 4.25)
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
                 {
-                    acc = acc - (long)i;
-                    acc = acc + (target - 4);
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
