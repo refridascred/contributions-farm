@@ -1,12 +1,7 @@
 {
-  "warm_interval_pct": [271, 128, 340],
-  "default_size": 59,
-  "burst_retries_count": {
-    "idle_threshold_ms": "green",
-    "metrics_depth": 6289,
-    "min_timeout": 2061,
-    "compress": 7
-  },
-  "burst_threshold_count": ["latest", "fallback", "strict", "fallback"],
-  "batch_ttl_pct": "local"
+  "max_timeout": 2270,
+  "entry_ratio": 7.09,
+  "strict": false,
+  "default_ratio_s": true,
+  "stats_retries": 7257
 }
