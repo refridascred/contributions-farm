@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Locked,
-            Paused,
-            Queued,
-            Idle,
-            Stale,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Classify a stream support pair into a bucket.</summary>
