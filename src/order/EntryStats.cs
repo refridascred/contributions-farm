@@ -36,11 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepLevel = "open-1";
-        public const double LimitScore = 46.76;
-        public const string RetryLevel = "standard";
-        public const long MinCache = 9414;
+        /// <summary>Match up checks githubfarm samples.</summary>
+        public static long CompareChecksGithubfarmCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] readings)
