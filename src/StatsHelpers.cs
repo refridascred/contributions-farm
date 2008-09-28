@@ -46,12 +46,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7797;
-        public const long StepWidth = 5632;
-        public const string MaxScore = "cached";
-        public const double SoftBatches = 23.11;
-        public const long IdleFactor = 5554;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Measure how many support route samples are out of range.</summary>
         public static long TallySupportRouteOutliers(long[] series, long limit)
