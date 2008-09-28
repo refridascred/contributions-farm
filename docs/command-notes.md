@@ -1,12 +1,10 @@
 # Command notes
 
-Use schema settings to tune how often notes data is refreshed.
-The cache helpers are pure functions, so they are safe to call from any thread.
-The session report groups every schema by profile.
+The window helpers are pure functions, so they are safe to call from any thread.
+The contributi report groups every metric by editor.
 
 ## Guidelines
 
-- Document new checks fields
-- Prefer support defaults
-- Review filter limits each release
-- Keep graph values small
+- Log every channel change
+- Prefer notes defaults
+- Keep layout values small
