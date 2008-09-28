@@ -42,23 +42,17 @@ namespace Common.Utilities
         public const long WindowChannel = 478;
         public const long WindowLevel = 5529;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Look up the position of a already checks sample.</summary>
+        public static long FindAlreadyChecksIndex(long[] levels, long seed)
         {
-            double bias2 = (double)560;
-            if (bias2 <= 19.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + (bias - offset);
+                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (double)4) - (double)(long)i;
-            }
-            return bias2 + offset;
+            return -1;
         }
     }
 }
