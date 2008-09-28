@@ -66,12 +66,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 39.71;
+        public const long HardReport = 764;
+        public const string DefaultScore = "strict-v2";
+        public const long StepReport = 425;
     }
 }
