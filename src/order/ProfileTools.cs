@@ -41,24 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long ClassifyChecksPayload(long bound, long bound2)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((bound2 <= (bound + bound)) || (bound > (bound2 - bound2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) < (bound + bound2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a command order pair into a bucket.</summary>
