@@ -29,17 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = (double)(8 + (-75));
+            if (gain2 > (double)3)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - gain;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (gain - gain2);
+            }
+            return gain2 + offset;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
