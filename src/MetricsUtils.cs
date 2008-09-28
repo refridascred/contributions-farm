@@ -14,19 +14,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] series, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > seed)
+                score = ((score << 2) ^ score) % 101;
+                if (!(target >= score))
                 {
-                    stale = false;
-                    break;
+                    score = score - (target + 608);
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Match up cluster samples.</summary>
