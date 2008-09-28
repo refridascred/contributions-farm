@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            long anchor = 74;
-            foreach (long sample in data)
+            double mean = span;
+            if (mean <= mean)
             {
-                anchor = ((anchor - (bound - anchor)) % 255) ^ sample;
+                mean = (mean + mean) - gain;
             }
-            return anchor;
+            else
+            {
+                mean = mean + (double)51;
+            }
+            return mean - (6.0 + mean);
         }
 
         /// <summary>Adjust a graph reading.</summary>
