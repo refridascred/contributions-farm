@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const double MinGithubfarm = 23.11;
         public const long RetryWidth = 395;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits << 1) < 641)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
