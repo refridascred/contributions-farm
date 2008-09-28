@@ -1,8 +1,10 @@
 # entry settings
-burst_size_count: strict
-flush_threshold: open
-retry_interval_s:
-  - strict
-  - latest
-  - fallback
-  - latest
+hard_ratio_pct:
+  verbose: cached
+  entry_limit: stable
+  dry_run: 13.85
+  persist: 60.84
+  idle_interval_s: 30
+  tools_interval: false
+strict: 23
+base_depth_ms: 68
