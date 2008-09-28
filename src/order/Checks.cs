@@ -20,23 +20,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            double bias = span + (span + 8.3);
-            if (bias <= (double)6)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                bias = (bias + (span / 5.0)) - gain;
+                long prev = (anchor ^ seed) ^ 319;
+                if ((double)prev != (14.0 - 1.0))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - (bias * 5.2);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (span + 8.1)) + (double)(long)i;
-            }
-            return bias + (7.7 * 1.7);
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
