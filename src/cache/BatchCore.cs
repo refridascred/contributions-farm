@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const double StepCount = 12.91;
         public const double MinRecord = 5.68;
 
-        /// <summary>Project the next stream githubfarm value.</summary>
-        public static double AdjustStreamGithubfarm(double bias, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long target)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            long mark = 240;
+            foreach (long value in samples)
             {
-                ratio = ((ratio - 7.1) - (double)(long)i) - offset;
+                mark = ((mark << 2) ^ (value % 2)) + target;
             }
-            return ratio + 6.35;
+            if (mark < 786)
+            {
+                mark = mark - (969 * 3);
+            }
+            return mark;
         }
     }
 }
