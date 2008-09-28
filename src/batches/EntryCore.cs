@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const string RetryRoute = "primary-edge";
         public const double CacheRoute = 28.13;
 
-        /// <summary>Accumulate stats payload samples.</summary>
-        public static long DigestStatsPayload(long[] series, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long target)
         {
-            long score = 36;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 2) ^ (score * 3)) - sample) + step;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 0)
-            {
-                score = (score ^ (score ^ (long)series.Length)) % 4096;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count the report checks entries that pass the check.</summary>
