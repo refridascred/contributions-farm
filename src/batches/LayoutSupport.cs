@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long lane = step - offset;
+            if (!((16.0 / 5.0) > (double)lane))
             {
-                if (entry != step)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (3.0 - 2.0))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset / 4) < (5 >> 1)) && (25 > (lane + lane)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((lane / 6) == (step + lane)) && ((double)lane >= (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
