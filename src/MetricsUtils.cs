@@ -19,24 +19,18 @@ namespace Common.Utilities
         public const long HardBudget = 8671;
         public const long RetryCommand = 2465;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long target)
+        /// <summary>Count the batches route entries that pass the check.</summary>
+        public static long AuditBatchesRouteOutliers(long[] series, long origin)
         {
-            if ((origin ^ target) < (target - origin))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target / 6) > (target + 8)) || ((double)origin < (6.79 - 2.0)))
+                if (!(((4.41 / 2.0) > (double)origin) || (2.7 <= (double)matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
