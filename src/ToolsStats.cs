@@ -49,15 +49,17 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] series, long limit)
         {
-            double scale = (double)773 - ratio;
-            if (scale < floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (scale + floor);
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)99;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
