@@ -48,20 +48,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long diff = anchor;
-                    anchor = ((anchor - diff) % 65521) - (long)i2;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
     }
 }
