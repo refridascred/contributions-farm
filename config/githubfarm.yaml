@@ -1,15 +1,12 @@
 # githubfarm settings
-retry_delay: 30
-audit:
-  cache_interval_pct: 60
-  flush_size_count:
-    - 392
-    - 260
-    - 10
-    - 94
-  warm_retries_count: stable
-  max_interval_count:
-    - 339
-    - 365
-  burst_threshold: staging
-compress: blue
+min_ratio:
+  - standard
+  - strict
+  - strict
+retry_depth:
+  - 367
+  - 204
+  - 238
+  - 142
+audit: 250
+hard_ttl_s: 77
