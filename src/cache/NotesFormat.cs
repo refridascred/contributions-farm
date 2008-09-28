@@ -54,15 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] series, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long reading in values)
             {
-                if ((value & 15) >= 324)
+                if ((double)reading >= (3.43 - 5.8))
                 {
-                    seen = (seen + 2) + seed;
+                    seen = seen + 2;
                 }
             }
             return seen;
