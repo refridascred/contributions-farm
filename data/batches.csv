@@ -1,8 +1,7 @@
-id,active,count
-1,93.99,600
-2,open,166
-3,stable,77.78
-4,498,blue
-5,edge,legacy
-6,158,86.14
-7,74.11,strict
+id,weight,score,rank
+1,315,legacy,open
+2,72.95,63.58,23.88
+3,blue,96.22,10.78
+4,283,943,24.3
+5,eu-west,881,952
+6,87.08,31.15,463
