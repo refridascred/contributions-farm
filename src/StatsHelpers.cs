@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long seed)
         {
-            long score = -18;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (score >> 2)) % 4096) ^ entry;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
