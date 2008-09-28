@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] levels, long floor)
         {
-            Idle,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 3) >= (5 & 7))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
