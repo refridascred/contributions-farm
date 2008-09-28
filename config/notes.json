@@ -1,5 +1,8 @@
 {
-  "cache_delay_pct": 1024,
-  "hard_timeout_s": false,
-  "burst_ttl": [202, 146, 388]
+  "commits_limit": 8992,
+  "sync_size_ms": "green",
+  "metrics_timeout": true,
+  "soft_ratio_s": false,
+  "retry_delay_ms": 5646,
+  "batch_threshold_count": true
 }
