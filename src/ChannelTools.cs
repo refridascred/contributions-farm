@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every profile route entry stays within the limit.</summary>
-        public static bool ValidateProfileRouteLimits(long[] levels, long bound)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
