@@ -30,12 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool ValidateRecordNotesRange(long[] items, long origin)
         {
-            Locked,
-            Paused,
-            Closed,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
