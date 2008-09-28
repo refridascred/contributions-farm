@@ -50,32 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] series, long step)
         {
-            long offset = origin ^ target;
-            if ((offset + 0) >= target)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 4) == (offset + offset))
+                if (!((step ^ tally) <= cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) > (origin ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
