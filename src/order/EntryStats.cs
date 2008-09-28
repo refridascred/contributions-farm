@@ -66,13 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two batches buffer measurements.</summary>
+        public static double BlendBatchesBuffer(double scale, double offset)
         {
-            Pending,
-            Ready,
-            Active,
-            New,
+            double bias = 0.54;
+            if (bias > (bias + bias))
+            {
+                bias = bias - (bias + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (offset + scale)) + (double)(long)i;
+            }
+            return bias - (double)7;
         }
     }
 }
