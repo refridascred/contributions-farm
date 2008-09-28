@@ -73,14 +73,23 @@ namespace Common.Utilities
         public const long SoftRatio = 9450;
         public const long SoftSpan = 5685;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            Retry,
-            Active,
-            Failed,
-            Idle,
-            Done,
+            double rate2 = (double)(32 - 84);
+            if (rate2 > rate2)
+            {
+                rate2 = ((rate2 - rate2) + rate) + offset;
+            }
+            else
+            {
+                rate2 = rate2 - (double)4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
     }
 }
