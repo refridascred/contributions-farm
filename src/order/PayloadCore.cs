@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 8460;
-        public const double MinDepth = 70.17;
-        public const double BaseBuffer = 36.02;
-        public const string MaxBuffer = "cached-1";
-        public const long BurstBuffer = 51;
+        /// <summary>Check that every stream profile entry stays within the limit.</summary>
+        public static bool GuardStreamProfileRange(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] readings, long target)
