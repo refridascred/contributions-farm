@@ -50,22 +50,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long state = 358;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item >> 4) >= 287)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 2) ^ 94) % 97;
-                }
-                else
-                {
-                    state = state ^ 651;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Find the first buffer counter entry that matches the target.</summary>
