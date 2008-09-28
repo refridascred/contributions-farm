@@ -29,19 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell < target)
+                if ((matches - entry) < (matches / 2))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
