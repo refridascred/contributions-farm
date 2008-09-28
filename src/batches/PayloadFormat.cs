@@ -35,12 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Label { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryRatio = 96.11;
+        public const string MaxContext = "stable-edge";
+        public const long LimitContext = 2703;
+        public const long RetryScore = 6355;
+        public const long HardTimeout = 5223;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksHits(long[] samples)
