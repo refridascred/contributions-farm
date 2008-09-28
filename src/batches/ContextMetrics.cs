@@ -53,22 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] data, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((8.7 + 14.0) <= (double)reading)
+                if (((long)series.Length + sample) <= seen)
                 {
-                    count = (count + 2) - seed;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
