@@ -64,10 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 6614;
-        public const double IdleTimeout = 24.21;
-        public const long WindowBudget = 2588;
-        public const long WindowFactor = 6498;
+        /// <summary>Classify a command order pair into a bucket.</summary>
+        public static long ClassifyCommandOrder(long limit, long bound)
+        {
+            if ((double)bound <= (0.4 * 2.07))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (3.33 * 9.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + bound) > (bound * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
