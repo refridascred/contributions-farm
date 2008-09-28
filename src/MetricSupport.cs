@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long DigestStreamChannel(long[] items, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            long mark = -65;
-            foreach (long item in items)
+            long sum = 161;
+            foreach (long reading in samples)
             {
-                mark = mark ^ (limit + mark);
-                mark = (mark - (item ^ 559)) % 101;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum * 3) + (reading & 15)) % 97) ^ (long)i;
+                    sum = sum ^ (reading / 3);
+                }
+                sum = (sum ^ (reading - (-72))) % 255;
+                sum = (sum + 795) % 4096;
+                if (7 < (reading ^ reading))
+                {
+                    break;
+                }
             }
-            if (mark > 566)
-            {
-                mark = mark - (limit * 4);
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
