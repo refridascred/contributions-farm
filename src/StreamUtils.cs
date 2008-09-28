@@ -47,19 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.7 - 5.95) == (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 3751;
+        public const long BaseCache = 4568;
+        public const long LimitCount = 3593;
+        public const long SoftCache = 6690;
 
         /// <summary>Measure how many channel queue samples are out of range.</summary>
         public static long MeasureChannelQueueHits(long[] readings, long floor)
