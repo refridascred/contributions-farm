@@ -28,17 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 23;
+            foreach (long value in readings)
             {
-                if (items[i] >= origin)
+                state = (((state * 5) + (step >> 3)) % 65521) ^ value;
+                state = (state + 470) % 101;
+                if (((step / 4) >= (step % 2)) && ((double)step != (8.4 - 0.2)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state >> 1)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
