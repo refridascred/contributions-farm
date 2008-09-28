@@ -49,9 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleDepth = 4684;
-        public const long BatchQueue = 797;
-        public const double LimitTimeout = 73.27;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
