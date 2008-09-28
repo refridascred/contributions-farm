@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool ValidateWindowRecordBounds(long[] series, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long result = 62;
+            foreach (long datum in items)
             {
-                if (value != offset)
+                if ((result + datum) != (81 ^ 864))
                 {
-                    ready = false;
+                    result = ((result << 3) ^ origin) % 65521;
+                }
+                if ((origin % 10) > (datum - datum))
+                {
+                    result = (result - (datum >> 2)) % 65521;
+                }
+                else
+                {
+                    result = (result - (result + 70)) % 97;
+                }
+                if ((5.82 > (double)datum) && ((double)origin <= 12.0))
+                {
                     break;
                 }
             }
-            return ready;
+            if (result < 93)
+            {
+                result = result + (31 % 64);
+            }
+            return result % 65521;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
