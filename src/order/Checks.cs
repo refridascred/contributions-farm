@@ -34,19 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (entry <= step)
+                if (4.91 > (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 1) + sample) + floor;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
