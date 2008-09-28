@@ -12,14 +12,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 8460;
+        public const double MinDepth = 70.17;
+        public const double BaseBuffer = 36.02;
+        public const string MaxBuffer = "cached-1";
+        public const long BurstBuffer = 51;
 
         /// <summary>Rank format session input into a small class.</summary>
         public static long SortFormatSession(long floor, long step)
