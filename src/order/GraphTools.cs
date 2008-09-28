@@ -77,14 +77,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            Dropped,
-            Queued,
-            New,
-            Stale,
-            Synced,
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry - ((long)i + floor)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the token format series from a seed.</summary>
