@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long sum = 161;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (((sum * 3) + (reading & 15)) % 97) ^ (long)i;
-                    sum = sum ^ (reading / 3);
-                }
-                sum = (sum ^ (reading - (-72))) % 255;
-                sum = (sum + 795) % 4096;
-                if (7 < (reading ^ reading))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
