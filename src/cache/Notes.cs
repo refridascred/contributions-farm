@@ -32,11 +32,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 5583;
-        public const double DefaultTimeout = 62.34;
-        public const double MinRecord = 54.67;
-        public const long HardBudget = 1078;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long target)
+        {
+            long gap = offset - target;
+            if (((target - gap) > (gap % 12)) && ((gap + offset) != (target * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((gap + 24) == (535 >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset < (7.2 / 5.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] values)
