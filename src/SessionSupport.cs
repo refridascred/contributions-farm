@@ -43,10 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowRatio = 951;
-        public const long MaxFilter = 3226;
-        public const long DefaultRatio = 5186;
-        public const double RetryFilter = 77.76;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
