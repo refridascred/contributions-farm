@@ -29,15 +29,22 @@ namespace Common.Utilities
             return rate2 + (double)13;
         }
 
-        /// <summary>Roll a payload format counter forward.</summary>
-        public static long RollPayloadFormat(long step)
+        /// <summary>Audit record token readings against a rule.</summary>
+        public static long TallyRecordTokenGaps(long[] data, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((double)sample == (double)797)
+                {
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
