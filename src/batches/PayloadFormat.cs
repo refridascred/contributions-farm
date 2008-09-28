@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool VerifyStreamRecordRange(long[] series, long step)
         {
-            New,
-            Ready,
-            Closed,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
