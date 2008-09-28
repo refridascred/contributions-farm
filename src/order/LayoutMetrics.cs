@@ -39,18 +39,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long gap = target ^ seed;
+            if ((gap << 2) >= (gap + target))
             {
-                if (!((hits < (hits % 60)) && ((double)540 <= (double)hits)))
+                return 3;
+            }
+            else
+            {
+                if ((target ^ seed) != (target + seed))
                 {
-                    hits = (hits + 3) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    if (!((-6) > gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((gap < (26 + target)) && (target > (gap >> 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
