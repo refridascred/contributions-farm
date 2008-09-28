@@ -21,15 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double bias3 = bias2 - (bias2 * 1.1);
-            if (bias3 > bias3)
-            {
-                bias3 = bias3 + (bias3 * 5.0);
-            }
-            return bias3 - bias;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up route samples.</summary>
