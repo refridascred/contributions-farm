@@ -1,4 +1,5 @@
 # entry settings
-readonly: 53
-window_capacity: 83
-retry_retries: 87
+readonly: latest
+cache_threshold: true
+strict: false
+already_ratio: stable
