@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool CheckBatchCacheLimits(long[] items, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
