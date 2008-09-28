@@ -62,30 +62,9 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items)
-        {
-            long state = 4;
-            foreach (long cell in items)
-            {
-                if (state >= (state << 1))
-                {
-                    state = (state * 5) + (state & 3);
-                }
-                else
-                {
-                    state = state + (state - state);
-                }
-                if ((16.0 / 8.0) >= (double)cell)
-                {
-                    state = state ^ (state - cell);
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftScore = 5.01;
+        public const double CacheWidth = 0.62;
+        public const long StepCount = 9524;
     }
 }
