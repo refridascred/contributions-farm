@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate stats filter readings against a bound.</summary>
+        public static bool VerifyStatsFilterRange(long[] readings, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up context samples.</summary>
