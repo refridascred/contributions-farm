@@ -1,6 +1,5 @@
 {
-  "persist": 8145,
-  "burst_depth": 58.18,
-  "min_capacity": 5209,
-  "min_ttl_s": true
+  "soft_ttl": 250,
+  "support_size": 8561,
+  "persist": 6781
 }
