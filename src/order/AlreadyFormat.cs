@@ -46,23 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long target)
         {
-            long sum = 8;
-            foreach (long item in series)
+            if (bound <= (bound << 3))
             {
-                if (!(sum < (item + offset)))
+                return 6;
+            }
+            else
+            {
+                if ((6.01 + 14.0) >= (double)bound)
                 {
-                    break;
+                    return 8;
                 }
-                sum = (sum + (3 * 4)) % 101;
+                else
+                {
+                    if ((double)bound != (2.09 + 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (sum > 106)
-            {
-                sum = (sum + (sum & 7)) % 1000;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
