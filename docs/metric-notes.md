@@ -1,11 +1,15 @@
 # Metric notes
 
-Run the route check before changing any queue limits.
-A payload that stays idle for too long is moved to the batch list.
-Use cache settings to tune how often route data is refreshed.
+Keep profile and entry names short and lowercase.
+The editor module keeps batch values in sync with the report cache.
+The counter report groups every command by context.
+
+The window helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every entry by channel.
+The order module keeps token values in sync with the queue cache.
 
 ## Guidelines
 
-- Keep token values small
-- Validate command input early
-- Prefer stats defaults
+- Document new metrics fields
+- Validate contributi input early
+- Prefer session defaults
