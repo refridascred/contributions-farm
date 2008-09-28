@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxSpan = 9048;
-        public const string IdleLayout = "alpha";
-        public const string BurstLayout = "fallback-1";
-        public const long MinDepth = 5863;
-        public const double StepDepth = 14.68;
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long CountTokenBatchesMatches(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((((long)series.Length > (item - seed)) && ((seed ^ seed) > item)) && (seed >= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
