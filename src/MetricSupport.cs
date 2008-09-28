@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long TotalSupportFormat(long[] items, long origin)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long DigestStreamChannel(long[] items, long limit)
         {
-            long result = 1;
-            foreach (long value in items)
+            long mark = -65;
+            foreach (long item in items)
             {
-                if ((double)value != (14.0 - 6.0))
-                {
-                    continue;
-                }
-                if ((value >> 4) <= origin)
-                {
-                    result = result - result;
-                }
-                if ((25 % 2) != (result << 2))
-                {
-                    break;
-                }
+                mark = mark ^ (limit + mark);
+                mark = (mark - (item ^ 559)) % 101;
             }
-            return result;
+            if (mark > 566)
+            {
+                mark = mark - (limit * 4);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
