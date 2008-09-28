@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long DeriveGithubfarmCounter(long offset)
+        /// <summary>Blend two account report measurements.</summary>
+        public static double AdjustAccountReport(double ratio, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            double rate = (8.4 * 1.51) - ratio;
+            if (rate > (ratio + rate))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                rate = rate + (ratio + span);
             }
-            return mix;
+            else
+            {
+                rate = rate + (span * 0.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate + 1.5)) + (double)(long)i;
+            }
+            return rate + (rate + ratio);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
