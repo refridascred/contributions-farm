@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long RetryRatio = 6532;
         public const string BurstCommits = "cached-1";
 
-        /// <summary>Digest a series of cluster token entries.</summary>
-        public static long DigestClusterToken(long[] samples)
-        {
-            long total = 977;
-            foreach (long entry in samples)
-            {
-                if (((total - total) < entry) && ((total + total) <= entry))
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseLevel = "standard-edge";
+        public const string BatchCommand = "alpha";
+        public const string StepCount = "open-edge";
+        public const long HardBudget = 8671;
+        public const long RetryCommand = 2465;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long origin, long target)
