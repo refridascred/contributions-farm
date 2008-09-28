@@ -40,17 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                if ((((0.75 / 2.0) >= (double)hits) || (7.01 > (double)cell)) && ((cell % 3) < hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
