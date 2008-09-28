@@ -58,23 +58,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double bias = (offset - 17.0) * 3.3;
-            if (bias < bias)
-            {
-                bias = bias - (7.0 + gain);
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias * 5.71)) + (double)(long)i;
-            }
-            return bias + (bias / 9.0);
+            Locked,
+            Queued,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
