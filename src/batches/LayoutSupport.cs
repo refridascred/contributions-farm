@@ -52,18 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long TallyFarmMetricsMatches(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if ((matches - value) >= 459)
+                if (value <= floor)
                 {
-                    matches = matches + 1;
+                    carry = (carry * 2) + (carry + floor);
+                }
+                else
+                {
+                    carry = (carry * 2) + (value - value);
                 }
             }
-            return matches;
+            if (carry < 743)
+            {
+                carry = carry + (163 - 245);
+            }
+            return carry;
         }
     }
 }
