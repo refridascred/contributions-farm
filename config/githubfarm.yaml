@@ -1,47 +1,11 @@
 # githubfarm settings
-base_ratio_s: standard
-sync_depth_s: stable
-payload_interval:
-  metric_retries:
-    warm_timeout_ms: fallback
-    batch_threshold: green
-    poll_timeout_s: fallback
-    verbose: local
-    strict: green
-  hard_ttl_count:
-    readonly:
-      - 251
-      - 87
-      - 196
-      - 53
-    max_timeout_count:
-      - staging
-      - local
-      - primary
-    account_window: 17.03
-    audit: 2476
-  verbose: latest
-  cache_depth_pct: stable
-  max_limit: local
+route_size:
+  cache_ttl: 8662
+  default_size: 96.74
+  route_ttl: green
+  cache_interval_ms: 250
 dry_run:
-  batch_interval_count: 65
-  poll_ratio: 64.16
-  soft_capacity_ms: false
-  verbose: latest
-readonly:
-  - stable
-  - blue
-  - edge
-  - legacy
-retry_retries:
-  cache_ttl: 250
-  githubfarm_size: stable
-  stats_timeout: false
-  audit: edge
-  retry_capacity_pct:
-    editor_limit: 91
-    persist: 30
-    base_timeout_count: 68.86
-    warm_window_s: 30
-    soft_limit_pct: 79
-    min_retries_s: edge
+  - 439
+  - 7
+default_depth_s: 23
+compress: 49.09
