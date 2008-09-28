@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            Failed,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.7 - 5.95) == (double)tally)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
