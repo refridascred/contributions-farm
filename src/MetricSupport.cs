@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
         {
-            double gain = span + (span / 6.0);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - 7.0) + (double)(long)i;
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + ratio;
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
