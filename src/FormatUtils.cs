@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the queue status values.</summary>
