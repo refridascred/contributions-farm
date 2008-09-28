@@ -40,39 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long cur = origin ^ bound;
-            if (((origin - cur) < origin) || ((double)bound != (double)328))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (cur / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((cur - 1) == (origin >> 1)) || (bound >= (cur % 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((73 - cur) > (665 ^ cur))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
