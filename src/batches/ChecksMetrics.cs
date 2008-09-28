@@ -68,15 +68,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
