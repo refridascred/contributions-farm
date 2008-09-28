@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)count != (3.63 - 9.0))
-                {
-                    count = ((count + 3) ^ datum) - seed;
-                }
+                total = total ^ (total * 2);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
