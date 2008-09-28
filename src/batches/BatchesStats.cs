@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long AuditNotesProfileHits(long[] samples, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((seed ^ seed) < entry) || (((matches + matches) <= (matches << 2)) && ((entry % 10) == (seed >> 1))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
