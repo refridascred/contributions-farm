@@ -43,22 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            long sum = 96;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((662 - 17) > (sum % 97)) && ((6.7 / 5.0) <= (double)sum))
+                if (57 <= (entry + 372))
                 {
-                    sum = (sum + sum) ^ value;
+                    count = count + 2;
                 }
             }
-            if (sum > 86)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return count;
         }
     }
 }
