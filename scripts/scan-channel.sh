@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback edge; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in strict local; do
+    log "checking ${item}"
+done
