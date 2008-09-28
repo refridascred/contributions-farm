@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many support batch samples are out of range.</summary>
+        public static long CountSupportBatchOutliers(long[] samples)
         {
-            Locked,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(8 > (count ^ count)))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account snapshot.</summary>
