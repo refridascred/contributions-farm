@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long offset)
         {
-            double scale = (rate / 8.0) * 6.4;
-            if (scale > (double)222)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                scale = scale - (4.6 * 10.0);
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)9;
-            }
-            return scale + span;
+            return stale;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
