@@ -1,8 +1,6 @@
 {
-  "cache_ttl_s": "local",
-  "farm_interval": 62.22,
-  "soft_retries_s": "fallback",
-  "default_ttl": "strict",
-  "persist": "staging",
-  "compress": "stable"
+  "max_ratio_count": 72,
+  "burst_timeout_pct": 46,
+  "sync_capacity_count": ["cached", "edge"],
+  "min_capacity_count": [282, 358, 12, 425]
 }
