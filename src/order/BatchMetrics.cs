@@ -27,13 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
             public double Offset { get; set; }
-            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a route reading by value.</summary>
