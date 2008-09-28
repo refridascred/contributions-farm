@@ -14,16 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSize = 9723;
+        public const double RetryInterval = 48.91;
+        public const long DefaultChecks = 762;
+        public const double CacheLevel = 5.49;
+        public const double MinChecks = 81.01;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long limit)
