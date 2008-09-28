@@ -40,39 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long diff = target + offset;
-            if (((-298) / 8) <= (offset << 2))
+            long mix = -996;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((diff ^ target) > (target + offset)) && ((3.5 * 6.4) == (double)offset))
+                mix = ((mix * 3) + (mix << 3)) % 1000;
+                mix = mix + (mix + datum);
+                if ((mix * 3) >= (datum / 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (diff >= (99 ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset != (2.06 + 9.34))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 232)
+            {
+                mix = (mix << 2) ^ (8 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
