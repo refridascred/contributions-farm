@@ -51,14 +51,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            Pending,
-            Retry,
-            Failed,
-            Draft,
-            Ready,
+            long carry = 876;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - carry) % 1000) ^ datum;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Iterate the token format series from a seed.</summary>
