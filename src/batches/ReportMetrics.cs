@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 46.84;
-        public const long BurstGithubfarm = 1220;
-        public const string RetryGithubfarm = "standard-1";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
