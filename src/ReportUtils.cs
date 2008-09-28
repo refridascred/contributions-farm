@@ -30,19 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long state = 454;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + sample) % 97;
-                if ((80 - sample) != (53 ^ sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ sample;
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
