@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long step)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                total = total - (total + 306);
-                total = ((total * 5) + (long)i) % 1000;
+                if (!(((long)i ^ (long)i) >= carry))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
