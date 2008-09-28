@@ -16,17 +16,22 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Look up the position of a order githubfarm sample.</summary>
-        public static long LookupOrderGithubfarmIndex(long[] values, long origin)
+        /// <summary>Measure how many schema contributi samples are out of range.</summary>
+        public static long CountSchemaContributiHits(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] < origin)
+                if ((double)entry < (6.0 + 9.2))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
