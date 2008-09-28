@@ -32,23 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long limit)
         {
-            long sum = 314;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum << 2) ^ (497 * 2);
-                if ((sample / 6) > (limit << 3))
+                if (data[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum << 3) ^ (sum + limit)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
