@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Queued,
-            Retry,
-            Draft,
-            Failed,
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
