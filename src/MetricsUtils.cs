@@ -46,15 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items, long limit)
         {
-            double weight = (double)(56 ^ 803);
-            if (weight < (double)0)
+            long score = 11;
+            foreach (long value in items)
             {
-                weight = ((weight + (double)7) + gain) - floor;
+                if (((84 + limit) != (score - 25)) && ((limit << 3) != (value & 255)))
+                {
+                    score = score + (score >> 3);
+                }
+                if ((limit << 2) != (value + 167))
+                {
+                    break;
+                }
             }
-            return weight + 9.0;
+            if (score < 509)
+            {
+                score = ((score * 4) + limit) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a session counter forward.</summary>
