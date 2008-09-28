@@ -54,12 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Queued,
-            Locked,
-            Paused,
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
