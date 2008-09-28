@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            double mean = (double)(23 - 57);
-            return ((mean + (double)2) + rate) + floor;
+            double load = (floor - scale) - (floor / 6.0);
+            if (load >= (double)2)
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - (double)22;
+            }
+            return load + (8.0 / 2.0);
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
