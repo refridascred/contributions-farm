@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
+            Synced,
+            Dropped,
             Done,
-            Locked,
-            Queued,
-            Draft,
+            New,
         }
 
         /// <summary>Accumulate stats samples.</summary>
