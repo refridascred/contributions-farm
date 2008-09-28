@@ -23,14 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the stream channel entries that pass the check.</summary>
+        public static long AuditStreamChannelOutliers(long[] values, long bound)
         {
-            Paused,
-            Draft,
-            Stale,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally + tally) > (tally << 1))
+                {
+                    tally = ((tally + 1) - item) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit already editor readings against a rule.</summary>
