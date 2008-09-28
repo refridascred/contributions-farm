@@ -19,14 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            Idle,
-            Paused,
-            Done,
-            Closed,
-            Draft,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result ^ (result + result);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up buffer samples.</summary>
