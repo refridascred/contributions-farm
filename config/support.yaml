@@ -1,4 +1,7 @@
 # support settings
-sync_interval_s: false
-warm_capacity_count: edge
-warm_window: 70
+poll_threshold_pct: 66.59
+batch_capacity:
+  githubfarm_capacity: 7689
+  contributi_limit: strict
+  poll_depth_ms: staging
+min_threshold_count: false
