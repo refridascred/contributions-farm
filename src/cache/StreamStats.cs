@@ -43,18 +43,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats counter entries that pass the check.</summary>
-        public static long MeasureStatsCounterMatches(long[] items, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.0 * 15.0) >= (double)sample)
-                {
-                    count = (count + 3) - origin;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a record options.</summary>
