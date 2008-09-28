@@ -27,19 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long offset)
         {
-            double mean = span;
-            if (mean <= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + mean) - gain;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)51;
-            }
-            return mean - (6.0 + mean);
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
