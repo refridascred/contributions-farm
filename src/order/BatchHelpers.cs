@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mean - (offset - offset);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry - carry) % 4096) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
