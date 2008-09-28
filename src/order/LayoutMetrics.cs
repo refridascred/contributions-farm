@@ -19,23 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Iterate the route queue series from a seed.</summary>
+        public static long IterateRouteQueue(long origin)
         {
-            long mix = -12;
-            foreach (long value in samples)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((value & 3) < value)
+                mix = (mix + mix) % 1000;
+                if ((836 >> 1) > (mix % 97))
                 {
-                    mix = mix ^ (1 + value);
+                    mix = (mix - origin) % 65521;
+                    mix = ((mix * 4) + (mix ^ 805)) % 1000;
+                    break;
                 }
-                mix = (mix - (mix & 31)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (mix > 2)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 65521;
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
