@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleSize = 4592;
+        public const string MinToken = "staging";
+        public const long IdleCount = 2077;
+        public const double MaxInterval = 74.94;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] data, long limit)
