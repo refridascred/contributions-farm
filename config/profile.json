@@ -1,8 +1,19 @@
 {
-  "retry_threshold_s": "staging",
-  "format_ttl": true,
-  "warm_size_count": 45.27,
-  "burst_retries_count": ["local", "legacy", "primary"],
-  "strict": 1024,
-  "burst_capacity": false
+  "retry_size": {
+    "idle_ttl": false,
+    "metric_limit": true,
+    "retry_timeout": [244, 500, 55, 100],
+    "audit": 67,
+    "poll_capacity_pct": 95,
+    "soft_retries_s": false
+  },
+  "sync_timeout_count": false,
+  "min_delay_pct": [489, 376, 143, 374],
+  "tools_size": ["strict", "eu-west"],
+  "min_interval_s": "stable",
+  "schema_limit": {
+    "poll_size_count": 2238,
+    "warm_depth_ms": 18,
+    "layout_interval": 20
+  }
 }
