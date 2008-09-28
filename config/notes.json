@@ -1,7 +1,24 @@
 {
-  "hard_window": false,
-  "dry_run": 85.84,
-  "graph_delay": ["green", "staging", "strict"],
-  "base_retries_ms": 6507,
-  "context_timeout": [84, 277]
+  "persist": {
+    "min_ratio_count": 74.72,
+    "sync_capacity_s": 49,
+    "poll_interval": {
+      "batch_threshold_s": 434,
+      "flush_window_ms": true,
+      "retry_retries_pct": false
+    },
+    "verbose": {
+      "cache_window_s": ["latest", "open", "latest"],
+      "graph_size": "open",
+      "compress": 64.09,
+      "persist": false,
+      "poll_interval": 30
+    },
+    "poll_size_pct": 20
+  },
+  "payload_depth": 31.93,
+  "session_ttl": "primary",
+  "retry_window_pct": 57.48,
+  "base_window": true,
+  "dry_run": true
 }
