@@ -29,15 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next command window value.</summary>
-        public static double AdjustCommandWindow(double bias, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            double scale = 3.77;
-            if (scale >= (double)904)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                scale = ((scale + scale) + bias) - floor;
+                if ((9.19 / 4.0) > (5.3 - 1.0))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - (scale * 4.1);
+            return seen;
         }
 
         /// <summary>Project the next token account value.</summary>
