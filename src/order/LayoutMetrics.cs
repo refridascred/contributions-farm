@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings, long seed)
         {
-            long carry = 6;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((item - carry) > (item / 7))
+                if ((double)count != (3.63 - 9.0))
                 {
-                    carry = (carry + 7) % 65521;
+                    count = ((count + 3) ^ datum) - seed;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
