@@ -52,18 +52,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] series, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 3;
+            foreach (long datum in data)
             {
-                if (!((13 & 127) >= floor))
-                {
-                    count = (count + 3) + cell;
-                }
+                state = (((state * 4) + (7 & 31)) % 65521) - datum;
+                state = ((state * 2) + (state + state)) % 97;
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
