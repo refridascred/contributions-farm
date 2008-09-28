@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 4894;
+        public const long MinContributi = 4736;
+        public const long StepTimeout = 6254;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 4248;
