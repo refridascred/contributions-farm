@@ -42,10 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7756;
-        public const long MinRatio = 3186;
-        public const long BaseRatio = 6558;
-        public const long CacheQueue = 9101;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long limit)
+        {
+            long state = 0;
+            foreach (long cell in items)
+            {
+                state = (state + limit) - cell;
+            }
+            return state;
+        }
     }
 }
