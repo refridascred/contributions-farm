@@ -49,13 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public double Count { get; set; }
+            New,
+            Active,
+            Ready,
         }
     }
 }
