@@ -1,12 +1,11 @@
 # Batch notes
 
-Each support is validated before it reaches the tools queue.
-A graph that stays idle for too long is moved to the counter list.
-A farm that stays idle for too long is moved to the checks list.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep context and contributi names short and lowercase.
+Run the stream check before changing any editor limits.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Validate layout input early
-- Log every payload change
-- Prefer counter defaults
+- Log every stream change
+- Review batch limits each release
+- Document new counter fields
