@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (hits >= entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
