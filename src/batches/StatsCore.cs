@@ -16,19 +16,10 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Measure how many report cluster samples are out of range.</summary>
-        public static long MeasureReportClusterOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((0 - item) > (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheFactor = 7128;
+        public const long BaseCount = 4333;
+        public const long IdleOrder = 9917;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorOutliers(long[] items)
