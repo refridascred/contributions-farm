@@ -38,18 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches > (9.97 - 8.79))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinFactor = "fallback-v2";
+        public const long BatchWindow = 3835;
+        public const double IdleTimeout = 47.65;
     }
 }
