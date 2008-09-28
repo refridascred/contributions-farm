@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long DefaultAccount = 6077;
         public const double CacheSize = 93.13;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long mark = 752;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mark = (mark - (reading / 7)) % 1000;
+                if (!(((18.0 / 3.0) <= (double)count) || ((count & 255) >= (count - item))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mark > 6)
-            {
-                mark = (mark + (mark + 474)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
