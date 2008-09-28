@@ -1,11 +1,11 @@
 # Command notes
 
-The filter module keeps stats values in sync with the editor cache.
-Each account is validated before it reaches the format queue.
-The counter module keeps window values in sync with the account cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Review cache limits each release
-- Document new route fields
+- Review support limits each release
+- Log every checks change
+- Validate filter input early
+- Prefer schema defaults
