@@ -1,8 +1,12 @@
 # entry settings
-dry_run: eu-west
-checks_ttl: 95.96
-base_threshold_pct: true
-flush_window:
-  - 91
-  - 381
-base_threshold_count: 15.74
+max_limit: 7042
+cache_ttl_ms:
+  - primary
+  - primary
+  - cached
+githubfarm_size: true
+persist:
+  - 263
+  - 228
+  - 210
+max_threshold_ms: false
