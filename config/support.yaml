@@ -1,10 +1,13 @@
 # support settings
-max_depth: 60.46
-profile_retries: true
-min_ttl: edge
-warm_limit_count:
-  poll_capacity: 81
-  farm_capacity: fallback
-  support_delay: 13.85
-  cache_threshold: edge
-poll_delay_s: cached
+poll_limit:
+  stream_size: staging
+  persist: 8
+  strict:
+    - 232
+    - 50
+    - 105
+    - 282
+retry_interval: 18.67
+flush_ratio: false
+poll_size: 2792
+format_timeout: standard
