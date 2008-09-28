@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches * 2) >= (matches + cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a report reading.</summary>
