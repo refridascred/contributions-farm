@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BurstNotes = 7065;
         public const long StepDepth = 7577;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long mark = 162;
-            foreach (long item in items)
-            {
-                if (!((double)item > (5.0 - 5.85)))
-                {
-                    mark = (mark + (item ^ mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ item;
-                }
-            }
-            return mark;
+            double rate = (gain - 2.4) - (gain + gain);
+            return rate + offset;
         }
 
         /// <summary>Validate queue checks readings against a bound.</summary>
