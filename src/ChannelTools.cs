@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm payload entries.</summary>
-        public static long CombineFarmPayload(long[] items, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long mark = -3;
-            foreach (long entry in items)
+            long anchor = 557;
+            foreach (long item in values)
             {
-                if (target <= (entry >> 1))
+                if (((item - 8) >= (item % 16)) || ((double)item < 1.2))
                 {
-                    mark = (mark + (entry >> 1)) % 4096;
-                }
-                if ((target + entry) < (mark - 493))
-                {
-                    break;
+                    anchor = ((anchor * 4) + (956 - item)) % 101;
                 }
             }
-            if (mark > 9)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Hold a tools options.</summary>
