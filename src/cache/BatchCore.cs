@@ -22,21 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((long)i + bound) <= (bound / 8)) || ((anchor - bound) >= bound))
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (anchor / 8)) % 101;
                 }
+                anchor = ((anchor * 5) + (anchor / 5)) % 1000;
+                anchor = (anchor - ((long)i + anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
