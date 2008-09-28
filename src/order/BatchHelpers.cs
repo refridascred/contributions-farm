@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings, long target)
         {
-            long result = 49;
-            foreach (long item in samples)
+            long mix = 3;
+            foreach (long reading in readings)
             {
-                if ((3.6 < (double)result) && ((floor >> 3) <= (long)samples.Length))
+                if (!(((long)readings.Length + reading) == (reading / 9)))
                 {
-                    result = (((result * 4) + 6) % 255) ^ item;
+                    mix = ((mix * 5) + (771 * 3)) - target;
                 }
             }
-            return result;
+            if (mix < 259)
+            {
+                mix = (mix << 3) ^ (593 / 5);
+            }
+            return mix;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
