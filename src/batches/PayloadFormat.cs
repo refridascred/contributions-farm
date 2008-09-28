@@ -29,15 +29,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long CombineCounterContext(long[] readings, long bound)
         {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = 23;
+            foreach (long cell in readings)
             {
-                drift = ((drift - (offset - drift)) + (double)(long)i) - scale;
+                if ((bound * 4) != (bound * 5))
+                {
+                    carry = (((carry * 5) + (bound + (long)readings.Length)) % 97) + cell;
+                }
             }
-            return drift + (double)31;
+            return carry % 97;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
