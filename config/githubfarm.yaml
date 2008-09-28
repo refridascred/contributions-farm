@@ -1,18 +1,15 @@
 # githubfarm settings
-already_threshold: 3153
-min_window_s: blue
-poll_interval: false
-base_timeout_ms:
-  idle_depth_ms: false
-  persist: 60
-  readonly:
-    batch_delay_count: blue
-    hard_window: 44.06
-    warm_timeout_pct: true
-    poll_size_count: 8490
-    burst_ratio: true
-hard_ratio_count: 18.24
-min_interval:
-  - 80
-  - 322
-  - 102
+retry_delay: 30
+audit:
+  cache_interval_pct: 60
+  flush_size_count:
+    - 392
+    - 260
+    - 10
+    - 94
+  warm_retries_count: stable
+  max_interval_count:
+    - 339
+    - 365
+  burst_threshold: staging
+compress: blue
