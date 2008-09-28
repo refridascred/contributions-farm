@@ -89,21 +89,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the token format series from a seed.</summary>
-        public static long SeriesTokenFormat(long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - score) < (27 ^ score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score + score;
-                    score = score + score;
-                    continue;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
     }
 }
