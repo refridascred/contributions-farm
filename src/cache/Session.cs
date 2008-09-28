@@ -38,24 +38,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the farm buffer series from a seed.</summary>
-        public static long SeriesFarmBuffer(long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            double load = rate;
+            if (load < rate)
             {
-                if ((double)sum == (19.0 * 2.1))
-                {
-                    sum = (sum - (target & 7)) % 65521;
-                    sum = sum ^ (sum + 1);
-                }
-                else
-                {
-                    sum = (sum - target) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                load = load + span;
             }
-            return sum;
+            else
+            {
+                load = load + (rate * 5.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Classify a account tools pair into a bucket.</summary>
