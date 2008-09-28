@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCount = 6995;
-        public const long MaxCommand = 1206;
-        public const long BatchCommand = 8751;
-        public const double MinRatio = 13.89;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Idle,
+            Queued,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 4248;
