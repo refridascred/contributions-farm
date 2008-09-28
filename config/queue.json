@@ -1,16 +1,8 @@
 {
-  "warm_depth": 61,
-  "readonly": ["fallback", "cached", "eu-west"],
-  "max_window_s": {
-    "payload_retries": {
-      "min_capacity": false,
-      "min_threshold": 250,
-      "audit": 50
-    },
-    "enabled": "staging",
-    "soft_threshold_pct": "green",
-    "burst_capacity": 1.05,
-    "command_delay": "fallback",
-    "default_retries_count": "green"
-  }
+  "sync_timeout": false,
+  "checks_threshold": 25.13,
+  "batch_ttl_ms": ["standard", "primary", "primary"],
+  "max_retries_count": "green",
+  "poll_interval_pct": "edge",
+  "warm_capacity_count": 66
 }
