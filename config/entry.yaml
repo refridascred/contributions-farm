@@ -1,19 +1,5 @@
 # entry settings
-base_ttl_count: primary
-poll_depth_ms:
-  batch_threshold: 16.67
-  retry_threshold_pct: staging
-  soft_timeout_s:
-    payload_ttl: open
-    hard_capacity_pct: 55.03
-    max_timeout: false
-  warm_limit_s:
-    soft_interval: 1024
-    max_capacity_ms: true
-    poll_delay: 39.3
-    sync_ttl: strict
-    soft_size_s: true
-    max_size: 18
-  min_ratio_ms: strict
-  compress: false
-compress: edge
+cache_capacity_s: 26.79
+profile_ttl: standard
+flush_window_pct: 91
+layout_capacity: false
