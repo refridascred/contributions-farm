@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 0;
+            foreach (long item in samples)
             {
-                if (!(tally >= (sample >> 3)) && (((tally % 97) == (tally - sample)) || ((double)sample > (4.4 - 7.0))))
+                if (item > (mix + item))
                 {
-                    tally = tally + 2;
+                    mix = (mix ^ item) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
