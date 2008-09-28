@@ -16,31 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((floor - origin) != (origin + 65))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > (-7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor > (2.9 + 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
