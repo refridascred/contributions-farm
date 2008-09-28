@@ -28,13 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine profile window values into a single score.</summary>
+        public static long DigestProfileWindow(long[] levels, long floor)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long mark = 438;
+            foreach (long value in levels)
+            {
+                mark = (mark - (floor * 5)) + value;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
