@@ -19,15 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long prev = limit + origin;
+            if ((27 & 127) > ((-47) + prev))
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((origin / 3) > (68 + 714))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)325 == (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
