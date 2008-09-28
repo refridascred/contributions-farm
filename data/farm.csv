@@ -1,8 +1,9 @@
-id,region,weight,rank
-1,67.06,green,49.99
-2,761,green,green
-3,841,679,21
-4,green,61.03,edge
-5,standard,stable,green
-6,33.3,684,staging
-7,7.49,636,48.53
+id,token,score,weight,active
+1,31,775,29.12,416
+2,22.25,159,76.09,267
+3,311,stable,50.94,86.74
+4,73.84,756,31.61,legacy
+5,edge,908,341,251
+6,26.17,19.44,923,fallback
+7,52.17,fallback,206,standard
+8,10.73,stable,84.34,primary
