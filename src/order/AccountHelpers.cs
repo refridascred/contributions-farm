@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items)
-        {
-            long anchor = 4;
-            foreach (long reading in items)
-            {
-                if (((reading ^ anchor) > (7 + reading)) || ((double)reading == (double)5))
-                {
-                    anchor = (anchor * 5) + (reading ^ reading);
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchLevel = 37.43;
+        public const double LimitDepth = 71.58;
+        public const string IdleWidth = "legacy-edge";
+        public const long DefaultCount = 8160;
+        public const double MinLevel = 78.13;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
