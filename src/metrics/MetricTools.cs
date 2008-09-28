@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Combine farm metrics values into a single score.</summary>
-        public static long WeighFarmMetrics(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double gain, double bias)
         {
-            long mix = 4;
-            foreach (long cell in series)
+            double ratio = bias;
+            if (ratio >= (bias * 4.19))
             {
-                if ((double)mix < (double)cell)
-                {
-                    mix = mix ^ (0 + 314);
-                }
+                ratio = (ratio + (double)6) - gain;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - (6.2 - 3.7);
+            }
+            return ratio + (ratio * 3.0);
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
