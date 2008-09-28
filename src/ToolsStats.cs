@@ -73,38 +73,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long seed)
-        {
-            if ((14 + seed) <= (seed + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target > (4.8 + 9.59)) && (seed >= (target + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 3) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3 <= (target + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSize = 5037;
+        public const long WindowMetrics = 3513;
+        public const double IdleLevel = 9.35;
     }
 }
