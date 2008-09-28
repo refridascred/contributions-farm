@@ -27,12 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Idle,
-            Ready,
-            Pending,
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
