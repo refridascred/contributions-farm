@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 10); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=422
+RECORD_LIMIT=111
 log "limit is ${RECORD_LIMIT}"
-
-for item in fallback standard latest; do
-    log "checking ${item}"
-done
