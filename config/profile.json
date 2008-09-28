@@ -1,8 +1,8 @@
 {
-  "sync_size_count": "open",
-  "persist": ["primary", "fallback", "latest", "latest"],
-  "profile_ratio": 46,
-  "soft_window_count": [196, 497, 68, 457],
-  "max_depth_count": 94,
-  "sync_ttl_s": "staging"
+  "farm_retries": 74.92,
+  "dry_run": "latest",
+  "entry_ttl": false,
+  "default_limit_s": 15.2,
+  "retry_window": 55.84,
+  "already_limit": [234, 287]
 }
