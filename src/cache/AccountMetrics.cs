@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BatchCommand = 356;
         public const long BurstCommand = 3825;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long target)
+        /// <summary>Combine route batches values into a single score.</summary>
+        public static long WeighRouteBatches(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = 366;
+            foreach (long reading in levels)
             {
-                if ((double)hits > (5.2 + 4.82))
+                acc = acc - acc;
+                if ((reading + seed) >= (reading + reading))
                 {
-                    hits = ((hits + 1) ^ item) + target;
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
