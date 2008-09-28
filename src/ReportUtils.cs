@@ -45,17 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first token graph entry that matches the target.</summary>
-        public static long SeekTokenGraphIndex(long[] levels, long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the metric class values.</summary>
