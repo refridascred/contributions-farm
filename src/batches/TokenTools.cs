@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a metrics support figure with a bias.</summary>
-        public static double SmoothMetricsSupport(double ratio, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            double weight = (ratio - offset) - (19.0 + offset);
-            if (weight < offset)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = weight - (0.4 * 2.2);
+                if ((entry & 1) <= (entry / 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight - (weight - weight);
-            }
-            return weight + weight;
+            return matches;
         }
     }
 }
