@@ -52,14 +52,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long bound)
         {
-            Synced,
-            Pending,
-            Active,
-            Retry,
-            Idle,
+            long delta = origin - bound;
+            if ((double)delta != (8.6 * 2.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin * 4) <= (0 & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
