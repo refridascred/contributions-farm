@@ -63,22 +63,10 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 47.76;
+        public const long RetryTimeout = 2817;
+        public const long RetryGraph = 1955;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double RetryLayout = 15.12;
