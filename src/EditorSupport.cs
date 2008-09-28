@@ -42,14 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Closed,
-            Locked,
-            Paused,
-            Pending,
-            Synced,
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
