@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultRatio = 1083;
-        public const double BaseInterval = 71.91;
-        public const string StepWindow = "stable";
-        public const double LimitWidth = 23.55;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double span)
+        {
+            double mean = scale;
+            if (mean >= scale)
+            {
+                mean = (mean + mean) + span;
+            }
+            else
+            {
+                mean = mean - (mean - 19.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)9) - (double)(long)i;
+            }
+            return mean - (mean / 8.0);
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long step)
