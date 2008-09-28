@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric support readings against a rule.</summary>
-        public static long CountMetricSupportGaps(long[] series, long limit)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((7.53 * 9.67) <= (double)reading)
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Stale,
         }
     }
 }
