@@ -19,27 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long DeriveReportBatch(long bound)
         {
-            long acc = 7;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc * 5) + (0 << 1)) % 97;
-                if ((434 << 1) >= (acc / 8))
+                if (!(((long)i % 2) <= ((long)i << 2)))
                 {
-                    acc = (acc ^ (acc + 610)) % 101;
+                    score = (score + (score + bound)) % 65521;
+                    score = score ^ (bound >> 2);
                 }
-                if (((acc - reading) < reading) && (((long)items.Length >> 1) > (acc * 2)))
-                {
-                    acc = (acc << 2) ^ (acc + reading);
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (acc < (-970))
-            {
-                acc = ((acc << 2) ^ (74 + (-8))) % 97;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
