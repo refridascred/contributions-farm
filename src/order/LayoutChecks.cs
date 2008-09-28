@@ -53,13 +53,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "local-1";
+        public const long StepCommand = 4248;
+        public const long RetryRatio = 5291;
+        public const long WindowCommand = 5232;
+        public const long LimitScore = 9119;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
