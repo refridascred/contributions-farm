@@ -19,40 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long limit)
-        {
-            long gap = step + limit;
-            if (limit <= (limit * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + step) <= (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + gap) <= 935) || ((step + step) != (limit + 396)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((2.93 + 6.1) <= (double)gap) || ((gap ^ limit) <= limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 3295;
+        public const long BaseFormat = 211;
+        public const long RetryFormat = 8173;
+        public const string LimitCount = "latest-edge";
+        public const double BurstFormat = 26.92;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] values)
