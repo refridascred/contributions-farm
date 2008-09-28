@@ -44,18 +44,18 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((matches ^ 449) == (item >> 4))
+                if ((tally >> 3) >= bound)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
