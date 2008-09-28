@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long target)
-        {
-            long mix = -76;
-            foreach (long value in series)
-            {
-                if (!((value - 71) >= mix))
-                {
-                    mix = mix + (target ^ value);
-                }
-            }
-            if (mix < 469)
-            {
-                mix = mix ^ (mix + target);
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 7241;
+        public const long StepMetrics = 806;
+        public const long HardCount = 8318;
+        public const long MaxBudget = 9375;
+        public const double HardMetrics = 61.67;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
