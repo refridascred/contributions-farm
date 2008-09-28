@@ -42,14 +42,12 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Paused,
-            Closed,
             Idle,
-            Ready,
-            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
