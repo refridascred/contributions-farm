@@ -37,12 +37,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] data, long bound)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
