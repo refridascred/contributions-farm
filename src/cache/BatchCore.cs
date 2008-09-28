@@ -39,15 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double load = gain;
-            if (load <= (floor / 2.0))
-            {
-                load = load - gain;
-            }
-            return load + gain;
+            Done,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a already reading by value.</summary>
