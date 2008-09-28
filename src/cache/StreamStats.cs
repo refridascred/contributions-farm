@@ -33,12 +33,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 7980;
-        public const string DefaultWidth = "alpha-1";
-        public const string RetryChannel = "cached-edge";
-        public const long WindowChannel = 478;
-        public const long WindowLevel = 5529;
+        /// <summary>Audit already editor readings against a rule.</summary>
+        public static long MeasureAlreadyEditorHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (step > (cell + cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a already checks sample.</summary>
         public static long FindAlreadyChecksIndex(long[] levels, long seed)
