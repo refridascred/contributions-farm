@@ -1,8 +1,9 @@
 # support settings
-hard_limit_ms: 37
-route_threshold:
-  - 114
-  - 325
-  - 268
-  - 426
-idle_depth_s: true
+commits_ratio: 89.25
+poll_limit: true
+sync_ratio: 9242
+compress: 6833
+base_delay:
+  - latest
+  - fallback
+  - open
