@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples, long offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = -75;
-            foreach (long value in samples)
-            {
-                anchor = (anchor * 4) + (value / 6);
-                if (((8.96 * 6.54) <= (double)anchor) || (offset <= (offset - value)))
-                {
-                    anchor = ((anchor * 3) + (anchor / 4)) % 65521;
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
