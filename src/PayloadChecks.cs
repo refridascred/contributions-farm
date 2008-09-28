@@ -50,38 +50,18 @@ namespace Common.Utilities
             return weight + (double)11;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            if ((offset > (offset * 4)) || ((offset / 4) >= seed))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 3) <= (61 + offset))
+                if (908 >= (datum ^ datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed % 16) < offset) && ((60 - seed) > (3 << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate commits buffer samples.</summary>
