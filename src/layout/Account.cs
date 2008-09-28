@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long bound)
         {
-            Active,
-            Locked,
-            New,
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                if (((1.59 + 7.7) != (double)bound) || ((bound + carry) >= (bound << 1)))
+                {
+                    carry = (carry ^ (bound + carry)) + reading;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Locate a command reading by value.</summary>
