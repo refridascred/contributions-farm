@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] data, long origin)
         {
-            double drift = (floor + floor) + floor;
-            if (drift >= (floor + weight))
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = drift - floor;
+                if (origin < item)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (weight / 2.0)) + (double)(long)i;
-            }
-            return drift - floor;
+            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
