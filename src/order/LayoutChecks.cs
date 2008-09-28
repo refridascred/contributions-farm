@@ -111,12 +111,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long floor)
+        /// <summary>Locate a schema account reading by value.</summary>
+        public static long LookupSchemaAccountIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= floor)
+                if (samples[i] >= limit)
                 {
                     return (long)i;
                 }
