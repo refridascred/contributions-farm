@@ -58,14 +58,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            Locked,
-            Queued,
-            Closed,
-            New,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = (carry + (carry % 64)) - (long)i2;
+                }
+                if (!(3.0 < (double)(long)i))
+                {
+                    carry = (carry + carry) % 101;
+                }
+                carry = (carry << 2) ^ carry;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
