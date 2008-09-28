@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            Locked,
-            New,
-            Closed,
-            Synced,
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score * 3) + (bound / 9);
+                score = score + (34 - bound);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
