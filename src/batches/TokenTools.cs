@@ -29,18 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry & 1) <= (entry / 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
