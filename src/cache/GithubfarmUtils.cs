@@ -45,19 +45,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next entry filter value.</summary>
-        public static double SmoothEntryFilter(double scale, double offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            double rate = offset - (double)16;
-            if (rate < (double)812)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate - (scale / 2.0);
+                sum = (sum ^ seed) % 101;
+                sum = sum + seed;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate - 7.17;
-            }
-            return rate + (rate + scale);
+            return sum;
         }
     }
 }
