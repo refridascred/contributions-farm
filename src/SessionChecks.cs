@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
+            long state = -616;
+            foreach (long cell in readings)
+            {
+                state = ((state << 2) ^ (cell % 12)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
