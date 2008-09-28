@@ -1,20 +1,5 @@
 {
-  "format_interval": {
-    "hard_interval": {
-      "sync_window_ms": 60,
-      "warm_limit_ms": "blue",
-      "max_ratio": 1024,
-      "metrics_threshold": 62,
-      "cache_size_s": "open",
-      "context_ratio": 1024
-    },
-    "verbose": ["latest", "open", "staging"],
-    "soft_limit_pct": "legacy",
-    "max_timeout_count": 72.75
-  },
-  "burst_capacity_count": 5472,
-  "stream_limit": [81, 222, 374, 29],
-  "notes_window": "edge",
-  "soft_window_ms": 5042,
-  "report_ratio": "fallback"
+  "cluster_limit": ["eu-west", "fallback"],
+  "poll_retries": 21,
+  "cache_capacity": false
 }
