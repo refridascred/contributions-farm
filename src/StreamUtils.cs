@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a report stream reading by value.</summary>
+        public static long LookupReportStreamIndex(long[] samples, long bound)
         {
-            Pending,
-            Failed,
-            Synced,
-            Active,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session cache readings.</summary>
