@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            long mark = 511;
+            foreach (long cell in samples)
+            {
+                mark = (mark + (mark ^ cell)) % 101;
+                if (4.91 < (double)mark)
+                {
+                    mark = (mark + (cell + mark)) % 101;
+                }
+            }
+            if (mark > 63)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate record stream samples.</summary>
