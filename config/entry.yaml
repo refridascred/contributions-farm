@@ -1,22 +1,11 @@
 # entry settings
-compress: standard
-editor_interval: false
-strict: 1027
-format_window: 22.66
-default_ttl_pct:
-  max_size_s: 76
-  burst_retries_pct:
-    min_size_ms: 53.3
-    cluster_window: cached
-    dry_run: 79.56
-    base_retries_count: green
-    farm_retries:
-      - open
-      - stable
-      - edge
-  min_interval_ms:
-    - 343
-    - 129
-    - 88
-    - 46
-verbose: 79.53
+entry_timeout: 32
+cluster_threshold:
+  record_threshold: true
+  account_limit:
+    - 434
+    - 322
+    - 236
+  soft_retries: false
+hard_interval: eu-west
+enabled: standard
