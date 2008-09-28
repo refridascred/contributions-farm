@@ -16,20 +16,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long limit)
         {
-            long result = 760;
-            foreach (long value in levels)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                result = result - (result * 3);
-                if (((value - value) == (value + result)) && (result < (result ^ value)))
-                {
-                    continue;
-                }
-                result = result - (value % 5);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Hold a payload options.</summary>
