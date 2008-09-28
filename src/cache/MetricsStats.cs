@@ -56,13 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Closed,
-            Retry,
-            Dropped,
+            Pending,
             Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate route account readings against a bound.</summary>
