@@ -23,19 +23,30 @@ namespace Common.Utilities
         public const long HardBatches = 5707;
         public const long MinCount = 1591;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] readings, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long score = 3;
+            foreach (long entry in data)
             {
-                if (cell > seed)
+                if ((0.57 - 8.7) == (double)score)
                 {
-                    stale = false;
+                    score = (score ^ (12 ^ 20)) % 65521;
+                }
+                else
+                {
+                    score = (score + (step + entry)) % 101;
+                }
+                if (4.8 >= (double)step)
+                {
                     break;
                 }
             }
-            return stale;
+            if (score > (-111))
+            {
+                score = (score + (score ^ score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
