@@ -56,25 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long delta = origin - bound;
-            if ((double)delta != (8.6 * 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 4) <= (0 & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
