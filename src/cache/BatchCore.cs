@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every context stream entry stays within the limit.</summary>
+        public static bool CheckContextStreamRange(long[] items, long target)
         {
-            Active,
-            Ready,
-            Done,
-            Queued,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
