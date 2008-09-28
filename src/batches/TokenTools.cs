@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Grade a support session value against two limits.</summary>
+        public static long BucketSupportSession(long offset, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long slot = offset + step;
+            if ((step ^ offset) <= slot)
             {
-                if ((hits + hits) < (entry & 3))
+                return 3;
+            }
+            else
+            {
+                if (!((step ^ 88) != (3 / 7)))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset * 3) == (slot + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
