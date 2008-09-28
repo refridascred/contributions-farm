@@ -62,22 +62,15 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] values, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mix = 7;
+            foreach (long sample in samples)
             {
-                if ((9.8 + 1.27) >= (double)cell)
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix ^ sample) % 97) - origin;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
