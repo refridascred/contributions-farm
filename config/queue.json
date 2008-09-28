@@ -1,8 +1,6 @@
 {
-  "persist": 250,
-  "idle_capacity_pct": true,
-  "soft_capacity_count": 33.64,
-  "warm_window": 45,
-  "min_capacity_s": 55,
-  "retry_capacity": "staging"
+  "githubfarm_depth": "fallback",
+  "farm_ratio": "blue",
+  "sync_retries": "stable",
+  "commits_threshold": 8909
 }
