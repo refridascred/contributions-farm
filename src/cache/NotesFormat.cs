@@ -27,17 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] data, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 980;
+            foreach (long sample in readings)
             {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
+                if ((seed << 3) != (seed + sum))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sample + sum)) % 101;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
