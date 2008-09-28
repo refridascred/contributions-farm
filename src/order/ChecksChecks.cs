@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long anchor = 515;
-            foreach (long item in readings)
-            {
-                anchor = anchor + (anchor >> 5);
-                anchor = ((anchor * 5) + ((long)readings.Length << 1)) % 1000;
-                if (((item + (-597)) < (anchor << 1)) && ((18.0 * 8.3) <= (double)anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 319)
-            {
-                anchor = ((anchor * 3) + (anchor ^ anchor)) % 1000;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
