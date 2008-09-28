@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Synced,
+            Failed,
             Dropped,
-            Done,
-            New,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Project the next filter value.</summary>
