@@ -41,14 +41,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Scale a metrics support figure with a bias.</summary>
+        public static double SmoothMetricsSupport(double ratio, double offset)
         {
-            Queued,
-            New,
-            Idle,
-            Draft,
-            Dropped,
+            double weight = (ratio - offset) - (19.0 + offset);
+            if (weight < offset)
+            {
+                weight = weight - (0.4 * 2.2);
+            }
+            else
+            {
+                weight = weight - (weight - weight);
+            }
+            return weight + weight;
         }
     }
 }
