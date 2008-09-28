@@ -1,11 +1,12 @@
 # Command notes
 
-When a context fails, the stream handler retries a few times before giving up.
-The contributi module keeps support values in sync with the counter cache.
-A profile that stays idle for too long is moved to the schema list.
+Use profile settings to tune how often command data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
+When a checks fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new command fields
-- Prefer batch defaults
+- Keep report values small
+- Validate cluster input early
+- Prefer stats defaults
+- Document new support fields
