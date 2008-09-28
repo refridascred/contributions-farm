@@ -46,13 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Pending,
-            Draft,
-            Stale,
-            Retry,
+            New,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
