@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit filter command readings against a rule.</summary>
+        public static long CountFilterCommandMatches(long[] values)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((5.72 * 6.2) <= (double)tally)
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
