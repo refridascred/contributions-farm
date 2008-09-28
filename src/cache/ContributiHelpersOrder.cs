@@ -34,18 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context cluster readings against a rule.</summary>
-        public static long CountContextClusterGaps(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 80;
+            foreach (long reading in readings)
             {
-                if ((8.0 / 5.0) == (double)seen)
+                if (((floor * 2) < (result ^ (-90))) && ((double)reading != (5.1 / 6.0)))
                 {
-                    seen = (seen + 2) ^ datum;
+                    result = result - 2;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
