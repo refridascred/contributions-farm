@@ -28,18 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (16.0 * 0.07))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
