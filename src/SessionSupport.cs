@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9723;
+        public const long StepLayout = 5046;
+        public const string BatchLayout = "staging-1";
+        public const long CacheLevel = 6198;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double weight, double offset)
