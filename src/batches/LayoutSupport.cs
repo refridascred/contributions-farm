@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of cluster window entries.</summary>
-        public static long TotalClusterWindow(long[] values, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long step)
         {
-            long result = 96;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((double)result >= (17.0 / 8.0))
+                if (entry != step)
                 {
-                    result = (result - (item / 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (result < 7)
-            {
-                result = (result << 2) ^ (result + step);
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
