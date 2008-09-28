@@ -61,18 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data, long offset)
+        /// <summary>Measure how many channel queue samples are out of range.</summary>
+        public static long MeasureChannelQueueHits(long[] readings, long floor)
         {
-            long mark = 28;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((mark + reading) >= mark)
+                if ((matches * 3) < (datum * 5))
                 {
-                    mark = ((mark + 3) % 101) - offset;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate format profile readings against a bound.</summary>
