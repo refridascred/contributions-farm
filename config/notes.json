@@ -1,11 +1,5 @@
 {
-  "flush_limit": {
-    "soft_ratio_ms": ["local", "blue", "cached"],
-    "base_retries": ["standard", "blue", "legacy", "blue"],
-    "base_delay": [25, 302, 133],
-    "readonly": 43.8,
-    "idle_threshold": "fallback"
-  },
-  "format_interval": [385, 236],
-  "max_interval": "blue"
+  "stream_depth": true,
+  "burst_depth_s": ["legacy", "cached", "staging"],
+  "flush_window_count": true
 }
