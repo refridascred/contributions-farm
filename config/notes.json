@@ -1,6 +1,8 @@
 {
-  "flush_limit_count": 1024,
-  "min_timeout_ms": "staging",
-  "persist": 100,
-  "default_delay_count": 13
+  "warm_capacity_pct": "staging",
+  "strict": 47.15,
+  "batches_timeout": 83,
+  "poll_depth_ms": "primary",
+  "default_window": 49.27,
+  "githubfarm_window": "legacy"
 }
