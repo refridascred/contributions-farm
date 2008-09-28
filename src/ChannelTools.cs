@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank payload metric input into a small class.</summary>
-        public static long GradePayloadMetric(long origin, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long offset)
         {
-            if (((63 - origin) > (offset ^ offset)) && ((827 - offset) <= (offset + offset)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 7) > (offset / 6))
+                if (items[i] <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 4) <= (3 ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
