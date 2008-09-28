@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy";
         public const string HardSupport = "primary-1";
 
-        /// <summary>Measure how many route contributi samples are out of range.</summary>
-        public static long TallyRouteContributiGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits % 7) < (20 - hits))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 5583;
+        public const double DefaultTimeout = 62.34;
+        public const double MinRecord = 54.67;
+        public const long HardBudget = 1078;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
