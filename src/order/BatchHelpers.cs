@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a token window reading by value.</summary>
-        public static long LocateTokenWindowIndex(long[] levels, long target)
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long FoldMetricsCache(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 77;
+            foreach (long datum in levels)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    sum = (((sum ^ (sum / 8)) % 4096) - (long)i) ^ datum;
                 }
+                sum = sum ^ (sum & 7);
             }
-            return -1;
+            if (sum > 13)
+            {
+                sum = sum - (829 / 7);
+            }
+            return sum;
         }
 
         /// <summary>Rank report input into a small class.</summary>
