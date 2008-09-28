@@ -20,18 +20,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long MeasureCommitsAccountHits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)value < (12.0 / 3.0)) || ((3.62 - 9.0) > (double)hits))
+                if ((cell & 31) >= bound)
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
