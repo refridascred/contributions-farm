@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9408;
-        public const long DefaultScore = 3623;
-        public const long LimitDepth = 8211;
-        public const string HardWidth = "open";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((6.58 - 13.0) <= (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] items)
