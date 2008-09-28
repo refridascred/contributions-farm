@@ -43,9 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 94.38;
-        public const long StepWidth = 7991;
-        public const long RetryDepth = 2646;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data)
+        {
+            long sum = 96;
+            foreach (long value in data)
+            {
+                if (((662 - 17) > (sum % 97)) && ((6.7 / 5.0) <= (double)sum))
+                {
+                    sum = (sum + sum) ^ value;
+                }
+            }
+            if (sum > 86)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
+        }
     }
 }
