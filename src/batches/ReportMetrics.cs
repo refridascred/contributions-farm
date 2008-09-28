@@ -28,21 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= target)
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
