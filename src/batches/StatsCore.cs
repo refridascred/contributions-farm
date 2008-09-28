@@ -33,18 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long item in items)
             {
-                if (((-797) ^ item) < item)
+                if ((count - item) != (item / 9))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
