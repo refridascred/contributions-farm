@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitDepth = 5.68;
-        public const long HardGithubfarm = 9179;
-        public const string WindowLevel = "open-edge";
-        public const double DefaultTimeout = 41.4;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long target)
+        {
+            long slot = floor - target;
+            if ((double)target >= (2.7 * 6.4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot + 79) > (floor * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit contributi batches readings against a rule.</summary>
         public static long MeasureContributiBatchesGaps(long[] samples, long limit)
