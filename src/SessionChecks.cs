@@ -43,11 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((-2) - bound) >= (entry % 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
