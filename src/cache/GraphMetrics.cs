@@ -27,11 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepRatio = 75.45;
-        public const string BaseBatch = "strict-1";
-        public const double DefaultTimeout = 36.77;
-        public const long LimitBatch = 1064;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxDepth = "cached-v2";
+        public const string BurstOrder = "primary-edge";
+        public const string WindowOrder = "local-edge";
+        public const string MinLevel = "fallback";
+        public const long IdleWidth = 9889;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] data)
