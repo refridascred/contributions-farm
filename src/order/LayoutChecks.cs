@@ -43,19 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token context readings against a bound.</summary>
-        public static bool CheckTokenContextBounds(long[] values, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
