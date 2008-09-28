@@ -49,19 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long bound)
+        /// <summary>Match up record channel samples.</summary>
+        public static long PairRecordChannelCount(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
