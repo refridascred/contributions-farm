@@ -50,19 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order already entry stays within the limit.</summary>
-        public static bool CheckOrderAlreadyRange(long[] readings, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if (values[i] >= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
