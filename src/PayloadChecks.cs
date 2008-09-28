@@ -20,24 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if (0.42 > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((6.0 + 10.0) <= (double)bound) && ((bound / 8) < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Failed,
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
