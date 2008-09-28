@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long bound)
+        /// <summary>Grade a record channel value against two limits.</summary>
+        public static long SortRecordChannel(long limit, long offset)
         {
-            long score = 5;
-            foreach (long cell in data)
+            long cur = limit ^ offset;
+            if (!((4.44 * 6.0) != (double)offset))
             {
-                score = ((score - (bound + 46)) % 97) - cell;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (!(cur >= (1 + cur)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= (3.31 - 9.87))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
