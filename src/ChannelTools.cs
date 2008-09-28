@@ -25,19 +25,18 @@ namespace Common.Utilities
             return gain + (gain * 1.31);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] samples, long offset)
+        /// <summary>Audit metric support readings against a rule.</summary>
+        public static long CountMetricSupportGaps(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value < offset)
+                if ((7.53 * 9.67) <= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
