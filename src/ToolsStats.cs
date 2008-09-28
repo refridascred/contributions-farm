@@ -49,17 +49,22 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] series, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] >= limit)
+                if (((cell % 7) <= cell) && ((15.0 + 5.3) == (double)cell))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
