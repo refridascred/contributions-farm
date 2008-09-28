@@ -14,11 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Classify a stream support pair into a bucket.</summary>
+        public static long SortStreamSupport(long origin, long origin2)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            if ((939 << 1) > origin2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.0 * 19.0) <= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every layout farm entry stays within the limit.</summary>
