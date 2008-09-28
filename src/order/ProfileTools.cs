@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long MaxCommits = 6622;
         public const long HardCommits = 6683;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double span)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double mean = gain;
-            if (mean > (gain - 2.7))
-            {
-                mean = mean - gain;
-            }
-            else
-            {
-                mean = mean + (span - span);
-            }
-            return mean - gain;
+            Dropped,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a session record.</summary>
