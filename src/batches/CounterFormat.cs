@@ -13,11 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSize = 9917;
-        public const long MinScore = 6167;
-        public const long HardInterval = 5728;
-        public const long MaxSize = 2864;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Count the channel profile entries that pass the check.</summary>
         public static long TallyChannelProfileHits(long[] levels, long target)
