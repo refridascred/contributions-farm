@@ -41,18 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor order readings against a rule.</summary>
-        public static long MeasureEditorOrderHits(long[] readings, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 28;
+            foreach (long entry in readings)
             {
-                if ((bound >> 3) < (matches + matches))
+                if ((7 >> 4) <= (acc * 3))
                 {
-                    matches = (matches + 2) + reading;
+                    acc = ((acc - (acc ^ acc)) % 255) + entry;
+                }
+                else
+                {
+                    acc = (acc * 5) + acc;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
