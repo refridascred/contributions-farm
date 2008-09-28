@@ -1,23 +1,22 @@
 # entry settings
-retry_timeout_count:
-  - 427
-  - 315
-persist:
-  burst_interval_count: staging
-  flush_interval: 87
-  cache_window:
-    retry_window_count: open
-    default_capacity_s: legacy
-    githubfarm_depth: open
-    token_timeout:
-      - 38
-      - 56
-    context_timeout:
-      - cached
-      - eu-west
-      - staging
-      - eu-west
-tools_ttl: false
-min_ttl: green
-warm_limit_pct: fallback
-sync_delay_count: 500
+compress: standard
+editor_interval: false
+strict: 1027
+format_window: 22.66
+default_ttl_pct:
+  max_size_s: 76
+  burst_retries_pct:
+    min_size_ms: 53.3
+    cluster_window: cached
+    dry_run: 79.56
+    base_retries_count: green
+    farm_retries:
+      - open
+      - stable
+      - edge
+  min_interval_ms:
+    - 343
+    - 129
+    - 88
+    - 46
+verbose: 79.53
