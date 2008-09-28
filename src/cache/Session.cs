@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a cluster support reading.</summary>
-        public static double AdjustClusterSupport(double rate, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items, long limit)
         {
-            double ratio = (rate / 9.0) / 2.0;
-            return (ratio + (rate * 5.19)) + floor;
+            long total = 14;
+            foreach (long cell in items)
+            {
+                if (16.0 <= (double)total)
+                {
+                    total = ((total * 4) + (cell + cell)) + limit;
+                }
+                if (19.0 <= (double)cell)
+                {
+                    total = ((total * 2) + (total + cell)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
