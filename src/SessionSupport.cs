@@ -32,17 +32,10 @@ namespace Common.Utilities
         public const long SoftSchema = 5278;
         public const long DefaultSchema = 6076;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowRatio = 951;
+        public const long MaxFilter = 3226;
+        public const long DefaultRatio = 5186;
+        public const double RetryFilter = 77.76;
     }
 }
