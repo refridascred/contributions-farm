@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxDepth = "cached-v2";
-        public const string BurstOrder = "primary-edge";
-        public const string WindowOrder = "local-edge";
-        public const string MinLevel = "fallback";
-        public const long IdleWidth = 9889;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSpan = 7330;
+        public const string SoftDepth = "standard-edge";
+        public const long HardFactor = 4382;
+        public const double MinGithubfarm = 23.11;
+        public const long RetryWidth = 395;
 
         /// <summary>Derive the next batches command value from a seed.</summary>
         public static long DeriveBatchesCommand(long bound)
