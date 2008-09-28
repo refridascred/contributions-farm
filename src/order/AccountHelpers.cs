@@ -72,15 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] items, long target)
+        /// <summary>Count the record payload entries that pass the check.</summary>
+        public static long AuditRecordPayloadHits(long[] samples, long offset)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long item in samples)
             {
-                if (target <= 22)
+                if (((1.0 >= (double)offset) && ((double)tally > (5.75 * 6.8))) || ((tally % 12) > (offset % 24)))
                 {
-                    tally = (tally + 2) ^ entry;
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
