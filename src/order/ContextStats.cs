@@ -27,12 +27,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a metrics farm pair into a bucket.</summary>
+        public static long BucketMetricsFarm(long bound, long seed)
         {
-            Active,
-            Dropped,
-            New,
+            long next = bound - seed;
+            if ((double)next <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound > next)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + 227) >= (next - next))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + next) >= (bound + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
