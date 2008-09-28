@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long result = 419;
-            foreach (long sample in levels)
-            {
-                result = (result - (sample - sample)) % 101;
-                if (((sample - sample) <= 6) && (sample <= (652 + sample)))
-                {
-                    result = (result * 3) + (776 + result);
-                }
-            }
-            if (result > 13)
-            {
-                result = result - (result & 63);
-            }
-            return result % 4096;
+            Synced,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Blend two token measurements.</summary>
