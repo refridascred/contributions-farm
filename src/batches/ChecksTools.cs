@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = 0;
-            foreach (long entry in samples)
-            {
-                if (entry < (entry << 3))
-                {
-                    mark = mark - (mark & 3);
-                }
-            }
-            return mark % 97;
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a context queue pair into a bucket.</summary>
