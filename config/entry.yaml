@@ -1,4 +1,6 @@
 # entry settings
-base_ttl_s: false
-idle_depth_pct: false
-cache_ttl_ms: local
+sync_ttl_count: 92.57
+token_delay: 16.47
+flush_limit_count: edge
+flush_delay_s: 30
+sync_retries_count: true
