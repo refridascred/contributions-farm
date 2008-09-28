@@ -43,23 +43,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] levels, long floor)
         {
-            double drift = span;
-            if (drift < span)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                drift = drift + weight;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift - span;
+            return valid;
         }
 
         /// <summary>Blend two report measurements.</summary>
