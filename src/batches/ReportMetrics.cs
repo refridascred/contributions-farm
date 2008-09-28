@@ -34,9 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 3400;
-        public const string LimitSize = "alpha-v2";
-        public const double BurstFilter = 2.64;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowInterval = 22.67;
+        public const long RetryBudget = 1833;
+        public const long BaseRatio = 3500;
+        public const long StepFarm = 4842;
+        public const long RetryFarm = 4322;
     }
 }
