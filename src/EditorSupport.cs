@@ -55,18 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((matches << 3) >= 110)
+                if ((seen ^ seen) < seen)
                 {
-                    matches = (matches + 2) - reading;
+                    seen = ((seen + 2) ^ item) - bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
