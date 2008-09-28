@@ -76,9 +76,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftScore = 5.01;
-        public const double CacheWidth = 0.62;
-        public const long StepCount = 9524;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
