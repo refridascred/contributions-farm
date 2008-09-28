@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] samples, long target)
         {
-            Retry,
-            Pending,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
