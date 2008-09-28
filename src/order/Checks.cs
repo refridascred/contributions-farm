@@ -33,24 +33,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long seed)
+        /// <summary>Blend two stats githubfarm measurements.</summary>
+        public static double AdjustStatsGithubfarm(double rate, double span)
         {
-            if ((7 - seed) > bound)
+            double gain = rate;
+            if (gain >= (double)926)
             {
-                return 5;
+                gain = (gain - (double)8) + span;
             }
-            else
-            {
-                if ((seed * 3) > (seed + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain - (gain * 8.57);
         }
 
         /// <summary>Combine window values into a single score.</summary>
