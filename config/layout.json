@@ -1,18 +1,10 @@
 {
-  "buffer_timeout": true,
-  "audit": 71,
-  "min_capacity_count": {
-    "tools_ttl": true,
-    "cache_limit": 250,
-    "stats_timeout": 49.02,
-    "stream_capacity": "latest",
-    "soft_interval_count": ["strict", "primary", "primary"],
-    "dry_run": 96.54
+  "dry_run": false,
+  "warm_timeout_s": {
+    "retry_ttl_pct": "green",
+    "sync_capacity_s": 43,
+    "retry_window_s": 6230
   },
-  "burst_timeout_s": {
-    "strict": 77,
-    "record_limit": "legacy",
-    "support_depth": 6780,
-    "hard_delay": 86.73
-  }
+  "strict": [163, 138, 289],
+  "max_ratio_pct": [130, 404]
 }
