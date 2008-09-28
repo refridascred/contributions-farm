@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const string LimitLayout = "staging-1";
         public const string StepFactor = "stable-edge";
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
