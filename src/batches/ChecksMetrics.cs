@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            double scale = (double)(46 % 10);
+            if (scale < (double)7)
+            {
+                scale = scale - (3.0 * 7.3);
+            }
+            else
+            {
+                scale = scale + (rate / 8.0);
+            }
+            return scale - (span + span);
         }
 
         /// <summary>Hold a layout header.</summary>
