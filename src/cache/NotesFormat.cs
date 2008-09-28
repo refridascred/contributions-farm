@@ -16,22 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinSize = 27.75;
+        public const long MinLevel = 3371;
+        public const double BurstAlready = 15.81;
+        public const long WindowAlready = 6618;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinRatio = 751;
