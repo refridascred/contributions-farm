@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 6739;
         public const double RetryScore = 47.29;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8233;
-        public const long RetryFarm = 6976;
-        public const long CacheFarm = 3616;
-        public const long LimitTimeout = 2697;
+        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
+        public static long FindCacheGithubfarmIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
