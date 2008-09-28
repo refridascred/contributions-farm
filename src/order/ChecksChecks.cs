@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BatchChecks = 1807;
         public const long DefaultLevel = 234;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 8741;
-        public const double IdleTimeout = 26.4;
-        public const long WindowWidth = 3448;
-        public const long MinBatches = 8176;
-        public const string IdleFactor = "local";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryBudget = "standard-edge";
+        public const long LimitCounter = 1670;
+        public const long HardInterval = 2665;
+        public const string StepCounter = "alpha-edge";
+        public const double RetryCounter = 37.88;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
