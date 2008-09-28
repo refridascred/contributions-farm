@@ -34,22 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!(509 <= (hits ^ seed)) || ((double)seed == (1.4 * 5.4)))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
