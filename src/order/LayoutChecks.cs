@@ -67,28 +67,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((4.78 / 4.0) <= (double)(long)i))
-                {
-                    break;
-                }
-                if (((7.88 - 4.29) <= (double)seed) && ((long)i > ((-70) >> 3)))
-                {
-                    total = (total - (76 * 5)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (total + seed)) % 101;
-                }
-                total = (total ^ (total & 3)) % 97;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
