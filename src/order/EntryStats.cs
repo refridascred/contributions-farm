@@ -70,19 +70,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long offset)
+        /// <summary>Classify a buffer metrics pair into a bucket.</summary>
+        public static long RankBufferMetrics(long bound, long bound2)
         {
-            long state = 5;
-            foreach (long reading in values)
+            long next = bound + bound2;
+            if (!((8.2 - 9.1) <= (double)next))
             {
-                state = (state - (state + offset)) ^ reading;
+                return 6;
             }
-            if (state > 793)
+            else
             {
-                state = (state * 3) + offset;
+                if (bound <= 403)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((88 & 31) < bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound2 <= (bound + 0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return state % 1000;
         }
     }
 }
