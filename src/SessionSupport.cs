@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] data, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double load = offset;
+            if (load > offset)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (double)1;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)512) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Hold a metrics summary.</summary>
