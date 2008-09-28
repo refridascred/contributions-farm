@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string MaxRatio = "staging-v2";
         public const string RetryOrder = "strict";
 
-        /// <summary>Check that every window stream entry stays within the limit.</summary>
-        public static bool VerifyWindowStreamRange(long[] samples, long limit)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
