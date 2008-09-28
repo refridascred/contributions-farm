@@ -19,13 +19,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] data, long step)
         {
-            Active,
-            Queued,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((step << 1) > (tally + 387))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
