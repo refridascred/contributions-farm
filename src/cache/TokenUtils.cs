@@ -32,38 +32,13 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if ((seed % 8) < target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) == (46 - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((6.3 - 20.0) > (double)seed) || ((seed - 9) == (target + target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Synced,
+            Queued,
         }
     }
 }
