@@ -1,4 +1,4 @@
 # entry settings
-readonly: standard
-cluster_size: true
-stream_interval: 7999
+readonly: 53
+window_capacity: 83
+retry_retries: 87
