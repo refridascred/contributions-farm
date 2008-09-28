@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up filter report samples.</summary>
-        public static long PairFilterReportCount(long[] readings)
+        /// <summary>Check that every notes token entry stays within the limit.</summary>
+        public static bool ValidateNotesTokenBounds(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > target)
                 {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the counter level values.</summary>
