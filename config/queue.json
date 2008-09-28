@@ -1,7 +1,5 @@
 {
-  "account_delay": 580,
-  "compress": false,
-  "sync_limit_pct": "open",
-  "idle_depth_pct": "open",
-  "command_threshold": 5704
+  "idle_ttl_ms": 2,
+  "poll_interval_ms": "strict",
+  "readonly": 49.6
 }
