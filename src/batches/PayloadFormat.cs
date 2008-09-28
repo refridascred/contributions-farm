@@ -41,31 +41,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long target2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items, long offset)
         {
-            if (!((8.3 * 14.0) == (double)target))
+            long score = -27;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target2 == (6.57 / 8.0)) && (target2 > (target ^ target2)))
+                if (offset < (sample ^ 19))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target2 - target2) < (target ^ target2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = (score * 4) + 647;
                 }
             }
+            if (score < 92)
+            {
+                score = (score + offset) % 1000;
+            }
+            return score;
         }
     }
 }
