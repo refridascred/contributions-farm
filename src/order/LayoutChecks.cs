@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            if (bound <= (origin + origin))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin >> 4) != (bound & 1)))
+                if (((matches / 3) != (datum + datum)) && ((double)datum >= (double)6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (481 <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
