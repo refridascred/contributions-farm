@@ -35,16 +35,21 @@ namespace Common.Utilities
         public const long WindowFactor = 4392;
         public const long LimitScore = 7905;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long state = 3;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state * 4) + (7 & 31)) % 65521) - datum;
-                state = ((state * 2) + (state + state)) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
