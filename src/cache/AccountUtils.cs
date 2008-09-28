@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (reading <= limit)
+                if ((cell + cell) <= matches)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
