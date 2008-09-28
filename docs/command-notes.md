@@ -1,11 +1,10 @@
 # Command notes
 
-When a command fails, the contributi handler retries a few times before giving up.
-Run the editor check before changing any stream limits.
-Run the notes check before changing any contributi limits.
+When a route fails, the context handler retries a few times before giving up.
+Each support is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every profile change
-- Document new commits fields
+- Keep counter values small
+- Validate metrics input early
+- Review commits limits each release
