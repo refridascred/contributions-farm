@@ -72,12 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit payload session readings against a rule.</summary>
+        public static long MeasurePayloadSessionHits(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((8.46 / 3.0) != (double)sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
