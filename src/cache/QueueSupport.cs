@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the batches schema series from a seed.</summary>
-        public static long DeriveBatchesSchema(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (!(((long)i - result) >= bound))
+                if ((6.0 + 5.19) >= (double)datum)
                 {
-                    result = result ^ (result - 71);
+                    count = count + 2;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
