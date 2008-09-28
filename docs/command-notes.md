@@ -1,11 +1,11 @@
 # Command notes
 
-When a stats fails, the context handler retries a few times before giving up.
-The buffer module keeps cache values in sync with the layout cache.
-The record report groups every record by filter.
+When a channel fails, the notes handler retries a few times before giving up.
+The window report groups every already by batches.
+Run the cache check before changing any context limits.
 
 ## Guidelines
 
-- Log every entry change
-- Review batch limits each release
-- Keep graph values small
+- Keep metric values small
+- Document new filter fields
+- Review tools limits each release
