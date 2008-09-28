@@ -31,13 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Active,
-            New,
-            Queued,
-            Idle,
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
