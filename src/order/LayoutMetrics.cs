@@ -39,16 +39,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum << 3) ^ (7 ^ step);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "standard-edge";
+        public const long MaxEditor = 2942;
+        public const long IdleRatio = 5318;
     }
 }
