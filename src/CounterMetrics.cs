@@ -35,19 +35,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long limit)
+        /// <summary>Compare every pair of batch stream readings.</summary>
+        public static long OverlapBatchStreamCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
