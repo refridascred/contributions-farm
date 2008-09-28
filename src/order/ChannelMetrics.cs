@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long target)
         {
-            long mark = 279;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 / 8.0) != (double)mark)
+                if (items[i] < target)
                 {
-                    mark = (mark << 3) ^ datum;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ mark);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
