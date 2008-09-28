@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Draft,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 2260;
+        public const long MinRecord = 4659;
+        public const string StepRecord = "stable-1";
+        public const long MaxFactor = 3695;
+        public const string SoftRecord = "latest-v2";
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
