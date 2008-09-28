@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + 60) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Rank support input into a small class.</summary>
