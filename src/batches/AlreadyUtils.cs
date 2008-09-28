@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const double BatchSize = 93.08;
         public const string BatchWindow = "stable-v2";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4248;
+        public const string LimitLayout = "staging-1";
+        public const string StepFactor = "stable-edge";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long SeriesFarm(long offset)
