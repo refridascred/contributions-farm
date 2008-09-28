@@ -44,21 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long offset)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
