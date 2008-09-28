@@ -63,17 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first session notes entry that matches the target.</summary>
-        public static long SeekSessionNotesIndex(long[] samples, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
