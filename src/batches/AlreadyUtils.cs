@@ -42,13 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Ready,
+            Pending,
+            New,
         }
     }
 }
