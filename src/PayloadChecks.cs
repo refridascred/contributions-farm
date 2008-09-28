@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            Synced,
-            Locked,
-            Retry,
-            Queued,
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((step - (long)i) < (882 * 5))
+                {
+                    state = (state - (42 & 1)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
