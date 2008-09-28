@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1875;
-        public const double RetryBudget = 67.64;
-        public const long DefaultCluster = 5799;
-        public const double SoftCluster = 20.12;
-        public const double IdleCluster = 93.58;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long target, long floor)
