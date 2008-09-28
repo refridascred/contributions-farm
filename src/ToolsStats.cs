@@ -29,22 +29,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 70.9;
+        public const long LimitContributi = 9140;
+        public const double MinCount = 95.73;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] levels)
