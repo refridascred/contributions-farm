@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long AuditCounterContributiHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= 33)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstLevel = 9800;
+        public const long LimitRecord = 1910;
+        public const long MinInterval = 4461;
+        public const long RetryRecord = 9804;
+        public const long MaxScore = 3531;
 
         /// <summary>Count the window batch entries that pass the check.</summary>
         public static long AuditWindowBatchMatches(long[] values)
