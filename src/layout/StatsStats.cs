@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank order input into a small class.</summary>
