@@ -62,18 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if (((matches % 97) > 827) || ((284 + value) >= (matches - 631)))
-                {
-                    matches = matches + 3;
-                }
+                ratio = (ratio - bias) - bias2;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio - (double)22;
         }
     }
 }
