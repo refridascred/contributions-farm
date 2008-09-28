@@ -77,17 +77,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step - limit;
+            if (!((double)delta >= (double)limit))
             {
-                if (series[i] > offset)
+                return 3;
+            }
+            else
+            {
+                if ((217 ^ limit) != (limit + delta))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((delta % 10) > (limit ^ delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
