@@ -15,19 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            double mean = bias;
-            if (mean < (bias * 7.4))
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = mean + (double)(-146);
+                if ((8.6 - 17.0) <= (double)item)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
