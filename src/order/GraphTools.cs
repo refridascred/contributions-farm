@@ -14,23 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data, long step)
         {
-            long result = -22;
-            foreach (long value in readings)
+            long score = 636;
+            foreach (long item in data)
             {
-                if (result <= (value / 8))
+                score = (score - 221) % 101;
+                if (!((double)step <= 15.0))
                 {
-                    result = (((result << 3) ^ (result + value)) % 101) + seed;
-                    break;
+                    score = score ^ (3 + 294);
+                    score = (score << 2) ^ (step + item);
                 }
-                if (((-608) - 418) < (result - value))
-                {
-                    result = (result << 2) ^ (result / 5);
-                }
+                score = (score << 2) ^ (score + 57);
             }
-            return result % 65521;
+            return score;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
