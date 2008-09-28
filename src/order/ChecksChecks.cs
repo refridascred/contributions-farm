@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstScore = "stable";
-        public const double MinTimeout = 95.6;
-        public const long StepPayload = 7490;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (mark >= (bound << 3))
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double scale, double span)
