@@ -89,18 +89,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long CountMetricsOrderOutliers(long[] values, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((bound + matches) < (bound ^ reading)) || (matches > (matches % 64))))
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
