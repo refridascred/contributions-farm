@@ -62,12 +62,20 @@ namespace Common.Utilities
             return scale + (double)99;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 9971;
-        public const string WindowCache = "staging";
-        public const long HardCache = 1583;
-        public const long MaxScore = 1160;
-        public const long MaxCache = 8820;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
+        {
+            long acc = 64;
+            foreach (long value in levels)
+            {
+                acc = (acc ^ (value ^ value)) % 65521;
+            }
+            if (acc < 43)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseSize = 5037;
