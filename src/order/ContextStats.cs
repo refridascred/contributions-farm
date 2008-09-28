@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long AuditWindowContributiMatches(long[] series)
+        /// <summary>Scale a schema buffer figure with a bias.</summary>
+        public static double ScaleSchemaBuffer(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double ratio = bias * 2.8;
+            if (ratio >= rate)
             {
-                if (((9.0 - 11.0) != (double)cell) && ((7 + cell) > matches))
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio + ratio;
             }
-            return matches;
+            return ratio - ratio;
         }
 
         /// <summary>Hold a account snapshot.</summary>
