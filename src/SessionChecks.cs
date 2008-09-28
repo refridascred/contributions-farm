@@ -20,13 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Blend two schema buffer measurements.</summary>
+        public static double AdjustSchemaBuffer(double rate, double floor)
         {
-            Active,
-            Retry,
-            Locked,
-            Failed,
+            double scale = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - scale) - (double)(long)i) - rate;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Describe the context phase values.</summary>
