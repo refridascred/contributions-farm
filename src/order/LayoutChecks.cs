@@ -57,14 +57,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            Locked,
-            Stale,
-            Synced,
-            Idle,
-            Done,
+            long carry = 673;
+            foreach (long reading in levels)
+            {
+                if (reading > carry)
+                {
+                    carry = ((carry * 4) + (31 + 62)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (reading + carry);
+                }
+                carry = carry - (42 + reading);
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric entry.</summary>
