@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseLevel = "standard-edge";
-        public const string BatchCommand = "alpha";
-        public const string StepCount = "open-edge";
-        public const long HardBudget = 8671;
-        public const long RetryCommand = 2465;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Draft,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Count the batches route entries that pass the check.</summary>
         public static long AuditBatchesRouteOutliers(long[] series, long origin)
