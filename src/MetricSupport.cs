@@ -26,21 +26,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = gain;
+            if (scale >= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (scale + 9.6);
             }
-            return count;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 8.0)) - (double)(long)i;
+            }
+            return scale - span;
         }
     }
 }
