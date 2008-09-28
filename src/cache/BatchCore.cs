@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Compare every pair of context metrics readings.</summary>
+        public static long MatchContextMetricsCount(long[] items)
         {
-            double bias2 = bias + (ratio - 5.9);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 - (bias * 0.2)) - (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - 2.0;
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
