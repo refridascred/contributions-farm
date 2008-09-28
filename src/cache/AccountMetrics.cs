@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine route batches values into a single score.</summary>
-        public static long WeighRouteBatches(long[] levels, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long origin)
         {
-            long acc = 366;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                acc = acc - acc;
-                if ((reading + seed) >= (reading + reading))
+                if (cell <= origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
