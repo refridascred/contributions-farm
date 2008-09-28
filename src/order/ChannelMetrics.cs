@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
