@@ -57,17 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token support sample.</summary>
-        public static long SeekTokenSupportIndex(long[] samples, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
