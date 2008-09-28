@@ -13,25 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long limit)
+        /// <summary>Count the metrics already entries that pass the check.</summary>
+        public static long AuditMetricsAlreadyOutliers(long[] items, long offset)
         {
-            long next = offset + limit;
-            if ((double)offset <= (double)next)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((next ^ limit) < (limit + offset)))
+                if ((seen + 576) > (50 - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 2) + cell) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the order status values.</summary>
