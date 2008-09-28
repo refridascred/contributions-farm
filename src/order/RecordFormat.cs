@@ -50,13 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every editor queue entry stays within the limit.</summary>
+        public static bool VerifyEditorQueueRange(long[] levels, long seed)
         {
-            Pending,
-            Ready,
-            Draft,
-            Synced,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine report batch values into a single score.</summary>
