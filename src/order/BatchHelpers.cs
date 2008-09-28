@@ -36,21 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 65;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry * 5) + (60 - entry);
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
