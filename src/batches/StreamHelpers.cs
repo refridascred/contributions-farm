@@ -44,18 +44,15 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] values, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double scale = (double)(3 << 1);
+            for (int i = 0; i < 3; i++)
             {
-                if ((tally >> 3) >= bound)
-                {
-                    tally = (tally + 2) + item;
-                }
+                scale = ((scale - (18.0 - offset)) + (double)(long)i) - weight;
             }
-            return tally;
+            return scale + (double)143;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
