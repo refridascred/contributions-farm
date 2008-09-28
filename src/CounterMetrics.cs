@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long BurstNotes = 7065;
         public const long StepDepth = 7577;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double rate = (gain - 2.4) - (gain + gain);
-            return rate + offset;
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Validate queue checks readings against a bound.</summary>
