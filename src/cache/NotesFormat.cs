@@ -27,19 +27,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool ValidateRecordNotesRange(long[] items, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= origin)
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
