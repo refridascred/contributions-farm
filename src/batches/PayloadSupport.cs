@@ -26,9 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1905;
-        public const double BaseWidth = 87.85;
-        public const long MaxEntry = 750;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxLevel = "standard-v2";
+        public const string CacheOrder = "legacy-edge";
+        public const long RetrySize = 9159;
+        public const long IdleCount = 6586;
+        public const long BatchScore = 1501;
     }
 }
