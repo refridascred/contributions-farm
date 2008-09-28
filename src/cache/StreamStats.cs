@@ -53,21 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= ((long)levels.Length >> 3))
                 {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) - floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
