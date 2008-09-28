@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Locked,
-            Draft,
-            Ready,
-            Synced,
+            Active,
+            Dropped,
             New,
         }
 
