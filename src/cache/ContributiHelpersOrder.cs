@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double floor)
-        {
-            double load = (floor - scale) - (floor / 6.0);
-            if (load >= (double)2)
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load - (double)22;
-            }
-            return load + (8.0 / 2.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 9187;
+        public const string MinScore = "cached-edge";
+        public const string BatchWindow = "latest-1";
+        public const long SoftInterval = 2081;
+        public const long SoftWindow = 2756;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
