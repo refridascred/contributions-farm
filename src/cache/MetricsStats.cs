@@ -43,19 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] items, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
