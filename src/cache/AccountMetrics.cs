@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long state = 53;
+            foreach (long datum in levels)
+            {
+                if ((double)state >= 1.0)
+                {
+                    state = (state ^ datum) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a editor reading.</summary>
