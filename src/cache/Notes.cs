@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command window entry that matches the target.</summary>
-        public static long LookupCommandWindowIndex(long[] data, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] < floor)
+                if (!(13 > (seed ^ seed)))
                 {
-                    return (long)i;
+                    long diff = mark % 5;
+                    mark = mark + diff;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a layout reading.</summary>
