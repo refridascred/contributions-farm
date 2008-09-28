@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long MeasureEditorToolsMatches(long[] levels)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((tally * 4) == (item - item)) && ((9.6 - 6.43) <= (double)item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate record stream samples.</summary>
