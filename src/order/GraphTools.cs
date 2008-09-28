@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = target - step;
+            if ((step & 31) > (step % 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3.6 - 0.4) >= (double)target)
                 {
-                    if ((items[i] - items[j]) != 12)
+                    return 2;
+                }
+                else
+                {
+                    if ((target + lane) == (step + step))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
