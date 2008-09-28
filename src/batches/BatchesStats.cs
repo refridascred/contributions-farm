@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)37 > (double)(long)series.Length) || (entry > ((-706) - entry))) || (((hits + entry) <= entry) || ((double)hits < (6.9 + 5.31))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
