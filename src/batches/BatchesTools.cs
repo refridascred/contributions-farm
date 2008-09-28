@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((20.0 > (double)datum) || ((double)floor < (8.0 * 2.12))) && ((double)1 > (double)tally))
+                if (data[i] < seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank account layout input into a small class.</summary>
