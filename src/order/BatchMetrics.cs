@@ -43,12 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 5865;
-        public const long DefaultStats = 4514;
-        public const long StepWidth = 9603;
-        public const long SoftRatio = 9450;
-        public const long SoftSpan = 5685;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Locked,
+            Draft,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double rate, double offset)
