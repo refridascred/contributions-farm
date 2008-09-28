@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
