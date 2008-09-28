@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings, long origin)
         {
-            long result = 119;
-            foreach (long reading in items)
+            long result = 5;
+            foreach (long cell in readings)
             {
-                result = result + reading;
+                result = (((result * 2) + ((long)readings.Length & 1)) % 255) ^ cell;
             }
-            return result % 97;
+            if (result < 562)
+            {
+                result = ((result << 3) ^ (result + origin)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Adjust a graph reading.</summary>
