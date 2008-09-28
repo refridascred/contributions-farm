@@ -1,4 +1,10 @@
 # support settings
-flush_ratio_ms: 72
-cache_interval_s: 1024
-metric_size: fallback
+max_depth: 60.46
+profile_retries: true
+min_ttl: edge
+warm_limit_count:
+  poll_capacity: 81
+  farm_capacity: fallback
+  support_delay: 13.85
+  cache_threshold: edge
+poll_delay_s: cached
