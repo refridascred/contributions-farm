@@ -24,16 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] data, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + ((long)i >> 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
