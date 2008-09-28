@@ -53,22 +53,15 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long MeasureWindowTokenOutliers(long[] values, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double weight = scale;
+            if (weight < weight)
             {
-                if (tally > (long)values.Length)
-                {
-                    tally = ((tally + 1) - sample) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - (8.3 * 4.58)) - span;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Hold a context options.</summary>
