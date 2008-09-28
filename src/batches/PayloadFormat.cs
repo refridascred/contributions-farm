@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (cell >= bound)
+                if ((cell * 5) < matches)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
