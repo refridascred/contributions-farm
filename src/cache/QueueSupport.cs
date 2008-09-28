@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Pending,
-            Ready,
+            Stale,
+            Draft,
             Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count window counter pairs that satisfy a relation.</summary>
