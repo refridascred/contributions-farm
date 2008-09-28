@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (0.7 + 7.0))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
