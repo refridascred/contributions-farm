@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double rate = floor * 1.47;
-            if (rate <= (gain / 6.0))
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate - 9.43)) + (double)(long)i;
-            }
-            return rate - (double)86;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
