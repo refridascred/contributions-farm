@@ -35,17 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum ^ seed) % 101;
-                sum = sum + seed;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 94.38;
+        public const long StepWidth = 7991;
+        public const long RetryDepth = 2646;
     }
 }
