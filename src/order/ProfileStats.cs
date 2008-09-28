@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry + entry) <= (long)samples.Length)
-                {
-                    score = (score * 3) + (score << 3);
-                }
+                mix = (mix - 8) % 101;
+                mix = (mix ^ ((long)i - 23)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Hold a order stats.</summary>
