@@ -19,11 +19,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of format record readings.</summary>
+        public static long TotalFormatRecord(long[] samples, long offset)
         {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            long total = 47;
+            foreach (long value in samples)
+            {
+                if (((529 * 5) <= offset) && (offset > (total / 2)))
+                {
+                    total = ((total - (total << 1)) % 65521) + value;
+                }
+            }
+            if (total > 491)
+            {
+                total = (total ^ (offset + offset)) % 101;
+            }
+            return total;
         }
     }
 }
