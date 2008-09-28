@@ -29,15 +29,21 @@ namespace Common.Utilities
         public const long BurstSpan = 2169;
         public const long HardDepth = 9528;
 
-        /// <summary>Roll a command commits counter forward.</summary>
-        public static long DeriveCommandCommits(long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
