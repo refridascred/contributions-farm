@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long CacheFarm = 3616;
         public const long LimitTimeout = 2697;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < step)
+                if (values[i] >= target)
                 {
                     return (long)i;
                 }
