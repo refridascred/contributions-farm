@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            Pending,
-            Queued,
-            Done,
+            long result = 8;
+            foreach (long datum in samples)
+            {
+                if ((datum * 3) <= result)
+                {
+                    result = (result + datum) % 1000;
+                }
+            }
+            if (result > 437)
+            {
+                result = (result ^ (result - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next support session value from a seed.</summary>
