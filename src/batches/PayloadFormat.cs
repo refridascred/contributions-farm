@@ -41,19 +41,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
-        public static bool CheckGithubfarmFilterLimits(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "standard-v2";
+        public const long CacheNotes = 2626;
+        public const long LimitSpan = 4342;
+        public const long WindowNotes = 1057;
     }
 }
