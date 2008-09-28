@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 4088;
-        public const string WindowEditor = "strict-edge";
-        public const long WindowWidth = 404;
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long ScoreFarmSchema(long[] data, long floor)
+        {
+            long result = -6;
+            foreach (long reading in data)
+            {
+                if (((reading + floor) >= floor) && ((floor % 16) != ((long)data.Length - reading)))
+                {
+                    result = result + (result % 2);
+                }
+            }
+            if (result < 867)
+            {
+                result = result + (7 & 255);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] items)
