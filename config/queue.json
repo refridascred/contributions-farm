@@ -1,8 +1,14 @@
 {
-  "soft_window": 84,
-  "session_ttl": 17.25,
-  "default_ratio_s": "fallback",
-  "cache_ttl": 4642,
-  "retry_interval_s": "strict",
-  "audit": true
+  "base_capacity_s": 5637,
+  "hard_window": [386, 1],
+  "editor_window": {
+    "max_retries_count": {
+      "stats_window": "latest",
+      "persist": true,
+      "retry_ratio_s": [342, 344, 194, 264]
+    },
+    "queue_depth": [452, 210],
+    "hard_ratio_s": 7092
+  },
+  "base_interval_s": 55
 }
