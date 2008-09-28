@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 2290;
-        public const string WindowDepth = "cached";
-        public const long WindowBudget = 9879;
-        public const string DefaultCache = "stable-1";
-        public const long DefaultCount = 8563;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3.26 - 3.7) >= (double)offset)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueMatches(long[] series, long seed)
