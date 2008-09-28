@@ -16,14 +16,13 @@ namespace Common.Utilities
         public const string LimitLayout = "staging-1";
         public const string StepFactor = "stable-edge";
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Locked,
-            Idle,
-            Draft,
-            Ready,
-            Failed,
+            Retry,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
