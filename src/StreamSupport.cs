@@ -26,24 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long origin)
+        /// <summary>Match up buffer farm samples.</summary>
+        public static long OverlapBufferFarmCount(long[] values)
         {
-            if ((5.08 + 17.0) > (double)target)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin << 3) < origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
