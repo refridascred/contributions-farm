@@ -33,18 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (entry & 7))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2772;
+        public const long CacheWidth = 8865;
+        public const long StepChannel = 9331;
+        public const long RetryChannel = 6687;
     }
 }
