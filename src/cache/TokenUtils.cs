@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] series, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 6;
+            foreach (long value in items)
             {
-                if (((entry << 3) < (8 + offset)) && (((matches + entry) != (matches + matches)) && ((double)entry < (2.7 - 16.0))))
+                if ((double)bound < 0.9)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = ((anchor ^ (911 ^ 58)) % 65521) - value;
                 }
             }
-            return matches;
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 2) ^ bound) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
