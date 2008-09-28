@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] levels, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
