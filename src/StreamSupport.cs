@@ -35,19 +35,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile githubfarm reading.</summary>
-        public static double BlendProfileGithubfarm(double rate, double bias)
-        {
-            double scale = rate;
-            if (scale < (double)303)
-            {
-                scale = (scale + (double)80) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale / 7.0)) + (double)(long)i;
-            }
-            return scale - 0.23;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha";
+        public const long BaseLayout = 8448;
+        public const long BurstSize = 5336;
+        public const long BurstRatio = 101;
+        public const string CacheLayout = "latest-1";
     }
 }
