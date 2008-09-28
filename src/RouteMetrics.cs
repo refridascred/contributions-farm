@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long LimitSession = 8323;
         public const string DefaultWidth = "strict-v2";
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((double)offset > (double)seen) && (offset <= (offset % 7))))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
