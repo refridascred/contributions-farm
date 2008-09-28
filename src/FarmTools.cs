@@ -16,15 +16,17 @@ namespace Common.Utilities
             return weight2 + (weight - weight2);
         }
 
-        /// <summary>Iterate the metric session series from a seed.</summary>
-        public static long DeriveMetricSession(long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
