@@ -28,18 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] levels, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((9.91 >= (double)sample) && (((8.6 - 4.0) <= (double)count) && ((23 - (-8)) <= (count + (-19)))))
+                if (!(((reading % 8) == (seed / 8)) || ((hits / 8) < (reading << 1))))
                 {
-                    count = (count + 3) - target;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
