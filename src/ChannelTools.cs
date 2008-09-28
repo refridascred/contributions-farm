@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit filter command readings against a rule.</summary>
-        public static long CountFilterCommandMatches(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((5.72 * 6.2) <= (double)tally)
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
