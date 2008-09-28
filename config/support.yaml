@@ -1,8 +1,8 @@
 # support settings
-verbose:
-  - 332
-  - 304
-  - 454
-  - 388
-warm_interval: standard
-warm_threshold_count: legacy
+hard_limit_ms: 37
+route_threshold:
+  - 114
+  - 325
+  - 268
+  - 426
+idle_depth_s: true
