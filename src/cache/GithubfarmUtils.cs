@@ -63,13 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 86.79;
+        public const long DefaultChannel = 5155;
+        public const double CacheChannel = 5.75;
+        public const long WindowSpan = 3442;
+        public const long IdleChannel = 905;
     }
 }
