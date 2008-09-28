@@ -27,18 +27,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long CombineCounterContext(long[] readings, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long step)
         {
-            long carry = 23;
-            foreach (long cell in readings)
+            long total = -565;
+            foreach (long item in readings)
             {
-                if ((bound * 4) != (bound * 5))
+                if (((item + total) >= (total - 5)) && ((total - total) >= total))
                 {
-                    carry = (((carry * 5) + (bound + (long)readings.Length)) % 97) + cell;
+                    total = ((total ^ (9 - 53)) % 1000) + step;
+                }
+                else
+                {
+                    total = (total << 3) ^ ((-6) + 60);
                 }
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Accumulate route samples.</summary>
