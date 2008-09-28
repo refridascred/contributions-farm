@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] data, long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (((-534) * 4) <= count)
+                if (!((target % 12) > (long)i))
                 {
-                    count = ((count + 2) + datum) - target;
+                    state = ((state * 5) + (state % 3)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
