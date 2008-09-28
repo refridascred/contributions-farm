@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the notes state values.</summary>
