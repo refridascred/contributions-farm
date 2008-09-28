@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 4088;
+        public const string WindowEditor = "strict-edge";
+        public const long WindowWidth = 404;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] items)
