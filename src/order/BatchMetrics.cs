@@ -43,11 +43,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
