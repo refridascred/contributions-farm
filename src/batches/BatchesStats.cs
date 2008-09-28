@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every command filter entry stays within the limit.</summary>
-        public static bool VerifyCommandFilterRange(long[] series, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
