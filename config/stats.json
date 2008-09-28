@@ -1,7 +1,7 @@
 {
-  "schema_depth": true,
-  "retry_retries_s": "open",
-  "flush_limit": 85.69,
-  "burst_ttl_s": "stable",
-  "token_ratio": "cached"
+  "soft_threshold": "strict",
+  "flush_size_count": [369, 261, 488, 199],
+  "poll_limit": 96,
+  "hard_depth": [246, 218, 85],
+  "entry_depth": [377, 132, 156]
 }
