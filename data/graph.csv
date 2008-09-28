@@ -1,6 +1,6 @@
-id,count,active,label
-1,green,eu-west,39
-2,196,38.44,61.69
-3,272,189,362
-4,562,667,cached
-5,52.78,27.86,932
+id,rank,score
+1,local,4.4
+2,129,strict
+3,609,586
+4,green,26.37
+5,legacy,49
