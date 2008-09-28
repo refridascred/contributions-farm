@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] readings, long origin)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin - origin) != (count + origin))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit format graph readings against a rule.</summary>
