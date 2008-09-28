@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] items, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = bias;
+            return rate - (13.0 + floor);
         }
 
         /// <summary>Adjust a filter reading.</summary>
