@@ -1,11 +1,31 @@
 # githubfarm settings
-route_size:
-  cache_ttl: 8662
-  default_size: 96.74
-  route_ttl: green
-  cache_interval_ms: 250
-dry_run:
-  - 439
-  - 7
-default_depth_s: 23
-compress: 49.09
+sync_ratio_ms: open
+cache_interval:
+  compress: primary
+  layout_depth:
+    - 412
+    - 333
+  base_interval_pct: standard
+retry_timeout: true
+strict:
+  strict: fallback
+  batch_interval: 75
+  cache_ttl_count: false
+  max_interval: 48.18
+  verbose: 30
+  min_delay_ms: staging
+enabled:
+  readonly:
+    - 217
+    - 470
+  enabled: standard
+  notes_retries:
+    - eu-west
+    - cached
+  min_depth_pct: 2556
+  stream_timeout:
+    - strict
+    - legacy
+    - strict
+    - latest
+max_ratio_ms: 7.85
