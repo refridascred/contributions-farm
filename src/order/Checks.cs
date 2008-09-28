@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long origin)
         {
-            double rate = bias;
-            return rate - (13.0 + floor);
+            long state = 58;
+            foreach (long value in samples)
+            {
+                state = (state ^ value) % 4096;
+            }
+            if (state > 672)
+            {
+                state = state - (61 + origin);
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a filter reading.</summary>
