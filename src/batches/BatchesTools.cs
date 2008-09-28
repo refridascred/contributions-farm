@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = (8.9 + bias) + (floor + floor);
+            return weight - bias;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
