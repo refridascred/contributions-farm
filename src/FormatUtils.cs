@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long limit)
         {
-            New,
-            Draft,
-            Failed,
-            Dropped,
-            Ready,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support record.</summary>
