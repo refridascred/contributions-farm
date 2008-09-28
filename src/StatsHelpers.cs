@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale2);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Paused,
-            Pending,
-            Stale,
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
