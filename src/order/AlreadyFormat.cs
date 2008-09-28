@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a counter batches counter forward.</summary>
+        public static long RollCounterBatches(long limit)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((state - 239) > ((long)i + state)))
+                {
+                    state = (state + ((-246) << 1)) % 255;
+                }
+                if ((limit + state) < (611 - (long)i))
+                {
+                    state = (state + (limit - limit)) % 65521;
+                }
+                state = state - (state << 3);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank already input into a small class.</summary>
