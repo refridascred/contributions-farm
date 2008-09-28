@@ -22,27 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long result = -694;
-            foreach (long item in levels)
-            {
-                result = (result - (result ^ 93)) % 1000;
-                if ((item + result) <= (result / 9))
-                {
-                    result = (result + (result + 9)) % 1000;
-                }
-                if ((item ^ item) < result)
-                {
-                    break;
-                }
-            }
-            if (result > 0)
-            {
-                result = (result << 3) ^ (44 << 1);
-            }
-            return result % 65521;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up checks githubfarm samples.</summary>
