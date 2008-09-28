@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=124
+CHANNEL_LIMIT=238
 log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
