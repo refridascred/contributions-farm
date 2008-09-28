@@ -16,13 +16,39 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Rank commits cluster input into a small class.</summary>
+        public static long GradeCommitsCluster(long target, long floor)
         {
-            Active,
-            Ready,
-            Synced,
-            Failed,
+            long step = target - floor;
+            if ((target + floor) > (546 + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((41 >> 3) == (3 - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((415 >> 3) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step ^ 80) >= 4)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
