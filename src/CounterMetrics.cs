@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -548;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state ^ (state + item)) - target;
+                if ((state + state) == (state + item))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 3) + state;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
