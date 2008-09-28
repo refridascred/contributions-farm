@@ -16,39 +16,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Rank commits cluster input into a small class.</summary>
-        public static long GradeCommitsCluster(long target, long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long step = target - floor;
-            if ((target + floor) > (546 + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((41 >> 3) == (3 - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((415 >> 3) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step ^ 80) >= 4)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
