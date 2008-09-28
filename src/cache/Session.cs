@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 760;
-        public const long IdleEditor = 85;
-        public const long WindowEditor = 676;
+        /// <summary>Adjust a cluster support reading.</summary>
+        public static double AdjustClusterSupport(double rate, double floor)
+        {
+            double ratio = (rate / 9.0) / 2.0;
+            return (ratio + (rate * 5.19)) + floor;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesGaps(long[] values)
