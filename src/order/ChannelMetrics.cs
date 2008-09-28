@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)(long)i > (2.38 - 2.6))
+                if ((result + result) < ((long)i << 2))
                 {
-                    mark = (mark + (mark + mark)) % 65521;
+                    result = ((result << 2) ^ floor) % 65521;
+                    break;
                 }
-                mark = (mark - ((long)i - mark)) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Match up editor samples.</summary>
