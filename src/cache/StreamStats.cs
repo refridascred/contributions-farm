@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a batches stats pair into a bucket.</summary>
+        public static long ClassifyBatchesStats(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long delta = floor + floor2;
+            if (((double)delta <= 15.0) || (floor2 > (4 << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((delta & 255) <= 1)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (delta < (80 % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)floor2 == (double)floor) && ((floor * 4) < (delta - floor2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a command order value against two limits.</summary>
