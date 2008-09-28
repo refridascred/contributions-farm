@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 7;
-            foreach (long value in items)
-            {
-                mix = mix ^ (value >> 3);
-            }
-            return mix % 4096;
+            Dropped,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
