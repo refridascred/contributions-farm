@@ -23,19 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long CountTokenBatchesMatches(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((((long)series.Length > (item - seed)) && ((seed ^ seed) > item)) && (seed >= tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxLevel = 46.38;
+        public const long WindowToken = 3943;
+        public const long MinRatio = 6468;
+        public const long StepScore = 1893;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
