@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] series, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (12.0 >= (double)reading)
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
