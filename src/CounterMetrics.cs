@@ -17,31 +17,22 @@ namespace Common.Utilities
         public const long BurstNotes = 7065;
         public const long StepDepth = 7577;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items)
         {
-            if (((step / 7) > (835 >> 2)) && ((step + step) <= (step + 79)))
+            long mark = 162;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.82 + 17.0) == (double)step)
+                if (!((double)item > (5.0 - 5.85)))
                 {
-                    return 1;
+                    mark = (mark + (item ^ mark)) % 65521;
                 }
                 else
                 {
-                    if (!(offset >= (step + offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = mark ^ item;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
