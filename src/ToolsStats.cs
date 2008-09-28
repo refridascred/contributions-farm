@@ -73,32 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            long delta = target ^ floor;
-            if (!(target >= 96))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)delta == (6.74 * 20.0))
+                if (seen <= (cell * 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 64) < (target ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
