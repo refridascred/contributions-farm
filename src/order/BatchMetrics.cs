@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long floor)
         {
-            long edge = offset - floor;
-            if ((floor / 5) >= edge)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (1 >= floor)
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 - 7.32) >= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (edge ^ floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
