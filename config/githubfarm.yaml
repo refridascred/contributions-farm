@@ -1,7 +1,17 @@
 # githubfarm settings
-verbose: 8.55
-buffer_window: local
-batch_timeout: 58.16
-strict:
-  - fallback
-  - local
+cache_ttl:
+  soft_interval: 8
+  enabled: false
+  default_interval_s:
+    - primary
+    - eu-west
+    - cached
+    - green
+  retry_interval_count: open
+  format_timeout: edge
+  already_ttl: legacy
+cache_window: open
+burst_timeout_count: 21
+soft_retries_ms: false
+poll_retries_ms: green
+order_delay: false
