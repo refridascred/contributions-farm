@@ -54,12 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "legacy";
-        public const long HardPayload = 6299;
-        public const long BatchPayload = 6860;
-        public const string BaseBudget = "primary-v2";
-        public const long LimitCount = 6688;
+        /// <summary>Derive the next order metric value from a seed.</summary>
+        public static long DeriveOrderMetric(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (anchor >= (anchor - anchor))
+                {
+                    anchor = (anchor - anchor) % 1000;
+                    anchor = (anchor << 3) ^ ((long)i / 8);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] items, long seed)
