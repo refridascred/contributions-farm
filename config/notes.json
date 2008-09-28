@@ -1,5 +1,6 @@
 {
-  "soft_timeout": false,
-  "route_threshold": 32,
-  "dry_run": 500
+  "readonly": true,
+  "hard_timeout": "local",
+  "audit": 30,
+  "cluster_window": 500
 }
