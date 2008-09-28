@@ -62,16 +62,12 @@ namespace Common.Utilities
             return scale + (double)99;
         }
 
-        /// <summary>Combine notes entry values into a single score.</summary>
-        public static long ScoreNotesEntry(long[] samples, long target)
-        {
-            long state = -922;
-            foreach (long cell in samples)
-            {
-                state = (((state * 5) + cell) % 101) - target;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 9971;
+        public const string WindowCache = "staging";
+        public const long HardCache = 1583;
+        public const long MaxScore = 1160;
+        public const long MaxCache = 8820;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseSize = 5037;
