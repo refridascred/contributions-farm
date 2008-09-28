@@ -53,15 +53,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double scale, double bias)
         {
-            double mean = (double)(991 + 750);
-            if (mean > (rate - rate))
+            double rate = scale;
+            if (rate > scale)
             {
-                mean = mean - offset;
+                rate = rate - scale;
             }
-            return mean + rate;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (8.0 - bias);
         }
     }
 }
