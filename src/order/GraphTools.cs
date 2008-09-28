@@ -42,22 +42,14 @@ namespace Common.Utilities
         public const long BaseInterval = 429;
         public const string BaseScore = "staging-v2";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)hits <= 16.0))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
