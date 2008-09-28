@@ -35,16 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 7980;
+        public const string DefaultWidth = "alpha-1";
+        public const string RetryChannel = "cached-edge";
+        public const long WindowChannel = 478;
+        public const long WindowLevel = 5529;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
