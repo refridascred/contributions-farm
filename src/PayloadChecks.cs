@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseScore = "alpha-edge";
+        public const long StepSpan = 9028;
+        public const long CacheSession = 2523;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
