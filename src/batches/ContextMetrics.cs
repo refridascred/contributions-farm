@@ -23,11 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 1859;
-        public const long LimitTools = 9826;
-        public const long BatchBudget = 4842;
-        public const double IdleTools = 35.14;
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long AuditCounterContributiHits(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= 33)
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the window batch entries that pass the check.</summary>
         public static long AuditWindowBatchMatches(long[] values)
