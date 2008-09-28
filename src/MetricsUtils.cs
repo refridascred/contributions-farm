@@ -53,15 +53,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data, long origin)
+        /// <summary>Measure how many queue entry samples are out of range.</summary>
+        public static long MeasureQueueEntryMatches(long[] series, long offset)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long value in series)
             {
-                if (!((8 << 1) > (origin & 127)))
+                if ((offset - matches) != (long)series.Length)
                 {
-                    matches = (matches + 1) - sample;
+                    matches = (matches + 1) + value;
                 }
             }
             return matches;
