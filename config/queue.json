@@ -1,7 +1,5 @@
 {
-  "enabled": 8318,
-  "min_timeout": 86,
-  "cluster_interval": ["latest", "fallback"],
-  "readonly": "standard",
-  "default_threshold_count": 6002
+  "idle_threshold_pct": ["staging", "fallback"],
+  "support_window": "cached",
+  "flush_threshold": "strict"
 }
