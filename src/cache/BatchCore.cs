@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Done,
+            Active,
             Ready,
-            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
