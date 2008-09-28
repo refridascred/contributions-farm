@@ -20,39 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long target)
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long StepCounterFarm(long origin)
         {
-            long prev = bound - target;
-            if ((prev ^ target) < bound)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                state = ((state << 3) ^ ((long)i / 2)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target << 1) > prev)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (target + prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev - prev) <= prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the report level values.</summary>
