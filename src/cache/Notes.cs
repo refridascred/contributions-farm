@@ -61,26 +61,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            long carry = 927;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((180 ^ item) <= (632 & 63))
+                if (datum > (datum + tally))
                 {
-                    carry = carry ^ carry;
+                    tally = tally + 1;
                 }
-                if (((double)item > 1.6) || ((14.0 / 2.0) > (double)seed))
+                else
                 {
-                    carry = carry + carry;
+                    tally = tally - 1;
                 }
             }
-            if (carry < 86)
-            {
-                carry = (carry ^ ((long)items.Length / 7)) % 1000;
-            }
-            return carry % 1000;
+            return tally;
         }
     }
 }
