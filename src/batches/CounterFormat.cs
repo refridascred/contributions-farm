@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long seed)
         {
-            double bias = 2.9;
-            if (bias > 5.8)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                bias = (bias - weight) + span;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + (bias - bias);
+            return ready;
         }
 
         /// <summary>Match up editor samples.</summary>
