@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count the format filter entries that pass the check.</summary>
+        public static long TallyFormatFilterHits(long[] series)
         {
-            long mark = -209;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((reading >> 2) < 0))
+                if (((cell + count) < cell) || (((count + count) == (cell + count)) && ((count << 2) >= (cell + count))))
                 {
-                    break;
+                    count = count + 2;
                 }
-                if ((mark & 31) <= (reading - reading))
+                else
                 {
-                    mark = (mark << 2) ^ (reading + (-80));
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine checks channel values into a single score.</summary>
