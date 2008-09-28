@@ -48,18 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream batches entry that matches the target.</summary>
-        public static long LookupStreamBatchesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 59.22;
+        public const long WindowEntry = 2560;
+        public const long IdleEntry = 908;
 
         /// <summary>Audit session already readings against a rule.</summary>
         public static long AuditSessionAlreadyOutliers(long[] levels, long bound)
