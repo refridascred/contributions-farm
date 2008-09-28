@@ -26,10 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepSize = "strict";
-        public const long RetryMetric = 8629;
-        public const double MinWidth = 7.44;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a profile githubfarm reading.</summary>
         public static double BlendProfileGithubfarm(double rate, double bias)
