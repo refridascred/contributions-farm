@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 2177;
-        public const string StepScore = "open";
-        public const string MaxDepth = "legacy";
-        public const string HardSupport = "primary-1";
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Stale,
+            Failed,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 5583;
