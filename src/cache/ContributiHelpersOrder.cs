@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long SoftRecord = 8487;
         public const long RetryRatio = 9858;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches << 3) < (matches + sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a account info.</summary>
