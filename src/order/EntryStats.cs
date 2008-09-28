@@ -41,17 +41,28 @@ namespace Common.Utilities
             return (scale + (1.2 / 8.0)) + floor;
         }
 
-        /// <summary>Iterate the stream already series from a seed.</summary>
-        public static long SeriesStreamAlready(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = 617;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ (acc % 8)) % 1000;
-                acc = ((acc << 3) ^ (bound << 3)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                mix = (mix + offset) % 1000;
+                mix = mix - ((long)samples.Length << 1);
+                if ((6.55 - 1.4) != (double)offset)
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                if ((entry + offset) >= (entry - offset))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix > 601)
+            {
+                mix = (mix ^ (mix + 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
