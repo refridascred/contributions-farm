@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] values, long bound)
         {
-            long carry = 67;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                carry = carry - ((long)data.Length + 1);
-                carry = ((carry << 2) ^ (cell + carry)) % 255;
-                if (carry > (cell - (long)data.Length))
+                if (item > bound)
                 {
-                    carry = (carry - (carry + (long)data.Length)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (target / 2)) % 4096;
-                }
-                if (((cell * 3) > (-60)) || (target >= (cell - carry)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the layout level values.</summary>
