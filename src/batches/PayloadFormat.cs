@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 522;
+            foreach (long entry in levels)
             {
-                if ((cell * 5) < matches)
+                if ((entry / 6) == (3 ^ entry))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor << 2) ^ (entry + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (-6);
                 }
             }
-            return matches;
+            if (anchor < 42)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics stats.</summary>
