@@ -1,7 +1,6 @@
 {
-  "soft_retries_pct": "stable",
-  "soft_threshold_ms": "blue",
-  "soft_delay_pct": 100,
-  "flush_limit_ms": 95,
-  "already_depth": true
+  "batch_interval_count": 9197,
+  "idle_ttl_pct": true,
+  "hard_ratio_ms": true,
+  "warm_delay": 71
 }
