@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count - count) == (count * 2))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
