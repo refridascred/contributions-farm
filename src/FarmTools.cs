@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double scale = floor * 5.5;
-            if (scale >= gain)
-            {
-                scale = scale + floor;
-            }
-            return scale - gain;
+            Active,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the metric session series from a seed.</summary>
