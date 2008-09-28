@@ -31,18 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] levels)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (cell >> 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
