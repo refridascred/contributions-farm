@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Synced,
-            Locked,
-            Stale,
-            Paused,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
