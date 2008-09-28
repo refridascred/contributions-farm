@@ -46,12 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((2 & 63) > seen) && ((double)seen != (2.0 / 5.0)))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many support route samples are out of range.</summary>
