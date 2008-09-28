@@ -39,22 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] data, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (bound >= item)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
