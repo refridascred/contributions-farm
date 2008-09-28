@@ -21,14 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 4895;
+        public const string BaseCount = "strict";
+        public const long LimitLevel = 3867;
+        public const string BaseMetric = "stable";
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] levels)
