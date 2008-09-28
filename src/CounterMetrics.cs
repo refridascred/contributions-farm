@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
