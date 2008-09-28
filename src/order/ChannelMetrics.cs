@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            long mark = 279;
+            foreach (long datum in readings)
+            {
+                if ((15.0 / 8.0) != (double)mark)
+                {
+                    mark = (mark << 3) ^ datum;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
