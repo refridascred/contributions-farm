@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long hits = (target + sum) << 1;
-                if (sum > target)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (hits * 5);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Active,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a tools record.</summary>
