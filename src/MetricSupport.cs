@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MaxSpan = 177;
         public const long BatchBudget = 4791;
 
-        /// <summary>Derive the next schema window value from a seed.</summary>
-        public static long IterateSchemaWindow(long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark * 2) + mark) % 101) + (long)i2;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a account reading.</summary>
