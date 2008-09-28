@@ -1,7 +1,10 @@
 # support settings
-poll_threshold_pct: 66.59
-batch_capacity:
-  githubfarm_capacity: 7689
-  contributi_limit: strict
-  poll_depth_ms: staging
-min_threshold_count: false
+dry_run:
+  - blue
+  - staging
+  - latest
+  - blue
+batch_window: 8591
+soft_delay: true
+burst_capacity_ms: true
+strict: 56.87
