@@ -1,18 +1,4 @@
 # entry settings
-poll_retries_ms:
-  - legacy
-  - legacy
-  - fallback
-schema_threshold:
-  min_window_count: 1024
-  commits_delay: true
-  soft_limit_ms: 1024
-  poll_interval_s: strict
-  strict: 14.09
-  profile_depth:
-    order_depth: 2289
-    warm_limit_s: 94.99
-    hard_delay_count: stable
-    audit: 250
-    burst_limit_s: latest
-record_window: latest
+base_ttl_s: false
+idle_depth_pct: false
+cache_ttl_ms: local
