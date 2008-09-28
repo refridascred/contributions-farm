@@ -15,14 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Done,
-            Paused,
-            Idle,
-            Stale,
-            Active,
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
