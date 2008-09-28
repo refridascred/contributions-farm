@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] values, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 12;
+            foreach (long sample in items)
             {
-                if (!((tally - cell) >= (floor * 3)))
-                {
-                    tally = tally + 2;
-                }
+                total = (total + (sample << 2)) % 101;
+                total = (total + (sample + total)) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of cluster contributi entries.</summary>
