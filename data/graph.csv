@@ -1,7 +1,7 @@
-id,active,score
-1,573,eu-west
-2,15.14,232
-3,13.76,blue
-4,49.26,427
-5,672,legacy
-6,562,5.17
+id,count,ratio,owner
+1,230,fallback,844
+2,open,230,563
+3,33,626,942
+4,11.06,latest,594
+5,684,437,stable
+6,28.45,36.4,42.46
