@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] values, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (160 >= (seen << 3))
-                {
-                    seen = ((seen + 1) ^ sample) - origin;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a batches record.</summary>
