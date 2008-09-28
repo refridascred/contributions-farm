@@ -54,12 +54,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long seed)
         {
-            Queued,
-            Paused,
-            Locked,
+            long lane = target + seed;
+            if (((70 + 2) <= target) && (((-366) >> 3) < (target * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target - target) > (target & 255)) && (lane < (993 << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
