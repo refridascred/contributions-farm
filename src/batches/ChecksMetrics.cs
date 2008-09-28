@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 59;
-            foreach (long datum in data)
-            {
-                mark = ((mark << 2) ^ (datum * 4)) % 4096;
-                mark = mark + mark;
-                mark = (mark - (mark / 7)) % 4096;
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
