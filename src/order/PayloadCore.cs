@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long offset)
         {
-            double rate = floor;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = ((rate + rate) + (double)(long)i) - bias;
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)5;
+            return -1;
         }
     }
 }
