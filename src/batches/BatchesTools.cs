@@ -17,10 +17,38 @@ namespace Common.Utilities
         public const long MinSize = 3308;
         public const long BatchGithubfarm = 2677;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2772;
-        public const long CacheWidth = 8865;
-        public const long StepChannel = 9331;
-        public const long RetryChannel = 6687;
+        /// <summary>Grade a command metric value against two limits.</summary>
+        public static long ClassifyCommandMetric(long limit, long origin)
+        {
+            if (((origin + origin) >= (origin >> 4)) && ((double)limit > 6.92))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((10.0 * 8.0) > (9.0 / 9.0)) && ((38 << 3) >= (limit / 6)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (1 >= (origin + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin & 3) >= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
