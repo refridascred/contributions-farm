@@ -1,7 +1,7 @@
 {
-  "max_timeout": 2270,
-  "entry_ratio": 7.09,
-  "strict": false,
-  "default_ratio_s": true,
-  "stats_retries": 7257
+  "batch_size": 63,
+  "dry_run": false,
+  "session_limit": true,
+  "burst_size_ms": ["eu-west", "standard", "staging", "fallback"],
+  "soft_capacity_ms": "cached"
 }
