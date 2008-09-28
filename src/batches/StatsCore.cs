@@ -76,16 +76,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long AuditSessionAlreadyOutliers(long[] levels, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (result + result)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                if ((datum - 33) == (bound - bound))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
