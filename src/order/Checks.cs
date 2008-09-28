@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long cur = limit + target;
-            if (!((limit % 5) >= (target >> 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.0 - 3.4) < (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (cur > (cur - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
