@@ -36,21 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long seed)
         {
-            long mark = 426;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mark = mark + (1 * 4);
-                mark = (mark + (cell / 2)) % 101;
-                mark = (mark - target) % 255;
+                if (seed <= (seed % 16))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark > (-344))
-            {
-                mark = (mark ^ (target & 1)) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the batches kind values.</summary>
