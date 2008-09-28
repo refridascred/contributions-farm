@@ -41,14 +41,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels, long limit)
         {
-            Locked,
-            Ready,
-            Idle,
-            Closed,
-            Queued,
+            long acc = 52;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (acc ^ (entry ^ entry)) ^ (long)i;
+                }
+                if ((double)limit <= 14.0)
+                {
+                    acc = (acc + entry) % 255;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = ((acc * 3) + (limit / 4)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of command entries.</summary>
