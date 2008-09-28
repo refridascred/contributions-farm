@@ -25,39 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long origin)
         {
-            long bound = seed ^ offset;
-            if ((-9) > (offset + 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((34 - 845) > (bound >> 1))
+                if (levels[i] > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (offset + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)bound == (12.0 / 6.0)) && (offset > (seed ^ bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
