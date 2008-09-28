@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long BurstNotes = 7065;
         public const long StepDepth = 7577;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Failed,
-            Queued,
-            Dropped,
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate queue checks readings against a bound.</summary>
