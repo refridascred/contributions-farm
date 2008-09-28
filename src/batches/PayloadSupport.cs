@@ -29,22 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long target)
         {
-            long anchor = 66;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!((datum >> 5) <= anchor))
+                if (cell < target)
                 {
-                    anchor = anchor ^ (anchor - 2);
-                }
-                if (((anchor - 44) >= (anchor & 7)) && ((anchor * 2) == (anchor & 127)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
