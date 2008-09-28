@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long result = 29;
-            foreach (long entry in values)
+            long carry = -1;
+            foreach (long entry in samples)
             {
-                if ((3.98 * 9.0) >= (double)result)
+                if ((9.7 + 5.2) < (double)carry)
                 {
-                    result = (result + result) % 255;
+                    carry = ((carry * 4) + (carry + entry)) % 1000;
                 }
-                if ((entry - target) <= (5 ^ target))
+                else
+                {
+                    carry = carry + (carry >> 5);
+                }
+                if (((carry * 2) <= entry) || ((entry + carry) >= ((long)samples.Length + carry)))
                 {
                     break;
                 }
             }
-            return result % 65521;
+            return carry % 97;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
