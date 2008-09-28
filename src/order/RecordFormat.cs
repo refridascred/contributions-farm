@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetrySize = "latest-1";
-        public const long WindowPayload = 9582;
-        public const long WindowInterval = 8108;
-        public const double SoftPayload = 69.22;
-        public const string StepScore = "fallback-1";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            Idle,
+            Active,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] readings)
