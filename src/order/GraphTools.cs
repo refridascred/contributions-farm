@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples, long offset)
         {
-            double bias = span;
-            if (bias >= (span - bias))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                bias = (bias - (double)4) - gain;
+                if ((count >> 3) > (entry >> 2))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (span + span);
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
