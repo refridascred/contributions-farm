@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings, long limit)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((limit <= datum) || ((0.3 * 7.0) <= (double)limit))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry level values.</summary>
