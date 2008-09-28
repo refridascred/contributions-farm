@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long target)
         {
-            Active,
-            Ready,
-            Synced,
-            Pending,
+            long delta = bound ^ target;
+            if ((19.0 + 12.0) >= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)delta > (3.3 - 2.33))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
