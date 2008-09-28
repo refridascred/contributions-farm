@@ -53,14 +53,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long step)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Closed,
-            Draft,
+            long result = 427;
+            foreach (long cell in readings)
+            {
+                if ((18.0 + 6.1) != (double)(long)readings.Length)
+                {
+                    result = (((result ^ (522 * 5)) % 97) + cell) + step;
+                }
+            }
+            return result;
         }
     }
 }
