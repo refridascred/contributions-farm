@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + result) < ((long)i << 2))
+                if (levels[i] <= offset)
                 {
-                    result = ((result << 2) ^ floor) % 65521;
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
