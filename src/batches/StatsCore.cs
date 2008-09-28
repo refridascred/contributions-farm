@@ -34,10 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8899;
-        public const long WindowMetrics = 3279;
-        public const long IdleMetrics = 2963;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((-797) ^ item) < item)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] data, long seed)
