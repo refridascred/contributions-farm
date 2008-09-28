@@ -47,12 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= floor)
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
