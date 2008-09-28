@@ -14,24 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i < limit)
-                {
-                    carry = ((carry << 3) ^ (carry + (long)i)) % 97;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry & 15)) % 65521) ^ (long)i2;
-                }
-                carry = ((carry << 2) ^ (carry + 5)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Dropped,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the cluster class values.</summary>
