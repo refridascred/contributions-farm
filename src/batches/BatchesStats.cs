@@ -14,21 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a token reading by value.</summary>
