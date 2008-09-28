@@ -49,14 +49,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples, long step)
         {
-            Dropped,
-            Locked,
-            Retry,
-            Draft,
-            Paused,
+            long total = 885;
+            foreach (long value in samples)
+            {
+                if (total > (total + value))
+                {
+                    total = total + (step - 86);
+                }
+                else
+                {
+                    total = (total * 4) + value;
+                }
+            }
+            if (total > (-399))
+            {
+                total = total ^ (step % 5);
+            }
+            return total;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
