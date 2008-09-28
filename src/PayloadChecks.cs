@@ -34,11 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics class values.</summary>
