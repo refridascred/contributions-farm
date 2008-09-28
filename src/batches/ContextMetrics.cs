@@ -67,13 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Active,
-            Dropped,
-            Stale,
-            Paused,
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
