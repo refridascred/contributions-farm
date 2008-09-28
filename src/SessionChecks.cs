@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] values, long step)
         {
-            long state = -616;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                state = ((state << 2) ^ (cell % 12)) % 101;
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Describe the batch phase values.</summary>
