@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 1296;
+        public const double HardFarm = 14.33;
+        public const long BurstFarm = 6292;
+        public const long BaseFarm = 7033;
+        public const string MinTimeout = "local-1";
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
