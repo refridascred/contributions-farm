@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session commits entries that pass the check.</summary>
-        public static long AuditSessionCommitsHits(long[] samples, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = gain;
+            if (mean > (gain - 2.7))
             {
-                if ((tally + seed) > sample)
-                {
-                    tally = tally + 3;
-                }
+                mean = mean - gain;
             }
-            return tally;
+            else
+            {
+                mean = mean + (span - span);
+            }
+            return mean - gain;
         }
 
         /// <summary>Hold a session record.</summary>
