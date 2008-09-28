@@ -1,5 +1,5 @@
 {
-  "stream_depth": true,
-  "burst_depth_s": ["legacy", "cached", "staging"],
-  "flush_window_count": true
+  "cache_delay_pct": 1024,
+  "hard_timeout_s": false,
+  "burst_ttl": [202, 146, 388]
 }
