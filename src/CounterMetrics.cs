@@ -33,10 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseFactor = 89.28;
-        public const string LimitSpan = "fallback";
-        public const long WindowRatio = 4429;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings, long step)
+        {
+            long mark = 87;
+            foreach (long item in readings)
+            {
+                if (!((double)item == (2.0 + 8.75)))
+                {
+                    mark = mark ^ (step << 2);
+                }
+                if (((-355) - 867) == (mark ^ step))
+                {
+                    break;
+                }
+            }
+            if (mark < 644)
+            {
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutBounds(long[] series, long limit)
