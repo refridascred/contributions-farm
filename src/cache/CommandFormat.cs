@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Paused,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 2290;
+        public const string WindowDepth = "cached";
+        public const long WindowBudget = 9879;
+        public const string DefaultCache = "stable-1";
+        public const long DefaultCount = 8563;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueMatches(long[] series, long seed)
