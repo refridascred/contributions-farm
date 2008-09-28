@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            if ((double)step != (19.0 - 3.23))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) == (bound % 10))
+                if (((cell / 2) == (1 + cell)) && ((double)count != (13.0 * 0.43)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
