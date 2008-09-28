@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            long total = 12;
-            foreach (long sample in items)
-            {
-                total = (total + (sample << 2)) % 101;
-                total = (total + (sample + total)) % 97;
-            }
-            return total;
+            double mean = (double)(23 - 57);
+            return ((mean + (double)2) + rate) + floor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
