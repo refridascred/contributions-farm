@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public double Region { get; set; }
+            public double Mode { get; set; }
             public long Count { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
