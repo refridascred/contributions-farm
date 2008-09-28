@@ -52,25 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long lane = target + seed;
-            if (((70 + 2) <= target) && (((-366) >> 3) < (target * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target - target) > (target & 255)) && (lane < (993 << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
