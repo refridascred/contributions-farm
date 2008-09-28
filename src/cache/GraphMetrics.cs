@@ -75,21 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = gain;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (double)74) + (double)(long)i;
             }
-            return count;
+            return load - bias;
         }
     }
 }
