@@ -63,15 +63,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = 876;
-            foreach (long datum in samples)
-            {
-                carry = ((carry - carry) % 1000) ^ datum;
-            }
-            return carry % 65521;
+            Dropped,
+            Queued,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Iterate the token format series from a seed.</summary>
