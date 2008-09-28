@@ -42,28 +42,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor - 34) > (mix & 127))
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    mix = ((mix * 2) + (floor << 1)) % 255;
-                    continue;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix * 2) + mix) % 65521) ^ (long)i2;
-                }
-                if ((floor << 2) >= (floor >> 5))
-                {
-                    mix = ((mix << 3) ^ (mix / 2)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
