@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 1186;
-        public const double CacheBudget = 72.12;
-        public const double RetryBudget = 79.75;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            New,
+            Draft,
+            Failed,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double bias, double span)
