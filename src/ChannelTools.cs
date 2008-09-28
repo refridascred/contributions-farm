@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] items, long offset)
+        /// <summary>Check that every profile route entry stays within the limit.</summary>
+        public static bool ValidateProfileRouteLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (items[i] <= offset)
+                if (sample < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
