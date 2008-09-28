@@ -1,9 +1,6 @@
-id,ratio,owner,rank,weight
-1,228,13.14,latest,343
-2,895,901,464,green
-3,245,cached,49.25,476
-4,61.65,staging,68.18,482
-5,green,primary,34,46
-6,25.79,legacy,8.12,eu-west
-7,green,80.49,412,fallback
-8,90.17,387,62.84,52
+id,active,rank,state
+1,30,edge,open
+2,31.38,67.81,strict
+3,96.17,77.87,strict
+4,8,82.52,389
+5,998,open,strict
