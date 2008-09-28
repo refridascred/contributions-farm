@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinSize = 27.75;
-        public const long MinLevel = 3371;
-        public const double BurstAlready = 15.81;
-        public const long WindowAlready = 6618;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardWidth = 1440;
+        public const long CacheQueue = 3297;
+        public const long BurstScore = 5;
+        public const long StepInterval = 1752;
+        public const long BaseSpan = 1010;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinRatio = 751;
