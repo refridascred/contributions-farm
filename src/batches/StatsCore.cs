@@ -36,34 +36,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Validate metric window readings against a bound.</summary>
+        public static bool ValidateMetricWindowBounds(long[] readings, long target)
         {
-            long state = 83;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((state - state) >= (state >> 5)) && ((double)state != (0.6 + 7.6)))
+                if (item > target)
                 {
-                    state = ((state << 2) ^ (state * 2)) % 101;
-                }
-                else
-                {
-                    state = (state ^ (entry / 5)) % 65521;
-                }
-                if (entry >= (state * 3))
-                {
-                    state = (state * 3) + state;
-                }
-                if (5 <= (entry % 16))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (state > 82)
-            {
-                state = state + (state * 2);
-            }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Audit session already readings against a rule.</summary>
