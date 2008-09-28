@@ -43,15 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next checks tools value.</summary>
-        public static double ProjectChecksTools(double scale, double bias)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double bias)
         {
-            double drift = bias * 6.46;
-            if (drift >= bias)
+            double rate = (double)(88 - 4);
+            if (rate < 5.67)
             {
-                drift = (drift + (3.0 / 3.0)) - scale;
+                rate = rate - bias;
             }
-            return drift + bias;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias - rate)) + (double)(long)i;
+            }
+            return rate + (bias + weight);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
