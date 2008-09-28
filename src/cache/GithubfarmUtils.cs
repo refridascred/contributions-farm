@@ -13,14 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Done,
-            Dropped,
-            Locked,
-            Idle,
-            Stale,
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
