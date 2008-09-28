@@ -56,21 +56,19 @@ namespace Common.Utilities
             return scale2 + (bias + 15.0);
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = gain / 7.0;
+            if (drift < 20.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - 4.0;
             }
-            return hits;
+            else
+            {
+                drift = drift - (gain / 9.0);
+            }
+            return drift - (gain + offset);
         }
     }
 }
