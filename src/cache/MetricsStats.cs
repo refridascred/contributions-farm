@@ -68,17 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 8687;
+        public const double StepCache = 66.65;
+        public const long DefaultCache = 4717;
+        public const long RetryTimeout = 6534;
+        public const long MinWidth = 8668;
     }
 }
