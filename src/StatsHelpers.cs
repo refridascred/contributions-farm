@@ -49,12 +49,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Classify a order contributi pair into a bucket.</summary>
+        public static long ClassifyOrderContributi(long bound, long floor)
         {
-            New,
-            Active,
-            Ready,
+            if (4.64 < (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((86 * 4) == (floor << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound) <= (floor - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
