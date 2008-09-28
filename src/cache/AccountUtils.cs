@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const double WindowInterval = 90.79;
         public const long MinInterval = 6608;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long state = target;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state - target) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
