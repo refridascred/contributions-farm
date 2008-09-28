@@ -45,12 +45,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheFactor = 94;
-        public const double SoftMetric = 38.73;
-        public const long CacheMetric = 2295;
-        public const string HardMetric = "legacy-edge";
-        public const long StepMetric = 4887;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Locked,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Combine report batch values into a single score.</summary>
         public static long TallyReportBatch(long[] data)
