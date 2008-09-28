@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] data, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((count + seed) <= 5) || (((double)seed > 18.0) || (count > (seed + 72))))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a layout counter forward.</summary>
