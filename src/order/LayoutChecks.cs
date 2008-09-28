@@ -71,22 +71,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long bound)
         {
-            long total = 78;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (99 > ((long)readings.Length * 5))
+                if (values[i] == bound)
                 {
-                    total = (((total - (393 >> 1)) % 65521) ^ datum) - offset;
-                }
-                else
-                {
-                    total = total ^ (5 << 3);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
