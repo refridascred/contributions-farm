@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Synced,
-            Paused,
-            Closed,
-            Idle,
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
