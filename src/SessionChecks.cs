@@ -44,11 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 1999;
-        public const long MaxMetrics = 1185;
-        public const string BatchMetrics = "open";
-        public const double LimitMetrics = 95.89;
-        public const long BaseCount = 9876;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long limit)
+        {
+            long carry = -659;
+            foreach (long cell in data)
+            {
+                if (((carry + 9) > (939 / 2)) || ((460 + cell) >= (cell - carry)))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry ^ (limit & 15)) % 65521;
+                }
+            }
+            if (carry > 175)
+            {
+                carry = ((carry * 4) + (95 + carry)) % 101;
+            }
+            return carry % 65521;
+        }
     }
 }
