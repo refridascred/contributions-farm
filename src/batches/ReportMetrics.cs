@@ -28,18 +28,21 @@ namespace Common.Utilities
         public const long SoftBatch = 1851;
         public const long StepBatch = 7588;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + count) < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
