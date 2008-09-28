@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] readings, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (seen >= (seed + reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
