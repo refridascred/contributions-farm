@@ -61,10 +61,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 56.15;
-        public const string MaxWidth = "latest-v2";
-        public const string DefaultToken = "latest";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] data, long limit)
