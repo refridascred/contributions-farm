@@ -52,22 +52,9 @@ namespace Common.Utilities
         public const string IdleRoute = "local-1";
         public const long BaseSpan = 2672;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)cell > (1.7 - 0.77)) && ((seen ^ cell) >= (cell % 64)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "standard-v2";
+        public const long MinContext = 7395;
+        public const long MinScore = 8351;
     }
 }
