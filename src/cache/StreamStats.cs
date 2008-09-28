@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] samples, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 280;
+            foreach (long entry in values)
             {
-                if (!((double)515 <= (double)matches))
+                if (((result / 6) > entry) && ((entry ^ (long)values.Length) < (limit / 5)))
                 {
-                    matches = ((matches + 1) + item) - floor;
+                    result = ((result << 2) ^ ((long)values.Length & 63)) % 1000;
                 }
             }
-            return matches;
+            if (result < (-38))
+            {
+                result = result + (limit % 24);
+            }
+            return result;
         }
 
         /// <summary>Describe the batch mode values.</summary>
