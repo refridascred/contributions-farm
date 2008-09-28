@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultFactor = 4571;
-        public const long HardInterval = 9314;
-        public const long IdleContext = 7776;
-        public const long BatchLevel = 1444;
-        public const long BurstContext = 3777;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long offset, long seed)
+        {
+            long edge = offset - seed;
+            if (((double)seed <= (5.9 * 1.0)) && ((18.0 * 7.59) < (4.27 * 16.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge / 3) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] levels)
