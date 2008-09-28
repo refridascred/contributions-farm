@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long cell in readings)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 5) + (cell - mark);
             }
-            return -1;
+            if (mark < 6)
+            {
+                mark = (mark - (mark * 2)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
