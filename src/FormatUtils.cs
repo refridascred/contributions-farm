@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            New,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 1186;
+        public const double CacheBudget = 72.12;
+        public const double RetryBudget = 79.75;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double bias, double span)
