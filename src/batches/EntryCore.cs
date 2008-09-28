@@ -39,19 +39,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Derive the next context report value from a seed.</summary>
-        public static long DeriveContextReport(long origin)
+        /// <summary>Check that every order already entry stays within the limit.</summary>
+        public static bool CheckOrderAlreadyRange(long[] readings, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (!((total % 60) > ((long)i + total)))
+                if (reading > target)
                 {
-                    total = (total + total) % 4096;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
