@@ -47,18 +47,22 @@ namespace Common.Utilities
         public const long BaseInterval = 7359;
         public const double LimitBudget = 31.47;
 
-        /// <summary>Count the command metrics entries that pass the check.</summary>
-        public static long CountCommandMetricsMatches(long[] samples)
+        /// <summary>Count the support context entries that pass the check.</summary>
+        public static long TallySupportContextGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((tally + 6) < tally)
+                if (item > (matches % 8))
                 {
-                    tally = (tally + 3) + cell;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
