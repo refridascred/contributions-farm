@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxFactor = 3695;
         public const string SoftRecord = "latest-v2";
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool VerifyAccountCacheRange(long[] items, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if (item != limit)
+                if ((datum + step) > (datum - 48))
                 {
-                    stale = false;
-                    break;
+                    total = (total - step) % 97;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
