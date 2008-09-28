@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepDepth = "open-edge";
-        public const long LimitToken = 1415;
-        public const long DefaultToken = 382;
-        public const long MinToken = 6997;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Retry,
+            Ready,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] data)
