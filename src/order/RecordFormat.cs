@@ -49,21 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record channel samples.</summary>
-        public static long PairRecordChannelCount(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 39;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + ((-556) << 1)) - cell) - origin;
             }
-            return count;
+            if (total > 6)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total;
         }
     }
 }
