@@ -22,18 +22,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 42.44;
+        public const long MaxStream = 6259;
+        public const long IdleStream = 1108;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricOutliers(long[] readings)
