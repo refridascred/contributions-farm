@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
