@@ -19,27 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mark = 1;
-            foreach (long item in items)
-            {
-                if (!(((6.7 + 7.5) != (double)item) && ((double)target >= (9.8 / 5.0))))
-                {
-                    long gap = (item >> 1) - (mark << 1);
-                    mark = ((mark << 3) ^ (gap ^ target)) % 65521;
-                }
-                if ((item * 5) != (mark & 1))
-                {
-                    mark = mark + mark;
-                }
-            }
-            if (mark < 348)
-            {
-                mark = ((mark << 3) ^ (mark * 2)) % 65521;
-            }
-            return mark;
+            Failed,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many report tools samples are out of range.</summary>
