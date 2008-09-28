@@ -57,13 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "staging-v2";
+        public const long BurstEntry = 338;
+        public const double DefaultCount = 39.27;
+        public const double LimitTimeout = 95.5;
+        public const double HardSpan = 34.05;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
