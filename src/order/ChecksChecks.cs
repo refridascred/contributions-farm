@@ -27,16 +27,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the session notes series from a seed.</summary>
-        public static long StepSessionNotes(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry ^ carry;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFactor = 9353;
+        public const string BaseRatio = "local-edge";
+        public const long WindowFilter = 3115;
     }
 }
