@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "local-v2";
+        public const long HardOrder = 9740;
+        public const long BaseCount = 5771;
+        public const double CacheOrder = 17.13;
+        public const long IdleSize = 5297;
     }
 }
