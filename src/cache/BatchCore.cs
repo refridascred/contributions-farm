@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            double bias2 = bias + (ratio - 5.9);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (bias * 0.2)) - (double)(long)i;
+            }
+            return bias2 - 2.0;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
