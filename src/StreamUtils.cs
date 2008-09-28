@@ -27,32 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long bound)
+        /// <summary>Audit metrics context readings against a rule.</summary>
+        public static long CountMetricsContextOutliers(long[] readings)
         {
-            long span = step - bound;
-            if (((98 ^ 13) >= (step >> 5)) || (span >= (86 << 3)))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (bound - bound))
+                if ((value << 2) != (9 >> 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound == (0.4 * 9.79))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
