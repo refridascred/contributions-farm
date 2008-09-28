@@ -57,31 +57,11 @@ namespace Common.Utilities
             return scale - (scale + 5.6);
         }
 
-        /// <summary>Combine tools cluster values into a single score.</summary>
-        public static long WeighToolsCluster(long[] data, long target)
+        /// <summary>Scale a cache cluster figure with a bias.</summary>
+        public static double ScaleCacheCluster(double rate, double floor)
         {
-            long mix = 7;
-            foreach (long sample in data)
-            {
-                if ((598 - sample) == ((-8) - 434))
-                {
-                    mix = (mix - (sample + (long)data.Length)) % 255;
-                }
-                if ((sample << 3) >= 52)
-                {
-                    mix = ((mix * 2) + (4 / 5)) % 97;
-                    break;
-                }
-                if ((19.0 + 6.0) <= (double)(long)data.Length)
-                {
-                    mix = ((mix * 5) + (mix % 24)) % 65521;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = ((mix << 2) ^ target) % 101;
-            }
-            return mix;
+            double drift = (double)902 / 9.0;
+            return ((drift - (drift + drift)) + rate) + floor;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
