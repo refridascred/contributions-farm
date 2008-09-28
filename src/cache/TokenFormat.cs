@@ -23,22 +23,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9408;
+        public const long DefaultScore = 3623;
+        public const long LimitDepth = 8211;
+        public const string HardWidth = "open";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] items)
