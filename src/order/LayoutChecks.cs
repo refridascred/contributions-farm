@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long DeriveGithubfarmCounter(long offset)
         {
-            long carry = -1;
-            foreach (long entry in samples)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((9.7 + 5.2) < (double)carry)
-                {
-                    carry = ((carry * 4) + (carry + entry)) % 1000;
-                }
-                else
-                {
-                    carry = carry + (carry >> 5);
-                }
-                if (((carry * 2) <= entry) || ((entry + carry) >= ((long)samples.Length + carry)))
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
