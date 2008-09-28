@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long HardBatches = 5707;
         public const long MinCount = 1591;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + 2) < (-90))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
