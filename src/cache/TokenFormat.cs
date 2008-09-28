@@ -27,19 +27,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long score = 6;
-            foreach (long value in values)
-            {
-                score = score + (value + 841);
-                if (!((origin & 63) < score))
-                {
-                    score = ((score << 2) ^ (score ^ score)) % 65521;
-                }
-            }
-            return score;
+            Paused,
+            Done,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
