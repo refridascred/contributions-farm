@@ -32,24 +32,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double span)
-        {
-            double ratio = span;
-            if (ratio < (scale + ratio))
-            {
-                ratio = ratio - (double)(-56);
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)433) + (double)(long)i;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 1766;
+        public const string MinSpan = "latest-v2";
+        public const long RetryNotes = 3236;
+        public const long BatchNotes = 6878;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
