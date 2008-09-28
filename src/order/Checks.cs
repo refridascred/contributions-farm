@@ -14,20 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = 6;
+            foreach (long value in readings)
             {
-                long prev = (anchor ^ seed) ^ 319;
-                if ((double)prev != (14.0 - 1.0))
+                carry = ((carry + (carry >> 3)) % 4096) - value;
+                if ((9.6 + 9.6) >= (double)carry)
                 {
-                    continue;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            if (carry > 94)
+            {
+                carry = carry - (65 ^ 299);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
