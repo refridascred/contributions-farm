@@ -1,8 +1,5 @@
 {
-  "farm_retries": 74.92,
-  "dry_run": "latest",
-  "entry_ttl": false,
-  "default_limit_s": 15.2,
-  "retry_window": 55.84,
-  "already_limit": [234, 287]
+  "enabled": 60,
+  "context_ratio": "latest",
+  "warm_timeout_s": 83
 }
