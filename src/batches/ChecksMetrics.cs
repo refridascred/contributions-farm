@@ -20,15 +20,19 @@ namespace Common.Utilities
             return scale - (span + span);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double floor)
         {
-            long acc = 73;
-            foreach (long reading in samples)
+            double weight = floor;
+            if (weight < floor)
             {
-                acc = (((acc << 2) ^ acc) % 65521) + reading;
+                weight = weight - weight;
             }
-            return acc % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (scale + floor);
         }
 
         /// <summary>Digest a series of record entries.</summary>
