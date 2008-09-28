@@ -1,8 +1,6 @@
 {
-  "dry_run": 20.37,
-  "soft_interval_count": 30,
-  "githubfarm_depth": 1314,
-  "already_depth": [430, 209],
-  "readonly": false,
-  "max_limit_pct": 250
+  "poll_interval_count": "green",
+  "stats_delay": ["strict", "green", "latest"],
+  "counter_capacity": "strict",
+  "base_window_count": 20
 }
