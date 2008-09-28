@@ -74,25 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((floor + floor) > (mark & 15))
-                {
-                    mark = ((mark * 5) + (floor >> 2)) % 1000;
-                    break;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark ^ 96) % 101) - (long)i2;
-                    mark = mark ^ (floor / 7);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 4523;
+        public const long MinSupport = 5935;
+        public const long LimitDepth = 3137;
+        public const string HardRatio = "stable-1";
+        public const long BaseCount = 4570;
     }
 }
