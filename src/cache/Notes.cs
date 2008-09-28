@@ -46,18 +46,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = 601;
+            foreach (long entry in samples)
             {
-                if ((value ^ value) < value)
+                if (state < (entry >> 4))
                 {
-                    matches = matches + 1;
+                    state = (state + step) % 1000;
                 }
             }
-            return matches;
+            if (state > (-5))
+            {
+                state = ((state * 5) + (step % 16)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
