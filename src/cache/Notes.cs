@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] levels, long origin)
         {
-            Pending,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((388 ^ matches) < ((long)levels.Length + sample))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
