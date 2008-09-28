@@ -65,11 +65,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchCount = 3816;
-        public const double WindowDepth = 22.2;
-        public const long RetryRatio = 2966;
-        public const string CacheCount = "stable-1";
-        public const long CacheBuffer = 9195;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long limit)
+        {
+            if (bound < (bound & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound << 3) < (bound >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit >> 1) < (limit + (-98))) && ((limit - limit) <= (limit & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((11.0 / 5.0) > (0.91 + 7.22))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
