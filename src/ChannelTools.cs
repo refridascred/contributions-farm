@@ -15,12 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric support readings against a rule.</summary>
