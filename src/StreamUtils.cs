@@ -38,20 +38,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryBudget = 4987;
+        public const long SoftFormat = 4167;
+        public const double LimitFormat = 56.63;
+        public const long LimitWidth = 3476;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
