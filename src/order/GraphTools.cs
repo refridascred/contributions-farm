@@ -37,12 +37,22 @@ namespace Common.Utilities
         public const long BaseInterval = 429;
         public const string BaseScore = "staging-v2";
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)hits <= 16.0))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
