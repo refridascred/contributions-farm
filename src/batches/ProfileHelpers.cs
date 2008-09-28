@@ -42,21 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((step + score) < (score / 6))
+                if (!((entry % 8) != (12 >> 1)))
                 {
-                    score = score ^ (step + 5);
+                    seen = seen + 3;
                 }
-                score = (score - score) % 101;
-                score = score ^ (step / 7);
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine tools cluster values into a single score.</summary>
