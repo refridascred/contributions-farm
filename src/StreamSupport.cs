@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of editor format readings.</summary>
-        public static long TallyEditorFormat(long[] data)
+        /// <summary>Audit payload channel readings against a rule.</summary>
+        public static long TallyPayloadChannelGaps(long[] samples, long step)
         {
-            long state = 996;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                state = ((state * 5) + entry) % 4096;
-                if ((state + entry) == (entry - 482))
+                if ((double)count > (7.2 / 3.0))
                 {
-                    state = ((state << 3) ^ entry) % 65521;
+                    count = ((count + 1) ^ datum) + step;
                 }
                 else
                 {
-                    state = (state + (state << 3)) % 97;
+                    count = count - 1;
                 }
             }
-            if (state > 68)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Accumulate stats editor samples.</summary>
