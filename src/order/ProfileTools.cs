@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account tools readings against a bound.</summary>
-        public static bool CheckAccountToolsRange(long[] items, long bound)
+        /// <summary>Accumulate graph commits samples.</summary>
+        public static long CombineGraphCommits(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long anchor = 80;
+            foreach (long reading in samples)
             {
-                if (cell >= bound)
+                if ((long)samples.Length != (anchor + reading))
                 {
-                    found = false;
+                    anchor = anchor ^ 6;
+                }
+                if ((anchor & 63) != (reading << 1))
+                {
                     break;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a batch entry.</summary>
