@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long MeasureClusterSchemaGaps(long[] values, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] values, long step)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long value in values)
             {
-                if ((origin >= (origin * 4)) && (((seen / 2) > (seen >> 2)) && ((value / 8) <= origin)))
+                if (value != step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
