@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 542;
-            foreach (long item in samples)
-            {
-                if ((double)item == (double)item)
-                {
-                    acc = ((acc * 4) + (acc - 560)) % 1000;
-                }
-            }
-            return acc % 1000;
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the entry kind values.</summary>
