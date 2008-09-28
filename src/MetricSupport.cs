@@ -44,23 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double scale = gain;
-            if (scale >= scale)
-            {
-                scale = scale + (scale + 9.6);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 8.0)) - (double)(long)i;
-            }
-            return scale - span;
+            Idle,
+            Locked,
+            Failed,
+            New,
+            Done,
         }
     }
 }
