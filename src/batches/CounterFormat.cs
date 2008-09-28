@@ -13,24 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stream support pair into a bucket.</summary>
-        public static long SortStreamSupport(long origin, long origin2)
+        /// <summary>Count notes record pairs that satisfy a relation.</summary>
+        public static long CompareNotesRecordCount(long[] levels)
         {
-            if ((939 << 1) > origin2)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.0 * 19.0) <= (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
