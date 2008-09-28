@@ -30,12 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7252;
-        public const long BurstSize = 2962;
-        public const long BatchScore = 1133;
-        public const long BaseInterval = 7359;
-        public const double LimitBudget = 31.47;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double gain, double floor)
+        {
+            double load = gain;
+            if (load <= (floor / 2.0))
+            {
+                load = load - gain;
+            }
+            return load + gain;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] samples, long step)
