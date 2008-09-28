@@ -44,13 +44,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many layout account samples are out of range.</summary>
+        public static long AuditLayoutAccountOutliers(long[] samples, long seed)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!(95 < tally))
+                {
+                    tally = ((tally + 3) - sample) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
