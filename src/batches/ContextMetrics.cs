@@ -34,17 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a session window sample.</summary>
-        public static long LookupSessionWindowIndex(long[] readings, long floor)
+        /// <summary>Count the window batch entries that pass the check.</summary>
+        public static long AuditWindowBatchMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                if (value <= ((-7) + value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
