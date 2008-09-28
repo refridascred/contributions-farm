@@ -25,21 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinRatio = 8376;
+        public const long BurstContributi = 8019;
+        public const string DefaultTimeout = "primary-1";
+        public const long CacheContributi = 5509;
+        public const long WindowContributi = 9911;
     }
 }
