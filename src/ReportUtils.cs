@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
