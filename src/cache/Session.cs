@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const double StepCount = 56.52;
         public const double IdleSpan = 65.28;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] items, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            long result = 42;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (seed > item)
+                if ((value - hits) >= hits)
                 {
-                    result = (result * 2) + 25;
-                }
-                else
-                {
-                    result = result ^ item;
+                    hits = hits + 2;
                 }
             }
-            if (result < 5)
-            {
-                result = (result + (result >> 1)) % 1000;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
