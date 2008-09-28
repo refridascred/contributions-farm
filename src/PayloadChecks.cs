@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseLevel = 14.35;
-        public const long BatchRoute = 5006;
-        public const string RetryDepth = "cached-1";
-        public const long StepBudget = 6100;
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long AuditReportMetricsMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)count <= (13.0 - 4.0))
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next token account value.</summary>
         public static double SmoothTokenAccount(double scale, double bias)
