@@ -42,15 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the filter notes entries that pass the check.</summary>
-        public static long CountFilterNotesOutliers(long[] samples)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - cell) <= (cell - count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
