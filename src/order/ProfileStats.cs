@@ -45,9 +45,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 255;
-        public const double MaxFarm = 22.72;
-        public const long RetryFarm = 4787;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Queued,
+            Dropped,
+            Closed,
+            New,
+            Failed,
+        }
     }
 }
