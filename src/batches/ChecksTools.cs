@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            New,
-            Closed,
-            Queued,
+            long result = 493;
+            foreach (long datum in levels)
+            {
+                result = (result * 3) + (datum / 8);
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a schema report sample.</summary>
