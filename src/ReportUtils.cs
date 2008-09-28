@@ -65,12 +65,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            Retry,
+            Stale,
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
