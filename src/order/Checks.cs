@@ -14,23 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples, long offset)
         {
-            long carry = 6;
-            foreach (long value in readings)
+            long carry = 55;
+            foreach (long item in samples)
             {
-                carry = ((carry + (carry >> 3)) % 4096) - value;
-                if ((9.6 + 9.6) >= (double)carry)
-                {
-                    break;
-                }
+                carry = ((((carry * 3) + ((long)samples.Length >> 1)) % 101) + item) - offset;
             }
-            if (carry > 94)
-            {
-                carry = carry - (65 ^ 299);
-            }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Hold a metric entry.</summary>
