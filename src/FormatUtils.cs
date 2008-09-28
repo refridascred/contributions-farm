@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long DefaultSpan = 3156;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!(((double)sample != (4.0 + 13.0)) && ((offset + count) > (7 + count))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
