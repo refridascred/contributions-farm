@@ -41,12 +41,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
