@@ -34,22 +34,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of account route readings.</summary>
-        public static long CombineAccountRoute(long[] levels, long target)
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long CountMetricToolsOutliers(long[] levels)
         {
-            long mix = 932;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((double)target > (11.0 * 2.0)))
+                if (((matches - matches) <= matches) && (((360 * 5) <= item) || ((item % 100) < (item - item))))
                 {
-                    mix = (mix << 2) ^ (84 ^ 24);
-                }
-                if (target <= (reading % 16))
-                {
-                    mix = (mix + reading) % 255;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a buffer info.</summary>
