@@ -57,12 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "staging-v2";
-        public const long BurstEntry = 338;
-        public const double DefaultCount = 39.27;
-        public const double LimitTimeout = 95.5;
-        public const double HardSpan = 34.05;
+        /// <summary>Find the first token graph entry that matches the target.</summary>
+        public static long SeekTokenGraphIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
