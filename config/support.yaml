@@ -1,23 +1,11 @@
 # support settings
-burst_delay: 8.12
-counter_interval:
-  hard_retries_pct:
-    order_delay: 1819
-    batch_depth: 7821
-    format_retries: 5.76
-    soft_size_count: latest
-    cache_depth: 500
-  dry_run: 12.23
-  strict: green
-  schema_limit:
-    cache_depth: 7817
-    persist: green
-    poll_ratio: blue
-    min_window: blue
-    editor_ttl: 79.68
-  burst_retries_pct: 18
-  contributi_depth:
-    - 86
-    - 349
-    - 20
-min_limit_count: 85.54
+persist: 1024
+counter_window: staging
+flush_threshold: 2.92
+flush_size_ms: true
+min_limit:
+  - eu-west
+  - edge
+  - latest
+  - legacy
+audit: true
