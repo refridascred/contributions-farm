@@ -1,13 +1,10 @@
 # entry settings
-retry_size: 56.5
-batch_capacity: 50.53
-flush_retries_ms: edge
-cache_capacity:
-  readonly:
-    - 368
-    - 140
-  default_ttl: 70
-  profile_capacity: staging
-  strict: 9973
-  retry_threshold: staging
-batches_limit: open
+default_ratio_count:
+  - green
+  - open
+  - green
+  - stable
+stats_delay: false
+max_depth_pct: strict
+account_timeout: strict
+readonly: 9292
