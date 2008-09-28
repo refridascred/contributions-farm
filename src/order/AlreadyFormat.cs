@@ -66,12 +66,22 @@ namespace Common.Utilities
         public const string IdleRoute = "local-1";
         public const long BaseSpan = 2672;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell > (1.7 - 0.77)) && ((seen ^ cell) >= (cell % 64)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
