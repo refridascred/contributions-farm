@@ -68,38 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels, long offset)
         {
-            if ((seed % 10) > (seed - 409))
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - step) == (1 * 4)) && ((seed - step) < (seed >> 3)))
+                anchor = (anchor ^ (offset % 16)) % 4096;
+                if ((double)offset != (3.0 - 5.0))
                 {
-                    return 7;
+                    anchor = (anchor * 5) + (offset % 97);
                 }
                 else
                 {
-                    if ((double)seed < (3.0 + 6.99))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (4.0 > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = anchor - (offset + reading);
                 }
             }
+            return anchor;
         }
     }
 }
