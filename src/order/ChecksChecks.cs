@@ -21,12 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheTimeout = 7248;
-        public const string StepLevel = "cached-1";
-        public const long BaseContext = 609;
-        public const long RetryTimeout = 9985;
-        public const long MinCount = 8816;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double span)
+        {
+            double ratio = (double)4 * 6.82;
+            if (ratio > ratio)
+            {
+                ratio = ratio + (span * 7.0);
+            }
+            else
+            {
+                ratio = ratio - (3.5 + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 15.0) + (double)(long)i;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
