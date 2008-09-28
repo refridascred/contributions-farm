@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] series, long origin)
         {
-            if ((double)target < (2.0 * 8.22))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (41 < (seed + seed))
+                if (series[i] <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < (7.86 / 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
