@@ -1,6 +1,7 @@
 {
-  "max_ratio_count": true,
-  "batch_ttl_pct": "staging",
-  "hard_capacity_s": 79.37,
-  "soft_depth": [165, 193, 157, 356]
+  "retry_ttl_count": "latest",
+  "idle_capacity_count": [119, 226, 497],
+  "record_retries": ["open", "cached"],
+  "metrics_limit": 90.38,
+  "token_limit": "green"
 }
