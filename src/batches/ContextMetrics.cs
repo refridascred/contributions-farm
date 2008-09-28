@@ -34,12 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 88.4;
-        public const string MinAlready = "local-1";
-        public const double CacheAlready = 86.48;
-        public const long IdleAlready = 453;
-        public const long DefaultScore = 6868;
+        /// <summary>Look up the position of a session window sample.</summary>
+        public static long LookupSessionWindowIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] series, long offset)
