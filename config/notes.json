@@ -1,8 +1,9 @@
 {
-  "poll_window_s": 11.96,
-  "profile_delay": 500,
-  "base_ttl": 43.13,
-  "stats_delay": 98.52,
-  "cache_threshold": ["latest", "standard"],
-  "warm_delay": true
+  "batches_limit": 250,
+  "already_interval": {
+    "retry_limit_ms": "standard",
+    "hard_limit_count": 43.59,
+    "base_threshold_pct": [173, 499]
+  },
+  "cache_limit": "standard"
 }
