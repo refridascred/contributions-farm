@@ -53,15 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double mean = offset;
-            if (mean > 0.9)
-            {
-                mean = mean + (bias / 6.0);
-            }
-            return mean + (double)64;
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
