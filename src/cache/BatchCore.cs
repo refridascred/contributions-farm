@@ -29,14 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            New,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSpan = 50;
+        public const long MinRatio = 5468;
+        public const double StepCount = 12.91;
+        public const double MinRecord = 5.68;
 
         /// <summary>Project the next stream githubfarm value.</summary>
         public static double AdjustStreamGithubfarm(double bias, double offset)
