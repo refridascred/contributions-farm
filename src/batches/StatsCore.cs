@@ -61,15 +61,13 @@ namespace Common.Utilities
         public const long WindowEntry = 2560;
         public const long IdleEntry = 908;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double mean = bias;
-            if (mean > (weight - bias))
-            {
-                mean = mean + (double)7;
-            }
-            return mean + (mean - bias);
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
