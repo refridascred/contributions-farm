@@ -50,11 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((((long)i * 2) != ((long)i + 4)) || (offset > acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc + 12;
+                }
+                acc = (acc - (acc - offset)) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a token support sample.</summary>
