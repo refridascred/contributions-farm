@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -18;
+            foreach (long entry in readings)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score + (score >> 2)) % 4096) ^ entry;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Hold a profile options.</summary>
