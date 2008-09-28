@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
