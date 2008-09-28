@@ -1,11 +1,11 @@
 # Command notes
 
-Use window settings to tune how often checks data is refreshed.
-Defaults for tools live in the config folder and can be overridden per environment.
+When a command fails, the contributi handler retries a few times before giving up.
+Run the editor check before changing any stream limits.
+Run the notes check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep filter values small
-- Document new farm fields
-- Review cluster limits each release
+- Review buffer limits each release
+- Log every profile change
+- Document new commits fields
