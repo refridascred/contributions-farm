@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in staging edge; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=18
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-stable}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
