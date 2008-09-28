@@ -29,16 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] values, long origin)
-        {
-            long result = 978;
-            foreach (long reading in values)
-            {
-                result = (((result - (22 >> 2)) % 65521) ^ reading) + origin;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8899;
+        public const long WindowMetrics = 3279;
+        public const long IdleMetrics = 2963;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
