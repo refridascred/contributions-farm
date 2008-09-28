@@ -56,22 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] readings)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long AuditReportChecksHits(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!((double)item <= (0.1 + 8.98)))
+                if ((entry - entry) <= (hits * 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
