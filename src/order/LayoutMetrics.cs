@@ -39,9 +39,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "standard-edge";
-        public const long MaxEditor = 2942;
-        public const long IdleRatio = 5318;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((hits < (hits % 60)) && ((double)540 <= (double)hits)))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
