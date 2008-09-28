@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long TotalBufferCounter(long[] data, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            long total = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (floor <= (value + value))
+                if (tally <= (41 + entry))
                 {
-                    total = ((total << 3) ^ (total + floor)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
