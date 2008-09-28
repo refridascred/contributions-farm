@@ -13,21 +13,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Derive the next support session value from a seed.</summary>
+        public static long DeriveSupportSession(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state + (seed * 5)) % 4096;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a context info.</summary>
