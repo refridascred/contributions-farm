@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
-        public static long LookupGithubfarmProfileIndex(long[] levels, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 20.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (span - 18.0)) - (double)(long)i) - ratio;
             }
-            return -1;
+            return rate + (span - rate);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
