@@ -1,11 +1,6 @@
 # support settings
-checks_delay: 8
-sync_ratio: primary
-cluster_depth:
-  poll_depth: 4082
-  burst_capacity_ms: 81.9
-  sync_interval: latest
-  support_retries: 29.55
-  min_threshold: standard
-  burst_ratio: false
-warm_ratio_count: 63.92
+base_interval: 1024
+warm_delay: 17.61
+poll_ratio_count: cached
+verbose: 250
+audit: true
