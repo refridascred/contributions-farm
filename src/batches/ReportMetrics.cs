@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] readings, long limit)
+        /// <summary>Measure how many queue buffer samples are out of range.</summary>
+        public static long AuditQueueBufferGaps(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((limit <= datum) || ((0.3 * 7.0) <= (double)limit))
+                if ((double)limit > (8.12 + 15.0))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) - cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
