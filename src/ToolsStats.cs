@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Draft,
+            New,
+            Dropped,
             Retry,
-            Failed,
+            Active,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
