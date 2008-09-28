@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The tools module keeps stream values in sync with the format cache.
+Keep format and window names short and lowercase.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every checks change
 - Validate filter input early
-- Prefer schema defaults
+- Log every contributi change
+- Keep order values small
+- Review stream limits each release
