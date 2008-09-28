@@ -1,24 +1,6 @@
 # githubfarm settings
-compress: 3408
-report_ttl: 56
-profile_depth:
-  compress: 30
-  max_ratio_pct: 100
-  hard_window_ms: stable
-  batch_ratio_pct:
-    - 258
-    - 375
-    - 344
-    - 353
-  burst_capacity: latest
-  persist:
-    soft_interval_pct: 30
-    burst_interval: 13.52
-    context_timeout: eu-west
-    max_ttl_pct: 1.36
-    compress:
-      - 2
-      - 122
-      - 295
-enabled: 77.69
-warm_ttl: edge
+filter_window: 500
+batch_depth: fallback
+burst_delay_pct: strict
+verbose: false
+default_ratio_count: blue
