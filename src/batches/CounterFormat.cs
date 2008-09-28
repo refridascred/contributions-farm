@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes record pairs that satisfy a relation.</summary>
-        public static long CompareNotesRecordCount(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)tally != (2.0 - 5.13))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) + sample) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
