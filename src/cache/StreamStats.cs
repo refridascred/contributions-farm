@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long result = 280;
-            foreach (long entry in values)
-            {
-                if (((result / 6) > entry) && ((entry ^ (long)values.Length) < (limit / 5)))
-                {
-                    result = ((result << 2) ^ ((long)values.Length & 63)) % 1000;
-                }
-            }
-            if (result < (-38))
-            {
-                result = result + (limit % 24);
-            }
-            return result;
+            Failed,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Count the stream channel entries that pass the check.</summary>
