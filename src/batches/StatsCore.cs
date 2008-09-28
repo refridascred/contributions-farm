@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Failed,
-            Retry,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSpan = 9048;
+        public const string IdleLayout = "alpha";
+        public const string BurstLayout = "fallback-1";
+        public const long MinDepth = 5863;
+        public const double StepDepth = 14.68;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
