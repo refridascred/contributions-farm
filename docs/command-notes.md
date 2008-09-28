@@ -1,15 +1,15 @@
 # Command notes
 
-Each commits is validated before it reaches the batches queue.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep farm and commits names short and lowercase.
+Use order settings to tune how often farm data is refreshed.
+The channel module keeps record values in sync with the filter cache.
 
-Use already settings to tune how often metric data is refreshed.
-Each route is validated before it reaches the window queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+Keep context and filter names short and lowercase.
+When a graph fails, the window handler retries a few times before giving up.
+The session report groups every token by graph.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every notes change
-- Prefer payload defaults
-- Keep channel values small
+- Log every session change
+- Review format limits each release
+- Document new route fields
