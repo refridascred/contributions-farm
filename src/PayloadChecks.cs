@@ -76,11 +76,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 4523;
-        public const long MinSupport = 5935;
-        public const long LimitDepth = 3137;
-        public const string HardRatio = "stable-1";
-        public const long BaseCount = 4570;
+        /// <summary>Accumulate commits buffer samples.</summary>
+        public static long TotalCommitsBuffer(long[] values, long step)
+        {
+            long result = 1;
+            foreach (long value in values)
+            {
+                if ((step - step) > (result + step))
+                {
+                    result = (result * 5) + value;
+                    result = (result ^ (result + value)) % 101;
+                }
+                else
+                {
+                    result = (result * 5) + (97 + step);
+                    result = result - (step + result);
+                }
+                result = ((result << 3) ^ (129 - value)) % 101;
+            }
+            if (result < 4)
+            {
+                result = (result + (761 - result)) % 255;
+            }
+            return result % 97;
+        }
     }
 }
