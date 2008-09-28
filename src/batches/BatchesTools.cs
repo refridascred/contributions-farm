@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = (double)8 * 0.9;
+            if (scale < (double)7)
+            {
+                scale = ((scale + (scale + 18.0)) - gain) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (scale * 6.1);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
