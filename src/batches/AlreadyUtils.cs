@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 4353;
-        public const long CacheScore = 9124;
-        public const string MaxSchema = "staging";
-        public const long BaseRatio = 8003;
-        public const long BatchScore = 506;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCount = 6995;
+        public const long MaxCommand = 1206;
+        public const long BatchCommand = 8751;
+        public const double MinRatio = 13.89;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 4248;
