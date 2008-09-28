@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MaxFactor = 3695;
         public const string SoftRecord = "latest-v2";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long step)
+        /// <summary>Find the first notes window entry that matches the target.</summary>
+        public static long LookupNotesWindowIndex(long[] values, long floor)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + step) > (datum - 48))
+                if (values[i] >= floor)
                 {
-                    total = (total - step) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
