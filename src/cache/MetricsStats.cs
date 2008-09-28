@@ -65,19 +65,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate route account readings against a bound.</summary>
-        public static bool VerifyRouteAccountRange(long[] items, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (entry <= origin)
+                if (((double)item <= (16.0 + 5.6)) && ((hits >> 5) < (hits % 8)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
