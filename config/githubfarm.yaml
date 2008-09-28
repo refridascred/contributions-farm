@@ -1,25 +1,5 @@
 # githubfarm settings
-min_window_ms:
-  - blue
-  - staging
-  - open
-idle_ratio_ms: 4140
-command_threshold:
-  persist:
-    - primary
-    - edge
-  idle_delay_ms: 60
-  default_depth_pct:
-    soft_size_ms:
-      - 39
-      - 53
-      - 166
-      - 316
-    burst_depth_ms:
-      - open
-      - strict
-    tools_retries: edge
-    base_delay: 7892
-  audit: 9.13
-  command_delay: legacy
-record_retries: 70
+enabled: true
+sync_capacity: 81.92
+already_threshold: fallback
+batch_ttl_pct: 2251
