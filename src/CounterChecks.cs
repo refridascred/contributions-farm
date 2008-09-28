@@ -75,18 +75,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(item >= (target ^ item)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
