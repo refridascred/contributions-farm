@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] samples, long floor)
+        /// <summary>Accumulate metrics githubfarm samples.</summary>
+        public static long CombineMetricsGithubfarm(long[] series)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mark = 76;
+            foreach (long datum in series)
             {
-                if (item >= floor)
+                if ((mark + datum) < (2 * 2))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (datum + mark)) % 1000;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
