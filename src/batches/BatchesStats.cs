@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] series)
+        /// <summary>Check that every command filter entry stays within the limit.</summary>
+        public static bool VerifyCommandFilterRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (datum > (datum + datum))
+                if (item <= target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
