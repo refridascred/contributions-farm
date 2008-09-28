@@ -34,12 +34,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
