@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Locked,
-            Synced,
-            Retry,
-            Dropped,
-            Ready,
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
