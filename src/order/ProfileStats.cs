@@ -45,30 +45,18 @@ namespace Common.Utilities
         public const long HardBatches = 5707;
         public const long MinCount = 1591;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data, long step)
+        /// <summary>Digest a series of profile stream entries.</summary>
+        public static long ScoreProfileStream(long[] values)
         {
-            long score = 3;
-            foreach (long entry in data)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if ((0.57 - 8.7) == (double)score)
+                if (((-553) + reading) != (1 << 3))
                 {
-                    score = (score ^ (12 ^ 20)) % 65521;
-                }
-                else
-                {
-                    score = (score + (step + entry)) % 101;
-                }
-                if (4.8 >= (double)step)
-                {
-                    break;
+                    score = (score - score) % 1000;
                 }
             }
-            if (score > (-111))
-            {
-                score = (score + (score ^ score)) % 101;
-            }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
