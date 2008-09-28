@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 1347;
         public const long IdleDepth = 123;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((4.0 + 3.0) >= (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
