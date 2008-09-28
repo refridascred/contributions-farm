@@ -23,11 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8816;
-        public const string LimitSpan = "local-1";
-        public const string RetryRoute = "primary-edge";
-        public const double CacheRoute = 28.13;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Done,
+            Locked,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] items, long target)
