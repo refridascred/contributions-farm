@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            long acc = -4;
-            foreach (long cell in readings)
+            double drift = (rate + span) + (double)(-1);
+            if (drift <= rate)
             {
-                acc = ((acc << 2) ^ (acc / 8)) - limit;
-                acc = acc - cell;
-                if ((3.7 + 6.76) != (double)acc)
-                {
-                    acc = acc - (acc & 31);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (cell - acc)) % 97;
-                }
-                if ((acc & 127) > (51 * 3))
-                {
-                    break;
-                }
+                drift = drift - (rate + rate);
             }
-            return acc % 97;
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift - (5.46 * 2.07);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
