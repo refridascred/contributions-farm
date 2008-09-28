@@ -43,22 +43,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] series, long limit)
         {
-            long sum = -53;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!!((4.78 * 12.0) == (double)sum))
+                if ((limit + tally) < ((-98) & 15))
                 {
-                    sum = ((sum << 2) ^ (874 & 255)) + value;
-                }
-                if (45 >= (bound ^ bound))
-                {
-                    sum = (sum << 3) ^ sum;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
