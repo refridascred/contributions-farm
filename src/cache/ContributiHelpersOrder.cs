@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] data, long floor)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two layout payload measurements.</summary>
