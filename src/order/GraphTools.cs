@@ -14,21 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data, long step)
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long CountAccountWindowHits(long[] data)
         {
-            long score = 636;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = (score - 221) % 101;
-                if (!((double)step <= 15.0))
+                if (!((double)tally > (20.0 - 13.0)))
                 {
-                    score = score ^ (3 + 294);
-                    score = (score << 2) ^ (step + item);
+                    tally = (tally + 3) - sample;
                 }
-                score = (score << 2) ^ (score + 57);
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
