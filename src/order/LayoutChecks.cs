@@ -58,23 +58,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long carry = 673;
-            foreach (long reading in levels)
-            {
-                if (reading > carry)
-                {
-                    carry = ((carry * 4) + (31 + 62)) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (reading + carry);
-                }
-                carry = carry - (42 + reading);
-            }
-            return carry;
+            Pending,
+            New,
+            Draft,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a metric entry.</summary>
