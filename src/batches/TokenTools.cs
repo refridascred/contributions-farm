@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            long mark = 511;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = (mark + (mark ^ cell)) % 101;
-                if (4.91 < (double)mark)
+                if ((hits + hits) < (entry & 3))
                 {
-                    mark = (mark + (cell + mark)) % 101;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark > 63)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
