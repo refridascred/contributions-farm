@@ -1,10 +1,6 @@
 # entry settings
-default_ratio_count:
-  - green
-  - open
-  - green
-  - stable
-stats_delay: false
-max_depth_pct: strict
-account_timeout: strict
-readonly: 9292
+sync_window: local
+editor_limit:
+  - 214
+  - 197
+record_delay: 331
