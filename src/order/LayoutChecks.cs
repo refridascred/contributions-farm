@@ -111,17 +111,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a schema account reading by value.</summary>
-        public static long LookupSchemaAccountIndex(long[] samples, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (samples[i] >= limit)
+                if ((double)value <= (7.0 + 10.0))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
