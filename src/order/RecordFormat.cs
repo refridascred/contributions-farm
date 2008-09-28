@@ -57,19 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report batch values into a single score.</summary>
-        public static long TallyReportBatch(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long bound)
         {
-            long total = 524;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                total = ((total + total) % 255) + cell;
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total < (-4))
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            return stale;
         }
     }
 }
