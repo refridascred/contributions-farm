@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const double MinRecord = 54.67;
         public const long HardBudget = 1078;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values)
         {
-            New,
-            Failed,
-            Paused,
-            Done,
+            long total = 8;
+            foreach (long cell in values)
+            {
+                if (((double)cell == (2.68 / 3.0)) && (cell <= (total ^ total)))
+                {
+                    total = (total - (total - total)) % 255;
+                }
+                if (cell >= ((long)values.Length - cell))
+                {
+                    total = total - cell;
+                }
+            }
+            return total;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
