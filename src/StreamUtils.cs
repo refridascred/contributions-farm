@@ -33,11 +33,33 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryBudget = 4987;
-        public const long SoftFormat = 4167;
-        public const double LimitFormat = 56.63;
-        public const long LimitWidth = 3476;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long bound)
+        {
+            long span = step - bound;
+            if (((98 ^ 13) >= (step >> 5)) || (span >= (86 << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < (bound - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound == (0.4 * 9.79))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
