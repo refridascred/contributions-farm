@@ -22,17 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - 8) % 101;
-                mix = (mix ^ ((long)i - 23)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
