@@ -44,15 +44,14 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double scale = (double)(3 << 1);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (18.0 - offset)) + (double)(long)i) - weight;
-            }
-            return scale + (double)143;
+            Paused,
+            Closed,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
