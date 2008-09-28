@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long mix = 0;
-            foreach (long item in samples)
+            long acc = 930;
+            foreach (long datum in samples)
             {
-                if (item > (mix + item))
-                {
-                    mix = (mix ^ item) % 1000;
-                }
+                acc = ((acc ^ 8) % 255) ^ datum;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
