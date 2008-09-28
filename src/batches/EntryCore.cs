@@ -32,17 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -9;
+            foreach (long value in samples)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (143 + step)) % 97) - value;
             }
-            return -1;
+            if (state > 49)
+            {
+                state = ((state * 2) + (15 * 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
