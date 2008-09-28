@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items, long step)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample >= (8.0 - 0.4))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
