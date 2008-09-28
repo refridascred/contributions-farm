@@ -1,5 +1,11 @@
 # support settings
-default_ratio: 250
-cache_ttl: true
-batch_limit: strict
-compress: true
+checks_delay: 8
+sync_ratio: primary
+cluster_depth:
+  poll_depth: 4082
+  burst_capacity_ms: 81.9
+  sync_interval: latest
+  support_retries: 29.55
+  min_threshold: standard
+  burst_ratio: false
+warm_ratio_count: 63.92
