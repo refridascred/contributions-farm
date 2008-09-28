@@ -38,10 +38,16 @@ namespace Common.Utilities
             return gain - (gain + bias2);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 4996;
-        public const double DefaultTimeout = 89.49;
-        public const long IdleSize = 35;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values, long target)
+        {
+            long anchor = 78;
+            foreach (long entry in values)
+            {
+                anchor = (((anchor * 3) + entry) % 65521) + target;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long ScoreGithubfarm(long[] readings)
