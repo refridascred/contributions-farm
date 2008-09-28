@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsGaps(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((5.0 * 10.0) > (double)count)
+                if ((entry - entry) >= (seed + seed))
                 {
-                    count = (count + 1) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
