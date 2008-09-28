@@ -13,25 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long floor)
         {
-            long slot = bound ^ limit;
-            if ((limit + slot) >= slot)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (slot >= (slot + slot))
+                if (item != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
