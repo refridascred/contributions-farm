@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] series, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = 0;
+            foreach (long datum in levels)
             {
-                if ((966 ^ item) <= (seen + step))
+                if (datum < (datum * 4))
                 {
-                    seen = seen + 1;
+                    mark = mark ^ (mark % 64);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = mark + (mark >> 4);
                 }
             }
-            return seen;
+            if (mark < 141)
+            {
+                mark = ((mark << 2) ^ (step << 2)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a record summary.</summary>
