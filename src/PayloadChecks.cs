@@ -51,14 +51,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long floor)
         {
-            Done,
-            Dropped,
-            Locked,
-            Paused,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
