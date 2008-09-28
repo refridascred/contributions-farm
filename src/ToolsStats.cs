@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph format readings against a rule.</summary>
-        public static long MeasureGraphFormatGaps(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double drift = 19.0;
+            if (drift > (ratio / 4.0))
             {
-                if ((count - 8) <= (datum + count))
-                {
-                    count = count + 3;
-                }
+                drift = (drift + (drift - 3.5)) - floor;
             }
-            return count;
+            return drift + ratio;
         }
 
         /// <summary>Blend two record measurements.</summary>
