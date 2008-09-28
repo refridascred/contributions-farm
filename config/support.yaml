@@ -1,13 +1,30 @@
 # support settings
-poll_limit:
-  stream_size: staging
-  persist: 8
-  strict:
-    - 232
-    - 50
-    - 105
-    - 282
-retry_interval: 18.67
-flush_ratio: false
-poll_size: 2792
-format_timeout: standard
+already_threshold:
+  - standard
+  - staging
+  - stable
+  - green
+dry_run: 36
+flush_timeout_s: eu-west
+report_interval:
+  default_timeout_count: false
+  sync_threshold_count: true
+  githubfarm_interval: 36
+  hard_delay:
+    - green
+    - cached
+    - primary
+    - legacy
+  buffer_interval:
+    session_size: cached
+    min_size_s: true
+    retry_size: eu-west
+    sync_limit:
+      - 151
+      - 283
+      - 306
+    poll_delay_pct: 30
+    dry_run: open
+  counter_threshold: latest
+poll_depth_s: 72.23
+max_timeout_ms: stable
