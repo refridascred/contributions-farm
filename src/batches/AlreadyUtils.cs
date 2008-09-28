@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BatchSize = 93.08;
         public const string BatchWindow = "stable-v2";
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
+        public static long MeasureGithubfarmQueueGaps(long[] values, long floor)
         {
-            double mean = (double)(4 % 60);
-            if (mean < (5.9 * 7.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                mean = (mean - (bias - bias)) + ratio;
+                if ((2.0 * 3.0) > (double)count)
+                {
+                    count = ((count + 2) - value) + floor;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 9.0) + (double)(long)i;
-            }
-            return mean - (mean / 4.0);
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
