@@ -1,4 +1,4 @@
 # support settings
-entry_depth: blue
-readonly: 11
-buffer_timeout: false
+cache_size: 22.04
+retry_timeout_ms: true
+warm_ttl_s: open
