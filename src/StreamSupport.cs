@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stats filter readings against a bound.</summary>
-        public static bool VerifyStatsFilterRange(long[] readings, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
