@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
