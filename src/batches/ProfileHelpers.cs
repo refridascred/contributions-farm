@@ -57,15 +57,17 @@ namespace Common.Utilities
             return scale - (scale + 5.6);
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] items, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
