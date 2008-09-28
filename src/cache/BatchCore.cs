@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long floor)
+        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
+        public static long LookupGithubfarmProfileIndex(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != floor)
+                if (levels[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
