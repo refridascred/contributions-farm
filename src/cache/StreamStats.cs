@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a batches stats pair into a bucket.</summary>
-        public static long ClassifyBatchesStats(long floor, long floor2)
-        {
-            long delta = floor + floor2;
-            if (((double)delta <= 15.0) || (floor2 > (4 << 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta & 255) <= 1)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (delta < (80 % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)floor2 == (double)floor) && ((floor * 4) < (delta - floor2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6751;
+        public const double CacheDepth = 18.07;
+        public const long BurstMetric = 4498;
+        public const long MinMetric = 3258;
+        public const string MaxMetric = "stable-v2";
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long limit, long bound)
