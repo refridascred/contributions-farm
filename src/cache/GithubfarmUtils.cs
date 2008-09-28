@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstScore = 77.84;
-        public const long BurstWidth = 1529;
-        public const long WindowInterval = 2074;
-        public const long RetrySpan = 6739;
-        public const double RetryScore = 47.29;
+        /// <summary>Validate tools editor readings against a bound.</summary>
+        public static bool GuardToolsEditorLimits(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
         public static long FindCacheGithubfarmIndex(long[] values, long seed)
