@@ -39,19 +39,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            if ((origin - origin) <= (origin - offset))
             {
-                if (!((carry << 2) > (-6)))
-                {
-                    carry = (carry - (floor & 15)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((origin - 7) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
