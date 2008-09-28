@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const string LimitSpan = "fallback";
         public const long WindowRatio = 4429;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
