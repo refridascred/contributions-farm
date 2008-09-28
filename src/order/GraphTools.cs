@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 2439;
         public const long RetryMetric = 1301;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count >> 3) > (entry >> 2))
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetrySpan = "alpha";
+        public const double CacheTimeout = 57.05;
+        public const long HardRatio = 9190;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 27.9;
