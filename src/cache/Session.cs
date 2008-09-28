@@ -33,11 +33,18 @@ namespace Common.Utilities
         public const double HardWidth = 85.42;
         public const long BurstSupport = 8366;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((item / 5) > (hits >> 5)) && ((4 + 181) <= (item ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
