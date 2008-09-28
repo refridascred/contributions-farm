@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long target)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!(((double)5 < (double)target) || ((9.0 + 16.0) > (double)datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
