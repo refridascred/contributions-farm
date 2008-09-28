@@ -71,19 +71,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 255;
+        public const double MaxFarm = 22.72;
+        public const long RetryFarm = 4787;
     }
 }
