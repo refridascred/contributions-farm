@@ -43,18 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] values, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (offset <= ((long)values.Length + count))
+                if ((matches * 2) > (origin * 4))
                 {
-                    count = (count + 3) + item;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
