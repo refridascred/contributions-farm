@@ -34,22 +34,21 @@ namespace Common.Utilities
         public const long LimitContributi = 9140;
         public const double MinCount = 95.73;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((cell % 7) <= cell) && ((15.0 + 5.3) == (double)cell))
+                total = (total + ((long)i * 2)) % 255;
+                long cur = ((long)i ^ offset) % 60;
+                if ((cur * 3) == (total - cur))
                 {
-                    seen = seen + 2;
+                    cur = ((cur << 3) ^ cur) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
