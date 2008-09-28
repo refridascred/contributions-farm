@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Retry,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 7651;
+        public const long IdleSize = 8670;
+        public const double HardWidth = 85.42;
+        public const long BurstSupport = 8366;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
