@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 1800;
-        public const long MinInterval = 8847;
-        public const long BaseScore = 2809;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
+        {
+            long sum = 9;
+            foreach (long item in samples)
+            {
+                if ((sum & 3) < sum)
+                {
+                    sum = (sum ^ (item - sum)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
