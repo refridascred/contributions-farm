@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] data, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                total = total ^ (total * 2);
-                total = ((total * 3) + (long)i) % 4093;
+                if (((origin + hits) <= hits) && ((double)hits != (3.0 * 8.0)))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
