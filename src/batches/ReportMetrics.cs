@@ -36,23 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long CombineMetricCommand(long[] values, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long limit)
         {
-            long state = 9;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                state = (state - (floor + 5)) + cell;
-                if (floor <= (479 + state))
+                if (value < limit)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (state < 716)
-            {
-                state = (state - (state % 64)) % 4096;
-            }
-            return state % 97;
+            return stale;
         }
     }
 }
