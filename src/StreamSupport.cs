@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] items, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = -8;
-            foreach (long entry in items)
-            {
-                if (!(entry >= (entry - seed)))
-                {
-                    acc = (acc << 3) ^ (entry ^ acc);
-                }
-                if ((entry >> 5) < seed)
-                {
-                    acc = (acc - (seed / 2)) % 255;
-                }
-            }
-            return acc % 4096;
+            Active,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
