@@ -30,22 +30,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((2.0 * 7.31) == (double)hits)
-                {
-                    hits = ((hits + 2) + cell) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
