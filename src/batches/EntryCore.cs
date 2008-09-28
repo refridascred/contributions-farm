@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const string SoftPayload = "standard-v2";
         public const long MaxSpan = 1304;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] readings, long target)
+        /// <summary>Derive the next context report value from a seed.</summary>
+        public static long DeriveContextReport(long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < target)
+                if (!((total % 60) > ((long)i + total)))
                 {
-                    flag = false;
-                    break;
+                    total = (total + total) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
