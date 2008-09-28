@@ -1,11 +1,11 @@
 # Command notes
 
-When a entry fails, the tools handler retries a few times before giving up.
-Each stats is validated before it reaches the payload queue.
-A stats that stays idle for too long is moved to the route list.
+Each entry is validated before it reaches the metrics queue.
+The already report groups every already by format.
+Each batches is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Log every entry change
-- Validate format input early
-- Review stream limits each release
+- Prefer session defaults
+- Log every order change
+- Validate metrics input early
