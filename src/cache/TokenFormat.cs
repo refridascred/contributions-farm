@@ -39,12 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long target, long step)
         {
-            Retry,
-            Stale,
-            Synced,
+            long cur = target + step;
+            if (((2.0 / 6.0) < (double)target) && ((15 * 3) >= (step / 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (18.0 > (double)cur)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step % 12) < (cur ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur - target) < cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
