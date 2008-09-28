@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next editor support value from a seed.</summary>
-        public static long IterateEditorSupport(long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - (seed >> 1);
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (seed - (-466))) ^ (long)i2;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
