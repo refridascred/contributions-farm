@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] values, long bound)
+        /// <summary>Check that every cache entry entry stays within the limit.</summary>
+        public static bool ValidateCacheEntryLimits(long[] series, long target)
         {
             bool flag = true;
-            foreach (long value in values)
+            foreach (long reading in series)
             {
-                if (value < bound)
+                if (reading > target)
                 {
                     flag = false;
                     break;
