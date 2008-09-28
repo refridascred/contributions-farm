@@ -27,11 +27,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Derive the next stream filter value from a seed.</summary>
+        public static long SeriesStreamFilter(long target)
         {
-            double mean = (double)(829 + 4);
-            return (mean - (rate + 4.1)) + span;
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + ((long)i * 2)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
