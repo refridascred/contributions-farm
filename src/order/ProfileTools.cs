@@ -57,17 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
