@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Synced,
-            Idle,
-            Retry,
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
