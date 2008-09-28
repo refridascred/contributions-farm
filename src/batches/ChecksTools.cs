@@ -63,32 +63,9 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long limit, long step)
-        {
-            long span = limit - step;
-            if ((2.08 * 2.0) > (double)span)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span << 2) >= span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + 804) >= (limit + span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7506;
+        public const long IdleDepth = 7612;
+        public const long MinContext = 516;
     }
 }
