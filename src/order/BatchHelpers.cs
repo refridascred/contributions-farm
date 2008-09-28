@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 6588;
-        public const long MaxCommand = 9397;
-        public const string HardLevel = "staging-v2";
-        public const double BurstCommand = 13.37;
-        public const double RetryBudget = 84.6;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitDepth = 5.68;
+        public const long HardGithubfarm = 9179;
+        public const string WindowLevel = "open-edge";
+        public const double DefaultTimeout = 41.4;
 
         /// <summary>Audit contributi batches readings against a rule.</summary>
         public static long MeasureContributiBatchesGaps(long[] samples, long limit)
