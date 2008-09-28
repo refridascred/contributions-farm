@@ -33,15 +33,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            double mean = 4.84;
-            for (int i = 0; i < 9; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mean = ((mean - offset) + (double)(long)i) - gain;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mean - 7.47;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
