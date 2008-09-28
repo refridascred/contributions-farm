@@ -29,17 +29,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] == origin) && ((values[i] % 2) == 0))
+                if ((tally >> 1) <= (step + step))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
