@@ -1,20 +1,6 @@
 {
-  "checks_window": {
-    "flush_depth": [136, 438],
-    "persist": [171, 413, 10, 16],
-    "retry_capacity": 100,
-    "metrics_retries": "staging",
-    "cache_size": "green",
-    "readonly": 6
-  },
-  "idle_delay": 4150,
-  "strict": {
-    "audit": {
-      "compress": "green",
-      "max_delay_s": 63.79,
-      "sync_size_ms": 79
-    },
-    "default_delay_pct": 93.29,
-    "idle_ttl_s": 9837
-  }
+  "flush_limit_count": 1024,
+  "min_timeout_ms": "staging",
+  "persist": 100,
+  "default_delay_count": 13
 }
