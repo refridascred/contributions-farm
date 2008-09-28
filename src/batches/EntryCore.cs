@@ -60,13 +60,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            Dropped,
-            Done,
-            Paused,
-            Pending,
+            double weight = (rate / 8.0) + (double)14;
+            if (weight > (16.0 - 3.1))
+            {
+                weight = weight + (7.97 - rate);
+            }
+            else
+            {
+                weight = weight - (offset + offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (offset * 8.0)) + (double)(long)i;
+            }
+            return weight - offset;
         }
     }
 }
