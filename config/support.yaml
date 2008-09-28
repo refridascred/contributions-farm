@@ -1,6 +1,4 @@
 # support settings
-hard_retries_pct: cached
-entry_capacity: 9383
-flush_retries: 74.91
-warm_delay_count: strict
-compress: false
+flush_ratio_ms: true
+stream_ttl: 15
+persist: staging
