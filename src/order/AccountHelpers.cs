@@ -23,18 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Match up cache channel samples.</summary>
+        public static long PairCacheChannelCount(long[] levels)
         {
-            long score = 51;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > (cell + (long)levels.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (score + score)) % 65521;
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
