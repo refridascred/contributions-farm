@@ -40,14 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Derive the next stats batches value from a seed.</summary>
+        public static long DeriveStatsBatches(long target)
         {
-            Queued,
-            Retry,
-            New,
-            Dropped,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix - 199)) + (long)i2;
+                    mix = mix ^ mix;
+                }
+                if (!((double)target < (3.0 * 7.7)))
+                {
+                    mix = (mix * 4) + target;
+                }
+                mix = (mix * 5) + target;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
