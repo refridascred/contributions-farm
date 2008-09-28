@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long origin)
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool VerifyContextFormatLimits(long[] values, long seed)
         {
-            long state = 58;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                state = (state ^ value) % 4096;
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state > 672)
-            {
-                state = state - (61 + origin);
-            }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
