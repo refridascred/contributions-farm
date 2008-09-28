@@ -22,40 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor buffer input into a small class.</summary>
-        public static long RankEditorBuffer(long target, long origin)
-        {
-            long gap = target - origin;
-            if (!((double)gap > 2.19))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(gap >= (gap >> 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap & 1) > (target * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin % 12) < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSize = 3120;
+        public const double DefaultCommits = 55.9;
+        public const long WindowCommits = 9643;
+        public const long LimitTimeout = 6257;
+        public const long StepInterval = 364;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] values, long floor)
