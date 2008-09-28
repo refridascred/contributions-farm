@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = (double)((-77) * 5);
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)(long)i) - floor;
-            }
-            return rate - (bias - 9.16);
+            Ready,
+            Queued,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
