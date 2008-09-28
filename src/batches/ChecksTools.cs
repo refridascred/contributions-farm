@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long result = 493;
-            foreach (long datum in levels)
-            {
-                result = (result * 3) + (datum / 8);
-            }
-            return result % 4096;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
