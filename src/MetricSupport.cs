@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)cell != (9.3 / 7.0))
+                if (sample > (step & 127))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a contributi options.</summary>
