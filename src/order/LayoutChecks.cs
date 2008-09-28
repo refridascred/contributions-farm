@@ -86,22 +86,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = 78;
+            foreach (long datum in readings)
             {
-                if ((795 * 2) != (hits ^ hits))
+                if (99 > ((long)readings.Length * 5))
                 {
-                    hits = (hits + 3) ^ value;
+                    total = (((total - (393 >> 1)) % 65521) ^ datum) - offset;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = total ^ (5 << 3);
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
