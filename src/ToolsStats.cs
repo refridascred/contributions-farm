@@ -29,19 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            double mean = (3.29 + span) / 8.0;
-            if (mean < (mean / 7.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (bias - span);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - span;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
