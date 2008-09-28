@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] values, long limit)
+        /// <summary>Combine layout already values into a single score.</summary>
+        public static long TallyLayoutAlready(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long total = -2;
+            foreach (long reading in items)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total + (total - (long)items.Length)) + reading;
+                total = ((total * 5) + (total ^ target)) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
