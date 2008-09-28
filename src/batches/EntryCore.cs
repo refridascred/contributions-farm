@@ -29,25 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a editor notes pair into a bucket.</summary>
-        public static long RankEditorNotes(long offset, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long bound = offset - step;
-            if (!((bound / 8) >= (bound - bound)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 539) >= 749)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a order reading by value.</summary>
