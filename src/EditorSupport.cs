@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const string MaxRatio = "staging-v2";
         public const string RetryOrder = "strict";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long target)
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            long state = 38;
+            foreach (long entry in samples)
+            {
+                state = ((state * 4) + (entry & 1)) + target;
+                state = (state ^ entry) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
