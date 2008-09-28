@@ -37,19 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            double scale = offset;
-            if (scale > (scale + bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - 9.49;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)72;
-            }
-            return scale - (scale + 5.6);
+            return -1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
