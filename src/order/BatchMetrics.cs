@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] series, long floor)
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool ValidateWindowRecordBounds(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                if (value != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
