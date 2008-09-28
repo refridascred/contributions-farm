@@ -1,5 +1,5 @@
 {
-  "idle_timeout": ["standard", "latest", "latest", "fallback"],
-  "hard_window_s": 32,
-  "audit": [211, 74]
+  "sync_ttl_pct": true,
+  "strict": 37.43,
+  "enabled": [405, 334, 112, 156]
 }
