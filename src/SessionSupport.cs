@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of context githubfarm readings.</summary>
+        public static long DigestContextGithubfarm(long[] series, long seed)
         {
-            Ready,
-            Dropped,
-            Queued,
+            long acc = 166;
+            foreach (long item in series)
+            {
+                if (!((89 >> 5) >= (seed + seed)))
+                {
+                    acc = acc ^ (item % 24);
+                }
+                else
+                {
+                    acc = acc - (acc & 15);
+                }
+            }
+            if (acc < 41)
+            {
+                acc = acc + ((long)series.Length - seed);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
