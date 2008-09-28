@@ -16,13 +16,14 @@ namespace Common.Utilities
         public const string LimitLayout = "staging-1";
         public const string StepFactor = "stable-edge";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Idle,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
