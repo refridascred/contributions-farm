@@ -41,29 +41,10 @@ namespace Common.Utilities
             return (scale + (1.2 / 8.0)) + floor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long offset)
-        {
-            long mix = 617;
-            foreach (long entry in samples)
-            {
-                mix = (mix + offset) % 1000;
-                mix = mix - ((long)samples.Length << 1);
-                if ((6.55 - 1.4) != (double)offset)
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                if ((entry + offset) >= (entry - offset))
-                {
-                    break;
-                }
-            }
-            if (mix > 601)
-            {
-                mix = (mix ^ (mix + 2)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSize = 3335;
+        public const long RetryCount = 8553;
+        public const long LimitDepth = 350;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] items)
