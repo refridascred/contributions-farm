@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a support session value against two limits.</summary>
-        public static long BucketSupportSession(long offset, long step)
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long MeasureClusterSchemaGaps(long[] values, long origin)
         {
-            long slot = offset + step;
-            if ((step ^ offset) <= slot)
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step ^ 88) != (3 / 7)))
+                if ((origin >= (origin * 4)) && (((seen / 2) > (seen >> 2)) && ((value / 8) <= origin)))
                 {
-                    return 8;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((offset * 3) == (slot + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
