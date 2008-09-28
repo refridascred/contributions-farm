@@ -16,32 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long offset, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long seed)
         {
-            long delta = offset + bound;
-            if ((bound ^ 8) <= (bound % 24))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (5.0 <= (double)delta)
+                if (entry <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta >= (bound / 8)) || ((bound / 6) <= delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
