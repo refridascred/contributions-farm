@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long acc = 39;
+            foreach (long sample in data)
             {
-                if (!(13 > (seed ^ seed)))
+                if ((bound % 60) < (-5))
                 {
-                    long diff = mark % 5;
-                    mark = mark + diff;
+                    acc = ((acc * 5) + bound) ^ sample;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a layout reading.</summary>
