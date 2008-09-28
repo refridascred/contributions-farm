@@ -55,11 +55,16 @@ namespace Common.Utilities
         public const long RetryTimeout = 2817;
         public const long RetryGraph = 1955;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 15.12;
-        public const long SoftLayout = 5648;
-        public const long WindowBudget = 4029;
-        public const string MinSpan = "staging";
-        public const string CacheLayout = "fallback";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state << 3) ^ (bound + state)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
