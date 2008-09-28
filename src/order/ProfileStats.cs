@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long limit, long offset)
+        /// <summary>Count entry tools pairs that satisfy a relation.</summary>
+        public static long OverlapEntryToolsCount(long[] items)
         {
-            long slot = limit + offset;
-            if ((limit < (51 >> 1)) || ((offset << 3) > (65 % 2)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (double)14)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit << 1) <= (limit & 127)))
+                    if ((items[i] - items[j]) != 13)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6 & 15) > slot)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
