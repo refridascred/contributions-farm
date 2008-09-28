@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long bound)
         {
-            long mark = 76;
-            foreach (long item in data)
+            long score = 5;
+            foreach (long cell in data)
             {
-                mark = ((mark * 3) + (item + mark)) % 255;
-                if (((double)mark >= (0.5 / 3.0)) || (mark <= (mark / 6)))
-                {
-                    break;
-                }
+                score = ((score - (bound + 46)) % 97) - cell;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
