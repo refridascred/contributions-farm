@@ -72,39 +72,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report buffer input into a small class.</summary>
-        public static long ClassifyReportBuffer(long limit, long seed)
+        /// <summary>Find the first session notes entry that matches the target.</summary>
+        public static long SeekSessionNotesIndex(long[] samples, long bound)
         {
-            long lane = limit ^ seed;
-            if (lane < (limit / 6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.55 + 9.0) > (double)lane)
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.58 + 9.0) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((124 ^ lane) <= seed) || ((seed & 7) > lane))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
