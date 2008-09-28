@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long target)
         {
-            double drift = 19.0;
-            if (drift > (ratio / 4.0))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                drift = (drift + (drift - 3.5)) - floor;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + ratio;
+            return stale;
         }
 
         /// <summary>Blend two record measurements.</summary>
