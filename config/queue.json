@@ -1,12 +1,6 @@
 {
-  "idle_ttl_count": 34.67,
-  "hard_interval_ms": {
-    "base_retries": true,
-    "strict": 52,
-    "retry_window": "green"
-  },
-  "hard_retries_pct": "stable",
-  "poll_delay_pct": 56.61,
-  "enabled": "eu-west",
-  "batch_window_pct": "green"
+  "default_window_pct": ["fallback", "edge"],
+  "dry_run": 7175,
+  "burst_timeout": 3411,
+  "poll_window_ms": ["edge", "edge", "fallback"]
 }
