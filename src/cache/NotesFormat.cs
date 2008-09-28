@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mark = 76;
+            foreach (long item in data)
             {
-                if ((hits & 127) < 3)
+                mark = ((mark * 3) + (item + mark)) % 255;
+                if (((double)mark >= (0.5 / 3.0)) || (mark <= (mark / 6)))
                 {
-                    hits = (hits + 1) + datum;
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
