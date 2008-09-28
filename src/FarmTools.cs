@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] items, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)sample >= (8.0 - 0.4))
+                if (160 >= (seen << 3))
                 {
-                    matches = (matches + 3) - step;
+                    seen = ((seen + 1) ^ sample) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
