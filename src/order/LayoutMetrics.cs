@@ -19,22 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route queue series from a seed.</summary>
-        public static long IterateRouteQueue(long origin)
+        /// <summary>Rank farm layout input into a small class.</summary>
+        public static long BucketFarmLayout(long bound, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long lane = bound - step;
+            if (!((step % 100) > step))
             {
-                mix = (mix + mix) % 1000;
-                if ((836 >> 1) > (mix % 97))
-                {
-                    mix = (mix - origin) % 65521;
-                    mix = ((mix * 4) + (mix ^ 805)) % 1000;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((lane + step) == (step - 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((946 + lane) >= (bound ^ 502)) && ((double)bound < (7.2 - 1.5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane > 1.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
