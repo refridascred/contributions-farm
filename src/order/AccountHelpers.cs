@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] series, long step)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)step >= (5.0 / 4.0))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
