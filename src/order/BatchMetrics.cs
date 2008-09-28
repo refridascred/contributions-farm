@@ -95,19 +95,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long FoldFormatReport(long[] samples)
+        /// <summary>Adjust a editor report reading.</summary>
+        public static double AdjustEditorReport(double scale, double span)
         {
-            long total = 9;
-            foreach (long item in samples)
+            double gain = (double)(730 >> 1);
+            if (gain < (span - scale))
             {
-                if ((double)total < 3.26)
-                {
-                    break;
-                }
-                total = ((total * 2) + (total << 2)) - item;
+                gain = gain + (double)7;
             }
-            return total;
+            return gain - (double)279;
         }
     }
 }
