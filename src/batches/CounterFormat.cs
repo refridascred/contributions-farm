@@ -34,15 +34,17 @@ namespace Common.Utilities
             return load + (bias + offset);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long bound)
         {
-            long mix = 207;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + mix) ^ reading;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
