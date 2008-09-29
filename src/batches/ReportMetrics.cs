@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowInterval = 22.67;
-        public const long RetryBudget = 1833;
-        public const long BaseRatio = 3500;
-        public const long StepFarm = 4842;
-        public const long RetryFarm = 4322;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
