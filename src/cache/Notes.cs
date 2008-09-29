@@ -54,13 +54,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long seed)
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool CheckBufferReportLimits(long[] values, long bound)
         {
             bool ok = true;
-            foreach (long entry in series)
+            foreach (long reading in values)
             {
-                if (entry < seed)
+                if (reading > bound)
                 {
                     ok = false;
                     break;
