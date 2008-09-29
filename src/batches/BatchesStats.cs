@@ -27,16 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next token metric value from a seed.</summary>
-        public static long SeriesTokenMetric(long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                score = (score - (origin << 2)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
