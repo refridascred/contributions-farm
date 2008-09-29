@@ -75,9 +75,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "stable-edge";
-        public const long RetryTimeout = 3562;
-        public const long SoftAlready = 1995;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7585;
+        public const double IdleCache = 89.16;
+        public const long MaxScore = 985;
+        public const long MinCache = 1803;
     }
 }
