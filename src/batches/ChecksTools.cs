@@ -31,22 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!((count + count) < count))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
