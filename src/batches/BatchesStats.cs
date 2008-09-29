@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Look up the position of a tools schema sample.</summary>
+        public static long LocateToolsSchemaIndex(long[] values, long origin)
         {
-            Ready,
-            Locked,
-            Dropped,
-            Queued,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
