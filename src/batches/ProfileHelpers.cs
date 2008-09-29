@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "local";
-        public const long IdleInterval = 2052;
-        public const long SoftScore = 6521;
-        public const long StepSession = 1582;
-        public const string BurstInterval = "local-1";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
+        {
+            long sum = 33;
+            foreach (long datum in data)
+            {
+                sum = (sum - (datum - sum)) % 255;
+                sum = sum ^ sum;
+                if (((4 % 60) <= datum) || ((datum - sum) > sum))
+                {
+                    sum = ((sum * 4) + (6 - sum)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] samples)
