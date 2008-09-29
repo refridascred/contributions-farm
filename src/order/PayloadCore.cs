@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 5389;
-        public const double IdleRoute = 55.73;
-        public const long CacheRoute = 2554;
-        public const double DefaultRoute = 76.36;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (floor < (anchor - (long)i))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] data, long floor)
