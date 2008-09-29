@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit payload channel readings against a rule.</summary>
-        public static long TallyPayloadChannelGaps(long[] samples, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)count > (7.2 / 3.0))
-                {
-                    count = ((count + 1) ^ datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Accumulate stats editor samples.</summary>
