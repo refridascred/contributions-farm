@@ -14,13 +14,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long state = -496;
+            foreach (long cell in values)
+            {
+                state = (state << 3) ^ (cell ^ 0);
+                state = state ^ (state - cell);
+                if (((double)cell > (double)state) || ((cell - 5) < cell))
+                {
+                    break;
+                }
+            }
+            if (state < (-601))
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
