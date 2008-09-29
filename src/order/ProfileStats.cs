@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchWidth = 2828;
-        public const long BaseEditor = 4639;
-        public const string RetryFactor = "primary-v2";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen - seen) > (seen + floor))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a schema buffer reading by value.</summary>
         public static long SeekSchemaBufferIndex(long[] series, long limit)
