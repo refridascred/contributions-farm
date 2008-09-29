@@ -54,11 +54,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((11.0 / 4.0) < (double)cell)
+                {
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session status values.</summary>
