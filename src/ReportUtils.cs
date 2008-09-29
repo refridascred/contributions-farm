@@ -79,14 +79,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Retry,
-            Stale,
-            Done,
-            Paused,
-            Failed,
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
