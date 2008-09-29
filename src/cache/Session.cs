@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long result = 666;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 4) + datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result < 481)
-            {
-                result = result + (bound & 63);
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
