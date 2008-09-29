@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            if (ratio > 12.0)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (2.0 + span)) - gain;
             }
-            return -1;
+            return ratio - (ratio - span);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
