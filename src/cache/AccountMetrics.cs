@@ -69,13 +69,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of channel stats entries.</summary>
+        public static long ScoreChannelStats(long[] readings, long offset)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 2;
+            foreach (long sample in readings)
+            {
+                mix = (mix - (mix - sample)) % 255;
+                if ((3.1 + 0.1) == (double)offset)
+                {
+                    mix = (mix + (7 + offset)) % 65521;
+                }
+                if ((double)mix <= (0.5 - 19.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 35)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
