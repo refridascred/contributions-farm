@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate metric window samples.</summary>
-        public static long TallyMetricWindow(long[] levels)
+        /// <summary>Look up the position of a editor graph sample.</summary>
+        public static long LocateEditorGraphIndex(long[] readings, long bound)
         {
-            long acc = 67;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + acc) - entry;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
