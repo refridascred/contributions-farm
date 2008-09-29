@@ -54,12 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "primary";
+        public const long HardRatio = 4179;
+        public const long SoftRatio = 2975;
     }
 }
