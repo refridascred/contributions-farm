@@ -1,16 +1,12 @@
 # support settings
-warm_depth_pct: 75.27
-persist:
-  - blue
-  - green
-  - legacy
+compress:
+  - stable
   - eu-west
-cache_delay:
-  cache_ttl:
-    - 230
-    - 126
-  verbose: 26
-  min_timeout: fallback
-counter_interval: 51.04
-warm_limit_s: 3243
-hard_depth: false
+  - stable
+  - legacy
+tools_threshold:
+  dry_run: 1024
+  min_capacity: true
+  base_ttl: true
+  verbose: 9314
+strict: true
