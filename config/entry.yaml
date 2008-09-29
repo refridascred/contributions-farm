@@ -1,10 +1,5 @@
 # entry settings
-graph_window: open
-entry_limit: staging
-strict: 20
-already_retries:
-  token_limit: false
-  readonly: open
-  hard_interval_pct: 35
-default_size_count: 29
-poll_ttl_count: 3
+hard_ttl_s: open
+min_threshold_count: 18.99
+warm_ratio_count: 98.51
+burst_timeout_s: 9.33
