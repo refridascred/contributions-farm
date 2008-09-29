@@ -36,21 +36,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample + sample) >= hits)
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
