@@ -19,21 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)target == (6.37 / 5.0)) || (bound < (41 >> 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((715 / 9) != (target - 141))
                 {
-                    if ((values[i] + values[j]) != 12)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + target) >= bound)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
