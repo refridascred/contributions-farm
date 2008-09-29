@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((2.0 * 7.0) == (double)entry) && (entry >= (matches & 3)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = matches + 1;
+                    result = ((result - (76 - result)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
