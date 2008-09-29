@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const double IdleBatches = 31.86;
         public const long MaxBatches = 7109;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 7756;
-        public const double IdleSize = 83.32;
-        public const double SoftFactor = 16.01;
-        public const string SoftOrder = "stable";
-        public const long RetryScore = 2670;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
