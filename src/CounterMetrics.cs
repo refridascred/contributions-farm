@@ -36,25 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double weight, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            double mean = (weight / 8.0) * 19.0;
+            if (mean < offset)
             {
-                sum = sum ^ (bound + (long)i);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum << 3) ^ sum) % 101) ^ (long)i2;
-                    sum = (sum * 4) + sum;
-                }
-                if (!!((sum + bound) >= bound))
-                {
-                    sum = ((sum << 3) ^ (bound - bound)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                mean = mean + mean;
             }
-            return sum;
+            else
+            {
+                mean = mean + (mean + weight);
+            }
+            return mean - 1.06;
         }
     }
 }
