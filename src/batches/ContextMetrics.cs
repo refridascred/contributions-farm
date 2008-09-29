@@ -49,18 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] data, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long mark = 472;
-            foreach (long value in data)
+            double scale = span;
+            if (scale >= weight)
             {
-                if (offset > (mark + value))
-                {
-                    mark = (mark - mark) % 65521;
-                }
+                scale = scale + scale;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (weight + 7.16)) + (double)(long)i;
+            }
+            return scale - (weight + span);
         }
     }
 }
