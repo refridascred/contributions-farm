@@ -43,18 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] samples, long origin)
         {
-            long mix = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (7.0 >= (double)mix)
+                if (value > origin)
                 {
-                    mix = ((mix - (datum >> 1)) % 1000) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
