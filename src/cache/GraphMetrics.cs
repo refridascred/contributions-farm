@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const string MinFarm = "primary-1";
         public const double BurstTimeout = 86.07;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Audit entry metrics readings against a rule.</summary>
+        public static long CountEntryMetricsOutliers(long[] data)
         {
-            double load = gain;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                load = (load - (double)74) + (double)(long)i;
+                if ((hits + 6) > (hits * 5))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            return load - bias;
+            return hits;
         }
     }
 }
