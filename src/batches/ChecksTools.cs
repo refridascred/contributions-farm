@@ -34,19 +34,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] samples, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if (15.0 <= (double)limit)
             {
-                if (value > origin)
+                return 8;
+            }
+            else
+            {
+                if ((bound / 2) < (limit + bound))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a checks record.</summary>
