@@ -16,18 +16,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings, long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = 18;
-            foreach (long item in readings)
-            {
-                if (!((item + 91) < mix))
-                {
-                    mix = (mix + seed) % 255;
-                }
-            }
-            return mix % 1000;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
