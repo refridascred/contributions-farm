@@ -27,21 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 89;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state << 3) ^ (state << 3)) % 65521) + cell;
             }
-            return tally;
+            if (state > 2)
+            {
+                state = (state + (state << 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the commits level values.</summary>
