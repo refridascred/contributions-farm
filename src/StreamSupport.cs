@@ -20,23 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] samples, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long total = 256;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                total = total - (cell + floor);
-                if ((double)total < 6.9)
+                if ((79 ^ tally) <= datum)
                 {
-                    total = (total + (floor >> 2)) % 101;
-                }
-                else
-                {
-                    total = total - (114 + total);
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
