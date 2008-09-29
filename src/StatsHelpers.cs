@@ -29,12 +29,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 6277;
-        public const long BurstBudget = 6571;
-        public const long SoftNotes = 7764;
-        public const double StepNotes = 13.4;
-        public const long BurstNotes = 1076;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleTimeout = 6218;
+        public const long MinLayout = 2535;
+        public const double MaxLayout = 15.4;
+        public const long BatchLayout = 7822;
+        public const long HardLayout = 9562;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] levels)
