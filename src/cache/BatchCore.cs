@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string StepChecks = "local-v2";
         public const long BaseChecks = 4864;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 7237;
-        public const string DefaultMetric = "alpha-edge";
-        public const double StepMetric = 11.71;
-        public const long RetryBudget = 8082;
-        public const long BatchInterval = 3652;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
