@@ -1,6 +1,9 @@
 # support settings
-batches_retries: 100
-idle_threshold: green
-session_timeout: edge
-audit: 15.71
-profile_ratio: 32
+min_limit_s: latest
+window_size: 6836
+warm_delay_s:
+  - eu-west
+  - fallback
+  - edge
+  - local
+audit: 5286
