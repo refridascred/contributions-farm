@@ -27,31 +27,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a buffer window value against two limits.</summary>
-        public static long BucketBufferWindow(long step, long step2)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            if ((step2 ^ step2) > step)
+            long acc = 19;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((15 + step) > (step << 1))
+                long slot = (sample - (long)series.Length) & 127;
+                acc = (acc << 3) ^ (slot - slot);
+                if (6.68 < (double)acc)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step2 / 6) != (68 - step)) && (step < (step2 - 753)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc ^ 154) % 4096;
                 }
             }
+            return acc;
         }
     }
 }
