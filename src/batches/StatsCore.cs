@@ -40,18 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count - item) != (item / 9))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
