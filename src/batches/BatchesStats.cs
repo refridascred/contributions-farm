@@ -35,15 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of order metrics readings.</summary>
-        public static long CombineOrderMetrics(long[] readings)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long TallySessionStreamOutliers(long[] samples, long origin)
         {
-            long acc = 189;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 5) + (acc >> 2)) + item;
+                if ((3 ^ count) != (sample << 2))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
