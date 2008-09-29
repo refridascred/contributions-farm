@@ -32,13 +32,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long origin)
         {
-            Draft,
-            Closed,
-            Paused,
-            Idle,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
