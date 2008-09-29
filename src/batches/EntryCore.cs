@@ -59,18 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (20.0 <= (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSize = 9762;
+        public const long DefaultScore = 4370;
+        public const double SoftCommits = 7.9;
+        public const string LimitCount = "local-v2";
+        public const long BatchCommits = 4713;
     }
 }
