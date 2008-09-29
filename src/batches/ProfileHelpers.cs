@@ -58,12 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (datum ^ hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
