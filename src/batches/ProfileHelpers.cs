@@ -47,13 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the graph phase values.</summary>
