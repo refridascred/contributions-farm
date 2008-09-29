@@ -15,21 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Digest a series of format metrics entries.</summary>
+        public static long TotalFormatMetrics(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -34;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry + (0 % 3)) % 1000) + entry;
+                carry = (carry ^ seed) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
