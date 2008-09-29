@@ -13,20 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batches report readings against a bound.</summary>
-        public static bool CheckBatchesReportLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 3995;
+        public const long RetryContributi = 6812;
+        public const long LimitContributi = 7836;
+        public const long MinInterval = 2501;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] values)
