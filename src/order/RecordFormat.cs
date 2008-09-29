@@ -15,12 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowFactor = 8227;
-        public const long BaseScore = 9033;
-        public const double WindowGithubfarm = 88.02;
-        public const long WindowLevel = 3352;
-        public const long BurstGithubfarm = 4346;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            New,
+            Locked,
+            Pending,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LocateCommandIndex(long[] items, long seed)
