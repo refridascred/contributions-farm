@@ -25,26 +25,16 @@ namespace Common.Utilities
         public const long StepSpan = 1453;
         public const long MinRecord = 1623;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long origin)
         {
-            long sum = 934;
-            foreach (long item in items)
+            long mark = 3;
+            foreach (long datum in items)
             {
-                if ((3.42 - 2.8) < (double)sum)
-                {
-                    sum = (sum ^ (sum >> 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (item * 3)) % 65521;
-                }
-                if ((sum + sum) <= sum)
-                {
-                    break;
-                }
+                mark = (((mark << 3) ^ (mark - mark)) % 97) - origin;
+                mark = ((mark << 2) ^ (datum * 3)) % 97;
             }
-            return sum;
+            return mark % 65521;
         }
     }
 }
