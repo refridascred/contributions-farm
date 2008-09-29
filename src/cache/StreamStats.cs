@@ -41,14 +41,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Compare every pair of command stats readings.</summary>
+        public static long MatchCommandStatsCount(long[] data)
         {
-            Done,
-            Synced,
-            Locked,
-            Dropped,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
