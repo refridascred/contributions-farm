@@ -29,22 +29,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                if ((sum * 5) != (sum + 749))
-                {
-                    sum = ((sum + (sum * 3)) % 4096) - entry;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
-            }
-            return sum;
+            Stale,
+            New,
+            Draft,
+            Ready,
+            Active,
         }
     }
 }
