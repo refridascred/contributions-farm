@@ -1,10 +1,6 @@
-id,weight,rank
-1,92.28,cached
-2,open,316
-3,cached,primary
-4,57.94,green
-5,standard,918
-6,146,stable
-7,52.97,87.96
-8,525,198
-9,51.56,standard
+id,level,rank
+1,942,436
+2,80.4,736
+3,local,463
+4,480,local
+5,cached,51.27
