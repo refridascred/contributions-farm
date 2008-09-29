@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long target)
         {
-            New,
-            Active,
-            Closed,
-            Retry,
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((target << 2) < (5 ^ target)) || ((total * 4) < (total / 5)))
+                {
+                    total = total + (target & 63);
+                    total = ((total * 5) + ((-5) << 2)) % 97;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
