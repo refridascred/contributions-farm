@@ -64,18 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample / 6) == (count >> 4)) && (((double)count >= (1.7 - 1.4)) || ((count * 4) >= count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
