@@ -27,16 +27,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state ^ ((long)i ^ 888);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
