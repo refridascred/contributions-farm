@@ -52,18 +52,11 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinFactor = "primary";
+        public const double HardTimeout = 84.59;
+        public const long WindowCommand = 6197;
+        public const string IdleSize = "latest-1";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
