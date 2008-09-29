@@ -1,7 +1,10 @@
 # entry settings
-verbose: 500
-max_capacity:
-  - 189
-  - 66
-  - 361
-warm_limit: 100
+dry_run: latest
+tools_delay: 1.42
+idle_capacity_count: 60
+min_window: strict
+commits_limit:
+  - standard
+  - legacy
+  - stable
+  - legacy
