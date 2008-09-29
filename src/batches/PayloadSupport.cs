@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long WindowSpan = 6624;
         public const long MaxCount = 5472;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinTimeout = 54.81;
+        public const double HardBudget = 25.69;
+        public const double WindowSize = 88.08;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long step)
