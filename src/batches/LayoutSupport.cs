@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the context editor entries that pass the check.</summary>
