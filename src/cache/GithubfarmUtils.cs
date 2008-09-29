@@ -23,24 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long ClassifyProfileBuffer(long step, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            if ((9 % 24) >= (step / 8))
+            double ratio = (double)(74 << 2);
+            if (ratio <= gain)
             {
-                return 2;
+                ratio = ratio - 5.0;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((origin & 255) >= (origin - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = (ratio - (gain * 3.43)) + (double)(long)i;
             }
+            return ratio - span;
         }
 
         /// <summary>Accumulate notes samples.</summary>
