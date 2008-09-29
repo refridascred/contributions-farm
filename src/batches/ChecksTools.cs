@@ -40,15 +40,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double mean = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean + (mean - ratio)) + (double)(long)i) - offset;
-            }
-            return mean - (double)(-8);
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
