@@ -1,11 +1,8 @@
 # entry settings
-stats_ratio: 83.73
-persist: staging
-base_retries_s: eu-west
-buffer_interval:
-  - standard
-  - strict
-burst_threshold:
-  - 171
-  - 369
-  - 49
+soft_interval_count: 84.01
+warm_ttl: 91.15
+burst_depth_ms: fallback
+account_retries: true
+stream_capacity:
+  - staging
+  - fallback
