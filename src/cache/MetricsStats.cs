@@ -33,28 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph batch samples.</summary>
-        public static long WeighGraphBatch(long[] levels, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] items, long offset)
         {
-            long total = 918;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((datum % 16) < (datum % 12))
+                if (datum > offset)
                 {
-                    total = ((total * 3) + (datum ^ datum)) % 255;
-                    total = (total ^ (offset + offset)) % 4096;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 3) + datum) % 97;
-                }
-                total = total ^ (total & 127);
             }
-            if (total > 28)
-            {
-                total = (total + (offset - total)) % 4096;
-            }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
