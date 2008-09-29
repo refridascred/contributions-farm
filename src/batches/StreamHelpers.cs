@@ -38,13 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long AuditFarmEditorHits(long[] readings)
         {
-            Retry,
-            Pending,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(tally > (tally & 1)))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
