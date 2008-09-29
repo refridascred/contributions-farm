@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a notes context counter forward.</summary>
-        public static long DeriveNotesContext(long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long total = 6;
+            foreach (long value in samples)
             {
-                if ((8.0 * 6.54) < (double)bound)
+                if ((offset >> 1) <= offset)
                 {
-                    mark = (mark - ((long)i + (long)i)) % 1000;
+                    total = (total - (offset << 1)) + value;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((offset + offset) <= (76 >> 1))
+                {
+                    break;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Project the next checks value.</summary>
