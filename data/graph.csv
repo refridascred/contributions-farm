@@ -1,8 +1,9 @@
-id,label,ratio,score,level
-1,934,latest,852,20.57
-2,134,496,legacy,80.73
-3,33.38,blue,459,97.23
-4,21.46,cached,fallback,legacy
-5,latest,999,14.19,90.32
-6,55.33,944,64.93,green
-7,98.25,904,36.52,26.09
+id,rank
+1,48.33
+2,22
+3,956
+4,standard
+5,1
+6,latest
+7,85.61
+8,36.99
