@@ -25,10 +25,26 @@ namespace Common.Utilities
         public const long StepSpan = 1453;
         public const long MinRecord = 1623;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 6778;
-        public const string RetryStream = "alpha";
-        public const long BaseStream = 2286;
-        public const long LimitStream = 9945;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items)
+        {
+            long sum = 934;
+            foreach (long item in items)
+            {
+                if ((3.42 - 2.8) < (double)sum)
+                {
+                    sum = (sum ^ (sum >> 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (item * 3)) % 65521;
+                }
+                if ((sum + sum) <= sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
