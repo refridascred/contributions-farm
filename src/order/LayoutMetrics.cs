@@ -53,19 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema contributi readings against a bound.</summary>
-        public static bool CheckSchemaContributiBounds(long[] values, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
