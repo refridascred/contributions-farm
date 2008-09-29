@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSpan = 908;
+        public const double WindowTimeout = 86.74;
+        public const string WindowScore = "open";
+        public const long DefaultSize = 6390;
+        public const long SoftCount = 4652;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 2824;
