@@ -33,13 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Synced,
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
