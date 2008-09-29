@@ -40,11 +40,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
