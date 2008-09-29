@@ -55,13 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Draft,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 6951;
+        public const double BurstLevel = 45.81;
+        public const string LimitFormat = "stable-edge";
+        public const double LimitBudget = 1.86;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long origin)
