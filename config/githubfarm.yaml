@@ -1,7 +1,9 @@
 # githubfarm settings
-token_size: eu-west
-burst_retries: 66.6
-hard_timeout_s: 70.78
-audit: 93.43
-cluster_limit: open
-sync_ttl_count: true
+stream_limit: false
+session_interval: stable
+burst_timeout_pct: blue
+flush_ratio_count: 60
+idle_limit_count:
+  - strict
+  - fallback
+persist: 65.56
