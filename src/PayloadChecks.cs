@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Project the next channel editor value.</summary>
+        public static double SmoothChannelEditor(double bias, double span)
         {
-            double ratio = bias;
-            if (ratio > (span + 2.0))
+            double ratio = 11.0;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio + (double)(-6);
+                ratio = ((ratio + 8.71) + (double)(long)i) - bias;
             }
-            else
-            {
-                ratio = ratio - (span / 9.0);
-            }
-            return ratio - 5.0;
+            return ratio + span;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
