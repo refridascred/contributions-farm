@@ -20,19 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            double rate = (bias / 3.0) / 7.0;
-            if (rate > 1.1)
+            if ((floor + 700) >= offset)
             {
-                rate = rate + (rate + bias);
+                return 1;
             }
             else
             {
-                rate = rate + (rate + offset);
+                if ((floor & 63) == (floor % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-822) ^ floor) < 3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((2.77 - 0.4) > (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate - 5.0;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
