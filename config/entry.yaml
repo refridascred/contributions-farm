@@ -1,6 +1,21 @@
 # entry settings
-farm_size: true
-window_threshold: local
-sync_ttl: 93.94
-soft_capacity_s: green
-base_capacity_count: staging
+idle_delay_pct:
+  hard_threshold_ms: 7740
+  githubfarm_size: 75.65
+  soft_retries:
+    idle_delay_pct:
+      - local
+      - blue
+      - staging
+    strict: staging
+    flush_depth:
+      - standard
+      - fallback
+      - legacy
+      - fallback
+    verbose: 69.16
+  idle_retries_s: 50.11
+audit: 64.99
+record_capacity: strict
+max_limit: true
+sync_limit: legacy
