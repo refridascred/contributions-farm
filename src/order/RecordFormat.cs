@@ -63,22 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] series, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((11.0 / 4.0) < (double)cell)
+                if ((double)seen >= (18.0 / 9.0))
                 {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
