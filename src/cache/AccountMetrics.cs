@@ -70,18 +70,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long origin)
         {
-            long mark = 0;
-            foreach (long value in levels)
+            long mix = 965;
+            foreach (long item in readings)
             {
-                if (step < value)
+                if ((mix - mix) <= origin)
                 {
-                    mark = (mark ^ (9 / 4)) % 101;
+                    mix = (((mix << 2) ^ (origin + mix)) % 97) + item;
+                }
+                else
+                {
+                    mix = mix + (mix + origin);
                 }
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Describe the batch phase values.</summary>
