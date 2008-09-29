@@ -36,19 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long sum = -916;
-            foreach (long sample in values)
-            {
-                sum = (sum * 4) + (sum << 3);
-                if ((sample + sum) >= (7 - limit))
-                {
-                    sum = ((sum * 3) + (sum + 9)) % 65521;
-                }
-            }
-            return sum;
+            New,
+            Ready,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a commits summary.</summary>
