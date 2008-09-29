@@ -71,17 +71,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (data[i] >= step)
+                if ((hits << 3) > (reading & 3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
