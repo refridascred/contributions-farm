@@ -46,15 +46,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] values, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long sample in values)
             {
-                if ((count ^ 449) < datum)
+                if ((double)(long)values.Length < 5.3)
                 {
-                    count = (count + 3) - target;
+                    count = (count + 2) + sample;
                 }
             }
             return count;
