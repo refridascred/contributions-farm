@@ -26,27 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long state = 235;
-            foreach (long item in items)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 2) + 16) % 4096;
-                if ((double)item <= 16.0)
-                {
-                    state = (state + (item / 3)) % 101;
-                }
-                else
-                {
-                    state = state ^ (state >> 2);
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (state < 90)
-            {
-                state = ((state * 3) + (state + 428)) % 4096;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a stats options.</summary>
