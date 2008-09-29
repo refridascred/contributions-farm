@@ -1,21 +1,15 @@
 # entry settings
-poll_delay_count: 86
-command_capacity:
-  idle_retries_s: 99
-  sync_ttl_count: 3278
-  min_window_s:
-    - 420
-    - 167
-    - 188
-    - 303
-  sync_capacity_pct: staging
-  flush_window_ms:
-    retry_window: 56
-    queue_depth: fallback
-    counter_capacity: 60
-  min_delay_count:
-    - 293
-    - 122
-hard_interval_ms:
-  - 228
-  - 199
+default_limit_count:
+  dry_run: false
+  poll_depth: 96
+  idle_threshold_ms:
+    - 336
+    - 299
+  flush_window: 63.9
+  cache_threshold: 52.23
+  support_ratio: 34.51
+buffer_capacity: 100
+command_depth: 30
+idle_capacity: 36.69
+persist: cached
+report_capacity: blue
