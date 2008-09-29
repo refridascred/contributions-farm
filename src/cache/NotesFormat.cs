@@ -41,12 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Failed,
-            Dropped,
-            Retry,
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
