@@ -1,5 +1,6 @@
 {
-  "batch_retries": 97.97,
-  "soft_window_count": "open",
-  "retry_interval_s": 250
+  "base_retries_ms": 8010,
+  "enabled": "fallback",
+  "audit": 50,
+  "cache_interval_pct": "strict"
 }
