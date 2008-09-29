@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long offset)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long DigestChecksCommits(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long state = 8;
+            foreach (long datum in levels)
             {
-                if (cell != offset)
+                if ((state << 2) == (state / 4))
                 {
-                    stale = false;
+                    state = state - (593 + datum);
+                }
+                if ((state / 3) > (datum / 5))
+                {
+                    state = (state ^ (932 % 10)) % 1000;
+                }
+                if ((state / 4) > datum)
+                {
                     break;
                 }
             }
-            return stale;
+            if (state > (-27))
+            {
+                state = (state ^ (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Find the first record layout entry that matches the target.</summary>
