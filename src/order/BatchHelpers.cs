@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((cell + cell) >= cell)
+                if ((origin * 2) != (origin >> 3))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
