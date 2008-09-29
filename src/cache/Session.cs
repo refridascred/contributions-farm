@@ -23,12 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == target)
+                if (data[i] >= floor)
                 {
                     return (long)i;
                 }
