@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch already series from a seed.</summary>
-        public static long StepBatchAlready(long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long total = 212;
+            foreach (long entry in series)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                total = ((total - total) % 65521) - entry;
             }
-            return sum;
+            if (total > 773)
+            {
+                total = (total + (total / 5)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
