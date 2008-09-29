@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a context command value against two limits.</summary>
-        public static long BucketContextCommand(long offset, long offset2)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long offset3 = offset + offset2;
-            if ((2 ^ offset2) < (offset3 * 3))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset < (offset3 / 7)) || (3.8 >= (double)offset2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset3 < (offset2 << 3))
+                    if ((levels[i] ^ levels[j]) > 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of command channel readings.</summary>
