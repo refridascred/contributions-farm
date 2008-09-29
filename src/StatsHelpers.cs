@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double floor)
-        {
-            double ratio = bias / 9.0;
-            if (ratio >= (floor / 7.0))
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (floor - floor)) - (double)(long)i;
-            }
-            return ratio + (ratio - floor);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "staging-1";
+        public const long MinBudget = 1591;
+        public const long IdleSpan = 5177;
+        public const double MinRatio = 18.95;
+        public const long LimitEntry = 3100;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] items)
