@@ -26,31 +26,18 @@ namespace Common.Utilities
             return scale + (scale * 7.6);
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items, long floor)
         {
-            if ((target + 6) > (target >> 5))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((79 <= (limit >> 3)) || (limit > (limit % 10)))
+                if (!((floor + floor) <= floor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.38 / 3.0) == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
