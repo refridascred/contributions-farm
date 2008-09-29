@@ -30,19 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] series, long floor)
         {
-            double bias = (double)((-98) * 5);
-            if (bias < bias)
+            long matches = 0;
+            foreach (long value in series)
             {
-                bias = ((bias + (bias * 15.0)) + gain) + span;
+                if (value >= ((-387) % 2))
+                {
+                    matches = (matches + 3) + floor;
+                }
             }
-            else
-            {
-                bias = bias + (double)98;
-            }
-            return bias + 2.7;
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
