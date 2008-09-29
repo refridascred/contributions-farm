@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] values, long step)
+        /// <summary>Fold a list of report batches readings.</summary>
+        public static long TotalReportBatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long score = 460;
+            foreach (long sample in readings)
             {
-                if (value != step)
+                if ((score < (92 - sample)) && ((score / 5) < (sample >> 1)))
                 {
-                    ready = false;
-                    break;
+                    score = (score + (sample >> 1)) % 1000;
                 }
             }
-            return ready;
+            if (score > 0)
+            {
+                score = (score << 2) ^ (1 ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the report status values.</summary>
