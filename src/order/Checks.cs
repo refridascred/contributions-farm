@@ -58,21 +58,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count account cache pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCacheCount(long[] data)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Draft,
+            Ready,
+            Done,
         }
     }
 }
