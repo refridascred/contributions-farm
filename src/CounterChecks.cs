@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            Paused,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
