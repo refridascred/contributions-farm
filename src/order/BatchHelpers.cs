@@ -22,25 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window notes input into a small class.</summary>
-        public static long BucketWindowNotes(long bound, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items, long offset)
         {
-            long prev = bound ^ origin;
-            if (origin <= (prev << 3))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.41 - 14.0) <= (double)bound)
+                if (offset >= (0 + 37))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
