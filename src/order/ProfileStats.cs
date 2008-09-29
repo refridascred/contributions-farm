@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels)
-        {
-            long result = 28;
-            foreach (long sample in levels)
-            {
-                if ((sample + (long)levels.Length) <= (sample << 2))
-                {
-                    result = (result + (result - 60)) % 65521;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 84.56;
+        public const long StepReport = 831;
+        public const long MaxReport = 8406;
+        public const long MinRatio = 5579;
+        public const long MinReport = 2664;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
