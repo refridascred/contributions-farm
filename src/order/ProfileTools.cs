@@ -14,21 +14,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count layout support pairs that satisfy a relation.</summary>
-        public static long CompareLayoutSupportCount(long[] levels)
+        /// <summary>Classify a schema session pair into a bucket.</summary>
+        public static long BucketSchemaSession(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target & 255) == (231 - 8))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (6.99 >= (double)target)
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
