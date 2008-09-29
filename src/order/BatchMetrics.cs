@@ -59,13 +59,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Locate a batch checks reading by value.</summary>
+        public static long LookupBatchChecksIndex(long[] data, long offset)
         {
-            Synced,
-            Draft,
-            Locked,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
