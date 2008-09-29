@@ -32,11 +32,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "standard";
-        public const long StepRecord = 9759;
-        public const long BatchRecord = 5030;
-        public const long MaxRecord = 527;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseBudget = "open";
+        public const string SoftProfile = "open-v2";
+        public const long BaseTimeout = 900;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricMatches(long[] series, long target)
