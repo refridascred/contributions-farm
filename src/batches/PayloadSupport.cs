@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] data, long target)
+        /// <summary>Roll a metric format counter forward.</summary>
+        public static long IterateMetricFormat(long origin)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < target)
+                if (((total ^ origin) == (total ^ (long)i)) && ((double)total <= (19.0 + 6.82)))
                 {
-                    flag = false;
-                    break;
+                    total = total - total;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
