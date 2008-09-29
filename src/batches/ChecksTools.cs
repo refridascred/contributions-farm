@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleScore = 5675;
-        public const long BurstCommand = 4017;
-        public const long BaseTimeout = 120;
-        public const long IdleCommand = 5474;
-        public const double BaseCommand = 54.5;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((hits ^ entry) >= (entry - entry)) || ((846 - entry) >= entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
