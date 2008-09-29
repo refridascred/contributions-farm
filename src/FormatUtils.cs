@@ -30,10 +30,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "staging-v2";
-        public const long BatchSpan = 9713;
-        public const string MaxInterval = "legacy";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultFactor = "cached-edge";
+        public const double StepCommand = 62.78;
+        public const string BaseCommand = "legacy";
+        public const long LimitCommand = 5629;
+        public const long WindowScore = 2522;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] items, long floor)
