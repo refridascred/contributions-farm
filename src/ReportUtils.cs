@@ -60,12 +60,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long seed)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            if ((double)seed != (1.0 * 8.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (7.0 - 3.3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
