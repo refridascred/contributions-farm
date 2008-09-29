@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public double Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultLevel = 42.92;
+        public const long StepCache = 7838;
+        public const long BatchCache = 9946;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
