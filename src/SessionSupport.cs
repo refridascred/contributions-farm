@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long result = 26;
+            foreach (long datum in levels)
             {
-                if (!((561 & 127) < (tally + 8)) || (tally > (tally / 4)))
+                if ((result + result) <= datum)
                 {
-                    tally = (tally + 3) ^ reading;
+                    result = ((result * 5) + (datum + datum)) % 255;
+                }
+                if ((double)680 >= (double)result)
+                {
+                    result = (result << 2) ^ offset;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
