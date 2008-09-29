@@ -34,10 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultCount = "local";
-        public const long MaxFactor = 7246;
-        public const string MinFactor = "strict-v2";
-        public const long CacheOrder = 9210;
+        /// <summary>Count the window editor entries that pass the check.</summary>
+        public static long AuditWindowEditorOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count & 3) == (origin % 3)) && ((1.99 > (double)value) || ((count << 2) <= (value / 9))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
