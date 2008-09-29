@@ -43,16 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry - (carry % 10)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two tools measurements.</summary>
