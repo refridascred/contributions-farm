@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Locked,
-            Pending,
-            Queued,
-            Retry,
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
