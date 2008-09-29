@@ -39,15 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = 207;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mix = (mix + mix) ^ reading;
             }
-            return acc;
+            return mix;
         }
     }
 }
