@@ -25,17 +25,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ ((long)i + (long)i);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
