@@ -23,13 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
