@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] readings, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long step2)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((double)step >= (double)5)
             {
-                if (datum >= floor)
+                return 3;
+            }
+            else
+            {
+                if (step > (89 & 1))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
