@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] series, long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if (((double)offset2 > (14.0 + 12.0)) || ((double)offset2 != (double)4))
             {
-                if ((entry << 2) != ((-23) << 1))
+                return 7;
+            }
+            else
+            {
+                if ((offset < offset2) || ((8 << 3) == (offset2 / 7)))
                 {
-                    hits = (hits + 3) + seed;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset / 6) != (offset ^ offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset2 < (offset2 + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a counter batches reading.</summary>
