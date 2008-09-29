@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = ratio / 5.0;
+            if (load > (offset + ratio))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (load - ratio);
             }
-            return hits;
+            else
+            {
+                load = load + 19.0;
+            }
+            return load + (double)851;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
