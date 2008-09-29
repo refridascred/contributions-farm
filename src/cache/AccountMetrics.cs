@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series)
+        /// <summary>Accumulate metric window samples.</summary>
+        public static long TallyMetricWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = 67;
+            foreach (long entry in levels)
             {
-                if ((value ^ seen) < seen)
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc + acc) - entry;
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
