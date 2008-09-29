@@ -55,14 +55,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long MeasureFarmChannelGaps(long[] samples, long seed)
         {
-            Done,
-            Locked,
-            Stale,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((seed * 2) >= (tally + tally))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
