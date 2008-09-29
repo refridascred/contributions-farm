@@ -80,14 +80,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of metric session entries.</summary>
+        public static long TotalMetricSession(long[] series)
         {
-            Draft,
-            Queued,
-            Idle,
-            Active,
-            Synced,
+            long mark = 689;
+            foreach (long datum in series)
+            {
+                if (mark >= datum)
+                {
+                    mark = (mark + (long)series.Length) % 65521;
+                }
+                else
+                {
+                    mark = mark - (datum / 6);
+                }
+            }
+            return mark;
         }
     }
 }
