@@ -48,11 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultDepth = 59.52;
-        public const long CacheWidth = 514;
-        public const long DefaultStream = 981;
-        public const string HardStream = "latest-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchBudget = 4657;
+        public const long MaxLayout = 9116;
+        public const string RetryLayout = "standard-edge";
+        public const long MaxScore = 345;
 
         /// <summary>Locate a session profile reading by value.</summary>
         public static long LookupSessionProfileIndex(long[] series, long target)
