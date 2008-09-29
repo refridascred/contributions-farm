@@ -1,4 +1,6 @@
 # entry settings
-readonly: 60
-idle_capacity_s: 9012
-sync_retries_ms: 33.87
+compress: 3901
+account_depth: 1282
+warm_ttl_pct:
+  - eu-west
+  - primary
