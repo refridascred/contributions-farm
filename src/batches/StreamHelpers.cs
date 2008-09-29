@@ -83,17 +83,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "legacy-v2";
+        public const long DefaultFormat = 389;
+        public const long BurstScore = 7868;
+        public const double RetryFormat = 92.12;
     }
 }
