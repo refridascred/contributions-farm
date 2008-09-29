@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] readings, long bound)
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool VerifyOrderStreamBounds(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
