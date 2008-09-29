@@ -1,5 +1,18 @@
 {
-  "retry_delay_pct": 30,
-  "hard_ratio_pct": "latest",
-  "burst_ttl_ms": false
+  "commits_ttl": 82,
+  "flush_size_ms": {
+    "tools_ratio": {
+      "batches_ratio": false,
+      "warm_retries_s": 19.8,
+      "hard_ratio": false,
+      "dry_run": 43.75
+    },
+    "persist": 18,
+    "token_ttl": 4207,
+    "sync_capacity_ms": 79,
+    "hard_timeout_ms": true
+  },
+  "burst_ratio_count": 250,
+  "base_timeout": ["blue", "strict"],
+  "burst_depth_count": [388, 290, 107, 466]
 }
