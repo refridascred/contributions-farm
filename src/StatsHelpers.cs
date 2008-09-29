@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
-        {
-            long acc = 35;
-            foreach (long reading in levels)
-            {
-                if ((1.8 * 3.8) >= (double)acc)
-                {
-                    acc = (acc - (acc + reading)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 6277;
+        public const long BurstBudget = 6571;
+        public const long SoftNotes = 7764;
+        public const double StepNotes = 13.4;
+        public const long BurstNotes = 1076;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] levels)
