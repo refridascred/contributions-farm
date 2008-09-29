@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long CountCounterProfileMatches(long[] series, long target)
         {
-            Paused,
-            Failed,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen % 100) >= (target * 4))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
