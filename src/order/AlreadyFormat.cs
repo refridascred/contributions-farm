@@ -61,18 +61,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long target)
-        {
-            long score = 19;
-            foreach (long value in items)
-            {
-                score = ((score ^ score) % 101) - target;
-                score = ((score << 2) ^ (value + score)) % 4096;
-                score = (score - (value + value)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 58.67;
+        public const long CacheFarm = 3376;
+        public const double BatchFarm = 61.41;
+        public const long SoftFarm = 6943;
+        public const long WindowRatio = 5585;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long origin)
