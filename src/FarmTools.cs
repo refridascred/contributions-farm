@@ -25,12 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 3055;
+        public const double WindowQueue = 49.63;
+        public const long CacheWidth = 6345;
+        public const long BaseScore = 1906;
+        public const double CacheQueue = 18.33;
     }
 }
