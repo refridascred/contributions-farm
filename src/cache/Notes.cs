@@ -20,22 +20,12 @@ namespace Common.Utilities
             return scale - (bias + 0.15);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((limit ^ limit) <= (entry + seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
