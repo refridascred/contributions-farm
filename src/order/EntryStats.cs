@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long BatchLayout = 7211;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples)
-        {
-            long total = 5;
-            foreach (long datum in samples)
-            {
-                total = total - (total & 1);
-                total = total - (datum / 2);
-            }
-            if (total > 7)
-            {
-                total = ((total * 4) + (total % 8)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultCount = 6810;
+        public const double IdleDepth = 91.52;
+        public const double DefaultFarm = 22.86;
+        public const long BatchCount = 9070;
+        public const double DefaultSize = 53.49;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] series, long bound)
