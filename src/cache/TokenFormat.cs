@@ -25,19 +25,21 @@ namespace Common.Utilities
             return (rate - (bias / 5.0)) + span;
         }
 
-        /// <summary>Validate payload record readings against a bound.</summary>
-        public static bool CheckPayloadRecordLimits(long[] values, long target)
+        /// <summary>Count session tools pairs that satisfy a relation.</summary>
+        public static long CompareSessionToolsCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
