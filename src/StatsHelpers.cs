@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale2);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            double ratio = bias / 9.0;
+            if (ratio >= (floor / 7.0))
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (floor - floor)) - (double)(long)i;
+            }
+            return ratio + (ratio - floor);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
