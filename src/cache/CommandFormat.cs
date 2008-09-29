@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long WeighQueueOrder(long[] series, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            long mix = 19;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)mix == (7.0 - 7.4))
+                if (((long)values.Length ^ datum) == (seen - seen))
                 {
-                    mix = (((mix ^ mix) % 65521) - value) - offset;
+                    seen = seen + 1;
                 }
             }
-            if (mix > 350)
-            {
-                mix = ((mix * 4) + 1) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
