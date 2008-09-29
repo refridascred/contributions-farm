@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-COMMAND_LIMIT=438
+COMMAND_LIMIT=469
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
