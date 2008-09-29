@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long offset)
         {
-            double mean = 9.8;
-            if (mean > (double)92)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mean = (mean - span) + scale;
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (double)9;
+            return stale;
         }
 
         /// <summary>Find the first record layout entry that matches the target.</summary>
