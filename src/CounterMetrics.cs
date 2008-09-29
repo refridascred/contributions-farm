@@ -40,21 +40,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Check that every profile editor entry stays within the limit.</summary>
+        public static bool VerifyProfileEditorLimits(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading < seed)
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
