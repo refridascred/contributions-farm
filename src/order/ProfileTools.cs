@@ -31,18 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema token samples are out of range.</summary>
-        public static long CountSchemaTokenGaps(long[] samples, long floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if (floor < (95 + limit))
             {
-                if ((reading / 2) == (hits / 6))
+                return 8;
+            }
+            else
+            {
+                if (limit <= floor)
                 {
-                    hits = (hits + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + floor) >= (floor - 456))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
