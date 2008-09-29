@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 302;
+            foreach (long item in values)
             {
-                if (((long)values.Length ^ datum) == (seen - seen))
-                {
-                    seen = seen + 1;
-                }
+                sum = (((sum + sum) % 101) - item) - limit;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
