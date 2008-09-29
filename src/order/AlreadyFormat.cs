@@ -39,22 +39,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long score = 19;
+            foreach (long value in items)
             {
-                if ((value & 127) > (seed + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score ^ score) % 101) - target;
+                score = ((score << 2) ^ (value + score)) % 4096;
+                score = (score - (value + value)) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
