@@ -48,35 +48,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of editor metrics readings.</summary>
-        public static long ScoreEditorMetrics(long[] series, long seed)
+        /// <summary>Classify a queue format pair into a bucket.</summary>
+        public static long GradeQueueFormat(long floor, long floor2)
         {
-            long carry = -1;
-            foreach (long cell in series)
+            if ((floor % 16) == (floor2 + floor))
             {
-                if ((seed + 21) == (carry + 5))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) >= (floor2 + floor2))
                 {
-                    carry = ((carry * 5) + 1) % 4096;
-                    break;
-                }
-                if ((seed / 4) <= seed)
-                {
-                    carry = (carry + (cell / 8)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    carry = (carry + cell) % 1000;
-                }
-                if ((cell / 3) < (792 & 127))
-                {
-                    break;
+                    if (floor2 > 2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.2 + 3.17) > (double)floor2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (carry < 41)
-            {
-                carry = (carry * 4) + (seed - carry);
-            }
-            return carry % 4096;
         }
     }
 }
