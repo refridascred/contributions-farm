@@ -54,17 +54,11 @@ namespace Common.Utilities
         public const long RetryMetrics = 7632;
         public const long StepMetrics = 9290;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
