@@ -1,12 +1,8 @@
 # entry settings
-audit:
-  - latest
-  - strict
-  - eu-west
-  - standard
-base_interval:
-  - local
-  - blue
-  - open
-  - edge
-max_timeout: 31.89
+idle_depth_pct:
+  - 391
+  - 127
+  - 211
+  - 149
+warm_interval_s: latest
+warm_threshold: latest
