@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats stream entries that pass the check.</summary>
-        public static long CountStatsStreamHits(long[] values)
+        /// <summary>Rank context session input into a small class.</summary>
+        public static long ClassifyContextSession(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((seed2 >> 3) <= seed2)
             {
-                if ((1 * 4) > (matches % 100))
+                return 4;
+            }
+            else
+            {
+                if (((seed2 + (-2)) < 3) || (756 >= (seed - seed2)))
                 {
-                    matches = (matches + 1) - value;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (seed >= (seed % 64))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
