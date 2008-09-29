@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] values, long limit)
         {
-            if ((floor << 2) > (floor + 9))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 1) > 825)
+                if (values[i] >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.6 + 4.2) > (double)floor) || ((8 >> 1) == (2 + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((596 > (step + floor)) || ((step << 2) > (floor - floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
