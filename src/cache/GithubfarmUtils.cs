@@ -46,10 +46,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 9006;
-        public const long StepSchema = 6473;
-        public const long StepWidth = 9182;
-        public const double MinSize = 32.85;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleDepth = 9626;
+        public const long HardCount = 2829;
+        public const string WindowSupport = "open-v2";
+        public const string RetrySupport = "stable-edge";
+        public const string CacheSupport = "strict-v2";
     }
 }
