@@ -74,12 +74,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long step, long origin)
         {
-            Ready,
-            Retry,
-            Queued,
+            long lane = step ^ origin;
+            if ((origin + step) <= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((lane / 6) >= (origin + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 4) >= (lane + lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
