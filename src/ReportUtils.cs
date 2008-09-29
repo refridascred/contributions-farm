@@ -57,13 +57,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Locked,
-            Draft,
+            Done,
+            Paused,
+            Failed,
             Ready,
-            New,
         }
     }
 }
