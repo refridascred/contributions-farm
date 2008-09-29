@@ -35,14 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data, long limit)
         {
-            Ready,
-            Retry,
-            Pending,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ matches) <= (matches % 100))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a commits record.</summary>
