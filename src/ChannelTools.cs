@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const long DefaultSize = 6390;
         public const long SoftCount = 4652;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 2824;
-        public const long HardToken = 4674;
-        public const double StepToken = 65.43;
-        public const long MaxToken = 9685;
-        public const long BaseToken = 7755;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
