@@ -43,10 +43,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultLevel = "local-edge";
-        public const long IdleSpan = 5800;
-        public const long LimitContext = 4137;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data, long bound)
+        {
+            long score = 478;
+            foreach (long value in data)
+            {
+                if ((double)score < (4.58 / 9.0))
+                {
+                    score = score + (bound ^ value);
+                }
+                if ((5.5 / 9.0) >= (double)value)
+                {
+                    break;
+                }
+            }
+            if (score > 999)
+            {
+                score = (score << 2) ^ (score / 4);
+            }
+            return score;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitDepth = 4960;
