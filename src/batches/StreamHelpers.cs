@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double offset)
         {
-            Idle,
-            Failed,
-            Dropped,
+            double rate = (bias / 3.0) / 7.0;
+            if (rate > 1.1)
+            {
+                rate = rate + (rate + bias);
+            }
+            else
+            {
+                rate = rate + (rate + offset);
+            }
+            return rate - 5.0;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
