@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((9.99 + 19.0) != (double)(long)i)
-                {
-                    mark = (mark + mark) % 4096;
-                    mark = ((mark * 4) + (mark - bound)) % 4096;
-                }
-                if ((bound >= ((long)i - 24)) && ((mark / 2) < ((long)i << 1)))
-                {
-                    mark = mark - (bound << 3);
-                }
-                if ((double)bound <= (9.92 * 18.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            double bias = span;
+            return (bias - span) + gain;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
