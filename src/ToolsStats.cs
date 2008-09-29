@@ -63,18 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] data, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((795 % 10) < offset)
+                if (sample >= origin)
                 {
-                    matches = (matches + 1) + item;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
