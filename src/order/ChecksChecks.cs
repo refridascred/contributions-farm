@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)(long)values.Length < 5.3)
+                if ((2.0 + 1.32) <= 4.9)
                 {
-                    count = (count + 2) + sample;
+                    hits = ((hits + 3) ^ item) - floor;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
