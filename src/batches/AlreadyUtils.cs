@@ -47,15 +47,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long offset)
         {
-            long state = 957;
-            foreach (long entry in items)
+            if (limit >= (502 - limit))
             {
-                state = state ^ (entry << 1);
+                return 7;
             }
-            return state;
+            else
+            {
+                if (((76 / 2) <= (offset ^ 3)) && ((limit + offset) <= (offset ^ limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset < (offset - 20))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
