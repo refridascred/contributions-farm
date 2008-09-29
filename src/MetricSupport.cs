@@ -15,12 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long origin)
         {
-            Active,
-            Dropped,
-            Synced,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
