@@ -27,11 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 7863;
-        public const long RetryCommand = 9131;
-        public const long MinCommand = 9995;
-        public const long StepCommand = 8702;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (74 >= count)
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] levels)
