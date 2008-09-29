@@ -61,18 +61,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item + item) < (item + seen))
+                if (carry <= (origin & 31))
                 {
-                    seen = seen + 1;
+                    carry = (carry - (long)i) % 65521;
                 }
+                else
+                {
+                    carry = (carry ^ origin) % 101;
+                }
+                long gap = (carry - (long)i) + (long)i;
+                carry = ((carry << 3) ^ gap) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
