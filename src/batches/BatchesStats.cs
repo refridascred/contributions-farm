@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 4565;
-        public const long WindowChecks = 5162;
-        public const long WindowRatio = 1249;
-        public const string DefaultDepth = "primary-v2";
-        public const long HardChecks = 7537;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((step * 4) <= step)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
