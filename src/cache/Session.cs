@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
-        {
-            long acc = 278;
-            foreach (long reading in readings)
-            {
-                if ((8.73 + 0.35) >= (double)reading)
-                {
-                    acc = ((acc << 2) ^ (reading - acc)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 9507;
+        public const string MinCount = "alpha-1";
+        public const string LimitDepth = "local";
+        public const long BaseTimeout = 7106;
 
         /// <summary>Accumulate record graph samples.</summary>
         public static long WeighRecordGraph(long[] values, long target)
