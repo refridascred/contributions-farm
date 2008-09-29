@@ -1,12 +1,28 @@
 # support settings
+strict:
+  - local
+  - green
+  - primary
+dry_run:
+  - 165
+  - 280
+  - 172
+  - 199
+farm_threshold:
+  - 173
+  - 261
+  - 119
+  - 342
+cache_retries_ms: false
 compress:
-  - stable
-  - eu-west
-  - stable
-  - legacy
-tools_threshold:
-  dry_run: 1024
-  min_capacity: true
-  base_ttl: true
-  verbose: 9314
-strict: true
+  default_depth_count:
+    sync_retries: 6722
+    enabled: 13
+    hard_depth_ms: 64.56
+  contributi_threshold:
+    max_delay_s: 67
+    audit: legacy
+    idle_limit: true
+    compress: false
+  soft_size: eu-west
+contributi_window: 5208
