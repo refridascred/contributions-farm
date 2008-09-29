@@ -34,26 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long score = 478;
-            foreach (long value in data)
-            {
-                if ((double)score < (4.58 / 9.0))
-                {
-                    score = score + (bound ^ value);
-                }
-                if ((5.5 / 9.0) >= (double)value)
-                {
-                    break;
-                }
-            }
-            if (score > 999)
-            {
-                score = (score << 2) ^ (score / 4);
-            }
-            return score;
+            Ready,
+            Retry,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a commits record.</summary>
