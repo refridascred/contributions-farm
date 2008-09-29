@@ -23,22 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 28;
+            foreach (long sample in levels)
             {
-                if (((count % 97) == (offset / 2)) && !((count + count) < ((-8) + 92)))
+                if ((sample + (long)levels.Length) <= (sample << 2))
                 {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result + (result - 60)) % 65521;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Adjust a support reading.</summary>
