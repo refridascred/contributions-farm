@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session already samples are out of range.</summary>
-        public static long CountSessionAlreadyMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits ^ value) < (value ^ 167))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "alpha-v2";
+        public const string BatchEntry = "alpha";
+        public const long MinEntry = 6580;
+        public const long CacheEntry = 8034;
+        public const double StepTimeout = 80.94;
     }
 }
