@@ -31,39 +31,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long seed)
-        {
-            long span = step + seed;
-            if (!((span >> 5) < step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (seed << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed <= (step % 24)) || (step <= span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step * 3) > (step + span)) || (seed >= 512))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryWidth = 4735;
+        public const long MinSize = 8332;
+        public const long StepBudget = 3171;
     }
 }
