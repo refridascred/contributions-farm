@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftTimeout = 3782;
-        public const long SoftScore = 2191;
-        public const long MaxInterval = 72;
-        public const double MinScore = 75.34;
-        public const long CacheGithubfarm = 5228;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
