@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long StepBudget = 3865;
         public const string MaxRatio = "open-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 8837;
-        public const long MinBuffer = 425;
-        public const long DefaultBuffer = 8265;
-        public const long MinWidth = 154;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLevel = 6463;
+        public const double SoftLayout = 95.83;
+        public const double HardScore = 69.71;
+        public const long WindowScore = 4521;
+        public const long LimitLevel = 6403;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
