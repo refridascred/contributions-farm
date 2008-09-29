@@ -33,39 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            long step = seed - limit;
-            if (((8 + limit) <= seed) && ((step - (-731)) != (seed / 7)))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed + limit) == (235 << 1)) && ((limit ^ step) != (limit / 5)))
+                if ((40 < datum) && ((hits ^ 5) != (hits & 31)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (2.88 - 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed < (seed ^ limit)) && (step > (9 % 60)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of report token readings.</summary>
