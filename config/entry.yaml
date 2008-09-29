@@ -1,4 +1,5 @@
 # entry settings
-payload_timeout: false
-default_timeout_ms: 60
-burst_ratio_count: eu-west
+flush_capacity_ms: standard
+session_limit: 1024
+checks_threshold: cached
+counter_threshold: false
