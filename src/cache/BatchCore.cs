@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string StepChecks = "local-v2";
         public const long BaseChecks = 4864;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Closed,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 39.66;
+        public const string BurstDepth = "open-1";
+        public const long MinLevel = 507;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
