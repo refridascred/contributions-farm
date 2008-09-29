@@ -1,5 +1,22 @@
 {
-  "default_limit_ms": "open",
-  "retry_capacity": ["primary", "blue", "edge", "stable"],
-  "persist": true
+  "verbose": "open",
+  "dry_run": 500,
+  "default_ratio_s": {
+    "poll_window_pct": 24.61,
+    "route_timeout": 69,
+    "context_limit": "strict"
+  },
+  "soft_capacity_s": {
+    "compress": [492, 479, 186],
+    "readonly": {
+      "schema_depth": [434, 306, 182, 273],
+      "strict": 34.64,
+      "audit": false,
+      "hard_depth": 46,
+      "batch_limit": "strict"
+    },
+    "counter_window": false,
+    "cache_limit": [95, 400],
+    "poll_timeout": 85.34
+  }
 }
