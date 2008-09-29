@@ -1,5 +1,5 @@
 {
-  "retry_threshold_count": "strict",
-  "idle_depth_count": 7.65,
-  "sync_ttl_s": "latest"
+  "layout_depth": "blue",
+  "farm_timeout": 6164,
+  "persist": 82.54
 }
