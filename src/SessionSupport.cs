@@ -27,9 +27,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 17.99;
-        public const long MinBatches = 7656;
-        public const string CacheBatches = "open-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7820;
+        public const long BurstChecks = 6036;
+        public const string DefaultScore = "local-v2";
+        public const double StepChecks = 14.42;
+        public const double HardLevel = 10.88;
     }
 }
