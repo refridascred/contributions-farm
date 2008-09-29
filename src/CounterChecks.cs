@@ -23,35 +23,28 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes farm value against two limits.</summary>
-        public static long GradeNotesFarm(long seed, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long target2)
         {
-            if ((seed - origin) >= (origin - seed))
+            if (9.2 >= (double)target2)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (origin > 894)
+                if ((double)74 < (double)target)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin ^ origin) == (origin << 2))
+                    if (9.9 > (double)target)
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if (((origin - seed) <= (seed - 8)) && ((6.76 - 8.5) <= (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 7;
                     }
                 }
             }
