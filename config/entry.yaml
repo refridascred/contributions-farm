@@ -1,15 +1,7 @@
 # entry settings
-entry_retries: true
-commits_capacity:
-  checks_ttl:
-    - green
-    - primary
-  readonly: 1024
-  idle_limit_s: stable
-  verbose: standard
-  batches_ratio: 64
-  retry_delay: latest
-payload_limit: 21.68
-cache_depth_pct: primary
-hard_timeout: 15
-poll_retries: primary
+compress:
+  - open
+  - standard
+contributi_size: 45.77
+base_size: 47.43
+soft_ratio: 42
