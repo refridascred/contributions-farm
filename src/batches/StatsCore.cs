@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            double load = scale - (scale - scale);
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Define session limits and defaults.</summary>
