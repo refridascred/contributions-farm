@@ -34,11 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "alpha-v2";
-        public const string BatchEntry = "alpha";
-        public const long MinEntry = 6580;
-        public const long CacheEntry = 8034;
-        public const double StepTimeout = 80.94;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long origin2)
+        {
+            long lane = origin ^ origin2;
+            if ((origin >> 3) > (origin / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((0.45 - 9.9) != (double)origin2) && ((double)origin != (3.1 - 20.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin >= (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin2 != (8.9 * 13.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
