@@ -55,21 +55,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double bias2)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            double rate = (double)4 - 4.44;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)step != (9.45 + 11.0))
-                {
-                    total = ((total * 3) + step) % 1000;
-                    continue;
-                }
-                total = (total - (total + step)) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                rate = ((rate + rate) + (double)(long)i) + bias;
             }
-            return total;
+            return rate + bias2;
         }
     }
 }
