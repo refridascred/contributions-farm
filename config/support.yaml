@@ -1,17 +1,7 @@
 # support settings
-retry_depth:
-  retry_timeout: false
-  retry_capacity_pct: latest
-  strict:
-    buffer_ttl: 2892
-    batch_retries: false
-    burst_interval_s:
-      - 246
-      - 438
-    poll_limit_pct: 30
-persist: staging
-queue_size: 51.75
-command_retries:
+retry_timeout_count: open
+hard_ratio_ms: primary
+burst_size: local
+retry_ttl_pct:
+  - cached
   - staging
-  - eu-west
-audit: 49.54
