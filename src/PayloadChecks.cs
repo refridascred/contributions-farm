@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long SoftFilter = 8174;
         public const long BurstFilter = 8049;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCount = 4744;
-        public const long CacheCluster = 9388;
-        public const string BatchCluster = "staging-1";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] data, long seed)
