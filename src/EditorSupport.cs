@@ -40,15 +40,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the window batch series from a seed.</summary>
-        public static long DeriveWindowBatch(long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            double drift = span;
+            if (drift < 5.0)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                drift = drift + (double)42;
             }
-            return carry;
+            return drift - (scale - span);
         }
 
         /// <summary>Hold a tools entry.</summary>
