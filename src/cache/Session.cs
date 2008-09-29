@@ -40,19 +40,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < bound)
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
