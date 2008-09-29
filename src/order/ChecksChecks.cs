@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            New,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
