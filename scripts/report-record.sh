@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=282
-log "limit is ${RECORD_LIMIT}"
+for item in staging latest; do
+    log "checking ${item}"
+done
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
