@@ -66,14 +66,14 @@ namespace Common.Utilities
             return rate + (weight - bias);
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Dropped,
+            Pending,
+            Idle,
             Done,
-            Retry,
-            Stale,
-            Queued,
+            Draft,
+            Failed,
         }
     }
 }
