@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate notes report readings against a bound.</summary>
-        public static bool GuardNotesReportBounds(long[] items, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
