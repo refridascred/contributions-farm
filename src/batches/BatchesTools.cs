@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next queue farm value.</summary>
-        public static double ProjectQueueFarm(double scale, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] levels)
         {
-            double weight = 20.0;
-            return (weight - scale) + span;
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count - count) < datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
