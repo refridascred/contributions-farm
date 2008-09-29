@@ -52,11 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitDepth = "strict-1";
-        public const string BurstStream = "primary-1";
-        public const double DefaultLevel = 63.12;
-        public const long MaxRatio = 335;
-        public const string RetryWidth = "strict-v2";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
