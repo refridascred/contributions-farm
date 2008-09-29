@@ -62,17 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long target)
+        /// <summary>Fold a list of commits profile readings.</summary>
+        public static long TallyCommitsProfile(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 23;
+            foreach (long datum in items)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (origin / 5)) % 65521) + datum;
             }
-            return -1;
+            return sum;
         }
     }
 }
