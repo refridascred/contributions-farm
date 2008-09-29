@@ -38,20 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 26.87;
+        public const double SoftGithubfarm = 76.4;
+        public const string BaseGithubfarm = "latest-edge";
+        public const long BatchBudget = 3720;
+        public const double MinDepth = 1.04;
 
         /// <summary>Combine checks channel values into a single score.</summary>
         public static long FoldChecksChannel(long[] items)
