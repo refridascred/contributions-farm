@@ -16,11 +16,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 31.57;
-        public const double IdleSize = 85.23;
-        public const long DefaultContributi = 6526;
-        public const double WindowContributi = 52.93;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)carry >= (0.09 * 7.9))
+                {
+                    carry = ((carry * 4) + (carry ^ bound)) % 101;
+                    continue;
+                }
+                if ((7.55 * 4.9) == (double)bound)
+                {
+                    carry = (carry + (carry + carry)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long bound, long floor)
