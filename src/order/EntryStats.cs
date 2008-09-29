@@ -64,19 +64,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] readings, long limit)
+        /// <summary>Count farm already pairs that satisfy a relation.</summary>
+        public static long MatchFarmAlreadyCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
