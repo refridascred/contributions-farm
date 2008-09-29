@@ -27,19 +27,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] readings, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Failed,
+            Closed,
         }
     }
 }
