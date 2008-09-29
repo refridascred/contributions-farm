@@ -1,9 +1,25 @@
 # entry settings
-stream_window: stable
-dry_run: 1.59
-verbose: 11.57
-poll_delay_ms:
-  - legacy
-  - legacy
-  - stable
-  - open
+warm_ratio_s: staging
+stats_ratio: 35.44
+compress:
+  default_delay_pct: 1039
+  graph_window: edge
+  flush_capacity:
+    min_ttl: true
+    cache_threshold: blue
+    metrics_window: 68
+    idle_threshold_ms: 99
+    enabled: 68.56
+    flush_limit_ms: cached
+  route_size: green
+  audit:
+    cache_retries: true
+    poll_size_count: false
+    persist: false
+    profile_ttl: standard
+    burst_limit: standard
+    cache_timeout: 1024
+  retry_size: strict
+soft_ttl_s: true
+base_capacity_count: 30
+max_capacity_ms: false
