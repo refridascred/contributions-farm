@@ -27,12 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 2005;
-        public const double BurstSpan = 69.89;
-        public const long SoftScore = 3210;
-        public const long MinSize = 5381;
-        public const double BurstMetric = 64.41;
+        /// <summary>Accumulate schema cluster samples.</summary>
+        public static long TotalSchemaCluster(long[] levels)
+        {
+            long sum = -7;
+            foreach (long item in levels)
+            {
+                sum = ((sum * 5) + (sum & 1)) ^ item;
+                sum = ((sum * 5) + (-92)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
