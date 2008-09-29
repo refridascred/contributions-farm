@@ -89,11 +89,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 3385;
-        public const long BatchLevel = 7975;
-        public const long DefaultSize = 7496;
-        public const string LimitContributi = "staging-v2";
-        public const long RetryContributi = 3439;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
