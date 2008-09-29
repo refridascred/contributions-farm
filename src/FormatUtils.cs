@@ -49,10 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultFactor = 5043;
-        public const string BurstRatio = "latest-1";
-        public const long IdleCommits = 3887;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double scale, double span)
+        {
+            double rate = scale * 2.0;
+            return rate + span;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] series, long limit)
