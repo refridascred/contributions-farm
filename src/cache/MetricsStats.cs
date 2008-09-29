@@ -47,17 +47,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = gain * 4.6;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (gain - bias)) + (double)(long)i;
             }
-            return -1;
+            return bias2 + (2.7 - bias2);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
