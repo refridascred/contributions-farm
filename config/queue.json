@@ -1,6 +1,8 @@
 {
-  "counter_delay": "strict",
-  "burst_capacity_ms": "latest",
-  "sync_interval": "legacy",
-  "soft_capacity": 22.77
+  "graph_window": "strict",
+  "default_threshold": true,
+  "contributi_limit": 1,
+  "soft_ttl": 500,
+  "soft_retries_ms": ["edge", "local", "edge", "green"],
+  "dry_run": [374, 31]
 }
