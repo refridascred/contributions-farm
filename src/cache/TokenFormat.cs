@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits + hits) > (hits * 2))
+                if (series[i] >= floor)
                 {
-                    hits = (hits + 2) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
