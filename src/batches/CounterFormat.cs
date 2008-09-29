@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight + (double)487;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = 7.0;
+            if (load > (2.67 + load))
             {
-                if ((entry - entry) < matches)
-                {
-                    matches = matches + 2;
-                }
+                load = load - bias;
             }
-            return matches;
+            else
+            {
+                load = load + (double)346;
+            }
+            return load + (bias + offset);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
