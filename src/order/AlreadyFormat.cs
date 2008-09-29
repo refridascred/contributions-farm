@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((floor << 2) > (floor + 9))
             {
-                if ((reading & 63) <= (reading * 5))
+                return 7;
+            }
+            else
+            {
+                if ((step & 1) > 825)
                 {
-                    hits = hits + 1;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((3.6 + 4.2) > (double)floor) || ((8 >> 1) == (2 + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((596 > (step + floor)) || ((step << 2) > (floor - floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
