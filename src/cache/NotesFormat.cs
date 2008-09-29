@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9754;
-        public const long BaseWindow = 621;
-        public const string DefaultFactor = "strict-v2";
-        public const string CacheWindow = "strict-1";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long BucketLayout(long target, long target2)
