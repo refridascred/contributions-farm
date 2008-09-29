@@ -39,21 +39,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch stream readings.</summary>
-        public static long OverlapBatchStreamCount(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = sum ^ (bound + (long)i);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum << 3) ^ sum) % 101) ^ (long)i2;
+                    sum = (sum * 4) + sum;
                 }
+                if (!!((sum + bound) >= bound))
+                {
+                    sum = ((sum << 3) ^ (bound - bound)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
