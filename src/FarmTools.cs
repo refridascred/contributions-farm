@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string LimitWidth = "standard-1";
         public const long SoftBatches = 5699;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit report session readings against a rule.</summary>
+        public static long AuditReportSessionHits(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((((entry ^ entry) > (entry + hits)) || ((entry & 1) > (entry << 2))) && ((2.0 + 10.0) >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter stats.</summary>
