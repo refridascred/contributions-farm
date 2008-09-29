@@ -66,19 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] data, long limit)
         {
-            double mean = (weight / 8.0) * 19.0;
-            if (mean < offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + mean;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean + weight);
-            }
-            return mean - 1.06;
+            return -1;
         }
     }
 }
