@@ -1,4 +1,5 @@
 # support settings
-cache_size_pct: legacy
-payload_timeout: primary
-min_depth: false
+warm_threshold: cached
+warm_timeout_pct: true
+default_window_ms: 79
+token_window: legacy
