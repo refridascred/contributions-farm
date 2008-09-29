@@ -45,19 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
         {
-            long carry = 49;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry - (carry % 60)) ^ sample) + floor;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 86)
-            {
-                carry = ((carry << 3) ^ (carry % 100)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
