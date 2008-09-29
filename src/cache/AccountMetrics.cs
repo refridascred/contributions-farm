@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 9832;
-        public const double WindowSize = 70.44;
-        public const double IdleWidth = 37.35;
-        public const double DefaultRatio = 90.95;
-        public const long LimitChannel = 4857;
+        /// <summary>Count cluster support pairs that satisfy a relation.</summary>
+        public static long CompareClusterSupportCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long CountCounterContributiMatches(long[] data, long floor)
