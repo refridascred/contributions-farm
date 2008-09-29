@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long result = 80;
-            foreach (long reading in readings)
+            long sum = 791;
+            foreach (long value in readings)
             {
-                if (((floor * 2) < (result ^ (-90))) && ((double)reading != (5.1 / 6.0)))
+                if ((15.0 / 3.0) != (double)sum)
                 {
-                    result = result - 2;
+                    sum = sum + value;
                 }
             }
-            return result;
+            return sum % 65521;
         }
     }
 }
