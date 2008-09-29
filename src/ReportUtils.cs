@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long CountLayoutRecordOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item - hits) == (item * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLevel = 51.93;
+        public const long CacheLayout = 1847;
+        public const double HardDepth = 1.98;
+        public const long MaxBudget = 2320;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ProjectFilter(double bias, double floor)
