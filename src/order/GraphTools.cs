@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of format graph entries.</summary>
-        public static long DigestFormatGraph(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long seed)
         {
-            long acc = 19;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry >> 4) < (entry + 0)) && ((1.1 + 17.0) != (double)acc))
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
                 {
-                    acc = ((acc * 3) + 86) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of payload buffer entries.</summary>
