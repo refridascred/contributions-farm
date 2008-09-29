@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const long BatchNotes = 6172;
         public const long DefaultWidth = 9713;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items, long step)
+        /// <summary>Blend two account order measurements.</summary>
+        public static double SmoothAccountOrder(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double load = offset;
+            if (load <= (double)623)
             {
-                if ((value >> 3) >= (2 * 4))
-                {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + (offset - offset);
             }
-            return seen;
+            return load - rate;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
