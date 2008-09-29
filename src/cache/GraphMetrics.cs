@@ -43,11 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowScore = 1775;
-        public const long HardPayload = 4822;
-        public const double RetryTimeout = 16.23;
-        public const long MinCount = 860;
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] levels, long floor)
