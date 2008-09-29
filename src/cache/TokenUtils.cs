@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long total = 212;
-            foreach (long entry in series)
-            {
-                total = ((total - total) % 65521) - entry;
-            }
-            if (total > 773)
-            {
-                total = (total + (total / 5)) % 1000;
-            }
-            return total % 4096;
+            Pending,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
