@@ -112,20 +112,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (anchor > (anchor / 7))
+                if ((value * 4) >= (value % 97))
                 {
-                    anchor = anchor + (long)i;
-                    anchor = (anchor + (floor / 3)) % 4096;
+                    count = count + 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
     }
 }
