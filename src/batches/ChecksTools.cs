@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Locked,
-            Ready,
-            Draft,
-            Retry,
+            Done,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
