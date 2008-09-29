@@ -48,11 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((limit + 632) > (mix - limit))
+                {
+                    mix = ((mix << 2) ^ (mix % 12)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
