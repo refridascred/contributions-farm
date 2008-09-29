@@ -19,20 +19,17 @@ namespace Common.Utilities
         public const string CacheBuffer = "local-1";
         public const string HardTimeout = "standard-1";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long step)
         {
-            long acc = 19;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = (sample - (long)series.Length) & 127;
-                acc = (acc << 3) ^ (slot - slot);
-                if (6.68 < (double)acc)
+                if (readings[i] >= step)
                 {
-                    acc = (acc ^ 154) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
