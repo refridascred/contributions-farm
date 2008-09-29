@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Dropped,
-            Active,
-            Stale,
-            Closed,
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window readings.</summary>
