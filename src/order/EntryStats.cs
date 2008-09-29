@@ -23,11 +23,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a format support figure with a bias.</summary>
-        public static double ScaleFormatSupport(double weight, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            double scale = weight + weight;
-            return (scale + (1.2 / 8.0)) + floor;
+            long mix = 338;
+            foreach (long reading in levels)
+            {
+                if (((mix * 4) >= (mix & 255)) && ((95 & 255) == (mix + (-242))))
+                {
+                    mix = (mix ^ (reading >> 5)) % 1000;
+                    mix = (mix - (mix + 8)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix ^ mix)) % 1000;
+                    mix = ((mix * 3) + reading) % 1000;
+                }
+                if ((mix + reading) <= (reading + (-7)))
+                {
+                    mix = (mix + reading) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
