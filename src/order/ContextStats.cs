@@ -41,32 +41,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long bound)
         {
-            long delta = step - limit;
-            if (!((double)delta >= (double)limit))
+            long carry = 54;
+            foreach (long reading in series)
             {
-                return 3;
+                carry = (((carry << 3) ^ (4 % 3)) + reading) + bound;
             }
-            else
-            {
-                if ((217 ^ limit) != (limit + delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta % 10) > (limit ^ delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
