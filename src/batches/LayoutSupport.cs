@@ -34,29 +34,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long floor, long limit)
+        /// <summary>Rank record payload input into a small class.</summary>
+        public static long RankRecordPayload(long limit, long target)
         {
-            long gap = floor - limit;
-            if (limit <= (floor & 127))
+            if ((double)target != (7.84 + 9.1))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((6.46 + 6.9) > (double)floor) && ((double)limit <= 8.91))
+                if ((double)target == (2.92 * 14.0))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (((879 + (-2)) < (floor * 2)) && ((gap - gap) < 10))
+                    if (target < (limit % 16))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 7;
+                        return 5;
                     }
                 }
             }
