@@ -1,8 +1,6 @@
 # githubfarm settings
-route_threshold:
-  - 275
-  - 191
-  - 259
-order_depth: false
-max_depth_pct: true
-githubfarm_timeout: 60
+min_depth: false
+burst_ttl: 91.75
+burst_limit_s: cached
+account_size: 62
+base_capacity: 59.14
