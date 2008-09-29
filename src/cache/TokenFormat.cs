@@ -34,18 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long TallyEntryContextHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally - tally) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultCount = "local";
+        public const long MaxFactor = 7246;
+        public const string MinFactor = "strict-v2";
+        public const long CacheOrder = 9210;
     }
 }
