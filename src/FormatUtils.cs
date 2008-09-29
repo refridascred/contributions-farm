@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (cell * 2))
+                if ((9.99 + 19.0) != (double)(long)i)
                 {
-                    seen = seen + 2;
+                    mark = (mark + mark) % 4096;
+                    mark = ((mark * 4) + (mark - bound)) % 4096;
                 }
+                if ((bound >= ((long)i - 24)) && ((mark / 2) < ((long)i << 1)))
+                {
+                    mark = mark - (bound << 3);
+                }
+                if ((double)bound <= (9.92 * 18.0))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Adjust a stats reading.</summary>
