@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items, long floor)
+        /// <summary>Validate cluster batch readings against a bound.</summary>
+        public static bool ValidateClusterBatchRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((3.1 - 10.0) >= (double)floor)
+                if (datum >= target)
                 {
-                    matches = (matches + 1) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
