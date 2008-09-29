@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] values, long seed)
         {
-            Stale,
-            New,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ (-737)) <= 0)
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
