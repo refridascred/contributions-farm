@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 1) < (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
