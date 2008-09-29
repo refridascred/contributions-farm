@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter support samples.</summary>
-        public static long TallyFilterSupport(long[] series, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long result = 1;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset >> 3) <= (129 ^ entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result ^ offset;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
