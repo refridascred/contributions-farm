@@ -80,19 +80,14 @@ namespace Common.Utilities
         public const long BaseInterval = 3474;
         public const long CacheSize = 4063;
 
-        /// <summary>Iterate the batch cache series from a seed.</summary>
-        public static long DeriveBatchCache(long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((limit / 6) == ((-61) * 3))
-                {
-                    mark = ((mark << 3) ^ (limit - mark)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Ready,
+            Active,
+            Idle,
+            Failed,
+            Queued,
         }
     }
 }
