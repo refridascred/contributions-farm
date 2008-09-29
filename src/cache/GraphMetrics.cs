@@ -31,14 +31,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long target)
         {
-            Paused,
-            Pending,
-            Queued,
-            Stale,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
