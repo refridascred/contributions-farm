@@ -14,17 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (origin - 4)) % 255;
-                state = (state + (origin + state)) % 101;
-                state = ((state * 3) + (long)i) % 65521;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
