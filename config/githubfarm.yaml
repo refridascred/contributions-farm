@@ -1,6 +1,4 @@
 # githubfarm settings
-min_depth: false
-burst_ttl: 91.75
-burst_limit_s: cached
-account_size: 62
-base_capacity: 59.14
+default_window_s: 50.71
+commits_capacity: staging
+max_size: 67.16
