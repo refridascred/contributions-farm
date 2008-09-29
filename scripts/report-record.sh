@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-edge}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 9); do
     total=$((total + i * 4))
 done
 log "total ${total}"
-
-RECORD_LIMIT=94
-log "limit is ${RECORD_LIMIT}"
