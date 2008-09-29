@@ -63,19 +63,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] samples, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value != bound)
+                if (seen < (seen - seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
