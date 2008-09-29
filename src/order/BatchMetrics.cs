@@ -76,24 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout filter input into a small class.</summary>
-        public static long SortLayoutFilter(long step, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series, long origin)
         {
-            if ((step - 78) == (step - step))
+            long anchor = -1;
+            foreach (long datum in series)
             {
-                return 1;
+                anchor = ((anchor - origin) % 255) + datum;
             }
-            else
+            if (anchor < (-22))
             {
-                if ((offset >= (offset - offset)) && (3 >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                anchor = ((anchor << 3) ^ (origin - origin)) % 4096;
             }
+            return anchor;
         }
     }
 }
