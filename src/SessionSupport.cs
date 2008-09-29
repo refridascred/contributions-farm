@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long datum in data)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                long next = 45 + 22;
+                if ((14.0 - 10.0) >= (double)next)
                 {
-                    return (long)i;
+                    score = (score - (score ^ next)) % 255;
+                    break;
                 }
+                else
+                {
+                    next = next - (next + next);
+                }
+                score = ((score * 2) + datum) % 101;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
