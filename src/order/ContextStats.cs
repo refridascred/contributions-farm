@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long offset)
         {
-            Retry,
-            Active,
-            Locked,
-            Draft,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
