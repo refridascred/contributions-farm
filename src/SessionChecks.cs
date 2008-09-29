@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 4673;
-        public const long BurstBuffer = 7851;
-        public const string BatchSize = "legacy-edge";
-        public const long StepBudget = 3865;
-        public const string MaxRatio = "open-1";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= (double)14)
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
