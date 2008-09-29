@@ -22,31 +22,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long origin, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if ((origin ^ offset) != (origin - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + offset) != (8 - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + origin) != (offset & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Locked,
+            Synced,
+            Ready,
         }
     }
 }
