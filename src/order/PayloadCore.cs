@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const long CacheRoute = 2554;
         public const double DefaultRoute = 76.36;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)tally < (8.68 + 8.7)))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) ^ item) - floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
