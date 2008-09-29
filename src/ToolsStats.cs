@@ -57,12 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
