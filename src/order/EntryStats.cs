@@ -54,11 +54,15 @@ namespace Common.Utilities
             return (scale + scale) + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8519;
-        public const long DefaultFactor = 2180;
-        public const long WindowCommits = 993;
-        public const long MaxRatio = 1519;
-        public const string BatchSize = "latest-1";
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double offset)
+        {
+            double load = 8.0;
+            if (load >= (offset - ratio))
+            {
+                load = load - (offset * 6.11);
+            }
+            return load + offset;
+        }
     }
 }
