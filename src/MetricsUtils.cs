@@ -16,12 +16,17 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the profile format series from a seed.</summary>
+        public static long IterateProfileFormat(long target)
         {
-            Draft,
-            Paused,
-            Ready,
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total ^ total;
+                total = (total << 2) ^ (target / 4);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a token stats.</summary>
