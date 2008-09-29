@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long slot = origin ^ seed;
+            if (((seed * 4) < ((-35) << 1)) && ((slot + 215) > origin))
             {
-                if (datum < target)
+                return 3;
+            }
+            else
+            {
+                if (origin < (origin + seed))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (3.3 / 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a queue stream value against two limits.</summary>
