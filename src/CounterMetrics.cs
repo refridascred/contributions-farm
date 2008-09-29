@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = step - origin;
+            if (!((83 / 2) != (cur + step)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step >> 5) > (35 & 127))
                 {
-                    if ((series[i] - series[j]) != 13)
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 5) == (step >> 4))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
