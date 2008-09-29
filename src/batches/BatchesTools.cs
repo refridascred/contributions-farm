@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] items, long limit)
+        /// <summary>Find the first batches contributi entry that matches the target.</summary>
+        public static long SeekBatchesContributiIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.32 - 2.8) < (double)limit)
+                if (levels[i] == target)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
