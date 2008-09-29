@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] samples)
         {
-            long total = 35;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                total = (((total * 2) + (limit ^ 4)) % 101) - datum;
+                if (count >= (count >> 2))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
