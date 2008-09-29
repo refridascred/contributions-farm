@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "latest-edge";
-        public const long SoftWidth = 8884;
-        public const long LimitGraph = 6096;
-        public const string CacheTimeout = "alpha";
+        /// <summary>Blend two session cache measurements.</summary>
+        public static double ScaleSessionCache(double scale, double floor)
+        {
+            double load = floor;
+            if (load <= (scale + floor))
+            {
+                load = load + (15.0 / 9.0);
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (load / 9.0);
+        }
 
         /// <summary>Roll a commits farm counter forward.</summary>
         public static long DeriveCommitsFarm(long offset)
