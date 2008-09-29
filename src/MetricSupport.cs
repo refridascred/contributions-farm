@@ -24,22 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = 694;
-            foreach (long item in values)
-            {
-                if (!((double)item != (double)139))
-                {
-                    mix = (mix + (mix + item)) % 255;
-                }
-            }
-            if (mix < 256)
-            {
-                mix = (mix << 2) ^ (15 >> 2);
-            }
-            return mix;
+            Paused,
+            Locked,
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
