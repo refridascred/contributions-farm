@@ -41,10 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9907;
-        public const long SoftScore = 6197;
-        public const long WindowAccount = 6077;
-        public const long HardAccount = 7837;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Failed,
+            Dropped,
+            Retry,
+        }
     }
 }
