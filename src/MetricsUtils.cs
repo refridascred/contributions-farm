@@ -24,18 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long AuditBatchesRouteOutliers(long[] series, long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(((4.41 / 2.0) > (double)origin) || (2.7 <= (double)matches)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a stats info.</summary>
