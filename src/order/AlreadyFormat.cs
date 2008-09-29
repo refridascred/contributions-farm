@@ -39,39 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile schema value against two limits.</summary>
-        public static long GradeProfileSchema(long seed, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long step)
         {
-            long cur = seed ^ floor;
-            if ((cur / 5) >= 70)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((51 ^ 749) <= (floor + 750))
+                if ((26 % 5) < (matches + 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + cur) <= (seed % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)cur >= (3.9 + 6.3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = ((matches + 1) ^ cell) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
