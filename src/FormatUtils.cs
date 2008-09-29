@@ -50,14 +50,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long origin)
         {
-            Draft,
-            Pending,
-            Ready,
-            New,
-            Dropped,
+            long result = 58;
+            foreach (long sample in samples)
+            {
+                result = ((result * 4) + (origin + origin)) ^ sample;
+                result = result + (0 ^ result);
+            }
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
