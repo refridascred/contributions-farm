@@ -37,18 +37,11 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long BaseTimeout = 900;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((target % 24) >= 9)
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
