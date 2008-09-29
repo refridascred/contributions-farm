@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 7916;
         public const long MaxMetrics = 8194;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double floor)
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long CombineMetricsEntry(long[] readings)
         {
-            double weight = 4.51;
-            if (weight > floor)
+            long mix = 5;
+            foreach (long datum in readings)
             {
-                weight = (weight + 0.6) - ratio;
+                mix = mix + (mix & 15);
+                if ((datum - mix) > (8 >> 3))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight * 3.12)) + (double)(long)i;
-            }
-            return weight + (double)594;
+            return mix;
         }
 
         /// <summary>Describe the account state values.</summary>
