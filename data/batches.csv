@@ -1,7 +1,7 @@
-id,state,level,score
-1,green,64.84,962
-2,911,887,eu-west
-3,legacy,927,86
-4,23.22,96.91,6.53
-5,eu-west,740,green
-6,15.12,91.27,232
+id,level,score,owner
+1,744,147,823
+2,cached,75.86,blue
+3,589,784,fallback
+4,cached,stable,883
+5,stable,17.44,78.5
+6,54,909,9.55
