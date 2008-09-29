@@ -31,11 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2231;
-        public const string CacheQueue = "strict";
-        public const long SoftQueue = 6362;
-        public const double StepQueue = 95.17;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Pending,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long bound)
