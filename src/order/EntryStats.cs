@@ -38,11 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a filter farm reading by value.</summary>
