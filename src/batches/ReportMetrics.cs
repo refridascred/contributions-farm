@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const double MaxQueue = 67.78;
         public const string BaseQueue = "standard-1";
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long origin)
         {
-            Locked,
-            Retry,
-            Pending,
-            Draft,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
