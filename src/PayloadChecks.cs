@@ -63,31 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter layout value against two limits.</summary>
-        public static long RankFilterLayout(long offset, long origin)
+        /// <summary>Match up graph metric samples.</summary>
+        public static long MatchGraphMetricCount(long[] values)
         {
-            if ((33 + (-50)) < origin)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 5) == (offset / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (origin >> 3))
+                    if ((values[i] - values[j]) < 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
