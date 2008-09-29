@@ -20,32 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a contributi support pair into a bucket.</summary>
-        public static long ClassifyContributiSupport(long seed, long seed2)
-        {
-            if (seed >= 91)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) <= 159)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.6 + 11.0) != (double)seed2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9093;
+        public const double MinQueue = 48.6;
+        public const long LimitWidth = 2536;
+        public const long StepLevel = 6798;
+        public const long MaxQueue = 1430;
 
         /// <summary>Count context record pairs that satisfy a relation.</summary>
         public static long CompareContextRecordCount(long[] data)
