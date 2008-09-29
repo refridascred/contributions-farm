@@ -1,7 +1,5 @@
 {
-  "format_timeout": false,
-  "base_retries": ["open", "primary", "stable", "primary"],
-  "idle_retries_pct": "legacy",
-  "window_threshold": false,
-  "session_delay": [333, 324, 325]
+  "batch_interval_count": [343, 108, 236],
+  "warm_ttl_ms": "green",
+  "githubfarm_limit": "local"
 }
