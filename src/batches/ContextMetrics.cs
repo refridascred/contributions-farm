@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 5544;
-        public const long DefaultLevel = 7279;
-        public const long BurstSpan = 2422;
-        public const long BaseRatio = 4510;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings)
+        {
+            long total = 544;
+            foreach (long cell in readings)
+            {
+                if ((total % 97) != (cell << 3))
+                {
+                    total = ((total * 5) + (cell % 10)) % 255;
+                }
+            }
+            if (total < 398)
+            {
+                total = ((total << 3) ^ (total * 5)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
