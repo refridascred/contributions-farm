@@ -67,17 +67,21 @@ namespace Common.Utilities
         public const long BurstDepth = 172;
         public const long DefaultSpan = 5094;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long offset)
+        /// <summary>Match up checks buffer samples.</summary>
+        public static long CompareChecksBufferCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
