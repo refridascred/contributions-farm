@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 6079;
-        public const long BaseBuffer = 5331;
-        public const long WindowBuffer = 9498;
-        public const string IdleBuffer = "standard";
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsOutliers(long[] items)
