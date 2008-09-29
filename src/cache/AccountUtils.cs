@@ -37,11 +37,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 38.92;
-        public const long MinCluster = 8130;
-        public const long BatchFactor = 901;
-        public const long CacheCluster = 8073;
-        public const long MinTimeout = 167;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
