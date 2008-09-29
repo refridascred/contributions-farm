@@ -47,10 +47,19 @@ namespace Common.Utilities
             return weight - 14.0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardRatio = 57.76;
-        public const string RetryOrder = "open-edge";
-        public const double BatchBudget = 68.4;
-        public const long IdleTimeout = 4723;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (79 - anchor)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
