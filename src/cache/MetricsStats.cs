@@ -54,25 +54,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long delta = seed ^ offset;
-            if (!(offset >= seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 4) != (seed + delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
