@@ -46,13 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Draft,
-            Paused,
-            Idle,
-            Failed,
+            Dropped,
+            Ready,
+            Active,
         }
     }
 }
