@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowScore = 2.03;
-        public const double StepRatio = 24.69;
-        public const long DefaultChannel = 451;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long floor, long limit)
