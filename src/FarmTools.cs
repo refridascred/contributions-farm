@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const long RetryBudget = 2005;
         public const long MaxFactor = 2478;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items, long target)
         {
-            Active,
-            Stale,
-            Failed,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (double)count)
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
     }
 }
