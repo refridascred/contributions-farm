@@ -43,26 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(5 > result))
-                {
-                    long lane = (428 / 5) + (origin + origin);
-                    result = (result + (lane - lane)) % 97;
-                }
-                result = result + origin;
-                if (((-783) + result) < (origin + origin))
-                {
-                    result = (result - 875) % 97;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultLevel = "local-edge";
+        public const long IdleSpan = 5800;
+        public const long LimitContext = 4137;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitDepth = 4960;
