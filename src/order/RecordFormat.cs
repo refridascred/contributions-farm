@@ -52,12 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Active,
+            Stale,
             Done,
-            Retry,
+            Paused,
         }
     }
 }
