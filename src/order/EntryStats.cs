@@ -65,11 +65,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double bias, double offset)
+        /// <summary>Locate a filter farm reading by value.</summary>
+        public static long SeekFilterFarmIndex(long[] items, long limit)
         {
-            double scale = offset / 9.0;
-            return (scale + scale) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
