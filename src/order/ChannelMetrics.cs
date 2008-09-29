@@ -18,18 +18,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long acc = 350;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!((target & 127) < (item % 97)))
+                if ((double)tally <= (5.06 - 5.5))
                 {
-                    acc = (acc - item) % 255;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
