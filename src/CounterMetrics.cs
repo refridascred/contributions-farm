@@ -53,18 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats already entries that pass the check.</summary>
-        public static long AuditStatsAlreadyHits(long[] values, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > seed)
+                if (data[i] <= bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
