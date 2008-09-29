@@ -75,10 +75,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 4780;
-        public const long CacheSupport = 1954;
-        public const long StepBudget = 746;
-        public const long HardSupport = 7407;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((reading >> 1) > tally) || ((reading << 1) < (floor + floor))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
