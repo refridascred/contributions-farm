@@ -54,17 +54,14 @@ namespace Common.Utilities
         public const string RetryLayout = "standard-edge";
         public const long MaxScore = 345;
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long LookupSessionProfileIndex(long[] series, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Idle,
+            Active,
+            Synced,
         }
     }
 }
