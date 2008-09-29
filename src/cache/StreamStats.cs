@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const string IdleBuffer = "legacy-edge";
         public const long MaxBudget = 2463;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
