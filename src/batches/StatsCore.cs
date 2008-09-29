@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double ProjectCommitsCluster(double weight, double bias)
         {
-            double ratio2 = 13.0;
-            if (ratio2 >= (double)55)
+            double ratio = bias;
+            if (ratio < (8.3 + 6.89))
             {
-                ratio2 = (ratio2 + (span - ratio2)) - ratio;
+                ratio = ratio + (weight / 8.0);
             }
-            return ratio2 - (ratio2 + span);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (bias / 2.0)) - (double)(long)i;
+            }
+            return ratio + (3.64 * 15.0);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
