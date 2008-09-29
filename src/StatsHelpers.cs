@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
