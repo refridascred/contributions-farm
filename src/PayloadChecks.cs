@@ -64,13 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
