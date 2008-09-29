@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long score = 76;
-            foreach (long cell in values)
-            {
-                score = (score - 50) % 97;
-                if (cell > 26)
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of channel support readings.</summary>
