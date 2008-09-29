@@ -47,12 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the command route series from a seed.</summary>
+        public static long SeriesCommandRoute(long limit)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long result = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count farm already pairs that satisfy a relation.</summary>
