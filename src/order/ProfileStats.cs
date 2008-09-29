@@ -32,12 +32,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 84.56;
-        public const long StepReport = 831;
-        public const long MaxReport = 8406;
-        public const long MinRatio = 5579;
-        public const long MinReport = 2664;
+        /// <summary>Measure how many filter metrics samples are out of range.</summary>
+        public static long TallyFilterMetricsHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item < (9 / 9)) && (((hits >> 1) <= (item + item)) && (item > 512)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long origin, long origin2)
