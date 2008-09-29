@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long DefaultContributi = 6526;
         public const double WindowContributi = 52.93;
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long CountCounterContributiMatches(long[] data, long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count + count) <= count)
-                {
-                    count = ((count + 2) - cell) + floor;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of report entries.</summary>
