@@ -48,17 +48,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
