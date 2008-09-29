@@ -20,10 +20,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 2601;
-        public const long MaxSpan = 5901;
-        public const double BurstLevel = 10.88;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 3) ^ (floor - total)) % 255;
+                if (floor <= total)
+                {
+                    total = (total * 4) + (total * 5);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
