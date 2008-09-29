@@ -63,15 +63,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter command readings.</summary>
-        public static long ScoreCounterCommand(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long origin)
         {
-            long anchor = 18;
-            foreach (long value in items)
+            if ((offset << 1) >= (offset + origin))
             {
-                anchor = anchor + (value / 3);
+                return 0;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((offset >> 2) < (offset - 822))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)7 != (double)offset) || (origin > offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
