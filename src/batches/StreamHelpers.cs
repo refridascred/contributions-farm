@@ -47,10 +47,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultLevel = 79.48;
-        public const double MinSize = 92.26;
-        public const long LimitSize = 1077;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextMatches(long[] readings)
