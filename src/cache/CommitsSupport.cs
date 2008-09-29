@@ -20,31 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks context samples.</summary>
-        public static long TotalChecksContext(long[] values, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] series, long origin)
         {
-            long carry = 3;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 11; i++)
+                if (cell > origin)
                 {
-                    carry = (carry - ((long)i & 31)) % 101;
+                    flag = false;
+                    break;
                 }
-                if (((1.27 / 3.0) <= (double)origin) || ((origin + cell) < cell))
-                {
-                    carry = (carry << 2) ^ (cell ^ 42);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry - carry);
-                }
-                carry = (carry + ((long)values.Length & 15)) % 101;
             }
-            if (carry < 291)
-            {
-                carry = (carry << 3) ^ (origin + origin);
-            }
-            return carry % 97;
+            return flag;
         }
 
         /// <summary>Describe the cluster level values.</summary>
