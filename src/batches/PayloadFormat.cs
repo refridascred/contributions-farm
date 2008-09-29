@@ -26,12 +26,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] data, long bound)
         {
-            Synced,
-            Failed,
-            Done,
+            long mark = 4;
+            foreach (long datum in data)
+            {
+                if (datum < (datum & 3))
+                {
+                    mark = ((mark * 5) + bound) % 4096;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = ((mark << 2) ^ (bound & 255)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
