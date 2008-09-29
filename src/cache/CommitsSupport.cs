@@ -93,18 +93,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double gain = (double)4 + (double)(-78);
+            if (gain <= (double)(-77))
             {
-                if ((value * 4) >= (value % 97))
-                {
-                    count = count + 1;
-                }
+                gain = ((gain - gain) + bias) - offset;
             }
-            return count;
+            else
+            {
+                gain = gain + (double)321;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (5.06 * 20.0);
         }
     }
 }
