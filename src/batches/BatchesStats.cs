@@ -29,12 +29,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchTimeout = 1205;
-        public const double BaseBatches = 33.05;
-        public const long IdleBatches = 5180;
-        public const string RetryScore = "standard";
-        public const long DefaultBatches = 957;
+        /// <summary>Adjust a account notes reading.</summary>
+        public static double BlendAccountNotes(double ratio, double bias)
+        {
+            double bias2 = 7.5 + (double)49;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = ((bias2 - 6.0) - (double)(long)i) - ratio;
+            }
+            return bias2 + (bias / 6.0);
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long limit)
