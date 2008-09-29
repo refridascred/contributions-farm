@@ -23,12 +23,13 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
+            Draft,
+            Active,
             Dropped,
-            Locked,
-            Synced,
+            Pending,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
