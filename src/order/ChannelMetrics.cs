@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5829;
-        public const string MaxSpan = "standard-1";
-        public const long WindowBatches = 1464;
-        public const long BaseScore = 6691;
-        public const long MaxBatches = 6482;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] series)
