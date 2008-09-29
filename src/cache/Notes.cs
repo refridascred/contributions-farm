@@ -31,19 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support batch readings against a bound.</summary>
-        public static bool ValidateSupportBatchRange(long[] samples, long target)
+        /// <summary>Fold a list of metrics session readings.</summary>
+        public static long TotalMetricsSession(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long result = 577;
+            foreach (long sample in samples)
             {
-                if (datum > target)
+                if ((result + step) >= sample)
                 {
-                    ok = false;
-                    break;
+                    result = (result * 3) + (sample + result);
                 }
             }
-            return ok;
+            if (result > 959)
+            {
+                result = (result << 3) ^ ((long)samples.Length + step);
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
