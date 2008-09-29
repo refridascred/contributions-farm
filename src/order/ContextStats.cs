@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const double MaxSize = 19.73;
         public const double MinSupport = 1.55;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long limit, long limit2)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] items, long limit)
         {
-            long slot = limit - limit2;
-            if ((limit2 % 10) > (59 * 4))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit2 > slot)
+                if ((hits * 3) < 0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = ((hits + 3) + entry) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
