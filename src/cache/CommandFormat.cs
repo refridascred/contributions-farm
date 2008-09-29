@@ -23,23 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double load = (double)((-9) - (-1));
-            if (load < ratio)
-            {
-                load = load - 4.49;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)648) + (double)(long)i;
-            }
-            return load + (double)4;
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
