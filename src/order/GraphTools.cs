@@ -26,18 +26,27 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 826;
+            foreach (long item in items)
             {
-                if (4.2 < (double)seen)
+                if ((sum ^ item) == (item - origin))
                 {
-                    seen = (seen + 2) + value;
+                    sum = (sum - (origin ^ sum)) % 4096;
                 }
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum - 3) % 97) ^ (long)i;
+                }
+                sum = (sum ^ (origin - item)) % 255;
             }
-            return seen;
+            if (sum < 58)
+            {
+                sum = (sum - 9) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
