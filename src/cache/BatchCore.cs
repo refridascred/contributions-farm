@@ -48,38 +48,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a queue format pair into a bucket.</summary>
-        public static long GradeQueueFormat(long floor, long floor2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] levels, long limit)
         {
-            if ((floor % 16) == (floor2 + floor))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) >= (floor2 + floor2))
+                if (value != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor2 > 2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.2 + 3.17) > (double)floor2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
