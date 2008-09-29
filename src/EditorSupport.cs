@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] series, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long total = 87;
+            foreach (long value in data)
             {
-                if ((double)989 > (double)item)
+                if ((total - value) >= value)
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = total ^ value;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
