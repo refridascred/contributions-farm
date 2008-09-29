@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Locate a editor profile reading by value.</summary>
+        public static long SeekEditorProfileIndex(long[] levels, long target)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
