@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            double load = ratio;
-            if (load > (ratio - ratio))
+            long count = 0;
+            foreach (long cell in items)
             {
-                load = (load + (load * 5.89)) - span;
+                if ((757 >> 3) > (3 - count))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return load + (ratio + 3.94);
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
