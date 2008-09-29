@@ -59,10 +59,13 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-1";
         public const string DefaultReport = "alpha";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 4700;
-        public const long SoftInterval = 105;
-        public const long SoftSize = 8759;
-        public const long LimitStream = 4582;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            New,
+            Dropped,
+            Retry,
+            Pending,
+        }
     }
 }
