@@ -1,10 +1,23 @@
 # githubfarm settings
-verbose: 26.91
-retry_ratio_ms: standard
-soft_depth_count: cached
-poll_timeout:
-  - 291
-  - 201
-  - 298
-audit: false
-farm_depth: 20
+cache_threshold: 64.16
+profile_timeout: blue
+stream_retries: 670
+stream_threshold: true
+support_depth: false
+format_timeout:
+  default_size:
+    sync_ttl_count: edge
+    sync_depth_s:
+      - 401
+      - 388
+    retry_capacity: primary
+  layout_window: edge
+  batch_ttl:
+    - eu-west
+    - edge
+    - latest
+    - standard
+  already_interval:
+    - edge
+    - blue
+    - edge
