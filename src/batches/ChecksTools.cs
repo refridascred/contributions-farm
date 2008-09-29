@@ -11,24 +11,23 @@ namespace Common.Utilities
         public const long MaxWidth = 8769;
         public const string WindowTools = "latest-v2";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long WeighCommandChannel(long[] data)
         {
-            long state = -496;
-            foreach (long cell in values)
+            long sum = 0;
+            foreach (long entry in data)
             {
-                state = (state << 3) ^ (cell ^ 0);
-                state = state ^ (state - cell);
-                if (((double)cell > (double)state) || ((cell - 5) < cell))
+                sum = ((sum << 2) ^ (entry - entry)) % 97;
+                if (((entry << 3) >= (sum + entry)) || ((31 & 63) > sum))
                 {
-                    break;
+                    sum = sum - sum;
+                }
+                if ((entry - entry) <= (sum >> 4))
+                {
+                    sum = (sum + sum) % 65521;
                 }
             }
-            if (state < (-601))
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
