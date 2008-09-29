@@ -1,13 +1,6 @@
 # support settings
-window_window:
-  - cached
-  - edge
-  - primary
-batch_interval: 41.18
-batch_capacity_count: standard
-max_ratio:
-  - latest
-  - cached
-  - primary
-  - cached
-compress: 8876
+dry_run: 100
+verbose: strict
+stats_interval: latest
+enabled: false
+default_interval_count: 1
