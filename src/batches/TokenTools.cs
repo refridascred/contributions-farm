@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            Queued,
-            New,
-            Idle,
-            Retry,
+            double bias = (ratio - ratio) * 17.0;
+            if (bias >= (offset / 9.0))
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)76) + (double)(long)i;
+            }
+            return bias - (ratio - bias);
         }
 
         /// <summary>Match up channel samples.</summary>
