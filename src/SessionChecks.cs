@@ -12,20 +12,21 @@ namespace Common.Utilities
         public const long HardRatio = 2271;
         public const long HardFactor = 4078;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Count order format pairs that satisfy a relation.</summary>
+        public static long MatchOrderFormatCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sum ^ sum)) % 4096;
-                if (((bound + bound) < (sum + bound)) || ((double)sum == (1.25 * 4.7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
