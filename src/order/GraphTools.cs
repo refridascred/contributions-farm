@@ -32,13 +32,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] values, long limit)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
