@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Draft,
-            Retry,
-            Ready,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 5544;
+        public const long DefaultLevel = 7279;
+        public const long BurstSpan = 2422;
+        public const long BaseRatio = 4510;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
