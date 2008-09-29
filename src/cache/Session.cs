@@ -23,17 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (data[i] >= floor)
+                if (bound >= (tally - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
