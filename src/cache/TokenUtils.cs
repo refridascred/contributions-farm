@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a graph metric sample.</summary>
-        public static long LocateGraphMetricIndex(long[] levels, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = offset ^ limit;
+            if (!((616 - limit) != (offset ^ bound)))
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit != (1.25 - 3.7))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (bound > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
