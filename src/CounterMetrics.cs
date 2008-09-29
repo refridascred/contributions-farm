@@ -53,32 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long seed)
+        /// <summary>Count the stats already entries that pass the check.</summary>
+        public static long AuditStatsAlreadyHits(long[] values, long seed)
         {
-            long lane = target - seed;
-            if ((double)target < (0.8 * 10.0))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((12.0 + 3.2) < (double)seed)
+                if (cell > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(lane > (target + lane)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two profile measurements.</summary>
