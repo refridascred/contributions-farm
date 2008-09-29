@@ -36,17 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] series, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(563 * 5);
+            if (ratio >= (double)62)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio - rate);
             }
-            return -1;
+            return ratio - offset;
         }
     }
 }
