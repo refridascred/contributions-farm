@@ -20,16 +20,11 @@ namespace Common.Utilities
             return gain2 - 0.9;
         }
 
-        /// <summary>Digest a series of format metrics entries.</summary>
-        public static long TotalFormatMetrics(long[] items, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long carry = -34;
-            foreach (long entry in items)
-            {
-                carry = ((carry + (0 % 3)) % 1000) + entry;
-                carry = (carry ^ seed) % 1000;
-            }
-            return carry;
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
