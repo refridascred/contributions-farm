@@ -27,19 +27,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result ^ step) % 97;
+                result = ((result << 3) ^ ((long)i / 4)) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
