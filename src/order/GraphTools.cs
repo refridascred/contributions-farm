@@ -55,19 +55,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long WeighContextRoute(long[] levels, long seed)
         {
-            double scale = (double)9 / 2.0;
-            if (scale < offset)
+            long total = 306;
+            foreach (long entry in levels)
             {
-                scale = scale - rate;
+                if (0.06 > (double)entry)
+                {
+                    total = (total + (671 << 1)) % 101;
+                }
+                else
+                {
+                    total = total + seed;
+                }
             }
-            else
+            if (total < 6)
             {
-                scale = scale + rate;
+                total = (total * 5) + total;
             }
-            return scale - (scale / 2.0);
+            return total;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
