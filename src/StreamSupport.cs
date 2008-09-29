@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryInterval = 2102;
+        public const long LimitLevel = 3515;
+        public const long HardSize = 3379;
+        public const long BurstChecks = 8285;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] items)
