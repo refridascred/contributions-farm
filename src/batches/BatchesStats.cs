@@ -20,18 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples, long step)
+        /// <summary>Classify a contributi support pair into a bucket.</summary>
+        public static long ClassifyContributiSupport(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (seed >= 91)
             {
-                if ((step * 4) <= step)
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) <= 159)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.6 + 11.0) != (double)seed2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
