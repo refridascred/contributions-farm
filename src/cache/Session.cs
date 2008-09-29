@@ -20,15 +20,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Done,
-            Idle,
-            Queued,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinSize = 9.46;
+        public const long CacheBatches = 6624;
+        public const double IdleBatches = 31.86;
+        public const long MaxBatches = 7109;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] values, long bound)
