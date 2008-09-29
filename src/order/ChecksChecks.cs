@@ -36,18 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] levels)
         {
-            long mark = -54;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((step + mark) <= (23 ^ mark))
+                if ((count * 5) < (count >> 2))
                 {
-                    mark = (mark + (step - (long)values.Length)) ^ reading;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
