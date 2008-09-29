@@ -32,22 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 140;
-            foreach (long item in series)
-            {
-                if (1.9 <= (double)total)
-                {
-                    total = ((total - (long)series.Length) % 101) - item;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total ^ (total - total)) % 4096;
-            }
-            return total % 1000;
+            Draft,
+            Retry,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a order summary.</summary>
