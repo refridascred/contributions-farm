@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            long score = -40;
-            foreach (long reading in levels)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score + (85 % 64)) % 255) + reading;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Accumulate stream token samples.</summary>
