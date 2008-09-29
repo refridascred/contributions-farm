@@ -1,4 +1,9 @@
 # githubfarm settings
-flush_limit: legacy
-burst_limit_ms: eu-west
-strict: edge
+batch_size:
+  - 132
+  - 377
+  - 240
+  - 152
+metrics_timeout: edge
+burst_window_s: true
+tools_ttl: standard
