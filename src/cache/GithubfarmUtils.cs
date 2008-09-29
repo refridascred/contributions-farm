@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry != offset)
+                if ((long)i < 4)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ limit;
                 }
+                mark = mark - (limit + limit);
+                if ((2.8 * 5.0) == (double)limit)
+                {
+                    mark = ((mark << 3) ^ (mark + limit)) % 4096;
+                    mark = ((mark << 3) ^ (mark + mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (limit << 1)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
