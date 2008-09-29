@@ -1,15 +1,11 @@
 # Command notes
 
-The layout report groups every context by counter.
-Keep filter and metrics names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-
-Keep batches and cluster names short and lowercase.
-Run the notes check before changing any order limits.
-Each session is validated before it reaches the buffer queue.
+The record report groups every filter by schema.
+Run the entry check before changing any notes limits.
+When a filter fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new counter fields
-- Validate filter input early
+- Validate channel input early
+- Prefer record defaults
+- Document new graph fields
