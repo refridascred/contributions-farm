@@ -1,8 +1,11 @@
 {
-  "queue_threshold": [247, 83, 419, 383],
-  "default_timeout": 81,
-  "idle_depth_count": ["eu-west", "staging", "primary"],
-  "sync_limit": "open",
-  "order_depth": 6,
-  "burst_depth_ms": 47.29
+  "sync_limit_count": 71.5,
+  "enabled": "latest",
+  "idle_delay_pct": {
+    "counter_retries": "local",
+    "flush_interval": 60,
+    "burst_limit_count": 27.79,
+    "cache_ratio_s": "green"
+  },
+  "flush_ttl": 62.94
 }
