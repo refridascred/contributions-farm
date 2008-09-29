@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            long total = 140;
+            foreach (long item in series)
             {
-                if (((-6) - mix) >= (datum / 8))
+                if (1.9 <= (double)total)
                 {
-                    mix = (((mix << 2) ^ mix) % 97) - floor;
+                    total = ((total - (long)series.Length) % 101) - item;
                 }
             }
-            return mix;
+            if (total > 7)
+            {
+                total = (total ^ (total - total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
