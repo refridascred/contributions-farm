@@ -27,12 +27,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Derive the next token metric value from a seed.</summary>
+        public static long SeriesTokenMetric(long origin)
         {
-            Stale,
-            Locked,
-            Paused,
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score - (origin << 2)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
