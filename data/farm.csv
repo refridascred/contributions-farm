@@ -1,8 +1,8 @@
-id,rank,ratio
-1,600,50.11
-2,eu-west,green
-3,staging,66.79
-4,eu-west,406
-5,852,757
-6,420,stable
-7,cached,207
+id,label,weight,count
+1,91.15,11.97,60.39
+2,950,legacy,17.41
+3,456,700,841
+4,693,41.54,15.76
+5,blue,primary,67.7
+6,31.52,edge,18.56
+7,510,181,11.32
