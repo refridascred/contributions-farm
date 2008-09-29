@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardCount = 80.96;
+        public const double MaxQueue = 67.78;
+        public const string BaseQueue = "standard-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double SoftBuffer = 76.61;
