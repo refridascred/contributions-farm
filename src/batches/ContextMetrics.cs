@@ -32,32 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long delta = floor + offset;
-            if (((delta ^ offset) < ((-45) << 3)) || ((6.0 + 8.53) != (double)delta))
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((delta >> 3) >= (delta + offset)))
+                if (((long)i - acc) < 6)
                 {
-                    return 8;
+                    break;
                 }
                 else
                 {
-                    if (floor > (offset - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc * 4) + (85 - (long)i);
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
