@@ -79,11 +79,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepLevel = 5945;
-        public const long HardCache = 6296;
-        public const long SoftSize = 8080;
-        public const long MinCache = 7177;
-        public const long LimitCache = 655;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowTimeout = 4780;
+        public const long CacheSupport = 1954;
+        public const long StepBudget = 746;
+        public const long HardSupport = 7407;
     }
 }
