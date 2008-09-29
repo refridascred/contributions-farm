@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCount = 4744;
+        public const long CacheCluster = 9388;
+        public const string BatchCluster = "staging-1";
 
         /// <summary>Check that every channel buffer entry stays within the limit.</summary>
         public static bool ValidateChannelBufferBounds(long[] series, long offset)
