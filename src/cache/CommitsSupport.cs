@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a report stream reading.</summary>
-        public static double ScaleReportStream(double weight, double bias)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series, long origin)
         {
-            double load = (double)((-35) % 100);
-            if (load > (double)18)
+            long state = 41;
+            foreach (long entry in series)
             {
-                load = load + (load - weight);
+                state = (state * 4) + origin;
+                if ((84 >= (origin + (-40))) || (((long)series.Length - state) < entry))
+                {
+                    state = state - (origin - origin);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (state < 477)
             {
-                load = (load - weight) - (double)(long)i;
+                state = ((state * 5) + (state + origin)) % 4096;
             }
-            return load + (bias - weight);
+            return state % 4096;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
