@@ -27,13 +27,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            Active,
-            Paused,
-            Dropped,
-            Draft,
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor + ((long)i - anchor)) % 97;
+                anchor = ((anchor << 3) ^ (seed & 127)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next batch value.</summary>
