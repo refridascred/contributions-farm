@@ -1,30 +1,14 @@
 # entry settings
-hard_ratio: 87.22
-retry_retries_count: edge
-persist:
-  commits_capacity: 500
-  payload_size: eu-west
-  enabled: 85.66
-soft_ratio_s:
-  max_depth_s:
-    - latest
-    - primary
-    - primary
-    - local
-  soft_timeout_ms: 38.41
-  notes_delay: green
-  payload_ttl: 1024
-  batch_window:
-    base_limit_pct:
-      - 250
-      - 72
-      - 262
-      - 222
-    burst_interval_ms: 91
-    default_size_s: 8958
-    readonly:
-      - 48
-      - 51
-      - 306
-  soft_ratio_count: blue
-sync_retries_pct: 65.55
+flush_limit_ms: blue
+compress: green
+context_capacity: 3919
+idle_ttl_ms:
+  base_depth_ms: blue
+  poll_limit_ms: false
+  idle_interval_pct: latest
+  buffer_timeout: stable
+  audit:
+    - 21
+    - 28
+    - 190
+  batch_limit_pct: green
