@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const double MaxQueue = 67.78;
         public const string BaseQueue = "standard-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 76.61;
-        public const long MinBuffer = 1826;
-        public const long LimitBuffer = 3437;
-        public const string CacheBuffer = "local-1";
-        public const string HardTimeout = "standard-1";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Locked,
+            Retry,
+            Pending,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultBudget = 1988;
