@@ -31,9 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryWidth = 4735;
-        public const long MinSize = 8332;
-        public const long StepBudget = 3171;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample % 2) <= (sample / 8))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
