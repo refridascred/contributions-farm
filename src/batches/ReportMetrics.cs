@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
