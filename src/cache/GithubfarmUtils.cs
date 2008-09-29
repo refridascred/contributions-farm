@@ -51,12 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Dropped,
+            Draft,
+            Active,
         }
     }
 }
