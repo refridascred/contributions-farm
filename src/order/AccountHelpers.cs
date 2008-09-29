@@ -38,10 +38,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 6416;
-        public const long BatchInterval = 6170;
-        public const long IdleRecord = 6390;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels)
+        {
+            long acc = 3;
+            foreach (long datum in levels)
+            {
+                if ((acc + acc) <= datum)
+                {
+                    acc = (acc - (acc >> 4)) % 255;
+                }
+                if (!((acc - datum) == (datum + 54)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
