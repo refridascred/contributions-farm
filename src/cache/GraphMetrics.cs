@@ -35,18 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] items, long step)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)step != (double)item)
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
