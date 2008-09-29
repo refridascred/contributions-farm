@@ -27,19 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
-        public static bool ValidatePayloadContributiLimits(long[] readings, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            if ((8.0 * 6.28) == (double)seed)
             {
-                if (cell <= floor)
+                return 8;
+            }
+            else
+            {
+                if ((seed / 9) >= (seed - seed))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor - seed) <= (seed - floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
