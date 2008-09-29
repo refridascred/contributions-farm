@@ -83,11 +83,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowBudget = 9040;
-        public const long MaxEntry = 9102;
-        public const long StepDepth = 9397;
-        public const long RetryEntry = 5764;
-        public const long HardCount = 8770;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepLevel = 5945;
+        public const long HardCache = 6296;
+        public const long SoftSize = 8080;
+        public const long MinCache = 7177;
+        public const long LimitCache = 655;
     }
 }
