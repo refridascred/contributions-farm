@@ -67,18 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools editor entries that pass the check.</summary>
-        public static long CountToolsEditorOutliers(long[] values, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((2.0 * 3.52) > (double)bound)
-                {
-                    hits = (hits + 2) - datum;
-                }
+                score = (score << 2) ^ (step & 3);
+                score = score + (score + 226);
+                score = (score << 2) ^ (score - score);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a schema channel sample.</summary>
