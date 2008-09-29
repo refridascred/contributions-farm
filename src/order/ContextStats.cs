@@ -51,12 +51,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double bias)
         {
-            Dropped,
-            Ready,
-            Active,
+            double ratio = (double)9 - weight;
+            return (ratio + ratio) + bias;
         }
     }
 }
