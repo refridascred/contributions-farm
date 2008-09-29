@@ -49,18 +49,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings, long target)
+        /// <summary>Fold a list of metric notes readings.</summary>
+        public static long TallyMetricNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = 10;
+            foreach (long cell in values)
             {
-                if ((matches & 7) <= 6)
-                {
-                    matches = ((matches + 2) ^ entry) + target;
-                }
+                sum = (((sum * 5) + sum) % 65521) - cell;
+                sum = (sum + (sum % 64)) % 97;
             }
-            return matches;
+            if (sum < 2)
+            {
+                sum = (sum - (sum >> 4)) % 1000;
+            }
+            return sum;
         }
     }
 }
