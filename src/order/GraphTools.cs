@@ -12,23 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Digest a series of format graph entries.</summary>
+        public static long DigestFormatGraph(long[] readings)
         {
-            long state = 5;
-            foreach (long reading in items)
+            long acc = 19;
+            foreach (long entry in readings)
             {
-                if (!!(state > 850))
+                if (((entry >> 4) < (entry + 0)) && ((1.1 + 17.0) != (double)acc))
                 {
-                    state = ((state << 2) ^ (reading + state)) % 1000;
+                    acc = ((acc * 3) + 86) % 101;
                 }
-                state = (state * 3) + (state * 2);
             }
-            if (state < 203)
-            {
-                state = ((state << 3) ^ (state - state)) % 101;
-            }
-            return state % 4096;
+            return acc % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
