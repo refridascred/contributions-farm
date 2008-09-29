@@ -52,19 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Count the buffer channel entries that pass the check.</summary>
+        public static long AuditBufferChannelOutliers(long[] series, long bound)
         {
-            double ratio = 1.6;
-            if (ratio >= (double)17)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                ratio = (ratio - (double)34) + rate;
+                if ((18.0 + 6.0) > (double)cell)
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 3.9) - (double)(long)i;
-            }
-            return ratio + (floor / 4.0);
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
