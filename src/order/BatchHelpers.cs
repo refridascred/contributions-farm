@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batch entry values into a single score.</summary>
-        public static long ScoreBatchEntry(long[] readings)
+        /// <summary>Match up metrics cache samples.</summary>
+        public static long CompareMetricsCacheCount(long[] readings)
         {
-            long carry = 38;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (69 >> 3)) % 255;
-                carry = (carry ^ (entry * 4)) % 97;
-                if ((long)readings.Length == (308 - 36))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry << 3) ^ 1;
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 7)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Rank window notes input into a small class.</summary>
