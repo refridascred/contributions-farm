@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BatchMetrics = 7916;
         public const long MaxMetrics = 8194;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (entry != origin)
+                if (((-698) ^ (long)samples.Length) < bound)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
