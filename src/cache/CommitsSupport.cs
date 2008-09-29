@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long state = 41;
-            foreach (long entry in series)
-            {
-                state = (state * 4) + origin;
-                if ((84 >= (origin + (-40))) || (((long)series.Length - state) < entry))
-                {
-                    state = state - (origin - origin);
-                }
-            }
-            if (state < 477)
-            {
-                state = ((state * 5) + (state + origin)) % 4096;
-            }
-            return state % 4096;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
