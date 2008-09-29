@@ -45,22 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long floor)
         {
-            long mix = 965;
-            foreach (long item in readings)
+            if (bound >= ((-780) * 3))
             {
-                if ((mix - mix) <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((6 + bound) > (floor & 1))
                 {
-                    mix = (((mix << 2) ^ (origin + mix)) % 97) + item;
+                    return 8;
                 }
                 else
                 {
-                    mix = mix + (mix + origin);
+                    if ((double)bound == (0.2 + 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
