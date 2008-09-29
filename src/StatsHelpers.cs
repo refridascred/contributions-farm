@@ -60,23 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] data, long floor)
         {
-            long total = 26;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((entry & 1) > bound)
+                if (!(((tally + item) < 98) || ((tally / 7) > (tally ^ item))))
                 {
-                    total = total ^ (total * 2);
+                    tally = (tally + 2) + floor;
                 }
-                total = (total + (575 % 2)) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 0)
-            {
-                total = (total + (total ^ bound)) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
