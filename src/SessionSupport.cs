@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 9886;
-        public const long CacheRatio = 5920;
-        public const long BaseRecord = 2907;
-        public const long DefaultFactor = 3718;
+        /// <summary>Roll a notes context counter forward.</summary>
+        public static long DeriveNotesContext(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((8.0 * 6.54) < (double)bound)
+                {
+                    mark = (mark - ((long)i + (long)i)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] levels, long seed)
