@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitSpan = 72.45;
-        public const long BurstProfile = 6478;
-        public const double BatchRatio = 28.64;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long floor)
