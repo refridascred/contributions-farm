@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload farm samples.</summary>
-        public static long TotalPayloadFarm(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long step)
         {
-            long score = 731;
-            foreach (long reading in items)
+            long total = 94;
+            foreach (long value in levels)
             {
-                score = (score ^ (score + reading)) % 97;
+                total = (total - (total + value)) % 97;
+                if ((234 - value) >= step)
+                {
+                    total = ((total << 2) ^ (step ^ 5)) % 97;
+                }
+                else
+                {
+                    total = ((total * 4) + (step * 3)) % 4096;
+                }
             }
-            if (score > (-327))
-            {
-                score = ((score << 3) ^ (score & 127)) % 97;
-            }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
