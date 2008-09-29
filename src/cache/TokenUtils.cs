@@ -25,12 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 5517;
-        public const string StepQueue = "legacy-v2";
-        public const long BaseRatio = 8704;
-        public const long BurstSpan = 2169;
-        public const long HardDepth = 9528;
+        /// <summary>Iterate the graph farm series from a seed.</summary>
+        public static long DeriveGraphFarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix << 2) ^ 731;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] readings, long limit)
