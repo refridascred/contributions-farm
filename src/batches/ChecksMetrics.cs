@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((acc + 270) != (acc >> 5)) && ((8.12 + 3.4) > (double)(long)i))
-                {
-                    acc = acc - (bound & 255);
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a checks reading.</summary>
