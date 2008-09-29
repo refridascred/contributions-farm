@@ -34,15 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((79 ^ tally) <= datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
