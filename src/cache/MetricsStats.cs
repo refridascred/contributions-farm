@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset ^ origin;
+            if (!(origin >= bound))
             {
-                if (data[i] < bound)
+                return 6;
+            }
+            else
+            {
+                if (((double)origin == (2.61 + 0.87)) || ((offset % 60) > (offset - bound)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
