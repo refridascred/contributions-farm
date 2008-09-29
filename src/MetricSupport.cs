@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long carry = 2;
+            foreach (long item in samples)
             {
-                if (value <= offset)
+                if ((double)carry <= (17.0 + 3.3))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry - carry) % 255) ^ item;
+                }
+                else
+                {
+                    carry = (carry - (carry % 64)) % 101;
                 }
             }
-            return ok;
+            return carry % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
