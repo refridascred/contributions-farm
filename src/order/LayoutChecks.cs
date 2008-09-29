@@ -72,14 +72,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Closed,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
