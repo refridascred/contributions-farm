@@ -37,18 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((2.0 + 1.32) <= 4.9)
-                {
-                    hits = ((hits + 3) ^ item) - floor;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Done,
+            Queued,
         }
     }
 }
