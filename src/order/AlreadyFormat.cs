@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Count the token cache entries that pass the check.</summary>
+        public static long MeasureTokenCacheMatches(long[] samples, long floor)
         {
-            long anchor = 39;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (52 <= (entry >> 5))
+                if ((double)floor != (17.0 - 9.7))
                 {
-                    continue;
+                    seen = (seen + 1) ^ item;
                 }
-                anchor = (anchor - (anchor >> 5)) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
