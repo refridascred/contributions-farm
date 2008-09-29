@@ -87,18 +87,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = 24;
+            foreach (long datum in samples)
             {
-                if (!(((reading >> 1) > tally) || ((reading << 1) < (floor + floor))))
-                {
-                    tally = tally + 2;
-                }
+                score = (score + (datum & 7)) - offset;
             }
-            return tally;
+            return score;
         }
     }
 }
