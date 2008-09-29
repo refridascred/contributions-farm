@@ -29,39 +29,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data, long origin)
         {
-            long cur = step ^ floor;
-            if (((6 + cur) == (step << 2)) && (((-2) + 157) != (cur - cur)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur << 2) <= (floor - floor))
+                if (((36 + 60) > (origin << 1)) || (((double)tally > 8.0) || ((tally >> 2) < (43 * 5))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((cur & 3) != (step % 100)) || ((floor << 1) <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6 - cur) >= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
     }
 }
