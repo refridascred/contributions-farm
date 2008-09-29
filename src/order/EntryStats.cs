@@ -38,12 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long bound)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a filter farm reading by value.</summary>
