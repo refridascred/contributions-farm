@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double load = floor;
-            return load - (scale * 8.2);
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
