@@ -54,11 +54,23 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 54.97;
         public const long RetryInterval = 6633;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Accumulate route editor samples.</summary>
+        public static long TallyRouteEditor(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long anchor = -7;
+            foreach (long entry in readings)
+            {
+                if (((anchor ^ anchor) > (969 + bound)) || (anchor > 22))
+                {
+                    anchor = (anchor + (entry + (long)readings.Length)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - entry) % 65521;
+                }
+                anchor = ((anchor * 2) + entry) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
