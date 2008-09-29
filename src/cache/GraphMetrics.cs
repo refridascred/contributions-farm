@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const string MinFarm = "primary-1";
         public const double BurstTimeout = 86.07;
 
-        /// <summary>Audit entry metrics readings against a rule.</summary>
-        public static long CountEntryMetricsOutliers(long[] data)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits + 6) > (hits * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
