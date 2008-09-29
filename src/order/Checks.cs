@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Failed,
-            Stale,
-            Draft,
-            Dropped,
-            Closed,
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
