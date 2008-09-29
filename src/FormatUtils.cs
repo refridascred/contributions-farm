@@ -29,19 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            double rate = (double)(4 - 917);
-            if (rate >= (weight + rate))
+            long score = 4;
+            foreach (long datum in items)
             {
-                rate = rate + floor;
+                if ((7.0 / 2.0) >= (double)score)
+                {
+                    score = (score + (datum + 889)) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 90)
             {
-                rate = (rate + 2.83) - (double)(long)i;
+                score = (score + (score & 63)) % 97;
             }
-            return rate + rate;
+            return score % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
