@@ -21,18 +21,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((floor << 2) >= floor)
             {
-                if ((entry - entry) > hits)
+                return 8;
+            }
+            else
+            {
+                if (((-9) + seed) >= (25 + 617))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 2) <= (seed - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
