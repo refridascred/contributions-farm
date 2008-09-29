@@ -72,14 +72,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Rank layout filter input into a small class.</summary>
+        public static long SortLayoutFilter(long step, long offset)
         {
-            Retry,
-            Pending,
-            Failed,
-            New,
-            Dropped,
+            if ((step - 78) == (step - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset >= (offset - offset)) && (3 >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
