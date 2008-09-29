@@ -55,17 +55,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                if ((item >> 1) < (item * 4))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
