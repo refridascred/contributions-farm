@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            Done,
-            New,
-            Failed,
+            double scale = weight;
+            if (scale >= scale)
+            {
+                scale = (scale - (weight / 2.0)) + offset;
+            }
+            return scale - scale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
