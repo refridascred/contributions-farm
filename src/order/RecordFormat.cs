@@ -42,14 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((long)samples.Length <= ((long)samples.Length ^ tally))
+                {
+                    tally = ((tally + 1) + cell) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session status values.</summary>
