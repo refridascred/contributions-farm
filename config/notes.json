@@ -1,6 +1,24 @@
 {
-  "schema_limit": 60,
-  "graph_threshold": 500,
-  "base_ttl": "latest",
-  "queue_limit": [288, 125]
+  "hard_threshold_count": {
+    "poll_delay_count": 500,
+    "hard_threshold_count": 250,
+    "compress": [434, 223],
+    "verbose": false,
+    "readonly": 7553
+  },
+  "cache_ttl_ms": {
+    "verbose": "strict",
+    "burst_depth_count": "edge",
+    "burst_size_pct": [17, 41, 373, 305]
+  },
+  "poll_threshold_count": "primary",
+  "layout_ttl": false,
+  "compress": {
+    "compress": ["legacy", "blue"],
+    "retry_interval_count": "green",
+    "command_ttl": false,
+    "batch_depth": "cached",
+    "soft_ratio": "standard"
+  },
+  "queue_window": 60
 }
