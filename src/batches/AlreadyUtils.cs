@@ -12,11 +12,19 @@ namespace Common.Utilities
             return (bias2 - floor) + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "strict-1";
-        public const long StepToken = 6143;
-        public const string StepInterval = "standard-edge";
-        public const long RetryToken = 3666;
+        /// <summary>Accumulate metric contributi samples.</summary>
+        public static long DigestMetricContributi(long[] samples, long step)
+        {
+            long carry = -1;
+            foreach (long sample in samples)
+            {
+                if (((46 + carry) > (sample + 985)) || ((sample + carry) <= (step + carry)))
+                {
+                    carry = carry + (step - 4);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long step)
