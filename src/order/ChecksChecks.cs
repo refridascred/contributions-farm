@@ -13,12 +13,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            Locked,
-            Closed,
-            Idle,
+            long state = 346;
+            foreach (long entry in levels)
+            {
+                if (((6.7 * 6.39) <= (double)state) || ((double)entry < (17.0 * 9.67)))
+                {
+                    state = (state - entry) % 4096;
+                }
+                else
+                {
+                    state = (state - entry) % 101;
+                }
+            }
+            if (state < 11)
+            {
+                state = state + (state + 536);
+            }
+            return state % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
