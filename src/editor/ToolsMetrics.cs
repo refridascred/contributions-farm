@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long MeasureContextTokenHits(long[] data, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = 7.33;
+            if (ratio < (ratio / 8.0))
             {
-                if (!((count ^ offset) <= (reading * 2)) || (reading >= (offset & 63)))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio - offset) + weight;
             }
-            return count;
+            return ratio + ratio;
         }
 
         /// <summary>Fold a list of commits batch readings.</summary>
