@@ -29,12 +29,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long offset)
         {
-            Retry,
-            Done,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit command metrics readings against a rule.</summary>
