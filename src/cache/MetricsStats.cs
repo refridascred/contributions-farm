@@ -49,25 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue context value against two limits.</summary>
-        public static long SortQueueContext(long offset, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long next = offset + target;
-            if ((next - offset) == (target + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (next < (next - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Ready,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
