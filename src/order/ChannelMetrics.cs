@@ -32,22 +32,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] readings, long step)
+        /// <summary>Locate a account commits reading by value.</summary>
+        public static long FindAccountCommitsIndex(long[] series, long limit)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step + state) <= (step >> 2))
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
                 {
-                    state = (state ^ step) - sample;
+                    return (long)i;
                 }
             }
-            if (state < 4)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return -1;
         }
     }
 }
