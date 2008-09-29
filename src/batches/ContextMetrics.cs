@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool GuardClusterNotesLimits(long[] values, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                score = (score * 3) + (bound / 9);
-                score = score + (34 - bound);
-                score = ((score * 2) + (long)i) % 97;
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Project the next editor value.</summary>
