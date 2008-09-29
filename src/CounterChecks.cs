@@ -43,22 +43,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long origin)
         {
-            if (((-872) - seed) == (origin >> 3))
+            if ((2.7 / 6.0) < (double)step)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((origin + 378) < (origin >> 5)) && ((origin >> 4) < (96 * 2)))
+                if ((origin ^ origin) >= step)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if ((double)origin > 1.08)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
