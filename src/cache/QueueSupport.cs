@@ -31,31 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((floor << 2) >= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-9) + seed) >= (25 + 617))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 2) <= (seed - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
