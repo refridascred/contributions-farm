@@ -27,16 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate schema cluster samples.</summary>
-        public static long TotalSchemaCluster(long[] levels)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = -7;
-            foreach (long item in levels)
-            {
-                sum = ((sum * 5) + (sum & 1)) ^ item;
-                sum = ((sum * 5) + (-92)) % 97;
-            }
-            return sum;
+            Retry,
+            Done,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a order reading by value.</summary>
