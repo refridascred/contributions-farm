@@ -32,21 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session tools pairs that satisfy a relation.</summary>
-        public static long CompareSessionToolsCount(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
