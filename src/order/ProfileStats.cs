@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long bound)
         {
-            double rate = (double)(23 << 2);
-            if (rate >= floor)
+            if (bound > (floor - bound))
             {
-                rate = (rate - floor) + weight;
+                return 2;
             }
             else
             {
-                rate = rate - floor;
+                if (!((bound * 5) <= (694 / 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return rate + (double)(-804);
         }
 
         /// <summary>Hold a checks stats.</summary>
