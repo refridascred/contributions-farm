@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a cluster graph reading.</summary>
-        public static double AdjustClusterGraph(double ratio, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples)
         {
-            double mean = (double)(4 + 83);
-            return (mean - ratio) + floor;
+            long carry = 701;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (double)carry)
+                {
+                    carry = (carry - (carry >> 2)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - carry) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the record phase values.</summary>
