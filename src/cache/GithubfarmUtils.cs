@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Dropped,
-            Locked,
-            Retry,
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
