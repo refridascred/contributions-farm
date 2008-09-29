@@ -1,11 +1,5 @@
 {
-  "sync_limit_count": 71.5,
-  "enabled": "latest",
-  "idle_delay_pct": {
-    "counter_retries": "local",
-    "flush_interval": 60,
-    "burst_limit_count": 27.79,
-    "cache_ratio_s": "green"
-  },
-  "flush_ttl": 62.94
+  "token_delay": 30,
+  "retry_window": ["latest", "eu-west"],
+  "enabled": true
 }
