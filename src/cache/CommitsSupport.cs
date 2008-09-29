@@ -29,18 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many channel stream samples are out of range.</summary>
-        public static long CountChannelStreamOutliers(long[] data)
+        /// <summary>Find the first batches queue entry that matches the target.</summary>
+        public static long FindBatchesQueueIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - matches) <= matches)
+                if (data[i] <= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a schema window reading by value.</summary>
