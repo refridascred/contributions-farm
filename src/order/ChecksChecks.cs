@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
+            Retry,
+            Done,
             Paused,
-            New,
-            Draft,
-            Idle,
-            Locked,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
