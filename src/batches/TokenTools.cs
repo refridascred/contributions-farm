@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBudget = 3365;
+        public const double IdleDepth = 68.38;
+        public const long BaseBuffer = 8350;
+        public const string SoftDepth = "latest-1";
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
