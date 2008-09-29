@@ -23,19 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate record graph samples.</summary>
-        public static long WeighRecordGraph(long[] values, long target)
-        {
-            long mix = 0;
-            foreach (long item in values)
-            {
-                if (mix >= (item >> 2))
-                {
-                    mix = (mix ^ (2 * 5)) - target;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "cached-edge";
+        public const long MaxSchema = 3528;
+        public const long RetrySpan = 9650;
+        public const long StepInterval = 3545;
+        public const string MinWidth = "stable-1";
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
