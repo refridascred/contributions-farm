@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long step)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long bound = origin ^ step;
+            if (!(origin >= (934 >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - step) <= (origin >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin & 63) > (step / 7)) && ((649 ^ bound) != (56 * 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-4) - step) <= (step & 31)) && ((bound / 4) == (origin + step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
