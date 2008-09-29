@@ -1,8 +1,24 @@
 # githubfarm settings
-verbose:
-  - latest
-  - legacy
-poll_delay_count: 67.41
-max_limit: strict
-poll_threshold: cached
-notes_interval: latest
+poll_threshold: blue
+route_interval: 48.84
+hard_timeout_count:
+  checks_ttl: 1024
+  batches_depth:
+    idle_window: false
+    batch_capacity: 95.05
+    retry_timeout: 17.38
+    hard_delay_pct: 9531
+    sync_depth_count: local
+    warm_timeout: cached
+  hard_interval: false
+  soft_interval:
+    entry_ttl: 23.63
+    soft_limit_s: 4646
+    dry_run: 60
+    batch_retries: 418
+    readonly: staging
+  compress:
+    - edge
+    - eu-west
+    - primary
+    - cached
