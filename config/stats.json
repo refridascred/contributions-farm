@@ -1,8 +1,6 @@
 {
-  "batch_capacity_pct": 1408,
-  "retry_threshold_count": 18,
-  "cache_retries": "edge",
-  "already_depth": 27,
-  "max_ratio": "green",
-  "enabled": true
+  "burst_limit": true,
+  "command_ratio": 65,
+  "commits_retries": "stable",
+  "verbose": 9973
 }
