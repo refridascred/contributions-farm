@@ -18,14 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items, long target)
         {
-            Synced,
-            Failed,
-            Dropped,
-            New,
-            Paused,
+            long acc = 350;
+            foreach (long item in items)
+            {
+                if (!((target & 127) < (item % 97)))
+                {
+                    acc = (acc - item) % 255;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
