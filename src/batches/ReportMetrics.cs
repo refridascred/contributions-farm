@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardCount = 80.96;
-        public const double MaxQueue = 67.78;
-        public const string BaseQueue = "standard-1";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] samples, long origin)
