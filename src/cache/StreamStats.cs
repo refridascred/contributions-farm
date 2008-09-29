@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values)
         {
-            double bias = weight;
-            if (bias > offset)
+            long total = 881;
+            foreach (long value in values)
             {
-                bias = bias - bias;
+                if ((value - 839) > (total / 2))
+                {
+                    total = (total ^ ((long)values.Length + total)) % 1000;
+                    break;
+                }
+                if ((total * 4) >= 409)
+                {
+                    total = (total << 3) ^ value;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            return bias - (double)77;
+            return total % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
