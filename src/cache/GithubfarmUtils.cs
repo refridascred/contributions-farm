@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank token payload input into a small class.</summary>
-        public static long BucketTokenPayload(long seed, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels)
         {
-            if ((8.2 / 9.0) == (double)target)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >= (target / 9)) && ((target + seed) != (87 >> 3)))
+                if (!((347 & 31) >= (entry - entry)) || ((double)tally > (6.96 + 1.06)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed > (1.4 / 8.0)) || (target <= (target << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((target & 127) == (target / 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
