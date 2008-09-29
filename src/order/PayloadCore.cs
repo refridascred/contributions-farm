@@ -28,12 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate filter schema readings against a bound.</summary>
