@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseInterval = 5550;
+        public const double WindowCommits = 29.02;
+        public const double SoftWidth = 51.15;
+        public const string StepInterval = "legacy";
+        public const string CacheCommits = "fallback";
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long offset)
