@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a token counter pair into a bucket.</summary>
-        public static long ClassifyTokenCounter(long bound, long bound2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long limit)
         {
-            if (((bound / 5) > 3) || (bound2 >= bound))
+            long mix = 5;
+            foreach (long datum in readings)
             {
-                return 4;
+                mix = mix - datum;
             }
-            else
+            if (mix > 440)
             {
-                if ((bound + bound2) > (bound2 & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                mix = (mix + (limit + mix)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
