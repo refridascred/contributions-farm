@@ -41,26 +41,24 @@ namespace Common.Utilities
         public const long MinRatio = 5579;
         public const long MinReport = 2664;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long origin, long origin2)
         {
-            long acc = 731;
-            foreach (long cell in readings)
+            if (origin > (origin2 >> 2))
             {
-                if ((double)acc >= 0.38)
+                return 4;
+            }
+            else
+            {
+                if (!((origin + origin2) <= origin2))
                 {
-                    acc = ((acc * 3) + ((long)readings.Length - (long)readings.Length)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc + (cell >> 4)) % 97;
+                    return 6;
                 }
             }
-            if (acc > (-80))
-            {
-                acc = (acc ^ (acc & 15)) % 1000;
-            }
-            return acc;
         }
     }
 }
