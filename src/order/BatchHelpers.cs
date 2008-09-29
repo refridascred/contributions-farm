@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                long step = score;
-                score = score ^ (score + score);
-                if (((double)step <= (3.0 / 3.0)) && (((-2) % 5) < ((long)i ^ step)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
