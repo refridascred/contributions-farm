@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 457;
+        public const long CacheFilter = 8887;
+        public const long SoftFilter = 8174;
+        public const long BurstFilter = 8049;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCount = 4744;
