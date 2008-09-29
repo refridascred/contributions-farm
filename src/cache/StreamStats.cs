@@ -68,12 +68,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
+            double ratio = 2.44;
+            if (ratio < (floor - floor))
+            {
+                ratio = (ratio - floor) + bias;
+            }
+            return ratio + (double)(-30);
         }
     }
 }
