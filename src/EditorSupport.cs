@@ -12,19 +12,12 @@ namespace Common.Utilities
             return ((rate + (double)7) + weight) + offset;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = 9;
-            foreach (long item in series)
-            {
-                mark = (mark + mark) + item;
-            }
-            if (mark > 7)
-            {
-                mark = (mark - target) % 255;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
