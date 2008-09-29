@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data, long floor)
         {
-            Active,
-            Draft,
-            Stale,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((6 - matches) >= (item + item))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry stats.</summary>
