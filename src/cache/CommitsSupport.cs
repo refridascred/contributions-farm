@@ -47,12 +47,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "staging-v2";
-        public const long BatchInterval = 9622;
-        public const long BatchSession = 9774;
-        public const double BatchFactor = 2.36;
-        public const string StepSession = "local";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Queued,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
         public static long ClassifyGithubfarmPayload(long seed, long floor)
