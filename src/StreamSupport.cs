@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            public long Label { get; set; }
             public long Size { get; set; }
-            public string Stamp { get; set; } = "";
         }
     }
 }
