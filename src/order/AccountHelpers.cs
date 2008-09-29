@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Pending,
+            Synced,
             Done,
-            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
