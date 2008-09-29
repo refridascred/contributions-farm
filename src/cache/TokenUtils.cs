@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long floor2)
+        /// <summary>Look up the position of a graph metric sample.</summary>
+        public static long LocateGraphMetricIndex(long[] levels, long target)
         {
-            long next = floor + floor2;
-            if ((floor2 * 4) == (7 & 15))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((next >= (floor2 + 132)) || (floor2 < (-7)))
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.0 - 15.0) < (double)next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
