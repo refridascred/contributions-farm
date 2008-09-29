@@ -28,13 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            Retry,
-            New,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item >> 2) >= ((long)levels.Length % 64)) && ((double)hits <= (0.84 * 2.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
