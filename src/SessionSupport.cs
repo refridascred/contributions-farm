@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 7158;
-        public const long BatchCounter = 3358;
-        public const long WindowInterval = 2105;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 9886;
+        public const long CacheRatio = 5920;
+        public const long BaseRecord = 2907;
+        public const long DefaultFactor = 3718;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] levels, long seed)
