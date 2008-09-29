@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double BaseInterval = 24.9;
         public const double BurstQueue = 65.49;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Iterate the record channel series from a seed.</summary>
