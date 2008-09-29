@@ -32,18 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph editor samples are out of range.</summary>
-        public static long AuditGraphEditorMatches(long[] readings, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((hits >> 1) <= (11 / 5)) && ((value <= (target + hits)) || ((1 * 3) <= (value & 63))))
+                if ((8.8 * 0.09) <= (double)seed)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
