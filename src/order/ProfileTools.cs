@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long offset2)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if (((double)offset2 > (14.0 + 12.0)) || ((double)offset2 != (double)4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset < offset2) || ((8 << 3) == (offset2 / 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 6) != (offset ^ offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset2 < (offset2 + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Adjust a counter batches reading.</summary>
