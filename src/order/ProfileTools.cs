@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 1767;
-        public const long CacheBudget = 2945;
-        public const double HardWidth = 12.25;
-        public const long HardCommits = 5076;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + (4.88 * 3.0)) + (double)(long)i) + ratio;
+            }
+            return ratio2 - (3.0 - 1.0);
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double bias, double offset)
