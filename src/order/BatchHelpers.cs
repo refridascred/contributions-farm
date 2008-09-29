@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next metric command value.</summary>
-        public static double SmoothMetricCommand(double weight, double offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)237)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = weight2 - (double)75;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + (offset + offset);
-            }
-            return weight2 + weight;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
