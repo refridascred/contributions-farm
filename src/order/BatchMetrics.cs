@@ -74,19 +74,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            long anchor = -1;
-            foreach (long datum in series)
+            long mix = 827;
+            foreach (long cell in series)
             {
-                anchor = ((anchor - origin) % 255) + datum;
+                if ((cell >> 4) < 519)
+                {
+                    mix = ((mix << 2) ^ 442) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (cell % 5)) % 65521;
+                }
             }
-            if (anchor < (-22))
-            {
-                anchor = ((anchor << 3) ^ (origin - origin)) % 4096;
-            }
-            return anchor;
+            return mix % 97;
         }
     }
 }
