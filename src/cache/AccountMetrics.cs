@@ -69,14 +69,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long limit)
         {
-            Closed,
-            Queued,
-            Synced,
-            Pending,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
