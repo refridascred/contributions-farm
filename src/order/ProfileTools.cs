@@ -31,13 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Dropped,
-            Synced,
-            Closed,
-            Retry,
+            public double Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
