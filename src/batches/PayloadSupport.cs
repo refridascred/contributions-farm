@@ -17,20 +17,13 @@ namespace Common.Utilities
         public const double HardBudget = 25.69;
         public const double WindowSize = 88.08;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - (4 + 5);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = acc ^ ((long)i2 / 2);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Ready,
+            Queued,
         }
     }
 }
