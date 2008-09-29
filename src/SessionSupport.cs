@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            long anchor = 316;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((99 <= (datum + floor)) && (6.67 >= (double)datum))
+                if (!((561 & 127) < (tally + 8)) || (tally > (tally / 4)))
                 {
-                    anchor = (anchor - (floor + anchor)) % 255;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            if (anchor > (-640))
-            {
-                anchor = (anchor + (5 - anchor)) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
