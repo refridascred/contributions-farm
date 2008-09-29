@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double bias)
-        {
-            double gain2 = 4.3;
-            if (gain2 <= bias)
-            {
-                gain2 = gain2 + (gain2 - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (gain - 7.42)) + (double)(long)i;
-            }
-            return gain2 - 0.9;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 4656;
+        public const long BatchCounter = 9549;
+        public const long MaxCount = 4174;
+        public const string IdleCounter = "legacy-v2";
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
