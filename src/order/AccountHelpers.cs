@@ -20,22 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Measure how many batches stream samples are out of range.</summary>
+        public static long AuditBatchesStreamOutliers(long[] samples)
         {
-            long anchor = 16;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((anchor & 7) > (anchor - anchor)) || ((anchor + anchor) >= (datum << 1)))
+                if (((tally - tally) >= (sample / 8)) || !(19.0 < (double)tally))
                 {
-                    anchor = (anchor * 2) + (datum - 60);
-                }
-                if ((anchor + datum) == (anchor >> 5))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
