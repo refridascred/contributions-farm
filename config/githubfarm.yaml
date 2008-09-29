@@ -1,5 +1,4 @@
 # githubfarm settings
-poll_window: 88
-sync_window: green
-compress: staging
-warm_threshold_pct: legacy
+soft_delay_pct: 8811
+warm_threshold: 1024
+batch_timeout_s: legacy
