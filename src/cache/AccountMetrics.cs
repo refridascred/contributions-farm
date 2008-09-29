@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 31.57;
+        public const double IdleSize = 85.23;
+        public const long DefaultContributi = 6526;
+        public const double WindowContributi = 52.93;
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long CountCounterContributiMatches(long[] data, long floor)
