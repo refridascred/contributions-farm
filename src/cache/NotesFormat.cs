@@ -14,17 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next cache already value from a seed.</summary>
-        public static long DeriveCacheAlready(long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc * 4) + acc;
-                acc = ((acc * 2) + (limit & 255)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
