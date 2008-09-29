@@ -1,10 +1,9 @@
 # support settings
-flush_size_count: 71.45
-batch_ttl:
-  - fallback
-  - staging
-  - stable
-retry_depth_pct: true
-metrics_depth: 11
-poll_limit: fallback
-channel_limit: cached
+poll_timeout: false
+flush_size: 35.7
+strict: standard
+sync_ratio_pct: false
+context_timeout:
+  cache_limit: 6371
+  enabled: 21.74
+  account_delay: true
