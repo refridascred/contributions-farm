@@ -25,12 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate context layout samples.</summary>
+        public static long TallyContextLayout(long[] readings, long bound)
         {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            long mark = 818;
+            foreach (long reading in readings)
+            {
+                if ((bound ^ bound) > (-50))
+                {
+                    mark = (mark * 2) + (reading + mark);
+                }
+                if (9 <= (bound * 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
