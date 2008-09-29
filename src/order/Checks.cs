@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate farm checks readings against a bound.</summary>
-        public static bool GuardFarmChecksLimits(long[] series, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
