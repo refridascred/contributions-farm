@@ -54,13 +54,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long target)
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
