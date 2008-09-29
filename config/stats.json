@@ -1,8 +1,6 @@
 {
-  "cluster_threshold": 5,
-  "tools_delay": 36.96,
-  "warm_ttl": "legacy",
-  "base_threshold": "edge",
-  "sync_size_ms": 40.73,
-  "command_capacity": 34.0
+  "base_timeout": false,
+  "soft_window": 60,
+  "persist": true,
+  "warm_threshold": [166, 477, 182]
 }
