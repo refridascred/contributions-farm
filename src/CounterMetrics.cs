@@ -14,11 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
