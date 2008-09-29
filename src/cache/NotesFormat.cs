@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            long state = 8;
+            foreach (long cell in data)
+            {
+                state = ((state - (step + step)) % 97) - cell;
+            }
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
