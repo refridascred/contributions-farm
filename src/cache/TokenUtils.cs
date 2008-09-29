@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long limit, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
         {
-            if ((double)limit != (10.0 * 8.5))
+            long anchor = 6;
+            foreach (long item in items)
             {
-                return 4;
+                anchor = anchor - (anchor + item);
             }
-            else
+            if (anchor > 93)
             {
-                if (seed <= (seed / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((65 - seed) < (203 + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit << 3) <= (seed * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = anchor ^ (anchor & 3);
             }
+            return anchor;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
