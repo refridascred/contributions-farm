@@ -55,19 +55,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool GuardCounterStatsRange(long[] values, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if ((bound % 10) == (limit - 0))
             {
-                if (reading <= seed)
+                return 6;
+            }
+            else
+            {
+                if (((bound / 8) >= (bound ^ limit)) && ((bound / 5) <= bound))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((9.47 + 5.22) != (double)limit) && ((double)bound < (13.0 / 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit > (6.26 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
