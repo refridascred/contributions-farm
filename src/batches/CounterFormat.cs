@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit route metrics readings against a rule.</summary>
-        public static long AuditRouteMetricsMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 7) == (count >> 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 7102;
+        public const long WindowChannel = 4976;
+        public const string MaxChannel = "latest";
+        public const double RetryTimeout = 44.47;
+        public const long HardScore = 5030;
 
         /// <summary>Iterate the entry notes series from a seed.</summary>
         public static long SeriesEntryNotes(long target)
