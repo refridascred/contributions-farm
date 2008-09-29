@@ -29,19 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (entry != limit)
+                if ((67 << 1) >= (seed >> 4))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - datum;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
