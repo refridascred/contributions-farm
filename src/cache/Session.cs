@@ -43,32 +43,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] samples, long target)
         {
-            long sum = 1;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((double)sample != (10.0 + 7.2)) || ((sum * 3) == (sample + sample)))
+                if (!(tally >= (tally >> 5)))
                 {
-                    sum = sum - (sample ^ 50);
-                    continue;
-                }
-                sum = ((sum * 4) + (30 * 2)) % 1000;
-                if (!(24 >= (897 - (long)readings.Length)))
-                {
-                    sum = sum ^ (929 - sum);
-                }
-                else
-                {
-                    sum = (sum + offset) % 65521;
+                    tally = ((tally + 2) - entry) - target;
                 }
             }
-            if (sum < 680)
-            {
-                sum = sum - (sum * 4);
-            }
-            return sum;
+            return tally;
         }
     }
 }
