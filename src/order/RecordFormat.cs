@@ -27,23 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long bound)
         {
-            double load = (9.51 - span) * 14.0;
-            if (load <= (load + 5.33))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - span;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - scale) - (double)(long)i;
-            }
-            return load + (15.0 * 1.2);
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
