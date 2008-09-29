@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "staging-1";
-        public const long MinBudget = 1591;
-        public const long IdleSpan = 5177;
-        public const double MinRatio = 18.95;
-        public const long LimitEntry = 3100;
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long TotalPayloadFarm(long[] items)
+        {
+            long score = 731;
+            foreach (long reading in items)
+            {
+                score = (score ^ (score + reading)) % 97;
+            }
+            if (score > (-327))
+            {
+                score = ((score << 3) ^ (score & 127)) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double gain, double floor)
