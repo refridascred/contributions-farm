@@ -12,16 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Count support route pairs that satisfy a relation.</summary>
+        public static long OverlapSupportRouteCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 2) ^ floor;
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
