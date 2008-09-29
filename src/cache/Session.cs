@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 63;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix << 3) ^ (offset * 3)) % 65521;
+                if (((sample - mix) >= (66 & 15)) || ((43 << 2) < mix))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 2) ^ (sample & 15)) % 65521;
+                }
+                if ((9.0 + 9.55) < (double)mix)
+                {
+                    mix = (mix + (6 >> 5)) % 65521;
+                }
+                else
+                {
+                    mix = mix + sample;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
