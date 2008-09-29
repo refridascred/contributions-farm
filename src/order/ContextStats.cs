@@ -51,11 +51,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double bias)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] levels, long limit)
         {
-            double ratio = (double)9 - weight;
-            return (ratio + ratio) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
