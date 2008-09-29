@@ -85,23 +85,15 @@ namespace Common.Utilities
         public const string SoftRoute = "primary-1";
         public const string DefaultRoute = "open-v2";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            double gain = (double)4 + (double)(-78);
-            if (gain <= (double)(-77))
-            {
-                gain = ((gain - gain) + bias) - offset;
-            }
-            else
-            {
-                gain = gain + (double)321;
-            }
+            double mean = 3.26;
             for (int i = 0; i < 6; i++)
             {
-                gain = (gain + gain) + (double)(long)i;
+                mean = ((mean + offset) + (double)(long)i) - ratio;
             }
-            return gain - (5.06 * 20.0);
+            return mean + (double)905;
         }
     }
 }
