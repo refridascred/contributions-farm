@@ -29,12 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long step)
         {
-            Dropped,
-            Paused,
-            Idle,
+            long mark = -54;
+            foreach (long reading in values)
+            {
+                if ((step + mark) <= (23 ^ mark))
+                {
+                    mark = (mark + (step - (long)values.Length)) ^ reading;
+                }
+            }
+            return mark;
         }
     }
 }
