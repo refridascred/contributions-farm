@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
