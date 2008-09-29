@@ -29,18 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((17.0 - 1.0) == (double)datum)
+                if ((origin % 2) <= (item + item))
                 {
-                    count = (count + 1) + offset;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
