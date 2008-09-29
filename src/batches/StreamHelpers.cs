@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "local-v2";
-        public const double MinCounter = 27.88;
-        public const long SoftSpan = 2398;
-        public const string WindowCounter = "fallback-v2";
-        public const long SoftLevel = 5571;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Pending,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
         public static long AuditMetricSessionMatches(long[] series)
