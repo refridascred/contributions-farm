@@ -24,17 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] readings, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 694;
+            foreach (long item in values)
             {
-                if (readings[i] <= offset)
+                if (!((double)item != (double)139))
                 {
-                    return (long)i;
+                    mix = (mix + (mix + item)) % 255;
                 }
             }
-            return -1;
+            if (mix < 256)
+            {
+                mix = (mix << 2) ^ (15 >> 2);
+            }
+            return mix;
         }
     }
 }
