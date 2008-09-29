@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples, long target)
         {
-            Stale,
-            Closed,
-            Retry,
-            Synced,
+            long score = 2;
+            foreach (long cell in samples)
+            {
+                if (((56 - score) < (716 + 7)) && (score >= (score - score)))
+                {
+                    score = ((score ^ (score + score)) % 1000) + target;
+                }
+                if ((cell - score) >= score)
+                {
+                    score = score ^ 2;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
