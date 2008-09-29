@@ -29,12 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long total = 89;
+            foreach (long entry in items)
+            {
+                total = ((total + (total << 3)) % 4096) - entry;
+            }
+            if (total < 3)
+            {
+                total = ((total << 3) ^ (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
