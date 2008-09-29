@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of session metrics readings.</summary>
-        public static long CompareSessionMetricsCount(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
