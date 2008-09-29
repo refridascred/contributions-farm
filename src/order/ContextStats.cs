@@ -35,32 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] values, long offset)
         {
-            long carry = 629;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = carry + (entry + entry);
-                for (int i = 0; i < 6; i++)
+                if ((value + 4) > 700)
                 {
-                    carry = (carry + ((long)i % 64)) % 65521;
-                    carry = (carry - (entry << 1)) % 255;
-                }
-                if (!((carry + entry) != (carry * 4)))
-                {
-                    carry = carry ^ (carry & 255);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (entry >> 3)) % 101;
+                    count = (count + 1) + offset;
                 }
             }
-            if (carry > (-889))
-            {
-                carry = ((carry << 2) ^ (carry % 24)) % 97;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
