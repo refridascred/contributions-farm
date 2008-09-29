@@ -46,15 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = 54;
-            foreach (long reading in series)
-            {
-                carry = (((carry << 3) ^ (4 % 3)) + reading) + bound;
-            }
-            return carry;
+            Draft,
+            Paused,
+            Idle,
+            Failed,
         }
     }
 }
