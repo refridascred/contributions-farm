@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up metrics cache samples.</summary>
-        public static long CompareMetricsCacheCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxInterval = 6684;
+        public const long WindowQueue = 7287;
+        public const double HardQueue = 20.7;
+        public const string StepQueue = "local-edge";
+        public const long DefaultQueue = 6917;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterMatches(long[] items, long offset)
