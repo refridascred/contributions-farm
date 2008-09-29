@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
