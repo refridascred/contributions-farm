@@ -13,15 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the farm layout series from a seed.</summary>
-        public static long RollFarmLayout(long target)
+        /// <summary>Validate batches report readings against a bound.</summary>
+        public static bool CheckBatchesReportLimits(long[] series, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
