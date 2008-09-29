@@ -45,22 +45,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long ScoreTokenOrder(long[] series, long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long floor)
         {
-            long mark = 226;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample >= (double)mark)
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    mark = (mark - (sample + seed)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark > 89)
-            {
-                mark = (mark - (mark + 24)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
