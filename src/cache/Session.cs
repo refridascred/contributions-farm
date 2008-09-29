@@ -28,11 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinSize = 9.46;
-        public const long CacheBatches = 6624;
-        public const double IdleBatches = 31.86;
-        public const long MaxBatches = 7109;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] items, long target)
