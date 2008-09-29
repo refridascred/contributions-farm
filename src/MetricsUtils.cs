@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels, long floor)
         {
-            double mean = 10.0 + (bias * 6.58);
-            for (int i = 0; i < 8; i++)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                mean = (mean + mean) + (double)(long)i;
+                if ((floor >= item) || ((floor * 5) < (carry << 3)))
+                {
+                    carry = (carry ^ (carry + carry)) % 101;
+                }
             }
-            return mean + rate;
+            return carry;
         }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
