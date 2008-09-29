@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 6432;
-        public const string DefaultLevel = "fallback";
-        public const long RetryBudget = 5918;
-        public const string IdleRatio = "stable-v2";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Pending,
+            Done,
+            Failed,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepTimeout = 8361;
