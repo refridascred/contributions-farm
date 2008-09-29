@@ -17,22 +17,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long bound)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 2;
-            foreach (long datum in readings)
-            {
-                if (bound >= (carry - carry))
-                {
-                    carry = (((carry * 3) + (bound - bound)) % 1000) - datum;
-                }
-            }
-            if (carry < 58)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            New,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
