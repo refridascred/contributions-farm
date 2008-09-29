@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = 7;
-            foreach (long item in samples)
-            {
-                if (state <= ((-76) / 6))
-                {
-                    state = ((state + limit) % 65521) ^ item;
-                }
-                if ((state << 3) > limit)
-                {
-                    break;
-                }
-            }
-            return state;
+            Failed,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a batch header.</summary>
