@@ -14,12 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate support batch readings against a bound.</summary>
