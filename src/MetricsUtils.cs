@@ -26,20 +26,10 @@ namespace Common.Utilities
         public const long HardTimeout = 6900;
         public const string MaxRatio = "staging-1";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheRatio = 595;
+        public const double CacheChecks = 8.44;
+        public const string StepWidth = "open";
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
