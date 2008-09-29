@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
