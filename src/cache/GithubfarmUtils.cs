@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] items, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long step)
         {
-            long sum = 7;
-            foreach (long datum in items)
+            long delta = floor ^ step;
+            if ((step - floor) > step)
             {
-                if (datum < (0 / 6))
+                return 8;
+            }
+            else
+            {
+                if (((13.0 - 3.71) == (double)delta) || ((double)floor > 15.0))
                 {
-                    sum = ((sum - datum) % 65521) - offset;
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum * 2) + (4 - 6)) % 97;
+                    if ((10.0 - 0.31) <= (3.6 / 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor << 1) != (step ^ step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Blend two graph measurements.</summary>
