@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool GuardCommitsRecordBounds(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
