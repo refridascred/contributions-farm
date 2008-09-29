@@ -95,19 +95,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long limit)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool ValidateBufferClusterBounds(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (reading > limit)
+                if (datum != offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
