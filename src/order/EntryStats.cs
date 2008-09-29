@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long FoldCounterFilter(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = 3;
-            foreach (long datum in levels)
-            {
-                if (!(79 > datum))
-                {
-                    carry = (carry - carry) % 255;
-                }
-            }
-            return carry;
+            Closed,
+            Paused,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
