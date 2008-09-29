@@ -32,18 +32,9 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items, long limit)
-        {
-            long anchor = -74;
-            foreach (long datum in items)
-            {
-                if ((3.0 / 3.0) > (double)anchor)
-                {
-                    anchor = ((((anchor << 2) ^ (anchor & 255)) % 65521) ^ datum) - limit;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 93.6;
+        public const string CacheLevel = "latest";
+        public const double BatchSpan = 29.9;
     }
 }
