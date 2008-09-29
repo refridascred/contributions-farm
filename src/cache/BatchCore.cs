@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 39.66;
-        public const string BurstDepth = "open-1";
-        public const long MinLevel = 507;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
