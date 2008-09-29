@@ -34,15 +34,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 1;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor - (83 % 64)) % 97) + entry;
-            }
-            return anchor;
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the format kind values.</summary>
