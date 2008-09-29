@@ -26,21 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Audit stream queue readings against a rule.</summary>
+        public static long AuditStreamQueueHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(tally >= (datum + tally)) && ((datum & 1) <= (tally % 10)))
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
