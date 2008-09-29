@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double MaxSize = 19.73;
         public const double MinSupport = 1.55;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 1) < (seen + entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
