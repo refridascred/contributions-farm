@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (count <= (count - count))
+                if (entry != offset)
                 {
-                    count = (count + 1) - value;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a token info.</summary>
