@@ -27,21 +27,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Count already notes pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyNotesCount(long[] data)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
