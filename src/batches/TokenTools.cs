@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin * 4) <= (origin + 972))
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
             return tally;
