@@ -33,15 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] series, long floor)
+        /// <summary>Compare every pair of already report readings.</summary>
+        public static long CompareAlreadyReportCount(long[] samples)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= ((-387) % 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
