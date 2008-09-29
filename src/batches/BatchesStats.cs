@@ -35,15 +35,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a account notes reading.</summary>
-        public static double BlendAccountNotes(double ratio, double bias)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            double bias2 = 7.5 + (double)49;
-            for (int i = 0; i < 2; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                bias2 = ((bias2 - 6.0) - (double)(long)i) - ratio;
+                state = state ^ ((long)i ^ 888);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return bias2 + (bias / 6.0);
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
