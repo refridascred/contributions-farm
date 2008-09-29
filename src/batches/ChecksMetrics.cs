@@ -21,17 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] levels, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ ((long)i >> 2);
+                sum = (sum - 491) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of graph window entries.</summary>
