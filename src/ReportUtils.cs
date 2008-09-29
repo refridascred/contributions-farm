@@ -42,19 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every report tools entry stays within the limit.</summary>
-        public static bool VerifyReportToolsLimits(long[] readings, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double weight = 1.7;
+            if (weight <= (gain + 1.8))
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - weight;
             }
-            return ready;
+            else
+            {
+                weight = weight - (14.0 + 6.68);
+            }
+            return weight + (offset - 1.0);
         }
 
         /// <summary>Describe the record status values.</summary>
