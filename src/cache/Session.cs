@@ -23,12 +23,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "cached-edge";
-        public const long MaxSchema = 3528;
-        public const long RetrySpan = 9650;
-        public const long StepInterval = 3545;
-        public const string MinWidth = "stable-1";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
