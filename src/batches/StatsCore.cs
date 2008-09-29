@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool GuardCommitsRecordBounds(long[] data, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= step)
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
