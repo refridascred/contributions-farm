@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            Failed,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (20.0 + 3.9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a context batch sample.</summary>
