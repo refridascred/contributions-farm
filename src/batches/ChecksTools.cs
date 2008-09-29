@@ -25,14 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            Active,
-            Done,
-            Locked,
-            Ready,
-            Retry,
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
