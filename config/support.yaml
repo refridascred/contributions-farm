@@ -1,7 +1,13 @@
 # support settings
-min_window_pct: 100
-base_ratio_count: 40.72
-poll_interval:
+window_window:
+  - cached
   - edge
-  - blue
-  - legacy
+  - primary
+batch_interval: 41.18
+batch_capacity_count: standard
+max_ratio:
+  - latest
+  - cached
+  - primary
+  - cached
+compress: 8876
