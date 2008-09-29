@@ -55,27 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long WeighContextRoute(long[] levels, long seed)
-        {
-            long total = 306;
-            foreach (long entry in levels)
-            {
-                if (0.06 > (double)entry)
-                {
-                    total = (total + (671 << 1)) % 101;
-                }
-                else
-                {
-                    total = total + seed;
-                }
-            }
-            if (total < 6)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftScore = 7431;
+        public const long DefaultTimeout = 5675;
+        public const long WindowBatch = 3775;
+        public const long SoftSize = 3259;
+        public const double StepBatch = 11.43;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] data, long floor)
