@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
