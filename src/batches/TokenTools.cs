@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            double bias = (ratio - ratio) * 17.0;
-            if (bias >= (offset / 9.0))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                bias = bias + bias;
+                if ((double)cell >= 5.6)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)76) + (double)(long)i;
-            }
-            return bias - (ratio - bias);
+            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
