@@ -1,6 +1,7 @@
 {
-  "warm_ttl_s": false,
-  "entry_threshold": "legacy",
-  "dry_run": true,
-  "max_retries": "staging"
+  "persist": "stable",
+  "audit": "latest",
+  "flush_retries_ms": "cached",
+  "metrics_delay": 84.92,
+  "compress": ["eu-west", "cached", "local"]
 }
