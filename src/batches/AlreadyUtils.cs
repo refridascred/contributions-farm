@@ -27,13 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Locked,
-            Stale,
-            Paused,
-            Done,
+            Pending,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
