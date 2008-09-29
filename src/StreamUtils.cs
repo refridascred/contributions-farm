@@ -58,19 +58,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits schema entries.</summary>
-        public static long TotalCommitsSchema(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long score = 1;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (3 + sample)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < (-769))
-            {
-                score = ((score * 2) + (1 ^ score)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
