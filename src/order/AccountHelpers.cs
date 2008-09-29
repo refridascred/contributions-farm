@@ -40,19 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double gain, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] values)
         {
-            double bias2 = (bias - 6.7) - bias;
-            if (bias2 > gain)
+            long matches = 0;
+            foreach (long value in values)
             {
-                bias2 = bias2 - (bias + bias);
+                if (((-5) << 3) < (matches << 2))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (gain / 2.0);
-            }
-            return bias2 + (double)14;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
