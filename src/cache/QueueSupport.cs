@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Stale,
-            Draft,
+            Queued,
+            New,
             Paused,
-            Pending,
-            Idle,
         }
 
         /// <summary>Iterate the farm layout series from a seed.</summary>
