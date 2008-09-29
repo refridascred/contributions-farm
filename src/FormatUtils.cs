@@ -59,11 +59,18 @@ namespace Common.Utilities
         public const double MaxToken = 74.15;
         public const double StepToken = 4.63;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((limit ^ datum) != (limit << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
