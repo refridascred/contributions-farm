@@ -27,17 +27,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Accumulate checks context samples.</summary>
+        public static long TotalChecksContext(long[] values, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 3;
+            foreach (long cell in values)
             {
-                result = (result ^ step) % 97;
-                result = ((result << 3) ^ ((long)i / 4)) % 101;
-                result = ((result * 5) + (long)i) % 101;
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (carry - ((long)i & 31)) % 101;
+                }
+                if (((1.27 / 3.0) <= (double)origin) || ((origin + cell) < cell))
+                {
+                    carry = (carry << 2) ^ (cell ^ 42);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry - carry);
+                }
+                carry = (carry + ((long)values.Length & 15)) % 101;
             }
-            return result;
+            if (carry < 291)
+            {
+                carry = (carry << 3) ^ (origin + origin);
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up context checks samples.</summary>
