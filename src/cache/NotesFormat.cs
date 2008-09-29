@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9754;
+        public const long BaseWindow = 621;
+        public const string DefaultFactor = "strict-v2";
+        public const string CacheWindow = "strict-1";
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
