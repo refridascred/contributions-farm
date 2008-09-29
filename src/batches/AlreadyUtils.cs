@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] series, long bound)
         {
-            double bias2 = floor;
-            return (bias2 - floor) + bias;
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
