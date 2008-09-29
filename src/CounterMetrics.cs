@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long DefaultRatio = 6969;
         public const long StepSpan = 6643;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long offset2)
         {
-            Idle,
-            Locked,
-            Closed,
-            Retry,
+            long span = offset + offset2;
+            if ((offset ^ (-463)) == (offset2 >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.9 + 7.6) <= (double)span)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)span >= 11.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span <= (span * 4)) && ((offset / 4) < offset2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
