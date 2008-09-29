@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of commits buffer entries.</summary>
-        public static long WeighCommitsBuffer(long[] values, long seed)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long seed)
         {
-            long score = 2;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < (score ^ score))
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
                 {
-                    score = (score - value) % 65521;
-                }
-                if (((4.7 / 9.0) >= (7.59 / 7.0)) || ((seed + score) < (score + score)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 7)
-            {
-                score = score + (score ^ score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
