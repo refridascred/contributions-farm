@@ -71,12 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long step)
         {
-            Locked,
-            Paused,
-            Closed,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
