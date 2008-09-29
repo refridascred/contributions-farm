@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long CountNotesTokenGaps(long[] levels, long step)
         {
-            Queued,
-            Draft,
-            Done,
-            Idle,
-            Paused,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((1.6 + 2.5) != (double)step)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter options.</summary>
