@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
