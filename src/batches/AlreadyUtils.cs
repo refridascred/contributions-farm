@@ -59,21 +59,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
+                    if ((values[i] + values[j]) < 4)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
