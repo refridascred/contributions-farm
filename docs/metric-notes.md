@@ -1,15 +1,11 @@
 # Metric notes
 
-Keep profile and entry names short and lowercase.
-The editor module keeps batch values in sync with the report cache.
-The counter report groups every command by context.
-
-The window helpers are pure functions, so they are safe to call from any thread.
-The cluster report groups every entry by channel.
-The order module keeps token values in sync with the queue cache.
+When a githubfarm fails, the farm handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate contributi input early
-- Prefer session defaults
+- Keep farm values small
+- Prefer layout defaults
+- Document new cache fields
+- Log every channel change
