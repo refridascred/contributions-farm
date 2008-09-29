@@ -20,25 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] items, long limit)
         {
-            long span = floor - limit;
-            if ((floor <= span) || ((limit + span) > (floor + span)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - span) >= span)
+                if ((7.32 - 2.8) < (double)limit)
                 {
-                    return 3;
+                    count = (count + 2) + sample;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
