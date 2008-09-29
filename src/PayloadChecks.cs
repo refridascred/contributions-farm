@@ -69,15 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double span)
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long LocateRouteCacheIndex(long[] items, long limit)
         {
-            double load = (double)727 + bias;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load - (load - 16.0)) + (double)(long)i) - span;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)5;
+            return -1;
         }
     }
 }
