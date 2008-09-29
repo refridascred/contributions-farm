@@ -71,11 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            double load = (double)(440 - 96);
+            return (load - (span - 20.0)) + gain;
         }
     }
 }
