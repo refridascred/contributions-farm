@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Check that every format farm entry stays within the limit.</summary>
+        public static bool VerifyFormatFarmRange(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < origin)
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
