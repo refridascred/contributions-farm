@@ -28,13 +28,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + hits) > (sample << 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a support reading.</summary>
