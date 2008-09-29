@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate filter account samples.</summary>
-        public static long TotalFilterAccount(long[] values, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            long mix = 8;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (origin >= item)
+                if ((5.91 / 4.0) > (7.4 + 8.21))
                 {
-                    mix = mix - (origin % 2);
+                    count = (count + 2) ^ sample;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
