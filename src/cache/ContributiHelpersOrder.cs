@@ -12,17 +12,14 @@ namespace Common.Utilities
             return (mean - ratio) + floor;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
