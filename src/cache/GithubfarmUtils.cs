@@ -43,13 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(5 > result))
+                {
+                    long lane = (428 / 5) + (origin + origin);
+                    result = (result + (lane - lane)) % 97;
+                }
+                result = result + origin;
+                if (((-783) + result) < (origin + origin))
+                {
+                    result = (result - 875) % 97;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Blend two tools measurements.</summary>
