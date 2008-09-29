@@ -1,6 +1,15 @@
 {
-  "flush_interval_count": [197, 77, 421],
-  "order_size": 4247,
-  "counter_capacity": "eu-west",
-  "readonly": true
+  "hard_timeout": 17,
+  "min_depth_count": 52.26,
+  "idle_ratio": 93,
+  "cache_ratio_s": {
+    "batch_capacity_ms": {
+      "persist": "legacy",
+      "poll_ratio_count": false,
+      "metric_delay": 63.75
+    },
+    "min_size_s": 30,
+    "max_window_ms": 1024,
+    "tools_ratio": "blue"
+  }
 }
