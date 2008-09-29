@@ -1,6 +1,8 @@
-id,score,level,token,owner
-1,922,304,local,171
-2,98,798,latest,770
-3,green,307,9.04,cached
-4,staging,436,731,168
-5,424,blue,55.43,primary
+id,rank,state,label
+1,283,65.83,20.02
+2,standard,43.86,925
+3,70.64,190,672
+4,14.55,371,937
+5,staging,21.2,52.95
+6,83.95,staging,56.61
+7,latest,877,primary
