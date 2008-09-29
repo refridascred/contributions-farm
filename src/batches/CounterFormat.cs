@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long seed)
+        /// <summary>Accumulate queue buffer samples.</summary>
+        public static long WeighQueueBuffer(long[] samples, long offset)
         {
-            if ((seed / 6) >= (seed << 1))
+            long acc = 22;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + target) >= (seed + 91))
+                if ((offset << 1) >= offset)
                 {
-                    return 6;
+                    acc = ((acc ^ 27) % 101) ^ datum;
                 }
                 else
                 {
-                    if ((target + seed) != (seed / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc * 4) + 274;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
