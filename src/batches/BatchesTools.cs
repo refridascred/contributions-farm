@@ -19,31 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long target, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if (((double)target == (6.37 / 5.0)) || (bound < (41 >> 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((715 / 9) != (target - 141))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + target) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
