@@ -1,6 +1,6 @@
 {
-  "dry_run": 1289,
-  "burst_interval_ms": true,
-  "batch_ratio": false,
-  "payload_threshold": 30
+  "schema_depth": 58.29,
+  "poll_ratio_count": "standard",
+  "idle_delay_count": 13.83,
+  "queue_ttl": 500
 }
