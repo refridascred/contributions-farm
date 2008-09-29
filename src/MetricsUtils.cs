@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Idle,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 29.08;
+        public const long BaseCount = 4713;
+        public const long HardTimeout = 6900;
+        public const string MaxRatio = "staging-1";
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] items, long offset)
