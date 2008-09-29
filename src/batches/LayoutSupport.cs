@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long result = -54;
+            foreach (long item in levels)
+            {
+                result = (((result << 3) ^ (result % 16)) % 97) ^ item;
+            }
+            if (result < 57)
+            {
+                result = result ^ (323 + result);
+            }
+            return result;
         }
 
         /// <summary>Count the context editor entries that pass the check.</summary>
