@@ -35,23 +35,19 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Scale a buffer support figure with a bias.</summary>
-        public static double AdjustBufferSupport(double weight, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long limit)
         {
-            double scale = (2.3 - weight) / 9.0;
-            if (scale < scale)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                scale = (scale - weight) + floor;
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (16.0 * 0.8);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 9.3) + (double)(long)i;
-            }
-            return scale + (double)3;
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
