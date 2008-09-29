@@ -17,16 +17,22 @@ namespace Common.Utilities
         public const long StepSpan = 1453;
         public const long MinRecord = 1623;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long mark = 3;
-            foreach (long datum in items)
+            long result = 993;
+            foreach (long value in levels)
             {
-                mark = (((mark << 3) ^ (mark - mark)) % 97) - origin;
-                mark = ((mark << 2) ^ (datum * 3)) % 97;
+                if ((value * 3) <= (result * 4))
+                {
+                    result = (result * 2) + result;
+                }
+                if ((result << 1) != (value * 5))
+                {
+                    break;
+                }
             }
-            return mark % 65521;
+            return result % 65521;
         }
     }
 }
