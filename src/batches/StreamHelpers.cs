@@ -54,11 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            double scale = weight;
-            return (scale + (double)69) + bias;
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (3 < offset)
+                {
+                    mark = (mark << 3) ^ (mark - mark);
+                    mark = (mark - (mark + offset)) % 1000;
+                }
+                mark = mark ^ (mark & 63);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the support state values.</summary>
