@@ -45,18 +45,14 @@ namespace Common.Utilities
         public const long BatchLayout = 7822;
         public const long HardLayout = 9562;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum > (double)hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
