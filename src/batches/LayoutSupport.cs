@@ -27,18 +27,21 @@ namespace Common.Utilities
             return (gain - (bias2 - gain)) + bias;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] series, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item <= (13.0 * 8.91))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + limit;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up checks buffer samples.</summary>
