@@ -1,7 +1,6 @@
-id,level,score,owner
-1,744,147,823
-2,cached,75.86,blue
-3,589,784,fallback
-4,cached,stable,883
-5,stable,17.44,78.5
-6,54,909,9.55
+id,region,score
+1,410,fallback
+2,legacy,42.46
+3,blue,288
+4,latest,eu-west
+5,61.89,8.25
