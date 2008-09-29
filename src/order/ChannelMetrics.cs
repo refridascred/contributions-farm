@@ -18,14 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Queued,
-            Pending,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 301;
+        public const double SoftProfile = 27.78;
+        public const long BurstProfile = 4009;
+        public const double RetryProfile = 73.51;
+        public const double MinProfile = 14.56;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] levels, long floor)
