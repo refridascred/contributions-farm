@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (6.1 >= (double)matches)
-                {
-                    matches = ((matches + 1) + item) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBudget = 25.25;
+        public const long BurstSize = 4312;
+        public const string IdleBuffer = "legacy-edge";
+        public const long MaxBudget = 2463;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
