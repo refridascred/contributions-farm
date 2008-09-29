@@ -44,21 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark > (origin & 3)) || ((8.41 - 2.4) <= (double)(long)i))
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                mark = ((mark * 2) + ((long)i >> 1)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
