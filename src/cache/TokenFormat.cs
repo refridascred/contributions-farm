@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long total = 9;
+            foreach (long sample in data)
+            {
+                if ((total - total) > (sample >> 3))
+                {
+                    total = total + (708 + total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the window editor entries that pass the check.</summary>
