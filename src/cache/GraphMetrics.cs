@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many session notes samples are out of range.</summary>
+        public static long CountSessionNotesHits(long[] readings)
         {
-            Ready,
-            Queued,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen >= 10.0)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
