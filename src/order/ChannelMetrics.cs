@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Iterate the stream notes series from a seed.</summary>
-        public static long DeriveStreamNotes(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long state = 434;
+            foreach (long entry in series)
             {
-                result = ((result * 2) + (result / 7)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
+                if (((17.0 / 3.0) >= (12.0 + 3.12)) || ((state << 1) > state))
+                {
+                    state = (state - (entry * 3)) % 255;
+                }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
