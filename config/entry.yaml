@@ -1,17 +1,11 @@
 # entry settings
-burst_delay: standard
-retry_limit_ms:
-  - local
-  - open
-record_timeout:
-  - 231
-  - 45
-githubfarm_interval:
-  order_retries: 65
-  batch_depth: false
-  soft_threshold_count: latest
-  soft_delay_pct: false
-  compress: 42.69
-dry_run:
-  - legacy
-  - edge
+cache_ttl_s:
+  persist: 81
+  readonly: fallback
+  audit: latest
+  cluster_timeout: 7751
+base_depth: true
+persist: 4253
+queue_ratio: open
+poll_retries_ms: 57.37
+metrics_interval: edge
