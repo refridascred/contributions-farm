@@ -49,11 +49,17 @@ namespace Common.Utilities
         public const long BatchSpan = 9713;
         public const string MaxInterval = "legacy";
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double scale, double span)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] values, long origin)
         {
-            double rate = scale * 2.0;
-            return rate + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank window context input into a small class.</summary>
