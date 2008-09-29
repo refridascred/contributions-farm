@@ -56,22 +56,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            long score = -27;
-            foreach (long sample in items)
+            double ratio = (bias - 7.9) - scale;
+            if (ratio >= (1.07 / 9.0))
             {
-                if (offset < (sample ^ 19))
-                {
-                    score = (score * 4) + 647;
-                }
+                ratio = ratio - (double)5;
             }
-            if (score < 92)
-            {
-                score = (score + offset) % 1000;
-            }
-            return score;
+            return ratio + (ratio + ratio);
         }
     }
 }
