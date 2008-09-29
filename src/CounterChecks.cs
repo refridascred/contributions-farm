@@ -72,19 +72,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score << 2) ^ (step & 3);
-                score = score + (score + 226);
-                score = (score << 2) ^ (score - score);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseTimeout = "stable-v2";
+        public const double BurstCluster = 3.39;
+        public const long LimitCluster = 9930;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] series, long target)
