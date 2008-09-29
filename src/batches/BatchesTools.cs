@@ -27,21 +27,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Locate a schema cache reading by value.</summary>
+        public static long LocateSchemaCacheIndex(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
