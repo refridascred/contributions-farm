@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((189 >= (result >> 1)) || (((long)i << 3) >= ((long)i << 2)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 3) + (result >> 5)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
