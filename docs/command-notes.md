@@ -1,13 +1,14 @@
 # Command notes
 
-When a metric fails, the filter handler retries a few times before giving up.
-Use channel settings to tune how often route data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and stats names short and lowercase.
 
-When a token fails, the order handler retries a few times before giving up.
-Run the batch check before changing any layout limits.
+Run the buffer check before changing any already limits.
+When a payload fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every farm change
-- Keep graph values small
+- Validate graph input early
+- Review metrics limits each release
+- Document new schema fields
+- Keep checks values small
