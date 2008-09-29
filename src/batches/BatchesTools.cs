@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batches contributi entry that matches the target.</summary>
-        public static long SeekBatchesContributiIndex(long[] levels, long target)
+        /// <summary>Project the next queue farm value.</summary>
+        public static double ProjectQueueFarm(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = 20.0;
+            return (weight - scale) + span;
         }
 
         /// <summary>Describe the window level values.</summary>
