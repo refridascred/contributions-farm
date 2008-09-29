@@ -14,10 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5949;
-        public const long MaxCommits = 6622;
-        public const long HardCommits = 6683;
+        /// <summary>Count layout support pairs that satisfy a relation.</summary>
+        public static long CompareLayoutSupportCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
