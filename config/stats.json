@@ -1,6 +1,23 @@
 {
-  "stream_delay": ["stable", "staging"],
-  "contributi_interval": 92,
-  "hard_ttl_s": "local",
-  "dry_run": 95.96
+  "enabled": "blue",
+  "burst_delay": [281, 394],
+  "max_size": false,
+  "soft_threshold_s": true,
+  "readonly": {
+    "cache_retries_count": 41,
+    "default_delay_pct": "open",
+    "base_threshold_s": false,
+    "strict": {
+      "session_size": 1250,
+      "batch_ratio": [390, 491, 310],
+      "enabled": "standard"
+    },
+    "hard_ratio_pct": {
+      "record_interval": 60,
+      "dry_run": 4,
+      "default_timeout_count": 98
+    },
+    "dry_run": 250
+  },
+  "cache_window": 89
 }
