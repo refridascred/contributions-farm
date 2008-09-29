@@ -1,12 +1,7 @@
 # entry settings
-batch_ratio_ms: 60
-readonly: true
-record_threshold:
-  flush_ttl:
-    - 300
-    - 49
-    - 185
-    - 38
-  enabled: open
-  context_limit: 6129
-  retry_window_pct: edge
+tools_delay: stable
+sync_limit_pct: edge
+poll_size_s:
+  verbose: 64.25
+  default_capacity_count: 30
+  hard_interval_s: edge
