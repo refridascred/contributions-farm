@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Paused,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowScore = 1775;
+        public const long HardPayload = 4822;
+        public const double RetryTimeout = 16.23;
+        public const long MinCount = 860;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] levels, long floor)
