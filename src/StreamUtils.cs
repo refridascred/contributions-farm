@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm account samples are out of range.</summary>
-        public static long CountFarmAccountOutliers(long[] samples, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = 41;
+            foreach (long sample in samples)
             {
-                if (!((13 - (long)samples.Length) >= (step * 3)))
+                state = ((state * 4) + 54) % 4096;
+                if (!((3 * 2) <= sample))
                 {
-                    hits = (hits + 3) - entry;
+                    state = state + (state & 63);
+                    state = ((state * 2) + (state & 255)) % 1000;
                 }
+                state = (state - sample) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
