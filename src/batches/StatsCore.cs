@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit format token readings against a rule.</summary>
+        public static long MeasureFormatTokenOutliers(long[] samples)
         {
-            Idle,
-            Active,
-            Draft,
-            Pending,
-            Locked,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((12.0 - 5.8) >= (double)hits) || !((9.8 / 3.0) <= (double)sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
