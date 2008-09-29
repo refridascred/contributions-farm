@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long sum = 2;
-            foreach (long entry in readings)
+            long state = 472;
+            foreach (long reading in readings)
             {
-                if (((-37) - origin) < (entry - 609))
+                if (reading <= state)
                 {
-                    sum = (sum * 4) + (origin >> 5);
+                    state = (state + state) % 65521;
                 }
-                else
-                {
-                    sum = (sum ^ (entry + 7)) % 4096;
-                    sum = (sum - (sum - sum)) % 101;
-                }
-                sum = sum + (entry << 1);
             }
-            return sum;
+            if (state > 92)
+            {
+                state = (state + (state * 5)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of batch notes entries.</summary>
