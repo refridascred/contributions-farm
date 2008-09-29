@@ -57,22 +57,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format metric values into a single score.</summary>
-        public static long DigestFormatMetric(long[] series)
+        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
+        public static long ClassifyGithubfarmPayload(long seed, long floor)
         {
-            long acc = 457;
-            foreach (long sample in series)
+            long delta = seed ^ floor;
+            if ((7.95 - 1.4) <= (double)floor)
             {
-                if ((8.6 / 6.0) <= (double)acc)
+                return 7;
+            }
+            else
+            {
+                if ((seed - floor) != (3 * 3))
                 {
-                    acc = (acc + (acc + acc)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (sample << 3)) % 97;
+                    if ((floor ^ floor) > (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)delta == (0.2 * 7.8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
