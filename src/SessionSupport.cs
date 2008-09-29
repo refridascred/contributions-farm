@@ -26,15 +26,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] items, long step)
         {
-            double gain = 4.6;
-            if (gain < scale)
+            long acc = 864;
+            foreach (long cell in items)
             {
-                gain = (gain - (double)(-711)) + floor;
+                if (step >= (cell - step))
+                {
+                    acc = ((acc * 3) + (step & 3)) % 101;
+                }
             }
-            return gain + 4.4;
+            if (acc < 34)
+            {
+                acc = (acc - (acc & 7)) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
