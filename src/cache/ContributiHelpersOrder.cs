@@ -24,15 +24,17 @@ namespace Common.Utilities
             return mean + (double)9;
         }
 
-        /// <summary>Scale a counter context figure with a bias.</summary>
-        public static double ScaleCounterContext(double bias, double span)
+        /// <summary>Find the first record layout entry that matches the target.</summary>
+        public static long LookupRecordLayoutIndex(long[] items, long offset)
         {
-            double scale = (double)(55 & 3);
-            if (scale <= (span + span))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (span * 0.2);
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
