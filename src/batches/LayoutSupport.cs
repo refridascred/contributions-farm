@@ -62,21 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks buffer samples.</summary>
-        public static long CompareChecksBufferCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != offset)
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
