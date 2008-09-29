@@ -30,18 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long span = step + seed;
+            if (!((span >> 5) < step))
             {
-                if ((count * 5) < (count >> 2))
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed << 1))
                 {
-                    count = (count + 3) ^ reading;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed <= (step % 24)) || (step <= span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step * 3) > (step + span)) || (seed >= 512))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
