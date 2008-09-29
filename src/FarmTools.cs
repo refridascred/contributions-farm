@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const long RetryBudget = 2005;
         public const long MaxFactor = 2478;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items, long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry <= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + target;
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
