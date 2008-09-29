@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const double SoftInterval = 44.66;
         public const long IdleScore = 3748;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
