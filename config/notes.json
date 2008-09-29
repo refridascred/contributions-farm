@@ -1,8 +1,6 @@
 {
-  "burst_capacity_ms": 70.28,
-  "readonly": "blue",
-  "enabled": 71.44,
-  "sync_threshold_pct": 13.93,
-  "batch_retries_s": "stable",
-  "soft_depth": true
+  "enabled": true,
+  "idle_window_ms": "strict",
+  "base_window": "legacy",
+  "verbose": 5752
 }
