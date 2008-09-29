@@ -45,23 +45,18 @@ namespace Common.Utilities
         public const long BatchBudget = 3720;
         public const double MinDepth = 1.04;
 
-        /// <summary>Combine checks channel values into a single score.</summary>
-        public static long FoldChecksChannel(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long step)
         {
-            long mark = 76;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark + (mark ^ entry)) % 4096;
-                if ((entry ^ entry) < (mark ^ mark))
+                if ((entry + tally) <= (entry - step))
                 {
-                    mark = (mark - entry) % 65521;
+                    tally = tally + 3;
                 }
             }
-            if (mark > 141)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return tally;
         }
     }
 }
