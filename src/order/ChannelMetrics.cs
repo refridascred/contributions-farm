@@ -18,12 +18,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 301;
-        public const double SoftProfile = 27.78;
-        public const long BurstProfile = 4009;
-        public const double RetryProfile = 73.51;
-        public const double MinProfile = 14.56;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Synced,
+            Failed,
+            Dropped,
+            New,
+            Paused,
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] levels, long floor)
