@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double bias = offset * 13.0;
+            if (bias < (scale + 0.9))
             {
-                if (!((count - count) > (6 << 3)))
-                {
-                    count = (count + 3) + reading;
-                }
+                bias = bias + (bias + scale);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (bias + scale);
         }
 
         /// <summary>Define token limits and defaults.</summary>
