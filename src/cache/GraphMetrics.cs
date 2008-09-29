@@ -54,39 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long bound, long origin)
-        {
-            if ((16 - bound) >= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.7 / 8.0) <= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (2 / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound << 1) <= (bound + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "strict-edge";
+        public const string MinFarm = "primary-1";
+        public const double BurstTimeout = 86.07;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double gain, double bias)
