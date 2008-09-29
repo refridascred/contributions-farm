@@ -37,21 +37,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 443;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample != (double)result)
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result - (result + result)) % 4096) - step;
                 }
             }
-            return matches;
+            if (result < 892)
+            {
+                result = (result ^ (95 >> 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Blend two profile measurements.</summary>
