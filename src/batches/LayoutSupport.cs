@@ -40,18 +40,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of order cache entries.</summary>
-        public static long FoldOrderCache(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long floor, long limit)
         {
-            long anchor = 791;
-            foreach (long sample in samples)
+            long gap = floor - limit;
+            if (limit <= (floor & 127))
             {
-                if (((double)anchor <= (7.04 - 11.0)) && (sample > anchor))
+                return 0;
+            }
+            else
+            {
+                if (((6.46 + 6.9) > (double)floor) && ((double)limit <= 8.91))
                 {
-                    anchor = ((anchor << 2) ^ (sample / 2)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (((879 + (-2)) < (floor * 2)) && ((gap - gap) < 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
