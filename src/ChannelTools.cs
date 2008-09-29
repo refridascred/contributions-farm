@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = 944;
-            foreach (long entry in data)
-            {
-                anchor = (anchor ^ anchor) + entry;
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
