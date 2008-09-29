@@ -1,13 +1,6 @@
 {
-  "compress": "standard",
-  "soft_window_count": ["latest", "legacy"],
-  "verbose": {
-    "schema_size": [490, 154, 96, 291],
-    "sync_timeout_count": false,
-    "audit": 250,
-    "cache_interval_count": 95,
-    "command_retries": true,
-    "readonly": true
-  },
-  "burst_delay_s": [486, 489, 373, 440]
+  "flush_interval_count": [197, 77, 421],
+  "order_size": 4247,
+  "counter_capacity": "eu-west",
+  "readonly": true
 }
