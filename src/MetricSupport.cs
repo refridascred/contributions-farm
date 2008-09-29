@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a payload stream figure with a bias.</summary>
-        public static double BlendPayloadStream(double scale, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double mean = (double)(0 % 24);
-            if (mean > (double)73)
-            {
-                mean = (mean + (double)15) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (floor * 5.18)) + (double)(long)i;
-            }
-            return mean - (double)92;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
