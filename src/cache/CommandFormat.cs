@@ -70,19 +70,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Retry,
+            Failed,
+            Paused,
+            Locked,
         }
     }
 }
