@@ -1,5 +1,21 @@
 # support settings
-warm_threshold: cached
-warm_timeout_pct: true
-default_window_ms: 79
-token_window: legacy
+buffer_interval: false
+profile_interval: 67
+filter_size: 49
+base_window_count: true
+checks_window: 6.1
+warm_retries_ms:
+  retry_window:
+    cache_threshold_count: latest
+    default_size: staging
+    base_capacity_ms: 1421
+    burst_delay: 27
+    warm_delay_pct: 29.52
+    sync_ratio_pct:
+      - latest
+      - strict
+  sync_window:
+    - 253
+    - 498
+  notes_timeout: staging
+  max_limit_count: open
