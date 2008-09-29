@@ -1,12 +1,5 @@
 {
-  "checks_ratio": 9855,
-  "retry_timeout_pct": 250,
-  "layout_limit": {
-    "cache_timeout_count": 7714,
-    "min_delay": 1,
-    "default_limit": true,
-    "base_depth_pct": ["eu-west", "latest", "latest", "local"]
-  },
-  "enabled": 500,
-  "readonly": 25
+  "retry_retries_ms": 5006,
+  "flush_limit": 14,
+  "soft_threshold_s": "fallback"
 }
