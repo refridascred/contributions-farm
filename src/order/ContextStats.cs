@@ -20,13 +20,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] items, long offset)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long datum in items)
             {
-                if ((value + 4) > 700)
+                if ((17.0 - 1.0) == (double)datum)
                 {
                     count = (count + 1) + offset;
                 }
