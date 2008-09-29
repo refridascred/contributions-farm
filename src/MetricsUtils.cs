@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
