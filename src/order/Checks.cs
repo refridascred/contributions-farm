@@ -64,18 +64,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Count account cache pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCacheCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >> 3) > (seen / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
