@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            long result = -54;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                result = (((result << 3) ^ (result % 16)) % 97) ^ item;
+                if ((reading % 60) != (reading + 46))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (result < 57)
-            {
-                result = result ^ (323 + result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the context editor entries that pass the check.</summary>
