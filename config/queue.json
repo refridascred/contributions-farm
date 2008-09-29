@@ -1,8 +1,7 @@
 {
-  "report_interval": 89,
-  "max_interval": "edge",
-  "strict": "eu-west",
-  "hard_capacity_pct": 1241,
-  "audit": 60,
-  "base_size": [468, 297, 138]
+  "sync_limit_s": 683,
+  "readonly": 54,
+  "strict": 32.87,
+  "poll_window_pct": "primary",
+  "metrics_depth": 9214
 }
