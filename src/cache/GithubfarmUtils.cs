@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (!((347 & 31) >= (entry - entry)) || ((double)tally > (6.96 + 1.06)))
+                if (sample <= floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the entry mode values.</summary>
