@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many queue buffer samples are out of range.</summary>
-        public static long AuditQueueBufferGaps(long[] samples, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit > (8.12 + 15.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - cell;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
