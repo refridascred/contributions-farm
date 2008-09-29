@@ -22,19 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi filter reading.</summary>
-        public static double ProjectContributiFilter(double scale, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            double ratio = span - (15.0 - span);
-            if (ratio >= (ratio + scale))
+            if ((5.2 / 8.0) < (double)step)
             {
-                ratio = ratio - (double)18;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                if ((target >> 2) <= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Accumulate route samples.</summary>
