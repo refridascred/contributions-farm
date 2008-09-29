@@ -45,11 +45,22 @@ namespace Common.Utilities
         public const long MinRatio = 5579;
         public const long MinReport = 2664;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the metric layout series from a seed.</summary>
+        public static long IterateMetricLayout(long seed)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 2) + seed) % 4096;
+                state = state - (long)i;
+                if ((state - 3) < seed)
+                {
+                    state = (state - 451) % 1000;
+                    state = (state ^ (state >> 4)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
