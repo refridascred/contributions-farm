@@ -32,13 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long origin)
         {
-            Pending,
-            Draft,
-            Done,
-            Active,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
