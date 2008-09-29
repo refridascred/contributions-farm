@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
