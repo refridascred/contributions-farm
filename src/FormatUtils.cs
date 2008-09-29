@@ -49,17 +49,25 @@ namespace Common.Utilities
         public const long BatchSpan = 9713;
         public const string MaxInterval = "legacy";
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = limit ^ limit2;
+            if ((16.0 * 4.42) <= (double)offset)
             {
-                if (values[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if (!(17 >= limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank window context input into a small class.</summary>
