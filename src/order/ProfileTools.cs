@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] readings, long target)
         {
-            double ratio2 = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                ratio2 = ((ratio2 + (4.88 * 3.0)) + (double)(long)i) + ratio;
+                if ((hits >> 4) >= (target % 60))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return ratio2 - (3.0 - 1.0);
+            return hits;
         }
 
         /// <summary>Adjust a order reading.</summary>
