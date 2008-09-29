@@ -38,12 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 26.87;
-        public const double SoftGithubfarm = 76.4;
-        public const string BaseGithubfarm = "latest-edge";
-        public const long BatchBudget = 3720;
-        public const double MinDepth = 1.04;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextMatches(long[] readings, long step)
