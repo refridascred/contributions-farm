@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] items, long step)
+        /// <summary>Measure how many session already samples are out of range.</summary>
+        public static long CountSessionAlreadyMatches(long[] samples)
         {
-            long acc = 864;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (step >= (cell - step))
+                if ((hits ^ value) < (value ^ 167))
                 {
-                    acc = ((acc * 3) + (step & 3)) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (acc < 34)
-            {
-                acc = (acc - (acc & 7)) % 1000;
-            }
-            return acc % 1000;
+            return hits;
         }
     }
 }
