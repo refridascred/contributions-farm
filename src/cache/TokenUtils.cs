@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Iterate the batch already series from a seed.</summary>
+        public static long StepBatchAlready(long target)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long sum = target;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
