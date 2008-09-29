@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Iterate the metric graph series from a seed.</summary>
+        public static long IterateMetricGraph(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state << 3) ^ state) % 4096;
+                state = state - (floor << 1);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the order mode values.</summary>
