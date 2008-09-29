@@ -77,13 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
-            Idle,
-            Queued,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen % 3) > (740 >> 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
