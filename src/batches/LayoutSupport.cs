@@ -35,39 +35,23 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long seed)
+        /// <summary>Scale a buffer support figure with a bias.</summary>
+        public static double AdjustBufferSupport(double weight, double floor)
         {
-            long delta = origin + seed;
-            if ((delta % 2) <= (seed / 9))
+            double scale = (2.3 - weight) / 9.0;
+            if (scale < scale)
             {
-                return 3;
+                scale = (scale - weight) + floor;
             }
             else
             {
-                if ((2.28 + 9.4) <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >> 2) < (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4 >> 2) != (delta / 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = scale - (16.0 * 0.8);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 9.3) + (double)(long)i;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
