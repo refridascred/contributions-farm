@@ -23,36 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long floor)
+        /// <summary>Rank buffer notes input into a small class.</summary>
+        public static long GradeBufferNotes(long origin, long step)
         {
-            if ((floor + origin) > (5 - origin))
+            if ((double)origin >= (0.4 + 7.1))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((origin / 8) >= (origin / 6))
+                if ((origin % 7) <= (origin + step))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin / 7) > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 >> 4) <= (9 + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
