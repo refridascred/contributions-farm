@@ -68,14 +68,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Derive the next token support value from a seed.</summary>
+        public static long RollTokenSupport(long seed)
         {
-            Done,
-            Queued,
-            New,
-            Draft,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i == (1.18 * 10.0))
+                {
+                    acc = acc ^ (long)i;
+                    acc = (acc * 5) + ((long)i << 1);
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 5) + seed) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream status values.</summary>
