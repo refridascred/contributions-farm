@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
         {
-            double weight = bias + gain;
-            if (weight >= weight)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight - (double)2;
+                if (((0 - (long)i) < (long)i) && ((26 - (long)i) < (long)i))
+                {
+                    result = (result * 4) + result;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result - (result ^ floor)) % 65521) + (long)i2;
+                }
+                result = (result ^ floor) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 16.0) + (double)(long)i;
-            }
-            return weight - (weight - 1.36);
+            return result;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
