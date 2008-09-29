@@ -43,11 +43,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinSpan = 55.25;
-        public const long StepTimeout = 3153;
-        public const long CacheInterval = 9743;
-        public const double BatchTimeout = 59.49;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((tally & 1) > entry) || !((17 << 3) != (tally ^ 506)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
