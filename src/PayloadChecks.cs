@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next channel editor value.</summary>
-        public static double SmoothChannelEditor(double bias, double span)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double ratio = 11.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + 8.71) + (double)(long)i) - bias;
-            }
-            return ratio + span;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
