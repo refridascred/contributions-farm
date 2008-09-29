@@ -67,18 +67,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long TallyFormatRouteOutliers(long[] readings, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = 648;
+            foreach (long cell in levels)
             {
-                if (matches < step)
+                mix = (mix - offset) % 97;
+                mix = (mix + (offset + offset)) % 65521;
+                if (((mix + offset) > (9 + cell)) && ((cell >> 4) <= (mix + offset)))
                 {
-                    matches = (matches + 1) + sample;
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
     }
 }
