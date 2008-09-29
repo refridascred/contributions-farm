@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long anchor = 99;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor + (reading / 6)) % 4096) - bound;
-                if ((anchor + reading) != (reading & 7))
-                {
-                    anchor = anchor + ((-440) << 2);
-                }
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the window editor entries that pass the check.</summary>
