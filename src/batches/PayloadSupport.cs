@@ -29,9 +29,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTimeout = 42.29;
-        public const double WindowInterval = 26.65;
-        public const long SoftBudget = 1036;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "stable";
+        public const double BurstAlready = 62.14;
+        public const long BurstFactor = 7428;
     }
 }
