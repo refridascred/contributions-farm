@@ -53,19 +53,22 @@ namespace Common.Utilities
             return ratio - (weight / 6.0);
         }
 
-        /// <summary>Project the next stats layout value.</summary>
-        public static double ProjectStatsLayout(double rate, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
-            double gain = 3.14;
-            if (gain <= floor)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                gain = gain + gain;
+                if ((7.0 - 11.0) <= (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-27);
-            }
-            return gain - (gain - rate);
+            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
