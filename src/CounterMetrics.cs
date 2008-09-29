@@ -42,11 +42,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long floor)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            if ((step << 3) == (step * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor > (step >> 5)) || ((-544) >= (5 - step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)step < 11.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
