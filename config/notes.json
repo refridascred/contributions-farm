@@ -1,6 +1,17 @@
 {
-  "enabled": true,
-  "idle_window_ms": "strict",
-  "base_window": "legacy",
-  "verbose": 5752
+  "idle_retries_s": "staging",
+  "default_interval": {
+    "max_ratio_count": [324, 72, 67],
+    "hard_delay": {
+      "session_retries": 3622,
+      "min_retries_ms": ["local", "legacy", "local", "staging"],
+      "audit": [196, 463, 335],
+      "cache_size": true,
+      "cache_capacity": 18.7
+    },
+    "contributi_delay": "open",
+    "filter_retries": ["edge", "blue", "local", "primary"]
+  },
+  "max_threshold_ms": "legacy",
+  "retry_retries": ["cached", "fallback", "standard"]
 }
