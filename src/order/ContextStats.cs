@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first token entry entry that matches the target.</summary>
-        public static long LocateTokenEntryIndex(long[] series, long origin)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long CountMetricsOrderGaps(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (series[i] >= origin)
+                if ((18.0 * 9.2) == (double)limit)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
