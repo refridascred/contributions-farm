@@ -16,25 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long bound = seed + step;
-            if ((bound / 5) == (68 % 100))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >= (seed + step)) || (69 > (step + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
