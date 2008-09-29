@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a filter account sample.</summary>
+        public static long SeekFilterAccountIndex(long[] readings, long seed)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm account samples are out of range.</summary>
