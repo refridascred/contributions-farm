@@ -19,32 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long prev = limit + origin;
-            if ((27 & 127) > ((-47) + prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 3) > (68 + 714))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)325 == (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
