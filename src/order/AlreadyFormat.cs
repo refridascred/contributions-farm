@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 495;
+            foreach (long datum in data)
             {
-                if ((26 % 5) < (matches + 9))
+                if ((anchor + 6) <= (datum ^ anchor))
                 {
-                    matches = ((matches + 1) ^ cell) + step;
+                    anchor = (anchor - datum) % 97;
                 }
             }
-            return matches;
+            if (anchor < 98)
+            {
+                anchor = anchor - (anchor * 5);
+            }
+            return anchor;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
