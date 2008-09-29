@@ -39,26 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long floor)
-        {
-            long slot = bound - floor;
-            if ((slot - bound) > (bound + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 4) != (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinFactor = "local";
+        public const string RetryAccount = "stable-1";
+        public const string SoftAccount = "latest-1";
+        public const long BatchAccount = 3111;
+        public const long BurstAccount = 7774;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] values)
