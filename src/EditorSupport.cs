@@ -62,15 +62,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Idle,
+            Retry,
+            Draft,
         }
     }
 }
