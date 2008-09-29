@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a githubfarm contributi reading by value.</summary>
