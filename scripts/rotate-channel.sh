@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=76
+log "limit is ${CHANNEL_LIMIT}"
