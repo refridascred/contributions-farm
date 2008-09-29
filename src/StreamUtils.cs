@@ -29,18 +29,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metrics context readings against a rule.</summary>
-        public static long CountMetricsContextOutliers(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = 36;
+            foreach (long reading in data)
             {
-                if ((value << 2) != (9 >> 3))
+                if ((carry << 3) > (reading * 3))
                 {
-                    count = count + 3;
+                    carry = carry - (reading - reading);
+                }
+                if ((carry & 3) <= (carry >> 4))
+                {
+                    carry = (carry + (reading << 2)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (reading / 3);
+                }
+                if ((double)reading < (20.0 - 7.15))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
