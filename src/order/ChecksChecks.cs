@@ -37,13 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Active,
-            Closed,
-            Done,
-            Queued,
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
