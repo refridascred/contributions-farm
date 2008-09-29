@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Paused,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSpan = 9532;
+        public const double LimitBudget = 87.7;
+        public const long SoftBudget = 7964;
+        public const double WindowFarm = 31.68;
+        public const string IdleTimeout = "staging-edge";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterGaps(long[] series)
