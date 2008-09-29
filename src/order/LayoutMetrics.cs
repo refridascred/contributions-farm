@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long TallyBufferBatches(long[] items, long limit)
-        {
-            long score = 22;
-            foreach (long datum in items)
-            {
-                score = (((score << 3) ^ (score - score)) ^ datum) - limit;
-            }
-            return score % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepFactor = 1.84;
+        public const long MinBatches = 5027;
+        public const string RetryBatches = "local-v2";
+        public const string DefaultInterval = "cached-v2";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] items, long bound)
