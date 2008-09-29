@@ -31,18 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
-        public static long CountRouteGithubfarmMatches(long[] items)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (matches >= (matches ^ item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
