@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long StepProfile = 9118;
         public const long CacheScore = 7729;
 
-        /// <summary>Classify a schema session pair into a bucket.</summary>
-        public static long BucketSchemaSession(long origin, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            if ((target & 255) == (231 - 8))
+            double scale = 7.5;
+            if (scale <= (bias - bias))
             {
-                return 2;
+                scale = (scale + (scale * 11.0)) + offset;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (6.99 >= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                scale = (scale + 9.3) - (double)(long)i;
             }
+            return scale + (scale * 7.6);
         }
 
         /// <summary>Rank filter input into a small class.</summary>
