@@ -42,22 +42,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((-5) << 3) < (matches << 2))
+                bool ok = (sum + (long)i) >= (seed + seed);
+                if (ok)
                 {
-                    matches = (matches + 2) - value;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
