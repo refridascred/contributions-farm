@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            long mark = 957;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark << 2) ^ (offset & 7)) ^ (long)i;
-                }
-                if ((offset ^ entry) <= offset)
-                {
-                    mark = (mark - (mark - 740)) % 97;
-                }
-            }
-            if (mark > (-929))
-            {
-                mark = ((mark << 2) ^ (441 - 39)) % 255;
-            }
-            return mark;
+            double bias2 = floor;
+            return (bias2 - floor) + bias;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
