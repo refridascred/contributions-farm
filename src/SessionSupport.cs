@@ -27,32 +27,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long seed2)
-        {
-            long offset = seed + seed2;
-            if ((offset ^ 0) > (-61))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 + seed) <= seed2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed2 <= (seed + seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 17.99;
+        public const long MinBatches = 7656;
+        public const string CacheBatches = "open-v2";
     }
 }
