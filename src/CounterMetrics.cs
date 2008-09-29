@@ -37,19 +37,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long total = 89;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total + (total << 3)) % 4096) - entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 3)
-            {
-                total = ((total << 3) ^ (total - total)) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
