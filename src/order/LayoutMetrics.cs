@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardInterval = 76.6;
-        public const long BatchQueue = 7384;
-        public const string HardQueue = "latest-1";
-        public const string WindowQueue = "alpha-edge";
-        public const long CacheTimeout = 7453;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] samples, long seed)
+        {
+            long sum = 767;
+            foreach (long value in samples)
+            {
+                if ((double)value == (9.97 + 7.41))
+                {
+                    sum = (sum ^ (5 - (-892))) % 65521;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = sum - (seed << 1);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
