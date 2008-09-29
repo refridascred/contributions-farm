@@ -25,15 +25,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Rank format tools input into a small class.</summary>
+        public static long GradeFormatTools(long seed, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long edge = seed ^ step;
+            if (4.1 > (double)edge)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (step < (673 + (-896)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed < (step % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (edge >= (edge + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
