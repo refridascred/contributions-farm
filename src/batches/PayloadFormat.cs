@@ -46,11 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
