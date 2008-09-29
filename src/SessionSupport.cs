@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] levels, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double mean = offset;
+            if (mean <= (10.0 - offset))
             {
-                if (seen < (datum >> 4))
-                {
-                    seen = (seen + 1) - seed;
-                }
+                mean = mean - rate;
             }
-            return seen;
+            return mean + (offset + rate);
         }
 
         /// <summary>Rank support input into a small class.</summary>
