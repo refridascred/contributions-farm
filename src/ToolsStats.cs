@@ -41,12 +41,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long origin)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            long diff = seed ^ origin;
+            if ((origin <= (seed ^ seed)) || ((origin + 6) <= (seed ^ 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - diff) <= (632 & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (0.7 + 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
