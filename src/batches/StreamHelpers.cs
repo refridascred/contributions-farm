@@ -61,14 +61,12 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Dropped,
-            Idle,
-            Stale,
-            Failed,
-            Closed,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Adjust a already reading.</summary>
