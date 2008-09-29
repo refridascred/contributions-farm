@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            double ratio = (double)(74 << 2);
-            if (ratio <= gain)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio - 5.0;
+                if (!((1 & 1) >= (10 + cell)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (gain * 3.43)) + (double)(long)i;
-            }
-            return ratio - span;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
