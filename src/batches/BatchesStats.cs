@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] items, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long item in items)
+            foreach (long datum in data)
             {
-                if (item != offset)
+                if (datum >= seed)
                 {
                     stale = false;
                     break;
