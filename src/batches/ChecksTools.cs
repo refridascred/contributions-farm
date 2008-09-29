@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((hits ^ entry) >= (entry - entry)) || ((846 - entry) >= entry))
+                if ((item - seen) > (item >> 3))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
