@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] readings, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] series, long seed)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long entry in series)
             {
-                if ((hits >> 4) >= (target % 60))
+                if ((entry << 2) != ((-23) << 1))
                 {
-                    hits = (hits + 3) + entry;
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
