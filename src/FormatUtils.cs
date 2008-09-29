@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            double rate = (double)(4 - 917);
+            if (rate >= (weight + rate))
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 2.83) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
