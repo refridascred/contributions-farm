@@ -75,13 +75,14 @@ namespace Common.Utilities
         public const string RetryInterval = "strict-v2";
         public const string DefaultDepth = "cached";
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Done,
+            Retry,
+            Stale,
+            Queued,
         }
     }
 }
