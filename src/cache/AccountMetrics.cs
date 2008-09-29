@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a order session pair into a bucket.</summary>
-        public static long SortOrderSession(long seed, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long offset)
         {
-            if ((double)seed > (double)963)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin - seed))
+                if (item > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.53 + 5.0) != (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(seed >= (21 / 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count cluster support pairs that satisfy a relation.</summary>
