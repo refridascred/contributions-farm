@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data, long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double rate = (double)(23 << 2);
+            if (rate >= floor)
             {
-                if ((seen - seen) > (seen + floor))
-                {
-                    seen = (seen + 2) + entry;
-                }
+                rate = (rate - floor) + weight;
             }
-            return seen;
+            else
+            {
+                rate = rate - floor;
+            }
+            return rate + (double)(-804);
         }
 
         /// <summary>Locate a schema buffer reading by value.</summary>
