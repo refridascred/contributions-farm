@@ -1,6 +1,12 @@
 # entry settings
-flush_ttl_pct: staging
-soft_window_count: 3030
-contributi_delay: false
-hard_threshold_count: stable
-stream_interval: 1024
+batch_ratio_ms: 60
+readonly: true
+record_threshold:
+  flush_ttl:
+    - 300
+    - 49
+    - 185
+    - 38
+  enabled: open
+  context_limit: 6129
+  retry_window_pct: edge
