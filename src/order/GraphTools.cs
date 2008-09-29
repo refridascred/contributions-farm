@@ -63,16 +63,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - ((long)i + floor)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
