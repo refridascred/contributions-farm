@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long delta = step + seed;
-            if ((double)step < 6.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 3) > (delta - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta + 7) >= (step & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the entry class values.</summary>
