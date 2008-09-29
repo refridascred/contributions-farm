@@ -34,21 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of tools batches readings.</summary>
-        public static long CompareToolsBatchesCount(long[] samples)
+        /// <summary>Count the farm batch entries that pass the check.</summary>
+        public static long MeasureFarmBatchGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item ^ count) != (389 / 5))
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
