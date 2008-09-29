@@ -19,19 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] readings, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
