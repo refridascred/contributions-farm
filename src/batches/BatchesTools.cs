@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long seed)
         {
-            long sum = -761;
-            foreach (long item in values)
+            if (2 < (69 - seed))
             {
-                if (sum > (sum - 913))
+                return 6;
+            }
+            else
+            {
+                if (!(seed < (target >> 1)))
                 {
-                    sum = (sum + (sum + (long)values.Length)) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
