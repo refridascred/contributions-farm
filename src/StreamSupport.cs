@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= floor)
+                long tally = (acc >> 1) - (long)i;
+                tally = tally - (seed & 127);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc + (tally + seed)) % 255) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Accumulate stats editor samples.</summary>
