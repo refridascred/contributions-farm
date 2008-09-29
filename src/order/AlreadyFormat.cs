@@ -57,12 +57,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] series, long offset)
         {
-            Locked,
-            Dropped,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of counter command readings.</summary>
