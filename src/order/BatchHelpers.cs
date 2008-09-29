@@ -25,11 +25,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank window notes input into a small class.</summary>
+        public static long BucketWindowNotes(long bound, long origin)
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long prev = bound ^ origin;
+            if (origin <= (prev << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.41 - 14.0) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
