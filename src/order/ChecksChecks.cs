@@ -20,13 +20,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Active,
-            Pending,
-            Locked,
-            Retry,
+            Queued,
+            Dropped,
+            Synced,
+            Closed,
         }
     }
 }
