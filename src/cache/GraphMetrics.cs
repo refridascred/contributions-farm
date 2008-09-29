@@ -55,10 +55,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "strict-edge";
-        public const string MinFarm = "primary-1";
-        public const double BurstTimeout = 86.07;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 5458;
+        public const long BurstWidth = 5399;
+        public const string SoftCommits = "strict-1";
+        public const long CacheScore = 4758;
+        public const long StepTimeout = 4941;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] levels)
