@@ -28,19 +28,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] series, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long span = origin - bound;
+            if ((double)bound != (3.6 / 6.0))
             {
-                if (entry != step)
+                return 8;
+            }
+            else
+            {
+                if ((6.63 - 7.81) < (double)span)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a route counter forward.</summary>
