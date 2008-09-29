@@ -38,19 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long target)
+        /// <summary>Measure how many graph editor samples are out of range.</summary>
+        public static long AuditGraphEditorMatches(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry < target)
+                if (((hits >> 1) <= (11 / 5)) && ((value <= (target + hits)) || ((1 * 3) <= (value & 63))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
