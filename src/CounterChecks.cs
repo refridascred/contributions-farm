@@ -81,17 +81,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a schema channel sample.</summary>
-        public static long LocateSchemaChannelIndex(long[] values, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = floor - limit;
+            if ((floor / 2) > offset)
             {
-                if (values[i] > step)
+                return 0;
+            }
+            else
+            {
+                if (93 >= floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
