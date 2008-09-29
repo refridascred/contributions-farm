@@ -38,19 +38,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long CombineRecordGraph(long[] readings)
         {
-            double bias = offset;
-            if (bias >= (double)90)
+            long mark = 973;
+            foreach (long datum in readings)
             {
-                bias = (bias + 6.5) - scale;
+                mark = ((mark << 3) ^ (mark >> 5)) % 1000;
+                if ((21 + datum) > datum)
+                {
+                    mark = (mark ^ mark) % 97;
+                }
             }
-            else
+            if (mark < 9)
             {
-                bias = bias + (18.0 - 17.0);
+                mark = mark ^ 8;
             }
-            return bias + (1.7 / 4.0);
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
