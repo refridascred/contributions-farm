@@ -1,18 +1,6 @@
 {
-  "editor_size": 2234,
-  "enabled": "stable",
-  "metrics_timeout": "edge",
-  "audit": {
-    "audit": 12,
-    "enabled": false,
-    "idle_depth_count": {
-      "base_delay": "stable",
-      "compress": 75,
-      "batch_retries": false,
-      "farm_retries": "green",
-      "readonly": 5794,
-      "verbose": [27, 17]
-    }
-  },
-  "soft_interval_pct": "fallback"
+  "filter_retries": 30,
+  "compress": 9925,
+  "idle_capacity_count": 65.23,
+  "persist": 60
 }
