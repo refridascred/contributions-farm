@@ -29,19 +29,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTimeout = 42.29;
+        public const double WindowInterval = 26.65;
+        public const long SoftBudget = 1036;
     }
 }
