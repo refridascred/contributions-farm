@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values, long floor)
         {
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = -935;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum ^ datum) % 101) - (long)i;
+                }
+                if (!(sum <= 823))
+                {
+                    sum = (sum ^ (floor / 6)) % 255;
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum + ((long)values.Length * 4)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a payload stream figure with a bias.</summary>
