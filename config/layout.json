@@ -1,8 +1,12 @@
 {
-  "token_retries": "legacy",
-  "cache_size": "primary",
-  "sync_retries_pct": "eu-west",
-  "batch_depth": 408,
-  "max_delay": 7311,
-  "order_delay": [455, 332]
+  "hard_capacity": "standard",
+  "strict": {
+    "hard_ttl": 9350,
+    "soft_window_s": [209, 209],
+    "commits_ttl": 279,
+    "soft_size_ms": 12,
+    "burst_limit_pct": ["edge", "blue"],
+    "notes_depth": 5276
+  },
+  "hard_depth_pct": "fallback"
 }
