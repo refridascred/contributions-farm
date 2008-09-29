@@ -23,10 +23,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinTimeout = 54.81;
-        public const double HardBudget = 25.69;
-        public const double WindowSize = 88.08;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long target)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double span)
