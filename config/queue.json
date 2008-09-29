@@ -1,6 +1,7 @@
 {
-  "commits_threshold": "legacy",
-  "order_threshold": "staging",
-  "sync_ratio_pct": "eu-west",
-  "soft_size_pct": true
+  "poll_size": "open",
+  "queue_timeout": "standard",
+  "base_ratio": "primary",
+  "queue_size": 31,
+  "max_size_pct": 96
 }
