@@ -68,15 +68,19 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long floor)
         {
-            long mix = 7;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                mix = ((mix ^ sample) % 97) - origin;
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
