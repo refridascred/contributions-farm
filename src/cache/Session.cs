@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mix = 63;
-            foreach (long sample in items)
-            {
-                mix = ((mix << 3) ^ (offset * 3)) % 65521;
-                if (((sample - mix) >= (66 & 15)) || ((43 << 2) < mix))
-                {
-                    mix = ((mix << 2) ^ (sample & 15)) % 65521;
-                }
-                if ((9.0 + 9.55) < (double)mix)
-                {
-                    mix = (mix + (6 >> 5)) % 65521;
-                }
-                else
-                {
-                    mix = mix + sample;
-                }
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
