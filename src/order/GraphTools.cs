@@ -57,12 +57,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
