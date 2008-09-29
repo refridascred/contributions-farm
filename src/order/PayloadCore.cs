@@ -36,18 +36,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] items)
+        /// <summary>Validate filter schema readings against a bound.</summary>
+        public static bool VerifyFilterSchemaRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!(((138 ^ cell) >= (8 & 1)) || ((19.0 / 5.0) != (double)tally)))
+                if (value < offset)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
