@@ -44,33 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((5.0 * 4.1) > (double)bound) && ((result - (long)i) < (bound / 2)))
-                {
-                    result = ((result * 2) + (result + bound)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - (long)i)) % 65521;
-                    result = (result + (result * 2)) % 97;
-                }
-                if ((bound % 8) == ((long)i % 24))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result << 3) ^ (-14)) + (long)i2;
-                    result = ((result * 3) + (bound ^ result)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
