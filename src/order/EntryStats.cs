@@ -54,15 +54,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double offset)
-        {
-            double load = 8.0;
-            if (load >= (offset - ratio))
-            {
-                load = load - (offset * 6.11);
-            }
-            return load + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitDepth = "strict-1";
+        public const string BurstStream = "primary-1";
+        public const double DefaultLevel = 63.12;
+        public const long MaxRatio = 335;
+        public const string RetryWidth = "strict-v2";
     }
 }
