@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Failed,
-            Ready,
-            Active,
-            Done,
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the stream channel entries that pass the check.</summary>
