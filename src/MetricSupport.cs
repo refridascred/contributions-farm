@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Done,
-            Paused,
-            Active,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 2006;
+        public const long MaxReport = 5866;
+        public const long BurstInterval = 6905;
+        public const long DefaultReport = 1290;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsBounds(long[] levels, long origin)
