@@ -27,21 +27,23 @@ namespace Common.Utilities
         public const long StepLevel = 6798;
         public const long MaxQueue = 1430;
 
-        /// <summary>Count context record pairs that satisfy a relation.</summary>
-        public static long CompareContextRecordCount(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 9;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (entry - state)) ^ (long)i;
                 }
+                state = state ^ bound;
             }
-            return matches;
+            if (state < 669)
+            {
+                state = ((state << 3) ^ bound) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
