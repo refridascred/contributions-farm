@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] samples, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long gap = bound + floor;
+            if (!((double)bound > (double)floor))
             {
-                if (datum < offset)
+                return 8;
+            }
+            else
+            {
+                if ((gap - floor) == (floor - bound))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7 / 3) < (bound << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
