@@ -31,30 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
-        {
-            long carry = 0;
-            foreach (long cell in values)
-            {
-                if (cell < carry)
-                {
-                    carry = carry - (3 + carry);
-                }
-                else
-                {
-                    carry = carry + (cell - carry);
-                }
-                if ((carry - carry) >= (carry << 3))
-                {
-                    carry = ((carry * 3) + (5 % 60)) % 4096;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ (carry - 9)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 1848;
+        public const long StepFarm = 6077;
+        public const double BatchFarm = 81.86;
+        public const long MaxFarm = 2529;
+        public const long HardFarm = 8151;
     }
 }
