@@ -1,12 +1,5 @@
 {
-  "audit": [182, 157],
-  "min_delay_ms": "stable",
-  "poll_limit_count": 14,
-  "min_ratio_s": {
-    "audit": 250,
-    "burst_interval_pct": 1024,
-    "record_capacity": 2.95,
-    "retry_retries_ms": 1302
-  },
-  "batches_window": [487, 154, 245]
+  "retry_delay_pct": 30,
+  "hard_ratio_pct": "latest",
+  "burst_ttl_ms": false
 }
