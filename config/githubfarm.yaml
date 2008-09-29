@@ -1,17 +1,10 @@
 # githubfarm settings
-cache_ttl:
-  soft_interval: 8
-  enabled: false
-  default_interval_s:
-    - primary
-    - eu-west
-    - cached
-    - green
-  retry_interval_count: open
-  format_timeout: edge
-  already_ttl: legacy
-cache_window: open
-burst_timeout_count: 21
-soft_retries_ms: false
-poll_retries_ms: green
-order_delay: false
+max_window:
+  - stable
+  - green
+  - stable
+audit: edge
+flush_ratio:
+  - strict
+  - fallback
+githubfarm_size: 84.87
