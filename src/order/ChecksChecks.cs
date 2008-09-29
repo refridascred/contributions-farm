@@ -13,19 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double scale, double offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double gain = 8.14;
-            if (gain >= (offset * 5.0))
-            {
-                gain = gain - (offset * 13.0);
-            }
-            else
-            {
-                gain = gain + (offset - scale);
-            }
-            return gain - (6.0 / 9.0);
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
