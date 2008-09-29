@@ -27,11 +27,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 5) + (state * 5);
+                if ((limit / 6) > 7)
+                {
+                    state = ((state << 2) ^ state) % 101;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
