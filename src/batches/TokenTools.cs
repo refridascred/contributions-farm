@@ -20,12 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long seed, long target)
         {
-            Synced,
-            Failed,
-            Locked,
+            long span = seed + target;
+            if (((-3) + 30) < (seed + 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((345 - target) > 846) && ((double)span != (8.6 / 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed % 16) != (span + span)) || ((7.89 * 3.67) < (double)span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) > 9)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the command queue series from a seed.</summary>
