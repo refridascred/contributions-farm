@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((target + 404) != (matches + matches))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
