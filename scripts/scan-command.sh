@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=128
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in strict standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
