@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long state = 514;
+            foreach (long cell in samples)
             {
-                if (entry > limit)
+                if (((cell * 3) < floor) && (state <= (state >> 1)))
                 {
-                    found = false;
-                    break;
+                    state = state ^ floor;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Adjust a stats reading.</summary>
