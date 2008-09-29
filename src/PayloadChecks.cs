@@ -63,21 +63,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph metric samples.</summary>
-        public static long MatchGraphMetricCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1761;
+        public const long BaseCount = 8519;
+        public const long LimitCount = 9232;
     }
 }
