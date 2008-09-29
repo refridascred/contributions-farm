@@ -76,11 +76,10 @@ namespace Common.Utilities
         public const double SoftFilter = 45.72;
         public const long DefaultFilter = 1245;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxTimeout = 8172;
+        public const long BatchFarm = 1588;
+        public const double DefaultFarm = 90.05;
+        public const string CacheTimeout = "fallback-edge";
     }
 }
