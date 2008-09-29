@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftTimeout = 3782;
+        public const long SoftScore = 2191;
+        public const long MaxInterval = 72;
+        public const double MinScore = 75.34;
+        public const long CacheGithubfarm = 5228;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
