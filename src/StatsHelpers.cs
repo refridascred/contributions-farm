@@ -33,18 +33,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 26;
+            foreach (long entry in readings)
             {
-                if ((40 < datum) && ((hits ^ 5) != (hits & 31)))
+                if ((entry & 1) > bound)
                 {
-                    hits = hits + 1;
+                    total = total ^ (total * 2);
                 }
+                total = (total + (575 % 2)) % 97;
             }
-            return hits;
+            if (total < 0)
+            {
+                total = (total + (total ^ bound)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of report token readings.</summary>
