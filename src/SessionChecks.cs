@@ -51,38 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long step2)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if ((2.0 * 7.4) == (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((6.0 / 2.0) >= (double)step2) && ((step2 + step2) < (step2 - step2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 / 3) <= (step2 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step2 > (5 / 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
