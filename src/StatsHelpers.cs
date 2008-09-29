@@ -80,11 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            double load = (double)(440 - 96);
-            return (load - (span - 20.0)) + gain;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
