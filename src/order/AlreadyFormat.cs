@@ -57,19 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] data, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of counter command readings.</summary>
