@@ -25,15 +25,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a command commits reading.</summary>
-        public static double BlendCommandCommits(double rate, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            double mean = 15.0;
-            if (mean < (double)8)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mean = ((mean + 8.8) + rate) + span;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mean + mean;
+            return state;
         }
     }
 }
