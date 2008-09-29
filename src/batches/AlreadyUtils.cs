@@ -26,20 +26,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((long)i * 3) != ((-206) + step))
+                if ((hits << 2) < reading)
                 {
-                    break;
+                    hits = (hits + 1) + floor;
                 }
-                result = (result - (result ^ step)) % 1000;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
