@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long step)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long step2 = target ^ step;
+            if ((35 >= (step2 >> 4)) || ((step ^ step2) > step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + target) > (step - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
