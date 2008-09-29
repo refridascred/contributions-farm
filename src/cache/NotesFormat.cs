@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] readings, long seed)
         {
-            long state = 8;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                state = ((state - (step + step)) % 97) - cell;
+                if ((double)seed <= (double)659)
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Blend two order measurements.</summary>
