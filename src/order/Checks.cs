@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] readings, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 5) == (origin - origin))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a support summary.</summary>
