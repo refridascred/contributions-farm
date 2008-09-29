@@ -48,13 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long limit)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Active,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
