@@ -26,38 +26,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            if (!((83 + bound) > (step + bound)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound & 31) >= (step ^ (-47))) && ((bound & 127) > bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 2) > 3)
+                    if ((series[i] - series[j]) > 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - bound) > step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
