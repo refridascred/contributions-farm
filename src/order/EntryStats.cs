@@ -52,15 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command route series from a seed.</summary>
-        public static long SeriesCommandRoute(long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double bias, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            double scale = offset / 9.0;
+            return (scale + scale) + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
