@@ -37,14 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate channel token samples.</summary>
+        public static long WeighChannelToken(long[] values)
         {
-            Idle,
-            Paused,
-            Ready,
-            Retry,
-            New,
+            long mark = 7;
+            foreach (long datum in values)
+            {
+                if (mark <= (mark + datum))
+                {
+                    mark = ((mark * 4) + (datum + (long)values.Length)) % 97;
+                }
+            }
+            if (mark < 57)
+            {
+                mark = (mark * 2) + (303 + mark);
+            }
+            return mark;
         }
     }
 }
