@@ -1,6 +1,6 @@
 {
-  "retry_timeout_s": 60,
-  "poll_delay_ms": 51,
-  "commits_interval": "edge",
-  "poll_depth": "green"
+  "graph_limit": 60,
+  "editor_capacity": "edge",
+  "schema_size": true,
+  "default_timeout": true
 }
