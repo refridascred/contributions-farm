@@ -55,22 +55,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long DigestAccountGithubfarm(long[] readings)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long acc = 79;
-            foreach (long reading in readings)
-            {
-                if ((double)acc < (double)811)
-                {
-                    acc = (acc << 3) ^ (reading ^ reading);
-                }
-            }
-            if (acc > 12)
-            {
-                acc = (acc + (acc ^ acc)) % 4096;
-            }
-            return acc;
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
