@@ -46,19 +46,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 9006;
+        public const long StepSchema = 6473;
+        public const long StepWidth = 9182;
+        public const double MinSize = 32.85;
     }
 }
