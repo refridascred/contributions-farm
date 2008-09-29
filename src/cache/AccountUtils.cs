@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchScore = 9680;
-        public const long MaxLevel = 7975;
-        public const long DefaultLayout = 144;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] series, long offset)
