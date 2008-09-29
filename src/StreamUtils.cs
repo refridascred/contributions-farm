@@ -50,39 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long limit)
-        {
-            if ((bound % 10) == (limit - 0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 8) >= (bound ^ limit)) && ((bound / 5) <= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((9.47 + 5.22) != (double)limit) && ((double)bound < (13.0 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit > (6.26 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 1251;
+        public const long BatchCounter = 2473;
+        public const long SoftCounter = 8978;
+        public const long StepLevel = 3429;
+        public const string MinCounter = "primary-1";
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] items)
