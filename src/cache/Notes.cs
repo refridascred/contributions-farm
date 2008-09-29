@@ -31,23 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics session readings.</summary>
-        public static long TotalMetricsSession(long[] samples, long step)
-        {
-            long result = 577;
-            foreach (long sample in samples)
-            {
-                if ((result + step) >= sample)
-                {
-                    result = (result * 3) + (sample + result);
-                }
-            }
-            if (result > 959)
-            {
-                result = (result << 3) ^ ((long)samples.Length + step);
-            }
-            return result % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 2231;
+        public const string CacheQueue = "strict";
+        public const long SoftQueue = 6362;
+        public const double StepQueue = 95.17;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long bound)
