@@ -1,4 +1,11 @@
 # githubfarm settings
-counter_ratio: 17.37
-warm_limit: false
-max_threshold_pct: true
+notes_retries: 57.01
+metric_retries: 18.05
+hard_interval_s: latest
+compress: edge
+poll_window:
+  dry_run: 30
+  verbose: eu-west
+  default_timeout_s: green
+  hard_window: false
+  command_delay: eu-west
