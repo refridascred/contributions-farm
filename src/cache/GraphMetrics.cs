@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] series, long limit)
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
