@@ -75,19 +75,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 7;
-            foreach (long sample in samples)
-            {
-                mark = ((mark - (88 << 3)) % 1000) ^ sample;
-                if ((mark % 7) > (offset * 3))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Pending,
+            Queued,
+            Locked,
+            Dropped,
         }
     }
 }
