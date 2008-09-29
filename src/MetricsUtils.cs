@@ -29,13 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Compare every pair of githubfarm report readings.</summary>
+        public static long PairGithubfarmReportCount(long[] values)
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
