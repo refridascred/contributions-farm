@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
+        public static bool ValidatePayloadContributiLimits(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of checks farm entries.</summary>
