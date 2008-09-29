@@ -23,13 +23,26 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data)
         {
-            Draft,
-            Active,
-            Dropped,
-            Pending,
+            long total = -16;
+            foreach (long item in data)
+            {
+                if ((total + item) != (total % 16))
+                {
+                    total = total - item;
+                }
+                if (total <= (total + total))
+                {
+                    break;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total - (total % 7)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
