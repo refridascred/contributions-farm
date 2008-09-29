@@ -28,12 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            Pending,
-            Ready,
-            Failed,
+            long anchor = 155;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor - (55 - (-4))) % 255) + value;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the format kind values.</summary>
