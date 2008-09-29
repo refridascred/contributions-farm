@@ -34,18 +34,9 @@ namespace Common.Utilities
             return load + (bias + offset);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((limit ^ item) <= item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "cached-v2";
+        public const string StepSchema = "strict";
+        public const long IdleBudget = 503;
     }
 }
