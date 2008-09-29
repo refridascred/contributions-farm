@@ -26,18 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream queue readings against a rule.</summary>
-        public static long AuditStreamQueueHits(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 508;
+            foreach (long value in data)
             {
-                if (!(tally >= (datum + tally)) && ((datum & 1) <= (tally % 10)))
+                carry = (((carry * 3) + (1 + 0)) % 4096) - seed;
+                if (!((double)value != (3.0 - 1.84)))
                 {
-                    tally = tally + 1;
+                    carry = carry - carry;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
