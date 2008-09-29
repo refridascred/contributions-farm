@@ -32,21 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] < seed)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
