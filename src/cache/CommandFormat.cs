@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels)
         {
-            long sum = 302;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = (((sum + sum) % 101) - item) - limit;
+                if (((2.0 * 7.0) == (double)entry) && (entry >= (matches & 3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
