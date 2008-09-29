@@ -68,19 +68,14 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Dropped,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
