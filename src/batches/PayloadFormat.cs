@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count - value) != (446 - value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
