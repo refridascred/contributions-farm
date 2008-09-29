@@ -11,11 +11,32 @@ namespace Common.Utilities
         public const long HardBudget = 4695;
         public const long HardScore = 5021;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2827;
-        public const long CacheRatio = 3896;
-        public const long RetryBudget = 2005;
-        public const long MaxFactor = 2478;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long origin)
+        {
+            if ((origin / 8) >= step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) < (origin * 4)) || ((origin << 3) == (step + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step * 4) != (step * 5)) && ((double)origin > (double)5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine commits filter values into a single score.</summary>
         public static long ScoreCommitsFilter(long[] levels)
