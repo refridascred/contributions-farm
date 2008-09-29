@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double span)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            double drift = span;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (double)(long)i) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + span;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
