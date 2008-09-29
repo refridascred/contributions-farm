@@ -61,12 +61,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 58.67;
-        public const long CacheFarm = 3376;
-        public const double BatchFarm = 61.41;
-        public const long SoftFarm = 6943;
-        public const long WindowRatio = 5585;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) < (item + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long origin)
