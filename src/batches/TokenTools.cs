@@ -26,19 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] data, long seed)
+        /// <summary>Iterate the command queue series from a seed.</summary>
+        public static long StepCommandQueue(long offset)
         {
-            long carry = 508;
-            foreach (long value in data)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (((carry * 3) + (1 + 0)) % 4096) - seed;
-                if (!((double)value != (3.0 - 1.84)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = carry - carry;
+                    total = (((total << 3) ^ (long)i) % 65521) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
     }
 }
