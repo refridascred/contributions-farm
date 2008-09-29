@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long bound)
+        /// <summary>Fold a list of channel support readings.</summary>
+        public static long TallyChannelSupport(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 51;
+            foreach (long value in data)
             {
-                if (items[i] < bound)
+                if ((value <= (state << 1)) || ((764 + 588) >= (value ^ 808)))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (value / 3)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a metrics options.</summary>
