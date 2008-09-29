@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the filter cache entries that pass the check.</summary>
+        public static long MeasureFilterCacheGaps(long[] data)
         {
-            Active,
-            Queued,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((969 & 63) <= (count + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
