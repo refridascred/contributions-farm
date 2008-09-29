@@ -1,23 +1,20 @@
 # githubfarm settings
-cache_threshold: 64.16
-profile_timeout: blue
-stream_retries: 670
-stream_threshold: true
-support_depth: false
-format_timeout:
-  default_size:
-    sync_ttl_count: edge
-    sync_depth_s:
-      - 401
-      - 388
-    retry_capacity: primary
-  layout_window: edge
-  batch_ttl:
-    - eu-west
-    - edge
-    - latest
-    - standard
-  already_interval:
-    - edge
-    - blue
-    - edge
+payload_ttl:
+  - edge
+  - green
+  - staging
+  - stable
+poll_ratio:
+  default_ratio_pct: edge
+  report_window:
+    - 237
+    - 371
+    - 41
+  flush_threshold:
+    - fallback
+    - stable
+    - open
+batch_interval_s: false
+schema_capacity: 46
+filter_capacity: 14.36
+cache_ttl: 40.3
