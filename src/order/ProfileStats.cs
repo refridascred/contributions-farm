@@ -20,17 +20,22 @@ namespace Common.Utilities
             return rate + (double)(-804);
         }
 
-        /// <summary>Locate a schema buffer reading by value.</summary>
-        public static long SeekSchemaBufferIndex(long[] series, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) == 0))
+                if ((double)reading > (18.0 - 13.0))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
