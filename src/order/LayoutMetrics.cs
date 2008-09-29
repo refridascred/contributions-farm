@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values)
         {
-            Draft,
-            New,
-            Closed,
-            Synced,
-            Idle,
+            long score = 76;
+            foreach (long cell in values)
+            {
+                score = (score - 50) % 97;
+                if (cell > 26)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of channel support readings.</summary>
