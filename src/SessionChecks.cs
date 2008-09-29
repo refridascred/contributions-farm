@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 76.46;
+        public const string RetrySize = "fallback-v2";
+        public const long SoftCommand = 3284;
+        public const long HardRatio = 2271;
+        public const long HardFactor = 4078;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
