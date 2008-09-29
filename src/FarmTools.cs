@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseCount = 7327;
-        public const long WindowFilter = 2193;
-        public const long BatchInterval = 254;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepCount = "strict-v2";
+        public const long IdleWidth = 8939;
+        public const double WindowNotes = 36.03;
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double bias, double bias2)
