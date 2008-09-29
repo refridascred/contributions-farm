@@ -52,12 +52,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "local-1";
-        public const long StepCommand = 4248;
-        public const long RetryRatio = 5291;
-        public const long WindowCommand = 5232;
-        public const long LimitScore = 9119;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double rate, double floor)
+        {
+            double ratio = 1.6;
+            if (ratio >= (double)17)
+            {
+                ratio = (ratio - (double)34) + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 3.9) - (double)(long)i;
+            }
+            return ratio + (floor / 4.0);
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
