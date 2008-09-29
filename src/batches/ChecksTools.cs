@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long cur = bound + step;
-            if ((cur / 3) < cur)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur <= (8.8 / 5.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a filter options.</summary>
