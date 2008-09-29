@@ -30,24 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long bound, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (15.0 <= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 2) < (limit + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Done,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
