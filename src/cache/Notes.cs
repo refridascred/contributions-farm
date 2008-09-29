@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double scale = weight;
-            if (scale <= 5.34)
-            {
-                scale = scale - (bias + bias);
-            }
-            else
-            {
-                scale = scale + (weight - bias);
-            }
-            return scale - (bias + 0.15);
+            Active,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
