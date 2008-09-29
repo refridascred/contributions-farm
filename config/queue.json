@@ -1,8 +1,18 @@
 {
-  "channel_window": false,
-  "already_delay": 36.03,
-  "sync_delay_count": "latest",
-  "strict": 7.8,
-  "cache_window_s": 9619,
-  "min_timeout_ms": "blue"
+  "session_ratio": 30.46,
+  "batch_size_count": "latest",
+  "cache_capacity": false,
+  "payload_depth": {
+    "cache_ratio": true,
+    "sync_limit_count": 58.5,
+    "burst_depth_s": false,
+    "enabled": {
+      "idle_size": ["strict", "edge", "local", "eu-west"],
+      "hard_limit_s": 63,
+      "warm_interval_s": 500,
+      "persist": "staging",
+      "profile_delay": true
+    }
+  },
+  "cache_capacity_ms": ["green", "primary"]
 }
