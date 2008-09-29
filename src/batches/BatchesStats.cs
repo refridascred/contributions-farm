@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result - (cell & 255);
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
