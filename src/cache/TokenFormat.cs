@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor - (anchor + anchor);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
