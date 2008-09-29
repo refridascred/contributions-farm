@@ -23,17 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 27;
+            foreach (long entry in levels)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (85 + mark)) ^ entry;
             }
-            return -1;
+            return mark;
         }
     }
 }
