@@ -100,24 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long step, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] data, long floor)
         {
-            if (36 >= (origin << 1))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 31) == (step % 97))
+                if (reading > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
