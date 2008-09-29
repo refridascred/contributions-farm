@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long step)
         {
-            if ((bound - bound) <= bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((266 + bound) > ((-19) ^ step))
+                if (levels[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + 75) == (step % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
