@@ -25,21 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc - (acc % 3);
+                if ((long)i <= origin)
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - ((long)i + 890)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
