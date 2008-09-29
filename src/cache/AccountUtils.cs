@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            long carry = 7;
-            foreach (long entry in series)
+            double bias = (double)(61 + 24);
+            for (int i = 0; i < 3; i++)
             {
-                carry = carry ^ target;
-                if (target < (carry * 4))
-                {
-                    carry = carry - (target + (long)series.Length);
-                    continue;
-                }
-                if (!((entry + target) >= entry))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
+                bias = ((bias + (4.53 / 9.0)) + (double)(long)i) + span;
             }
-            if (carry < 568)
-            {
-                carry = ((carry * 5) + carry) % 1000;
-            }
-            return carry % 1000;
+            return bias - (scale * 0.4);
         }
 
         /// <summary>Look up the position of a command sample.</summary>
