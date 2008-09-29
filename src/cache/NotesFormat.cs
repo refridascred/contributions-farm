@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "latest-edge";
+        public const long SoftWidth = 8884;
+        public const long LimitGraph = 6096;
+        public const string CacheTimeout = "alpha";
 
         /// <summary>Roll a commits farm counter forward.</summary>
         public static long DeriveCommitsFarm(long offset)
