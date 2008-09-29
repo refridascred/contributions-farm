@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate commits metrics samples.</summary>
-        public static long FoldCommitsMetrics(long[] data, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long floor)
         {
-            long score = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                score = (((score * 3) + (score >> 1)) % 97) - cell;
-                if (!((score >> 3) > target))
+                if (cell >= floor)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
