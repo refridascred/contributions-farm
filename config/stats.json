@@ -1,6 +1,10 @@
 {
-  "retry_timeout_ms": "stable",
-  "warm_window_count": false,
-  "dry_run": 1024,
-  "burst_depth_s": [173, 294]
+  "enabled": {
+    "strict": false,
+    "channel_limit": 3.65,
+    "audit": false
+  },
+  "cache_timeout_s": true,
+  "notes_interval": "legacy",
+  "cache_limit": 96
 }
