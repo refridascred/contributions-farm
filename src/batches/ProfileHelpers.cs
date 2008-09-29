@@ -18,12 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            Pending,
-            Failed,
-            Locked,
+            long sum = 74;
+            foreach (long item in samples)
+            {
+                sum = sum ^ (sum + item);
+            }
+            if (sum > 25)
+            {
+                sum = ((sum * 2) + (sum * 4)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
