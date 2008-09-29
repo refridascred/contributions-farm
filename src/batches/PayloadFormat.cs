@@ -22,26 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate farm window samples.</summary>
-        public static long DigestFarmWindow(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] samples)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((2 - (long)levels.Length) > (cell + sum))
+                if ((seen >> 3) == (seen + value))
                 {
-                    sum = sum - (sum + sum);
-                }
-                if ((14.0 - 1.2) >= (double)cell)
-                {
-                    sum = (sum ^ (sum & 3)) % 255;
-                }
-                if ((cell * 3) <= (sum + 209))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
