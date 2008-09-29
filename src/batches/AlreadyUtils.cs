@@ -78,11 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already token reading.</summary>
-        public static double BlendAlreadyToken(double bias, double bias2)
-        {
-            double load = (double)(4 - 627);
-            return ((load + 14.0) + bias) + bias2;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 3285;
+        public const double DefaultInterval = 83.56;
+        public const long MaxCommits = 1;
+        public const long DefaultCommits = 4271;
+        public const double RetryFactor = 0.91;
     }
 }
