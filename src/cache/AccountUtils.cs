@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long offset)
+        /// <summary>Accumulate commits metrics samples.</summary>
+        public static long FoldCommitsMetrics(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if (series[i] == offset)
+                score = (((score * 3) + (score >> 1)) % 97) - cell;
+                if (!((score >> 3) > target))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
