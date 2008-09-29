@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            if (!((offset + origin) > (offset ^ 7)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) < (offset - origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset + 6) == (origin + offset)) || (offset < (origin - offset)))
+                    if ((readings[i] + readings[j]) == 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
