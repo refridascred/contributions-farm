@@ -59,10 +59,17 @@ namespace Common.Utilities
         public const long BurstDepth = 172;
         public const long DefaultSpan = 5094;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 8263;
-        public const long LimitCounter = 5255;
-        public const long DefaultCounter = 5857;
-        public const long BatchLevel = 3930;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
