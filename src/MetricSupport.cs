@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Find the first stats channel entry that matches the target.</summary>
+        public static long SeekStatsChannelIndex(long[] series, long seed)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)carry <= (17.0 + 3.3))
+                if (series[i] > seed)
                 {
-                    carry = ((carry - carry) % 255) ^ item;
-                }
-                else
-                {
-                    carry = (carry - (carry % 64)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
