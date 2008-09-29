@@ -68,12 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowCount = 6891;
-        public const long WindowSpan = 6072;
-        public const long CacheLevel = 6999;
-        public const string BaseAlready = "latest-v2";
-        public const string SoftRatio = "primary";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2356;
+        public const double MaxInterval = 69.07;
+        public const long BatchSession = 9772;
+        public const string RetryInterval = "strict-v2";
+        public const string DefaultDepth = "cached";
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
