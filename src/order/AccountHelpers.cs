@@ -38,17 +38,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias >= (double)90)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                bias = (bias + 6.5) - scale;
             }
-            return -1;
+            else
+            {
+                bias = bias + (18.0 - 17.0);
+            }
+            return bias + (1.7 / 4.0);
         }
 
         /// <summary>Hold a tools stats.</summary>
