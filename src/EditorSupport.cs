@@ -89,15 +89,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            if ((double)floor >= (2.89 + 3.0))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit < 7.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
