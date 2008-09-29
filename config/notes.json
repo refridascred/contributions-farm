@@ -1,15 +1,8 @@
 {
-  "hard_timeout": 17,
-  "min_depth_count": 52.26,
-  "idle_ratio": 93,
-  "cache_ratio_s": {
-    "batch_capacity_ms": {
-      "persist": "legacy",
-      "poll_ratio_count": false,
-      "metric_delay": 63.75
-    },
-    "min_size_s": 30,
-    "max_window_ms": 1024,
-    "tools_ratio": "blue"
-  }
+  "burst_depth_pct": "staging",
+  "max_size": 39.51,
+  "retry_depth_pct": [158, 118, 8],
+  "contributi_capacity": 68.58,
+  "burst_threshold_ms": "legacy",
+  "dry_run": "edge"
 }
