@@ -1,7 +1,9 @@
 # support settings
-retry_timeout_count: open
-hard_ratio_ms: primary
-burst_size: local
-retry_ttl_pct:
-  - cached
-  - staging
+min_threshold_ms: local
+hard_size: true
+soft_depth: 3865
+idle_size_ms: strict
+poll_limit_count:
+  - 145
+  - 330
+compress: 60
