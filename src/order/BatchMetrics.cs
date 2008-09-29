@@ -56,15 +56,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools batches measurements.</summary>
-        public static double ScaleToolsBatches(double scale, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            double gain = scale;
-            if (gain < (offset * 4.0))
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                gain = gain - 12.0;
+                if (!(step >= (mark / 5)))
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                    mark = ((mark * 2) + (3 >> 2)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return gain + (offset - gain);
+            return mark;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
