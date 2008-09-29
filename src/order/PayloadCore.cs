@@ -52,19 +52,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool VerifyRouteFarmBounds(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSize = 85.52;
+        public const long MaxFarm = 6708;
+        public const long MaxBudget = 8390;
     }
 }
