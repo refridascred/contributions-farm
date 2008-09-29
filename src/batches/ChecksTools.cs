@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Find the first editor tools entry that matches the target.</summary>
+        public static long FindEditorToolsIndex(long[] data, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0 - (long)i) < (long)i) && ((26 - (long)i) < (long)i))
+                if (data[i] == step)
                 {
-                    result = (result * 4) + result;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result - (result ^ floor)) % 65521) + (long)i2;
-                }
-                result = (result ^ floor) % 97;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
