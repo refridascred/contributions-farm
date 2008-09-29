@@ -14,13 +14,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Queued,
-            Paused,
-            Idle,
-            Retry,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
