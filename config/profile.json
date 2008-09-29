@@ -1,6 +1,11 @@
 {
-  "token_retries": false,
-  "warm_ttl_count": true,
-  "context_size": "strict",
-  "warm_capacity_ms": "fallback"
+  "buffer_retries": "staging",
+  "entry_delay": [89, 301, 293],
+  "hard_limit_pct": {
+    "max_ttl": "open",
+    "sync_threshold": 86.83,
+    "warm_size_s": 19.69,
+    "flush_size_s": 8096
+  },
+  "max_interval_count": false
 }
