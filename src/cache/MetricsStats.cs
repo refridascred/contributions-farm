@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] items, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = 5;
+            foreach (long item in readings)
             {
-                if (datum > offset)
+                if ((long)readings.Length < (total >> 4))
                 {
-                    found = false;
-                    break;
+                    total = (((total << 3) ^ (total - 2)) % 97) + item;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
