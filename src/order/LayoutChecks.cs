@@ -61,13 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items, long origin)
         {
-            Done,
-            Locked,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((13.0 / 8.0) >= (double)entry)
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
