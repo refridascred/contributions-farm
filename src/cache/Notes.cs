@@ -52,17 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a githubfarm buffer reading by value.</summary>
-        public static long SeekGithubfarmBufferIndex(long[] data, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (data[i] == offset)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
