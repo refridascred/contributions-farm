@@ -20,11 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Rank token payload input into a small class.</summary>
+        public static long BucketTokenPayload(long seed, long target)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            if ((8.2 / 9.0) == (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed >= (target / 9)) && ((target + seed) != (87 >> 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed > (1.4 / 8.0)) || (target <= (target << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((target & 127) == (target / 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
