@@ -1,11 +1,24 @@
 # entry settings
-cache_ttl_s:
-  persist: 81
-  readonly: fallback
-  audit: latest
-  cluster_timeout: 7751
-base_depth: true
-persist: 4253
-queue_ratio: open
-poll_retries_ms: 57.37
-metrics_interval: edge
+metrics_interval:
+  graph_retries: 36.03
+  profile_timeout:
+    - latest
+    - green
+    - stable
+    - stable
+  max_depth_ms:
+    cache_ratio_pct: 0.24
+    audit: 62.01
+    min_ttl_pct:
+      - standard
+      - open
+      - strict
+    batch_interval: true
+    batch_window_pct:
+      - primary
+      - green
+      - eu-west
+      - strict
+  base_window_pct: 54
+hard_threshold: 500
+batch_delay_ms: latest
