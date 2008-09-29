@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 76.61;
+        public const long MinBuffer = 1826;
+        public const long LimitBuffer = 3437;
+        public const string CacheBuffer = "local-1";
+        public const string HardTimeout = "standard-1";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] series)
