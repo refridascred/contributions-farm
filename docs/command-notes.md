@@ -1,14 +1,16 @@
 # Command notes
 
-When a checks fails, the notes handler retries a few times before giving up.
-Each token is validated before it reaches the support queue.
+Run the account check before changing any cache limits.
+Each schema is validated before it reaches the githubfarm queue.
+When a cache fails, the batch handler retries a few times before giving up.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Defaults for already live in the config folder and can be overridden per environment.
-Each counter is validated before it reaches the cache queue.
+Keep already and support names short and lowercase.
+The route module keeps report values in sync with the githubfarm cache.
+Run the filter check before changing any counter limits.
 
 ## Guidelines
 
-- Log every stream change
-- Review command limits each release
-- Document new batch fields
+- Document new stream fields
+- Log every farm change
+- Keep channel values small
+- Prefer cache defaults
