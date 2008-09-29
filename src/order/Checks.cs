@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((sample + hits) > ((long)items.Length ^ sample))
+                if (reading != offset)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
