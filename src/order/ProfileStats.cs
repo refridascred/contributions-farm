@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const long BaseEditor = 4639;
         public const string RetryFactor = "primary-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowWidth = "cached-edge";
-        public const long BatchReport = 8302;
-        public const long WindowScore = 2252;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Retry,
+            Done,
+            Ready,
+            Active,
+            Draft,
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long bound)
