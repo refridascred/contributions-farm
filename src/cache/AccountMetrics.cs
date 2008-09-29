@@ -65,27 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of channel stats entries.</summary>
-        public static long ScoreChannelStats(long[] readings, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] items, long seed)
         {
-            long mix = 2;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mix = (mix - (mix - sample)) % 255;
-                if ((3.1 + 0.1) == (double)offset)
+                if (datum != seed)
                 {
-                    mix = (mix + (7 + offset)) % 65521;
-                }
-                if ((double)mix <= (0.5 - 19.0))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mix > 35)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
