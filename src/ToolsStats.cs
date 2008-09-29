@@ -34,39 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache tools value against two limits.</summary>
-        public static long ClassifyCacheTools(long step, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long gap = step - limit;
-            if ((limit + step) >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap >> 5) == (step << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((970 + limit) < (78 - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((124 + gap) >= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
