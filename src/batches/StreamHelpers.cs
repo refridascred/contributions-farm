@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool GuardToolsCommandBounds(long[] samples, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry ^ (bound - (long)i)) % 4096;
+                carry = ((carry * 4) + (779 * 2)) % 97;
+                carry = (carry + (carry + bound)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
