@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 7728;
-        public const string HardBatch = "alpha";
-        public const long HardBudget = 4695;
-        public const long HardScore = 5021;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Queued,
+            Stale,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long step, long origin)
