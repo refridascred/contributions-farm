@@ -40,31 +40,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            if ((step << 3) == (step * 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor > (step >> 5)) || ((-544) >= (5 - step)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)step < 11.0))
+                    if ((samples[i] + samples[j]) == 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
