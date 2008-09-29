@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const long CacheStream = 8758;
         public const long SoftStream = 1653;
 
-        /// <summary>Check that every profile editor entry stays within the limit.</summary>
-        public static bool VerifyProfileEditorLimits(long[] values, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long total = 684;
+            foreach (long value in data)
             {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total + ((-88) - 81)) - value;
             }
-            return ok;
+            if (total > 882)
+            {
+                total = ((total << 2) ^ ((-56) + total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
