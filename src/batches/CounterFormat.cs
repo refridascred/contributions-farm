@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const double RetryTimeout = 44.47;
         public const long HardScore = 5030;
 
-        /// <summary>Iterate the entry notes series from a seed.</summary>
-        public static long SeriesEntryNotes(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 2601;
+        public const long MaxSpan = 5901;
+        public const double BurstLevel = 10.88;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
