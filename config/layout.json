@@ -1,5 +1,19 @@
 {
-  "flush_window_s": "green",
-  "default_depth_pct": 34.98,
-  "burst_window": "standard"
+  "strict": {
+    "hard_capacity": 1944,
+    "profile_interval": 30,
+    "order_size": "stable",
+    "poll_delay": false,
+    "default_ttl_s": 13
+  },
+  "audit": "open",
+  "hard_size_pct": {
+    "verbose": ["stable", "blue", "eu-west", "staging"],
+    "counter_capacity": 1024,
+    "batch_capacity_count": ["stable", "legacy", "open", "staging"],
+    "idle_interval_s": 1.2,
+    "poll_retries_count": "latest",
+    "dry_run": ["legacy", "fallback", "blue", "cached"]
+  },
+  "queue_timeout": 8538
 }
