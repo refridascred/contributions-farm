@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((target + 404) != (matches + matches))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
