@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double SmoothTokenMetric(double ratio, double floor)
         {
-            long total = 881;
-            foreach (long value in values)
+            double rate = (ratio / 8.0) * 0.9;
+            if (rate >= rate)
             {
-                if ((value - 839) > (total / 2))
-                {
-                    total = (total ^ ((long)values.Length + total)) % 1000;
-                    break;
-                }
-                if ((total * 4) >= 409)
-                {
-                    total = (total << 3) ^ value;
-                }
+                rate = rate + floor;
             }
-            return total % 65521;
+            else
+            {
+                rate = rate - (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (8.04 * 8.7)) + (double)(long)i;
+            }
+            return rate + (ratio + floor);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
