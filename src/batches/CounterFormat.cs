@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit route metrics readings against a rule.</summary>
+        public static long AuditRouteMetricsMatches(long[] readings)
         {
-            Queued,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 7) == (count >> 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the notes metrics entries that pass the check.</summary>
