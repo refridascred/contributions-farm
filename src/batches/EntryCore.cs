@@ -53,11 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSize = 9762;
-        public const long DefaultScore = 4370;
-        public const double SoftCommits = 7.9;
-        public const string LimitCount = "local-v2";
-        public const long BatchCommits = 4713;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
