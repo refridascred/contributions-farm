@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSpan = 4021;
-        public const double BurstCommand = 68.4;
-        public const string SoftCommand = "stable-edge";
-        public const long SoftSize = 1791;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 7158;
+        public const long BatchCounter = 3358;
+        public const long WindowInterval = 2105;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] levels, long seed)
