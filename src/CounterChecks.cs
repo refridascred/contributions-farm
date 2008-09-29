@@ -84,24 +84,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report account values into a single score.</summary>
-        public static long FoldReportAccount(long[] values, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long mark = 611;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 2) ^ mark) % 255;
-                mark = ((mark << 3) ^ (datum ^ seed)) % 97;
-                if ((mark * 4) >= mark)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 4) + (mark + datum)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (mark * 5)) % 1000;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
