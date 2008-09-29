@@ -22,23 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long WeighCommandChannel(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long sum = 0;
-            foreach (long entry in data)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum << 2) ^ (entry - entry)) % 97;
-                if (((entry << 3) >= (sum + entry)) || ((31 & 63) > sum))
-                {
-                    sum = sum - sum;
-                }
-                if ((entry - entry) <= (sum >> 4))
-                {
-                    sum = (sum + sum) % 65521;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the entry phase values.</summary>
