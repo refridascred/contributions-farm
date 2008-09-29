@@ -29,18 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a notes tools sample.</summary>
-        public static long LookupNotesToolsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchTimeout = 1205;
+        public const double BaseBatches = 33.05;
+        public const long IdleBatches = 5180;
+        public const string RetryScore = "standard";
+        public const long DefaultBatches = 957;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long limit)
