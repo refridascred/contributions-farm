@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long CompareGraphToolsCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < origin)
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
