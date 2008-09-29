@@ -1,8 +1,6 @@
 {
-  "flush_threshold_count": 92,
-  "filter_window": 25.19,
-  "min_limit_ms": 100,
-  "report_size": 3,
-  "cache_capacity_s": 1611,
-  "retry_ratio_ms": [466, 272, 164, 85]
+  "warm_ttl_s": false,
+  "entry_threshold": "legacy",
+  "dry_run": true,
+  "max_retries": "staging"
 }
