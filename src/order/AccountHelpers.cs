@@ -38,23 +38,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((((long)i << 1) > 8) && ((9.1 * 16.0) == (double)mark))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (61 & 15)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
