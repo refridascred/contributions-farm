@@ -55,13 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Derive the next editor metric value from a seed.</summary>
+        public static long StepEditorMetric(long offset)
         {
-            Pending,
-            Queued,
-            Locked,
-            Dropped,
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                long step = offset;
+                score = (score + (step + offset)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
