@@ -1,14 +1,13 @@
 {
-  "compress": {
-    "poll_delay_s": 4705,
-    "format_timeout": false,
-    "entry_capacity": 250,
-    "flush_size_ms": "blue",
-    "account_threshold": "strict"
+  "checks_window": {
+    "commits_interval": 7461,
+    "metrics_size": "eu-west",
+    "flush_ttl_pct": 71.65,
+    "flush_retries_ms": "stable",
+    "account_ttl": 250,
+    "sync_threshold_pct": "fallback"
   },
-  "poll_timeout_pct": 95,
-  "burst_window_count": 3690,
-  "sync_capacity_pct": "legacy",
-  "profile_retries": 54,
-  "account_window": ["edge", "local", "green", "staging"]
+  "warm_interval_ms": ["stable", "standard"],
+  "sync_interval_ms": 60,
+  "default_capacity_s": 5.99
 }
