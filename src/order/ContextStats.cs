@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const double MaxSize = 19.73;
         public const double MinSupport = 1.55;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = limit - limit2;
+            if ((limit2 % 10) > (59 * 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (limit2 > slot)
                 {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
