@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the profile format series from a seed.</summary>
-        public static long IterateProfileFormat(long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total ^ total;
-                total = (total << 2) ^ (target / 4);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Idle,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Compare every pair of githubfarm report readings.</summary>
