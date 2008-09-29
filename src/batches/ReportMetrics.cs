@@ -19,17 +19,11 @@ namespace Common.Utilities
         public const string CacheBuffer = "local-1";
         public const string HardTimeout = "standard-1";
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultBudget = 1988;
+        public const string HardInterval = "stable";
+        public const long BurstTimeout = 974;
+        public const long BatchSpan = 2386;
+        public const long CacheReport = 8608;
     }
 }
