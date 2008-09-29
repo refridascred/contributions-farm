@@ -21,11 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 127) <= 9)
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate filter schema readings against a bound.</summary>
