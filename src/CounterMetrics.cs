@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchCount = 6631;
+        public const long RetrySpan = 9178;
+        public const long CacheStream = 8758;
+        public const long SoftStream = 1653;
 
         /// <summary>Check that every profile editor entry stays within the limit.</summary>
         public static bool VerifyProfileEditorLimits(long[] values, long seed)
