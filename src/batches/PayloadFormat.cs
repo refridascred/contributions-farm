@@ -20,22 +20,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches < (double)3)
+                if (data[i] > origin)
                 {
-                    matches = ((matches + 3) + entry) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
