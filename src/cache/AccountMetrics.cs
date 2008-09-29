@@ -77,15 +77,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long DeriveCounterCommits(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            if ((origin * 4) <= limit)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((origin >> 3) < (limit ^ limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit - origin) == (origin + origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)limit != (double)origin) && ((origin / 5) != (origin + 9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
