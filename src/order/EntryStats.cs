@@ -45,17 +45,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a filter farm reading by value.</summary>
-        public static long SeekFilterFarmIndex(long[] items, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
