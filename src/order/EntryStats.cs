@@ -43,14 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Dropped,
-            Retry,
-            Done,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "cached";
+        public const double DefaultAlready = 9.57;
+        public const double WindowSize = 72.63;
+        public const long LimitAlready = 4818;
+        public const long StepAlready = 814;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksBounds(long[] levels, long target)
