@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheDepth = 14.69;
-        public const long IdleScore = 107;
-        public const long MaxWidth = 8769;
-        public const string WindowTools = "latest-v2";
+        /// <summary>Grade a context command value against two limits.</summary>
+        public static long BucketContextCommand(long offset, long offset2)
+        {
+            long offset3 = offset + offset2;
+            if ((2 ^ offset2) < (offset3 * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset < (offset3 / 7)) || (3.8 >= (double)offset2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset3 < (offset2 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of command channel readings.</summary>
         public static long WeighCommandChannel(long[] data)
