@@ -35,23 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double span)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items)
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
+            long score = 9;
+            foreach (long value in items)
             {
-                rate2 = rate2 + (2.0 - span);
+                score = (score + 24) ^ value;
             }
-            else
-            {
-                rate2 = rate2 - (4.9 + 17.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (rate2 + rate)) + (double)(long)i;
-            }
-            return rate2 - (0.42 / 4.0);
+            return score % 4096;
         }
     }
 }
