@@ -66,13 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            Done,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
