@@ -1,12 +1,5 @@
 {
-  "cache_threshold_ms": "fallback",
-  "cache_delay": ["green", "green"],
-  "flush_size_count": {
-    "audit": 2160,
-    "poll_ratio_count": "fallback",
-    "warm_threshold_pct": 250
-  },
-  "sync_size_pct": 60,
-  "flush_size_pct": "staging",
-  "sync_ttl_count": "local"
+  "soft_timeout": true,
+  "tools_capacity": [415, 383, 493],
+  "audit": 7736
 }
