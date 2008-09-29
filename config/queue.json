@@ -1,7 +1,21 @@
 {
-  "poll_size": "open",
-  "queue_timeout": "standard",
-  "base_ratio": "primary",
-  "queue_size": 31,
-  "max_size_pct": 96
+  "cache_delay_count": {
+    "sync_ttl_count": 82,
+    "default_window": {
+      "support_interval": ["standard", "primary"],
+      "dry_run": ["standard", "stable"],
+      "already_interval": 8014,
+      "stats_threshold": ["primary", "strict", "standard"],
+      "window_ttl": true
+    },
+    "enabled": false,
+    "cache_capacity": [498, 83, 100, 70],
+    "soft_ttl_count": 91.83,
+    "profile_ratio": 250
+  },
+  "burst_threshold_ms": 5785,
+  "max_delay": 7495,
+  "layout_delay": ["local", "green", "edge"],
+  "strict": "staging",
+  "enabled": [207, 112]
 }
