@@ -1,11 +1,11 @@
 # Command notes
 
-The record report groups every filter by schema.
-Run the entry check before changing any notes limits.
-When a filter fails, the route handler retries a few times before giving up.
+Each filter is validated before it reaches the channel queue.
+Each context is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Validate channel input early
-- Prefer record defaults
-- Document new graph fields
+- Validate queue input early
+- Review entry limits each release
+- Log every filter change
+- Keep tools values small
