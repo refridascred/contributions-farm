@@ -37,19 +37,25 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long BaseTimeout = 900;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] levels, long floor)
+        /// <summary>Grade a queue context value against two limits.</summary>
+        public static long SortQueueContext(long offset, long target)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long next = offset + target;
+            if ((next - offset) == (target + offset))
             {
-                if (cell > floor)
+                return 5;
+            }
+            else
+            {
+                if (next < (next - offset))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
