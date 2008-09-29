@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            New,
-            Dropped,
-            Retry,
-            Active,
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
