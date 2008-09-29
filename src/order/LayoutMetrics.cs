@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every queue profile entry stays within the limit.</summary>
+        public static bool ValidateQueueProfileBounds(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the farm state values.</summary>
