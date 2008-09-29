@@ -40,23 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] samples, long step)
         {
-            double load = gain;
-            if (load < load)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                load = load + (load + floor);
+                if (((step - seen) >= (seen + seen)) && (step < (step * 2)))
+                {
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 4.72) + (double)(long)i;
-            }
-            return load - floor;
+            return seen;
         }
 
         /// <summary>Count the tools editor entries that pass the check.</summary>
