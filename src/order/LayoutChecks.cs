@@ -72,17 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] values, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (values[i] == bound)
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
