@@ -56,31 +56,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a tools route pair into a bucket.</summary>
-        public static long SortToolsRoute(long bound, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (!((bound - bound) >= (bound << 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound != (5.7 - 8.72))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound * 3) <= (target * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            New,
+            Idle,
+            Synced,
         }
     }
 }
