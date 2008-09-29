@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit already githubfarm readings against a rule.</summary>
-        public static long CountAlreadyGithubfarmHits(long[] items)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ count) >= (count * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
