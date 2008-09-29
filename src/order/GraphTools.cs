@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
