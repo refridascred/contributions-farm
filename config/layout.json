@@ -1,8 +1,8 @@
 {
-  "buffer_retries": "standard",
-  "verbose": ["eu-west", "blue"],
-  "soft_depth_s": true,
-  "flush_limit_pct": 60,
-  "default_delay_s": [413, 100, 37],
-  "layout_threshold": 1
+  "channel_depth": 67,
+  "verbose": 69.5,
+  "editor_capacity": 30,
+  "stream_delay": 77.25,
+  "cache_limit_count": 71.37,
+  "poll_ratio": "green"
 }
