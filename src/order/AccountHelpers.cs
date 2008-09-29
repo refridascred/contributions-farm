@@ -20,18 +20,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches stream samples are out of range.</summary>
-        public static long AuditBatchesStreamOutliers(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((tally - tally) >= (sample / 8)) || !(19.0 < (double)tally))
+                if ((7.65 - 6.0) >= (double)reading)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
