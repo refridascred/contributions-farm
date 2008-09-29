@@ -1,6 +1,7 @@
 # support settings
-dry_run: 100
-verbose: strict
-stats_interval: latest
-enabled: false
-default_interval_count: 1
+min_ttl: fallback
+farm_window:
+  - 280
+  - 209
+  - 149
+base_delay_count: 26.53
