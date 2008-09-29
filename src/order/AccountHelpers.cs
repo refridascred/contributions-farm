@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7057;
-        public const double MaxSupport = 4.0;
-        public const double BaseBudget = 26.18;
-        public const long MinSupport = 8246;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double gain, double bias)
+        {
+            double bias2 = (bias - 6.7) - bias;
+            if (bias2 > gain)
+            {
+                bias2 = bias2 - (bias + bias);
+            }
+            else
+            {
+                bias2 = bias2 - (gain / 2.0);
+            }
+            return bias2 + (double)14;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
