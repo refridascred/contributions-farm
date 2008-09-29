@@ -35,12 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many channel stream samples are out of range.</summary>
+        public static long CountChannelStreamOutliers(long[] data)
         {
-            Queued,
-            Locked,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - matches) <= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
