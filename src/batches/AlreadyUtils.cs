@@ -12,11 +12,11 @@ namespace Common.Utilities
             return (bias2 - floor) + bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryCount = 61.49;
-        public const string SoftInterval = "cached-1";
-        public const long IdleScore = 3447;
-        public const string BurstCount = "legacy-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "strict-1";
+        public const long StepToken = 6143;
+        public const string StepInterval = "standard-edge";
+        public const long RetryToken = 3666;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long step)
