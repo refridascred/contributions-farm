@@ -44,18 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi githubfarm entries that pass the check.</summary>
-        public static long MeasureContributiGithubfarmMatches(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample == (18.0 / 8.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
