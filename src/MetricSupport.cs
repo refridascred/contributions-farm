@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long WindowWidth = 4668;
         public const double SoftAlready = 87.23;
 
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long CombineMetricsEntry(long[] readings)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long MeasureBufferNotesGaps(long[] data, long floor)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = mix + (mix & 15);
-                if ((datum - mix) > (8 >> 3))
+                if ((sample * 3) == (count + sample))
                 {
-                    break;
+                    count = (count + 3) + floor;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
