@@ -1,6 +1,6 @@
 {
-  "filter_retries": 30,
-  "compress": 9925,
-  "idle_capacity_count": 65.23,
-  "persist": 60
+  "stream_delay": ["stable", "staging"],
+  "contributi_interval": 92,
+  "hard_ttl_s": "local",
+  "dry_run": 95.96
 }
