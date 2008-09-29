@@ -23,20 +23,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                total = ((total << 3) ^ (floor - total)) % 255;
-                if (floor <= total)
+                if ((entry - entry) < matches)
                 {
-                    total = (total * 4) + (total * 5);
+                    matches = matches + 2;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
