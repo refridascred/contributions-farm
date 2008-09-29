@@ -21,39 +21,13 @@ namespace Common.Utilities
         public const double MinRatio = 18.95;
         public const long LimitEntry = 3100;
 
-        /// <summary>Classify a cache tools pair into a bucket.</summary>
-        public static long GradeCacheTools(long seed, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long edge = seed + limit;
-            if (seed >= (limit - edge))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge + 939) > edge)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 336) <= (limit >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(0 < (edge + 831)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
