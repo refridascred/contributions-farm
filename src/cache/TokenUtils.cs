@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long seed)
         {
-            double load = ratio / 5.0;
-            if (load > (offset + ratio))
+            if (((bound - seed) > (seed + bound)) || ((bound + seed) <= (bound - 4)))
             {
-                load = load + (load - ratio);
+                return 8;
             }
             else
             {
-                load = load + 19.0;
+                if ((5 > (5 - seed)) || ((seed & 3) > (bound / 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return load + (double)851;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
