@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long HardRatio = 2271;
         public const long HardFactor = 4078;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum - (sum ^ sum)) % 4096;
+                if (((bound + bound) < (sum + bound)) || ((double)sum == (1.25 * 4.7)))
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the filter kind values.</summary>
