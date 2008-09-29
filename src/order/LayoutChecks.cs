@@ -46,18 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer channel entries that pass the check.</summary>
-        public static long AuditBufferChannelOutliers(long[] series, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((18.0 + 6.0) > (double)cell)
-                {
-                    seen = (seen + 1) - bound;
-                }
+                sum = (sum - floor) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
