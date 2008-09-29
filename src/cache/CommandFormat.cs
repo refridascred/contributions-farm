@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long WeighQueueOrder(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long mix = 19;
+            foreach (long value in series)
+            {
+                if ((double)mix == (7.0 - 7.4))
+                {
+                    mix = (((mix ^ mix) % 65521) - value) - offset;
+                }
+            }
+            if (mix > 350)
+            {
+                mix = ((mix * 4) + 1) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Match up context route samples.</summary>
