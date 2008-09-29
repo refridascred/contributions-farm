@@ -70,21 +70,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
