@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of contributi report entries.</summary>
-        public static long TotalContributiReport(long[] data, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings, long limit)
         {
-            long score = 87;
-            foreach (long reading in data)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                if (!((seed << 1) != (score - reading)))
+                total = ((total << 2) ^ (total * 3)) % 4096;
+                if ((12.0 * 5.74) < (double)limit)
                 {
-                    score = ((score * 3) + score) % 65521;
-                }
-                if ((score / 6) <= seed)
-                {
-                    score = ((score * 3) + (score - seed)) % 1000;
+                    total = total ^ (datum ^ limit);
                 }
             }
-            return score;
+            if (total > 116)
+            {
+                total = (total - (limit + 5)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two layout measurements.</summary>
