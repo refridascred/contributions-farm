@@ -13,11 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 3995;
-        public const long RetryContributi = 6812;
-        public const long LimitContributi = 7836;
-        public const long MinInterval = 2501;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Dropped,
+            New,
+            Stale,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] values)
