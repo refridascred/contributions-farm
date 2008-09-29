@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Look up the position of a batch payload sample.</summary>
+        public static long LookupBatchPayloadIndex(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
