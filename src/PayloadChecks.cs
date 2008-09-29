@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
