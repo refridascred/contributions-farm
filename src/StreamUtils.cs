@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long floor)
         {
-            long mix = 42;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix - (limit ^ limit);
-                mix = mix + (mix + limit);
-                if ((double)mix >= (double)item)
+                if (readings[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
