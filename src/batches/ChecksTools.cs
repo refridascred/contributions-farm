@@ -25,15 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Draft,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a filter options.</summary>
