@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every context stream entry stays within the limit.</summary>
-        public static bool CheckContextStreamRange(long[] items, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry > target)
+                if (!(711 >= matches) && (((double)offset < (13.0 / 4.0)) || (((long)data.Length + offset) <= (479 + 22))))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up payload schema samples.</summary>
