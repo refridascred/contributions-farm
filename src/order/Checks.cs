@@ -19,25 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long target)
-        {
-            if ((5.43 * 10.0) != (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + floor) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "open-v2";
+        public const long CacheOrder = 4367;
+        public const long StepFactor = 9658;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items)
