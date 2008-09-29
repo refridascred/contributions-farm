@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next counter order value from a seed.</summary>
+        public static long RollCounterOrder(long origin)
         {
-            Stale,
-            Paused,
-            Idle,
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
