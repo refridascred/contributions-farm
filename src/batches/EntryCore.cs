@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseInterval = 83.21;
-        public const long MaxBatch = 8609;
-        public const double MinBatch = 24.77;
-        public const long MinRatio = 892;
-        public const long BaseDepth = 4595;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Locate a githubfarm contributi reading by value.</summary>
         public static long LocateGithubfarmContributiIndex(long[] readings, long floor)
