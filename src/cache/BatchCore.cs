@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            Draft,
-            Ready,
-            Stale,
-            Active,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry + (floor - floor)) % 97;
+                carry = ((carry * 5) + (168 * 4)) % 1000;
+                carry = ((carry << 3) ^ 56) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
