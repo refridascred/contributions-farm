@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= origin)
                 {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
