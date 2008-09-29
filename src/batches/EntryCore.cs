@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((11.0 / 5.0) > (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
