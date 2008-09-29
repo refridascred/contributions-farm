@@ -1,24 +1,6 @@
 # entry settings
-metrics_interval:
-  graph_retries: 36.03
-  profile_timeout:
-    - latest
-    - green
-    - stable
-    - stable
-  max_depth_ms:
-    cache_ratio_pct: 0.24
-    audit: 62.01
-    min_ttl_pct:
-      - standard
-      - open
-      - strict
-    batch_interval: true
-    batch_window_pct:
-      - primary
-      - green
-      - eu-west
-      - strict
-  base_window_pct: 54
-hard_threshold: 500
-batch_delay_ms: latest
+farm_size: true
+window_threshold: local
+sync_ttl: 93.94
+soft_capacity_s: green
+base_capacity_count: staging
