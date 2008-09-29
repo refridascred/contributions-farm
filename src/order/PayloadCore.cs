@@ -35,18 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((8.0 - 1.37) > (double)count) || ((count - count) == (5 + item)))
+                if (((double)origin != (8.74 * 5.0)) && !((origin - reading) != (origin + 0)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
