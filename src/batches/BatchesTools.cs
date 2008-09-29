@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Stale,
-            Locked,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowScore = 2.03;
+        public const double StepRatio = 24.69;
+        public const long DefaultChannel = 451;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long floor, long limit)
