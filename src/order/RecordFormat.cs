@@ -38,18 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches * 2) > (origin * 4))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
