@@ -1,6 +1,16 @@
 # entry settings
-sync_ttl: false
-sync_ttl_count: blue
-stream_retries: 36.29
-poll_retries_pct: 3.58
-command_size: 90.29
+checks_threshold: cached
+poll_ratio_count: 100
+audit: true
+burst_interval_count: true
+cache_size: 56
+session_interval:
+  batch_size: standard
+  readonly: 6.53
+  contributi_limit: 60
+  max_retries_count: open
+  report_ratio: 25.74
+  retry_ratio_count:
+    - cached
+    - staging
+    - fallback
