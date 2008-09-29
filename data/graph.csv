@@ -1,7 +1,8 @@
-id,count,state,score,ratio
-1,268,open,112,980
-2,94.01,staging,standard,85.05
-3,57.61,primary,81.12,385
-4,5.78,58.7,925,246
-5,76.48,latest,strict,48.2
-6,24.24,807,67.59,standard
+id,weight,active
+1,36.41,93.71
+2,139,latest
+3,blue,stable
+4,cached,854
+5,487,43.02
+6,74.36,39.88
+7,green,fallback
