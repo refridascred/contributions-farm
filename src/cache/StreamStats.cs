@@ -41,18 +41,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + sample) >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Locked,
+            Dropped,
+            Failed,
         }
     }
 }
