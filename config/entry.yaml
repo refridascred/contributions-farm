@@ -1,15 +1,9 @@
 # entry settings
-default_limit_count:
-  dry_run: false
-  poll_depth: 96
-  idle_threshold_ms:
-    - 336
-    - 299
-  flush_window: 63.9
-  cache_threshold: 52.23
-  support_ratio: 34.51
-buffer_capacity: 100
-command_depth: 30
-idle_capacity: 36.69
-persist: cached
-report_capacity: blue
+retry_capacity_pct: legacy
+buffer_size:
+  flush_capacity: 81.3
+  cache_delay_pct: 34.95
+  persist: false
+base_threshold_ms: false
+report_limit: 87
+base_depth_count: 55.74
