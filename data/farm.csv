@@ -1,7 +1,6 @@
-id,weight,count,region
-1,21.72,cached,853
-2,510,84.14,39.0
-3,local,7,93.64
-4,eu-west,122,64.54
-5,open,staging,98.56
-6,149,647,268
+id,score,level,token,owner
+1,922,304,local,171
+2,98,798,latest,770
+3,green,307,9.04,cached
+4,staging,436,731,168
+5,424,blue,55.43,primary
