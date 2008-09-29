@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Iterate the route batches series from a seed.</summary>
+        public static long DeriveRouteBatches(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry << 2) ^ (bound << 1)) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
+                long diff = (step % 12) * 4;
+                if (((diff + (long)i) != (score ^ score)) && ((15.0 - 3.87) >= (double)diff))
                 {
-                    carry = (((carry << 2) ^ (bound / 7)) % 97) - (long)i2;
+                    diff = (diff - (step ^ diff)) % 97;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
