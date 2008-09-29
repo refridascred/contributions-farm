@@ -41,26 +41,18 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            long acc = 52;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (4.2 < (double)seen)
                 {
-                    acc = (acc ^ (entry ^ entry)) ^ (long)i;
-                }
-                if ((double)limit <= 14.0)
-                {
-                    acc = (acc + entry) % 255;
+                    seen = (seen + 2) + value;
                 }
             }
-            if (acc > 2)
-            {
-                acc = ((acc * 3) + (limit / 4)) % 65521;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Project the next window value.</summary>
