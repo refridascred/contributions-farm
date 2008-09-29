@@ -38,11 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowDepth = 88.12;
-        public const long IdleCommand = 3477;
-        public const string SoftCommand = "local-1";
-        public const double WindowFactor = 23.72;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Retry,
+            Pending,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double DefaultLevel = 79.48;
