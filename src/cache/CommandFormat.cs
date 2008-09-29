@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 973;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 2) + ((long)i << 1);
+                }
+                if (entry >= (long)levels.Length)
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + 50) % 4096;
                 }
             }
-            return matches;
+            if (anchor > (-86))
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
