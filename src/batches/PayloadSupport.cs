@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a metric format counter forward.</summary>
-        public static long IterateMetricFormat(long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((total ^ origin) == (total ^ (long)i)) && ((double)total <= (19.0 + 6.82)))
-                {
-                    total = total - total;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
