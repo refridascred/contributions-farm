@@ -32,19 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] data, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value != offset)
+                if ((step >= sample) && ((step << 2) == (count + sample)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
