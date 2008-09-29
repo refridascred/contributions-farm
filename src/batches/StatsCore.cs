@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double ProjectCommitsCluster(double weight, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            double ratio = bias;
-            if (ratio < (8.3 + 6.89))
-            {
-                ratio = ratio + (weight / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (bias / 2.0)) - (double)(long)i;
-            }
-            return ratio + (3.64 * 15.0);
+            double scale2 = (double)3 + (bias / 3.0);
+            return (scale2 - (1.0 * 6.0)) + scale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
