@@ -38,28 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = 338;
-            foreach (long reading in levels)
-            {
-                if (((mix * 4) >= (mix & 255)) && ((95 & 255) == (mix + (-242))))
-                {
-                    mix = (mix ^ (reading >> 5)) % 1000;
-                    mix = (mix - (mix + 8)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix ^ mix)) % 1000;
-                    mix = ((mix * 3) + reading) % 1000;
-                }
-                if ((mix + reading) <= (reading + (-7)))
-                {
-                    mix = (mix + reading) % 65521;
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a filter farm reading by value.</summary>
