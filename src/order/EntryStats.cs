@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] values, long step)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Synced,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
