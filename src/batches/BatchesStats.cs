@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "primary-v2";
         public const long HardChecks = 7537;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of order metrics readings.</summary>
