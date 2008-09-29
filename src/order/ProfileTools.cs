@@ -31,28 +31,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long target)
         {
-            if (floor < (95 + limit))
+            if ((target + 6) > (target >> 5))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (limit <= floor)
+                if ((79 <= (limit >> 3)) || (limit > (limit % 10)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit + floor) >= (floor - 456))
+                    if ((8.38 / 3.0) == (double)limit)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
