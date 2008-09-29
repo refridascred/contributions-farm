@@ -1,14 +1,13 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the window list.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep account and window names short and lowercase.
+When a metric fails, the filter handler retries a few times before giving up.
+Use channel settings to tune how often route data is refreshed.
 
-The cache module keeps graph values in sync with the tools cache.
-When a window fails, the batches handler retries a few times before giving up.
+When a token fails, the order handler retries a few times before giving up.
+Run the batch check before changing any layout limits.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep editor values small
-- Prefer buffer defaults
+- Review batch limits each release
+- Log every farm change
+- Keep graph values small
