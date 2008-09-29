@@ -13,22 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long seed)
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long TallyClusterGithubfarmHits(long[] readings)
         {
-            long acc = 116;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!(9.16 <= (double)seed))
+                if (((double)sample >= (6.5 - 0.8)) || ((seen + 982) > (long)readings.Length))
                 {
-                    acc = acc ^ 479;
-                }
-                if ((double)acc > (6.47 * 0.4))
-                {
-                    acc = acc - (entry + acc);
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
