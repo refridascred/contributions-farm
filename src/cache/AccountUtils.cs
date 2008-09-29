@@ -42,22 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command metrics readings against a rule.</summary>
-        public static long CountCommandMetricsMatches(long[] samples, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + 31) < (hits + 1))
+                if (readings[i] > floor)
                 {
-                    hits = ((hits + 1) ^ item) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
