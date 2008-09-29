@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long bound)
         {
-            long carry = 650;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (((cell << 3) < (cell % 12)) && ((double)carry > 9.6))
+                if (value <= bound)
                 {
-                    carry = (carry + (carry + cell)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (carry >> 4);
-                }
-                if (((double)cell >= 10.0) && ((carry / 4) >= (cell - cell)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Accumulate checks context samples.</summary>
