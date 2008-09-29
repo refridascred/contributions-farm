@@ -13,10 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 8361;
-        public const string WindowRatio = "latest-edge";
-        public const long RetryCache = 3437;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
