@@ -75,18 +75,10 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-1";
         public const string DefaultReport = "alpha";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum + hits) > (seed + hits)) && (((1.3 / 7.0) < (double)seed) || (((-87) % 12) > seed)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 4700;
+        public const long SoftInterval = 105;
+        public const long SoftSize = 8759;
+        public const long LimitStream = 4582;
     }
 }
