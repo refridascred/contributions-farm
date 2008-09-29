@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const long WindowFilter = 2193;
         public const long BatchInterval = 254;
 
-        /// <summary>Compare every pair of route notes readings.</summary>
-        public static long OverlapRouteNotesCount(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - (double)82) - bias2;
             }
-            return tally;
+            return drift - 7.0;
         }
     }
 }
