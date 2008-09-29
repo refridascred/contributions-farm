@@ -48,12 +48,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long limit2)
         {
-            Draft,
-            Idle,
-            Failed,
+            if ((-633) <= (limit & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit >> 1) > (limit2 & 31)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the profile status values.</summary>
