@@ -21,18 +21,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long step)
+        public static bool VerifyFormatRange(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (sample != step)
+                if (entry >= offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
