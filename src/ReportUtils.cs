@@ -27,22 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 8912;
+        public const long BaseTimeout = 870;
+        public const double IdleAccount = 82.79;
+        public const long LimitSpan = 3914;
+        public const long StepWidth = 4227;
 
         /// <summary>Digest a series of checks farm entries.</summary>
         public static long TallyChecksFarm(long[] data, long step)
