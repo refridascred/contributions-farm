@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine buffer counter values into a single score.</summary>
-        public static long WeighBufferCounter(long[] data, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] readings, long origin)
         {
-            long total = 14;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((total & 127) < (81 - entry))
+                if ((reading * 5) == (origin - origin))
                 {
-                    total = ((total + (total + 0)) % 97) + limit;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a support summary.</summary>
