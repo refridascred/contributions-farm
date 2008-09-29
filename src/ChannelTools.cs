@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the command cache entries that pass the check.</summary>
-        public static long CountCommandCacheMatches(long[] samples, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (29 >= (matches + matches))
+                if (datum >= floor)
                 {
-                    matches = ((matches + 2) ^ sample) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
