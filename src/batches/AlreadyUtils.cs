@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] levels, long seed)
         {
-            double gain = 13.0;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                gain = ((gain + gain) + (double)(long)i) + scale;
+                if (matches >= seed)
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain + offset;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
