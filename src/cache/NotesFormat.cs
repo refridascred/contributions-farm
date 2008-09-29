@@ -20,23 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long target2)
+        /// <summary>Grade a queue stream value against two limits.</summary>
+        public static long RankQueueStream(long floor, long origin)
         {
-            long edge = target - target2;
-            if ((77 + target2) < target)
+            if ((1 / 2) <= origin)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (edge > target2)
+                if (floor >= (origin / 4))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if (floor >= (origin - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
