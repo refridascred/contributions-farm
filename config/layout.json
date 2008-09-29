@@ -1,6 +1,5 @@
 {
-  "token_threshold": 20.84,
-  "base_threshold_count": 83.46,
-  "min_ttl": true,
-  "strict": "eu-west"
+  "retry_threshold_count": "strict",
+  "idle_depth_count": 7.65,
+  "sync_ttl_s": "latest"
 }
