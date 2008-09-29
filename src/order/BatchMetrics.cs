@@ -61,20 +61,17 @@ namespace Common.Utilities
         public const string LimitFormat = "stable-edge";
         public const double LimitBudget = 1.86;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark > (origin & 3)) || ((8.41 - 2.4) <= (double)(long)i))
+                if (levels[i] <= offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + ((long)i >> 1)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
