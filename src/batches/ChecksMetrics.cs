@@ -66,19 +66,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1.0 + 4.63) <= (11.0 * 6.1))
-                {
-                    mix = ((mix << 2) ^ (bound >> 2)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Queued,
+            Locked,
+            Paused,
         }
     }
 }
