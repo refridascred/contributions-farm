@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5469;
-        public const long BurstRatio = 1765;
-        public const long HardStats = 9411;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Ready,
+            Locked,
+            Dropped,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] data, long step)
