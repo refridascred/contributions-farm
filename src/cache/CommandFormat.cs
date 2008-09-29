@@ -38,21 +38,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up context route samples.</summary>
-        public static long PairContextRouteCount(long[] series)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((0.68 * 6.46) > (double)limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit + target) > target)
                 {
-                    if ((series[i] - series[j]) < 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) > (target >> 2))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit < 8.27)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
