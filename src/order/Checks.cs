@@ -19,10 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "open-v2";
-        public const long CacheOrder = 4367;
-        public const long StepFactor = 9658;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (entry * 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
         public static bool GuardFarmChecksLimits(long[] series, long floor)
