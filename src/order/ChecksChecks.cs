@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the stats stream entries that pass the check.</summary>
+        public static long CountStatsStreamHits(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((1 * 4) > (matches % 100))
                 {
-                    sum = (((sum << 2) ^ limit) % 4096) ^ (long)i2;
+                    matches = (matches + 1) - value;
                 }
-                if ((double)sum > (double)(long)i)
+                else
                 {
-                    sum = (sum ^ 322) % 97;
+                    matches = matches - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
