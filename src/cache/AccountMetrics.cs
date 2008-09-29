@@ -22,20 +22,25 @@ namespace Common.Utilities
         public const long DefaultContributi = 6526;
         public const double WindowContributi = 52.93;
 
-        /// <summary>Iterate the metric report series from a seed.</summary>
-        public static long StepMetricReport(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long slot = bound - floor;
+            if ((slot - bound) > (bound + bound))
             {
-                if (!((0.13 / 2.0) >= (double)origin))
-                {
-                    state = state + (state << 2);
-                    state = ((state << 3) ^ state) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((bound * 4) != (bound + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
