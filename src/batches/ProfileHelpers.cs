@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != offset)
                 {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the order mode values.</summary>
