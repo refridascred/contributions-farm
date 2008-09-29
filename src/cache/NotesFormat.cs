@@ -35,14 +35,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a context contributi value against two limits.</summary>
+        public static long BucketContextContributi(long bound, long floor)
         {
-            Synced,
-            Active,
-            Draft,
-            Ready,
-            Failed,
+            if (((1.1 * 7.6) == (double)bound) && ((floor - bound) <= (bound ^ floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound / 4) <= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.0 + 4.1) <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((floor - floor) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
