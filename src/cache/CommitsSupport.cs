@@ -57,13 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine format metric values into a single score.</summary>
+        public static long DigestFormatMetric(long[] series)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long acc = 457;
+            foreach (long sample in series)
+            {
+                if ((8.6 / 6.0) <= (double)acc)
+                {
+                    acc = (acc + (acc + acc)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (sample << 3)) % 97;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
