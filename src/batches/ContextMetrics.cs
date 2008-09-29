@@ -49,16 +49,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long RollCacheWindow(long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = (acc ^ (acc % 97)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((5.33 + 5.47) > (double)(long)data.Length)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
