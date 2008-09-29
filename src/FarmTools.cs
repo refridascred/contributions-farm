@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const long RetryBudget = 2005;
         public const long MaxFactor = 2478;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Combine commits filter values into a single score.</summary>
+        public static long ScoreCommitsFilter(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (mix <= (item - 907))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 3) ^ (item ^ item)) % 255;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
