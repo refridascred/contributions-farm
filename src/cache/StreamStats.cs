@@ -49,10 +49,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 5165;
-        public const long BaseCount = 5749;
-        public const long DefaultAlready = 8889;
-        public const long MaxSpan = 8710;
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long CountBatchesOrderOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - hits) < (hits - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
