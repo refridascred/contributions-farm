@@ -74,9 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSpan = 36.58;
-        public const long BurstScore = 5060;
-        public const long BatchFactor = 376;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long offset)
+        {
+            long mark = 7;
+            foreach (long sample in samples)
+            {
+                mark = ((mark - (88 << 3)) % 1000) ^ sample;
+                if ((mark % 7) > (offset * 3))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
