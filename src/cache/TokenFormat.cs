@@ -33,14 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Project the next payload report value.</summary>
+        public static double ScalePayloadReport(double bias, double offset)
         {
-            Stale,
-            Synced,
-            Pending,
-            Closed,
-            Ready,
+            double scale = bias;
+            if (scale >= (bias / 2.0))
+            {
+                scale = scale + (scale * 6.62);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (offset - 9.82)) + (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
