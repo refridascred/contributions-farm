@@ -1,11 +1,5 @@
 # githubfarm settings
-poll_delay_s:
-  - 332
-  - 423
-sync_delay_s:
-  - 211
-  - 69
-  - 411
-  - 106
-channel_delay: stable
-batches_ttl: 8985
+poll_window: 88
+sync_window: green
+compress: staging
+warm_threshold_pct: legacy
