@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "latest-v2";
-        public const double HardTimeout = 60.55;
-        public const double RetryFactor = 20.34;
-        public const long IdleTools = 6077;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
