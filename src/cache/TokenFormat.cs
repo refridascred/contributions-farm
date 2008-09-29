@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 8235;
-        public const long BurstScore = 4181;
-        public const double WindowInterval = 5.49;
-        public const string SoftMetrics = "cached-1";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor - (anchor + anchor);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] samples)
