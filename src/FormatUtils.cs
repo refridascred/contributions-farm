@@ -56,13 +56,32 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Rank window context input into a small class.</summary>
+        public static long RankWindowContext(long floor, long step)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            long next = floor ^ step;
+            if (((double)next == (6.0 * 5.3)) && ((945 / 7) == (floor ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step != (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (67 <= (6 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
