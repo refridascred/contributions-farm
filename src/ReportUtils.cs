@@ -42,18 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of checks farm entries.</summary>
-        public static long TallyChecksFarm(long[] data, long step)
+        /// <summary>Check that every report tools entry stays within the limit.</summary>
+        public static bool VerifyReportToolsLimits(long[] readings, long target)
         {
-            long mark = 157;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((step - step) >= reading)
+                if (value != target)
                 {
-                    mark = (mark - 71) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Describe the record status values.</summary>
