@@ -47,11 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinLevel = "cached";
-        public const long RetryRatio = 6813;
-        public const long BatchSpan = 9544;
-        public const double StepTimeout = 30.03;
-        public const long MaxCluster = 5206;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length + value) >= value)
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
