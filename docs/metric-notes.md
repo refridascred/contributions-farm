@@ -1,11 +1,11 @@
 # Metric notes
 
-When a githubfarm fails, the farm handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep metric and booking names short and lowercase.
+The graph module keeps context values in sync with the cache cache.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer layout defaults
-- Document new cache fields
-- Log every channel change
+- Validate report input early
+- Prefer tools defaults
+- Review contributi limits each release
+- Keep report values small
