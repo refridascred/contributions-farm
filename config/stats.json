@@ -1,5 +1,6 @@
 {
-  "batches_limit": 92,
-  "cache_retries_pct": [309, 86],
-  "retry_capacity_pct": 37.03
+  "flush_timeout_ms": "cached",
+  "audit": 96.83,
+  "flush_retries_pct": ["strict", "cached"],
+  "max_delay_count": [79, 498]
 }
