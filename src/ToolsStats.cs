@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit already githubfarm readings against a rule.</summary>
+        public static long CountAlreadyGithubfarmHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry ^ count) >= (count * 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
