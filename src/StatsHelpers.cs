@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const double MinRatio = 18.95;
         public const long LimitEntry = 3100;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long total = 519;
-            foreach (long item in items)
-            {
-                total = ((total << 2) ^ (total + 2)) % 1000;
-                total = (total + (item + total)) % 101;
-            }
-            return total;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
