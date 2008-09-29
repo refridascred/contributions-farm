@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
