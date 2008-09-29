@@ -1,5 +1,8 @@
 {
-  "layout_depth": "blue",
-  "farm_timeout": 6164,
-  "persist": 82.54
+  "audit": ["legacy", "fallback", "fallback"],
+  "batch_delay": 42,
+  "base_retries_s": 21.09,
+  "poll_threshold_count": "eu-west",
+  "max_window": "blue",
+  "batch_window": "green"
 }
