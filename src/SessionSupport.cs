@@ -19,38 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] levels, long seed)
         {
-            if (((origin - bound) == (origin - origin)) || (bound < (origin * 5)))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound <= (double)412) && (bound >= (origin ^ bound)))
+                if (seen < (datum >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin % 12) <= (bound << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((79 <= (bound << 1)) || ((bound & 127) >= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 1) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
