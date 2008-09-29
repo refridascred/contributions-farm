@@ -78,20 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleWidth = 4371;
+        public const string BurstTimeout = "strict";
+        public const string LimitInterval = "strict-v2";
+        public const string SoftRoute = "primary-1";
+        public const string DefaultRoute = "open-v2";
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double bias, double offset)
