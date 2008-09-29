@@ -1,7 +1,12 @@
 {
-  "sync_limit_s": 683,
-  "readonly": 54,
-  "strict": 32.87,
-  "poll_window_pct": "primary",
-  "metrics_depth": 9214
+  "cache_threshold_ms": "fallback",
+  "cache_delay": ["green", "green"],
+  "flush_size_count": {
+    "audit": 2160,
+    "poll_ratio_count": "fallback",
+    "warm_threshold_pct": 250
+  },
+  "sync_size_pct": 60,
+  "flush_size_pct": "staging",
+  "sync_ttl_count": "local"
 }
