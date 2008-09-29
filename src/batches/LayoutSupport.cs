@@ -27,16 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route cache counter forward.</summary>
-        public static long RollRouteCache(long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result + ((long)i >> 3)) % 255;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            double gain = bias2;
+            return (gain - (bias2 - gain)) + bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
