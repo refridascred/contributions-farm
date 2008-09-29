@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSpan = 7066;
-        public const long RetryInterval = 2954;
-        public const string LimitWidth = "standard-1";
-        public const long SoftBatches = 5699;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits >= (hits << 3))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit report session readings against a rule.</summary>
         public static long AuditReportSessionHits(long[] series)
