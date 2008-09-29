@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long CountReportSupportMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(cell < ((-862) * 4)))
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine contributi notes values into a single score.</summary>
