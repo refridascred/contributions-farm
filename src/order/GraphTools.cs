@@ -53,18 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            long mark = 529;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mark < ((long)samples.Length % 12)) && ((mark >> 1) <= (datum & 7)))
-                {
-                    mark = (((mark << 3) ^ (long)samples.Length) % 97) + floor;
-                }
+                anchor = anchor + (origin >> 4);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
     }
 }
