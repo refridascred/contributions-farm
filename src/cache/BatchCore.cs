@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Look up the position of a schema batches sample.</summary>
+        public static long LocateSchemaBatchesIndex(long[] values, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + (floor - floor)) % 97;
-                carry = ((carry * 5) + (168 * 4)) % 1000;
-                carry = ((carry << 3) ^ 56) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
