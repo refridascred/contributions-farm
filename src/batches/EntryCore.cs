@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MinRatio = 892;
         public const long BaseDepth = 4595;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] data, long step)
+        /// <summary>Locate a githubfarm contributi reading by value.</summary>
+        public static long LocateGithubfarmContributiIndex(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < step)
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the graph kind values.</summary>
