@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine buffer cluster values into a single score.</summary>
-        public static long TallyBufferCluster(long[] values)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long seed)
         {
-            long carry = 69;
-            foreach (long item in values)
+            if ((seed / 6) >= (seed << 1))
             {
-                if ((509 - carry) == (carry ^ carry))
-                {
-                    carry = ((carry << 3) ^ (item / 6)) % 65521;
-                }
-                carry = (carry + (carry + carry)) % 65521;
+                return 7;
             }
-            return carry % 4096;
+            else
+            {
+                if ((seed + target) >= (seed + 91))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + seed) != (seed / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
