@@ -37,15 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi notes values into a single score.</summary>
-        public static long TallyContributiNotes(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            long carry = 0;
+            foreach (long cell in values)
             {
-                acc = (acc - (datum + 8)) % 101;
+                if (cell < carry)
+                {
+                    carry = carry - (3 + carry);
+                }
+                else
+                {
+                    carry = carry + (cell - carry);
+                }
+                if ((carry - carry) >= (carry << 3))
+                {
+                    carry = ((carry * 3) + (5 % 60)) % 4096;
+                }
             }
-            return acc;
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ (carry - 9)) % 255;
+            }
+            return carry;
         }
     }
 }
