@@ -38,22 +38,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc + acc) <= datum)
+                if (series[i] >= limit)
                 {
-                    acc = (acc - (acc >> 4)) % 255;
-                }
-                if (!((acc - datum) == (datum + 54)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
