@@ -27,16 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream filter value from a seed.</summary>
-        public static long SeriesStreamFilter(long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 2) + ((long)i * 2)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
