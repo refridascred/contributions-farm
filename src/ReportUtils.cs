@@ -45,19 +45,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Compare every pair of record already readings.</summary>
+        public static long MatchRecordAlreadyCount(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((long)i + 113) < offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state ^ 339) % 97;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
