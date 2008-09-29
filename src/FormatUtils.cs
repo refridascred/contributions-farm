@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long state = 514;
-            foreach (long cell in samples)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((cell * 3) < floor) && (state <= (state >> 1)))
-                {
-                    state = state ^ floor;
-                }
+                mix = (mix - mix) % 4096;
+                mix = (mix ^ offset) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Adjust a stats reading.</summary>
