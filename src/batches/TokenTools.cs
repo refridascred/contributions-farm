@@ -29,12 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seen <= (double)36)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
