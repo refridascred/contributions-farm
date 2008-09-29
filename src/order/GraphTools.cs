@@ -32,19 +32,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] values, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (item != limit)
+                if ((0.46 / 9.0) <= (double)entry)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
