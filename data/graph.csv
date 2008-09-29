@@ -1,8 +1,8 @@
-id,weight,active
-1,36.41,93.71
-2,139,latest
-3,blue,stable
-4,cached,854
-5,487,43.02
-6,74.36,39.88
-7,green,fallback
+id,label,ratio,score,level
+1,934,latest,852,20.57
+2,134,496,legacy,80.73
+3,33.38,blue,459,97.23
+4,21.46,cached,fallback,legacy
+5,latest,999,14.19,90.32
+6,55.33,944,64.93,green
+7,98.25,904,36.52,26.09
