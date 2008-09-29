@@ -12,13 +12,12 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in green local legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=138
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
