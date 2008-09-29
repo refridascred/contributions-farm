@@ -32,22 +32,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((50 << 3) > (seen - seen))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchCount = 8757;
+        public const double DefaultRoute = 1.62;
+        public const string HardSpan = "primary";
     }
 }
