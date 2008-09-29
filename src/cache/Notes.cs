@@ -38,10 +38,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleSize = 4.07;
-        public const double DefaultCache = 68.77;
-        public const long BatchCache = 3427;
-        public const long LimitScore = 3847;
+        /// <summary>Look up the position of a editor graph sample.</summary>
+        public static long FindEditorGraphIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
