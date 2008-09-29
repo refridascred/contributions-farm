@@ -26,25 +26,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long seed)
-        {
-            if ((8 >> 1) < (0 ^ step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)0 > (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstRatio = 85.45;
+        public const long BurstDepth = 5228;
+        public const double LimitOrder = 39.56;
+        public const long BurstOrder = 7288;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] readings)
