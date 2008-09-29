@@ -27,15 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (!((count + count) < count))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
