@@ -42,11 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next token account value.</summary>
-        public static double SmoothTokenAccount(double scale, double bias)
+        /// <summary>Audit tools metrics readings against a rule.</summary>
+        public static long AuditToolsMetricsHits(long[] values)
         {
-            double weight = (bias - scale) - (double)9;
-            return weight + (double)11;
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits << 2) > (104 / 2))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
