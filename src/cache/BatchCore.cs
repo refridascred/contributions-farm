@@ -26,22 +26,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] values, long origin)
+        /// <summary>Compare every pair of payload contributi readings.</summary>
+        public static long PairPayloadContributiCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)values.Length + value) >= value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
