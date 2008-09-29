@@ -29,22 +29,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading < (9.0 + 8.4)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardSpan = 655;
+        public const long HardToken = 4755;
+        public const long StepSize = 8476;
     }
 }
