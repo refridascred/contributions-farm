@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
-        {
-            long anchor = 557;
-            foreach (long item in values)
-            {
-                if (((item - 8) >= (item % 16)) || ((double)item < 1.2))
-                {
-                    anchor = ((anchor * 4) + (956 - item)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseScore = 3621;
+        public const string DefaultReport = "legacy-v2";
+        public const long BurstReport = 3532;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double scale, double offset)
