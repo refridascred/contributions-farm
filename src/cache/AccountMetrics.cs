@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double drift = (bias / 4.0) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift + (bias * 6.66)) + (double)(long)i) - bias2;
             }
-            return stale;
+            return drift - bias;
         }
 
         /// <summary>Count cluster support pairs that satisfy a relation.</summary>
