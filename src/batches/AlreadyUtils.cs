@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] series, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
