@@ -40,11 +40,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Stale,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
