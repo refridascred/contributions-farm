@@ -1,11 +1,14 @@
 # Command notes
 
-Use stream settings to tune how often metrics data is refreshed.
-Each payload is validated before it reaches the already queue.
+The support report groups every account by contributi.
+The channel module keeps profile values in sync with the stats cache.
+
+The farm helpers are pure functions, so they are safe to call from any thread.
+A account that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Log every cache change
-- Document new stats fields
-- Prefer commits defaults
-- Review metric limits each release
+- Review format limits each release
+- Log every batch change
+- Prefer checks defaults
+- Keep farm values small
