@@ -1,11 +1,15 @@
 # Command notes
 
-The payload report groups every command by farm.
-The buffer module keeps cache values in sync with the support cache.
-The commits module keeps profile values in sync with the entry cache.
+The layout report groups every context by counter.
+Keep filter and metrics names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+Keep batches and cluster names short and lowercase.
+Run the notes check before changing any order limits.
+Each session is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep format values small
-- Review account limits each release
-- Document new order fields
+- Keep layout values small
+- Document new counter fields
+- Validate filter input early
