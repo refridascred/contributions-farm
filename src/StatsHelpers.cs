@@ -60,22 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] data, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!(((tally + item) < 98) || ((tally / 7) > (tally ^ item))))
+                if (sample > target)
                 {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
