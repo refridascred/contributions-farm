@@ -12,10 +12,18 @@ namespace Common.Utilities
             return (mean - ratio) + floor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2648;
-        public const long StepSpan = 1453;
-        public const long MinRecord = 1623;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] levels)
