@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            Retry,
-            Locked,
-            Synced,
+            if (!((83 + bound) > (step + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound & 31) >= (step ^ (-47))) && ((bound & 127) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 2) > 3)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - bound) > step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
