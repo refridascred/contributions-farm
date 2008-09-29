@@ -71,12 +71,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            Retry,
-            Queued,
-            Draft,
+            long acc = 1;
+            foreach (long cell in readings)
+            {
+                if ((76 & 7) == (acc & 31))
+                {
+                    acc = (acc ^ (long)readings.Length) % 255;
+                }
+                if ((acc + cell) > (0 << 3))
+                {
+                    acc = (acc - cell) % 1000;
+                }
+                else
+                {
+                    acc = (acc - 8) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
