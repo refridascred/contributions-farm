@@ -69,19 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum ^ ((long)i * 3)) % 101;
+                sum = sum ^ step;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
