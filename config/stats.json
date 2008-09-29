@@ -1,16 +1,6 @@
 {
-  "batch_threshold_s": "green",
-  "hard_depth": ["primary", "open", "standard"],
-  "audit": {
-    "idle_interval": {
-      "idle_capacity": true,
-      "warm_retries_s": "eu-west",
-      "poll_ttl_ms": "blue",
-      "batch_retries_s": "cached"
-    },
-    "batches_retries": 94,
-    "batch_ttl": "eu-west"
-  },
-  "verbose": "primary",
-  "hard_window_count": 77.68
+  "sync_timeout_ms": true,
+  "max_timeout_s": 99,
+  "poll_size": "legacy",
+  "poll_delay": "primary"
 }
