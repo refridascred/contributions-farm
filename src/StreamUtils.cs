@@ -29,30 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long step)
         {
-            long carry = 36;
+            bool valid = true;
             foreach (long reading in data)
             {
-                if ((carry << 3) > (reading * 3))
+                if (reading < step)
                 {
-                    carry = carry - (reading - reading);
-                }
-                if ((carry & 3) <= (carry >> 4))
-                {
-                    carry = (carry + (reading << 2)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (reading / 3);
-                }
-                if ((double)reading < (20.0 - 7.15))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
