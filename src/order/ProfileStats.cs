@@ -28,18 +28,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((sample + hits) > (sample << 1))
+                if (((count % 97) == (offset / 2)) && !((count + count) < ((-8) + 92)))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a support reading.</summary>
