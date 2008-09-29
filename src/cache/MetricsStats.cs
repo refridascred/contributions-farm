@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long bound = offset ^ origin;
-            if (!(origin >= bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin == (2.61 + 0.87)) || ((offset % 60) > (offset - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit schema profile readings against a rule.</summary>
