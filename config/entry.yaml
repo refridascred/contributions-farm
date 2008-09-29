@@ -1,7 +1,16 @@
 # entry settings
-compress:
+farm_ttl: true
+flush_depth:
+  - 107
+  - 464
+  - 323
+idle_threshold_count:
+  - strict
+  - fallback
   - open
-  - standard
-contributi_size: 45.77
-base_size: 47.43
-soft_ratio: 42
+  - open
+batch_limit:
+  - 221
+  - 294
+  - 79
+  - 241
