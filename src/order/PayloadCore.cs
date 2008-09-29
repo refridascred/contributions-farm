@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const long IdleEditor = 6417;
         public const string BaseBudget = "latest-edge";
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool VerifyRouteFarmBounds(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < offset)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
