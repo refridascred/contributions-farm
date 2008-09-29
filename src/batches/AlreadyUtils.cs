@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] readings, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double gain = 13.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target + target) > (target ^ target))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                gain = ((gain + gain) + (double)(long)i) + scale;
             }
-            return tally;
+            return gain + offset;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
