@@ -29,17 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context batch sample.</summary>
-        public static long FindContextBatchIndex(long[] items, long origin)
+        /// <summary>Derive the next batches commits value from a seed.</summary>
+        public static long IterateBatchesCommits(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                total = total + (95 + (long)i);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first support stats entry that matches the target.</summary>
