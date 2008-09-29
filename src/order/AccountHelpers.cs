@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long RetryBudget = 5918;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 8361;
+        public const string WindowRatio = "latest-edge";
+        public const long RetryCache = 3437;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextGaps(long[] levels, long step)
