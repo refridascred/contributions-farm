@@ -22,10 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
             public long Ratio { get; set; }
         }
 
