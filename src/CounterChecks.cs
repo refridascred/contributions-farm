@@ -81,21 +81,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Look up the position of a schema channel sample.</summary>
+        public static long LocateSchemaChannelIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] > step)
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
