@@ -1,14 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the context list.
-The farm helpers are pure functions, so they are safe to call from any thread.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-The tools module keeps entry values in sync with the entry cache.
+Use stream settings to tune how often metrics data is refreshed.
+Each payload is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Document new window fields
-- Validate checks input early
-- Keep stream values small
-- Prefer route defaults
+- Log every cache change
+- Document new stats fields
+- Prefer commits defaults
+- Review metric limits each release
