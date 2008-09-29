@@ -1,7 +1,9 @@
 {
-  "dry_run": false,
-  "batch_capacity_s": 7993,
-  "strict": [201, 37, 169, 44],
-  "min_ratio_pct": true,
-  "retry_interval": 19.9
+  "strict": "open",
+  "counter_size": 2.99,
+  "hard_ttl": {
+    "burst_threshold": 96.25,
+    "soft_threshold_pct": 16.99,
+    "flush_delay_count": "latest"
+  }
 }
