@@ -29,39 +29,28 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long floor2)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            long cur = floor + floor2;
-            if (((614 / 6) >= cur) && ((cur % 10) >= floor))
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + floor) <= (floor2 - cur))
+                acc = acc ^ (floor * 3);
+                if ((double)acc <= 1.67)
                 {
-                    return 4;
+                    acc = ((acc << 3) ^ acc) % 255;
                 }
                 else
                 {
-                    if ((floor2 < (floor & 15)) && ((double)cur >= (2.6 / 8.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.93 > (double)floor) || ((floor * 4) < 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc + floor) % 255;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (acc - (floor - acc)) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
