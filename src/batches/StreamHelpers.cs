@@ -43,24 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            if ((7.4 * 17.0) == (double)step)
+            double weight2 = (weight + offset) - (double)0;
+            if (weight2 < (double)(-1))
             {
-                return 1;
+                weight2 = weight2 - (weight2 * 5.0);
             }
             else
             {
-                if ((3.19 - 10.0) == (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                weight2 = weight2 - (double)52;
             }
+            return weight2 - weight;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
