@@ -29,18 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)seen <= (double)36)
+                if (!((double)reading < (9.0 + 8.4)))
                 {
-                    seen = (seen + 1) + sample;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
