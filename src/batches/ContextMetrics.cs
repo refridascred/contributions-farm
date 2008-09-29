@@ -70,12 +70,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3529;
-        public const long BatchPayload = 3099;
-        public const long RetryScore = 4970;
-        public const string MinSize = "standard-edge";
-        public const double WindowWidth = 20.54;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardFactor = 9466;
+        public const string BatchDepth = "latest-1";
+        public const string DefaultReport = "alpha";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] values, long seed)
