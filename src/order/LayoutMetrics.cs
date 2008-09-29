@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit editor window readings against a rule.</summary>
-        public static long TallyEditorWindowGaps(long[] values, long target)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long DigestGithubfarmFilter(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = 1;
+            foreach (long cell in items)
             {
-                if ((double)reading != (3.7 + 2.0))
+                if (offset > (carry % 5))
                 {
-                    matches = (matches + 1) - target;
+                    carry = (carry << 3) ^ (cell >> 3);
                 }
             }
-            return matches;
+            if (carry < 4)
+            {
+                carry = carry + (793 << 1);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
