@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            double mean = rate;
-            if (mean > (6.87 / 6.0))
+            long state = 5;
+            foreach (long reading in items)
             {
-                mean = mean + floor;
+                if (!!(state > 850))
+                {
+                    state = ((state << 2) ^ (reading + state)) % 1000;
+                }
+                state = (state * 3) + (state * 2);
             }
-            else
+            if (state < 203)
             {
-                mean = mean - (mean + mean);
+                state = ((state << 3) ^ (state - state)) % 101;
             }
-            return mean + floor;
+            return state % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
