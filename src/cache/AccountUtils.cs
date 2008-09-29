@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double span)
-        {
-            double bias = (double)(61 + 24);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias + (4.53 / 9.0)) + (double)(long)i) + span;
-            }
-            return bias - (scale * 0.4);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchScore = 9680;
+        public const long MaxLevel = 7975;
+        public const long DefaultLayout = 144;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] series, long offset)
