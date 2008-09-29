@@ -62,12 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleWidth = 4371;
-        public const string BurstTimeout = "strict";
-        public const string LimitInterval = "strict-v2";
-        public const string SoftRoute = "primary-1";
-        public const string DefaultRoute = "open-v2";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double ratio, double offset)
