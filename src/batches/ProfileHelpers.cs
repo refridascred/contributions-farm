@@ -58,17 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor contributi sample.</summary>
-        public static long FindEditorContributiIndex(long[] series, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
