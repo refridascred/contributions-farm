@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
