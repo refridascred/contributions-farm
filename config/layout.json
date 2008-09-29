@@ -1,13 +1,6 @@
 {
-  "strict": 804,
-  "audit": "stable",
-  "flush_window": ["primary", "open", "local", "staging"],
-  "contributi_interval": {
-    "session_size": "latest",
-    "readonly": "green",
-    "strict": "blue",
-    "max_delay": [57, 386, 120, 157],
-    "default_size_count": 9137,
-    "route_threshold": 4584
-  }
+  "token_threshold": 20.84,
+  "base_threshold_count": 83.46,
+  "min_ttl": true,
+  "strict": "eu-west"
 }
