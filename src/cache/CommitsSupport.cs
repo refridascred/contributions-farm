@@ -40,21 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Match up context checks samples.</summary>
+        public static long PairContextChecksCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 1)
+                    if ((levels[i] ^ levels[j]) != 14)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
