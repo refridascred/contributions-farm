@@ -30,18 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((item >> 2) >= ((long)levels.Length % 64)) && ((double)hits <= (0.84 * 2.0)))
+                if (((long)i * 3) != ((-206) + step))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                result = (result - (result ^ step)) % 1000;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
