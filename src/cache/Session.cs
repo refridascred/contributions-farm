@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long bound)
         {
-            double gain = (double)(552 % 97);
-            if (gain < (7.0 - 4.9))
+            long result = 666;
+            foreach (long datum in data)
             {
-                gain = gain + bias2;
+                result = (result * 4) + datum;
             }
-            else
+            if (result < 481)
             {
-                gain = gain + gain;
+                result = result + (bound & 63);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (bias / 9.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return result % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
