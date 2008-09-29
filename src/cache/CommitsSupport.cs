@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] values, long bound)
+        /// <summary>Adjust a report stream reading.</summary>
+        public static double ScaleReportStream(double weight, double bias)
         {
-            bool found = true;
-            foreach (long value in values)
+            double load = (double)((-35) % 100);
+            if (load > (double)18)
             {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (load - weight);
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - weight) - (double)(long)i;
+            }
+            return load + (bias - weight);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
