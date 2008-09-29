@@ -1,6 +1,5 @@
 {
-  "checks_ttl": "eu-west",
-  "retry_delay_s": 9570,
-  "poll_timeout": 49.39,
-  "already_size": 56.85
+  "flush_retries_ms": 1024,
+  "persist": false,
+  "readonly": 82.52
 }
