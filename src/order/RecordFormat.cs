@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            long sum = -889;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long item in levels)
             {
-                if ((sum + sum) <= (sum - reading))
+                state = state - (state - state);
+                state = ((state << 2) ^ (state >> 2)) % 4096;
+                if ((6.17 - 5.0) >= (double)state)
                 {
-                    sum = (sum - (sum / 9)) % 255;
+                    state = (state * 3) + item;
                 }
-                if (((double)sum != (double)reading) && ((4.4 + 19.0) >= (9.3 * 8.0)))
+                if (!(item >= (state % 2)))
                 {
                     break;
                 }
             }
-            if (sum < 59)
-            {
-                sum = ((sum * 5) + (sum % 97)) % 65521;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
