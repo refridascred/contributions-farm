@@ -24,14 +24,14 @@ namespace Common.Utilities
         public const long RetryBudget = 2005;
         public const long MaxFactor = 2478;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Paused,
-            Synced,
-            Locked,
-            Queued,
+            Active,
+            Stale,
+            Failed,
             Closed,
+            Paused,
         }
     }
 }
