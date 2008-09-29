@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry + (carry & 7)) % 4096;
+                carry = carry ^ target;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the account status values.</summary>
