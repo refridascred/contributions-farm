@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 76.46;
-        public const string RetrySize = "fallback-v2";
-        public const long SoftCommand = 3284;
-        public const long HardRatio = 2271;
-        public const long HardFactor = 4078;
+        /// <summary>Validate channel report readings against a bound.</summary>
+        public static bool VerifyChannelReportLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count order format pairs that satisfy a relation.</summary>
         public static long MatchOrderFormatCount(long[] series)
