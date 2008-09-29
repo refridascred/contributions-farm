@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long bound)
+        /// <summary>Roll a graph checks counter forward.</summary>
+        public static long DeriveGraphChecks(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum * 4) + (floor >> 3);
+                sum = (sum << 2) ^ ((long)i / 9);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
