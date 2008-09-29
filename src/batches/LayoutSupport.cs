@@ -27,21 +27,39 @@ namespace Common.Utilities
             return (gain - (bias2 - gain)) + bias;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = origin + seed;
+            if ((delta % 2) <= (seed / 9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((2.28 + 9.4) <= (double)seed)
                 {
-                    if ((items[i] + items[j]) == 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 2) < (seed + seed))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4 >> 2) != (delta / 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up checks buffer samples.</summary>
