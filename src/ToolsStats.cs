@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] values, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item / 7) > (floor << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a layout summary.</summary>
