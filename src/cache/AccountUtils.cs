@@ -37,12 +37,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Idle,
             Paused,
-            New,
+            Ready,
             Retry,
+            New,
         }
     }
 }
