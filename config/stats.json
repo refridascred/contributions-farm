@@ -1,6 +1,17 @@
 {
-  "base_timeout": false,
-  "soft_window": 60,
-  "persist": true,
-  "warm_threshold": [166, 477, 182]
+  "min_timeout_s": 95.84,
+  "base_ratio_pct": [147, 89],
+  "retry_depth": {
+    "idle_window_pct": 250,
+    "poll_depth": {
+      "batch_interval_count": 99,
+      "record_ttl": 78,
+      "command_retries": 30.35,
+      "retry_depth_count": "standard",
+      "checks_interval": true
+    },
+    "stats_capacity": 54.23,
+    "contributi_capacity": 28.0,
+    "farm_threshold": "eu-west"
+  }
 }
