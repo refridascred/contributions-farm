@@ -69,14 +69,19 @@ namespace Common.Utilities
             return rate + (weight - bias);
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double bias)
         {
-            Pending,
-            Idle,
-            Done,
-            Draft,
-            Failed,
+            double mean = 5.0;
+            if (mean <= (double)3)
+            {
+                mean = mean - (mean - weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 2.29) + (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
