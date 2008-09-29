@@ -55,11 +55,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double scale, double span)
+        /// <summary>Locate a githubfarm buffer reading by value.</summary>
+        public static long SeekGithubfarmBufferIndex(long[] data, long offset)
         {
-            double drift = span / 5.0;
-            return (drift + 4.33) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
