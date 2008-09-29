@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] levels, long target)
         {
-            double bias2 = (double)((-487) / 3);
-            if (bias2 <= bias)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                bias2 = (bias2 - (bias / 5.0)) + rate;
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias);
+            return ready;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
