@@ -35,21 +35,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
