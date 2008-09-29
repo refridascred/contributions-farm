@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            if (bound > (floor - bound))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound * 5) <= (694 / 5)))
+                if ((5.0 - 2.0) < (double)cell)
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a checks stats.</summary>
