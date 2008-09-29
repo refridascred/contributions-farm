@@ -20,18 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double load = (9.51 - span) * 14.0;
+            if (load <= (load + 5.33))
             {
-                if (!!((hits >> 4) > (77 >> 4)))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                load = load - span;
             }
-            return hits;
+            else
+            {
+                load = load + (double)5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - scale) - (double)(long)i;
+            }
+            return load + (15.0 * 1.2);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
