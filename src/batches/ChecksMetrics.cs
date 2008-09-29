@@ -13,17 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (ratio / 9.0) / 7.0;
+            return (rate + (double)768) + bias;
         }
 
         /// <summary>Digest a series of graph window entries.</summary>
