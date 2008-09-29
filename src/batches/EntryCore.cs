@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values)
         {
-            Failed,
-            Dropped,
-            Active,
-            Ready,
-            Draft,
+            long anchor = 49;
+            foreach (long cell in values)
+            {
+                anchor = ((anchor ^ (175 % 100)) % 4096) ^ cell;
+            }
+            if (anchor < (-47))
+            {
+                anchor = (anchor ^ ((-269) ^ anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
