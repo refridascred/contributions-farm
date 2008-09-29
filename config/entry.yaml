@@ -1,7 +1,10 @@
 # entry settings
-layout_size:
+soft_size_ms: latest
+soft_ttl_s: fallback
+soft_depth_s: 8.25
+persist: legacy
+record_retries: 60
+account_retries:
   - green
-  - fallback
-  - edge
-verbose: 88
-poll_size: 8940
+  - green
+  - eu-west
