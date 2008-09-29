@@ -62,9 +62,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "primary";
-        public const long HardRatio = 4179;
-        public const long SoftRatio = 2975;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
