@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a editor graph sample.</summary>
-        public static long LocateEditorGraphIndex(long[] readings, long bound)
+        /// <summary>Check that every entry window entry stays within the limit.</summary>
+        public static bool VerifyEntryWindowRange(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (readings[i] < bound)
+                if (item < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
