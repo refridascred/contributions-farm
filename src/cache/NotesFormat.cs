@@ -35,38 +35,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long BucketContextContributi(long bound, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            if (((1.1 * 7.6) == (double)bound) && ((floor - bound) <= (bound ^ floor)))
+            double gain = bias;
+            if (gain > (double)36)
             {
-                return 3;
+                gain = gain - bias;
             }
             else
             {
-                if ((bound / 4) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.0 + 4.1) <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((floor - floor) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = gain - 3.2;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - (ratio / 5.0);
         }
     }
 }
