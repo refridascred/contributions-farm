@@ -1,18 +1,22 @@
 {
-  "commits_ttl": 82,
-  "flush_size_ms": {
-    "tools_ratio": {
-      "batches_ratio": false,
-      "warm_retries_s": 19.8,
-      "hard_ratio": false,
-      "dry_run": 43.75
+  "enabled": {
+    "warm_delay_s": true,
+    "checks_threshold": {
+      "retry_ttl_pct": [253, 3, 295],
+      "enabled": 62.41,
+      "max_threshold_ms": 250
     },
-    "persist": 18,
-    "token_ttl": 4207,
-    "sync_capacity_ms": 79,
-    "hard_timeout_ms": true
+    "poll_timeout_pct": ["blue", "open", "stable"],
+    "default_interval": 4569
   },
-  "burst_ratio_count": 250,
-  "base_timeout": ["blue", "strict"],
-  "burst_depth_count": [388, 290, 107, 466]
+  "cache_timeout_s": {
+    "persist": true,
+    "burst_limit_count": false,
+    "min_depth_s": 82,
+    "hard_depth_count": true,
+    "batch_retries_s": 82
+  },
+  "verbose": 2.54,
+  "flush_depth_s": 1661,
+  "cache_window": [468, 195, 16]
 }
