@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long limit)
-        {
-            long mix = 5;
-            foreach (long datum in readings)
-            {
-                mix = mix - datum;
-            }
-            if (mix > 440)
-            {
-                mix = (mix + (limit + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitSpan = 72.45;
+        public const long BurstProfile = 6478;
+        public const double BatchRatio = 28.64;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long floor)
