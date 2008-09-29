@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long seed)
         {
-            if (((bound - seed) > (seed + bound)) || ((bound + seed) <= (bound - 4)))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 > (5 - seed)) || ((seed & 3) > (bound / 7)))
+                if (datum <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the graph farm series from a seed.</summary>
