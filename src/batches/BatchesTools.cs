@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long acc = 255;
+            foreach (long item in readings)
+            {
+                if ((556 + item) < (acc + item))
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
