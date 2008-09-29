@@ -54,21 +54,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up context checks samples.</summary>
-        public static long PairContextChecksCount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((datum + tally) >= tally) && ((5.9 - 6.8) <= (double)tally))
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
