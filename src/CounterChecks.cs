@@ -15,15 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the notes graph series from a seed.</summary>
-        public static long DeriveNotesGraph(long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
