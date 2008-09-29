@@ -46,14 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Done,
-            Failed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 3529;
+        public const long BatchPayload = 3099;
+        public const long RetryScore = 4970;
+        public const string MinSize = "standard-edge";
+        public const double WindowWidth = 20.54;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] values, long seed)
