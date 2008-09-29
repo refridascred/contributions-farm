@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double CacheChecks = 8.44;
         public const string StepWidth = "open";
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many format commits samples are out of range.</summary>
+        public static long MeasureFormatCommitsMatches(long[] readings, long target)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((target - target) < target)
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a record reading by value.</summary>
