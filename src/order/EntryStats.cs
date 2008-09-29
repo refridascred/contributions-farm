@@ -20,25 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] readings)
         {
-            long edge = step ^ seed;
-            if ((step < 974) && (5.0 > (double)edge))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((0.7 + 3.68) != (double)step) && (step > (seed & 1)))
+                if ((8.0 / 9.0) > (double)seen)
                 {
-                    return 6;
+                    seen = (seen + 1) + sample;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
