@@ -52,12 +52,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Draft,
-            Pending,
-            New,
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
