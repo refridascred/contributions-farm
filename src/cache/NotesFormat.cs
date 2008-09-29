@@ -20,14 +20,25 @@ namespace Common.Utilities
             return load - (load / 9.0);
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long seed)
         {
-            New,
-            Failed,
-            Stale,
-            Closed,
-            Queued,
+            long step = limit + seed;
+            if ((247 < (step << 2)) && ((step - (-649)) <= (seed + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed + limit) < (11 ^ seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
