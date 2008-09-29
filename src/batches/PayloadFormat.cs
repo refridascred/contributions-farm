@@ -17,13 +17,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            New,
-            Done,
-            Closed,
-            Failed,
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
