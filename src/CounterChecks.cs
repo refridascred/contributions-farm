@@ -12,19 +12,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry entry stays within the limit.</summary>
-        public static bool ValidateCacheEntryLimits(long[] series, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result ^ (4 / 7)) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Measure how many notes profile samples are out of range.</summary>
