@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first editor tools entry that matches the target.</summary>
-        public static long FindEditorToolsIndex(long[] data, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == step)
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
