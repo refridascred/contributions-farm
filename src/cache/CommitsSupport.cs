@@ -57,21 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
