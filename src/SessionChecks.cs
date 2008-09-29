@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] readings, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= (double)14)
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
