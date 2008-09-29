@@ -1,6 +1,15 @@
 {
-  "profile_timeout": "stable",
-  "audit": 30,
-  "buffer_size": 34.2,
-  "compress": "fallback"
+  "default_timeout": 18.88,
+  "enabled": "open",
+  "poll_threshold_pct": 4,
+  "base_limit": {
+    "enabled": {
+      "strict": 30,
+      "flush_window": [425, 132, 371],
+      "default_limit_ms": 85,
+      "max_limit_s": "primary"
+    },
+    "min_limit": 75.66,
+    "hard_depth_pct": 72
+  }
 }
