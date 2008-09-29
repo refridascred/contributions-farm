@@ -34,16 +34,10 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a commits format counter forward.</summary>
-        public static long IterateCommitsFormat(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "staging-v2";
+        public const long BatchSpan = 9713;
+        public const string MaxInterval = "legacy";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double BlendLayout(double scale, double span)
