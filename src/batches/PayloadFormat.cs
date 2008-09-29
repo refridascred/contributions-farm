@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((5.91 / 4.0) > (7.4 + 8.21))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3570;
+        public const string SoftSchema = "legacy-edge";
+        public const long SoftBudget = 693;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
