@@ -15,12 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
+        public static long SeriesPayloadGithubfarm(long seed)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix << 3) ^ seed) % 101) ^ (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
