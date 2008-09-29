@@ -50,32 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank window context input into a small class.</summary>
-        public static long RankWindowContext(long floor, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long next = floor ^ step;
-            if (((double)next == (6.0 * 5.3)) && ((945 / 7) == (floor ^ floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step != (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (67 <= (6 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
