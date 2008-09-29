@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
