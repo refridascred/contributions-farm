@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long MeasureGraphCommandMatches(long[] values)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) < (-27))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
