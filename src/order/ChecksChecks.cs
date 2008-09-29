@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
