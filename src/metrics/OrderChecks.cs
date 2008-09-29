@@ -20,15 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Stale,
-            Retry,
-            Locked,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 55;
+        public const double StepInterval = 80.21;
+        public const double WindowGraph = 73.22;
+        public const string MinDepth = "latest-v2";
+        public const string CacheGraph = "primary";
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] values)
