@@ -39,23 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)((-98) * 5);
+            if (bias < bias)
             {
-                if (!((origin + origin) < (total * 5)))
-                {
-                    total = ((total << 2) ^ (898 + total)) % 65521;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total * 4) + (origin >> 2)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                bias = ((bias + (bias * 15.0)) + gain) + span;
             }
-            return total;
+            else
+            {
+                bias = bias + (double)98;
+            }
+            return bias + 2.7;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
