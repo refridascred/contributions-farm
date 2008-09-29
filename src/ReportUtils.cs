@@ -27,12 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 8912;
-        public const long BaseTimeout = 870;
-        public const double IdleAccount = 82.79;
-        public const long LimitSpan = 3914;
-        public const long StepWidth = 4227;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long step)
+        {
+            long acc = 5;
+            foreach (long sample in values)
+            {
+                if (((sample & 127) < step) && (((long)values.Length + 39) < (62 - step)))
+                {
+                    acc = (acc ^ step) % 4096;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Digest a series of checks farm entries.</summary>
         public static long TallyChecksFarm(long[] data, long step)
