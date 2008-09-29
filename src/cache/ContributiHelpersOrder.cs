@@ -22,22 +22,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Look up the position of a format queue sample.</summary>
+        public static long LookupFormatQueueIndex(long[] readings, long target)
         {
-            long result = 993;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value * 3) <= (result * 4))
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    result = (result * 2) + result;
-                }
-                if ((result << 1) != (value * 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
