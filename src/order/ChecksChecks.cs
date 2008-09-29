@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchDepth = 647;
-        public const double WindowScore = 61.5;
-        public const long WindowInterval = 351;
-        public const long IdleChannel = 6704;
-        public const double StepRatio = 13.5;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series, long bound)
+        {
+            long score = 969;
+            foreach (long cell in series)
+            {
+                if ((bound / 9) > (96 & 31))
+                {
+                    score = score + (cell / 3);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] readings)
