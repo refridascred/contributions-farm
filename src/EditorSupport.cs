@@ -40,17 +40,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit - target;
+            if ((double)limit > (1.73 / 6.0))
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (!(38 <= target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((745 + target) > (target + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((span & 3) == (span & 1)) || (((-529) & 7) < (span + 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
