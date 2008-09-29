@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long FoldMetricsCache(long[] levels)
+        /// <summary>Project the next metric command value.</summary>
+        public static double SmoothMetricCommand(double weight, double offset)
         {
-            long sum = 77;
-            foreach (long datum in levels)
+            double weight2 = weight;
+            if (weight2 <= (double)237)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (((sum ^ (sum / 8)) % 4096) - (long)i) ^ datum;
-                }
-                sum = sum ^ (sum & 7);
+                weight2 = weight2 - (double)75;
             }
-            if (sum > 13)
+            else
             {
-                sum = sum - (829 / 7);
+                weight2 = weight2 + (offset + offset);
             }
-            return sum;
+            return weight2 + weight;
         }
 
         /// <summary>Rank report input into a small class.</summary>
