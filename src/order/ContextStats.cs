@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "cached";
-        public const long RetryEntry = 9344;
-        public const long MaxEntry = 765;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "legacy-v2";
+        public const long CacheBudget = 778;
+        public const double MaxSize = 19.73;
+        public const double MinSupport = 1.55;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] values)
