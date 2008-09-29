@@ -19,14 +19,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            Idle,
-            Failed,
-            New,
-            Done,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix + (step * 2)) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
