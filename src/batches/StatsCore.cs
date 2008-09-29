@@ -75,19 +75,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double bias)
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long MatchLayoutGraphCount(long[] items)
         {
-            double mean = 5.0;
-            if (mean <= (double)3)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (mean - weight);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 2.29) + (double)(long)i;
-            }
-            return mean + bias;
+            return tally;
         }
     }
 }
