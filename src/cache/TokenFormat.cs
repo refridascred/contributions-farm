@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            double rate = (double)(60 << 1);
-            return (rate - (bias / 5.0)) + span;
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((hits + datum) > (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session tools pairs that satisfy a relation.</summary>
