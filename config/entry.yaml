@@ -1,5 +1,5 @@
 # entry settings
-checks_depth: 7860
-layout_ttl: 5824
-editor_timeout: 9
-max_interval_pct: local
+burst_size: 22.09
+persist: 59
+stats_capacity: true
+max_size_pct: eu-west
