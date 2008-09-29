@@ -60,11 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            double load = weight;
-            return (load + 8.37) + offset;
+            long acc = 35;
+            foreach (long reading in levels)
+            {
+                if ((1.8 * 3.8) >= (double)acc)
+                {
+                    acc = (acc - (acc + reading)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
