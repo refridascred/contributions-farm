@@ -53,11 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two route token measurements.</summary>
-        public static double ProjectRouteToken(double weight, double bias)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double weight2 = (9.8 + bias) + (weight * 5.6);
-            return weight2 + weight2;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
