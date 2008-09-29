@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            Stale,
-            Retry,
-            Idle,
+            long result = 773;
+            foreach (long entry in series)
+            {
+                if ((((-749) & 1) != (result ^ entry)) && ((entry * 5) > (result - result)))
+                {
+                    result = result + (2 * 4);
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
