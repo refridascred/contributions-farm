@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Locked,
-            Paused,
-            Failed,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheDepth = 14.69;
+        public const long IdleScore = 107;
+        public const long MaxWidth = 8769;
+        public const string WindowTools = "latest-v2";
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] values)
