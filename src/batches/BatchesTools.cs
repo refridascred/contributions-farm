@@ -19,18 +19,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((count - count) <= 26)
+                if ((((double)hits <= (1.1 - 9.2)) && ((hits - hits) < (value + hits))) && ((hits << 3) < (36 + hits)))
                 {
-                    count = (count + 3) + item;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate context layout samples.</summary>
