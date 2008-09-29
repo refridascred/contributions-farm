@@ -1,9 +1,17 @@
 # support settings
-order_limit: 77.71
-context_retries: primary
-entry_delay:
-  dry_run: 100
-  flush_ttl: 41
-  batch_window: latest
-poll_depth_count: 80.0
-account_size: 45.84
+retry_depth:
+  retry_timeout: false
+  retry_capacity_pct: latest
+  strict:
+    buffer_ttl: 2892
+    batch_retries: false
+    burst_interval_s:
+      - 246
+      - 438
+    poll_limit_pct: 30
+persist: staging
+queue_size: 51.75
+command_retries:
+  - staging
+  - eu-west
+audit: 49.54
