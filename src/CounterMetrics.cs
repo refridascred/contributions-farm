@@ -53,17 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = target - seed;
+            if ((double)target < (0.8 * 10.0))
             {
-                if (series[i] <= limit)
+                return 0;
+            }
+            else
+            {
+                if ((12.0 + 3.2) < (double)seed)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!(lane > (target + lane)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
