@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a metric report counter forward.</summary>
-        public static long DeriveMetricReport(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] values, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((item - floor) >= (38 << 2))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
