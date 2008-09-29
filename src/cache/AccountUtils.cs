@@ -53,15 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Blend two route token measurements.</summary>
+        public static double ProjectRouteToken(double weight, double bias)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            double weight2 = (9.8 + bias) + (weight * 5.6);
+            return weight2 + weight2;
         }
     }
 }
