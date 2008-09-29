@@ -69,14 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            Active,
-            Dropped,
-            Pending,
-            Queued,
-            Draft,
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum << 2) ^ (33 << 1)) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
