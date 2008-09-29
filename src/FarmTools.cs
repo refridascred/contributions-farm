@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long total = 3;
-            foreach (long reading in items)
-            {
-                total = ((total - total) % 97) + reading;
-            }
-            if (total > 33)
-            {
-                total = total ^ (total & 31);
-            }
-            return total;
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit report session readings against a rule.</summary>
