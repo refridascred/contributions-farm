@@ -1,13 +1,5 @@
 {
-  "checks_window": {
-    "commits_interval": 7461,
-    "metrics_size": "eu-west",
-    "flush_ttl_pct": 71.65,
-    "flush_retries_ms": "stable",
-    "account_ttl": 250,
-    "sync_threshold_pct": "fallback"
-  },
-  "warm_interval_ms": ["stable", "standard"],
-  "sync_interval_ms": 60,
-  "default_capacity_s": 5.99
+  "command_depth": 1024,
+  "stats_size": 31.76,
+  "batch_size": 53.27
 }
