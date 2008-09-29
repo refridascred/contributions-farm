@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] series, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] series)
         {
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
