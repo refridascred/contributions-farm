@@ -48,10 +48,17 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 54.97;
         public const long RetryInterval = 6633;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinLevel = 7910;
-        public const long MinCommand = 8339;
-        public const long LimitLevel = 1594;
-        public const string StepCommand = "legacy";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc - acc) % 255;
+                acc = (acc << 3) ^ (acc + acc);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
