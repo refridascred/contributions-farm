@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] samples, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 429;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - cell) % 255;
             }
-            return -1;
+            if (mix > 447)
+            {
+                mix = (mix ^ (mix ^ mix)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of session metrics readings.</summary>
