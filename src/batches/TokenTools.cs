@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every graph already entry stays within the limit.</summary>
-        public static bool GuardGraphAlreadyLimits(long[] levels, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (datum < step)
+                if (sample > origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
