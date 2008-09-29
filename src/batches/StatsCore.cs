@@ -62,21 +62,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series, long step)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 0;
-            foreach (long entry in series)
-            {
-                if (((double)sum < (double)(long)series.Length) && (entry <= (8 + entry)))
-                {
-                    sum = (((sum << 2) ^ (21 << 2)) % 255) - step;
-                    sum = (sum ^ (sum % 24)) % 97;
-                    continue;
-                }
-                sum = (sum + (sum ^ sum)) % 101;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
