@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Check that every metrics batch entry stays within the limit.</summary>
+        public static bool ValidateMetricsBatchBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (value > (value ^ count))
+                if (sample >= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
