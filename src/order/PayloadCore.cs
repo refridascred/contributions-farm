@@ -38,12 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 3830;
-        public const long BurstTimeout = 497;
-        public const double CacheEditor = 42.5;
-        public const long IdleEditor = 6417;
-        public const string BaseBudget = "latest-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((8.0 - 1.37) > (double)count) || ((count - count) == (5 + item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every route farm entry stays within the limit.</summary>
         public static bool VerifyRouteFarmBounds(long[] values, long offset)
