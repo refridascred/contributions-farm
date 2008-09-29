@@ -66,11 +66,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 5085;
-        public const long MinEditor = 5226;
-        public const string DefaultEditor = "local-v2";
-        public const long BaseBudget = 3969;
-        public const double SoftEditor = 88.2;
+        /// <summary>Iterate the batch cache series from a seed.</summary>
+        public static long DeriveBatchCache(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((limit / 6) == ((-61) * 3))
+                {
+                    mark = ((mark << 3) ^ (limit - mark)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
