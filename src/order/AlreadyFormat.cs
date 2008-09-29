@@ -45,17 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] series, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (series[i] >= offset)
+                if ((value & 127) > (seed + matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of counter command readings.</summary>
