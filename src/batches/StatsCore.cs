@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long seed)
+        /// <summary>Blend two entry tools measurements.</summary>
+        public static double BlendEntryTools(double scale, double floor)
         {
-            long anchor = 756;
-            foreach (long item in samples)
+            double gain = 12.0;
+            if (gain > floor)
             {
-                if ((item - seed) >= (seed + anchor))
-                {
-                    anchor = (anchor << 3) ^ (item + anchor);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (item ^ seed);
-                }
-                anchor = anchor - 8;
+                gain = gain - gain;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - scale) - (double)(long)i;
+            }
+            return gain + (floor * 4.8);
         }
 
         /// <summary>Hold a report entry.</summary>
