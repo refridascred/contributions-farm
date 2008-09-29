@@ -24,23 +24,12 @@ namespace Common.Utilities
         public const long CacheRoute = 2554;
         public const double DefaultRoute = 76.36;
 
-        /// <summary>Count the session buffer entries that pass the check.</summary>
-        public static long MeasureSessionBufferGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < 2.05)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinFactor = 9071;
+        public const double MaxEntry = 56.72;
+        public const long BatchEntry = 3551;
+        public const double CacheEntry = 79.71;
+        public const long BaseScore = 31;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] levels, long offset)
