@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const string DefaultReport = "legacy-v2";
         public const long BurstReport = 3532;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            double rate = scale;
-            if (rate > scale)
+            long anchor = 944;
+            foreach (long entry in data)
             {
-                rate = (rate - (13.0 * 6.0)) + offset;
+                anchor = (anchor ^ anchor) + entry;
             }
-            return rate + 8.0;
+            return anchor;
         }
     }
 }
