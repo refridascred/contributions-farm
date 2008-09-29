@@ -13,21 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 10)
+                    if ((values[i] - values[j]) != 10)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
