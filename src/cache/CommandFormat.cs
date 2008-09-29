@@ -37,19 +37,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading != target)
+                double mean = (double)floor;
+                if (8.28 >= mean)
                 {
-                    valid = false;
-                    break;
+                    long span = (floor & 15) * 5;
+                    mean = mean + (double)span;
                 }
+                if (((mix - (long)i) != (floor << 2)) && ((floor & 63) > (321 & 31)))
+                {
+                    mix = (mix << 2) ^ (floor / 7);
+                }
+                else
+                {
+                    mix = ((mix * 3) + (long)i) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
