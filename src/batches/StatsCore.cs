@@ -61,19 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] values, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
