@@ -57,13 +57,21 @@ namespace Common.Utilities
         public const double BaseBudget = 26.18;
         public const long MinSupport = 8246;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            Locked,
-            Paused,
-            New,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
