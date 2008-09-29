@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
