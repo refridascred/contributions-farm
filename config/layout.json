@@ -1,12 +1,5 @@
 {
-  "dry_run": true,
-  "idle_delay_count": {
-    "retry_timeout_count": 69,
-    "max_timeout_ms": 4159,
-    "idle_ratio_ms": "edge",
-    "audit": "cached",
-    "metrics_size": 74.69,
-    "retry_capacity_pct": "latest"
-  },
-  "flush_ratio": "latest"
+  "flush_window_s": "green",
+  "default_depth_pct": 34.98,
+  "burst_window": "standard"
 }
