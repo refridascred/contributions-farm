@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] series, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)step >= (15.0 / 5.0))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
