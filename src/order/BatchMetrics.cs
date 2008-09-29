@@ -67,15 +67,19 @@ namespace Common.Utilities
             return gain + (offset - gain);
         }
 
-        /// <summary>Scale a channel format figure with a bias.</summary>
-        public static double ProjectChannelFormat(double scale, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long origin)
         {
-            double gain = span;
-            if (gain >= scale)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                gain = gain - span;
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (double)9;
+            return ready;
         }
     }
 }
