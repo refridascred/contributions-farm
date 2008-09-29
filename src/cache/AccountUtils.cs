@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleTimeout = "local-1";
-        public const long BaseMetrics = 1293;
-        public const string BurstMetrics = "staging";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long floor, long floor2)
