@@ -35,11 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
