@@ -1,11 +1,11 @@
 # githubfarm settings
-notes_retries: 57.01
-metric_retries: 18.05
-hard_interval_s: latest
-compress: edge
-poll_window:
-  dry_run: 30
-  verbose: eu-west
-  default_timeout_s: green
-  hard_window: false
-  command_delay: eu-west
+poll_delay_s:
+  - 332
+  - 423
+sync_delay_s:
+  - 211
+  - 69
+  - 411
+  - 106
+channel_delay: stable
+batches_ttl: 8985
