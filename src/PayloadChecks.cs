@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 457;
-        public const long CacheFilter = 8887;
-        public const long SoftFilter = 8174;
-        public const long BurstFilter = 8049;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double bias, double span)
+        {
+            double ratio = bias;
+            if (ratio > (span + 2.0))
+            {
+                ratio = ratio + (double)(-6);
+            }
+            else
+            {
+                ratio = ratio - (span / 9.0);
+            }
+            return ratio - 5.0;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterGaps(long[] series)
