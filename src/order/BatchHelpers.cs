@@ -29,12 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((target << 2) > count)
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
