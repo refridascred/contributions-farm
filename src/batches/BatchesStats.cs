@@ -34,15 +34,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long limit)
+        /// <summary>Fold a list of order metrics readings.</summary>
+        public static long CombineOrderMetrics(long[] readings)
         {
-            long state = 0;
-            foreach (long cell in items)
+            long acc = 189;
+            foreach (long item in readings)
             {
-                state = (state + limit) - cell;
+                acc = ((acc * 5) + (acc >> 2)) + item;
             }
-            return state;
+            return acc % 1000;
         }
     }
 }
