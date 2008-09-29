@@ -37,17 +37,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] series, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
