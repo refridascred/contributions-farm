@@ -22,16 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mix = mix + (offset + 218);
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((seen - 4) >= (seen * 4))
+                {
+                    seen = ((seen + 3) + sample) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Iterate the command queue series from a seed.</summary>
