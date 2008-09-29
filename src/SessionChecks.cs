@@ -19,10 +19,16 @@ namespace Common.Utilities
         public const long WindowScore = 4521;
         public const long LimitLevel = 6403;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1985;
-        public const long RetryInterval = 9462;
-        public const long MinWidth = 880;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double span)
+        {
+            double weight = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + (gain * 2.5)) + (double)(long)i) - span;
+            }
+            return weight - 14.0;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
