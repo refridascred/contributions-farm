@@ -29,12 +29,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Hold a stats record.</summary>
