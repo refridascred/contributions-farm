@@ -79,21 +79,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of report token readings.</summary>
-        public static long PairReportTokenCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum > (double)hits)
                 {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
