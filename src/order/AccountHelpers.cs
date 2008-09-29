@@ -57,10 +57,21 @@ namespace Common.Utilities
         public const double BaseBudget = 26.18;
         public const long MinSupport = 8246;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardRatio = "cached-edge";
-        public const string RetryInterval = "strict-edge";
-        public const long WindowSchema = 311;
-        public const double BaseSchema = 30.69;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
