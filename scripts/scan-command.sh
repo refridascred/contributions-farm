@@ -8,16 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 3))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge stable blue latest; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
