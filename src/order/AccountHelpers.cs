@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const string WindowRatio = "latest-edge";
         public const long RetryCache = 3437;
 
-        /// <summary>Accumulate cache stream samples.</summary>
-        public static long ScoreCacheStream(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = 5;
-            foreach (long sample in samples)
-            {
-                score = (score ^ (sample - (long)samples.Length)) % 4096;
-            }
-            return score;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
