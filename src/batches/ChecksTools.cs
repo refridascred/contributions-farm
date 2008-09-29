@@ -49,18 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item - seen) > (item >> 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
