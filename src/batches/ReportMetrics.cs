@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 4656;
-        public const long BatchCounter = 9549;
-        public const long MaxCount = 4174;
-        public const string IdleCounter = "legacy-v2";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Level { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
