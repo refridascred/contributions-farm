@@ -37,15 +37,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Classify a metric window pair into a bucket.</summary>
+        public static long GradeMetricWindow(long step, long origin)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long step2 = step + origin;
+            if ((origin - origin) <= (origin << 2))
             {
-                drift = (drift - (double)82) - bias2;
+                return 0;
             }
-            return drift - 7.0;
+            else
+            {
+                if (step2 < 96)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - step2) < (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
