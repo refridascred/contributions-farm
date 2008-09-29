@@ -49,11 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
