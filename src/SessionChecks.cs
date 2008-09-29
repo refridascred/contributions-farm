@@ -51,19 +51,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long step2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            if ((2.0 * 7.4) == (double)step)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (79 - anchor)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((6.0 / 2.0) >= (double)step2) && ((step2 + step2) < (step2 - step2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 / 3) <= (step2 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step2 > (5 / 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
