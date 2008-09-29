@@ -32,21 +32,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up contributi support samples.</summary>
-        public static long OverlapContributiSupportCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((50 << 3) > (seen - seen))
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
