@@ -13,11 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 9507;
-        public const string MinCount = "alpha-1";
-        public const string LimitDepth = "local";
-        public const long BaseTimeout = 7106;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Active,
+            Queued,
+            Idle,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Accumulate record graph samples.</summary>
         public static long WeighRecordGraph(long[] values, long target)
