@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry + (carry & 7)) % 4096;
-                carry = carry ^ target;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (!((count - count) > (6 << 3)))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
