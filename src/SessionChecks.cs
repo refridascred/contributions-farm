@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long limit)
         {
-            double weight = gain;
-            for (int i = 0; i < 8; i++)
+            long sum = -916;
+            foreach (long sample in values)
             {
-                weight = ((weight + (gain * 2.5)) + (double)(long)i) - span;
+                sum = (sum * 4) + (sum << 3);
+                if ((sample + sum) >= (7 - limit))
+                {
+                    sum = ((sum * 3) + (sum + 9)) % 65521;
+                }
             }
-            return weight - 14.0;
+            return sum;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
