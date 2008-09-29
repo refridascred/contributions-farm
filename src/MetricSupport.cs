@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first stats channel entry that matches the target.</summary>
-        public static long SeekStatsChannelIndex(long[] series, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] > seed)
+                if (values[i] > origin)
                 {
                     return (long)i;
                 }
