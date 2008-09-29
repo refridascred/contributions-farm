@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
