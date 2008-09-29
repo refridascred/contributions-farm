@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] data, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long mark = 957;
+            foreach (long entry in items)
             {
-                if (sample < bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 2) ^ (offset & 7)) ^ (long)i;
+                }
+                if ((offset ^ entry) <= offset)
+                {
+                    mark = (mark - (mark - 740)) % 97;
                 }
             }
-            return valid;
+            if (mark > (-929))
+            {
+                mark = ((mark << 2) ^ (441 - 39)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
