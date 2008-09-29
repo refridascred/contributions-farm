@@ -35,12 +35,21 @@ namespace Common.Utilities
             return gain + (floor * 4.8);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
