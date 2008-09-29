@@ -64,24 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            if (2 > (seed + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + step) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
