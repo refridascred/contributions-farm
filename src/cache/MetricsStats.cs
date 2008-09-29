@@ -53,21 +53,15 @@ namespace Common.Utilities
             return gain - (gain - rate);
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Adjust a cluster profile reading.</summary>
+        public static double SmoothClusterProfile(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = (double)((-46) + 2);
+            if (scale2 >= (double)79)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = ((scale2 - (scale2 * 6.15)) + scale) + floor;
             }
-            return tally;
+            return scale2 + (double)97;
         }
     }
 }
