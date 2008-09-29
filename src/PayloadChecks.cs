@@ -66,9 +66,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1761;
-        public const long BaseCount = 8519;
-        public const long LimitCount = 9232;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long origin)
+        {
+            long slot = limit + origin;
+            if ((origin + slot) < (slot - slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((slot - (-8)) < (slot >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit < slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
