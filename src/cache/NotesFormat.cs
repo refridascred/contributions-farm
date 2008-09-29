@@ -20,20 +20,14 @@ namespace Common.Utilities
             return load - (load / 9.0);
         }
 
-        /// <summary>Roll a commits farm counter forward.</summary>
-        public static long DeriveCommitsFarm(long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                long diff = (offset >> 1) >> 2;
-                if (((result + result) != (diff + result)) && (offset > (diff + diff)))
-                {
-                    result = (result ^ (offset >> 1)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Failed,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
