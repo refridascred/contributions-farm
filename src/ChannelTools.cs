@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the command cache entries that pass the check.</summary>
+        public static long CountCommandCacheMatches(long[] samples, long bound)
         {
-            Idle,
-            Closed,
-            Ready,
-            Stale,
-            Queued,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (29 >= (matches + matches))
+                {
+                    matches = ((matches + 2) ^ sample) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
