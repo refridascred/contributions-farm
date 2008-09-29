@@ -64,18 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((cell ^ 16) >= cell)
+                if (entry <= limit)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
