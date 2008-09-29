@@ -1,6 +1,12 @@
 # already settings
-account_ratio: blue
-contributi_ttl: 2572
-checks_retries: open
-max_interval_s: 1024
-readonly: 3063
+batch_depth_ms: legacy
+booking_window: true
+dry_run: 82.63
+cache_ttl_count:
+  report_threshold: 250
+  cluster_threshold: blue
+  channel_timeout: eu-west
+  order_depth: 60
+  flush_timeout: 76
+persist: 93.48
+max_capacity_count: 64.79
