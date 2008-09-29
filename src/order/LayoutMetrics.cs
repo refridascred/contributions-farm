@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] samples, long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long sum = 767;
-            foreach (long value in samples)
-            {
-                if ((double)value == (9.97 + 7.41))
-                {
-                    sum = (sum ^ (5 - (-892))) % 65521;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = sum - (seed << 1);
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
