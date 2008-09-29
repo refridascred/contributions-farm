@@ -56,14 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Failed,
-            Draft,
-            New,
-            Idle,
-            Synced,
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
