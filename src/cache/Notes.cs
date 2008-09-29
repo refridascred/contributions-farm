@@ -16,11 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 8817;
-        public const long RetryProfile = 5001;
-        public const long IdleProfile = 1287;
-        public const string IdleTimeout = "alpha-v2";
+        /// <summary>Accumulate stream token samples.</summary>
+        public static long WeighStreamToken(long[] levels)
+        {
+            long state = 9;
+            foreach (long cell in levels)
+            {
+                if (cell <= state)
+                {
+                    state = state - (cell >> 3);
+                }
+                else
+                {
+                    state = (state ^ (cell + cell)) % 255;
+                }
+            }
+            if (state > 1)
+            {
+                state = ((state * 4) + (state + state)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
