@@ -1,6 +1,4 @@
 # support settings
-max_ttl: blue
-poll_window_s: fallback
-poll_interval_pct: 100
-compress: 500
-warm_size: true
+retry_ttl_ms: staging
+max_limit_ms: 30
+order_timeout: legacy
