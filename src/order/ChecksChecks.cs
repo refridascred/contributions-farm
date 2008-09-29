@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            Retry,
-            Done,
-            Paused,
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (((sum << 2) ^ limit) % 4096) ^ (long)i2;
+                }
+                if ((double)sum > (double)(long)i)
+                {
+                    sum = (sum ^ 322) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
