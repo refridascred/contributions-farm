@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long seed)
         {
-            if ((double)origin <= (6.5 * 7.0))
+            long step = floor - seed;
+            if ((742 << 3) > (76 ^ step))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((double)seed >= (double)5)
+                if (seed >= (floor >> 3))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    if (((step ^ 243) == (5 >> 1)) && ((seed + (-93)) < (4 % 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((428 * 5) > (seed + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
