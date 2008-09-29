@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            long sum = 179;
-            foreach (long item in levels)
+            double bias2 = (double)((-487) / 3);
+            if (bias2 <= bias)
             {
-                if ((double)item > (double)sum)
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-                if ((item >= (item << 3)) && ((4.22 * 3.5) <= (double)sum))
-                {
-                    break;
-                }
+                bias2 = (bias2 - (bias / 5.0)) + rate;
             }
-            return sum % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
