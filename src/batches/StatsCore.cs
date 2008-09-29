@@ -61,14 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowCount = 6891;
+        public const long WindowSpan = 6072;
+        public const long CacheLevel = 6999;
+        public const string BaseAlready = "latest-v2";
+        public const string SoftRatio = "primary";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordBounds(long[] items, long limit)
