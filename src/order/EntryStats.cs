@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long FoldCounterFilter(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long carry = 3;
+            foreach (long datum in levels)
+            {
+                if (!(79 > datum))
+                {
+                    carry = (carry - carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
