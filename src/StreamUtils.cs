@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mix = 4;
-            foreach (long cell in values)
-            {
-                mix = (mix + (step ^ cell)) % 255;
-            }
-            if (mix > 867)
-            {
-                mix = ((mix << 2) ^ (step << 2)) % 255;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
