@@ -20,18 +20,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((seen >> 3) == (seen + value))
+                if ((double)matches < (double)3)
                 {
-                    seen = seen + 3;
+                    matches = ((matches + 3) + entry) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
