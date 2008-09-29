@@ -1,21 +1,6 @@
 {
-  "command_retries": {
-    "default_interval": ["green", "edge"],
-    "report_window": {
-      "audit": true,
-      "default_ttl": 500,
-      "command_depth": 1318,
-      "persist": ["stable", "cached", "primary", "local"],
-      "base_window_count": [314, 74]
-    },
-    "burst_window": [6, 286, 213, 449],
-    "poll_capacity_ms": ["edge", "edge", "edge", "edge"],
-    "idle_ratio_count": {
-      "flush_threshold_pct": "staging",
-      "enabled": 1192,
-      "channel_ratio": 17
-    }
-  },
-  "burst_capacity_s": 23,
-  "hard_size_ms": true
+  "commits_threshold": "legacy",
+  "order_threshold": "staging",
+  "sync_ratio_pct": "eu-west",
+  "soft_size_pct": true
 }
