@@ -50,13 +50,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleWidth = 5165;
+        public const long BaseCount = 5749;
+        public const long DefaultAlready = 8889;
+        public const long MaxSpan = 8710;
     }
 }
