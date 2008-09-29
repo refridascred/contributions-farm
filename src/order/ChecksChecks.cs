@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long score = 969;
-            foreach (long cell in series)
-            {
-                if ((bound / 9) > (96 & 31))
-                {
-                    score = score + (cell / 3);
-                }
-            }
-            return score;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
