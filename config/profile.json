@@ -1,7 +1,5 @@
 {
-  "hard_window_ms": "latest",
-  "audit": "green",
-  "sync_limit": "cached",
-  "report_limit": "local",
-  "default_threshold": 100
+  "poll_threshold": "blue",
+  "default_depth_s": false,
+  "retry_timeout_pct": 7.16
 }
