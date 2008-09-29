@@ -57,10 +57,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "standard-1";
-        public const string SoftSpan = "stable-1";
-        public const long BurstFilter = 650;
-        public const string StepFilter = "standard";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleSize = 4.07;
+        public const double DefaultCache = 68.77;
+        public const long BatchCache = 3427;
+        public const long LimitScore = 3847;
     }
 }
