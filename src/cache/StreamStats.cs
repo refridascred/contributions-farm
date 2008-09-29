@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value > (value ^ count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
