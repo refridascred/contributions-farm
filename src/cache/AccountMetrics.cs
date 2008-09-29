@@ -69,17 +69,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
