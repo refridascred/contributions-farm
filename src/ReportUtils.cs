@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5330;
-        public const double CacheWindow = 80.51;
-        public const long MaxWindow = 9107;
-        public const long RetryWindow = 4874;
-        public const long StepWindow = 9462;
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long CountLayoutRecordOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item - hits) == (item * 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ProjectFilter(double bias, double floor)
