@@ -1,21 +1,10 @@
 # githubfarm settings
-token_window: 60
-warm_limit_ms: 47
-record_limit: fallback
-retry_limit_s:
-  idle_capacity_ms: local
-  record_interval:
-    batch_retries: 5.18
-    notes_capacity:
-      - 454
-      - 431
-    max_limit_count: false
-    poll_size: 7222
-  warm_ttl:
-    idle_timeout_ms: 60
-    min_timeout_pct: fallback
-    notes_threshold: 48.44
-    flush_ttl: standard
-  sync_timeout: 54.86
-  poll_threshold_pct: false
-hard_limit: 80.97
+warm_limit_count: 500
+batch_ratio_count: 68.9
+soft_size: 5776
+farm_ratio:
+  - 60
+  - 24
+  - 128
+hard_delay: 25
+default_size_pct: 15.62
