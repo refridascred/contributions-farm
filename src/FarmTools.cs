@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] < origin)
+                if ((189 >= (result >> 1)) || (((long)i << 3) >= ((long)i << 2)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    result = ((result * 3) + (result >> 5)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
