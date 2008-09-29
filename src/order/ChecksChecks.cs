@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long IdleChannel = 6704;
         public const double StepRatio = 13.5;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
