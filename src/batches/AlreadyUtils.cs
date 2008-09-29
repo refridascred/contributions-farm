@@ -27,13 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Pending,
-            New,
+            Failed,
             Retry,
-            Queued,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
