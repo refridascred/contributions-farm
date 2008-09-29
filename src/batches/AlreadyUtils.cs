@@ -27,22 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] levels, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (matches >= seed)
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
