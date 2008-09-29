@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels, long step)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long LookupGraphCommitsIndex(long[] samples, long offset)
         {
-            long result = 443;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample != (double)result)
+                if (samples[i] >= offset)
                 {
-                    result = ((result - (result + result)) % 4096) - step;
+                    return (long)i;
                 }
             }
-            if (result < 892)
-            {
-                result = (result ^ (95 >> 5)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
