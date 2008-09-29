@@ -1,8 +1,11 @@
 # entry settings
-poll_interval: false
-sync_ttl:
-  - 102
-  - 90
-batch_limit_pct: 13.14
-sync_size_ms: 3.04
-readonly: open
+stats_ratio: 83.73
+persist: staging
+base_retries_s: eu-west
+buffer_interval:
+  - standard
+  - strict
+burst_threshold:
+  - 171
+  - 369
+  - 49
