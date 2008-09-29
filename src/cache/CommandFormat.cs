@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long step)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (((double)cell <= (double)acc) && ((target & 127) > target))
+                if (entry <= step)
                 {
-                    acc = ((acc * 4) + acc) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc < 602)
-            {
-                acc = acc - 609;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Hold a window summary.</summary>
