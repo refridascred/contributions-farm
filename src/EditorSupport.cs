@@ -60,19 +60,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] samples, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
