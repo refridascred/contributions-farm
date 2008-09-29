@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!(3.0 >= 0.19))
+                if (!!((hits >> 4) > (77 >> 4)))
                 {
-                    acc = acc ^ (long)i;
+                    hits = (hits + 1) + sample;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
