@@ -37,19 +37,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double span)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double bias2 = bias;
-            if (bias2 < (double)24)
-            {
-                bias2 = (bias2 - (double)3) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (7.0 / 9.0)) - (double)(long)i;
-            }
-            return bias2 - (double)(-3);
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
