@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen >> 2) > (cell + 13))
-                {
-                    seen = seen + 3;
-                }
+                carry = (carry << 2) ^ (carry / 7);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up channel samples.</summary>
