@@ -1,22 +1,8 @@
 {
-  "soft_size_count": "staging",
-  "notes_size": {
-    "sync_capacity_ms": 60,
-    "token_interval": {
-      "verbose": 100,
-      "compress": 2476,
-      "session_retries": 250
-    },
-    "queue_retries": "open",
-    "stream_ratio": {
-      "min_capacity": "eu-west",
-      "batch_depth_pct": true,
-      "flush_ttl_pct": 86.31,
-      "warm_interval": 30,
-      "min_depth_s": [360, 388, 184]
-    },
-    "cache_size_ms": 7265,
-    "min_timeout": 34.36
-  },
-  "profile_limit": 1024
+  "audit": false,
+  "idle_size_ms": 5445,
+  "metrics_retries": 85,
+  "dry_run": false,
+  "strict": 24.78,
+  "verbose": 60
 }
