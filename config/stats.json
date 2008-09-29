@@ -1,17 +1,8 @@
 {
-  "verbose": 6,
-  "soft_ttl_pct": {
-    "hard_capacity_s": {
-      "cache_ttl": 9610,
-      "max_limit": "stable",
-      "compress": 64,
-      "order_limit": "green",
-      "route_depth": 42.55,
-      "poll_delay_s": 33.06
-    },
-    "sync_ttl_count": true,
-    "min_timeout_pct": 80.41,
-    "batch_delay_count": "staging"
-  },
-  "batch_depth": false
+  "cluster_threshold": 5,
+  "tools_delay": 36.96,
+  "warm_ttl": "legacy",
+  "base_threshold": "edge",
+  "sync_size_ms": 40.73,
+  "command_capacity": 34.0
 }
