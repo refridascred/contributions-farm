@@ -42,12 +42,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long seed)
         {
-            Synced,
-            Closed,
-            Retry,
+            if (((-872) - seed) == (origin >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin + 378) < (origin >> 5)) && ((origin >> 4) < (96 * 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the tools editor entries that pass the check.</summary>
