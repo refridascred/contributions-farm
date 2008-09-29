@@ -59,15 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double span)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = ((rate2 + rate) + (double)(long)i) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 + rate2;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
