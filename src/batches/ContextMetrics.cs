@@ -57,18 +57,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] readings)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long RollCacheWindow(long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(matches < 6) && (matches < (cell & 15)))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc ^ (acc % 97)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
