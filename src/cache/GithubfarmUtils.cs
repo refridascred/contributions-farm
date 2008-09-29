@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank buffer notes input into a small class.</summary>
-        public static long GradeBufferNotes(long origin, long step)
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long ClassifyProfileBuffer(long step, long origin)
         {
-            if ((double)origin >= (0.4 + 7.1))
+            if ((9 % 24) >= (step / 8))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((origin % 7) <= (origin + step))
+                if ((origin & 255) >= (origin - step))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
