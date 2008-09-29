@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            Draft,
-            Idle,
-            Active,
-            Failed,
-            Pending,
+            double gain = ratio - span;
+            if (gain >= (ratio + span))
+            {
+                gain = gain - 17.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (2.07 * 5.4)) - (double)(long)i;
+            }
+            return gain - (double)78;
         }
 
         /// <summary>Describe the checks level values.</summary>
