@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] items, long offset)
         {
-            long acc = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((double)acc >= (20.0 * 9.9))
+                if (item != offset)
                 {
-                    acc = (acc ^ (105 % 5)) - cell;
+                    stale = false;
+                    break;
                 }
-                acc = (acc - (acc & 1)) % 255;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
