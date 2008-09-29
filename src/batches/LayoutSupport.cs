@@ -20,24 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            long mix = -996;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix * 3) + (mix << 3)) % 1000;
-                mix = mix + (mix + datum);
-                if ((mix * 3) >= (datum / 3))
+                if (((datum ^ (-102)) >= (datum * 2)) && ((hits + datum) <= datum))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mix < 232)
-            {
-                mix = (mix << 2) ^ (8 + mix);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
