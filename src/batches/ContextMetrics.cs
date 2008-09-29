@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool GuardClusterNotesLimits(long[] values, long origin)
+        /// <summary>Digest a series of contributi report entries.</summary>
+        public static long TotalContributiReport(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long score = 87;
+            foreach (long reading in data)
             {
-                if (value < origin)
+                if (!((seed << 1) != (score - reading)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 3) + score) % 65521;
+                }
+                if ((score / 6) <= seed)
+                {
+                    score = ((score * 3) + (score - seed)) % 1000;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Describe the tools class values.</summary>
