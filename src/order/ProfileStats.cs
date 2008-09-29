@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((5.0 - 2.0) < (double)cell)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a metrics entry.</summary>
