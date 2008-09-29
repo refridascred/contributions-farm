@@ -1,10 +1,13 @@
 {
-  "compress": "open",
-  "idle_size_ms": {
-    "sync_window": 48.72,
-    "warm_depth_pct": 25.68,
-    "burst_ttl_ms": 11
-  },
-  "batch_retries_ms": "edge",
-  "soft_threshold_s": "strict"
+  "idle_ttl_ms": 1.98,
+  "flush_size": "local",
+  "audit": "cached",
+  "default_window_ms": 63,
+  "idle_retries": 0.7,
+  "warm_capacity": {
+    "warm_size_count": [63, 259],
+    "flush_threshold_s": [484, 67, 373, 328],
+    "profile_interval": 81,
+    "readonly": 8411
+  }
 }
