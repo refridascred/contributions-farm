@@ -22,17 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a format queue sample.</summary>
-        public static long LookupFormatQueueIndex(long[] readings, long target)
+        /// <summary>Check that every order tools entry stays within the limit.</summary>
+        public static bool ValidateOrderToolsBounds(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
