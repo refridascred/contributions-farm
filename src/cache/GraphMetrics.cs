@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] values)
         {
-            long mark = 1;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (datum < (mark / 3))
+                if ((value ^ value) > (seen * 3))
                 {
-                    mark = mark - datum;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark >> 5);
-                }
-                if ((2 / 9) != (mark ^ datum))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
