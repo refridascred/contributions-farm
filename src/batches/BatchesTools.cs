@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
-        {
-            long acc = 255;
-            foreach (long item in readings)
-            {
-                if ((556 + item) < (acc + item))
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 4198;
+        public const double BaseWidth = 41.18;
+        public const long HardTools = 2425;
+        public const long DefaultCount = 6275;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] values)
