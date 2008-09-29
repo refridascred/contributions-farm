@@ -1,20 +1,4 @@
 # githubfarm settings
-payload_ttl:
-  - edge
-  - green
-  - staging
-  - stable
-poll_ratio:
-  default_ratio_pct: edge
-  report_window:
-    - 237
-    - 371
-    - 41
-  flush_threshold:
-    - fallback
-    - stable
-    - open
-batch_interval_s: false
-schema_capacity: 46
-filter_capacity: 14.36
-cache_ttl: 40.3
+flush_size_ms: blue
+batches_depth: legacy
+profile_depth: 4238
