@@ -42,18 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already editor readings against a rule.</summary>
-        public static long MeasureAlreadyEditorHits(long[] series, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (step > (cell + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
