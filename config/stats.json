@@ -1,10 +1,5 @@
 {
-  "enabled": {
-    "strict": false,
-    "channel_limit": 3.65,
-    "audit": false
-  },
-  "cache_timeout_s": true,
-  "notes_interval": "legacy",
-  "cache_limit": 96
+  "batch_threshold_ms": 77.24,
+  "default_interval_s": "cached",
+  "hard_window_pct": 49
 }
