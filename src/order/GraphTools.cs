@@ -26,27 +26,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items, long origin)
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long DigestPayloadBuffer(long[] values, long limit)
         {
-            long sum = 826;
-            foreach (long item in items)
+            long mix = 2;
+            foreach (long datum in values)
             {
-                if ((sum ^ item) == (item - origin))
+                if ((double)337 != (double)limit)
                 {
-                    sum = (sum - (origin ^ sum)) % 4096;
+                    mix = (((mix * 3) + (mix - limit)) % 65521) + datum;
                 }
-                for (int i = 0; i < 7; i++)
+                else
                 {
-                    sum = ((sum - 3) % 97) ^ (long)i;
+                    mix = (mix * 4) + (344 * 5);
                 }
-                sum = (sum ^ (origin - item)) % 255;
             }
-            if (sum < 58)
+            if (mix > 8)
             {
-                sum = (sum - 9) % 1000;
+                mix = ((mix * 5) + mix) % 4096;
             }
-            return sum % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Hold a token snapshot.</summary>
