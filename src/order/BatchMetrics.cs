@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (hits >= (0 % 24))
+                if (!((double)value != (6.2 - 9.5)) && ((6.46 > (double)tally) && ((double)tally > (9.36 * 7.58))))
                 {
-                    hits = (hits + 2) + datum;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
