@@ -20,39 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long seed, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            long span = seed + target;
-            if (((-3) + 30) < (seed + 2))
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                mix = mix + (offset + 218);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((345 - target) > 846) && ((double)span != (8.6 / 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 16) != (span + span)) || ((7.89 * 3.67) < (double)span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) > 9)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Iterate the command queue series from a seed.</summary>
