@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2632;
-        public const long SoftRatio = 1540;
-        public const long StepProfile = 9118;
-        public const long CacheScore = 7729;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 1767;
+        public const long CacheBudget = 2945;
+        public const double HardWidth = 12.25;
+        public const long HardCommits = 5076;
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double bias, double offset)
