@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings, long target)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 4) < (matches & 255))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support summary.</summary>
