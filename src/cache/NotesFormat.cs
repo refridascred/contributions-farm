@@ -30,22 +30,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data)
-        {
-            long state = 33;
-            foreach (long item in data)
-            {
-                if ((double)state == (5.68 - 5.91))
-                {
-                    state = (state + (item + item)) % 4096;
-                }
-            }
-            if (state < 415)
-            {
-                state = state ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9907;
+        public const long SoftScore = 6197;
+        public const long WindowAccount = 6077;
+        public const long HardAccount = 7837;
     }
 }
