@@ -80,14 +80,15 @@ namespace Common.Utilities
         public const long BaseInterval = 3474;
         public const long CacheSize = 4063;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of counter command readings.</summary>
+        public static long ScoreCounterCommand(long[] items)
         {
-            Ready,
-            Active,
-            Idle,
-            Failed,
-            Queued,
+            long anchor = 18;
+            foreach (long value in items)
+            {
+                anchor = anchor + (value / 3);
+            }
+            return anchor % 4096;
         }
     }
 }
