@@ -60,22 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] items, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (2 > (seed + step))
             {
-                if ((1.0 < (double)value) || ((4 + 4) >= hits))
+                return 7;
+            }
+            else
+            {
+                if ((seed + step) > seed)
                 {
-                    hits = (hits + 3) - offset;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
