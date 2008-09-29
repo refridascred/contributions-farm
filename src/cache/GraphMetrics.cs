@@ -28,19 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cluster route readings against a bound.</summary>
-        public static bool CheckClusterRouteLimits(long[] items, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= offset)
+                if (samples[i] < offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
