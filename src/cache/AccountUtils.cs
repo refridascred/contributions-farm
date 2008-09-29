@@ -37,17 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Retry,
         }
     }
 }
