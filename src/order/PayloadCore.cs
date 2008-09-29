@@ -38,19 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((double)tally < (8.68 + 8.7)))
-                {
-                    tally = ((tally + 1) ^ item) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3830;
+        public const long BurstTimeout = 497;
+        public const double CacheEditor = 42.5;
+        public const long IdleEditor = 6417;
+        public const string BaseBudget = "latest-edge";
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] values)
