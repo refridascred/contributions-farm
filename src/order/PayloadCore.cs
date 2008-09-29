@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Compare every pair of buffer batch readings.</summary>
+        public static long OverlapBufferBatchCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor < (anchor - (long)i))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a support header.</summary>
