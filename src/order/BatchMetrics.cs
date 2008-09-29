@@ -62,20 +62,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (!(step >= (mark / 5)))
+                if (((long)levels.Length + item) < (floor * 2))
                 {
-                    mark = ((mark << 2) ^ mark) % 101;
-                    mark = ((mark * 2) + (3 >> 2)) % 65521;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank layout filter input into a small class.</summary>
