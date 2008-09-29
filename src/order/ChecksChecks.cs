@@ -23,26 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long state = 346;
-            foreach (long entry in levels)
+            long state = 774;
+            foreach (long value in data)
             {
-                if (((6.7 * 6.39) <= (double)state) || ((double)entry < (17.0 * 9.67)))
-                {
-                    state = (state - entry) % 4096;
-                }
-                else
-                {
-                    state = (state - entry) % 101;
-                }
+                state = state ^ 888;
+                state = (state << 3) ^ value;
             }
-            if (state < 11)
-            {
-                state = state + (state + 536);
-            }
-            return state % 97;
+            return state % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
