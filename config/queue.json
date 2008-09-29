@@ -1,5 +1,8 @@
 {
-  "soft_timeout": true,
-  "tools_capacity": [415, 383, 493],
-  "audit": 7736
+  "min_retries": true,
+  "command_depth": 64.63,
+  "metrics_interval": "green",
+  "burst_threshold": "legacy",
+  "min_window_pct": 250,
+  "min_threshold_pct": 250
 }
