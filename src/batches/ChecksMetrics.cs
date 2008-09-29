@@ -45,25 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long limit2)
-        {
-            if ((-633) <= (limit & 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((limit >> 1) > (limit2 & 31)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 782;
+        public const long IdleSize = 767;
+        public const long MaxFarm = 3778;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] data)
