@@ -46,15 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double bias2 = gain * 4.6;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (gain - bias)) + (double)(long)i;
-            }
-            return bias2 + (2.7 - bias2);
+            Closed,
+            New,
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
