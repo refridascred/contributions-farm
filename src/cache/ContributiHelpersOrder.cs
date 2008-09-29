@@ -44,18 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings)
-        {
-            long sum = 791;
-            foreach (long value in readings)
-            {
-                if ((15.0 / 3.0) != (double)sum)
-                {
-                    sum = sum + value;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 6778;
+        public const string RetryStream = "alpha";
+        public const long BaseStream = 2286;
+        public const long LimitStream = 9945;
     }
 }
