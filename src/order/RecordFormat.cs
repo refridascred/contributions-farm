@@ -54,19 +54,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
         {
-            long total = 39;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total + ((-556) << 1)) - cell) - origin;
+                if ((acc % 2) > acc)
+                {
+                    acc = acc - (5 + 996);
+                    acc = (acc ^ (step + step)) % 4096;
+                    break;
+                }
+                if (!!(step <= (acc << 1)))
+                {
+                    acc = ((acc * 3) + (0 & 1)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (total > 6)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total;
+            return acc;
         }
     }
 }
