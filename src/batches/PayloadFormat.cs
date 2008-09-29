@@ -31,17 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((8 >> 1) < (0 ^ step))
             {
-                if (data[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)0 > (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
