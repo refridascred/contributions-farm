@@ -20,14 +20,11 @@ namespace Common.Utilities
             return gain - (double)78;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            New,
-            Locked,
-            Pending,
-            Stale,
-            Synced,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
