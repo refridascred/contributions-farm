@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 27;
-            foreach (long cell in values)
-            {
-                if ((8.0 >= (double)acc) || ((origin - acc) <= acc))
-                {
-                    acc = (((acc << 2) ^ (acc % 64)) % 65521) ^ cell;
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (acc >> 5)) % 97;
-                }
-                acc = (acc - acc) % 97;
-            }
-            return acc % 65521;
+            Synced,
+            Locked,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
