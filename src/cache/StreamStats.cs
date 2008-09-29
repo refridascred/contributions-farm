@@ -45,21 +45,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of command stats readings.</summary>
-        public static long MatchCommandStatsCount(long[] data)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
