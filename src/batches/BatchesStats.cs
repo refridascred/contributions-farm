@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Dropped,
-            Paused,
-            Retry,
-            Stale,
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
