@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double HardDepth = 1.98;
         public const long MaxBudget = 2320;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            double scale = bias;
-            if (scale < (floor - floor))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (double)0;
+            return count;
         }
 
         /// <summary>Digest a series of checks farm entries.</summary>
