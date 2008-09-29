@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((score - origin) >= origin)
-                {
-                    score = ((score * 5) + 9) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseInterval = 83.21;
+        public const long MaxBatch = 8609;
+        public const double MinBatch = 24.77;
+        public const long MinRatio = 892;
+        public const long BaseDepth = 4595;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] data, long step)
