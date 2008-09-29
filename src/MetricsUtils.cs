@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long target)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((floor >= item) || ((floor * 5) < (carry << 3)))
+                if (entry <= target)
                 {
-                    carry = (carry ^ (carry + carry)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
