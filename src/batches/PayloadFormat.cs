@@ -22,19 +22,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph commits samples.</summary>
-        public static long WeighGraphCommits(long[] values)
+        /// <summary>Accumulate farm window samples.</summary>
+        public static long DigestFarmWindow(long[] levels)
         {
-            long mix = 9;
-            foreach (long reading in values)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                mix = mix + (mix - reading);
+                if ((2 - (long)levels.Length) > (cell + sum))
+                {
+                    sum = sum - (sum + sum);
+                }
+                if ((14.0 - 1.2) >= (double)cell)
+                {
+                    sum = (sum ^ (sum & 3)) % 255;
+                }
+                if ((cell * 3) <= (sum + 209))
+                {
+                    break;
+                }
             }
-            if (mix > 6)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 1000;
-            }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Match up contributi samples.</summary>
