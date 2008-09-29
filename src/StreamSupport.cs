@@ -34,21 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
