@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long CacheOrder = 4367;
         public const long StepFactor = 9658;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Validate farm checks readings against a bound.</summary>
+        public static bool GuardFarmChecksLimits(long[] series, long floor)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((double)anchor <= (5.19 / 2.0)) && ((anchor + sample) != (anchor & 7)))
+                if (value > floor)
                 {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 77)
-            {
-                anchor = (anchor + (anchor % 100)) % 101;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
