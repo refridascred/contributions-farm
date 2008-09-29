@@ -32,17 +32,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = 7.78 - bias;
+            return ratio - (weight / 6.0);
         }
 
         /// <summary>Describe the batch phase values.</summary>
