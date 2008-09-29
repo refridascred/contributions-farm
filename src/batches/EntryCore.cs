@@ -27,10 +27,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 65.48;
-        public const long MinDepth = 432;
-        public const long StepFactor = 1527;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 3144;
+        public const long BasePayload = 1670;
+        public const long WindowPayload = 6483;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
