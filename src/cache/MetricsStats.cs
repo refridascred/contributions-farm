@@ -82,15 +82,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSpan = 36.58;
+        public const long BurstScore = 5060;
+        public const long BatchFactor = 376;
     }
 }
