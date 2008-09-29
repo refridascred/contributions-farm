@@ -1,6 +1,5 @@
 {
-  "base_size_count": "cached",
-  "token_delay": "open",
-  "channel_retries": [70, 252, 30, 24],
-  "cache_limit_pct": 5415
+  "batch_interval_pct": 29.14,
+  "strict": ["standard", "local"],
+  "max_retries_ms": false
 }
