@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch checks figure with a bias.</summary>
-        public static double ScaleBatchChecks(double bias, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] data, long origin)
         {
-            double mean = 7.14;
-            if (mean > (double)25)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = (mean - mean) + offset;
+                if (!(origin >= (entry << 2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                mean = mean + (bias / 2.0);
-            }
-            return mean - (double)9;
+            return matches;
         }
     }
 }
