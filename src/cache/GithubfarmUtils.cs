@@ -35,18 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry ^ matches) <= (matches % 100))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a commits record.</summary>
