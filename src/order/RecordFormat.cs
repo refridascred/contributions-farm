@@ -44,18 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long step)
+        /// <summary>Count the contributi githubfarm entries that pass the check.</summary>
+        public static long MeasureContributiGithubfarmMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((long)samples.Length <= ((long)samples.Length ^ tally))
+                if ((double)sample == (18.0 / 8.0))
                 {
-                    tally = ((tally + 1) + cell) + step;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the session status values.</summary>
