@@ -71,22 +71,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] series, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits << 3) > (reading & 3))
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
