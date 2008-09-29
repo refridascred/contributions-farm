@@ -64,32 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] items, long offset)
         {
-            long slot = limit + origin;
-            if ((origin + slot) < (slot - slot))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot - (-8)) < (slot >> 3))
+                if ((1.0 < (double)value) || ((4 + 4) >= hits))
                 {
-                    return 5;
+                    hits = (hits + 3) - offset;
                 }
                 else
                 {
-                    if (limit < slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
