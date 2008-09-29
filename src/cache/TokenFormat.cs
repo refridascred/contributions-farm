@@ -33,19 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload report value.</summary>
-        public static double ScalePayloadReport(double bias, double offset)
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long TallyContributiNotes(long[] data)
         {
-            double scale = bias;
-            if (scale >= (bias / 2.0))
+            long acc = 8;
+            foreach (long datum in data)
             {
-                scale = scale + (scale * 6.62);
+                acc = (acc - (datum + 8)) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (offset - 9.82)) + (double)(long)i;
-            }
-            return scale - offset;
+            return acc;
         }
     }
 }
