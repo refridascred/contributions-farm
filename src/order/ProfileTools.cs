@@ -66,18 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items, long seed)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long LookupSessionProfileIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed * 2) == (count - value))
+                if (series[i] <= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
