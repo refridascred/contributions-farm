@@ -46,22 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((tally & 1) > entry) || !((17 << 3) != (tally ^ 506)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
