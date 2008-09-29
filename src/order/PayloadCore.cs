@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const double WindowInterval = 1.06;
         public const string WindowQueue = "alpha-v2";
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long bound)
         {
-            Draft,
-            Idle,
-            Locked,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
