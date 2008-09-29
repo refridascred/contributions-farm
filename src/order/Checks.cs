@@ -27,20 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state * 5) + (state * 5);
-                if ((limit / 6) > 7)
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
