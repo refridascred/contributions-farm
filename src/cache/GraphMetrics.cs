@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of cluster cache entries.</summary>
-        public static long CombineClusterCache(long[] data, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long bound)
         {
-            long carry = 4;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (carry + limit)) % 4096;
-                for (int i = 0; i < 11; i++)
+                if (samples[i] > bound)
                 {
-                    carry = ((carry << 3) ^ (carry + carry)) - (long)i;
-                }
-                if (limit >= (reading - 9))
-                {
-                    carry = carry - (reading >> 5);
+                    return (long)i;
                 }
             }
-            if (carry < (-8))
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
