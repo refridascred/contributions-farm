@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Queued,
-            Done,
-            Active,
+            Retry,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
