@@ -95,19 +95,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool ValidateBufferClusterBounds(long[] levels, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry - offset) % 101;
+                carry = (carry * 5) + carry;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
     }
 }
