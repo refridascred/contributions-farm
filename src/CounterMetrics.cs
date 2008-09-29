@@ -53,12 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long LookupGraphCommitsIndex(long[] samples, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] >= offset)
+                if (series[i] <= limit)
                 {
                     return (long)i;
                 }
