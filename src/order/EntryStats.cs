@@ -64,13 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ 16) >= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
