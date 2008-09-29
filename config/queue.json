@@ -1,7 +1,7 @@
 {
-  "poll_ratio_ms": 7253,
-  "cache_limit": ["staging", "edge"],
-  "poll_interval_ms": "strict",
-  "sync_interval_pct": [136, 487, 3],
-  "default_timeout_pct": "blue"
+  "strict": [338, 47, 327],
+  "poll_timeout_pct": "blue",
+  "dry_run": [236, 462, 336, 156],
+  "buffer_interval": true,
+  "verbose": ["local", "strict", "eu-west", "green"]
 }
