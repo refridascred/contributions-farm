@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "primary-1";
+        public const double MinScore = 25.0;
+        public const long SoftSize = 831;
+        public const long SoftFarm = 5464;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 4567;
