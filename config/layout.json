@@ -1,24 +1,8 @@
 {
-  "audit": "cached",
-  "filter_delay": "local",
-  "default_limit_count": 54,
-  "token_capacity": {
-    "persist": "legacy",
-    "hard_window": {
-      "hard_timeout_ms": "eu-west",
-      "max_capacity": 94.08,
-      "max_capacity_ms": 83,
-      "hard_retries_s": 84,
-      "cache_delay_s": "latest"
-    },
-    "flush_capacity_pct": {
-      "readonly": ["green", "legacy"],
-      "compress": "staging",
-      "dry_run": "legacy",
-      "enabled": 96,
-      "poll_ratio_pct": 30
-    },
-    "compress": "standard"
-  },
-  "soft_threshold_s": 97
+  "token_retries": "legacy",
+  "cache_size": "primary",
+  "sync_retries_pct": "eu-west",
+  "batch_depth": 408,
+  "max_delay": 7311,
+  "order_delay": [455, 332]
 }
