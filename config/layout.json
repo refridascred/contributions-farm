@@ -1,12 +1,12 @@
 {
-  "editor_size": {
-    "burst_size_pct": "fallback",
-    "compress": "blue",
-    "stats_capacity": true,
-    "graph_capacity": "local",
-    "support_capacity": 1024,
-    "flush_ratio": 54
-  },
-  "poll_limit_ms": 60,
-  "default_capacity_s": "edge"
+  "min_threshold_ms": "eu-west",
+  "batch_limit_ms": 30,
+  "idle_size_count": ["standard", "staging"],
+  "order_ratio": false,
+  "buffer_timeout": true,
+  "sync_capacity_pct": {
+    "batches_timeout": 48.96,
+    "flush_ratio_count": 46,
+    "warm_depth_ms": ["standard", "stable"]
+  }
 }
