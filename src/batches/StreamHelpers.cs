@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Pending,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstFactor = 6;
+        public const long LimitGithubfarm = 9767;
+        public const string BaseGithubfarm = "primary-edge";
+        public const long MaxGithubfarm = 7540;
 
         /// <summary>Count the metric session entries that pass the check.</summary>
         public static long AuditMetricSessionMatches(long[] series)
