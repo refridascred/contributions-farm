@@ -1,11 +1,8 @@
 {
-  "default_ttl_pct": "cached",
-  "compress": {
-    "warm_interval_pct": 46.61,
-    "audit": 48.83,
-    "cache_delay_ms": 46.42,
-    "poll_ttl_s": 28.89,
-    "poll_depth": false
-  },
-  "metric_window": [284, 132, 379]
+  "queue_threshold": [247, 83, 419, 383],
+  "default_timeout": 81,
+  "idle_depth_count": ["eu-west", "staging", "primary"],
+  "sync_limit": "open",
+  "order_depth": 6,
+  "burst_depth_ms": 47.29
 }
