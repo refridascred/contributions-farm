@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((origin * 4) <= (origin + 972))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
