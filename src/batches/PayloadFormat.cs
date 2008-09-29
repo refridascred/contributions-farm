@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultLevel = 42.92;
-        public const long StepCache = 7838;
-        public const long BatchCache = 9946;
+        /// <summary>Accumulate filter account samples.</summary>
+        public static long TotalFilterAccount(long[] values, long origin)
+        {
+            long mix = 8;
+            foreach (long item in values)
+            {
+                if (origin >= item)
+                {
+                    mix = mix - (origin % 2);
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
