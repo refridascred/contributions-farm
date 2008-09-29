@@ -1,8 +1,13 @@
 {
-  "hard_capacity_pct": "stable",
-  "base_interval_pct": ["eu-west", "legacy"],
-  "command_limit": 30,
-  "enabled": "open",
-  "sync_depth_s": "cached",
-  "sync_threshold": [156, 50, 350, 278]
+  "strict": 804,
+  "audit": "stable",
+  "flush_window": ["primary", "open", "local", "staging"],
+  "contributi_interval": {
+    "session_size": "latest",
+    "readonly": "green",
+    "strict": "blue",
+    "max_delay": [57, 386, 120, 157],
+    "default_size_count": 9137,
+    "route_threshold": 4584
+  }
 }
