@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4594;
-        public const long SoftProfile = 6486;
-        public const long IdleSize = 9695;
-        public const string StepTimeout = "legacy";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double bias, double offset)
