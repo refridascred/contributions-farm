@@ -45,19 +45,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] samples, long floor)
+        /// <summary>Rank stats order input into a small class.</summary>
+        public static long GradeStatsOrder(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long item in samples)
+            if ((seed << 1) > 70)
             {
-                if (item <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((5.2 / 3.0) >= (double)seed2)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed2 < 8.24)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (75 > (seed2 * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a account options.</summary>
