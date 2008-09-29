@@ -37,24 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long bound)
-        {
-            if (step <= (bound - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - bound) > (step / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 38.92;
+        public const long MinCluster = 8130;
+        public const long BatchFactor = 901;
+        public const long CacheCluster = 8073;
+        public const long MinTimeout = 167;
     }
 }
