@@ -1,4 +1,4 @@
 # githubfarm settings
-flush_size_ms: blue
-batches_depth: legacy
-profile_depth: 4238
+warm_window_s: stable
+compress: green
+idle_ttl: 78.38
