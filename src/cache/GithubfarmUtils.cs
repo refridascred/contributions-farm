@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long delta = floor ^ step;
-            if ((step - floor) > step)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((13.0 - 3.71) == (double)delta) || ((double)floor > 15.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((10.0 - 0.31) <= (3.6 / 9.0))
+                    if ((readings[i] ^ readings[j]) < 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor << 1) != (step ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token info.</summary>
