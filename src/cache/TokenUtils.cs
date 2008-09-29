@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor profile reading by value.</summary>
-        public static long SeekEditorProfileIndex(long[] levels, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
