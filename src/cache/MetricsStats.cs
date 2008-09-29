@@ -32,13 +32,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a cluster layout counter forward.</summary>
+        public static long RollClusterLayout(long step)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!!(((long)i + step) < step))
+                {
+                    mix = ((mix * 2) + step) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
