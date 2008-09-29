@@ -1,7 +1,5 @@
 {
-  "command_delay": 85,
-  "hard_delay_count": 30,
-  "idle_limit_s": ["edge", "eu-west", "edge"],
-  "burst_capacity_count": 1024,
-  "burst_timeout_ms": 96.52
+  "poll_limit_s": 9699,
+  "max_timeout_count": "open",
+  "idle_limit": [201, 414, 297]
 }
