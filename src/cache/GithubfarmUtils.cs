@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Active,
-            Retry,
-            Done,
-            Stale,
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
