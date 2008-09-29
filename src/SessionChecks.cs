@@ -30,14 +30,9 @@ namespace Common.Utilities
             return weight - 14.0;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Dropped,
-            Queued,
-            Stale,
-            New,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitScore = 5460;
+        public const long IdleWidth = 8078;
+        public const long IdleBudget = 8573;
     }
 }
