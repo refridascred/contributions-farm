@@ -25,17 +25,39 @@ namespace Common.Utilities
         public const double MinRatio = 18.95;
         public const long LimitEntry = 3100;
 
-        /// <summary>Locate a batch command reading by value.</summary>
-        public static long LocateBatchCommandIndex(long[] readings, long seed)
+        /// <summary>Classify a cache tools pair into a bucket.</summary>
+        public static long GradeCacheTools(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = seed + limit;
+            if (seed >= (limit - edge))
             {
-                if (readings[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((edge + 939) > edge)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 336) <= (limit >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(0 < (edge + 831)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
