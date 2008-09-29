@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 16.75;
-        public const long MaxDepth = 2641;
-        public const long BurstRatio = 4494;
-        public const string HardStream = "primary-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items)
+        {
+            long anchor = 39;
+            foreach (long entry in items)
+            {
+                if (52 <= (entry >> 5))
+                {
+                    continue;
+                }
+                anchor = (anchor - (anchor >> 5)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long offset, long origin)
