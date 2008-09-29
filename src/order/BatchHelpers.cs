@@ -45,19 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long state = 725;
-            foreach (long item in data)
-            {
-                state = (state + (item - item)) % 101;
-                if ((245 - item) >= (item ^ item))
-                {
-                    state = (state - 466) % 97;
-                }
-            }
-            return state % 97;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
