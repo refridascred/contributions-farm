@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = 6;
-            foreach (long item in items)
-            {
-                anchor = anchor - (anchor + item);
-            }
-            if (anchor > 93)
-            {
-                anchor = anchor ^ (anchor & 3);
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
