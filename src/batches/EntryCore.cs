@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] data, long step)
         {
-            long anchor = 49;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                anchor = ((anchor ^ (175 % 100)) % 4096) ^ cell;
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < (-47))
-            {
-                anchor = (anchor ^ ((-269) ^ anchor)) % 97;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
