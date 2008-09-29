@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "primary-1";
-        public const double MinScore = 25.0;
-        public const long SoftSize = 831;
-        public const long SoftFarm = 5464;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 4567;
