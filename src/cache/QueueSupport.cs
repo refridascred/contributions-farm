@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
