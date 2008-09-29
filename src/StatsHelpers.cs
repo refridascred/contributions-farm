@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] levels, long target)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = weight;
+            return (load + 8.37) + offset;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
