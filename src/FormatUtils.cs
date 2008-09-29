@@ -34,19 +34,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long step)
+        /// <summary>Roll a commits format counter forward.</summary>
+        public static long IterateCommitsFormat(long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Adjust a layout reading.</summary>
