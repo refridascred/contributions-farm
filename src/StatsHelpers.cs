@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a graph checks counter forward.</summary>
-        public static long DeriveGraphChecks(long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum * 4) + (floor >> 3);
-                sum = (sum << 2) ^ ((long)i / 9);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
