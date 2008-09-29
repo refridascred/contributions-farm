@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long BaseTimeout = 900;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] levels, long floor)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
