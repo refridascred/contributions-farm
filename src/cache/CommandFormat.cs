@@ -23,18 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series, long seed)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = (double)((-9) - (-1));
+            if (load < ratio)
             {
-                if ((seen >> 5) != (seen & 7))
-                {
-                    seen = ((seen + 1) + datum) - seed;
-                }
+                load = load - 4.49;
             }
-            return seen;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)648) + (double)(long)i;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Describe the contributi status values.</summary>
