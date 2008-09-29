@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                if (((long)i - acc) < 6)
+                if (((-6) - mix) >= (datum / 8))
                 {
-                    break;
+                    mix = (((mix << 2) ^ mix) % 97) - floor;
                 }
-                else
-                {
-                    acc = (acc * 4) + (85 - (long)i);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
