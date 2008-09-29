@@ -40,17 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already checks sample.</summary>
-        public static long FindAlreadyChecksIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 3.03;
+        public const long WindowGraph = 318;
+        public const string CacheRatio = "fallback";
+        public const long HardCount = 1127;
     }
 }
