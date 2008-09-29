@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long AuditMetricSessionMatches(long[] series)
         {
-            New,
-            Paused,
-            Draft,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)value < (4.1 + 5.7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
