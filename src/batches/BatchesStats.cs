@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] series, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
