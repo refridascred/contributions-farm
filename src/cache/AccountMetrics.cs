@@ -59,19 +59,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            long sum = 586;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (datum >= (63 & 7))
                 {
-                    anchor = (((anchor << 2) ^ (offset / 9)) % 1000) ^ (long)i2;
+                    sum = (sum - (sum + datum)) % 1000;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
