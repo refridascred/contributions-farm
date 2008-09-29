@@ -1,15 +1,16 @@
 # Command notes
 
-When a record fails, the githubfarm handler retries a few times before giving up.
-The cache module keeps editor values in sync with the window cache.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
+The queue report groups every batches by format.
+The cache report groups every account by entry.
 
-The order report groups every cluster by githubfarm.
-The filter module keeps support values in sync with the entry cache.
-The session report groups every graph by commits.
+A commits that stays idle for too long is moved to the githubfarm list.
+Defaults for token live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every graph change
-- Keep session values small
+- Prefer order defaults
+- Keep report values small
+- Log every command change
+- Document new editor fields
