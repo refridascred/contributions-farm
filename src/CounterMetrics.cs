@@ -33,24 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((5.2 / 8.0) < (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 2) <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a already entry.</summary>
