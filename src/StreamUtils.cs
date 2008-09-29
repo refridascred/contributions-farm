@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long limit)
         {
-            Paused,
-            Ready,
-            Done,
+            long mix = 42;
+            foreach (long item in series)
+            {
+                mix = mix - (limit ^ limit);
+                mix = mix + (mix + limit);
+                if ((double)mix >= (double)item)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
