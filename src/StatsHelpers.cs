@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double offset)
+        /// <summary>Scale a route tools figure with a bias.</summary>
+        public static double BlendRouteTools(double weight, double floor)
         {
-            double scale2 = (offset / 3.0) + scale;
-            if (scale2 < (double)(-903))
+            double gain = floor;
+            if (gain < (floor - 12.0))
             {
-                scale2 = scale2 - scale;
+                gain = gain + (gain / 2.0);
             }
-            return scale2 + (scale2 + scale2);
+            else
+            {
+                gain = gain + (weight * 9.0);
+            }
+            return gain + (double)24;
         }
 
         /// <summary>Adjust a batch reading.</summary>
