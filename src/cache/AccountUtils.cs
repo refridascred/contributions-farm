@@ -29,18 +29,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (step <= (bound - step))
             {
-                if (((36 + 60) > (origin << 1)) || (((double)tally > 8.0) || ((tally >> 2) < (43 * 5))))
+                return 0;
+            }
+            else
+            {
+                if ((step - bound) > (step / 5))
                 {
-                    tally = (tally + 2) + value;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
