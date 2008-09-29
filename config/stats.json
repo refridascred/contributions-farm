@@ -1,5 +1,7 @@
 {
-  "persist": "legacy",
-  "warm_timeout": [471, 394, 306, 336],
-  "graph_limit": 48
+  "readonly": 71,
+  "notes_limit": 22.78,
+  "default_depth_s": 84,
+  "audit": 1928,
+  "cache_size_s": "legacy"
 }
