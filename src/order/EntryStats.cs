@@ -47,21 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count farm already pairs that satisfy a relation.</summary>
