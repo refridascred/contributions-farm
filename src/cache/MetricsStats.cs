@@ -33,17 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long target)
+        /// <summary>Accumulate graph batch samples.</summary>
+        public static long WeighGraphBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 918;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                if ((datum % 16) < (datum % 12))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (datum ^ datum)) % 255;
+                    total = (total ^ (offset + offset)) % 4096;
                 }
+                else
+                {
+                    total = ((total * 3) + datum) % 97;
+                }
+                total = total ^ (total & 127);
             }
-            return -1;
+            if (total > 28)
+            {
+                total = (total + (offset - total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
