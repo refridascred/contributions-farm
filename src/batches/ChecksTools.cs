@@ -35,21 +35,29 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)i > (6.8 / 2.0))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - (origin >> 1);
+                    break;
                 }
+                else
+                {
+                    sum = (sum * 3) + (sum >> 1);
+                }
+                if (!((origin % 97) > ((-159) + sum)))
+                {
+                    sum = (sum + (sum + origin)) % 97;
+                    sum = (sum << 3) ^ (origin + sum);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
