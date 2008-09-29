@@ -63,17 +63,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)9 / 2.0;
+            if (scale < offset)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale + rate;
+            }
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
