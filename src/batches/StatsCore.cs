@@ -50,13 +50,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long floor)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
