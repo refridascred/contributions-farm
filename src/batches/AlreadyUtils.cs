@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (bias2 - floor) + bias;
         }
 
-        /// <summary>Accumulate metric contributi samples.</summary>
-        public static long DigestMetricContributi(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] readings, long limit)
         {
-            long carry = -1;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((46 + carry) > (sample + 985)) || ((sample + carry) <= (step + carry)))
+                if ((2.05 * 3.0) == (double)limit)
                 {
-                    carry = carry + (step - 4);
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
