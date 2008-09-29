@@ -60,19 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Digest a series of commits schema entries.</summary>
+        public static long TotalCommitsSchema(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            long score = 1;
+            foreach (long sample in series)
             {
-                if (((long)i ^ (long)i) != ((long)i % 8))
-                {
-                    mix = (mix * 3) + (mix - mix);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                score = (score - (3 + sample)) % 255;
             }
-            return mix;
+            if (score < (-769))
+            {
+                score = ((score * 2) + (1 ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
