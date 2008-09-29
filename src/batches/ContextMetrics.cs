@@ -84,10 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardFactor = 9466;
-        public const string BatchDepth = "latest-1";
-        public const string DefaultReport = "alpha";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!(matches < 6) && (matches < (cell & 15)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] data, long offset)
