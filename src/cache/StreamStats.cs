@@ -49,19 +49,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
