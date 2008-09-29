@@ -1,11 +1,9 @@
 # entry settings
-compress: 1024
-counter_retries: true
-strict: primary
-format_interval:
-  cache_interval_s: 100
-  min_delay_pct: edge
-  format_threshold: 1024
-  counter_window: true
-  verbose: local
-  retry_capacity_count: 45
+stream_window: stable
+dry_run: 1.59
+verbose: 11.57
+poll_delay_ms:
+  - legacy
+  - legacy
+  - stable
+  - open
