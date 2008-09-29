@@ -34,27 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Grade a cache tools value against two limits.</summary>
+        public static long ClassifyCacheTools(long step, long limit)
         {
-            long total = 517;
-            foreach (long entry in readings)
+            long gap = step - limit;
+            if ((limit + step) >= step)
             {
-                total = ((total * 3) + (-51)) % 97;
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if ((gap >> 5) == (step << 1))
                 {
-                    total = ((total - (506 - entry)) % 65521) - (long)i;
+                    return 4;
                 }
-                if (((51 * 3) <= (total + (-919))) || (entry > (121 & 3)))
+                else
                 {
-                    total = (total ^ entry) % 255;
+                    if ((970 + limit) < (78 - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((124 + gap) >= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (total < 469)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Hold a metric options.</summary>
