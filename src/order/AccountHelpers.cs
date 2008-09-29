@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a batch payload sample.</summary>
-        public static long LookupBatchPayloadIndex(long[] levels, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = (state + state) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
