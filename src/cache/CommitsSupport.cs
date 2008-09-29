@@ -68,15 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double mean = 3.26;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + offset) + (double)(long)i) - ratio;
-            }
-            return mean + (double)905;
+            Pending,
+            Failed,
+            New,
+            Active,
         }
     }
 }
