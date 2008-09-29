@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the window format series from a seed.</summary>
-        public static long DeriveWindowFormat(long floor)
+        /// <summary>Digest a series of cluster cache entries.</summary>
+        public static long CombineClusterCache(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long carry = 4;
+            foreach (long reading in data)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                carry = (carry + (carry + limit)) % 4096;
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) - (long)i;
+                }
+                if (limit >= (reading - 9))
+                {
+                    carry = carry - (reading >> 5);
+                }
             }
-            return acc;
+            if (carry < (-8))
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate cluster route readings against a bound.</summary>
