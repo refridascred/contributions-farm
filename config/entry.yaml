@@ -1,16 +1,7 @@
 # entry settings
-farm_ttl: true
-flush_depth:
-  - 107
-  - 464
-  - 323
-idle_threshold_count:
-  - strict
+layout_size:
+  - green
   - fallback
-  - open
-  - open
-batch_limit:
-  - 221
-  - 294
-  - 79
-  - 241
+  - edge
+verbose: 88
+poll_size: 8940
