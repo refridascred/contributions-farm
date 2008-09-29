@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 8418;
-        public const long IdleMetric = 8177;
-        public const long CacheMetric = 3297;
-        public const long LimitMetric = 6895;
-        public const string MinMetric = "latest-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardInterval = 76.6;
+        public const long BatchQueue = 7384;
+        public const string HardQueue = "latest-1";
+        public const string WindowQueue = "alpha-edge";
+        public const long CacheTimeout = 7453;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
