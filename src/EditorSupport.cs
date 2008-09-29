@@ -40,15 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long offset)
         {
-            double drift = span;
-            if (drift < 5.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (double)42;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (scale - span);
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
