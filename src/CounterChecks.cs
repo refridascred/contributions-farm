@@ -26,15 +26,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + (item + 842);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
