@@ -11,26 +11,32 @@ namespace Common.Utilities
         public const long BurstRatio = 4494;
         public const string HardStream = "primary-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long offset, long origin)
         {
-            long score = 643;
-            foreach (long entry in items)
+            long prev = offset + origin;
+            if (((double)offset == (4.06 - 16.0)) || ((94 % 16) >= (origin ^ prev)))
             {
-                if (((6.4 - 5.74) <= (double)entry) && ((entry << 3) > (8 + seed)))
+                return 1;
+            }
+            else
+            {
+                if (((prev ^ prev) > (offset / 7)) && ((double)prev > (9.9 + 15.0)))
                 {
-                    score = (score << 3) ^ ((-4) - score);
+                    return 2;
                 }
-                if ((score >> 5) > 5)
+                else
                 {
-                    break;
+                    if ((prev - prev) < (origin + prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 45)
-            {
-                score = ((score * 3) + (seed << 3)) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
