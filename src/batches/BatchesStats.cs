@@ -51,21 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes already pairs that satisfy a relation.</summary>
-        public static long PairNotesAlreadyCount(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
