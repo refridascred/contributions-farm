@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long BaseEditor = 4639;
         public const string RetryFactor = "primary-v2";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] data, long step)
+        /// <summary>Locate a schema buffer reading by value.</summary>
+        public static long SeekSchemaBufferIndex(long[] series, long limit)
         {
-            long anchor = 821;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3 % 16) > anchor)
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
                 {
-                    anchor = ((((anchor << 2) ^ ((-49) % 7)) % 255) ^ cell) + step;
+                    return (long)i;
                 }
             }
-            if (anchor < 45)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
