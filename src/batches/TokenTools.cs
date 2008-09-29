@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= 5.6)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Match up channel samples.</summary>
