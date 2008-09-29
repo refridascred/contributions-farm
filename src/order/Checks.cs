@@ -19,23 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double ratio = bias;
-            if (ratio < (weight + bias))
-            {
-                ratio = ratio + (double)9;
-            }
-            else
-            {
-                ratio = ratio - (ratio - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio - bias)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
