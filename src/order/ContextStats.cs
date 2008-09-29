@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] samples, long origin)
         {
-            long result = 773;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((((-749) & 1) != (result ^ entry)) && ((entry * 5) > (result - result)))
+                if (value > origin)
                 {
-                    result = result + (2 * 4);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the notes phase values.</summary>
