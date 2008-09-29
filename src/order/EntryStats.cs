@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLevel = 20.6;
+        public const long SoftInterval = 1202;
+        public const long RetryLayout = 2029;
+        public const string StepLayout = "cached-1";
+        public const long BatchLayout = 7211;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] readings)
