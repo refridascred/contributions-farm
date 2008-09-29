@@ -13,12 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long seed)
         {
-            Dropped,
-            New,
-            Stale,
+            long acc = 116;
+            foreach (long entry in levels)
+            {
+                if (!(9.16 <= (double)seed))
+                {
+                    acc = acc ^ 479;
+                }
+                if ((double)acc > (6.47 * 0.4))
+                {
+                    acc = acc - (entry + acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
