@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const double MinRatio = 18.95;
         public const long LimitEntry = 3100;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Locate a batch command reading by value.</summary>
+        public static long LocateBatchCommandIndex(long[] readings, long seed)
         {
-            Done,
-            Draft,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
