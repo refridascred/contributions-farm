@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long floor, long bound)
         {
-            Retry,
-            Paused,
-            Locked,
-            New,
+            if (!(floor > (4 / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 - floor) <= (97 + 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
