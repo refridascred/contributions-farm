@@ -1,5 +1,7 @@
 {
-  "batch_interval_pct": 29.14,
-  "strict": ["standard", "local"],
-  "max_retries_ms": false
+  "order_timeout": 328,
+  "compress": 48.42,
+  "flush_ratio": 50.49,
+  "sync_interval_s": 5788,
+  "audit": "latest"
 }
