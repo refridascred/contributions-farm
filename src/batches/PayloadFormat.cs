@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count support route pairs that satisfy a relation.</summary>
-        public static long OverlapSupportRouteCount(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count - value) != (446 - value))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
