@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            Failed,
-            Retry,
-            New,
-            Idle,
+            double scale = weight;
+            if (scale <= 5.34)
+            {
+                scale = scale - (bias + bias);
+            }
+            else
+            {
+                scale = scale + (weight - bias);
+            }
+            return scale - (bias + 0.15);
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
