@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the tools layout entries that pass the check.</summary>
+        public static long MeasureToolsLayoutOutliers(long[] series, long bound)
         {
-            Ready,
-            Locked,
-            Stale,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= (double)tally)
+                {
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
