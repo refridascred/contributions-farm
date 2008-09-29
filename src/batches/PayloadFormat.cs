@@ -12,21 +12,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state << 2) ^ floor;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Match up farm samples.</summary>
