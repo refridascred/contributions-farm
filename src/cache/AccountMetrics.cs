@@ -16,19 +16,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Scale a layout command figure with a bias.</summary>
-        public static double ProjectLayoutCommand(double weight, double floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double ratio = floor;
-            if (ratio > (floor + floor))
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (floor * 5.59)) + (double)(long)i;
-            }
-            return ratio + (weight - 8.0);
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
