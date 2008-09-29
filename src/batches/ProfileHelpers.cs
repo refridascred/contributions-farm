@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "local";
+        public const long IdleInterval = 2052;
+        public const long SoftScore = 6521;
+        public const long StepSession = 1582;
+        public const string BurstInterval = "local-1";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] samples)
