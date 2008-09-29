@@ -16,21 +16,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Count cluster support pairs that satisfy a relation.</summary>
-        public static long CompareClusterSupportCount(long[] data)
+        /// <summary>Scale a layout command figure with a bias.</summary>
+        public static double ProjectLayoutCommand(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor;
+            if (ratio > (floor + floor))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + weight;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (floor * 5.59)) + (double)(long)i;
+            }
+            return ratio + (weight - 8.0);
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
