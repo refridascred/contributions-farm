@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many session notes samples are out of range.</summary>
-        public static long CountSessionNotesHits(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)seen >= 10.0)
+                if ((long)samples.Length <= (target * 3))
                 {
-                    seen = (seen + 1) + datum;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
