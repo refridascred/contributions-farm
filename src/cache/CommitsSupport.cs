@@ -49,39 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
-        public static long ClassifyGithubfarmPayload(long seed, long floor)
+        /// <summary>Locate a schema window reading by value.</summary>
+        public static long SeekSchemaWindowIndex(long[] values, long offset)
         {
-            long delta = seed ^ floor;
-            if ((7.95 - 1.4) <= (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - floor) != (3 * 3))
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ floor) > (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)delta == (0.2 * 7.8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
