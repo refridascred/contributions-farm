@@ -28,21 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of schema order readings.</summary>
-        public static long PairSchemaOrderCount(long[] samples)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
