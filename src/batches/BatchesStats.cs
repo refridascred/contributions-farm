@@ -44,11 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((73 ^ 94) <= hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
