@@ -22,18 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (offset >= (0 + 37))
-                {
-                    count = (count + 1) + cell;
-                }
+                mark = (mark + mark) % 97;
+                mark = mark ^ (step - (long)i);
+                mark = (mark - step) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
