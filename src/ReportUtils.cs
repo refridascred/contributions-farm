@@ -27,18 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long acc = 5;
-            foreach (long sample in values)
-            {
-                if (((sample & 127) < step) && (((long)values.Length + 39) < (62 - step)))
-                {
-                    acc = (acc ^ step) % 4096;
-                }
-            }
-            return acc % 4096;
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks farm entries.</summary>
