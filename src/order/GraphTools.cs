@@ -41,17 +41,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 529;
+            foreach (long datum in samples)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                if ((mark < ((long)samples.Length % 12)) && ((mark >> 1) <= (datum & 7)))
                 {
-                    return (long)i;
+                    mark = (((mark << 3) ^ (long)samples.Length) % 97) + floor;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
