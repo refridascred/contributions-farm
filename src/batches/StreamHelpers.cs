@@ -42,12 +42,14 @@ namespace Common.Utilities
             return (scale + (double)69) + bias;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Dropped,
             Idle,
-            Draft,
-            Pending,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Adjust a already reading.</summary>
