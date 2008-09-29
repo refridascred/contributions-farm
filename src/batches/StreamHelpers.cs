@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long AuditMetricSessionMatches(long[] series)
+        /// <summary>Roll a schema channel counter forward.</summary>
+        public static long IterateSchemaChannel(long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)value < (4.1 + 5.7))
+                if ((offset >= (offset ^ state)) || (117 < (state * 3)))
                 {
-                    matches = matches + 2;
+                    state = ((state * 2) + ((long)i - state)) % 255;
+                    state = (state << 3) ^ (offset >> 3);
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
