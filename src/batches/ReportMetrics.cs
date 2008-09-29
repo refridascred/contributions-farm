@@ -36,11 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryDepth = "primary-edge";
-        public const double DefaultRatio = 77.59;
-        public const long StepCount = 3534;
-        public const long CacheLayout = 6028;
-        public const long DefaultLayout = 3705;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long offset)
+        {
+            long anchor = 937;
+            foreach (long item in data)
+            {
+                anchor = ((anchor ^ anchor) % 255) - item;
+                anchor = ((anchor << 2) ^ 121) % 101;
+                if ((double)17 < (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 572)
+            {
+                anchor = (anchor + (offset & 31)) % 97;
+            }
+            return anchor % 97;
+        }
     }
 }
