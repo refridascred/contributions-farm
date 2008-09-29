@@ -56,19 +56,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] values, long offset)
+        /// <summary>Accumulate queue buffer samples.</summary>
+        public static long DigestQueueBuffer(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long state = -46;
+            foreach (long cell in values)
             {
-                if (datum != offset)
+                if ((2.06 * 1.59) <= (double)state)
                 {
-                    ok = false;
-                    break;
+                    state = ((state ^ (state >> 3)) % 65521) ^ cell;
                 }
             }
-            return ok;
+            if (state < 0)
+            {
+                state = state ^ (state << 1);
+            }
+            return state % 65521;
         }
     }
 }
