@@ -28,12 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a account commits reading by value.</summary>
-        public static long FindAccountCommitsIndex(long[] series, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
