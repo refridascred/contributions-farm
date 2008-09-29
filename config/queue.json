@@ -1,5 +1,8 @@
 {
-  "batch_interval_count": [343, 108, 236],
-  "warm_ttl_ms": "green",
-  "githubfarm_limit": "local"
+  "channel_window": false,
+  "already_delay": 36.03,
+  "sync_delay_count": "latest",
+  "strict": 7.8,
+  "cache_window_s": 9619,
+  "min_timeout_ms": "blue"
 }
