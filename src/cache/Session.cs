@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a window support pair into a bucket.</summary>
-        public static long GradeWindowSupport(long origin, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            if (floor >= (4 % 64))
+            double gain = (double)(552 % 97);
+            if (gain < (7.0 - 4.9))
             {
-                return 6;
+                gain = gain + bias2;
             }
             else
             {
-                if (((double)floor > (8.0 * 5.56)) && ((floor & 255) == (origin << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (886 >= (origin * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = gain + gain;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (bias / 9.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the counter level values.</summary>
