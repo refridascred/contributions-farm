@@ -1,5 +1,12 @@
 {
-  "verbose": ["strict", "staging", "legacy", "fallback"],
-  "strict": 500,
-  "flush_delay_pct": 98
+  "editor_size": {
+    "burst_size_pct": "fallback",
+    "compress": "blue",
+    "stats_capacity": true,
+    "graph_capacity": "local",
+    "support_capacity": 1024,
+    "flush_ratio": 54
+  },
+  "poll_limit_ms": 60,
+  "default_capacity_s": "edge"
 }
