@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            double drift = (bias / 4.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                drift = ((drift + (bias * 6.66)) + (double)(long)i) - bias2;
+                if ((value ^ seen) < seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - bias;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
