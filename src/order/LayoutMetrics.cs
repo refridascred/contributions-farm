@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long step = floor - seed;
-            if ((742 << 3) > (76 ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (floor >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step ^ 243) == (5 >> 1)) && ((seed + (-93)) < (4 % 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((428 * 5) > (seed + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            New,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of channel support readings.</summary>
