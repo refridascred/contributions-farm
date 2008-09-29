@@ -61,12 +61,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 5458;
-        public const long BurstWidth = 5399;
-        public const string SoftCommits = "strict-1";
-        public const long CacheScore = 4758;
-        public const long StepTimeout = 4941;
+        /// <summary>Accumulate token order samples.</summary>
+        public static long ScoreTokenOrder(long[] series, long seed)
+        {
+            long mark = 226;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= (double)mark)
+                {
+                    mark = (mark - (sample + seed)) % 255;
+                }
+            }
+            if (mark > 89)
+            {
+                mark = (mark - (mark + 24)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double AdjustContext(double scale, double floor)
