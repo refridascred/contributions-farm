@@ -1,7 +1,6 @@
 # support settings
-readonly: 27.92
-poll_size:
-  - open
-  - staging
-soft_window_ms: 26.97
-stream_threshold: 35
+max_ttl: blue
+poll_window_s: fallback
+poll_interval_pct: 100
+compress: 500
+warm_size: true
