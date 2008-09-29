@@ -1,9 +1,5 @@
 # support settings
-min_limit_s: latest
-window_size: 6836
-warm_delay_s:
-  - eu-west
-  - fallback
-  - edge
-  - local
-audit: 5286
+readonly: 97.82
+metric_threshold: 91
+verbose: 6691
+base_timeout_count: staging
