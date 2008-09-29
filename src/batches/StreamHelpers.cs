@@ -69,19 +69,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            double weight2 = (weight + offset) - (double)0;
-            if (weight2 < (double)(-1))
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                weight2 = weight2 - (weight2 * 5.0);
+                if ((score - 980) == (score ^ 35))
+                {
+                    continue;
+                }
+                score = (score - (score - 538)) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight2 = weight2 - (double)52;
-            }
-            return weight2 - weight;
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
