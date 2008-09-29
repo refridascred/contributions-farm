@@ -60,21 +60,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
