@@ -55,21 +55,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of record command readings.</summary>
-        public static long MatchRecordCommandCount(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 756;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score ^ (item % 10)) % 255) + bound;
+                score = (score - (score * 3)) % 4096;
             }
-            return count;
+            return score;
         }
     }
 }
