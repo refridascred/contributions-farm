@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (series[i] >= floor)
+                if ((3.1 - 10.0) >= (double)floor)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
