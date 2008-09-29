@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter order value from a seed.</summary>
-        public static long RollCounterOrder(long origin)
+        /// <summary>Validate schema contributi readings against a bound.</summary>
+        public static bool CheckSchemaContributiBounds(long[] values, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
