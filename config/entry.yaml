@@ -1,5 +1,7 @@
 # entry settings
-compress: false
-format_interval: 1077
-verbose: 43.43
-cache_limit_ms: 51
+verbose: 500
+max_capacity:
+  - 189
+  - 66
+  - 361
+warm_limit: 100
