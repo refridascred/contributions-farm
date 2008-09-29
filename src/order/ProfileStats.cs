@@ -41,22 +41,26 @@ namespace Common.Utilities
         public const long MinRatio = 5579;
         public const long MinReport = 2664;
 
-        /// <summary>Iterate the metric layout series from a seed.</summary>
-        public static long IterateMetricLayout(long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 731;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + seed) % 4096;
-                state = state - (long)i;
-                if ((state - 3) < seed)
+                if ((double)acc >= 0.38)
                 {
-                    state = (state - 451) % 1000;
-                    state = (state ^ (state >> 4)) % 97;
+                    acc = ((acc * 3) + ((long)readings.Length - (long)readings.Length)) % 65521;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    acc = (acc + (cell >> 4)) % 97;
+                }
             }
-            return state;
+            if (acc > (-80))
+            {
+                acc = (acc ^ (acc & 15)) % 1000;
+            }
+            return acc;
         }
     }
 }
