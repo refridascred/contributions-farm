@@ -45,18 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultDepth = 59.52;
+        public const long CacheWidth = 514;
+        public const long DefaultStream = 981;
+        public const string HardStream = "latest-1";
 
         /// <summary>Locate a session profile reading by value.</summary>
         public static long LookupSessionProfileIndex(long[] series, long target)
