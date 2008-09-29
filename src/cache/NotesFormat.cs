@@ -34,11 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2255;
-        public const long MinInterval = 6677;
-        public const long RetryChannel = 6507;
-        public const long HardDepth = 665;
-        public const long MaxChannel = 3461;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Retry,
+            Active,
+            Draft,
+            Locked,
+            New,
+        }
     }
 }
