@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit tools context readings against a rule.</summary>
-        public static long TallyToolsContextGaps(long[] values)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry & 63) < (tally + 10))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
