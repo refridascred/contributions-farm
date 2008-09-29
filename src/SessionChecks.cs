@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate channel report readings against a bound.</summary>
-        public static bool VerifyChannelReportLimits(long[] series, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (datum >= bound)
+                if ((seen + 939) > (limit + seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count order format pairs that satisfy a relation.</summary>
