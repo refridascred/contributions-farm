@@ -1,6 +1,30 @@
 {
-  "schema_depth": 58.29,
-  "poll_ratio_count": "standard",
-  "idle_delay_count": 13.83,
-  "queue_ttl": 500
+  "readonly": 11.21,
+  "verbose": {
+    "sync_interval_ms": 46.57,
+    "warm_retries_count": {
+      "compress": 99,
+      "checks_limit": "latest",
+      "checks_window": 15.49,
+      "idle_capacity_ms": true,
+      "min_window": 37.39
+    },
+    "stream_delay": {
+      "cache_window": "staging",
+      "flush_window_ms": 1024,
+      "soft_window": 2583
+    },
+    "batch_delay_s": false,
+    "already_threshold": "local",
+    "token_ratio": {
+      "min_threshold": "stable",
+      "idle_window": [196, 220, 479, 107],
+      "readonly": 4220,
+      "dry_run": true,
+      "burst_retries_ms": 14
+    }
+  },
+  "cluster_size": false,
+  "poll_delay_ms": "legacy",
+  "burst_ratio": 6058
 }
