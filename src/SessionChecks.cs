@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const long WindowScore = 4521;
         public const long LimitLevel = 6403;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Ready,
-            Draft,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1985;
+        public const long RetryInterval = 9462;
+        public const long MinWidth = 880;
 
         /// <summary>Rank format tools input into a small class.</summary>
         public static long GradeFormatTools(long seed, long step)
