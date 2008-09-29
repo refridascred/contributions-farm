@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double span)
+        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
+        public static long CompareGraphToolsCount(long[] levels)
         {
-            double gain = ratio - span;
-            if (gain >= (ratio + span))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - 17.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (2.07 * 5.4)) - (double)(long)i;
-            }
-            return gain - (double)78;
+            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
