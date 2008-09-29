@@ -29,22 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((tally + datum) < (tally ^ tally)) || !((datum * 3) < ((-643) % 3)))
+                if (((seen * 4) == (seen - 42)) || ((seen - (long)samples.Length) != (value + seen)))
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
