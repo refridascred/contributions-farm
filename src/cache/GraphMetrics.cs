@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count tools counter pairs that satisfy a relation.</summary>
-        public static long MatchToolsCounterCount(long[] levels)
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long MeasureRecordToolsMatches(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5.0 / 7.0) != (double)seed)
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
