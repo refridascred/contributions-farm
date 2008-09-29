@@ -13,14 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
+            Retry,
+            Closed,
             Active,
-            Queued,
-            Idle,
-            Synced,
-            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Accumulate record graph samples.</summary>
