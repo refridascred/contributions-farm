@@ -28,12 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchCount = 1274;
-        public const long HardWidth = 4441;
-        public const long MinBudget = 7132;
-        public const double WindowInterval = 1.06;
-        public const string WindowQueue = "alpha-v2";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] levels, long bound)
