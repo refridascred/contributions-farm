@@ -57,31 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long origin)
+        /// <summary>Validate report entry readings against a bound.</summary>
+        public static bool GuardReportEntryBounds(long[] data, long target)
         {
-            if ((2.7 / 6.0) < (double)step)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ origin) >= step)
+                if (reading < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > 1.08)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
