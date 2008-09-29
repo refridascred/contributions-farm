@@ -46,12 +46,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Failed,
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
