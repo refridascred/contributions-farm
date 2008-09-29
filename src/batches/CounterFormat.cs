@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes metrics entries that pass the check.</summary>
-        public static long CountNotesMetricsMatches(long[] data)
+        /// <summary>Iterate the entry notes series from a seed.</summary>
+        public static long SeriesEntryNotes(long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (item < count)
-                {
-                    count = count + 2;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
