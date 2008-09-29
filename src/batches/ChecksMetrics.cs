@@ -21,17 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] levels, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum ^ ((long)i >> 2);
-                sum = (sum - 491) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of graph window entries.</summary>
