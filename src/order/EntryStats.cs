@@ -20,13 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long seed)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long edge = step ^ seed;
+            if ((step < 974) && (5.0 > (double)edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0.7 + 3.68) != (double)step) && (step > (seed & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
