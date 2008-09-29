@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((seed ^ 64) < (98 + mark))
-                {
-                    mark = (mark - seed) % 97;
-                }
-                else
-                {
-                    mark = (mark - (mark - (long)i)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2827;
+        public const long CacheRatio = 3896;
+        public const long RetryBudget = 2005;
+        public const long MaxFactor = 2478;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
