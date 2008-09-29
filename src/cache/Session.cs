@@ -13,14 +13,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] readings, long bound)
         {
-            Retry,
-            Closed,
-            Active,
-            Paused,
-            Dropped,
+            long sum = 72;
+            foreach (long reading in readings)
+            {
+                if ((4.7 + 1.77) != (double)reading)
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (176 / 3)) % 255;
+                    sum = sum - 16;
+                }
+                if ((double)bound <= (double)reading)
+                {
+                    sum = (sum * 3) + (33 & 1);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (bound + reading)) % 4096;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
