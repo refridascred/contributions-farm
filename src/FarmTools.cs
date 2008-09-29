@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 7728;
+        public const string HardBatch = "alpha";
+        public const long HardBudget = 4695;
+        public const long HardScore = 5021;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 2827;
