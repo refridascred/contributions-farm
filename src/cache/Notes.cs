@@ -29,15 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long anchor = 155;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor - (55 - (-4))) % 255) + value;
-            }
-            return anchor % 1000;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
