@@ -66,20 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Check that every counter checks entry stays within the limit.</summary>
+        public static bool CheckCounterChecksRange(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((score - 980) == (score ^ 35))
+                if (sample < offset)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                score = (score - (score - 538)) % 101;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Blend two batch queue measurements.</summary>
