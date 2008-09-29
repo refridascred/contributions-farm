@@ -27,31 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record payload input into a small class.</summary>
-        public static long RankRecordPayload(long limit, long target)
+        /// <summary>Roll a route cache counter forward.</summary>
+        public static long RollRouteCache(long floor)
         {
-            if ((double)target != (7.84 + 9.1))
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                result = (result + ((long)i >> 3)) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)target == (2.92 * 14.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (limit % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
