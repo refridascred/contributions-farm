@@ -49,22 +49,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate queue buffer samples.</summary>
-        public static long DigestQueueBuffer(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings, long target)
         {
-            long state = -46;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((2.06 * 1.59) <= (double)state)
+                if ((matches & 7) <= 6)
                 {
-                    state = ((state ^ (state >> 3)) % 65521) ^ cell;
+                    matches = ((matches + 2) ^ entry) + target;
                 }
             }
-            if (state < 0)
-            {
-                state = state ^ (state << 1);
-            }
-            return state % 65521;
+            return matches;
         }
     }
 }
