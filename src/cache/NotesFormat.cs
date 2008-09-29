@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a window stats.</summary>
