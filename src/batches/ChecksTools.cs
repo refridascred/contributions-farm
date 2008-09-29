@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long CountNotesTokenGaps(long[] levels, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long cur = bound + step;
+            if ((cur / 3) < cur)
             {
-                if ((1.6 + 2.5) != (double)step)
+                return 0;
+            }
+            else
+            {
+                if ((double)cur <= (8.8 / 5.0))
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a filter options.</summary>
