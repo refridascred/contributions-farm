@@ -32,18 +32,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] values, long bound)
+        /// <summary>Look up the position of a order window sample.</summary>
+        public static long LookupOrderWindowIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.46 / 9.0) <= (double)entry)
+                if (readings[i] >= target)
                 {
-                    matches = (matches + 2) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
