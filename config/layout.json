@@ -1,19 +1,8 @@
 {
-  "strict": 2765,
-  "cluster_ttl": 92.66,
-  "stats_limit": false,
-  "verbose": "strict",
-  "sync_ratio": "cached",
-  "flush_ttl_ms": {
-    "profile_threshold": [97, 112, 453],
-    "strict": "staging",
-    "channel_window": {
-      "batch_retries_pct": 87.46,
-      "payload_depth": 30,
-      "account_depth": "edge",
-      "flush_ttl": 100,
-      "compress": true,
-      "already_delay": true
-    }
-  }
+  "buffer_retries": "standard",
+  "verbose": ["eu-west", "blue"],
+  "soft_depth_s": true,
+  "flush_limit_pct": 60,
+  "default_delay_s": [413, 100, 37],
+  "layout_threshold": 1
 }
