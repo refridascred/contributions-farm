@@ -48,23 +48,10 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 54.97;
         public const long RetryInterval = 6633;
 
-        /// <summary>Accumulate route editor samples.</summary>
-        public static long TallyRouteEditor(long[] readings, long bound)
-        {
-            long anchor = -7;
-            foreach (long entry in readings)
-            {
-                if (((anchor ^ anchor) > (969 + bound)) || (anchor > 22))
-                {
-                    anchor = (anchor + (entry + (long)readings.Length)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - entry) % 65521;
-                }
-                anchor = ((anchor * 2) + entry) % 255;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinLevel = 7910;
+        public const long MinCommand = 8339;
+        public const long LimitLevel = 1594;
+        public const string StepCommand = "legacy";
     }
 }
