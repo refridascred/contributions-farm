@@ -25,9 +25,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 3041;
         public const long MaxLevel = 6536;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchCount = 8757;
-        public const double DefaultRoute = 1.62;
-        public const string HardSpan = "primary";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
+        {
+            long result = 40;
+            foreach (long item in levels)
+            {
+                result = ((result + result) % 1000) + item;
+            }
+            if (result < (-155))
+            {
+                result = ((result * 2) + (result & 31)) % 97;
+            }
+            return result;
+        }
     }
 }
