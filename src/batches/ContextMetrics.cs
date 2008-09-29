@@ -50,38 +50,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long offset2)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if (((offset2 & 255) >= (2 + offset)) || ((7 - offset) > (331 << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2 >> 1) == (offset >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.13 > (double)offset) && ((double)offset > (double)offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) == (offset2 % 24))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
