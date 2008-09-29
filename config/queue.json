@@ -1,18 +1,8 @@
 {
-  "session_ratio": 30.46,
-  "batch_size_count": "latest",
-  "cache_capacity": false,
-  "payload_depth": {
-    "cache_ratio": true,
-    "sync_limit_count": 58.5,
-    "burst_depth_s": false,
-    "enabled": {
-      "idle_size": ["strict", "edge", "local", "eu-west"],
-      "hard_limit_s": 63,
-      "warm_interval_s": 500,
-      "persist": "staging",
-      "profile_delay": true
-    }
-  },
-  "cache_capacity_ms": ["green", "primary"]
+  "report_interval": 89,
+  "max_interval": "edge",
+  "strict": "eu-west",
+  "hard_capacity_pct": 1241,
+  "audit": 60,
+  "base_size": [468, 297, 138]
 }
