@@ -16,22 +16,15 @@ namespace Common.Utilities
         public const string WindowRatio = "latest-edge";
         public const long RetryCache = 3437;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels, long step)
+        /// <summary>Accumulate cache stream samples.</summary>
+        public static long ScoreCacheStream(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = 5;
+            foreach (long sample in samples)
             {
-                if ((7.65 - 6.0) >= (double)reading)
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score ^ (sample - (long)samples.Length)) % 4096;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
