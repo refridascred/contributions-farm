@@ -1,4 +1,14 @@
 # support settings
-retry_ttl_ms: staging
-max_limit_ms: 30
-order_timeout: legacy
+verbose: false
+audit:
+  min_delay_ms:
+    - 182
+    - 267
+  window_ttl: 60
+  batches_delay: 79.8
+compress:
+  - 186
+  - 224
+  - 456
+dry_run: green
+batch_depth: 85
