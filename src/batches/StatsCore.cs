@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double scale2 = (double)3 + (bias / 3.0);
-            return (scale2 - (1.0 * 6.0)) + scale;
+            Idle,
+            Active,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
