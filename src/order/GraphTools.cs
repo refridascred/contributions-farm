@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Validate metric report readings against a bound.</summary>
+        public static bool VerifyMetricReportLimits(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a order window sample.</summary>
