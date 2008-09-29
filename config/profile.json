@@ -1,13 +1,5 @@
 {
-  "idle_ttl_ms": 1.98,
-  "flush_size": "local",
-  "audit": "cached",
-  "default_window_ms": 63,
-  "idle_retries": 0.7,
-  "warm_capacity": {
-    "warm_size_count": [63, 259],
-    "flush_threshold_s": [484, 67, 373, 328],
-    "profile_interval": 81,
-    "readonly": 8411
-  }
+  "poll_limit_ms": 500,
+  "burst_threshold_s": 68,
+  "max_limit_count": "latest"
 }
