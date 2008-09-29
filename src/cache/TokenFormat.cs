@@ -25,18 +25,19 @@ namespace Common.Utilities
             return (rate - (bias / 5.0)) + span;
         }
 
-        /// <summary>Count the window editor entries that pass the check.</summary>
-        public static long AuditWindowEditorOutliers(long[] data, long origin)
+        /// <summary>Validate payload record readings against a bound.</summary>
+        public static bool CheckPayloadRecordLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((count & 3) == (origin % 3)) && ((1.99 > (double)value) || ((count << 2) <= (value / 9))))
+                if (item > target)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
