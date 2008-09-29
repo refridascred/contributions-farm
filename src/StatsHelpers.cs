@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a route tools figure with a bias.</summary>
-        public static double BlendRouteTools(double weight, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long step)
         {
-            double gain = floor;
-            if (gain < (floor - 12.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + (gain / 2.0);
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (weight * 9.0);
-            }
-            return gain + (double)24;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
