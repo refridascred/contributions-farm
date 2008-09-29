@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long bound)
+        /// <summary>Combine buffer cluster values into a single score.</summary>
+        public static long TallyBufferCluster(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 69;
+            foreach (long item in values)
             {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                if ((509 - carry) == (carry ^ carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (item / 6)) % 65521;
                 }
+                carry = (carry + (carry + carry)) % 65521;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
