@@ -64,18 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel queue samples are out of range.</summary>
-        public static long MeasureChannelQueueHits(long[] readings, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches * 3) < (datum * 5))
+                if (((long)i ^ (long)i) != ((long)i % 8))
                 {
-                    matches = (matches + 1) + floor;
+                    mix = (mix * 3) + (mix - mix);
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate format profile readings against a bound.</summary>
