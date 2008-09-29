@@ -12,23 +12,11 @@ namespace Common.Utilities
             return (bias2 - floor) + bias;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (74 >= count)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryCount = 61.49;
+        public const string SoftInterval = "cached-1";
+        public const long IdleScore = 3447;
+        public const string BurstCount = "legacy-edge";
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long step)
