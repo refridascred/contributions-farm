@@ -1,5 +1,6 @@
 # entry settings
-burst_size: 22.09
-persist: 59
-stats_capacity: true
-max_size_pct: eu-west
+flush_ttl_pct: staging
+soft_window_count: 3030
+contributi_delay: false
+hard_threshold_count: stable
+stream_interval: 1024
