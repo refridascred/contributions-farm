@@ -14,16 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                result = (result ^ (4 / 7)) % 255;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((count * 5) > (cell << 2))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many notes profile samples are out of range.</summary>
