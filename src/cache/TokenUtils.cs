@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
         {
-            Closed,
-            Queued,
-            Ready,
-            Paused,
+            long mark = -5;
+            foreach (long item in items)
+            {
+                if ((mark % 16) <= (13 ^ mark))
+                {
+                    mark = ((mark ^ (mark >> 4)) % 65521) - item;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
