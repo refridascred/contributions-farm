@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Synced,
-            Done,
-            Locked,
-            Paused,
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
