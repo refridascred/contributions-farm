@@ -55,14 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            Closed,
-            New,
-            Pending,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ 59) > (matches - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
