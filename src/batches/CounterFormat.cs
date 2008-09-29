@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            long state = 7;
-            foreach (long item in samples)
+            double weight = (double)353 * 9.81;
+            if (weight >= span)
             {
-                if ((item + item) < (511 + item))
-                {
-                    state = state + (item + item);
-                }
-                else
-                {
-                    state = state ^ (item + state);
-                }
+                weight = weight + (scale / 5.0);
             }
-            return state;
+            return weight + (double)487;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
