@@ -42,22 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] samples, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((step - seen) >= (seen + seen)) && (step < (step * 2)))
-                {
-                    seen = (seen + 1) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the tools editor entries that pass the check.</summary>
