@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long total = 14;
-            foreach (long cell in items)
-            {
-                if (16.0 <= (double)total)
-                {
-                    total = ((total * 4) + (cell + cell)) + limit;
-                }
-                if (19.0 <= (double)cell)
-                {
-                    total = ((total * 2) + (total + cell)) % 255;
-                }
-            }
-            return total;
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
