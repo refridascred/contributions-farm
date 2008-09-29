@@ -39,20 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order metric value from a seed.</summary>
-        public static long DeriveOrderMetric(long floor)
+        /// <summary>Grade a profile schema value against two limits.</summary>
+        public static long GradeProfileSchema(long seed, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long cur = seed ^ floor;
+            if ((cur / 5) >= 70)
             {
-                if (anchor >= (anchor - anchor))
-                {
-                    anchor = (anchor - anchor) % 1000;
-                    anchor = (anchor << 3) ^ ((long)i / 8);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((51 ^ 749) <= (floor + 750))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + cur) <= (seed % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)cur >= (3.9 + 6.3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
