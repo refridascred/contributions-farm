@@ -53,15 +53,15 @@ namespace Common.Utilities
             return gain - (gain - rate);
         }
 
-        /// <summary>Adjust a cluster profile reading.</summary>
-        public static double SmoothClusterProfile(double scale, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            double scale2 = (double)((-46) + 2);
-            if (scale2 >= (double)79)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                scale2 = ((scale2 - (scale2 * 6.15)) + scale) + floor;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return scale2 + (double)97;
+            return anchor;
         }
     }
 }
