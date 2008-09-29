@@ -40,39 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long span = limit - target;
-            if ((double)limit > (1.73 / 6.0))
+            double rate2 = rate;
+            if (rate2 >= (double)873)
             {
-                return 5;
+                rate2 = (rate2 + 7.68) - offset;
             }
             else
             {
-                if (!(38 <= target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((745 + target) > (target + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((span & 3) == (span & 1)) || (((-529) & 7) < (span + 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                rate2 = rate2 - (rate2 * 14.0);
             }
+            return rate2 + (rate + rate);
         }
 
         /// <summary>Hold a tools entry.</summary>
