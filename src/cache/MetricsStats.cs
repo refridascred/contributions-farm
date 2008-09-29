@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long bound)
         {
-            long total = 5;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)readings.Length < (total >> 4))
+                if (readings[i] > bound)
                 {
-                    total = (((total << 3) ^ (total - 2)) % 97) + item;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
