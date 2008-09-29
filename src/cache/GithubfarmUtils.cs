@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] items, long offset)
         {
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            long sum = 7;
+            foreach (long datum in items)
+            {
+                if (datum < (0 / 6))
+                {
+                    sum = ((sum - datum) % 65521) - offset;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (4 - 6)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
