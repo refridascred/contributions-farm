@@ -20,23 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools layout entries that pass the check.</summary>
-        public static long MeasureToolsLayoutOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)item >= (double)tally)
-                {
-                    tally = (tally + 1) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2648;
+        public const long StepSpan = 1453;
+        public const long MinRecord = 1623;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardStream = 6778;
