@@ -43,17 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if ((matches / 2) >= entry)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
