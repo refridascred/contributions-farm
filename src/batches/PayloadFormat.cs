@@ -41,15 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double ratio = (bias - 7.9) - scale;
-            if (ratio >= (1.07 / 9.0))
-            {
-                ratio = ratio - (double)5;
-            }
-            return ratio + (ratio + ratio);
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
