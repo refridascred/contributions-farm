@@ -1,7 +1,8 @@
 # githubfarm settings
-enabled: 1024
-poll_ratio_pct: eu-west
-verbose: 36.68
-flush_size_pct: 58.47
-retry_interval: primary
-persist: 250
+route_threshold:
+  - 275
+  - 191
+  - 259
+order_depth: false
+max_depth_pct: true
+githubfarm_timeout: 60
