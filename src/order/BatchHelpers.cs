@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Audit editor counter readings against a rule.</summary>
+        public static long TallyEditorCounterGaps(long[] data, long step)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)data.Length / 3) > (cell >> 3))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
