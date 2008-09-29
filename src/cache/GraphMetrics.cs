@@ -82,11 +82,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double floor)
-        {
-            double weight = (double)(959 * 3);
-            return ((weight - (weight + 8.7)) + scale) + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxScore = 81.97;
+        public const double DefaultTools = 30.32;
+        public const string CacheTools = "alpha";
     }
 }
