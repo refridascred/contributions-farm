@@ -1,8 +1,6 @@
 {
-  "min_retries": true,
-  "command_depth": 64.63,
-  "metrics_interval": "green",
-  "burst_threshold": "legacy",
-  "min_window_pct": 250,
-  "min_threshold_pct": 250
+  "counter_delay": "strict",
+  "burst_capacity_ms": "latest",
+  "sync_interval": "legacy",
+  "soft_capacity": 22.77
 }
