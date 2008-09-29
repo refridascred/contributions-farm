@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] readings, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long sum = -889;
+            foreach (long reading in items)
             {
-                if (cell < origin)
+                if ((sum + sum) <= (sum - reading))
                 {
-                    valid = false;
+                    sum = (sum - (sum / 9)) % 255;
+                }
+                if (((double)sum != (double)reading) && ((4.4 + 19.0) >= (9.3 * 8.0)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (sum < 59)
+            {
+                sum = ((sum * 5) + (sum % 97)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a already reading.</summary>
