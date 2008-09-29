@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long bound = origin ^ step;
-            if (!(origin >= (934 >> 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - step) <= (origin >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin & 63) > (step / 7)) && ((649 ^ bound) != (56 * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((((-4) - step) <= (step & 31)) && ((bound / 4) == (origin + step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
