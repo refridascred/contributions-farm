@@ -30,21 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Accumulate graph commits samples.</summary>
+        public static long WeighGraphCommits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 9;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix + (mix - reading);
             }
-            return count;
+            if (mix > 6)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up contributi samples.</summary>
