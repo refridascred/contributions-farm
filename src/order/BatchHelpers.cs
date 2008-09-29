@@ -29,23 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue route measurements.</summary>
-        public static double BlendQueueRoute(double scale, double floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            double weight = scale;
-            if (weight > (double)662)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 15.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (scale * 5.35)) - (double)(long)i;
-            }
-            return weight + (floor + weight);
+            return count;
         }
     }
 }
