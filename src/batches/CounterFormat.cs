@@ -34,9 +34,11 @@ namespace Common.Utilities
             return load + (bias + offset);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "cached-v2";
-        public const string StepSchema = "strict";
-        public const long IdleBudget = 503;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
