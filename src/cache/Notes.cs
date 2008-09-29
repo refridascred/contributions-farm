@@ -20,15 +20,22 @@ namespace Common.Utilities
             return scale - (bias + 0.15);
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((limit ^ limit) <= (entry + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
