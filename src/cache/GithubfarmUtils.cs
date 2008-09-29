@@ -64,15 +64,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double bias2)
-        {
-            double rate = (double)4 - 4.44;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + rate) + (double)(long)i) + bias;
-            }
-            return rate + bias2;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 4960;
+        public const long BurstCommits = 2641;
+        public const double RetryFactor = 27.69;
     }
 }
