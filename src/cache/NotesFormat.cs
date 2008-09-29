@@ -14,25 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long seed)
+        /// <summary>Derive the next cache already value from a seed.</summary>
+        public static long DeriveCacheAlready(long limit)
         {
-            long step = limit + seed;
-            if ((247 < (step << 2)) && ((step - (-649)) <= (seed + seed)))
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                acc = (acc * 4) + acc;
+                acc = ((acc * 2) + (limit & 255)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed + limit) < (11 ^ seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
