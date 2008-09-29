@@ -1,10 +1,6 @@
-id,state,score,level
-1,primary,131,44.83
-2,local,542,59.2
-3,0.21,839,342
-4,64.88,primary,966
-5,46.89,84.65,legacy
-6,473,930,latest
-7,671,standard,30.97
-8,open,521,primary
-9,standard,20.13,eu-west
+id,level,token,ratio,rank
+1,local,122,standard,30.43
+2,619,289,27.22,76.32
+3,local,green,733,483
+4,standard,972,blue,26.24
+5,stable,19,458,fallback
