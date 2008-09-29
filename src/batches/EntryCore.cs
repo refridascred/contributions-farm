@@ -25,14 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
-            Ready,
-            Stale,
-            Active,
-            Retry,
-            Idle,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen ^ sample) >= (sample >> 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
