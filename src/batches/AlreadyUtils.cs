@@ -42,21 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 957;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = state ^ (entry << 1);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
