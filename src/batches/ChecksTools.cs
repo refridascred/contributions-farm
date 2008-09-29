@@ -39,12 +39,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            Failed,
+            Ready,
+            Queued,
+            Done,
         }
     }
 }
