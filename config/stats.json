@@ -1,6 +1,5 @@
 {
-  "burst_limit": true,
-  "command_ratio": 65,
-  "commits_retries": "stable",
-  "verbose": 9973
+  "persist": "legacy",
+  "warm_timeout": [471, 394, 306, 336],
+  "graph_limit": 48
 }
