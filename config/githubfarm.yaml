@@ -1,7 +1,4 @@
 # githubfarm settings
-dry_run: legacy
-metrics_window: green
-sync_capacity: false
-verbose: 500
-cache_interval: true
-base_delay_s: 35.15
+counter_ratio: 17.37
+warm_limit: false
+max_threshold_pct: true
