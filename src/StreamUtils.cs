@@ -78,19 +78,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format profile readings against a bound.</summary>
-        public static bool ValidateFormatProfileLimits(long[] levels, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
