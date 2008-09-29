@@ -18,19 +18,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] data)
         {
-            long state = 12;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                state = ((state ^ (state + state)) % 4096) + cell;
+                if (!!(cell < (cell / 7)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 4)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
+            return count;
         }
     }
 }
