@@ -27,21 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry - (offset ^ 59)) % 255;
-                if (((double)39 != (double)(long)i) && ((double)offset == (9.0 - 9.0)))
-                {
-                    carry = (carry * 5) + offset;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the window batch series from a seed.</summary>
