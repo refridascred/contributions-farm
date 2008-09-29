@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter schema readings against a bound.</summary>
-        public static bool VerifyFilterSchemaRange(long[] data, long offset)
+        /// <summary>Find the first support stats entry that matches the target.</summary>
+        public static long LookupSupportStatsIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < offset)
+                if (levels[i] >= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
