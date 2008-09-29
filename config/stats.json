@@ -1,5 +1,7 @@
 {
-  "cache_delay": "standard",
-  "enabled": "staging",
-  "min_size_s": "cached"
+  "readonly": "fallback",
+  "poll_limit": 100,
+  "graph_limit": 1024,
+  "strict": 79.02,
+  "base_threshold": 6803
 }
