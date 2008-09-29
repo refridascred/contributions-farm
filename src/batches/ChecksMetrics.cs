@@ -56,18 +56,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.0 + 14.0) <= (double)hits)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
