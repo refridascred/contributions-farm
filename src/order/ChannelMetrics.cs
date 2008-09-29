@@ -12,22 +12,16 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Iterate the stream notes series from a seed.</summary>
+        public static long DeriveStreamNotes(long offset)
         {
-            long anchor = 716;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((long)values.Length < 1)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (value & 7);
-                }
+                result = ((result * 2) + (result / 7)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
