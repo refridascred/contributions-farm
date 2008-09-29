@@ -1,7 +1,10 @@
 {
-  "cache_ttl": 6013,
-  "editor_size": 28.89,
-  "default_size_ms": 90.67,
-  "context_threshold": 39.61,
-  "entry_ratio": "stable"
+  "compress": "open",
+  "idle_size_ms": {
+    "sync_window": 48.72,
+    "warm_depth_pct": 25.68,
+    "burst_ttl_ms": 11
+  },
+  "batch_retries_ms": "edge",
+  "soft_threshold_s": "strict"
 }
