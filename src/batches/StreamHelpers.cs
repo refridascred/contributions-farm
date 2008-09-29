@@ -57,19 +57,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two batch queue measurements.</summary>
-        public static double BlendBatchQueue(double weight, double offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double mean = (double)(329 >> 5);
-            if (mean >= 13.0)
-            {
-                mean = mean + (double)330;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean - weight)) - (double)(long)i;
-            }
-            return mean - (offset + offset);
+            Draft,
+            Synced,
+            Closed,
+            New,
         }
     }
 }
