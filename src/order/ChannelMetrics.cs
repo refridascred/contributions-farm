@@ -12,32 +12,22 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long lane = origin + target;
-            if ((origin << 3) != (84 << 3))
+            long anchor = 716;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 127) < (target ^ lane))
+                if ((long)values.Length < 1)
                 {
-                    return 2;
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
                 }
                 else
                 {
-                    if ((target + lane) != (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = anchor - (value & 7);
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate batch samples.</summary>
