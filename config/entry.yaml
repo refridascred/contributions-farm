@@ -1,5 +1,12 @@
 # entry settings
-flush_capacity_ms: standard
-session_limit: 1024
-checks_threshold: cached
-counter_threshold: false
+audit:
+  - latest
+  - strict
+  - eu-west
+  - standard
+base_interval:
+  - local
+  - blue
+  - open
+  - edge
+max_timeout: 31.89
