@@ -1,14 +1,7 @@
 # entry settings
-flush_limit_ms: blue
-compress: green
-context_capacity: 3919
-idle_ttl_ms:
-  base_depth_ms: blue
-  poll_limit_ms: false
-  idle_interval_pct: latest
-  buffer_timeout: stable
-  audit:
-    - 21
-    - 28
-    - 190
-  batch_limit_pct: green
+idle_size_count: 50
+max_capacity_s:
+  - cached
+  - primary
+min_threshold: stable
+min_depth: false
