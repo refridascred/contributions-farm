@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + (step * 2)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
