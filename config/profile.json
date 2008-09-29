@@ -1,5 +1,12 @@
 {
-  "flush_retries_ms": 1024,
-  "persist": false,
-  "readonly": 82.52
+  "flush_size_s": {
+    "batch_capacity_pct": ["fallback", "strict"],
+    "sync_interval_pct": 66,
+    "default_retries_count": [225, 280, 246],
+    "min_size_s": 6335
+  },
+  "idle_ttl_count": false,
+  "sync_interval": "fallback",
+  "context_window": true,
+  "warm_limit": "edge"
 }
