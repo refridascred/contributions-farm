@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Dropped,
-            Stale,
-            Synced,
-            Retry,
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
