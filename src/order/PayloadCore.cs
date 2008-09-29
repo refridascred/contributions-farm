@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer batch readings.</summary>
-        public static long OverlapBufferBatchCount(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a support header.</summary>
