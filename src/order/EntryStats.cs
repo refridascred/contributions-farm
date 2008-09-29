@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            Dropped,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
