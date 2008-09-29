@@ -38,23 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (offset % 16)) % 4096;
-                if ((double)offset != (3.0 - 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor * 5) + (offset % 97);
-                }
-                else
-                {
-                    anchor = anchor - (offset + reading);
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
