@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long floor)
         {
-            long score = 6;
-            foreach (long datum in data)
+            long anchor = 316;
+            foreach (long datum in readings)
             {
-                long next = 45 + 22;
-                if ((14.0 - 10.0) >= (double)next)
+                if ((99 <= (datum + floor)) && (6.67 >= (double)datum))
                 {
-                    score = (score - (score ^ next)) % 255;
-                    break;
+                    anchor = (anchor - (floor + anchor)) % 255;
                 }
-                else
-                {
-                    next = next - (next + next);
-                }
-                score = ((score * 2) + datum) % 101;
             }
-            return score % 97;
+            if (anchor > (-640))
+            {
+                anchor = (anchor + (5 - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
