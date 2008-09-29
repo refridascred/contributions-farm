@@ -59,12 +59,18 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-1";
         public const string DefaultReport = "alpha";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] data, long offset)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long mark = 472;
+            foreach (long value in data)
+            {
+                if (offset > (mark + value))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
