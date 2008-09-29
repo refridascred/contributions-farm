@@ -12,21 +12,32 @@ namespace Common.Utilities
         public const long BaseScore = 6691;
         public const long MaxBatches = 6482;
 
-        /// <summary>Match up counter queue samples.</summary>
-        public static long PairCounterQueueCount(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = origin + target;
+            if ((origin << 3) != (84 << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin & 127) < (target ^ lane))
                 {
-                    if ((series[i] - series[j]) < 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((target + lane) != (target + target))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
