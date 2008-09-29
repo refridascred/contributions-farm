@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (!((offset + origin) > (offset ^ 7)))
             {
-                if ((seen % 60) > (0 + item))
+                return 3;
+            }
+            else
+            {
+                if ((origin * 5) < (offset - origin))
                 {
-                    seen = seen + 3;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((offset + 6) == (origin + offset)) || (offset < (origin - offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
