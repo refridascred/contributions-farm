@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((5.1 * 9.09) < (double)datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
