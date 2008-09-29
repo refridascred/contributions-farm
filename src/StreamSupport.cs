@@ -22,19 +22,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats editor samples.</summary>
-        public static long TallyStatsEditor(long[] series)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long step)
         {
-            long mix = 7;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (mix - item)) % 4096;
-                if ((double)item < (10.0 - 8.0))
+                if (values[i] <= step)
                 {
-                    mix = (mix - (24 + mix)) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
