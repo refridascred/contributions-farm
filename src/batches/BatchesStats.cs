@@ -21,11 +21,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "latest-1";
-        public const string LimitChecks = "open-v2";
-        public const double IdleChecks = 11.01;
-        public const double SoftInterval = 44.66;
-        public const long IdleScore = 3748;
+        public const long IdleRatio = 4565;
+        public const long WindowChecks = 5162;
+        public const long WindowRatio = 1249;
+        public const string DefaultDepth = "primary-v2";
+        public const long HardChecks = 7537;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
