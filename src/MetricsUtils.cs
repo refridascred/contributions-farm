@@ -39,21 +39,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstInterval = 6975;
+        public const long StepNotes = 1062;
+        public const string WindowWidth = "local-v2";
+        public const string HardNotes = "primary-1";
     }
 }
