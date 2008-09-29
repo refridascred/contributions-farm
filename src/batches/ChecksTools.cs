@@ -36,21 +36,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up cluster batch samples.</summary>
-        public static long CompareClusterBatchCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultBudget = "strict-1";
+        public const long BatchTimeout = 4063;
+        public const long DefaultSpan = 6642;
+        public const long WindowAlready = 870;
+        public const long MaxAlready = 7347;
     }
 }
