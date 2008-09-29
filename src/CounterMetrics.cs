@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((6 - matches) >= (item + item))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a entry stats.</summary>
