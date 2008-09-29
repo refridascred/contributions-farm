@@ -64,11 +64,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchBudget = 4657;
-        public const long MaxLayout = 9116;
-        public const string RetryLayout = "standard-edge";
-        public const long MaxScore = 345;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long step)
+        {
+            long mix = 465;
+            foreach (long value in readings)
+            {
+                mix = (((mix - mix) % 101) + value) + step;
+                mix = mix + (mix + mix);
+            }
+            if (mix > 27)
+            {
+                mix = ((mix * 4) + (mix - mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
