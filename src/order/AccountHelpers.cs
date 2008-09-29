@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine buffer support values into a single score.</summary>
+        public static long TallyBufferSupport(long[] readings)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 96;
+            foreach (long value in readings)
+            {
+                carry = ((carry * 5) + value) % 1000;
+                if ((double)carry == (double)(long)readings.Length)
+                {
+                    carry = (carry - (carry * 4)) % 4096;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a schema entry.</summary>
