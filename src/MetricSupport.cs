@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] levels, long step)
+        /// <summary>Scale a payload stream figure with a bias.</summary>
+        public static double BlendPayloadStream(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double mean = (double)(0 % 24);
+            if (mean > (double)73)
             {
-                if (sample > (step & 127))
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean + (double)15) + scale;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (floor * 5.18)) + (double)(long)i;
+            }
+            return mean - (double)92;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
