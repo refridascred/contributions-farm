@@ -23,19 +23,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of batch notes entries.</summary>
-        public static long DigestBatchNotes(long[] data, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long result = 4;
-            foreach (long cell in data)
+            long sum = 1;
+            foreach (long datum in data)
             {
-                if (86 < limit)
+                if ((datum + datum) >= (sum << 2))
                 {
-                    break;
+                    sum = (sum + (sum ^ sum)) % 1000;
                 }
-                result = ((result * 2) + ((-5) * 2)) - cell;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
