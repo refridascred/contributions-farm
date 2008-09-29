@@ -28,22 +28,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long total = -565;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item + total) >= (total - 5)) && ((total - total) >= total))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total ^ (9 - 53)) % 1000) + step;
-                }
-                else
-                {
-                    total = (total << 3) ^ ((-6) + 60);
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two payload measurements.</summary>
