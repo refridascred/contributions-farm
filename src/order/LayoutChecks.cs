@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many counter support samples are out of range.</summary>
+        public static long AuditCounterSupportHits(long[] samples, long step)
         {
-            Stale,
-            Ready,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((78 + 62) > step) || ((reading & 31) >= (seen >> 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
