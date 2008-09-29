@@ -1,9 +1,14 @@
 # githubfarm settings
-batch_size:
-  - 132
-  - 377
-  - 240
-  - 152
-metrics_timeout: edge
-burst_window_s: true
-tools_ttl: standard
+metrics_ratio:
+  burst_ttl_ms:
+    - 66
+    - 288
+  dry_run: local
+  strict:
+    - primary
+    - primary
+strict: 68
+counter_capacity: 90.23
+batch_ratio_pct:
+  - 374
+  - 97
