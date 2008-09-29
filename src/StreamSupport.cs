@@ -20,16 +20,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the record channel series from a seed.</summary>
-        public static long IterateRecordChannel(long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long total = 256;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                total = total - (cell + floor);
+                if ((double)total < 6.9)
+                {
+                    total = (total + (floor >> 2)) % 101;
+                }
+                else
+                {
+                    total = total - (114 + total);
+                }
             }
-            return anchor;
+            return total;
         }
     }
 }
