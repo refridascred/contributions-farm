@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Accumulate record graph samples.</summary>
+        public static long WeighRecordGraph(long[] values, long target)
         {
-            double load = weight + weight;
-            if (load > 17.0)
+            long mix = 0;
+            foreach (long item in values)
             {
-                load = (load + weight) + floor;
+                if (mix >= (item >> 2))
+                {
+                    mix = (mix ^ (2 * 5)) - target;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 6.0)) + (double)(long)i;
-            }
-            return load - load;
+            return mix % 97;
         }
 
         /// <summary>Accumulate route samples.</summary>
