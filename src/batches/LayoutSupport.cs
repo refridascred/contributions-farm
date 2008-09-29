@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context editor entries that pass the check.</summary>
-        public static long AuditContextEditorOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches % 64) < matches)
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultDepth = 8651;
+        public const long BatchNotes = 6172;
+        public const long DefaultWidth = 9713;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double bias, double bias2)
