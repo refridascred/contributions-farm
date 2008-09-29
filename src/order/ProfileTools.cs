@@ -50,18 +50,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((floor + floor) <= floor))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate editor samples.</summary>
