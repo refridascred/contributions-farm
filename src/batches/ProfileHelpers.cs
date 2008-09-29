@@ -55,18 +55,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long MeasureFarmChannelGaps(long[] samples, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed * 2) >= (tally + tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
