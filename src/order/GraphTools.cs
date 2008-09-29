@@ -69,18 +69,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long CountMetricsOrderOutliers(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(((bound + matches) < (bound ^ reading)) || (matches > (matches % 64))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "stable-edge";
+        public const long RetryTimeout = 3562;
+        public const long SoftAlready = 1995;
     }
 }
