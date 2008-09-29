@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] samples, long target)
+        /// <summary>Count tools counter pairs that satisfy a relation.</summary>
+        public static long MatchToolsCounterCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)samples.Length <= (target * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
