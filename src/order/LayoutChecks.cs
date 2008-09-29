@@ -72,19 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Locked,
+            Dropped,
+            Closed,
+            Pending,
         }
     }
 }
