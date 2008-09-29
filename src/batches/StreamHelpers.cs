@@ -73,13 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Idle,
-            Dropped,
-            Retry,
-            Pending,
+            Draft,
+            Queued,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
