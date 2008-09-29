@@ -23,16 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry << 2) ^ (carry / 7);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Iterate the command queue series from a seed.</summary>
