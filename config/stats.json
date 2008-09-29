@@ -1,8 +1,6 @@
 {
-  "min_window": [21, 391],
-  "report_limit": 60,
-  "audit": false,
-  "hard_threshold": 57,
-  "poll_threshold_count": 96.56,
-  "hard_limit_pct": 6089
+  "profile_timeout": "stable",
+  "audit": 30,
+  "buffer_size": 34.2,
+  "compress": "fallback"
 }
