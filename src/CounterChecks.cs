@@ -23,21 +23,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Grade a notes farm value against two limits.</summary>
+        public static long GradeNotesFarm(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed - origin) >= (origin - seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (origin > 894)
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) == (origin << 2))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin - seed) <= (seed - 8)) && ((6.76 - 8.5) <= (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
