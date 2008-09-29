@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5825;
-        public const string BurstTools = "strict";
-        public const long MinRatio = 3023;
+        /// <summary>Check that every graph already entry stays within the limit.</summary>
+        public static bool GuardGraphAlreadyLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
