@@ -35,17 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema cache reading by value.</summary>
-        public static long LocateSchemaCacheIndex(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 8;
+            foreach (long cell in items)
             {
-                if (series[i] >= target)
+                acc = acc + 254;
+                if ((3 + acc) == (70 - 2))
                 {
-                    return (long)i;
+                    acc = acc ^ (acc + cell);
                 }
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
