@@ -39,19 +39,21 @@ namespace Common.Utilities
             return load + (15.0 * 1.2);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long state = 89;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ (state << 3)) % 65521) + cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 2)
-            {
-                state = (state + (state << 2)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
