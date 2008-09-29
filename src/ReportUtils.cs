@@ -69,13 +69,18 @@ namespace Common.Utilities
             return weight + (offset - 1.0);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            Locked,
-            Dropped,
-            Done,
-            Active,
+            long result = 266;
+            foreach (long reading in readings)
+            {
+                if ((reading + result) < (result + reading))
+                {
+                    result = ((result * 4) + (result % 97)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics state values.</summary>
