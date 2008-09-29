@@ -55,22 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item ^ 59) > (matches - matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
