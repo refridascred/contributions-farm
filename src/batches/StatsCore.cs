@@ -49,15 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (seen < (seen ^ (long)readings.Length))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
