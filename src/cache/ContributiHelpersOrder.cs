@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long step)
+        /// <summary>Adjust a cluster graph reading.</summary>
+        public static double AdjustClusterGraph(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = (double)(4 + 83);
+            return (mean - ratio) + floor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
