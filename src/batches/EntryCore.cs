@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            if ((double)seed <= (2.35 - 9.75))
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ target) > (seed % 5))
+                if ((score - origin) >= origin)
                 {
-                    return 4;
+                    score = ((score * 5) + 9) % 4096;
                 }
-                else
-                {
-                    return 5;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
