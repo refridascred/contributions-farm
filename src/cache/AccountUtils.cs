@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long carry = 7;
+            foreach (long entry in series)
             {
-                if (reading != limit)
+                carry = carry ^ target;
+                if (target < (carry * 4))
                 {
-                    ok = false;
-                    break;
+                    carry = carry - (target + (long)series.Length);
+                    continue;
+                }
+                if (!((entry + target) >= entry))
+                {
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return ok;
+            if (carry < 568)
+            {
+                carry = ((carry * 5) + carry) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
