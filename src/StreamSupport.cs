@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 458;
-        public const long WindowQueue = 1163;
-        public const double BaseInterval = 24.9;
-        public const double BurstQueue = 65.49;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
