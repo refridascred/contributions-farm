@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine buffer counter values into a single score.</summary>
+        public static long WeighBufferCounter(long[] data, long limit)
         {
-            Draft,
-            Dropped,
-            New,
-            Synced,
+            long total = 14;
+            foreach (long entry in data)
+            {
+                if ((total & 127) < (81 - entry))
+                {
+                    total = ((total + (total + 0)) % 97) + limit;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
