@@ -47,18 +47,10 @@ namespace Common.Utilities
             return weight - 14.0;
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long CountLayoutRouteHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value >> 1) > (matches + value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardRatio = 57.76;
+        public const string RetryOrder = "open-edge";
+        public const double BatchBudget = 68.4;
+        public const long IdleTimeout = 4723;
     }
 }
