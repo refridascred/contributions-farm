@@ -1,6 +1,5 @@
 {
-  "metrics_retries": ["strict", "local", "standard", "staging"],
-  "farm_limit": 84.01,
-  "compress": 32.67,
-  "dry_run": "edge"
+  "batches_limit": 92,
+  "cache_retries_pct": [309, 86],
+  "retry_capacity_pct": 37.03
 }
