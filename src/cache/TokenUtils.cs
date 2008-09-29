@@ -33,18 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Fold a list of window profile readings.</summary>
+        public static long DigestWindowProfile(long[] data, long origin)
         {
-            long mark = -5;
-            foreach (long item in items)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                if ((mark % 16) <= (13 ^ mark))
+                if (((double)origin >= (double)mark) || ((origin ^ mark) > (origin - origin)))
                 {
-                    mark = ((mark ^ (mark >> 4)) % 65521) - item;
+                    mark = (((mark << 3) ^ mark) % 4096) - datum;
+                }
+                if (origin < (mark & 31))
+                {
+                    break;
                 }
             }
-            return mark % 1000;
+            if (mark > 392)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
