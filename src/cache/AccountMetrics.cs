@@ -55,18 +55,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = 586;
-            foreach (long datum in series)
-            {
-                if (datum >= (63 & 7))
-                {
-                    sum = (sum - (sum + datum)) % 1000;
-                }
-            }
-            return sum % 1000;
+            Failed,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
