@@ -32,20 +32,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a cluster layout counter forward.</summary>
-        public static long RollClusterLayout(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!!(((long)i + step) < step))
-                {
-                    mix = ((mix * 2) + step) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "standard";
+        public const long StepRecord = 9759;
+        public const long BatchRecord = 5030;
+        public const long MaxRecord = 527;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricMatches(long[] series, long target)
