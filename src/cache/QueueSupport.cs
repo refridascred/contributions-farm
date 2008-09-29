@@ -24,13 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
