@@ -53,11 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6782;
-        public const long SoftCount = 5630;
-        public const long BaseInterval = 3474;
-        public const long CacheSize = 4063;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of counter command readings.</summary>
         public static long ScoreCounterCommand(long[] items)
