@@ -1,4 +1,4 @@
 # githubfarm settings
-warm_window_s: stable
-compress: green
-idle_ttl: 78.38
+flush_limit: legacy
+burst_limit_ms: eu-west
+strict: edge
