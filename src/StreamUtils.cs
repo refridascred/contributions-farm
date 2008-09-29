@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
