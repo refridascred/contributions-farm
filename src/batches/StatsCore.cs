@@ -75,25 +75,13 @@ namespace Common.Utilities
         public const string BaseAlready = "latest-v2";
         public const string SoftRatio = "primary";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long bound, long bound2)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long prev = bound - bound2;
-            if ((bound - prev) <= prev)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound2 <= (bound % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
