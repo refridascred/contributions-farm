@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            Ready,
-            Queued,
-            Stale,
+            double scale = bias;
+            if (scale < (floor - floor))
+            {
+                scale = scale - bias;
+            }
+            return scale - (double)0;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
