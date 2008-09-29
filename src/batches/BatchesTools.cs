@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Accumulate filter support samples.</summary>
+        public static long TallyFilterSupport(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 1;
+            foreach (long entry in series)
             {
-                if ((((double)hits <= (1.1 - 9.2)) && ((hits - hits) < (value + hits))) && ((hits << 3) < (36 + hits)))
+                if ((offset >> 3) <= (129 ^ entry))
                 {
-                    hits = hits + 1;
+                    result = result ^ offset;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
