@@ -31,18 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long TallyClusterGithubfarmHits(long[] readings)
+        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
+        public static long CountRouteGithubfarmMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((double)sample >= (6.5 - 0.8)) || ((seen + 982) > (long)readings.Length))
+                if (matches >= (matches ^ item))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
