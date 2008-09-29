@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] readings, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = -122;
+            foreach (long item in items)
             {
-                if (!(offset < 86))
+                if (!((mix - mix) >= (item << 3)))
                 {
-                    matches = (matches + 3) + reading;
+                    mix = ((mix * 3) + (item << 3)) % 4096;
                 }
             }
-            return matches;
+            if (mix < 49)
+            {
+                mix = mix + (mix + 699);
+            }
+            return mix;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
