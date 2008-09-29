@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the context editor entries that pass the check.</summary>
+        public static long AuditContextEditorOutliers(long[] items)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches % 64) < matches)
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
