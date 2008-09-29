@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchDepth = 1126;
-        public const long MinBatches = 9309;
-        public const string IdleScore = "local-edge";
-        public const long IdleCount = 6873;
-        public const string RetrySize = "stable-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 1673;
+        public const string CacheRatio = "latest-edge";
+        public const string HardScore = "strict-v2";
+        public const long StepFarm = 8308;
+        public const long StepScore = 6096;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] samples, long origin)
