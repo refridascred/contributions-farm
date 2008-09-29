@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double MaxSize = 19.73;
         public const double MinSupport = 1.55;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] items, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits * 3) < 0)
-                {
-                    hits = ((hits + 3) + entry) + limit;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
