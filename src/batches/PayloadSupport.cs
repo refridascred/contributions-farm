@@ -29,9 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "stable";
-        public const double BurstAlready = 62.14;
-        public const long BurstFactor = 7428;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((tally + datum) < (tally ^ tally)) || !((datum * 3) < ((-643) % 3)))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
