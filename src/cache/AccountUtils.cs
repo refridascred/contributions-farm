@@ -29,28 +29,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc ^ (floor * 3);
-                if ((double)acc <= 1.67)
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-                else
-                {
-                    acc = (acc + floor) % 255;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc - (floor - acc)) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
