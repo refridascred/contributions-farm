@@ -1,9 +1,8 @@
 # githubfarm settings
-payload_ratio: true
-burst_limit_pct: open
-base_timeout_count: 250
-batch_threshold: green
-queue_ratio:
-  - primary
-  - green
-  - blue
+poll_threshold_s: true
+burst_size:
+  editor_size: 30
+  sync_delay_count: 80.16
+  hard_ttl_pct: false
+  sync_limit_pct: false
+session_interval: 30
