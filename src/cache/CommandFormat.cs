@@ -35,19 +35,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double floor)
-        {
-            double mean = floor - rate;
-            if (mean <= (rate / 3.0))
-            {
-                mean = mean - 12.0;
-            }
-            else
-            {
-                mean = mean + (mean * 1.7);
-            }
-            return mean + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "latest-v2";
+        public const double HardTimeout = 60.55;
+        public const double RetryFactor = 20.34;
+        public const long IdleTools = 6077;
     }
 }
