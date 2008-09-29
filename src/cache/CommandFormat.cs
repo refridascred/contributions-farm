@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    result = ((result - (76 - result)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
