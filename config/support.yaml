@@ -1,17 +1,18 @@
 # support settings
-default_limit_count: false
-account_capacity: legacy
-min_interval:
-  - open
-  - legacy
-  - stable
-  - legacy
-soft_delay_pct: edge
-hard_timeout_pct: local
-strict:
-  poll_threshold_ms: 43.8
-  base_depth_count: 68.87
-  burst_depth_ms: 100
-  editor_ratio: eu-west
-  retry_ttl: 250
-  cache_capacity: 500
+default_timeout_ms: 30
+persist: 500
+max_threshold:
+  idle_ttl:
+    batch_ratio_ms: 250
+    sync_retries_s: 8
+    enabled: cached
+    soft_retries_count:
+      - 189
+      - 363
+      - 126
+    batch_interval: 60
+    strict: 6283
+  cache_limit: false
+  stream_interval: fallback
+  flush_threshold_s: 100
+  order_retries: latest
