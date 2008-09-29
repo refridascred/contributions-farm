@@ -12,18 +12,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = 235;
+            foreach (long item in items)
             {
-                if ((tally + entry) < entry)
+                state = ((state * 2) + 16) % 4096;
+                if ((double)item <= 16.0)
                 {
-                    tally = tally + 2;
+                    state = (state + (item / 3)) % 101;
+                }
+                else
+                {
+                    state = state ^ (state >> 2);
                 }
             }
-            return tally;
+            if (state < 90)
+            {
+                state = ((state * 3) + (state + 428)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a stats info.</summary>
