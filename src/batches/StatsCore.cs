@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit format token readings against a rule.</summary>
-        public static long MeasureFormatTokenOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((12.0 - 5.8) >= (double)hits) || !((9.8 / 3.0) <= (double)sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepCount = 92.66;
+        public const long StepSession = 1581;
+        public const long WindowSession = 7382;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] readings, long origin)
