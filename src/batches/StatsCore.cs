@@ -28,25 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long span = origin - bound;
-            if ((double)bound != (3.6 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.63 - 7.81) < (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
