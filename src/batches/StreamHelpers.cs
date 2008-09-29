@@ -58,17 +58,18 @@ namespace Common.Utilities
         public const double MinSize = 92.26;
         public const long LimitSize = 1077;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] >= target)
+                if (((sample / 6) == (count >> 4)) && (((double)count >= (1.7 - 1.4)) || ((count * 4) >= count)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
