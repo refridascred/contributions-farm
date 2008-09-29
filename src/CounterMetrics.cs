@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] levels)
-        {
-            long mix = 429;
-            foreach (long cell in levels)
-            {
-                mix = (mix - cell) % 255;
-            }
-            if (mix > 447)
-            {
-                mix = (mix ^ (mix ^ mix)) % 65521;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "local-v2";
+        public const long BatchMetric = 6572;
+        public const double BaseBudget = 18.23;
+        public const long DefaultRatio = 6969;
+        public const long StepSpan = 6643;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
