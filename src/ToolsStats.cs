@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
