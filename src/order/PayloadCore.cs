@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Classify a token counter pair into a bucket.</summary>
+        public static long ClassifyTokenCounter(long bound, long bound2)
         {
-            long mix = -122;
-            foreach (long item in items)
+            if (((bound / 5) > 3) || (bound2 >= bound))
             {
-                if (!((mix - mix) >= (item << 3)))
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound2) > (bound2 & 63))
                 {
-                    mix = ((mix * 3) + (item << 3)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < 49)
-            {
-                mix = mix + (mix + 699);
-            }
-            return mix;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
