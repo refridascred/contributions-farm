@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] samples, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((18.0 - 20.0) >= (double)count) || ((double)seed == (0.1 - 5.5)))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
