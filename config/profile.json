@@ -1,21 +1,6 @@
 {
-  "batch_delay": {
-    "base_size_count": 51,
-    "sync_capacity_ms": {
-      "compress": 23,
-      "hard_threshold_pct": 3407,
-      "sync_size_s": 250,
-      "idle_delay_s": 500,
-      "persist": true,
-      "window_window": "cached"
-    },
-    "compress": "fallback",
-    "cache_depth_s": "stable",
-    "max_retries": ["eu-west", "stable", "local", "green"],
-    "stream_depth": true
-  },
-  "metrics_size": 100,
-  "idle_ttl": true,
-  "sync_timeout": [359, 248],
-  "audit": [130, 166, 290, 322]
+  "token_retries": false,
+  "warm_ttl_count": true,
+  "context_size": "strict",
+  "warm_capacity_ms": "fallback"
 }
