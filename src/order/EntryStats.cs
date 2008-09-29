@@ -12,22 +12,20 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long BatchLayout = 7211;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = 5;
+            foreach (long datum in samples)
             {
-                if ((8.0 / 9.0) > (double)seen)
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = total - (total & 1);
+                total = total - (datum / 2);
             }
-            return seen;
+            if (total > 7)
+            {
+                total = ((total * 4) + (total % 8)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
