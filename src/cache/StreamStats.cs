@@ -56,13 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long origin)
         {
-            Idle,
-            Pending,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
