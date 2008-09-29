@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the token cache entries that pass the check.</summary>
-        public static long MeasureTokenCacheMatches(long[] samples, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((double)floor != (17.0 - 9.7))
+                if ((reading & 63) <= (reading * 5))
                 {
-                    seen = (seen + 1) ^ item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
