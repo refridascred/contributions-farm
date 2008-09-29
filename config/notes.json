@@ -1,6 +1,6 @@
 {
-  "enabled": "staging",
-  "poll_interval": 100,
-  "batch_interval": "green",
-  "cache_limit": "latest"
+  "schema_limit": 60,
+  "graph_threshold": 500,
+  "base_ttl": "latest",
+  "queue_limit": [288, 125]
 }
