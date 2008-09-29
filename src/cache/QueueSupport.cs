@@ -27,12 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long step)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
