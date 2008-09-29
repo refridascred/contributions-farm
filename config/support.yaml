@@ -1,9 +1,29 @@
 # support settings
-poll_timeout: false
-flush_size: 35.7
-strict: standard
-sync_ratio_pct: false
-context_timeout:
-  cache_limit: 6371
-  enabled: 21.74
-  account_delay: true
+dry_run:
+  batches_size: green
+  burst_size_count:
+    githubfarm_threshold: 30
+    sync_delay:
+      - 395
+      - 352
+      - 102
+    default_window_pct: false
+    cache_threshold: eu-west
+  cache_threshold: 5370
+hard_window_count: 27.36
+enabled:
+  readonly: fallback
+  warm_timeout_count: 1024
+  tools_threshold: staging
+  poll_threshold_pct: edge
+  checks_threshold: strict
+  hard_depth_count:
+    flush_limit_count: true
+    burst_limit: open
+    idle_depth: 500
+    default_interval_pct:
+      - 306
+      - 244
+      - 375
+    base_retries: true
+strict: 0.71
