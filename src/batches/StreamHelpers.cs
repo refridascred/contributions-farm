@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Compare every pair of window cluster readings.</summary>
+        public static long CompareWindowClusterCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 15)
+                    if ((items[i] - items[j]) < 9)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
