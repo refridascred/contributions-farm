@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double span)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double mean = span / 5.0;
-            if (mean > (5.3 / 3.0))
-            {
-                mean = mean - (ratio * 1.0);
-            }
-            else
-            {
-                mean = mean + (ratio - mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + span;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a batch checks reading by value.</summary>
