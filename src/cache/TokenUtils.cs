@@ -37,17 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Scale a batch checks figure with a bias.</summary>
+        public static double ScaleBatchChecks(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 7.14;
+            if (mean > (double)25)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) + offset;
             }
-            return -1;
+            else
+            {
+                mean = mean + (bias / 2.0);
+            }
+            return mean - (double)9;
         }
     }
 }
