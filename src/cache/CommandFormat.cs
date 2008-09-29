@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = -665;
-            foreach (long entry in readings)
-            {
-                if ((acc > (4 / 9)) && ((4.9 * 11.0) < (double)acc))
-                {
-                    acc = ((acc * 3) + (entry ^ entry)) % 255;
-                }
-            }
-            return acc % 1000;
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Adjust a graph reading.</summary>
