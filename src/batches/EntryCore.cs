@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            if ((double)seed <= (2.35 - 9.75))
             {
-                if ((step < (6 % 24)) && ((step + step) < (3 * 5)))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((seed ^ target) > (seed % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
