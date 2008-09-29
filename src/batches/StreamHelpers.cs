@@ -49,12 +49,17 @@ namespace Common.Utilities
         public const double MinSize = 92.26;
         public const long LimitSize = 1077;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
