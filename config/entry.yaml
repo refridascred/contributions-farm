@@ -1,7 +1,28 @@
 # entry settings
-idle_size_count: 50
-max_capacity_s:
-  - cached
-  - primary
-min_threshold: stable
-min_depth: false
+cluster_timeout: 768
+hard_interval:
+  min_interval: 77
+  soft_ratio: cached
+  idle_threshold:
+    - blue
+    - local
+    - stable
+  audit: false
+  sync_interval_count:
+    enabled: 28
+    dry_run: false
+    max_interval_ms: staging
+compress: cached
+strict:
+  base_ttl_s: 3107
+  base_interval_ms:
+    - local
+    - eu-west
+  default_timeout_ms:
+    default_capacity_pct: local
+    compress: 71.31
+    enabled: cached
+    min_retries: 0.42
+    commits_limit: 15.69
+layout_depth: 46.87
+base_depth_ms: cached
