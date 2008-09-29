@@ -31,15 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long TallyEntryContextHits(long[] items)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long item in items)
             {
-                if ((item >> 1) < (item * 4))
+                if ((tally - tally) >= item)
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
             }
             return tally;
