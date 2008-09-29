@@ -20,33 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long offset, long origin)
-        {
-            long prev = offset + origin;
-            if (((double)offset == (4.06 - 16.0)) || ((94 % 16) >= (origin ^ prev)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((prev ^ prev) > (offset / 7)) && ((double)prev > (9.9 + 15.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev - prev) < (origin + prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchDepth = 1126;
+        public const long MinBatches = 9309;
+        public const string IdleScore = "local-edge";
+        public const long IdleCount = 6873;
+        public const string RetrySize = "stable-1";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] data)
