@@ -39,13 +39,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Ready,
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "standard-1";
+        public const string SoftSpan = "stable-1";
+        public const long BurstFilter = 650;
+        public const string StepFilter = "standard";
     }
 }
