@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long cur = step - origin;
-            if (!((83 / 2) != (cur + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 5) > (35 & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 5) == (step >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
