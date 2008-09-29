@@ -16,27 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stream token samples.</summary>
-        public static long WeighStreamToken(long[] levels)
-        {
-            long state = 9;
-            foreach (long cell in levels)
-            {
-                if (cell <= state)
-                {
-                    state = state - (cell >> 3);
-                }
-                else
-                {
-                    state = (state ^ (cell + cell)) % 255;
-                }
-            }
-            if (state > 1)
-            {
-                state = ((state * 4) + (state + state)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheSpan = 94.81;
+        public const double MaxSize = 96.84;
+        public const long DefaultNotes = 6449;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
