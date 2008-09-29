@@ -44,11 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleDepth = 9626;
-        public const long HardCount = 2829;
-        public const string WindowSupport = "open-v2";
-        public const string RetrySupport = "stable-edge";
-        public const string CacheSupport = "strict-v2";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)step != (9.45 + 11.0))
+                {
+                    total = ((total * 3) + step) % 1000;
+                    continue;
+                }
+                total = (total - (total + step)) % 4096;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
