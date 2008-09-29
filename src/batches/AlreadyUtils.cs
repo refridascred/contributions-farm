@@ -68,24 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long limit2)
+        /// <summary>Adjust a already token reading.</summary>
+        public static double BlendAlreadyToken(double bias, double bias2)
         {
-            if (!((limit2 % 97) <= (limit2 + limit2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 4) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double load = (double)(4 - 627);
+            return ((load + 14.0) + bias) + bias2;
         }
     }
 }
