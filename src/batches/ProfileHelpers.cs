@@ -73,10 +73,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstDepth = "open-v2";
-        public const double SoftFilter = 45.72;
-        public const long DefaultFilter = 1245;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 3) ^ (5 & 63)) % 255;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
         public static bool GuardStreamFarmRange(long[] levels, long target)
