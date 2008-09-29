@@ -75,19 +75,25 @@ namespace Common.Utilities
         public const string BaseAlready = "latest-v2";
         public const string SoftRatio = "primary";
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] items, long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long prev = bound - bound2;
+            if ((bound - prev) <= prev)
             {
-                if (entry < limit)
+                return 5;
+            }
+            else
+            {
+                if (bound2 <= (bound % 16))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
     }
 }
