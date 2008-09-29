@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((step < (6 % 24)) && ((step + step) < (3 * 5)))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
