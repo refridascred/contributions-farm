@@ -54,18 +54,33 @@ namespace Common.Utilities
             return bias + 2.7;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum < (datum ^ hits))
+                if (((5.0 * 4.1) > (double)bound) && ((result - (long)i) < (bound / 2)))
                 {
-                    hits = hits + 3;
+                    result = ((result * 2) + (result + bound)) % 65521;
                 }
+                else
+                {
+                    result = ((result << 3) ^ (result - (long)i)) % 65521;
+                    result = (result + (result * 2)) % 97;
+                }
+                if ((bound % 8) == ((long)i % 24))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result << 3) ^ (-14)) + (long)i2;
+                    result = ((result * 3) + (bound ^ result)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
