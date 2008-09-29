@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = ((total << 2) ^ (total * 3)) % 4096;
-                if ((12.0 * 5.74) < (double)limit)
+                if ((seen % 60) > (0 + item))
                 {
-                    total = total ^ (datum ^ limit);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 116)
-            {
-                total = (total - (limit + 5)) % 65521;
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
