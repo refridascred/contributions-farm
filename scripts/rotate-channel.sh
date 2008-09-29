@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
     green)
         log "fast path"
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest stable primary strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
-
-CHANNEL_LIMIT=196
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
