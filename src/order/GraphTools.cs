@@ -25,26 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long DigestPayloadBuffer(long[] values, long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mix = 2;
-            foreach (long datum in values)
-            {
-                if ((double)337 != (double)limit)
-                {
-                    mix = (((mix * 3) + (mix - limit)) % 65521) + datum;
-                }
-                else
-                {
-                    mix = (mix * 4) + (344 * 5);
-                }
-            }
-            if (mix > 8)
-            {
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix % 65521;
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
