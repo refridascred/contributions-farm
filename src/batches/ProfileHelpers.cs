@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            long sum = 74;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                sum = sum ^ (sum + item);
+                if ((6 ^ count) != (entry >> 4))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum > 25)
-            {
-                sum = ((sum * 2) + (sum * 4)) % 97;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of already report readings.</summary>
