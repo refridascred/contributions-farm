@@ -37,18 +37,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] samples, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!(tally >= (tally >> 5)))
+                if (!(((sample << 1) >= 62) || ((double)sample >= (double)hits)))
                 {
-                    tally = ((tally + 2) - entry) - target;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
