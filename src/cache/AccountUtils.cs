@@ -27,15 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long floor)
         {
-            long mark = 27;
-            foreach (long entry in levels)
+            long cur = step ^ floor;
+            if (((6 + cur) == (step << 2)) && (((-2) + 157) != (cur - cur)))
             {
-                mark = (mark - (85 + mark)) ^ entry;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((cur << 2) <= (floor - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((cur & 3) != (step % 100)) || ((floor << 1) <= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6 - cur) >= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
