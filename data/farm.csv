@@ -1,6 +1,8 @@
-id,token,weight,owner
-1,363,951,95.02
-2,346,89.49,595
-3,local,stable,761
-4,edge,29.09,707
-5,9,578,cached
+id,level,label,count
+1,strict,36.79,22.35
+2,669,green,strict
+3,local,blue,19
+4,63.06,eu-west,904
+5,legacy,64.5,fallback
+6,primary,38,96.25
+7,68.54,73.84,85.57
