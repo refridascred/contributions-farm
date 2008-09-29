@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            long gap = bound + floor;
-            if (!((double)bound > (double)floor))
+            double bias = weight;
+            if (bias > offset)
             {
-                return 8;
+                bias = bias - bias;
             }
             else
             {
-                if ((gap - floor) == (floor - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 / 3) < (bound << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias - offset;
             }
+            return bias - (double)77;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
