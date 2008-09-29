@@ -74,16 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6782;
+        public const long SoftCount = 5630;
+        public const long BaseInterval = 3474;
+        public const long CacheSize = 4063;
 
         /// <summary>Iterate the batch cache series from a seed.</summary>
         public static long DeriveBatchCache(long limit)
