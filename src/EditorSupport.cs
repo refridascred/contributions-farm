@@ -49,20 +49,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of metric notes readings.</summary>
-        public static long TallyMetricNotes(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long bound)
         {
-            long sum = 10;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                sum = (((sum * 5) + sum) % 65521) - cell;
-                sum = (sum + (sum % 64)) % 97;
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 2)
-            {
-                sum = (sum - (sum >> 4)) % 1000;
-            }
-            return sum;
+            return stale;
         }
     }
 }
