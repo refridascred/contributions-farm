@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstFactor = 6;
-        public const long LimitGithubfarm = 9767;
-        public const string BaseGithubfarm = "primary-edge";
-        public const long MaxGithubfarm = 7540;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "local-v2";
+        public const double MinCounter = 27.88;
+        public const long SoftSpan = 2398;
+        public const string WindowCounter = "fallback-v2";
+        public const long SoftLevel = 5571;
 
         /// <summary>Count the metric session entries that pass the check.</summary>
         public static long AuditMetricSessionMatches(long[] series)
