@@ -39,12 +39,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "primary-1";
-        public const string SoftSize = "primary-1";
-        public const long StepFormat = 1878;
-        public const long WindowSpan = 6952;
-        public const long BatchSize = 4504;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series)
+        {
+            long carry = 629;
+            foreach (long entry in series)
+            {
+                carry = carry + (entry + entry);
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (carry + ((long)i % 64)) % 65521;
+                    carry = (carry - (entry << 1)) % 255;
+                }
+                if (!((carry + entry) != (carry * 4)))
+                {
+                    carry = carry ^ (carry & 255);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (entry >> 3)) % 101;
+                }
+            }
+            if (carry > (-889))
+            {
+                carry = ((carry << 2) ^ (carry % 24)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long step, long limit)
