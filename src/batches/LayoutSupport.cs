@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const long BatchNotes = 6172;
         public const long DefaultWidth = 9713;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items, long step)
         {
-            double gain = bias2;
-            return (gain - (bias2 - gain)) + bias;
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 3) >= (2 * 4))
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
