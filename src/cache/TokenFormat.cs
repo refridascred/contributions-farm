@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cluster batch readings against a bound.</summary>
-        public static bool ValidateClusterBatchRange(long[] data, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
