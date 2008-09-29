@@ -26,21 +26,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of payload contributi readings.</summary>
-        public static long PairPayloadContributiCount(long[] values)
+        /// <summary>Locate a tools cache reading by value.</summary>
+        public static long LocateToolsCacheIndex(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
