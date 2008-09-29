@@ -61,31 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            if ((offset << 1) >= (offset + origin))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 2) < (offset - 822))
+                if ((value < (value - matches)) || (664 <= (value - matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)7 != (double)offset) || (origin > offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
