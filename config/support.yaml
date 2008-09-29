@@ -1,18 +1,10 @@
 # support settings
-default_timeout_ms: 30
-persist: 500
-max_threshold:
-  idle_ttl:
-    batch_ratio_ms: 250
-    sync_retries_s: 8
-    enabled: cached
-    soft_retries_count:
-      - 189
-      - 363
-      - 126
-    batch_interval: 60
-    strict: 6283
-  cache_limit: false
-  stream_interval: fallback
-  flush_threshold_s: 100
-  order_retries: latest
+flush_size_count: 71.45
+batch_ttl:
+  - fallback
+  - staging
+  - stable
+retry_depth_pct: true
+metrics_depth: 11
+poll_limit: fallback
+channel_limit: cached
