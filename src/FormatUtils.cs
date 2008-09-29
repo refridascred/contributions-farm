@@ -50,16 +50,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long origin)
+        /// <summary>Iterate the batch route series from a seed.</summary>
+        public static long RollBatchRoute(long bound)
         {
-            long result = 58;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 4) + (origin + origin)) ^ sample;
-                result = result + (0 ^ result);
+                if ((bound + acc) != (bound / 5))
+                {
+                    acc = (acc ^ acc) % 65521;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
