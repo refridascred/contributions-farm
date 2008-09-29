@@ -1,7 +1,14 @@
 {
-  "persist": "stable",
-  "audit": "latest",
-  "flush_retries_ms": "cached",
-  "metrics_delay": 84.92,
-  "compress": ["eu-west", "cached", "local"]
+  "compress": {
+    "poll_delay_s": 4705,
+    "format_timeout": false,
+    "entry_capacity": 250,
+    "flush_size_ms": "blue",
+    "account_threshold": "strict"
+  },
+  "poll_timeout_pct": 95,
+  "burst_window_count": 3690,
+  "sync_capacity_pct": "legacy",
+  "profile_retries": 54,
+  "account_window": ["edge", "local", "green", "staging"]
 }
