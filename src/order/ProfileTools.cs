@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2632;
+        public const long SoftRatio = 1540;
+        public const long StepProfile = 9118;
+        public const long CacheScore = 7729;
 
         /// <summary>Classify a schema session pair into a bucket.</summary>
         public static long BucketSchemaSession(long origin, long target)
