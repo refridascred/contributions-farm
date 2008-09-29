@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long HardSize = 3379;
         public const long BurstChecks = 8285;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = 18;
+            foreach (long item in readings)
             {
-                if ((757 >> 3) > (3 - count))
+                if (!((item + 91) < mix))
                 {
-                    count = (count + 3) + cell;
+                    mix = (mix + seed) % 255;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
