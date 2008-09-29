@@ -1,7 +1,12 @@
 {
-  "readonly": "fallback",
-  "poll_limit": 100,
-  "graph_limit": 1024,
-  "strict": 79.02,
-  "base_threshold": 6803
+  "verbose": 2679,
+  "enabled": 47.79,
+  "dry_run": 54,
+  "stats_window": {
+    "default_interval_s": ["legacy", "blue", "standard"],
+    "batch_retries": true,
+    "readonly": 16.24
+  },
+  "burst_timeout": 4717,
+  "default_window": "strict"
 }
