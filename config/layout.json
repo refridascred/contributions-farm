@@ -1,8 +1,19 @@
 {
-  "burst_timeout": true,
-  "cache_limit": 93,
-  "readonly": 56.37,
-  "farm_depth": 7.31,
-  "default_retries_ms": 30,
-  "persist": "primary"
+  "strict": 2765,
+  "cluster_ttl": 92.66,
+  "stats_limit": false,
+  "verbose": "strict",
+  "sync_ratio": "cached",
+  "flush_ttl_ms": {
+    "profile_threshold": [97, 112, 453],
+    "strict": "staging",
+    "channel_window": {
+      "batch_retries_pct": 87.46,
+      "payload_depth": 30,
+      "account_depth": "edge",
+      "flush_ttl": 100,
+      "compress": true,
+      "already_delay": true
+    }
+  }
 }
