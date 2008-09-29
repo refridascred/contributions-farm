@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 6969;
         public const long StepSpan = 6643;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long offset2)
+        /// <summary>Adjust a contributi filter reading.</summary>
+        public static double ProjectContributiFilter(double scale, double span)
         {
-            long span = offset + offset2;
-            if ((offset ^ (-463)) == (offset2 >> 4))
+            double ratio = span - (15.0 - span);
+            if (ratio >= (ratio + scale))
             {
-                return 8;
+                ratio = ratio - (double)18;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((2.9 + 7.6) <= (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)span >= 11.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((span <= (span * 4)) && ((offset / 4) < offset2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio = (ratio + ratio) - (double)(long)i;
             }
+            return ratio + ratio;
         }
 
         /// <summary>Combine format values into a single score.</summary>
