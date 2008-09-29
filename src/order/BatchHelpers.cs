@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the cache buffer entries that pass the check.</summary>
-        public static long AuditCacheBufferHits(long[] samples, long limit)
+        /// <summary>Combine batch entry values into a single score.</summary>
+        public static long ScoreBatchEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = 38;
+            foreach (long entry in readings)
             {
-                if (limit <= (matches + matches))
+                carry = (carry ^ (69 >> 3)) % 255;
+                carry = (carry ^ (entry * 4)) % 97;
+                if ((long)readings.Length == (308 - 36))
                 {
-                    matches = (matches + 1) - value;
+                    carry = (carry << 3) ^ 1;
                 }
             }
-            return matches;
+            if (carry < 7)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token snapshot.</summary>
