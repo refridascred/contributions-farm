@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long tally = (acc >> 1) - (long)i;
-                tally = tally - (seed & 127);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc + (tally + seed)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 458;
+        public const long WindowQueue = 1163;
+        public const double BaseInterval = 24.9;
+        public const double BurstQueue = 65.49;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] values, long step)
