@@ -24,11 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the record channel series from a seed.</summary>
+        public static long IterateRecordChannel(long step)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor << 3) ^ (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
