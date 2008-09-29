@@ -1,27 +1,7 @@
 {
-  "commits_size": {
-    "strict": 11.4,
-    "flush_ttl": true,
-    "audit": true,
-    "batch_depth": 6.44
-  },
-  "cluster_depth": {
-    "strict": [183, 276, 288],
-    "sync_size": 4149,
-    "tools_ratio": "staging",
-    "context_depth": {
-      "hard_delay_count": true,
-      "batch_ratio": ["eu-west", "edge", "legacy", "legacy"],
-      "min_ratio": 35.23,
-      "persist": 1024,
-      "cluster_threshold": 1024,
-      "enabled": "stable"
-    }
-  },
-  "persist": {
-    "strict": "blue",
-    "idle_delay_s": 100,
-    "counter_depth": 89,
-    "commits_retries": 60
-  }
+  "cache_ttl": 6013,
+  "editor_size": 28.89,
+  "default_size_ms": 90.67,
+  "context_threshold": 39.61,
+  "entry_ratio": "stable"
 }
