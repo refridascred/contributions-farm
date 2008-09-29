@@ -21,18 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((sample % 2) <= (sample / 8))
+                if ((count ^ 449) < datum)
                 {
-                    tally = tally + 1;
+                    count = (count + 3) - target;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
