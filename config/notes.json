@@ -1,5 +1,12 @@
 {
-  "record_window": "green",
-  "compress": 15.98,
-  "tools_limit": "local"
+  "verbose": false,
+  "buffer_limit": "strict",
+  "context_limit": true,
+  "soft_ratio_ms": {
+    "burst_limit": 56,
+    "max_delay": "fallback",
+    "burst_limit_pct": 88.98,
+    "farm_threshold": ["eu-west", "local", "strict"]
+  },
+  "burst_ttl_count": 48.55
 }
