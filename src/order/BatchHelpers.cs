@@ -19,24 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if (!((5.04 / 7.0) >= (double)step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (floor - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
