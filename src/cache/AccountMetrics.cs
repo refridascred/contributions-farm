@@ -74,38 +74,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if ((origin * 4) <= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin >> 3) < (limit ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - origin) == (origin + origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)limit != (double)origin) && ((origin / 5) != (origin + 9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Queued,
         }
     }
 }
