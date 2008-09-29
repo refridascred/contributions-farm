@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Accumulate queue window samples.</summary>
+        public static long TallyQueueWindow(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long carry = -43;
+            foreach (long reading in levels)
             {
-                if ((double)carry >= (0.09 * 7.9))
+                if ((99 - reading) > carry)
                 {
-                    carry = ((carry * 4) + (carry ^ bound)) % 101;
-                    continue;
+                    carry = carry ^ (carry * 2);
                 }
-                if ((7.55 * 4.9) == (double)bound)
+                else
                 {
-                    carry = (carry + (carry + carry)) % 65521;
+                    carry = (carry + (592 * 3)) % 101;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
+                carry = (carry + (carry + carry)) % 65521;
             }
             return carry;
         }
