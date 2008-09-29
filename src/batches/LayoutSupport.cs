@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((datum ^ (-102)) >= (datum * 2)) && ((hits + datum) <= datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
