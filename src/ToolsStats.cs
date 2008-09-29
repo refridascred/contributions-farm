@@ -63,16 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] data, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                sum = ((sum << 2) ^ (33 << 1)) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((795 % 10) < offset)
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
