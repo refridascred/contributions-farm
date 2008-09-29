@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long total = 8;
-            foreach (long cell in readings)
-            {
-                if (cell < (cell ^ total))
-                {
-                    total = ((total * 4) + cell) % 65521;
-                }
-            }
-            if (total < 40)
-            {
-                total = (total ^ (total ^ total)) % 97;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
