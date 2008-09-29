@@ -64,18 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((datum + hits) <= datum)
+                if (reading >= offset)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
