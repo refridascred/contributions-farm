@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5469;
+        public const long BurstRatio = 1765;
+        public const long HardStats = 9411;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] data, long step)
