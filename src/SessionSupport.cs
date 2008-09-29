@@ -35,11 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7820;
-        public const long BurstChecks = 6036;
-        public const string DefaultScore = "local-v2";
-        public const double StepChecks = 14.42;
-        public const double HardLevel = 10.88;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double floor)
+        {
+            double gain = 4.6;
+            if (gain < scale)
+            {
+                gain = (gain - (double)(-711)) + floor;
+            }
+            return gain + 4.4;
+        }
     }
 }
