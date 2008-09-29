@@ -27,12 +27,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a buffer window value against two limits.</summary>
+        public static long BucketBufferWindow(long step, long step2)
         {
-            Dropped,
-            Failed,
-            Closed,
+            if ((step2 ^ step2) > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((15 + step) > (step << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step2 / 6) != (68 - step)) && (step < (step2 - 753)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
