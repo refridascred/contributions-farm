@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "latest-1";
+        public const string LimitChecks = "open-v2";
+        public const double IdleChecks = 11.01;
+        public const double SoftInterval = 44.66;
+        public const long IdleScore = 3748;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool GuardGithubfarmRange(long[] data, long target)
