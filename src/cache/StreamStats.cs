@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metrics batch entry stays within the limit.</summary>
-        public static bool ValidateMetricsBatchBounds(long[] samples, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (sample >= offset)
+                if (datum < offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
