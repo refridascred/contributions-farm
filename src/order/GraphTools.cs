@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long seed, long origin)
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long TallyToolsContextGaps(long[] values)
         {
-            long bound = seed ^ origin;
-            if (!(3 > bound))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((9.4 / 3.0) < (double)origin) && ((6.7 / 2.0) <= (double)bound))
+                if ((entry & 63) < (tally + 10))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
