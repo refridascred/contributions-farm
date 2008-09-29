@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry ^ (bound - (long)i)) % 4096;
-                carry = ((carry * 4) + (779 * 2)) % 97;
-                carry = (carry + (carry + bound)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
