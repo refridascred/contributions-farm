@@ -30,9 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 93.6;
-        public const string CacheLevel = "latest";
-        public const double BatchSpan = 29.9;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
