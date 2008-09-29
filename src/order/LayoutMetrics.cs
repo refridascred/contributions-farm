@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool VerifyOrderStreamBounds(long[] items, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((double)origin <= (6.5 * 7.0))
             {
-                if (reading <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (double)5)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
