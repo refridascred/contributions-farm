@@ -1,11 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any queue limits.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any channel limits.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer stats defaults
-- Keep checks values small
-- Validate cache input early
+- Keep format values small
+- Review buffer limits each release
+- Log every report change
+- Prefer metrics defaults
