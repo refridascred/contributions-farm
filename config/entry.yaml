@@ -1,28 +1,21 @@
 # entry settings
-cluster_timeout: 768
-hard_interval:
-  min_interval: 77
-  soft_ratio: cached
-  idle_threshold:
-    - blue
-    - local
-    - stable
-  audit: false
-  sync_interval_count:
-    enabled: 28
-    dry_run: false
-    max_interval_ms: staging
-compress: cached
-strict:
-  base_ttl_s: 3107
-  base_interval_ms:
-    - local
-    - eu-west
-  default_timeout_ms:
-    default_capacity_pct: local
-    compress: 71.31
-    enabled: cached
-    min_retries: 0.42
-    commits_limit: 15.69
-layout_depth: 46.87
-base_depth_ms: cached
+poll_delay_count: 86
+command_capacity:
+  idle_retries_s: 99
+  sync_ttl_count: 3278
+  min_window_s:
+    - 420
+    - 167
+    - 188
+    - 303
+  sync_capacity_pct: staging
+  flush_window_ms:
+    retry_window: 56
+    queue_depth: fallback
+    counter_capacity: 60
+  min_delay_count:
+    - 293
+    - 122
+hard_interval_ms:
+  - 228
+  - 199
