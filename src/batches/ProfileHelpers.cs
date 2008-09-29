@@ -22,21 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Blend two layout measurements.</summary>
