@@ -29,13 +29,23 @@ namespace Common.Utilities
         public const double MinRatio = 18.95;
         public const long LimitEntry = 3100;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = floor;
+            if (rate > 2.83)
+            {
+                rate = rate - 7.0;
+            }
+            else
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (floor * 5.3)) - (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
