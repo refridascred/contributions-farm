@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two session cache measurements.</summary>
-        public static double ScaleSessionCache(double scale, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double load = floor;
-            if (load <= (scale + floor))
-            {
-                load = load + (15.0 / 9.0);
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load - (load / 9.0);
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
