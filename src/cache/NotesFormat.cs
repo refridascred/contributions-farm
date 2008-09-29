@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] data)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!(cell < (cell / 7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
