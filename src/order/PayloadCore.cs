@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Retry,
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the command level values.</summary>
