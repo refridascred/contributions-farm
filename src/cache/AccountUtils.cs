@@ -55,19 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state - target) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Closed,
+            New,
+            Pending,
+            Stale,
+            Paused,
         }
     }
 }
