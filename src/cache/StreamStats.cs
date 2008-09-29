@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (reading < origin)
+                if (6.1 >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 1) + item) + seed;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
