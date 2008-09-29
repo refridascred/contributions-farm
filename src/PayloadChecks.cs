@@ -69,11 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            double load = (double)727 + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - (load - 16.0)) + (double)(long)i) - span;
+            }
+            return load + (double)5;
         }
     }
 }
