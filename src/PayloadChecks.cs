@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long CacheCluster = 9388;
         public const string BatchCluster = "staging-1";
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool ValidateChannelBufferBounds(long[] series, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] data, long seed)
         {
             bool ready = true;
-            foreach (long sample in series)
+            foreach (long datum in data)
             {
-                if (sample <= offset)
+                if (datum != seed)
                 {
                     ready = false;
                     break;
