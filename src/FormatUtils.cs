@@ -50,21 +50,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batch route series from a seed.</summary>
-        public static long RollBatchRoute(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((bound + acc) != (bound / 5))
-                {
-                    acc = (acc ^ acc) % 65521;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultFactor = 5043;
+        public const string BurstRatio = "latest-1";
+        public const long IdleCommits = 3887;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string HardCount = "strict-1";
