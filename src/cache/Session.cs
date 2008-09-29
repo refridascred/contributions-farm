@@ -21,17 +21,39 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = bound - limit;
+            if (!((double)gap > 4.65))
             {
-                if (items[i] < target)
+                return 6;
+            }
+            else
+            {
+                if (((limit - limit) >= limit) && ((gap + (-58)) <= 383))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((gap / 8) <= (gap + 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (0.03 >= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
