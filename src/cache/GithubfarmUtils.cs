@@ -32,18 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long FoldChannelEditor(long[] data)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            long acc = -782;
-            foreach (long value in data)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((acc >> 4) > (value - value))
-                {
-                    acc = (acc - (value & 255)) % 97;
-                }
+                carry = (carry - (carry % 10)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
