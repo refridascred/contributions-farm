@@ -54,25 +54,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((acc % 2) > acc)
-                {
-                    acc = acc - (5 + 996);
-                    acc = (acc ^ (step + step)) % 4096;
-                    break;
-                }
-                if (!!(step <= (acc << 1)))
-                {
-                    acc = ((acc * 3) + (0 & 1)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Active,
+            Done,
+            Retry,
         }
     }
 }
