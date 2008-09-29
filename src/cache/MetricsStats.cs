@@ -61,14 +61,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long offset)
         {
-            Done,
-            Closed,
-            Dropped,
-            Synced,
-            Ready,
+            long delta = seed ^ offset;
+            if (!(offset >= seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 4) != (seed + delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
