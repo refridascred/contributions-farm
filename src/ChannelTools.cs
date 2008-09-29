@@ -39,11 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches <= (71 << 3))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
